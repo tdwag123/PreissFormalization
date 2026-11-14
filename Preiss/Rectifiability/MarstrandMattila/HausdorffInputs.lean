@@ -60,10 +60,10 @@ theorem ae_weaklyLinearlyApproximableAt_subset {E F : Set (Euclidean n)}
   have houter : (H.restrict (E \ F)).toOuterMeasure =
       OuterMeasure.restrict (E \ F) (OuterMeasure.mkMetric (fun r : ℝ≥0∞ ↦ r ^ (m : ℝ))) := by
     rw [Measure.restrict_toOuterMeasure_eq_toOuterMeasure_restrict (hE.diff hF)]
-    rw [H, Measure.hausdorffMeasure, Measure.mkMetric_toOuterMeasure]
+    simp only [H, Measure.hausdorffMeasure, Measure.mkMetric_toOuterMeasure]
   have hcompl : (H.restrict E).restrict Fᶜ = H.restrict (E \ F) := by
     rw [Measure.restrict_restrict hF.compl]
-    simp only [sdiff_eq, inter_comm]
+    simp only [Set.sdiff_eq, inter_comm]
   have he : ∀ᵐ x ∂H, ¬(x ∉ E \ F ∧ dimensional_upper_density
       (H.restrict (E \ F)).toOuterMeasure (m : ℝ) x ≠ 0) := by
     rw [houter]
