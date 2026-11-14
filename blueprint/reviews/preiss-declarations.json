@@ -356,7 +356,8 @@
       "lean_names": [
         "Preiss.IsMeasureDensityOnePoint",
         "Preiss.dist_badSet_rescaled_tendsto_zero",
-        "Preiss.exists_badSet_points_rescaled_tendsto"
+        "Preiss.exists_badSet_points_rescaled_tendsto",
+        "Preiss.dist_set_rescaled_tendsto_zero_of_densityOne"
       ],
       "planned_lean_names": [
         "Preiss.IsMeasureDensityOnePoint",
@@ -371,7 +372,8 @@
     },
     "lem:recenter": {
       "lean_names": [
-        "Preiss.ae_recenter_dimensionalTangent"
+        "Preiss.ae_recenter_dimensionalTangent",
+        "Preiss.ae_recenter_dimensionalTangent_of_locallyFinite"
       ],
       "planned_lean_names": [
         "Preiss.ae_recenter_dimensionalTangent"
@@ -2158,6 +2160,19 @@
       "planned_file": "Preiss/Density/UpperBallSets.lean",
       "status": "proof_candidate",
       "verification": "Generic helper proof passed exact-source local Lean/kernel checking with standard axioms; full integration status remains blueprint/kernel-checkpoint.json."
+    },
+    "lem:projection-hole-cover": {
+      "lean_names": [
+        "Preiss.exists_holeFamily_of_compact",
+        "Preiss.holeFamily_mass_lower_bound",
+        "Preiss.HoleFamily.disjoint_cylinders",
+        "Preiss.mem_half_ball_of_tube_and_projected_distance"
+      ]
+    },
+    "lem:empty-cylinder-direction": {
+      "lean_names": [
+        "Preiss.exists_unit_small_projection_of_empty_inner_cylinder"
+      ]
     }
   },
   "pending": [],

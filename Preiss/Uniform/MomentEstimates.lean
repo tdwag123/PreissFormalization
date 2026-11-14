@@ -3,6 +3,7 @@ public import Preiss.Uniform.MomentForms
 public import Preiss.Uniform.Defs
 public import Preiss.Analysis.GaussianGrowth
 public import Preiss.Analysis.GaussianWeight
+public import Preiss.Analysis.PowerSeriesRemainder
 public import Preiss.Analysis.GaussianBallPowerParameter
 public import Mathlib.Topology.Algebra.InfiniteSum.Real
 
@@ -163,12 +164,80 @@ theorem hasSum_gaussianMoment_diagonal (μ : Measure (Euclidean n))
     field_simp [hmass.ne']
   · simpa only [abs_mul] using habs.mul_left |(gaussianMass μ s)⁻¹|
 
-theorem gaussianMoment_taylor_remainder (hm : 0 < m) (q : ℕ) (hq : 0 < q) :
+theorem gaussianMoment_taylor_remainder
+    (hm : 0 < m) (q : ℕ) (hq : 0 < q) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ (μ : Measure (Euclidean n)), IsUnitUniform m μ →
       ∀ x ∈ μ.support, ∀ s : ℝ, 0 < s →
-      |(∑ k ∈ Finset.range (2 * q), gaussianMomentForm μ (k + 1) s (fun _ => x)) -
-        ∑ j ∈ Finset.range q, s ^ (j + 1) * ‖x‖ ^ (2 * (j + 1)) /
-          ((j + 1).factorial : ℝ)| ≤ C * (s * ‖x‖ ^ 2) ^ ((q : ℝ) + 1 / 2) := by
-  sorry
+      |(∑ k ∈ Finset.range (2*q),gaussianMomentForm μ (k+1) s (fun _ => x)) -
+        ∑ j ∈ Finset.range q,s^(j+1)*‖x‖^(2*(j+1))/((j+1).factorial : ℝ)| ≤
+          C*(s*‖x‖^2)^((q : ℝ)+1/2) := by
+  obtain ⟨C,hC,hbound⟩ := norm_gaussianMomentForm_le (n := n) hm
+  let A (k : ℕ) : ℝ := 2^k*(k : ℝ)^((k : ℝ)/2)/(k.factorial : ℝ)
+  let c (k : ℕ) : ℝ := C*A k + 1/(k.factorial : ℝ)
+  have hAn (k : ℕ) : 0 ≤ A k := by dsimp [A]; positivity
+  have hc (k : ℕ) : 0 ≤ c k := add_nonneg (mul_nonneg hC (hAn k)) (by positivity)
+  have hAs : Summable A := summable_pow_mul_halfPower_div_factorial 2 (by norm_num)
+  have hds : Summable (fun k : ℕ => 1/(k.factorial : ℝ)) := by
+    simpa only [one_pow] using Real.summable_pow_div_factorial 1
+  have hcs : Summable c := (hAs.mul_left C).add hds
+  refine ⟨(∑' k,c k)+Real.exp 1,add_nonneg (tsum_nonneg hc) (Real.exp_pos _).le,?_⟩
+  intro μ hμ x hx s hs
+  let r : ℝ := Real.sqrt s * ‖x‖
+  let f (k : ℕ) := gaussianMomentForm μ k s (fun _ => x)
+  have hr : 0 ≤ r := mul_nonneg (Real.sqrt_nonneg _) (norm_nonneg _)
+  have hrsq : r^2 = s*‖x‖^2 := by
+    dsimp [r]
+    rw [mul_pow,Real.sq_sqrt hs.le]
+  have hmass : 0 < gaussianMass μ s := by
+    rw [gaussianMass_unitUniform μ hm hμ s hs]
+    exact mul_pos (Real.Gamma_pos_of_pos (by positivity)) (Real.rpow_pos_of_pos hs _)
+  have hf0 : f 0 = 1 := by
+    dsimp [f]
+    rw [gaussianMomentForm_apply μ 0 s (integrable_gaussianMomentKernel μ hm hμ 0 s hs)]
+    have hmassint : (∫ z,Real.exp (-s*‖z‖^2) ∂μ) ≠ 0 := hmass.ne'
+    have hmassint' : (∫ z,Real.exp (-(s*‖z‖^2)) ∂μ) ≠ 0 := by
+      simpa only [neg_mul] using hmassint
+    simp [gaussianMoment,hmassint']
+  have hf : HasSum f (Real.exp (r^2)) := by
+    rw [hrsq]
+    exact (hasSum_gaussianMoment_diagonal μ hm hμ x hx s hs).1
+  have hb (k : ℕ) : |f k| ≤ c k*r^k := by
+    by_cases hk : k = 0
+    · subst k
+      rw [hf0]
+      simp only [abs_one,pow_zero,mul_one]
+      simpa [c,A] using (show (1 : ℝ) ≤ C+1 by linarith)
+    · have hkpos : 0 < k := Nat.pos_of_ne_zero hk
+      have hop : |f k| ≤ ‖gaussianMomentForm μ k s‖ * ‖x‖^k := by
+        simpa only [f,Real.norm_eq_abs,Finset.prod_const,Finset.card_univ,Fintype.card_fin] using
+          (gaussianMomentForm μ k s).le_opNorm (fun _ => x)
+      have hp : s^((k : ℝ)/2)*‖x‖^k = r^k := by
+        rw [Real.rpow_div_two_eq_sqrt _ hs.le,Real.rpow_natCast]
+        exact (mul_pow _ _ _).symm
+      calc
+        _ ≤ ‖gaussianMomentForm μ k s‖*‖x‖^k := hop
+        _ ≤ (C*2^k*(k : ℝ)^((k : ℝ)/2)*s^((k : ℝ)/2)/(k.factorial : ℝ))*‖x‖^k :=
+          mul_le_mul_of_nonneg_right (hbound μ hμ k hkpos s hs) (pow_nonneg (norm_nonneg x) _)
+        _ = (C*A k)*r^k := by rw [← hp]; dsimp [A]; ring
+        _ ≤ c k*r^k := by
+          apply mul_le_mul_of_nonneg_right _ (pow_nonneg hr _)
+          dsimp [c]
+          exact le_add_of_nonneg_right (by positivity)
+  have H := power_series_gaussian_taylor_remainder hr hc hcs hf hf0 hb q
+  have hpoly : (∑ j ∈ Finset.range q,r^(2*(j+1))/((j+1).factorial : ℝ)) =
+      ∑ j ∈ Finset.range q,s^(j+1)*‖x‖^(2*(j+1))/((j+1).factorial : ℝ) := by
+    apply Finset.sum_congr rfl
+    intro j _
+    rw [pow_mul,hrsq,mul_pow,pow_mul]
+  have hpower : r^(2*q+1) = (s*‖x‖^2)^((q : ℝ)+1/2) := by
+    rw [← hrsq]
+    have hcast : (2 : ℝ)*((q : ℝ)+1/2) = (2*q+1 : ℕ) := by push_cast; ring
+    calc
+      _ = r^((2*q+1 : ℕ) : ℝ) := (Real.rpow_natCast _ _).symm
+      _ = r^((2 : ℝ)*((q : ℝ)+1/2)) := by rw [hcast]
+      _ = (r^(2 : ℝ))^((q : ℝ)+1/2) := Real.rpow_mul hr _ _
+      _ = _ := by rw [Real.rpow_two]
+  rw [hpoly,hpower] at H
+  exact H
 
 end Preiss

@@ -331,6 +331,19 @@ flowchart LR
   lem_compact_two_sided_general["Compact two-sided approximation from uniform lower mass"]
   lem_gaussian_power_envelope["A scalar Gaussian envelope for polynomial growth"]
   lem_integrated_gaussian_exponential_series["Integrated exponential series under a Gaussian weight"]
+  lem_rescaled_distance_selection["Rescaled distances and approximate nearest-point selection"]
+  lem_sequential_uniform_scale["Uniform small-scale bounds from subsequence properties"]
+  lem_plane_distance_homogeneous["Homogeneity of distance to a linear plane"]
+  lem_dimensional_blowup_set_estimates["Measure inequalities under dimensional normalization"]
+  lem_weak_approximation_scale_transfer["Transfer of normalized plane approximation to a physical scale"]
+  lem_countable_coordinate_second_countability["Second countability of countable-coordinate metrics"]
+  lem_scalar_gaussian_series_remainder["Summable coefficient majorants and a global Gaussian-series remainder"]
+  lem_vague_second_countable["A second-countable metrization of vague convergence"]
+  lem_dimensional_tangent_metric_separation["Metric approximation and separation of dimensional tangents"]
+  lem_dimensional_moving_centers["Moving blow-up centers at the same dimensional scale"]
+  lem_recenter_nonzero["Nonvanishing after recentering at a support point"]
+  lem_recenter_separated_set_null["Nullity of uniformly separated recentering witnesses"]
+  lem_finite_dimensional_operator_bigO["Operator bounds from pointwise bounds in finite dimensions"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -561,6 +574,7 @@ flowchart LR
   gmt_density_points --> lem_hull_support_approximation
   gmt_portmanteau --> lem_hull_support_approximation
   lem_measurable_hull_holes --> lem_hull_support_approximation
+  lem_rescaled_distance_selection --> lem_hull_support_approximation
   def_dimensional_blowup --> lem_vague_moving_blowups
   gmt_blowup_regular --> lem_vague_moving_blowups
   lem_vague_moving_tests --> lem_vague_moving_blowups
@@ -574,6 +588,8 @@ flowchart LR
   lem_dimensional_compactness --> lem_flat_to_approximation
   lem_flat_limit_moving_balls --> lem_flat_to_approximation
   lem_flat_limit_tube --> lem_flat_to_approximation
+  lem_sequential_uniform_scale --> lem_flat_to_approximation
+  lem_weak_approximation_scale_transfer --> lem_flat_to_approximation
   def_dimensional_blowup --> lem_plane_scaling
   def_flat --> lem_plane_scaling
   lem_blowup_composition --> lem_plane_scaling
@@ -615,16 +631,11 @@ flowchart LR
   lem_flatness_continuous --> lem_flatness_radius_continuous
   lem_flatness_vague_general --> lem_flatness_radius_continuous
   lem_vague_moving_blowups --> lem_flatness_radius_continuous
-  def_dimensional_tangent --> lem_recenter
-  def_positive_density --> lem_recenter
-  gmt_goodsets --> lem_recenter
-  lem_dimensional_tangent_ball_constant --> lem_recenter
-  lem_dimensional_tangent_closed --> lem_recenter
-  lem_dimensional_tangent_dilation --> lem_recenter
-  lem_hull_support_approximation --> lem_recenter
-  lem_uniform_adapter --> lem_recenter
-  lem_uniform_finite_metric_covers --> lem_recenter
-  lem_vague_moving_blowups --> lem_recenter
+  lem_dimensional_tangent_metric_separation --> lem_recenter
+  lem_dimensional_tangent_operations --> lem_recenter
+  lem_recenter_nonzero --> lem_recenter
+  lem_recenter_separated_set_null --> lem_recenter
+  lem_vague_second_countable --> lem_recenter
   def_plane --> def_weak_approximation_good_set
   def_plane --> lem_tube_support_upgrade
   def_plane --> def_weak_approximation
@@ -737,6 +748,7 @@ flowchart LR
   def_moments --> lem_moment_feature_remainder
   def_polynomial_feature --> lem_moment_feature_remainder
   def_unit_uniform --> lem_moment_feature_remainder
+  lem_finite_dimensional_operator_bigO --> lem_moment_feature_remainder
   lem_moment_feature_annihilation --> lem_moment_feature_remainder
   lem_polynomial_feature_identities --> lem_moment_feature_remainder
   lem_taylor_one --> lem_moment_feature_remainder
@@ -782,6 +794,7 @@ flowchart LR
   def_unit_uniform --> lem_taylor_one
   lem_gaussian_translation_series --> lem_taylor_one
   lem_moment_norm_bound --> lem_taylor_one
+  lem_scalar_gaussian_series_remainder --> lem_taylor_one
   def_moment_coefficients --> lem_taylor_two
   def_moments --> lem_taylor_two
   def_unit_uniform --> lem_taylor_two
@@ -1325,3 +1338,22 @@ flowchart LR
   lem_tube_support_upgrade --> lem_compact_two_sided_general
   lem_weak_approximation_good_exhaustion --> lem_compact_two_sided_general
   lem_gaussian_weight_exponential --> lem_integrated_gaussian_exponential_series
+  lem_projection_distance --> lem_plane_distance_homogeneous
+  def_dimensional_blowup --> lem_dimensional_blowup_set_estimates
+  gmt_blowup_balls --> lem_weak_approximation_scale_transfer
+  lem_dimensional_blowup_set_estimates --> lem_weak_approximation_scale_transfer
+  lem_plane_distance_homogeneous --> lem_weak_approximation_scale_transfer
+  lem_countable_coordinate_metric --> lem_countable_coordinate_second_countability
+  def_vague_metrization_from_tests --> lem_vague_second_countable
+  lem_countable_coordinate_second_countability --> lem_vague_second_countable
+  def_dimensional_tangent --> lem_dimensional_tangent_metric_separation
+  def_vague_metrization --> lem_dimensional_tangent_metric_separation
+  lem_dimensional_blowup_support --> lem_dimensional_tangent_metric_separation
+  lem_blowup_composition --> lem_dimensional_moving_centers
+  lem_dimensional_blowup_support --> lem_dimensional_moving_centers
+  lem_vague_moving_blowups --> lem_dimensional_moving_centers
+  lem_dimensional_blowup_support --> lem_recenter_nonzero
+  gmt_density_points --> lem_recenter_separated_set_null
+  lem_dimensional_moving_centers --> lem_recenter_separated_set_null
+  lem_hull_support_approximation --> lem_recenter_separated_set_null
+  lem_rescaled_distance_selection --> lem_recenter_separated_set_null

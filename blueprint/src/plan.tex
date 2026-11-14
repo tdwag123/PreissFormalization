@@ -169,7 +169,7 @@ Split normalization, finiteness, and sphere-null corollaries; do not import tang
 
 \begin{lemma}[A plane avoiding an inner cylinder has a small projected direction]
 \label{lem:empty-cylinder-direction}
-\lean{Preiss.cylinder, Preiss.exists_unit_small_projection_of_avoids_cylinder}
+\lean{Preiss.cylinder, Preiss.exists_unit_small_projection_of_avoids_cylinder, Preiss.exists_unit_small_projection_of_empty_inner_cylinder}
 \uses{def:plane}
 
 
@@ -1038,8 +1038,8 @@ dilation and preservation of flatness, regularity and uniform ball constants.
 
 \begin{lemma}[Support approximation from arbitrary positive outer measure sets]
 \label{lem:hull-support-approximation}
-\lean{Preiss.IsMeasureDensityOnePoint, Preiss.dist_badSet_rescaled_tendsto_zero, Preiss.exists_badSet_points_rescaled_tendsto}
-\uses{def:dimensional-tangent, gmt:density-points, gmt:portmanteau, lem:measurable-hull-holes}
+\lean{Preiss.IsMeasureDensityOnePoint, Preiss.dist_badSet_rescaled_tendsto_zero, Preiss.exists_badSet_points_rescaled_tendsto, Preiss.dist_set_rescaled_tendsto_zero_of_densityOne}
+\uses{def:dimensional-tangent, gmt:density-points, gmt:portmanteau, lem:measurable-hull-holes, lem:rescaled-distance-selection}
 
 
 
@@ -1175,7 +1175,7 @@ implements closure without assuming a topology on all raw measures.
 \begin{lemma}[All flat tangents imply weak linear approximation]
 \label{lem:flat-to-approximation}
 \lean{Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat}
-\uses{def:weak-approximation, lem:dimensional-compactness, lem:flat-limit-moving-balls, lem:flat-limit-tube}
+\uses{def:weak-approximation, lem:dimensional-compactness, lem:flat-limit-moving-balls, lem:flat-limit-tube, lem:sequential-uniform-scale, lem:weak-approximation-scale-transfer}
 
 
 
@@ -1398,8 +1398,8 @@ implies that some plane has unit-ball energy at most $\varepsilon$.
 
 \begin{lemma}[One null exceptional set for all dimensional recenterings]
 \label{lem:recenter}
-\lean{Preiss.ae_recenter_dimensionalTangent}
-\uses{def:dimensional-tangent, def:positive-density, gmt:goodsets, lem:dimensional-tangent-ball-constant, lem:dimensional-tangent-closed, lem:dimensional-tangent-dilation, lem:hull-support-approximation, lem:uniform-adapter, lem:uniform-finite-metric-covers, lem:vague-moving-blowups}
+\lean{Preiss.ae_recenter_dimensionalTangent, Preiss.ae_recenter_dimensionalTangent_of_locallyFinite}
+\uses{lem:vague-second-countable, lem:dimensional-tangent-metric-separation, lem:recenter-separated-set-null, lem:recenter-nonzero, lem:dimensional-tangent-operations}
 
 
 
@@ -1765,7 +1765,7 @@ For every fixed \(m\)-plane \(V\) and finite aperture \(\alpha\geq0\), at \(\mat
 
 \begin{lemma}[Disjoint projection-hole disks with large radius sum]
 \label{lem:projection-hole-cover}
-\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass}
+\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass, Preiss.exists_holeFamily_of_compact, Preiss.holeFamily_mass_lower_bound, Preiss.HoleFamily.disjoint_cylinders, Preiss.mem_half_ball_of_tube_and_projected_distance}
 \uses{lem:nested-compact-approximation, lem:packing-base-point, lem:plane-hausdorff, mathlib:vitali-enlargement}
 
 
@@ -2414,7 +2414,7 @@ inside the current single trace-rigidity node.
 \begin{lemma}[Operator norm remainder from finitely many support features]
 \label{lem:moment-feature-remainder}
 \lean{Preiss.featureMoment_operator_remainder}
-\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:moment-feature-annihilation, lem:polynomial-feature-identities, lem:taylor-one}
+\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:moment-feature-annihilation, lem:polynomial-feature-identities, lem:taylor-one, lem:finite-dimensional-operator-bigO}
 
 
 
@@ -2696,7 +2696,7 @@ the convergent exponential series with its remainder bound.
 \begin{lemma}[Quantitative finite moment remainder]
 \label{lem:taylor-one}
 \lean{Preiss.gaussianMoment_taylor_remainder}
-\uses{def:moments, def:unit-uniform, lem:gaussian-translation-series, lem:moment-norm-bound}
+\uses{def:moments, def:unit-uniform, lem:gaussian-translation-series, lem:moment-norm-bound, lem:scalar-gaussian-series-remainder}
 
 
 
@@ -5121,4 +5121,104 @@ For $r\geq0$, $s>0$ and integer $k>0$, $r^k e^{-sr^2/2}\leq(k/s)^{k/2}$.
 \uses{lem:gaussian-weight-exponential}
 
 For a Euclidean measure with polynomial ball growth, every $s>0$, $t\in\mathbb R$ and vector $w$, the series of Gaussian-weighted moments $(t^k/k!)\int\langle z,w\rangle^k e^{-s\lVert z\rVert^2}\,d\mu$ converges absolutely to $\int e^{t\langle z,w\rangle}e^{-s\lVert z\rVert^2}\,d\mu$.
+\end{lemma}
+
+\begin{lemma}[Rescaled distances and approximate nearest-point selection]
+\label{lem:rescaled-distance-selection}
+\lean{Preiss.dist_affine_rescale, Preiss.exists_points_rescaled_tendsto_of_infDist}
+
+In a real normed space, $\operatorname{dist}(a+ry,z)=r\operatorname{dist}(y,r^{-1}(z-a))$ for $r>0$. If $D$ is nonempty and $\operatorname{dist}(a+r_i y,D)/r_i\to0$ for positive $r_i$, one can choose $z_i\in D$ with $r_i^{-1}(z_i-a)\to y$. No closedness, compactness, or convergence of $r_i$ is required.
+\end{lemma}
+
+\begin{lemma}[Uniform small-scale bounds from subsequence properties]
+\label{lem:sequential-uniform-scale}
+\lean{Preiss.exists_uniform_scale_of_subsequence_property}
+
+Let $P(a,r)$ be monotone downward in its positive parameter $a$. If every positive sequence $r_i\to0$ has a strictly increasing subsequence on which $P(a,r_i)$ eventually holds for some $a>0$, then there are $a,R>0$ such that $P(a,r)$ holds for every $0<r<R$.
+\end{lemma}
+
+\begin{lemma}[Homogeneity of distance to a linear plane]
+\label{lem:plane-distance-homogeneous}
+\lean{Preiss.infDist_smul_plane}
+\uses{lem:projection-distance}
+
+For a linear plane $V$, $\operatorname{dist}(cz,V)=|c|\operatorname{dist}(z,V)$ for every real $c$, including zero.
+\end{lemma}
+
+\begin{lemma}[Measure inequalities under dimensional normalization]
+\label{lem:dimensional-blowup-set-estimates}
+\lean{Preiss.dimensionalBlowup_apply_lt_iff, Preiss.le_dimensionalBlowup_apply_iff}
+\uses{def:dimensional-blowup}
+
+For every Borel set $S$, $r>0$ and $a\geq0$, upper and lower comparisons of $D^m_{x,r}\mu(S)$ with $a$ are equivalent to the corresponding comparisons of $\mu(T_{x,r}^{-1}S)$ with $ar^m$. No regularity or local finiteness is needed.
+\end{lemma}
+
+\begin{lemma}[Transfer of normalized plane approximation to a physical scale]
+\label{lem:weak-approximation-scale-transfer}
+\lean{Preiss.weakApproximation_scale_of_normalized_bounds}
+\uses{lem:plane-distance-homogeneous, lem:dimensional-blowup-set-estimates, gmt:blowup-balls}
+
+At a positive scale $r$, suppose $D^m_{x,r}\mu$ has mass less than $\eta$ outside the $\eta$-tube in the closed unit ball, and gives every $\eta$-ball centered on $V$ in that ball mass at least $a\geq0$. Then $\mu$ has the required weak plane-approximation estimates at $x,r$, with bounds $\eta r^m$ and $ar^m$.
+\end{lemma}
+
+\begin{lemma}[Second countability of countable-coordinate metrics]
+\label{lem:countable-coordinate-second-countability}
+\lean{Preiss.countableCoordinateMetric_secondCountable}
+\uses{lem:countable-coordinate-metric}
+
+The metric induced by countably many separating real coordinates is second countable, because its topology is induced from the countable product of real lines.
+\end{lemma}
+
+\begin{lemma}[Summable coefficient majorants and a global Gaussian-series remainder]
+\label{lem:scalar-gaussian-series-remainder}
+\lean{Preiss.summable_pow_mul_halfPower_div_factorial, Preiss.abs_power_series_tail_le, Preiss.abs_sum_positive_powers_le, Preiss.power_series_gaussian_taylor_remainder}
+
+For $a\geq0$, the sequence $a^k k^{k/2}/k!$ is summable. Nonnegative summable coefficient majorants control power-series tails for $0\leq r\leq1$ and finite polynomials for $r\geq1$. If $\sum f_k=e^{r^2}$, $f_0=1$, and $|f_k|\leq c_k r^k$, then the discrepancy between the positive-degree truncations of $f$ and the Gaussian exponential is at most $(\sum c_k+e)r^{2q+1}$ for every $r\geq0$.
+\end{lemma}
+
+\begin{lemma}[A second-countable metrization of vague convergence]
+\label{lem:vague-second-countable}
+\lean{Preiss.exists_secondCountable_vagueMetrization}
+\uses{def:vague-metrization-from-tests, lem:countable-coordinate-second-countability}
+
+The regular measures on Euclidean space admit a second-countable metric whose sequential convergence is vague convergence.
+\end{lemma}
+
+\begin{lemma}[Metric approximation and separation of dimensional tangents]
+\label{lem:dimensional-tangent-metric-separation}
+\lean{Preiss.dimensionalTangent_of_metric_approximation, Preiss.exists_metric_separation_of_not_dimensionalTangent}
+\uses{def:dimensional-tangent, def:vague-metrization, lem:dimensional-blowup-support}
+
+A nonzero regular measure is a dimensional tangent if every metric neighborhood contains a dimensional blow-up at arbitrarily small positive scales. Consequently, a nontangent has a metric neighborhood separated from all sufficiently small blow-ups.
+\end{lemma}
+
+\begin{lemma}[Moving blow-up centers at the same dimensional scale]
+\label{lem:dimensional-moving-centers}
+\lean{Preiss.vague_dimensionalBlowup_moving_center}
+\uses{lem:vague-moving-blowups, lem:blowup-composition, lem:dimensional-blowup-support}
+
+If $D^m_{a,r_i}\mu\to\nu$ vaguely and $r_i^{-1}(a_i-a)\to y$, then $D^m_{a_i,r_i}\mu\to D^m_{y,1}\nu$. The original dimensional normalization is unchanged.
+\end{lemma}
+
+\begin{lemma}[Nonvanishing after recentering at a support point]
+\label{lem:recenter-nonzero}
+\lean{Preiss.dimensionalBlowup_one_ne_zero_of_mem_support}
+\uses{lem:dimensional-blowup-support}
+
+For every $y\in\operatorname{supp}\nu$, the unit-scale dimensional blow-up $D^m_{y,1}\nu$ is nonzero.
+\end{lemma}
+
+\begin{lemma}[Nullity of uniformly separated recentering witnesses]
+\label{lem:recenter-separated-set-null}
+\lean{Preiss.measure_eq_zero_of_recenter_separation}
+\uses{gmt:density-points, lem:hull-support-approximation, lem:rescaled-distance-selection, lem:dimensional-moving-centers}
+
+An arbitrary finite-outer-measure set of centers is null if each center has a recentered tangent witness within $\rho$ of one fixed regular measure while all its sufficiently small dimensional blow-ups are at distance at least $4\rho$ from that witness. No measurability of the center set is assumed.
+\end{lemma}
+
+\begin{lemma}[Operator bounds from pointwise bounds in finite dimensions]
+\label{lem:finite-dimensional-operator-bigO}
+\lean{Preiss.isBigO_continuousLinearMap_iff_forall_apply, Preiss.isBigO_restrict_span_of_forall_mem}
+
+For a family of continuous linear maps on a finite-dimensional real normed space, an operator-norm big-$O$ bound is equivalent to the bound at each vector. Bounds on a generating set give an operator-norm bound after restriction to its span.
 \end{lemma}

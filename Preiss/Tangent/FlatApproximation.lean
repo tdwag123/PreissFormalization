@@ -1,4 +1,6 @@
 import Preiss.Tangent.Compactness
+import Preiss.Tangent.ApproximationScaling
+import Preiss.Analysis.SequentialScale
 import Preiss.Geometry.FlatMeasure
 import Preiss.Rectifiability.WeakApproximation.Defs
 import Preiss.Geometry.PlaneMeasure
@@ -56,6 +58,40 @@ theorem weaklyLinearlyApproximableAt_of_all_tangents_flat
     (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)
     (hd : HasPositiveFiniteDensitiesAt m μ x)
     (ht : ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν) :
-    MeasureWeaklyLinearlyApproximableAt m μ x := by sorry
+    MeasureWeaklyLinearlyApproximableAt m μ x := by
+  intro η hη
+  let P (a r : ℝ) : Prop := 0 < r → ∃ V : Plane m n,
+    μ (ball x r \ {z | infDist (z-x) (V.1 : Set (Euclidean n)) ≤ η*r}) <
+      ENNReal.ofReal (η*r^m) ∧
+    ∀ z : Euclidean n, z-x ∈ V.1 → z ∈ ball x r →
+      ENNReal.ofReal (a*r^m) ≤ μ (ball z (η*r))
+  have hmono : ∀ {a b r : ℝ}, 0 < a → a ≤ b → P b r → P a r := by
+    intro a b r ha hab hb hr
+    obtain ⟨V, hup, hlo⟩ := hb hr
+    refine ⟨V, hup, ?_⟩
+    intro z hzV hzB
+    exact (ENNReal.ofReal_le_ofReal
+      (mul_le_mul_of_nonneg_right hab (pow_nonneg hr.le m))).trans (hlo z hzV hzB)
+  have hseq : ∀ (r : ℕ → ℝ), (∀ i, 0 < r i) → Tendsto r atTop (𝓝 0) →
+      ∃ (φ : ℕ → ℕ), StrictMono φ ∧ ∃ a : ℝ, 0 < a ∧
+        ∀ᶠ i in atTop, P a (r (φ i)) := by
+    intro r hr hr0
+    obtain ⟨φ, hν, hφ, hreg, hne, hlim, htan⟩ :=
+      exists_dimensional_tangent_subseq_of_density_bounds μ x hd r hr hr0
+    obtain ⟨V, c, hc, hcfin, heq⟩ := ht hν htan
+    change hν = flatOn V c at heq
+    subst hν
+    have hregseq (i : ℕ) : (dimensionalBlowup m μ x (r (φ i))).Regular :=
+      regular_dimensionalBlowup μ inferInstance x (hr (φ i))
+    obtain ⟨a, ha, hlo⟩ := eventually_ball_mass_lower_bound_of_flat_limit _ hregseq V hc hcfin
+      hlim hη (show (0 : ℝ) < 1 by norm_num)
+    have hup := (tendsto_mass_outside_tube_of_flat_limit _ hregseq V hc hcfin hlim hη
+      (show (0 : ℝ) < 1 by norm_num)).eventually_lt_const (ENNReal.ofReal_pos.mpr hη)
+    refine ⟨φ, hφ, a, ha, ?_⟩
+    filter_upwards [hup, hlo] with i hiup hilow
+    intro hri
+    exact ⟨V, weakApproximation_scale_of_normalized_bounds μ x V hri hη ha.le hiup hilow⟩
+  obtain ⟨a, ha, R, hR, hP⟩ := exists_uniform_scale_of_subsequence_property P hmono hseq
+  exact ⟨a, ha, R, hR, fun r hr hrR => hP r hr hrR hr⟩
 
 end Preiss

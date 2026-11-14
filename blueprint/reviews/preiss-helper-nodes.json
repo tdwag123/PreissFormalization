@@ -1742,6 +1742,231 @@
       ],
       "proof_sketch_tex": "Apply the dominated integral-of-series theorem using the integrable absolute exponential times the Gaussian weight.",
       "verification": "Local exact-source Lean check passed with only standard foundations. Full canonical integration pending."
+    },
+    {
+      "id": "lem:rescaled-distance-selection",
+      "kind": "lemma",
+      "title": "Rescaled distances and approximate nearest-point selection",
+      "lean_names": [
+        "Preiss.dist_affine_rescale",
+        "Preiss.exists_points_rescaled_tendsto_of_infDist"
+      ],
+      "file": "Preiss/Geometry/RescaledDistance.lean",
+      "statement_tex": "In a real normed space, $\\operatorname{dist}(a+ry,z)=r\\operatorname{dist}(y,r^{-1}(z-a))$ for $r>0$. If $D$ is nonempty and $\\operatorname{dist}(a+r_i y,D)/r_i\\to0$ for positive $r_i$, one can choose $z_i\\in D$ with $r_i^{-1}(z_i-a)\\to y$. No closedness, compactness, or convergence of $r_i$ is required.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:hull-support-approximation"
+      ],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:sequential-uniform-scale",
+      "kind": "lemma",
+      "title": "Uniform small-scale bounds from subsequence properties",
+      "lean_names": [
+        "Preiss.exists_uniform_scale_of_subsequence_property"
+      ],
+      "file": "Preiss/Analysis/SequentialScale.lean",
+      "statement_tex": "Let $P(a,r)$ be monotone downward in its positive parameter $a$. If every positive sequence $r_i\\to0$ has a strictly increasing subsequence on which $P(a,r_i)$ eventually holds for some $a>0$, then there are $a,R>0$ such that $P(a,r)$ holds for every $0<r<R$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:flat-to-approximation"
+      ],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:plane-distance-homogeneous",
+      "kind": "lemma",
+      "title": "Homogeneity of distance to a linear plane",
+      "lean_names": [
+        "Preiss.infDist_smul_plane"
+      ],
+      "file": "Preiss/Geometry/PlaneDistance.lean",
+      "statement_tex": "For a linear plane $V$, $\\operatorname{dist}(cz,V)=|c|\\operatorname{dist}(z,V)$ for every real $c$, including zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:projection-distance"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-blowup-set-estimates",
+      "kind": "lemma",
+      "title": "Measure inequalities under dimensional normalization",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_apply_lt_iff",
+        "Preiss.le_dimensionalBlowup_apply_iff"
+      ],
+      "file": "Preiss/Tangent/ApproximationScaling.lean",
+      "statement_tex": "For every Borel set $S$, $r>0$ and $a\\geq0$, upper and lower comparisons of $D^m_{x,r}\\mu(S)$ with $a$ are equivalent to the corresponding comparisons of $\\mu(T_{x,r}^{-1}S)$ with $ar^m$. No regularity or local finiteness is needed.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-blowup"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:weak-approximation-scale-transfer",
+      "kind": "lemma",
+      "title": "Transfer of normalized plane approximation to a physical scale",
+      "lean_names": [
+        "Preiss.weakApproximation_scale_of_normalized_bounds"
+      ],
+      "file": "Preiss/Tangent/ApproximationScaling.lean",
+      "statement_tex": "At a positive scale $r$, suppose $D^m_{x,r}\\mu$ has mass less than $\\eta$ outside the $\\eta$-tube in the closed unit ball, and gives every $\\eta$-ball centered on $V$ in that ball mass at least $a\\geq0$. Then $\\mu$ has the required weak plane-approximation estimates at $x,r$, with bounds $\\eta r^m$ and $ar^m$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-distance-homogeneous",
+        "lem:dimensional-blowup-set-estimates",
+        "gmt:blowup-balls"
+      ],
+      "used_by": [
+        "lem:flat-to-approximation"
+      ],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:countable-coordinate-second-countability",
+      "kind": "lemma",
+      "title": "Second countability of countable-coordinate metrics",
+      "lean_names": [
+        "Preiss.countableCoordinateMetric_secondCountable"
+      ],
+      "file": "Preiss/Analysis/CountableCoordinateTopology.lean",
+      "statement_tex": "The metric induced by countably many separating real coordinates is second countable, because its topology is induced from the countable product of real lines.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:countable-coordinate-metric"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:scalar-gaussian-series-remainder",
+      "kind": "lemma",
+      "title": "Summable coefficient majorants and a global Gaussian-series remainder",
+      "lean_names": [
+        "Preiss.summable_pow_mul_halfPower_div_factorial",
+        "Preiss.abs_power_series_tail_le",
+        "Preiss.abs_sum_positive_powers_le",
+        "Preiss.power_series_gaussian_taylor_remainder"
+      ],
+      "file": "Preiss/Analysis/PowerSeriesRemainder.lean",
+      "statement_tex": "For $a\\geq0$, the sequence $a^k k^{k/2}/k!$ is summable. Nonnegative summable coefficient majorants control power-series tails for $0\\leq r\\leq1$ and finite polynomials for $r\\geq1$. If $\\sum f_k=e^{r^2}$, $f_0=1$, and $|f_k|\\leq c_k r^k$, then the discrepancy between the positive-degree truncations of $f$ and the Gaussian exponential is at most $(\\sum c_k+e)r^{2q+1}$ for every $r\\geq0$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:vague-second-countable",
+      "kind": "lemma",
+      "title": "A second-countable metrization of vague convergence",
+      "lean_names": [
+        "Preiss.exists_secondCountable_vagueMetrization"
+      ],
+      "file": "Preiss/Analysis/Vague/SecondCountable.lean",
+      "statement_tex": "The regular measures on Euclidean space admit a second-countable metric whose sequential convergence is vague convergence.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:vague-metrization-from-tests",
+        "lem:countable-coordinate-second-countability"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-tangent-metric-separation",
+      "kind": "lemma",
+      "title": "Metric approximation and separation of dimensional tangents",
+      "lean_names": [
+        "Preiss.dimensionalTangent_of_metric_approximation",
+        "Preiss.exists_metric_separation_of_not_dimensionalTangent"
+      ],
+      "file": "Preiss/Tangent/MetricApproximation.lean",
+      "statement_tex": "A nonzero regular measure is a dimensional tangent if every metric neighborhood contains a dimensional blow-up at arbitrarily small positive scales. Consequently, a nontangent has a metric neighborhood separated from all sufficiently small blow-ups.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-tangent",
+        "def:vague-metrization",
+        "lem:dimensional-blowup-support"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-moving-centers",
+      "kind": "lemma",
+      "title": "Moving blow-up centers at the same dimensional scale",
+      "lean_names": [
+        "Preiss.vague_dimensionalBlowup_moving_center"
+      ],
+      "file": "Preiss/Tangent/MovingCenters.lean",
+      "statement_tex": "If $D^m_{a,r_i}\\mu\\to\\nu$ vaguely and $r_i^{-1}(a_i-a)\\to y$, then $D^m_{a_i,r_i}\\mu\\to D^m_{y,1}\\nu$. The original dimensional normalization is unchanged.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition",
+        "lem:dimensional-blowup-support"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:recenter-nonzero",
+      "kind": "lemma",
+      "title": "Nonvanishing after recentering at a support point",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_one_ne_zero_of_mem_support"
+      ],
+      "file": "Preiss/Tangent/MovingCenters.lean",
+      "statement_tex": "For every $y\\in\\operatorname{supp}\\nu$, the unit-scale dimensional blow-up $D^m_{y,1}\\nu$ is nonzero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:dimensional-blowup-support"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:recenter-separated-set-null",
+      "kind": "lemma",
+      "title": "Nullity of uniformly separated recentering witnesses",
+      "lean_names": [
+        "Preiss.measure_eq_zero_of_recenter_separation"
+      ],
+      "file": "Preiss/Tangent/Recentering.lean",
+      "statement_tex": "An arbitrary finite-outer-measure set of centers is null if each center has a recentered tangent witness within $\\rho$ of one fixed regular measure while all its sufficiently small dimensional blow-ups are at distance at least $4\\rho$ from that witness. No measurability of the center set is assumed.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:density-points",
+        "lem:hull-support-approximation",
+        "lem:rescaled-distance-selection",
+        "lem:dimensional-moving-centers"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:finite-dimensional-operator-bigO",
+      "kind": "lemma",
+      "title": "Operator bounds from pointwise bounds in finite dimensions",
+      "lean_names": [
+        "Preiss.isBigO_continuousLinearMap_iff_forall_apply",
+        "Preiss.isBigO_restrict_span_of_forall_mem"
+      ],
+      "file": "Preiss/Analysis/FiniteDimensionalBigO.lean",
+      "statement_tex": "For a family of continuous linear maps on a finite-dimensional real normed space, an operator-norm big-$O$ bound is equivalent to the bound at each vector. Bounds on a generating set give an operator-norm bound after restriction to its span.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:moment-feature-remainder"
+      ],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
     }
   ],
   "definition_edge_additions": {

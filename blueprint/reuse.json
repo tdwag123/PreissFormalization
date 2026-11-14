@@ -282,16 +282,26 @@
       "status": "reuse",
       "notes": "Compact-test extensionality for regular measures on arbitrary locally compact Hausdorff Borel spaces.",
       "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Integral/RieszMarkovKakutani/Real.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+      "declarations": [
+        "blowUpMap_preimage_ball'"
+      ],
+      "status": "reuse",
+      "notes": "Exact arbitrary-center ball preimage under a positive-radius blow-up.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean"
     }
   ],
   "graph_inventory": {
-    "nodes": 332,
-    "edges": 994,
+    "nodes": 345,
+    "edges": 1013,
     "gmt_nodes": 44,
-    "linked_declarations": 518,
+    "linked_declarations": 546,
     "declarations_by_project": {
-      "PreissFormalization": 431,
-      "FormalizingGMT": 74,
+      "PreissFormalization": 458,
+      "FormalizingGMT": 75,
       "mathlib": 13
     }
   }
