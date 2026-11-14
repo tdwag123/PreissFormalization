@@ -1,0 +1,2049 @@
+{
+  "audit_date": "2026-11-14",
+  "source": "Supplied DeLellis_Rectifiability.pdf, printed pp.27–55 (PDF pp.31–59), and author errata",
+  "status": "Mathematical interface proposals; not checked Lean statements",
+  "conventions": {
+    "density": "GMT diameter-normalized closed-ball lower and upper densities",
+    "tangents": "GMT arbitrary positive finite scalar normalization unless dimensional normalization is explicit",
+    "planes": "m-dimensional real subspaces of Euclidean n, through the origin",
+    "purely_unrectifiable": "Canonical tests against all countably rectifiable sets; graph-only source equivalence belongs to companion branch",
+    "scope": "core means needed in Preiss rectifiability implication; companion means requested reusable reverse characterization"
+  },
+  "nodes": [
+    {
+      "id": "def:cone",
+      "title": "Cones about affine planes",
+      "statement": "cone x V a = {y | ‖Q_V (y-x)‖ ≤ a * ‖P_V (y-x)‖}.",
+      "hypotheses": "Finite-dimensional real inner-product space; V linear subspace.",
+      "quantifiers": "x and a arbitrary; geometric theorems assume 0 ≤ a.",
+      "dependencies": [
+        "def:plane"
+      ],
+      "proposed_lean_name": "cone",
+      "proposed_file": "Preiss/Geometry/Cones.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For a linear plane \\(V\\), put \\(Q_V=\\mathrm{id}-P_V\\) and define\n\\[\n C(x,V,\\alpha)=\\{y:\\|Q_V(y-x)\\|\\leq\\alpha\\|P_V(y-x)\\|\\}.\n\\]\nGeometric applications use \\(\\alpha\\geq0\\).",
+      "hypotheses_tex": "Work in a finite-dimensional real inner-product space; \\(V\\) is a linear subspace.",
+      "actual_lean": {
+        "lean_name": "Preiss.cone",
+        "file": "Preiss/Geometry/Cones.lean",
+        "module": "Preiss.Geometry.Cones",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.cone",
+          "Preiss.closedTube"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.cone",
+            "file": "Preiss/Geometry/Cones.lean",
+            "module": "Preiss.Geometry.Cones",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.closedTube",
+            "file": "Preiss/Geometry/Cones.lean",
+            "module": "Preiss.Geometry.Cones",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:graph-parametrization",
+      "title": "Graph parametrization is Lipschitz and antilipschitz",
+      "statement": "For f : V → Vᗮ Lipschitz, F(v)=v+f(v) is Lipschitz, 1-antilipschitz, and P_V(F(v))=v.",
+      "hypotheses": "V finite-dimensional; f Lipschitz.",
+      "quantifiers": "For each Lipschitz constant K for f, exhibit a finite bound for F; optimal constant unnecessary.",
+      "dependencies": [
+        "def:lipschitz-graph"
+      ],
+      "proposed_lean_name": "graphMap_lipschitz_antilipschitz",
+      "proposed_file": "Preiss/Rectifiability/Graphs.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(f:V\\to V^\\perp\\) is Lipschitz, then \\(F(v)=v+f(v)\\) is Lipschitz and satisfies\n\\[\n \\|u-v\\|\\leq\\|F(u)-F(v)\\|,\\qquad P_V(F(v))=v.\n\\]\nThus \\(F\\) is injective and its inverse on its range is \\(1\\)-Lipschitz.",
+      "hypotheses_tex": "The subspace \\(V\\) is finite-dimensional. A finite Lipschitz bound for \\(f\\) is given; an optimal bound for \\(F\\) is unnecessary.",
+      "actual_lean": {
+        "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
+        "file": "Preiss/Rectifiability/Graphs.lean",
+        "module": "Preiss.Rectifiability.Graphs",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.graphMap_lipschitz_antilipschitz",
+          "Preiss.graphMap"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
+            "file": "Preiss/Rectifiability/Graphs.lean",
+            "module": "Preiss.Rectifiability.Graphs",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.graphMap",
+            "file": "Preiss/Rectifiability/Graphs.lean",
+            "module": "Preiss.Rectifiability.Graphs",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:plane-hausdorff",
+      "title": "Hausdorff measure on planes",
+      "statement": "Pushforward of intrinsic m-dimensional Hausdorff measure by V.subtype equals ambient H^m restricted to V; it is a positive finite multiple of induced Haar volume, with explicit ball-scaling and zero sphere mass for m>0.",
+      "hypotheses": "V an m-dimensional subspace of Euclidean n.",
+      "quantifiers": "Uniform identities for every radius r>0 and centre v∈V.",
+      "dependencies": [
+        "def:plane"
+      ],
+      "proposed_lean_name": "map_hausdorffMeasure_subtype_eq_restrict",
+      "proposed_file": "Preiss/Geometry/PlaneMeasure.lean",
+      "scope": "core",
+      "note": "Split normalization, finiteness, and sphere-null corollaries; do not import tangent or uniform-measure theory.",
+      "status": "proposed_interface",
+      "statement_tex": "For the inclusion \\(\\iota_V:V\\hookrightarrow\\mathbb R^n\\),\n\\[\n (\\iota_V)_\\#\\mathcal H_V^m=\\mathcal H_{\\mathbb R^n}^m\\!\\restriction V.\n\\]\nThis measure is a positive finite scalar multiple of the induced Haar measure. In particular its ball masses scale as \\(r^m\\); when \\(m>0\\), spheres have zero mass.",
+      "hypotheses_tex": "The linear subspace \\(V\\subset\\mathbb R^n\\) has dimension \\(m\\). Intrinsic and ambient Hausdorff measures use the same diameter convention.",
+      "actual_lean": {
+        "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
+        "file": "Preiss/Geometry/PlaneMeasure.lean",
+        "module": "Preiss.Geometry.PlaneMeasure",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
+          "Preiss.flatOn",
+          "Preiss.unitFlat",
+          "Preiss.unitFlat_closedBall",
+          "Preiss.planeMeasure_ball_and_sphere"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
+            "file": "Preiss/Geometry/PlaneMeasure.lean",
+            "module": "Preiss.Geometry.PlaneMeasure",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.flatOn",
+            "file": "Preiss/Geometry/PlaneMeasure.lean",
+            "module": "Preiss.Geometry.PlaneMeasure",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.unitFlat",
+            "file": "Preiss/Geometry/PlaneMeasure.lean",
+            "module": "Preiss.Geometry.PlaneMeasure",
+            "status": "definition"
+          },
+          {
+            "lean_name": "Preiss.unitFlat_closedBall",
+            "file": "Preiss/Geometry/PlaneMeasure.lean",
+            "module": "Preiss.Geometry.PlaneMeasure",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.planeMeasure_ball_and_sphere",
+            "file": "Preiss/Geometry/PlaneMeasure.lean",
+            "module": "Preiss.Geometry.PlaneMeasure",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:graph-borel-finite",
+      "title": "Graphs are closed with finite bounded measure",
+      "statement": "A full Lipschitz graph is closed and H^m(Γ∩closedBall x R)<∞ for each finite R.",
+      "hypotheses": "Γ a full m-dimensional Lipschitz graph.",
+      "quantifiers": "For all centres x and radii R.",
+      "dependencies": [
+        "lem:graph-parametrization",
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "IsLipschitzGraph.isClosed_and_measure_closedBall_lt_top",
+      "proposed_file": "Preiss/Rectifiability/Graphs.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Every full Lipschitz \\(m\\)-graph \\(\\Gamma\\) is closed, and\n\\[\n \\mathcal H^m(\\Gamma\\cap\\overline B_R(x))<\\infty\n\\]\nfor every \\(x\\in\\mathbb R^n\\) and finite radius \\(R\\).",
+      "hypotheses_tex": "\\(\\Gamma=\\{v+f(v):v\\in V\\}\\), where \\(\\dim V=m\\) and \\(f:V\\to V^\\perp\\) is Lipschitz.",
+      "actual_lean": {
+        "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
+        "file": "Preiss/Rectifiability/Graphs.lean",
+        "module": "Preiss.Rectifiability.Graphs",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.isClosed_and_measure_closedBall_lt_top"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
+            "file": "Preiss/Rectifiability/Graphs.lean",
+            "module": "Preiss.Rectifiability.Graphs",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:graph-rectifiable",
+      "title": "Graphs and their subsets are rectifiable",
+      "statement": "Every full Lipschitz m-graph, and every subset of one, is canonically countably m-rectifiable.",
+      "hypotheses": "Euclidean target; global graph definition.",
+      "quantifiers": "For every graph Γ and s⊆Γ.",
+      "dependencies": [
+        "lem:graph-parametrization",
+        "def:rectifiable"
+      ],
+      "proposed_lean_name": "IsLipschitzGraph.countablyRectifiable",
+      "proposed_file": "Preiss/Rectifiability/Graphs.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Every full Lipschitz \\(m\\)-graph is countably \\(m\\)-rectifiable. Consequently every subset of such a graph is countably \\(m\\)-rectifiable.",
+      "hypotheses_tex": "Use the canonical definition by Lipschitz parametrizations on subsets of \\(\\mathbb R^m\\); the target is Euclidean.",
+      "actual_lean": {
+        "lean_name": "Preiss.countablyRectifiable_subset_graph",
+        "file": "Preiss/Rectifiability/Graphs.lean",
+        "module": "Preiss.Rectifiability.Graphs",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.countablyRectifiable_subset_graph"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.countablyRectifiable_subset_graph",
+            "file": "Preiss/Rectifiability/Graphs.lean",
+            "module": "Preiss.Rectifiability.Graphs",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:domain-extension",
+      "title": "Euclidean extension of Lipschitz parametrizations",
+      "statement": "Every Lipschitz f:A→Euclidean n on a subset A of Euclidean m extends to a global Lipschitz map, with some finite Lipschitz constant.",
+      "hypotheses": "Euclidean source and target; A arbitrary, possibly empty.",
+      "quantifiers": "For every A,f,K, produce a map and finite bound.",
+      "dependencies": [],
+      "proposed_lean_name": "exists_lipschitz_extension_euclidean",
+      "proposed_file": "Preiss/Geometry/LipschitzExtension.lean",
+      "scope": "core",
+      "note": "Reuse extend_pi through finite-dimensional coordinates; no optimal Kirszbraun bound needed.",
+      "status": "proposed_interface",
+      "statement_tex": "Every Lipschitz map \\(f:A\\to\\mathbb R^n\\), with \\(A\\subset\\mathbb R^m\\), admits a globally defined Lipschitz extension \\(\\widetilde f:\\mathbb R^m\\to\\mathbb R^n\\).",
+      "hypotheses_tex": "The subset \\(A\\) is arbitrary, possibly empty. The conclusion requires some finite Lipschitz constant, not necessarily the original one.",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
+        "file": "Preiss/Geometry/LipschitzExtension.lean",
+        "module": "Preiss.Geometry.LipschitzExtension",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_lipschitz_extension_euclidean"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
+            "file": "Preiss/Geometry/LipschitzExtension.lean",
+            "module": "Preiss.Geometry.LipschitzExtension",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:carrier-closure",
+      "title": "Rectifiability closure operations",
+      "statement": "Countably rectifiable sets are closed under subsets, countable unions, Lipschitz images and Hausdorff-null changes.",
+      "hypotheses": "Standard partial-domain definition; appropriate metric measurable target for H^m.",
+      "quantifiers": "Countable families; m a natural dimension.",
+      "dependencies": [
+        "def:rectifiable",
+        "def:coverage"
+      ],
+      "proposed_lean_name": "CountablyRectifiable.iUnion",
+      "proposed_file": "Preiss/Rectifiability/Basic.lean",
+      "scope": "core",
+      "note": "Several elementary declarations in one API, not a single conjunction theorem.",
+      "status": "proposed_interface",
+      "statement_tex": "Countably \\(m\\)-rectifiable sets are closed under taking subsets, countable unions, Lipschitz images, and modifications by \\(\\mathcal H^m\\)-null sets.",
+      "hypotheses_tex": "Use subset-domain parametrizations in metric targets. For images, source and target Hausdorff measures have the same dimension \\(m\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.countablyRectifiable_iUnion",
+        "file": "Preiss/Rectifiability/Basic.lean",
+        "module": "Preiss.Rectifiability.Basic",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.countablyRectifiable_iUnion",
+          "Preiss.countablyRectifiable_mono",
+          "Preiss.countablyRectifiable_image",
+          "Preiss.countablyRectifiable_of_sdiff_null"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.countablyRectifiable_iUnion",
+            "file": "Preiss/Rectifiability/Basic.lean",
+            "module": "Preiss.Rectifiability.Basic",
+            "status": "sorry_placeholder",
+            "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          },
+          {
+            "lean_name": "Preiss.countablyRectifiable_mono",
+            "file": "Preiss/Rectifiability/Basic.lean",
+            "module": "Preiss.Rectifiability.Basic",
+            "status": "sorry_placeholder",
+            "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          },
+          {
+            "lean_name": "Preiss.countablyRectifiable_image",
+            "file": "Preiss/Rectifiability/Basic.lean",
+            "module": "Preiss.Rectifiability.Basic",
+            "status": "sorry_placeholder",
+            "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          },
+          {
+            "lean_name": "Preiss.countablyRectifiable_of_sdiff_null",
+            "file": "Preiss/Rectifiability/Basic.lean",
+            "module": "Preiss.Rectifiability.Basic",
+            "status": "sorry_placeholder",
+            "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:borel-carrier",
+      "title": "Borel sigma-finite carrier",
+      "statement": "Every countably rectifiable Euclidean set s is contained modulo an H^m-null remainder in a Borel countable union T of compact Lipschitz images; H^m|T is sigma-finite.",
+      "hypotheses": "Euclidean target; m natural.",
+      "quantifiers": "For every s satisfying CountablyRectifiable m s, exhibit T and a compact exhaustion.",
+      "dependencies": [
+        "lem:domain-extension",
+        "lem:carrier-closure",
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "CountablyRectifiable.exists_borel_sigmaFinite_carrier",
+      "proposed_file": "Preiss/Rectifiability/Basic.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(S\\subset\\mathbb R^n\\) is countably \\(m\\)-rectifiable, there exists a Borel countable union \\(T\\) of compact Lipschitz images such that\n\\[\n \\mathcal H^m(S\\setminus T)=0,\\qquad\n \\mathcal H^m\\!\\restriction T\\text{ is sigma-finite}.\n\\]",
+      "hypotheses_tex": "The target is Euclidean; \\(m\\) is a natural dimension. No measurability assumption is part of the rectifiability predicate for \\(S\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
+        "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
+        "module": "Preiss.Rectifiability.EuclideanCarrier",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_borel_sigmaFinite_carrier"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
+            "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
+            "module": "Preiss.Rectifiability.EuclideanCarrier",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:carrier-calculus",
+      "title": "Carrier API aggregation",
+      "statement": "Use the closure API and Borel sigma-finite carriers to transport rectifiability between equivalent almost-everywhere carriers and countable sums of restricted measures.",
+      "hypotheses": "Absolute continuity with respect to H^m for measure-level null changes.",
+      "quantifiers": "Every relevant countable collection of carriers.",
+      "dependencies": [
+        "lem:carrier-closure",
+        "lem:borel-carrier"
+      ],
+      "proposed_lean_name": "IsRectifiableMeasure.of_countable_restrict",
+      "proposed_file": "Preiss/Rectifiability/Basic.lean",
+      "scope": "core",
+      "note": "Refines existing bundled node; declaration names for the individual elementary facts should be selected during implementation.",
+      "status": "proposed_interface",
+      "statement_tex": "Hausdorff-null changes of carriers preserve rectifiability of measures absolutely continuous with respect to \\(\\mathcal H^m\\). Countably many rectifiable restrictions whose carriers cover almost all the measure assemble to a rectifiable measure.",
+      "hypotheses_tex": "The measure is absolutely continuous with respect to \\(\\mathcal H^m\\). Restriction carriers are measurable and form a countable family covering the measure up to a null set.",
+      "actual_lean": {
+        "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
+        "file": "Preiss/Rectifiability/Basic.lean",
+        "module": "Preiss.Rectifiability.Basic",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.isRectifiableMeasure_of_countable_restrict"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
+            "file": "Preiss/Rectifiability/Basic.lean",
+            "module": "Preiss.Rectifiability.Basic",
+            "status": "sorry_placeholder",
+            "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:cone-graph",
+      "title": "Pairwise cone condition implies graph containment",
+      "statement": "If y∈cone x V a for all x,y∈F and a≥0, then some full Lipschitz graph over V contains F.",
+      "hypotheses": "F arbitrary; V an m-plane; a finite and nonnegative.",
+      "quantifiers": "Choose one graph for all of F.",
+      "dependencies": [
+        "def:cone",
+        "lem:domain-extension"
+      ],
+      "proposed_lean_name": "exists_lipschitzGraph_of_pairwise_mem_cone",
+      "proposed_file": "Preiss/Rectifiability/Cones.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(y\\in C(x,V,\\alpha)\\) for every \\(x,y\\in F\\), then there is a Lipschitz \\(f:V\\to V^\\perp\\) such that\n\\[\n F\\subset\\{v+f(v):v\\in V\\}.\n\\]",
+      "hypotheses_tex": "The set \\(F\\subset\\mathbb R^n\\) is arbitrary, \\(V\\) is an \\(m\\)-plane, and \\(0\\leq\\alpha<\\infty\\). No measure hypothesis is needed.",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
+        "file": "Preiss/Rectifiability/Cones.lean",
+        "module": "Preiss.Rectifiability.Cones",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
+            "file": "Preiss/Rectifiability/Cones.lean",
+            "module": "Preiss.Rectifiability.Cones",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "def:purely-unrectifiable",
+      "title": "Pure unrectifiability",
+      "statement": "PurelyUnrectifiable m E means H^m(E∩R)=0 for every countably m-rectifiable set R.",
+      "hypotheses": "No finiteness or Borel assumption in definition.",
+      "quantifiers": "Universal quantifier over rectifiable R; equivalent piecewise parametrization formulation is elementary.",
+      "dependencies": [
+        "def:rectifiable"
+      ],
+      "proposed_lean_name": "PurelyUnrectifiable",
+      "proposed_file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "scope": "core",
+      "note": "Use this canonical stronger formulation so core decomposition does not need the image-to-graph theorem; source graph-only equivalence is a companion result.",
+      "status": "proposed_interface",
+      "statement_tex": "A set \\(E\\) is purely \\(m\\)-unrectifiable if\n\\[\n \\mathcal H^m(E\\cap R)=0\n \\quad\\text{for every countably \\(m\\)-rectifiable set }R.\n\\]\nThis canonical definition implies the graph-test version used in the source.",
+      "hypotheses_tex": "Neither finite measure nor Borel measurability is built into the definition.",
+      "actual_lean": {
+        "lean_name": "Preiss.PurelyUnrectifiable",
+        "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+        "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.PurelyUnrectifiable"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.PurelyUnrectifiable",
+            "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+            "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:pure-basic",
+      "title": "Pure unrectifiability calculus",
+      "statement": "Pure unrectifiability is hereditary; intersections with rectifiable sets are null; Lipschitz graphs are admissible tests.",
+      "hypotheses": "Pure predicate above; no finite measure needed.",
+      "quantifiers": "All subsets and all rectifiable test sets.",
+      "dependencies": [
+        "def:purely-unrectifiable",
+        "lem:graph-rectifiable"
+      ],
+      "proposed_lean_name": "PurelyUnrectifiable.measure_inter_eq_zero",
+      "proposed_file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Every subset of a purely \\(m\\)-unrectifiable set is purely \\(m\\)-unrectifiable. Its intersection with any countably \\(m\\)-rectifiable set, in particular any Lipschitz \\(m\\)-graph, is \\(\\mathcal H^m\\)-null.",
+      "hypotheses_tex": "Use the canonical pure predicate defined by testing all countably rectifiable sets.",
+      "actual_lean": {
+        "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
+        "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+        "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
+          "Preiss.purelyUnrectifiable_mono"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
+            "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+            "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.purelyUnrectifiable_mono",
+            "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+            "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:decomposition",
+      "title": "Rectifiable/pure decomposition",
+      "statement": "A Borel finite-H^m set E decomposes into disjoint Borel R,U with R∪U=E, R rectifiable, U purely unrectifiable; the parts are unique modulo H^m-null sets.",
+      "hypotheses": "MeasurableSet E; H^m E<∞.",
+      "quantifiers": "Existence of R,U; uniqueness against every second decomposition.",
+      "dependencies": [
+        "lem:carrier-closure",
+        "lem:pure-basic"
+      ],
+      "proposed_lean_name": "exists_rectifiable_purelyUnrectifiable_partition",
+      "proposed_file": "Preiss/Rectifiability/Decomposition.lean",
+      "scope": "core",
+      "note": "Maximize mass among Borel canonical rectifiable subsets. Graph-only source definition is not required.",
+      "status": "proposed_interface",
+      "statement_tex": "There exist disjoint Borel sets \\(R,U\\subset E\\) with\n\\[\n E=R\\cup U,\\qquad R\\text{ countably \\(m\\)-rectifiable},\\qquad\n U\\text{ purely \\(m\\)-unrectifiable}.\n\\]\nAny two such decompositions agree up to \\(\\mathcal H^m\\)-null sets.",
+      "hypotheses_tex": "The set \\(E\\subset\\mathbb R^n\\) is Borel and \\(\\mathcal H^m(E)<\\infty\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
+        "file": "Preiss/Rectifiability/Decomposition.lean",
+        "module": "Preiss.Rectifiability.Decomposition",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
+          "Preiss.rectifiable_pure_partition_unique"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
+            "file": "Preiss/Rectifiability/Decomposition.lean",
+            "module": "Preiss.Rectifiability.Decomposition",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.rectifiable_pure_partition_unique",
+            "file": "Preiss/Rectifiability/Decomposition.lean",
+            "module": "Preiss.Rectifiability.Decomposition",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:density-measure-comparison",
+      "title": "Measure comparisons on density strata",
+      "statement": "Uniform small-ball power upper bounds give μ|S≤C H^m|S; uniform positive lower bounds and local finiteness give finite H^m on bounded strata and reverse comparisons, with fixed geometric constants.",
+      "hypotheses": "S Borel; one common cutoff radius; bounds at every centre in S; bounded localization for finiteness.",
+      "quantifiers": "For every Borel A⊆S, compare μ A and H^m A.",
+      "dependencies": [
+        "gmt:vitali",
+        "def:density-api"
+      ],
+      "proposed_lean_name": "measure_restrict_le_hausdorff_of_ball_bounds",
+      "proposed_file": "Preiss/Density/HausdorffComparison.lean",
+      "scope": "core",
+      "note": "Split upper and lower comparison declarations; constants may be nonoptimal but must be positive finite.",
+      "status": "proposed_interface",
+      "statement_tex": "Uniform small-ball upper bounds on a Borel stratum \\(S\\) imply\n\\[\n \\mu\\!\\restriction S\\leq C\\,\\mathcal H^m\\!\\restriction S.\n\\]\nUniform positive lower bounds give the reverse comparison, with a finite geometric constant, and finite \\(\\mathcal H^m\\)-measure on bounded strata.",
+      "hypotheses_tex": "At every centre of \\(S\\), the appropriate power bound holds for all radii below one common positive cutoff. The measure is locally finite; localize to bounded strata when claiming finiteness.",
+      "actual_lean": {
+        "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
+        "file": "Preiss/Density/PowerComparison.lean",
+        "module": "Preiss.Density.PowerComparison",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
+          "Preiss.UpperPowerBoundAt",
+          "Preiss.hausdorff_restrict_le_measure_of_ball_bounds"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
+            "file": "Preiss/Density/PowerComparison.lean",
+            "module": "Preiss.Density.PowerComparison",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.UpperPowerBoundAt",
+            "file": "Preiss/Density/PowerComparison.lean",
+            "module": "Preiss.Density.PowerComparison",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
+            "file": "Preiss/Density/PowerComparison.lean",
+            "module": "Preiss.Density.PowerComparison",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:absolute-continuity",
+      "title": "Finite upper density implies Hausdorff absolute continuity",
+      "statement": "If upper m-density is finite μ-a.e. for locally finite μ, then μ≪H^m.",
+      "hypotheses": "Euclidean space; local finiteness.",
+      "quantifiers": "One μ-a.e. hypothesis and absolute continuity on all null sets.",
+      "dependencies": [
+        "lem:density-measure-comparison",
+        "gmt:density-bounds"
+      ],
+      "proposed_lean_name": "absolutelyContinuous_hausdorff_of_upper_density_finite",
+      "proposed_file": "Preiss/Density/HausdorffComparison.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(\\Theta^{*m}(\\mu,x)<\\infty\\) for \\(\\mu\\)-almost every \\(x\\), then \\(\\mu\\ll\\mathcal H^m\\).",
+      "hypotheses_tex": "\\(\\mu\\) is a locally finite Borel measure on \\(\\mathbb R^n\\); \\(m\\) is a natural dimension.",
+      "actual_lean": {
+        "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
+        "file": "Preiss/Density/HausdorffComparison.lean",
+        "module": "Preiss.Density.HausdorffComparison",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
+            "file": "Preiss/Density/HausdorffComparison.lean",
+            "module": "Preiss.Density.HausdorffComparison",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:finite-pieces",
+      "title": "Finite Hausdorff pieces with comparable measures",
+      "statement": "Two-sided positive finite density bounds μ-a.e. yield countably many bounded Borel pieces S_j carrying μ, each H^m S_j<∞, with mutually absolutely continuous restrictions and positive finite comparison constants.",
+      "hypotheses": "Locally finite μ; positive lower density and finite upper density μ-a.e.",
+      "quantifiers": "∃sequence S_j and constants depending on j; μ((⋃j,S_j)ᶜ)=0.",
+      "dependencies": [
+        "lem:density-measure-comparison",
+        "gmt:goodsets",
+        "gmt:density-bounds"
+      ],
+      "proposed_lean_name": "exists_finite_hausdorff_pieces_of_density_bounds",
+      "proposed_file": "Preiss/Density/FinitePieces.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "There are bounded Borel sets \\(S_j\\) carrying \\(\\mu\\), each of finite \\(\\mathcal H^m\\)-measure, such that \\(\\mu\\!\\restriction S_j\\) and \\(\\mathcal H^m\\!\\restriction S_j\\) have positive finite two-sided comparison constants. In particular,\n\\[\n \\mu\\bigl((\\bigcup_j S_j)^c\\bigr)=0.\n\\]",
+      "hypotheses_tex": "\\(\\mu\\) is locally finite and \\(0<\\Theta_*^m(\\mu,x)\\leq\\Theta^{*m}(\\mu,x)<\\infty\\) for \\(\\mu\\)-almost every \\(x\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
+        "file": "Preiss/Density/FinitePieces.lean",
+        "module": "Preiss.Density.FinitePieces",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_finite_hausdorff_pieces_of_density_bounds"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
+            "file": "Preiss/Density/FinitePieces.lean",
+            "module": "Preiss.Density.FinitePieces",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:representation",
+      "title": "Density representation on a sigma-finite carrier",
+      "statement": "A locally finite μ is m-rectifiable iff μ=(H^m|S).withDensity f for Borel countably rectifiable S, sigma-finite H^m|S, and measurable f:E→ENNReal.",
+      "hypotheses": "Locally finite μ for the stated iff; f may take ∞.",
+      "quantifiers": "∃S,f with explicit SigmaFinite restriction, never ambient H^m.",
+      "dependencies": [
+        "lem:borel-carrier"
+      ],
+      "proposed_lean_name": "rectifiable_iff_density_representation",
+      "proposed_file": "Preiss/Rectifiability/DensityRepresentation.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "The measure \\(\\mu\\) is \\(m\\)-rectifiable if and only if\n\\[\n \\mu=(\\mathcal H^m\\!\\restriction S)\\mathbin{\\mathrm{withDensity}} f\n\\]\nfor a Borel countably \\(m\\)-rectifiable set \\(S\\), a sigma-finite restriction \\(\\mathcal H^m\\!\\restriction S\\), and a measurable \\(f:\\mathbb R^n\\to[0,\\infty]\\).",
+      "hypotheses_tex": "\\(\\mu\\) is locally finite. Radon--Nikodym is applied on the carrier restriction, not on ambient \\(\\mathcal H^m\\) when \\(m<n\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.rectifiable_iff_density_representation",
+        "file": "Preiss/Rectifiability/DensityRepresentation.lean",
+        "module": "Preiss.Rectifiability.DensityRepresentation",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.rectifiable_iff_density_representation"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.rectifiable_iff_density_representation",
+            "file": "Preiss/Rectifiability/DensityRepresentation.lean",
+            "module": "Preiss.Rectifiability.DensityRepresentation",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:finite-piece-transfer",
+      "title": "Transfer density bounds and flat tangents to finite pieces",
+      "statement": "For finite pieces from the density stratification, ν_j=H^m|S_j has positive lower and finite upper density ν_j-a.e.; flatness of all μ-tangents transfers to all ν_j-tangents there.",
+      "hypotheses": "Local finite μ, finite Borel pieces, comparable restrictions, ae flat tangents.",
+      "quantifiers": "For each j, one ν_j-null set works for all tangents.",
+      "dependencies": [
+        "lem:finite-pieces",
+        "thm:matching",
+        "gmt:restriction-tangents",
+        "gmt:finite-restriction"
+      ],
+      "proposed_lean_name": "ae_density_bounds_and_flat_tangents_restrict_hausdorff",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For each finite piece \\(S_j\\), the measure \\(\\nu_j=\\mathcal H^m\\!\\restriction S_j\\) has positive lower and finite upper \\(m\\)-density almost everywhere. If all tangents of \\(\\mu\\) are \\(m\\)-flat almost everywhere, the same holds for all tangents of \\(\\nu_j\\) at \\(\\nu_j\\)-almost every point.",
+      "hypotheses_tex": "The pieces are Borel, finite in \\(\\mathcal H^m\\), and their restrictions are comparable with positive finite constants. Assume the density and flat-tangent hypotheses for locally finite \\(\\mu\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
+        "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
+            "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:dimensional-compactness",
+      "title": "Fixed-normalization compactness at density-bound points",
+      "statement": "Every positive r_j→0 has a subsequence for which D^m_{x,r_j}μ converges vaguely to a nonzero regular measure; that limit is a GMT tangent.",
+      "hypotheses": "μ locally finite; positive lower and finite upper m-density at x.",
+      "quantifiers": "For every radii sequence, choose StrictMono subsequence and nonzero limit.",
+      "dependencies": [
+        "thm:compactness",
+        "gmt:portmanteau",
+        "gmt:blowup-balls",
+        "gmt:blowup-regular",
+        "gmt:density-bounds"
+      ],
+      "proposed_lean_name": "exists_dimensional_tangent_subseq_of_density_bounds",
+      "proposed_file": "Preiss/Tangent/Compactness.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For every positive sequence \\(r_j\\to0\\), there are a strictly increasing subsequence map \\(\\phi\\) and a nonzero regular measure \\(\\nu\\) such that\n\\[\n D^m_{x,r_{\\phi(j)}}\\mu\\rightharpoonup\\nu.\n\\]\nThe limit is a tangent measure in GMT's arbitrary-scalar convention.",
+      "hypotheses_tex": "\\(\\mu\\) is locally finite and \\(0<\\Theta_*^m(\\mu,x)\\leq\\Theta^{*m}(\\mu,x)<\\infty\\) at the fixed point \\(x\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
+        "file": "Preiss/Tangent/Compactness.lean",
+        "module": "Preiss.Tangent.Compactness",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_dimensional_tangent_subseq_of_density_bounds"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
+            "file": "Preiss/Tangent/Compactness.lean",
+            "module": "Preiss.Tangent.Compactness",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:flat-limit-tube",
+      "title": "Flat limit excludes persistent mass away from its plane",
+      "statement": "If ν_j→cH^m|V vaguely, c finite positive, then mass in a fixed bounded set separated by η>0 from V tends to zero.",
+      "hypotheses": "Regular ν_j and limit; uniform compact bound supplied by convergence.",
+      "quantifiers": "For each η,R>0 use compact closure of the excluded tube region.",
+      "dependencies": [
+        "gmt:portmanteau",
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "tendsto_mass_outside_tube_of_flat_limit",
+      "proposed_file": "Preiss/Tangent/FlatApproximation.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(\\nu_j\\rightharpoonup c\\mathcal H^m\\!\\restriction V\\), then the mass of any fixed bounded set separated by a positive distance from \\(V\\) tends to zero. In particular this applies to the region outside an \\(\\eta\\)-tube inside a fixed ball.",
+      "hypotheses_tex": "All measures are regular, \\(V\\) is an \\(m\\)-plane, \\(0<c<\\infty\\), and \\(\\eta>0\\). Use the compact closure of the region.",
+      "actual_lean": {
+        "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
+        "file": "Preiss/Tangent/FlatApproximation.lean",
+        "module": "Preiss.Tangent.FlatApproximation",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.tendsto_mass_outside_tube_of_flat_limit"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
+            "file": "Preiss/Tangent/FlatApproximation.lean",
+            "module": "Preiss.Tangent.FlatApproximation",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:flat-limit-moving-balls",
+      "title": "Flat limit gives lower mass in moving plane balls",
+      "statement": "If ν_j→cH^m|V and z_j∈V∩closedBall 0 R, then ν_j(ball z_j η) cannot tend to zero for η>0.",
+      "hypotheses": "c>0 finite; regular convergence.",
+      "quantifiers": "Uniform lower bound eventually, after compactness of the allowed centres; choose η/2 fixed ball after subsequence.",
+      "dependencies": [
+        "gmt:portmanteau",
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "eventually_ball_mass_lower_bound_of_flat_limit",
+      "proposed_file": "Preiss/Tangent/FlatApproximation.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(\\nu_j\\rightharpoonup c\\mathcal H^m\\!\\restriction V\\), then for each \\(R,\\eta>0\\) there are \\(b>0\\) and \\(j_0\\) such that\n\\[\n \\nu_j(B_\\eta(z))\\geq b\n \\quad(j\\geq j_0,\\ z\\in V\\cap\\overline B_R(0)).\n\\]",
+      "hypotheses_tex": "All measures are regular, \\(0<c<\\infty\\), and \\(V\\) is an \\(m\\)-plane. Extract converging centres and use a fixed smaller open ball.",
+      "actual_lean": {
+        "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
+        "file": "Preiss/Tangent/FlatApproximation.lean",
+        "module": "Preiss.Tangent.FlatApproximation",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.eventually_ball_mass_lower_bound_of_flat_limit"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
+            "file": "Preiss/Tangent/FlatApproximation.lean",
+            "module": "Preiss.Tangent.FlatApproximation",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:flat-to-approximation",
+      "title": "All flat tangents imply weak linear approximation",
+      "statement": "For H^m F<∞, positive lower and finite upper density of H^m|F at x, and every tangent there m-flat, F is weakly linearly approximable at x.",
+      "hypotheses": "Borel F finite H^m; pointwise assumptions at x.",
+      "quantifiers": "∀η>0 ∃λ,r0>0 ∀r∈(0,r0) ∃V satisfying BOTH approximation clauses.",
+      "dependencies": [
+        "lem:dimensional-compactness",
+        "lem:flat-limit-tube",
+        "lem:flat-limit-moving-balls",
+        "def:weak-approximation"
+      ],
+      "proposed_lean_name": "weaklyLinearlyApproximableAt_of_all_tangents_flat",
+      "proposed_file": "Preiss/Tangent/FlatApproximation.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If every tangent of \\(\\mathcal H^m\\!\\restriction F\\) at \\(x\\) is \\(m\\)-flat, then \\(F\\) is weakly linearly approximable at \\(x\\):\nfor every \\(\\eta>0\\), some \\(\\lambda,r_0>0\\) work at every \\(0<r<r_0\\) for both the tube and plane-centred-ball clauses.",
+      "hypotheses_tex": "The set \\(F\\) is Borel with \\(\\mathcal H^m(F)<\\infty\\), and \\(\\mathcal H^m\\!\\restriction F\\) has positive lower and finite upper \\(m\\)-density at \\(x\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
+        "file": "Preiss/Tangent/FlatApproximation.lean",
+        "module": "Preiss.Tangent.FlatApproximation",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
+            "file": "Preiss/Tangent/FlatApproximation.lean",
+            "module": "Preiss.Tangent.FlatApproximation",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:weak-approximation-lower-density",
+      "title": "Weak approximation gives positive lower density",
+      "statement": "Weak linear approximation of F at x implies positive lower m-density of H^m|F at x.",
+      "hypotheses": "Finite H^m is not needed for this implication itself.",
+      "quantifiers": "Fix one aperture and use the lower-ball clause at z=x.",
+      "dependencies": [
+        "def:weak-approximation"
+      ],
+      "proposed_lean_name": "WeaklyLinearlyApproximableAt.lower_density_pos",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Weak linear approximation of \\(F\\) at \\(x\\) implies\n\\[\n \\Theta_*^m(\\mathcal H^m\\!\\restriction F,x)>0.\n\\]\nUse the lower-ball clause at the plane centre \\(z=x\\) and one fixed aperture.",
+      "hypotheses_tex": "No finite-total-measure assumption is required for this implication. Its pure-measure version concludes a positive local lower power bound.",
+      "actual_lean": {
+        "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
+        "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.lower_density_pos_of_weakApproximation",
+          "Preiss.lower_power_bound_of_weakApproximation"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
+            "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.lower_power_bound_of_weakApproximation",
+            "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Basic",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:weak-approximation-deletion",
+      "title": "Weak approximation survives negligible deletion",
+      "statement": "If F⊆E and H^m((E\\F)∩ball x (2*r))/r^m→0 as r↓0, WLA(E,x) implies WLA(F,x).",
+      "hypotheses": "H^m E finite for later ae application; pointwise version only needs stated error limit.",
+      "quantifiers": "For every requested aperture choose a smaller source aperture and halve the positive mass constant.",
+      "dependencies": [
+        "def:weak-approximation"
+      ],
+      "proposed_lean_name": "WeaklyLinearlyApproximableAt.of_negligible_sdiff",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(F\\subset E\\) and\n\\[\n r^{-m}\\mathcal H^m((E\\setminus F)\\cap B_{2r}(x))\\longrightarrow0,\n\\]\nthen weak linear approximation of \\(E\\) at \\(x\\) implies that of \\(F\\) at \\(x\\).",
+      "hypotheses_tex": "The pointwise theorem assumes the displayed limit. Shrink the source aperture and positive lower-mass constant.",
+      "actual_lean": {
+        "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
+        "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+        "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.weakApproximation_restrict_of_negligible_sdiff",
+          "Preiss.negligibleDeletionAt"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
+            "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.negligibleDeletionAt",
+            "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:weak-approximation-restrict-ae",
+      "title": "Weak approximation restricts to Borel subsets almost everywhere",
+      "statement": "If E is Borel finite-H^m and WLA at H^m-a.e. point of E, then every Borel F⊆E is WLA at H^m-a.e. point of F.",
+      "hypotheses": "Finite H^m E; Borel E,F.",
+      "quantifiers": "For each F, its own null exceptional set suffices.",
+      "dependencies": [
+        "lem:weak-approximation-deletion",
+        "gmt:hausdorff-density-upper",
+        "gmt:density-points"
+      ],
+      "proposed_lean_name": "ae_weaklyLinearlyApproximableAt_subset",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(E\\) is weakly linearly approximable at \\(\\mathcal H^m\\)-almost every point of \\(E\\), then each Borel \\(F\\subset E\\) is weakly linearly approximable at \\(\\mathcal H^m\\)-almost every point of \\(F\\).",
+      "hypotheses_tex": "The set \\(E\\) is Borel and \\(\\mathcal H^m(E)<\\infty\\). Differentiation and finite upper density supply the negligible-deletion estimate.",
+      "actual_lean": {
+        "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
+        "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.ae_weaklyLinearlyApproximableAt_subset"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
+            "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "def:weak-approximation-good-set",
+      "title": "Relaxed uniform approximation good sets",
+      "statement": "G(ν,m,η,λ,R) consists of x such that every 0<r<R admits V with ν(ball x r \\ closedTube(x+V,η*r))≤η*r^m and ν(closedBall z (η*r))≥λ*r^m for every z∈(x+V)∩ball x r.",
+      "hypotheses": "ν a finite regular measure for subsequent closedness; η,λ,R>0.",
+      "quantifiers": "∀r∈(0,R) ∃V ∀admissible z.",
+      "dependencies": [
+        "def:plane"
+      ],
+      "proposed_lean_name": "weakApproximationGoodSet",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Let \\(G(\\nu,m,\\eta,\\lambda,R)\\) consist of points \\(x\\) for which every \\(0<r<R\\) admits an \\(m\\)-plane \\(V\\) satisfying\n\\[\n \\nu\\{y:\\|y-x\\|<r,\\ \\operatorname{dist}(y-x,V)>\\eta r\\}\\leq\\eta r^m,\n\\]\nand\n\\[\n \\nu(\\overline B_{\\eta r}(z))\\geq\\lambda r^m\n \\quad\\text{for all }z\\in(x+V)\\cap B_r(x).\n\\]",
+      "hypotheses_tex": "Parameters \\(\\eta,\\lambda,R\\) are positive. Later closedness results assume \\(\\nu\\) finite and regular.",
+      "actual_lean": {
+        "lean_name": "Preiss.weakApproximationGoodSet",
+        "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+        "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.weakApproximationGoodSet"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.weakApproximationGoodSet",
+            "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:closed-weak-approximation-good-set",
+      "title": "Relaxed approximation good sets are closed",
+      "statement": "G(ν,m,η,λ,R) is closed.",
+      "hypotheses": "ν finite regular; compact orthogonal-projection topology on m-planes.",
+      "quantifiers": "Fixed positive η,λ,R; all-r intersection is allowed.",
+      "dependencies": [
+        "def:weak-approximation-good-set",
+        "lem:grassmannian"
+      ],
+      "proposed_lean_name": "isClosed_weakApproximationGoodSet",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "scope": "core",
+      "note": "Prove joint LSC moving-open-set mass and USC closed-ball mass, approximate centres via projections; project closed relation along compact plane witness.",
+      "status": "proposed_interface",
+      "statement_tex": "The relaxed good set \\(G(\\nu,m,\\eta,\\lambda,R)\\) is closed.\nFor each fixed radius, the relation in \\(x,V\\) is closed; projection along the compact plane space and intersection over radii preserve closedness.",
+      "hypotheses_tex": "\\(\\nu\\) is finite and regular; use the compact orthogonal-projection topology on \\(m\\)-planes and fixed positive \\(\\eta,\\lambda,R\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
+        "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+        "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.isClosed_weakApproximationGoodSet"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
+            "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:weak-approximation-good-exhaustion",
+      "title": "Aperture slack gives countable good-set exhaustion",
+      "statement": "WLA at x implies membership in some G(η,1/N,1/N) for every η>0. Membership at aperture η/2 gives the original two clauses at η, with strict upper error and open lower balls.",
+      "hypotheses": "ν=H^m|E finite regular; positive apertures.",
+      "quantifiers": "For each η>0 choose N∈positive naturals; conversely retain its λ,R.",
+      "dependencies": [
+        "def:weak-approximation",
+        "def:weak-approximation-good-set"
+      ],
+      "proposed_lean_name": "weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Weak linear approximation at \\(x\\) implies, for every \\(\\eta>0\\), membership in some\n\\(G(\\nu,m,\\eta,1/N,1/N)\\), \\(N\\geq1\\).\nConversely membership with aperture \\(\\eta/2\\) gives the original approximation clauses at aperture \\(\\eta\\).",
+      "hypotheses_tex": "\\(\\nu=\\mathcal H^m\\!\\restriction E\\) is finite and regular. Use aperture slack to replace non-strict upper inequalities and closed lower balls by the original strict/open clauses.",
+      "actual_lean": {
+        "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+        "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+        "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+            "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:uniform-compact-selection",
+      "title": "Compact subsets with uniform approximation and density bounds",
+      "statement": "Finite-H^m Borel WLA sets admit compact subsets losing arbitrarily small measure on which selected relaxed WLA and density parameters are uniform.",
+      "hypotheses": "Finite H^m E; ae WLA; target error ε>0.",
+      "quantifiers": "Given finitely many required apertures and density cutoffs, select constants then compact C⊆E.",
+      "dependencies": [
+        "lem:closed-weak-approximation-good-set",
+        "lem:weak-approximation-good-exhaustion",
+        "lem:weak-approximation-lower-density",
+        "gmt:goodsets",
+        "gmt:hausdorff-regular"
+      ],
+      "proposed_lean_name": "exists_compact_uniform_weakApproximation_subset",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "One can choose compact \\(C\\subset E\\) losing arbitrarily little \\(\\mathcal H^m\\)-measure, on which the selected lower mass bounds and finitely many relaxed weak-approximation conditions have uniform positive parameters.",
+      "hypotheses_tex": "The Borel set \\(E\\) has finite \\(\\mathcal H^m\\)-measure and is weakly linearly approximable almost everywhere. Intersect Borel \\(E\\) with closed good sets before applying inner regularity.",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
+        "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+        "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_compact_uniform_weakApproximation_subset"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
+            "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:tube-support-upgrade",
+      "title": "Small tube-error mass implies support containment",
+      "statement": "Uniform lower mass δ*s^m at points of C plus error <δ*(η*r/2)^m outside the η*r/2 tube in ball a (2*r) implies C∩ball a r lies in the η*r tube.",
+      "hypotheses": "C⊆E; finite or locally finite reference ν; lower bounds at every point of C.",
+      "quantifiers": "∀a∈C and sufficiently small r; V fixed for that scale.",
+      "dependencies": [
+        "def:plane"
+      ],
+      "proposed_lean_name": "subset_tube_of_lower_mass_and_small_outside_mass",
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Suppose points \\(z\\in C\\) satisfy \\(\\nu(B_s(z))\\geq\\delta s^m\\) at small scales. If the mass outside the \\(\\eta r/2\\)-tube about \\(a+V\\), inside \\(B_{2r}(a)\\), is less than \\(\\delta(\\eta r/2)^m\\), then\n\\[\n C\\cap B_r(a)\\subset\\{z:\\operatorname{dist}(z,a+V)\\leq\\eta r\\}.\n\\]",
+      "hypotheses_tex": "The lower bounds hold uniformly at every point of \\(C\\), and all radii used lie below their common cutoff. Here \\(\\delta,\\eta,r>0\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
+        "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+        "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.subset_tube_of_lower_mass_and_small_outside_mass"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
+            "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:pure-cone-escape",
+      "title": "Pure sets have arbitrarily close points outside fixed cones",
+      "statement": "For pure C, every fixed plane V and aperture A≥0, at H^m-a.e. a∈C every radius r>0 contains b∈C outside cone a V A.",
+      "hypotheses": "PurelyUnrectifiable m C; finite H^m for localization if needed.",
+      "quantifiers": "∀fixed V,A then ae a then ∀r>0 ∃b; no simultaneous ae over all V needed.",
+      "dependencies": [
+        "lem:cone-graph",
+        "lem:pure-basic"
+      ],
+      "proposed_lean_name": "ae_exists_outside_cone_of_purelyUnrectifiable",
+      "proposed_file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For every fixed \\(m\\)-plane \\(V\\) and finite aperture \\(\\alpha\\geq0\\), at \\(\\mathcal H^m\\)-almost every \\(a\\in C\\), every \\(r>0\\) admits\n\\[\n b\\in C\\cap B_r(a)\\setminus C(a,V,\\alpha).\n\\]",
+      "hypotheses_tex": "The set \\(C\\) is purely \\(m\\)-unrectifiable. The exceptional null set may depend on \\(V,\\alpha\\); simultaneous quantification over all planes is unnecessary.",
+      "actual_lean": {
+        "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
+        "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
+            "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:projected-tube-slab-bound",
+      "title": "Small projection direction bounds projected tube measure",
+      "statement": "If a unit w∈W has ‖P_Vw‖≤ε, then H^m(P_V(closedTube(a+W,η*R)∩closedBall a R))≤C_m*(ε+η)*R^m.",
+      "hypotheses": "m-planes V,W; m>0; η,ε≥0; R>0.",
+      "quantifiers": "∃C_m>0 depending only on dimension; ∀V,W,a,R,η,ε,w.",
+      "dependencies": [
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "hausdorffMeasure_projected_tube_le",
+      "proposed_file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "There is \\(C_m>0\\) such that, if \\(w\\in W\\) is a unit vector with \\(\\|P_Vw\\|\\leq\\varepsilon\\), then\n\\[\n \\mathcal H^m\\!\\left(P_V\\bigl(\\{z:\\operatorname{dist}(z,a+W)\\leq\\eta R\\}\\cap\\overline B_R(a)\\bigr)\\right)\n \\leq C_m(\\varepsilon+\\eta)R^m.\n\\]",
+      "hypotheses_tex": "The subspaces \\(V,W\\) have dimension \\(m>0\\); \\(\\varepsilon,\\eta\\geq0\\) and \\(R>0\\). The constant depends only on dimension and normalization.",
+      "actual_lean": {
+        "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
+        "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+        "module": "Preiss.Rectifiability.ProjectionEstimate",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.hausdorffMeasure_projected_tube_le"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
+            "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+            "module": "Preiss.Rectifiability.ProjectionEstimate",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:pure-wla-null-projection",
+      "title": "Pure weakly approximable sets have every-plane null projection",
+      "statement": "If E is Borel, purely unrectifiable, finite H^m, and WLA H^m-a.e., then H^m(P_V E)=0 for every m-plane V.",
+      "hypotheses": "0<m≤n; finite H^m E.",
+      "quantifiers": "∀V, no Grassmannian-ae qualifier.",
+      "dependencies": [
+        "lem:uniform-compact-selection",
+        "lem:tube-support-upgrade",
+        "lem:pure-cone-escape",
+        "lem:projected-tube-slab-bound"
+      ],
+      "proposed_lean_name": "measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "scope": "core",
+      "note": "Also reuse Besicovitch.exists_disjoint_closedBall_covering_ae and Lipschitz distortion; a fivefold covering alone is not identical.",
+      "status": "proposed_interface",
+      "statement_tex": "For every \\(m\\)-plane \\(V\\),\n\\[\n \\mathcal H^m(P_V(E))=0.\n\\]\nThis is an every-plane conclusion, not an almost-every-plane projection theorem.",
+      "hypotheses_tex": "The Borel set \\(E\\) is purely \\(m\\)-unrectifiable, has finite \\(\\mathcal H^m\\)-measure, and is weakly linearly approximable almost everywhere; \\(0<m\\leq n\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
+        "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
+            "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:nested-compact-approximation",
+      "title": "Nested compact two-sided approximation",
+      "statement": "For positive finite-H^m Borel WLA E, choose compact positive-measure G⊆F⊆E, uniform lower bounds for H^m|E at centres in F, and for each a∈G at all small scales r a plane V with F∩ball a (2*r) in its η*r tube, plane disk near F, and positive lower E mass in plane-centred η*r balls.",
+      "hypotheses": "η>0 sufficiently small; E finite H^m and ae WLA.",
+      "quantifiers": "Choose F and δ before η when required by final packing; then G,γ,cutoff depending on η.",
+      "dependencies": [
+        "lem:uniform-compact-selection",
+        "lem:tube-support-upgrade",
+        "lem:weak-approximation-restrict-ae",
+        "gmt:density-points"
+      ],
+      "proposed_lean_name": "exists_nested_compact_twoSided_approximation",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "scope": "core",
+      "note": "Preserve parameter order δ then η then γ then t. The lower measure is H^m|E, not H^m|F. The pure Lean interface takes the ae upper-power bound explicitly; HausdorffInputs supplies it.",
+      "status": "proposed_interface",
+      "statement_tex": "Choose compact positive-measure sets \\(G\\subset F\\subset E\\) with uniform lower mass on \\(F\\). At each \\(a\\in G\\) and each small scale \\(r\\), a plane \\(V\\) gives tube containment of \\(F\\cap B_{2r}(a)\\), proximity of \\((a+V)\\cap B_r(a)\\) to \\(F\\), and a positive lower bound for the \\(E\\)-mass of plane-centred \\(\\eta r\\)-balls.",
+      "hypotheses_tex": "The Borel set \\(E\\) has positive finite \\(\\mathcal H^m\\)-measure and is weakly linearly approximable almost everywhere. Choose the lower constant \\(\\delta\\) first, then a sufficiently small \\(\\eta\\), then the remaining constants.",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
+        "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_nested_compact_twoSided_approximation",
+          "Preiss.TwoSidedApproximation"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.TwoSidedApproximation",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:packing-base-point",
+      "title": "Base point with upper mass and small discarded mass",
+      "statement": "For nested G⊆E finite-H^m, choose a∈G and small cutoff so H^m(E∩ball a r)≤C_m*r^m and H^m((E\\G)∩ball a (2*r))≤t*r^m for all small r.",
+      "hypotheses": "G Borel of positive measure; E finite H^m; t>0.",
+      "quantifiers": "After choosing t>0 select a and cutoff.",
+      "dependencies": [
+        "gmt:hausdorff-density-upper",
+        "gmt:hausdorff-density-outside"
+      ],
+      "proposed_lean_name": "exists_upper_mass_small_sdiff_point",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "Choose \\(a\\in G\\) and \\(r_0>0\\) so that, for \\(0<r<r_0\\),\n\\[\n \\mathcal H^m(E\\cap B_r(a))\\leq C_m r^m,\\qquad\n \\mathcal H^m((E\\setminus G)\\cap B_{2r}(a))\\leq t r^m.\n\\]",
+      "hypotheses_tex": "The Borel sets \\(G\\subset E\\) satisfy \\(0<\\mathcal H^m(G)\\leq\\mathcal H^m(E)<\\infty\\), and \\(t>0\\) is chosen before \\(a,r_0\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
+        "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_upper_mass_small_sdiff_point",
+          "Preiss.ae_upperPowerBoundAt_restrict_hausdorff"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
+            "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
+            "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:projection-hole-cover",
+      "title": "Disjoint projection-hole disks with large radius sum",
+      "statement": "For compact G with null projection, select disjoint disks D_{4ρ_i}(p_i) covering the target disk after factor-five enlargement; each ρ_i is distance to compact projected G, 0<ρ_i≤ησ, and ∑ρ_i^m≥c_mσ^m.",
+      "hypotheses": "Use projected G∩closedBall a (2σ), and retain plane-centred lower mass plus small discarded mass to bound ρ_i.",
+      "quantifiers": "Countable selected family, one radius per centre; constants depend only on m.",
+      "dependencies": [
+        "lem:plane-hausdorff",
+        "lem:nested-compact-approximation",
+        "lem:packing-base-point"
+      ],
+      "proposed_lean_name": "exists_projection_hole_disk_family",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "scope": "core",
+      "note": "Reuse Vitali.exists_disjoint_subfamily_covering_enlargement_ball within the plane.",
+      "status": "proposed_interface",
+      "statement_tex": "There is a countable family of hole centres \\(p_i\\) and radii \\(\\rho_i\\) such that the disks \\(D_{4\\rho_i}(p_i)\\) are disjoint, their fivefold enlargements cover the relevant plane disk up to a null set, and\n\\[\n 0<\\rho_i\\leq\\eta\\sigma,\\qquad \\sum_i\\rho_i^m\\geq c_m\\sigma^m.\n\\]\nEach radius is distance to the compact projected set.",
+      "hypotheses_tex": "Use \\(P_V(G\\cap\\overline B_{2\\sigma}(a))\\), with \\(G\\) compact and null projection. Plane-centred mass and the small discarded-mass bound give the upper bound on hole radii.",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_projection_hole_disk_family",
+        "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_projection_hole_disk_family",
+          "Preiss.HoleFamily",
+          "Preiss.projected_distance_le_of_lower_mass"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_projection_hole_disk_family",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.HoleFamily",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.projected_distance_le_of_lower_mass",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:discarded-cylinder-sum",
+      "title": "Cylinders meeting the compact core have small radius sum",
+      "statement": "For the selected family, indices J whose inner cylinders meet F satisfy ∑_{i∈J}ρ_i^m≤C_m*t*σ^m/δ; hence the complementary K retains ≥c_mσ^m when t is small.",
+      "hypotheses": "Uniform δ lower mass on F; disjoint cylinders; small E\\G mass; approximation tube bounds.",
+      "quantifiers": "Choose t after δ and the dimensional constants.",
+      "dependencies": [
+        "lem:projection-hole-cover"
+      ],
+      "proposed_lean_name": "tsum_hole_radii_bad_indices_le",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For indices \\(J\\) whose inner cylinders meet \\(F\\),\n\\[\n \\sum_{i\\in J}\\rho_i^m\\leq C_m t\\sigma^m/\\delta.\n\\]\nFor sufficiently small \\(t\\), the complementary indices \\(K\\) retain\n\\(\\sum_{i\\in K}\\rho_i^m\\geq c_m\\sigma^m\\).",
+      "hypotheses_tex": "Use the selected disjoint cylinders, uniform lower mass \\(\\delta\\) on \\(F\\), and small mass of \\(E\\setminus G\\). Choose \\(t\\) after \\(\\delta\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
+        "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.tsum_hole_radii_bad_indices_le"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:empty-cylinder-direction",
+      "title": "A plane avoiding an inner cylinder has a small projected direction",
+      "statement": "If ‖P_Vz-p‖=ρ and (z+W)∩ball z r avoids {q | ‖P_Vq-p‖<ρ/4}, then ∃ unit w∈W with ‖P_Vw‖≤C*ρ/r.",
+      "hypotheses": "V,W have equal positive finite dimension; p∈V; ρ,r>0, r sufficiently larger than ρ.",
+      "quantifiers": "Uniform dimensional or numerical C; no measure assumptions.",
+      "dependencies": [
+        "def:plane"
+      ],
+      "proposed_lean_name": "exists_unit_small_projection_of_avoids_cylinder",
+      "proposed_file": "Preiss/Geometry/Cylinders.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(\\|P_Vz-p\\|=\\rho\\) and\n\\[\n (z+W)\\cap B_r(z)\\cap\\{q:\\|P_Vq-p\\|<\\rho/4\\}=\\varnothing,\n\\]\nthen some unit \\(w\\in W\\) satisfies \\(\\|P_Vw\\|\\leq C\\rho/r\\).",
+      "hypotheses_tex": "The planes \\(V,W\\) have the same positive finite dimension, \\(p\\in V\\), and \\(r,\\rho>0\\) with \\(r\\) sufficiently larger than \\(\\rho\\). No measure hypothesis is used.",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+        "file": "Preiss/Geometry/Cylinders.lean",
+        "module": "Preiss.Geometry.Cylinders",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+          "Preiss.cylinder"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+            "file": "Preiss/Geometry/Cylinders.lean",
+            "module": "Preiss.Geometry.Cylinders",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.cylinder",
+            "file": "Preiss/Geometry/Cylinders.lean",
+            "module": "Preiss.Geometry.Cylinders",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:column-packing",
+      "title": "Many disjoint lower-mass balls inside each surviving cylinder",
+      "statement": "At local scale r_i=ρ_i/(8η), produce at least c/η separated plane points, nearby centres in F, and disjoint radius ρ_i/8 balls in the 4ρ_i-cylinder and ball a σ.",
+      "hypotheses": "Empty inner cylinder; compact boundary point z_i; two-sided approximation; η small.",
+      "quantifiers": "For each surviving i choose a finite family; lower cardinal bound via η, never assert σ=ρ_i/(8η).",
+      "dependencies": [
+        "lem:empty-cylinder-direction",
+        "lem:nested-compact-approximation",
+        "lem:projection-hole-cover"
+      ],
+      "proposed_lean_name": "exists_column_disjoint_balls",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "scope": "core",
+      "note": " The abstract nearby-centre hypothesis must include F.Nonempty, because mathlib infDist to the empty set is zero.",
+      "status": "proposed_interface",
+      "statement_tex": "At the local scale \\(r_i=\\rho_i/(8\\eta)\\), each surviving cylinder contains at least \\(c/\\eta\\) separated plane points and corresponding nearby centres in \\(F\\). The resulting balls of radius \\(\\rho_i/8\\) are disjoint, lie inside the \\(4\\rho_i\\)-cylinder and the ambient \\(B_\\sigma(a)\\), and satisfy the prescribed lower mass bound.",
+      "hypotheses_tex": "Use an empty inner cylinder, a compact nearest projected boundary point, two-sided approximation at that point, and sufficiently small \\(\\eta>0\\). Never identify \\(\\sigma\\) with \\(\\rho_i/(8\\eta)\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.exists_column_disjoint_balls",
+        "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_column_disjoint_balls"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_column_disjoint_balls",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:packing-contradiction",
+      "title": "Null projections contradict weak approximation and finite upper density",
+      "statement": "The total lower ball mass is ≥c_m*δ*σ^m/η, while the base-point upper bound is ≤C_mσ^m, a contradiction for sufficiently small η.",
+      "hypotheses": "All hypotheses produced by nested compact selection, null projections and selected holes.",
+      "quantifiers": "Choose δ first, then η≪δ, then γ, then t sufficiently small, finally σ.",
+      "dependencies": [
+        "lem:discarded-cylinder-sum",
+        "lem:column-packing",
+        "lem:packing-base-point"
+      ],
+      "proposed_lean_name": "false_of_null_projections_and_uniform_weakApproximation",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "scope": "core",
+      "note": " Kept as a separate assembly theorem, in addition to the countable-column mass arithmetic helper.",
+      "status": "proposed_interface",
+      "statement_tex": "Summing the disjoint column balls gives\n\\[\n \\mathcal H^m(E\\cap B_\\sigma(a))\n \\geq c_m\\delta\\sigma^m/\\eta,\n\\]\ncontradicting the upper bound \\(C_m\\sigma^m\\) when \\(\\eta\\) is sufficiently small.",
+      "hypotheses_tex": "Use null projections, nested compact approximation, the selected hole disks and the surviving radius sum. Parameter order is \\(\\delta\\), then \\(\\eta\\ll\\delta\\), then the other approximation constants and \\(t\\), and finally \\(\\sigma\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
+        "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.false_of_null_projections_and_uniform_weakApproximation",
+          "Preiss.false_of_column_mass_exceeds_upper_bound"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.false_of_column_mass_exceeds_upper_bound",
+            "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thm:mm-set",
+      "title": "Marstrand-Mattila set criterion",
+      "statement": "Finite-H^m Borel sets weakly linearly approximable H^m-a.e. are countably m-rectifiable.",
+      "hypotheses": "0<m≤n; null-set case allowed.",
+      "quantifiers": "Every such Borel E.",
+      "dependencies": [
+        "lem:decomposition",
+        "lem:weak-approximation-restrict-ae",
+        "lem:pure-wla-null-projection",
+        "lem:packing-contradiction"
+      ],
+      "proposed_lean_name": "countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "A Borel set \\(E\\subset\\mathbb R^n\\) with finite \\(\\mathcal H^m\\)-measure which is weakly linearly approximable at \\(\\mathcal H^m\\)-almost every point is countably \\(m\\)-rectifiable.",
+      "hypotheses_tex": "Assume \\(0<m\\leq n\\). The zero-measure case is included and is immediate.",
+      "actual_lean": {
+        "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
+        "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
+            "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thm:mm-measure",
+      "title": "Marstrand-Mattila measure criterion",
+      "statement": "Positive lower and finite upper m-density μ-a.e. and flatness of every tangent at μ-a.e. x imply μ m-rectifiable.",
+      "hypotheses": "0<m≤n; μ locally finite.",
+      "quantifiers": "One ae binder before all tangents.",
+      "dependencies": [
+        "lem:finite-piece-transfer",
+        "lem:flat-to-approximation",
+        "thm:mm-set",
+        "lem:carrier-calculus"
+      ],
+      "proposed_lean_name": "isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "scope": "core",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If, at \\(\\mu\\)-almost every \\(x\\),\n\\[\n 0<\\Theta_*^m(\\mu,x)\\leq\\Theta^{*m}(\\mu,x)<\\infty\n\\]\nand every tangent measure is \\(m\\)-flat, then \\(\\mu\\) is \\(m\\)-rectifiable.",
+      "hypotheses_tex": "The measure \\(\\mu\\) is locally finite and \\(0<m\\leq n\\). Quantification over all tangents lies inside the almost-everywhere binder.",
+      "actual_lean": {
+        "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
+        "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+        "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
+            "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+            "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:lipschitz-null-image",
+      "title": "Lipschitz maps take null domain sets to Hausdorff-null sets",
+      "statement": "If f:A⊆R^m→R^n is Lipschitz and Lebesgue(A)=0, then H^m(f(A))=0.",
+      "hypotheses": "No rank condition; null domain.",
+      "quantifiers": "Every Lipschitz map and null domain.",
+      "dependencies": [
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "hausdorffMeasure_image_eq_zero_of_lipschitz_null",
+      "proposed_file": "Preiss/Rectifiability/GraphCover.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(f:A\\to\\mathbb R^n\\) is Lipschitz and \\(\\mathcal L^m(A)=0\\), then \\(\\mathcal H^m(f(A))=0\\).",
+      "hypotheses_tex": "Here \\(A\\subset\\mathbb R^m\\). Use the Hausdorff/Lebesgue normalization on the domain and Lipschitz distortion.",
+      "actual_lean": {
+        "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
+        "file": "Preiss/Rectifiability/GraphCover.lean",
+        "module": "Preiss.Rectifiability.GraphCover",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
+            "file": "Preiss/Rectifiability/GraphCover.lean",
+            "module": "Preiss.Rectifiability.GraphCover",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:rank-deficient-image-null",
+      "title": "Rank-deficient derivative image is null",
+      "statement": "The H^m-measure of the image of the differentiability locus where rank(Df)<m is zero.",
+      "hypotheses": "Lipschitz f:R^m→R^n; Borel pieces or measurable envelope needed.",
+      "quantifiers": "Every such f; pointwise differentiability and rank condition on the chosen subset.",
+      "dependencies": [
+        "lem:lipschitz-null-image"
+      ],
+      "proposed_lean_name": "hausdorffMeasure_image_rank_lt_eq_zero",
+      "proposed_file": "Preiss/Rectifiability/GraphCover.lean",
+      "scope": "companion",
+      "note": "De Lellis Lemma4.11; do not claim the full area formula already exists.",
+      "status": "proposed_interface",
+      "statement_tex": "For a Lipschitz \\(f:\\mathbb R^m\\to\\mathbb R^n\\), the image of its differentiability locus where \\(\\operatorname{rank}(Df)<m\\) is \\(\\mathcal H^m\\)-null.",
+      "hypotheses_tex": "Work with measurable pieces or suitable measurable envelopes. This is the rank-deficient-image lemma, not an invocation of an already available full area formula.",
+      "actual_lean": {
+        "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
+        "file": "Preiss/Rectifiability/GraphCover.lean",
+        "module": "Preiss.Rectifiability.GraphCover",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.hausdorffMeasure_image_rank_lt_eq_zero"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
+            "file": "Preiss/Rectifiability/GraphCover.lean",
+            "module": "Preiss.Rectifiability.GraphCover",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:full-rank-graph-pieces",
+      "title": "Full-rank differentiability locus maps into countably many graphs",
+      "statement": "The image of the full-rank differentiability locus of Lipschitz f is covered by countably many m-dimensional Lipschitz graphs.",
+      "hypotheses": "Euclidean source/target; m≤n for nonempty rank-m locus.",
+      "quantifiers": "Countable partition using uniform derivative-control and rational matrix approximations.",
+      "dependencies": [
+        "lem:cone-graph"
+      ],
+      "proposed_lean_name": "exists_countable_graph_cover_fullRank_locus",
+      "proposed_file": "Preiss/Rectifiability/GraphCover.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "The image of the full-rank differentiability locus of a Lipschitz \\(f:\\mathbb R^m\\to\\mathbb R^n\\) is covered by countably many full Lipschitz \\(m\\)-graphs.",
+      "hypotheses_tex": "Use countable derivative-control pieces and a countable family of approximating full-rank matrices. For a nonempty rank-\\(m\\) locus, \\(m\\leq n\\).",
+      "mathlib_reuse": [
+        "exists_closed_cover_approximatesLinearOn_of_hasFDerivWithinAt",
+        "exists_partition_approximatesLinearOn_of_hasFDerivWithinAt"
+      ],
+      "actual_lean": {
+        "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
+        "file": "Preiss/Rectifiability/GraphCover.lean",
+        "module": "Preiss.Rectifiability.GraphCover",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.exists_countable_graph_cover_fullRank_locus"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
+            "file": "Preiss/Rectifiability/GraphCover.lean",
+            "module": "Preiss.Rectifiability.GraphCover",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:graphs",
+      "title": "Lipschitz-image and graph rectifiability agree",
+      "statement": "Canonical countably m-rectifiable Euclidean sets are precisely those covered modulo H^m-null sets by countably many full m-graphs.",
+      "hypotheses": "All natural m,n; m>n case uses H^m(R^n)=0 and empty graph family.",
+      "quantifiers": "Equivalence for every set; no Borel hypothesis intrinsic to predicate.",
+      "dependencies": [
+        "lem:domain-extension",
+        "lem:lipschitz-null-image",
+        "lem:rank-deficient-image-null",
+        "lem:full-rank-graph-pieces",
+        "lem:graph-rectifiable"
+      ],
+      "proposed_lean_name": "countablyRectifiable_iff_lipschitzGraph_cover",
+      "proposed_file": "Preiss/Rectifiability/GraphCover.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "A set \\(S\\subset\\mathbb R^n\\) is countably \\(m\\)-rectifiable if and only if there is a countable family of full Lipschitz \\(m\\)-graphs \\(\\Gamma_j\\) such that\n\\[\n \\mathcal H^m(S\\setminus\\bigcup_j\\Gamma_j)=0.\n\\]",
+      "hypotheses_tex": "Natural dimensions \\(m,n\\) are arbitrary. For \\(m>n\\), use \\(\\mathcal H^m(\\mathbb R^n)=0\\) and the empty graph family. Measurability is not intrinsic to this set predicate.",
+      "actual_lean": {
+        "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+        "file": "Preiss/Rectifiability/GraphCover.lean",
+        "module": "Preiss.Rectifiability.GraphCover",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.countablyRectifiable_iff_lipschitzGraph_cover"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+            "file": "Preiss/Rectifiability/GraphCover.lean",
+            "module": "Preiss.Rectifiability.GraphCover",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:graph-affine-area",
+      "title": "Affine graph area formula",
+      "statement": "An injective affine graph parametrization transports Jacobian-weighted source Haar volume to H^m on its graph, with fixed normalization.",
+      "hypotheses": "Finite dimensional Euclidean spaces and an affine injection.",
+      "quantifiers": "Equality of measures, hence every Borel restriction and nonnegative measurable integral.",
+      "dependencies": [
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "map_jacobian_volume_affine_graph",
+      "proposed_file": "Preiss/Rectifiability/GraphArea.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For an injective affine graph parametrization, pushforward of its Jacobian-weighted source Haar measure equals Hausdorff measure on the affine graph, with the fixed normalization factor.",
+      "hypotheses_tex": "The spaces are finite-dimensional Euclidean spaces and the affine linear part is injective. State an equality of measures, hence a formula on every Borel restriction.",
+      "actual_lean": {
+        "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
+        "file": "Preiss/Rectifiability/GraphArea.lean",
+        "module": "Preiss.Rectifiability.GraphArea",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.map_jacobian_hausdorff_affine_injection",
+          "Preiss.linearJacobian"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
+            "file": "Preiss/Rectifiability/GraphArea.lean",
+            "module": "Preiss.Rectifiability.GraphArea",
+            "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.linearJacobian",
+            "file": "Preiss/Rectifiability/GraphArea.lean",
+            "module": "Preiss.Rectifiability.GraphArea",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:graph-area",
+      "title": "Area formula for Lipschitz graph parametrizations",
+      "statement": "For F(v)=v+f(v), graph Hausdorff measure equals pushforward of the measurable Jacobian-weighted domain measure, with the normalization proved in affine case.",
+      "hypotheses": "f Lipschitz; source and target Euclidean subspaces.",
+      "quantifiers": "Measure identity; define Jacobian at differentiability points and arbitrary measurable null extension elsewhere.",
+      "dependencies": [
+        "lem:graph-affine-area",
+        "lem:lipschitz-null-image"
+      ],
+      "proposed_lean_name": "map_withDensity_jacobian_eq_graph_hausdorff",
+      "proposed_file": "Preiss/Rectifiability/GraphArea.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For a Lipschitz graph parametrization \\(F(v)=v+f(v)\\), Hausdorff measure on its graph is the pushforward of the measurable Jacobian-weighted domain measure, with the normalization established in the affine case.",
+      "hypotheses_tex": "Define the Jacobian on the differentiability locus and choose a measurable extension on its null complement. The map \\(F\\) is injective.",
+      "mathlib_reuse": [
+        "exists_closed_cover_approximatesLinearOn_of_hasFDerivWithinAt",
+        "exists_partition_approximatesLinearOn_of_hasFDerivWithinAt"
+      ],
+      "actual_lean": {
+        "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
+        "file": "Preiss/Rectifiability/GraphArea.lean",
+        "module": "Preiss.Rectifiability.GraphArea",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.map_withDensity_jacobian_eq_graph_hausdorff"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
+            "file": "Preiss/Rectifiability/GraphArea.lean",
+            "module": "Preiss.Rectifiability.GraphArea",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:graph-blowup",
+      "title": "Blow-ups of graph measure converge to its derivative plane",
+      "statement": "For H^m-a.e. x of a full Lipschitz graph Γ, D^m_{x,r}(H^m|Γ) converges vaguely to H^m|V_x as r↓0.",
+      "hypotheses": "m>0; full graph; local finiteness proved previously.",
+      "quantifiers": "Choose V_x before every positive radii sequence.",
+      "dependencies": [
+        "lem:graph-area",
+        "lem:graph-borel-finite",
+        "lem:plane-hausdorff"
+      ],
+      "proposed_lean_name": "ae_graph_hausdorff_blowup_limit",
+      "proposed_file": "Preiss/Rectifiability/GraphBlowup.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "For \\(\\mathcal H^m\\)-almost every \\(x\\) of a full Lipschitz graph \\(\\Gamma\\), one plane \\(V_x\\) satisfies\n\\[\n D^m_{x,r}(\\mathcal H^m\\!\\restriction\\Gamma)\n \\rightharpoonup\\mathcal H^m\\!\\restriction V_x\n \\quad(r\\downarrow0).\n\\]",
+      "hypotheses_tex": "Assume \\(m>0\\). Local finiteness follows from the graph measure API. Choose \\(V_x\\) before quantifying over positive sequences of radii.",
+      "actual_lean": {
+        "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
+        "file": "Preiss/Rectifiability/GraphBlowup.lean",
+        "module": "Preiss.Rectifiability.GraphBlowup",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.ae_graph_hausdorff_blowup_limit"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
+            "file": "Preiss/Rectifiability/GraphBlowup.lean",
+            "module": "Preiss.Rectifiability.GraphBlowup",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lem:normalized-density-transfer",
+      "title": "Fixed-dimensional blow-up transfer under density change",
+      "statement": "At differentiation points with finite upper m-density, if λ=f μ, then integrals against D^m λ - f(x) D^m μ tend to zero for every compactly supported continuous test.",
+      "hypotheses": "f nonnegative locally μ-integrable; local finite measures; finite upper density at x; f differentiation point.",
+      "quantifiers": "One ae good set followed by every compact test or use separability; preserve multiplier f(x).",
+      "dependencies": [
+        "gmt:density-points",
+        "gmt:density-bounds"
+      ],
+      "proposed_lean_name": "tendsto_integral_blowup_sub_density_mul",
+      "proposed_file": "Preiss/Tangent/DensityTransfer.lean",
+      "scope": "companion",
+      "note": "Reuse GMT MatchingTangents norm_integral_cc_le, weaklyConverges_of_tendsto_integral_sub, tendsto_mul_measure_diff_zero. Finite upper density addresses author erratum for Prop3.12.",
+      "status": "proposed_interface",
+      "statement_tex": "If \\(\\lambda=f\\mu\\), then at good differentiation points \\(x\\), for every compactly supported continuous \\(\\varphi\\),\n\\[\n \\int\\varphi\\,dD^m_{x,r}\\lambda-\n f(x)\\int\\varphi\\,dD^m_{x,r}\\mu\\longrightarrow0.\n\\]\nThe exact multiplier \\(f(x)\\) is retained.",
+      "hypotheses_tex": "The measures are locally finite; \\(f\\geq0\\) is locally \\(\\mu\\)-integrable; \\(x\\) is a differentiation point and has finite upper \\(m\\)-density for \\(\\mu\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
+        "file": "Preiss/Tangent/DensityTransfer.lean",
+        "module": "Preiss.Tangent.DensityTransfer",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.tendsto_integral_blowup_sub_density_mul"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
+            "file": "Preiss/Tangent/DensityTransfer.lean",
+            "module": "Preiss.Tangent.DensityTransfer",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thm:rectifiable-blowup",
+      "title": "Rectifiable measures have a single normalized flat limit",
+      "statement": "For locally finite rectifiable μ, a.e. x admits one plane V_x and finite c_x>0 such that every positive radii sequence→0 has D^m μ→c_x H^m|V_x.",
+      "hypotheses": "0<m≤n; locally finite and m-rectifiable μ.",
+      "quantifiers": "ae x, ∃V,c, ∀positive sequences r→0.",
+      "dependencies": [
+        "lem:graphs",
+        "lem:representation",
+        "lem:graph-blowup",
+        "lem:normalized-density-transfer"
+      ],
+      "proposed_lean_name": "rectifiable_has_flat_blowup_limit",
+      "proposed_file": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "At \\(\\mu\\)-almost every \\(x\\) there exist one \\(m\\)-plane \\(V_x\\) and one \\(0<c_x<\\infty\\) such that\n\\[\n D^m_{x,r}\\mu\\rightharpoonup c_x\\mathcal H^m\\!\\restriction V_x\n \\quad(r\\downarrow0).\n\\]\nThe same \\(V_x,c_x\\) work for every positive sequence \\(r_j\\to0\\).",
+      "hypotheses_tex": "The measure \\(\\mu\\) is locally finite and \\(m\\)-rectifiable, with \\(0<m\\leq n\\).",
+      "actual_lean": {
+        "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
+        "file": "Preiss/Rectifiability/TangentNecessity.lean",
+        "module": "Preiss.Rectifiability.TangentNecessity",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.rectifiable_has_flat_blowup_limit"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
+            "file": "Preiss/Rectifiability/TangentNecessity.lean",
+            "module": "Preiss.Rectifiability.TangentNecessity",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cor:rectifiable-tangent-plane",
+      "title": "Rectifiable density and common tangent plane",
+      "statement": "Locally finite rectifiable μ has positive finite existing m-density a.e.; its GMT tangent set at each such point is exactly {c H^m|V_x | 0<c<∞}.",
+      "hypotheses": "0<m≤n.",
+      "quantifiers": "ae x, density exists ∧ ∃V, ∀ν, IsTangentMeasure μ ν x iff ν is a positive finite multiple on V.",
+      "dependencies": [
+        "thm:rectifiable-blowup",
+        "lem:tangent-ray",
+        "lem:plane-hausdorff",
+        "gmt:continuity-sets"
+      ],
+      "proposed_lean_name": "rectifiable_has_density_and_tangent_plane",
+      "proposed_file": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "At \\(\\mu\\)-almost every \\(x\\), the \\(m\\)-density exists and is positive and finite, and there is one \\(m\\)-plane \\(V_x\\) such that\n\\[\n \\operatorname{Tan}(\\mu,x)\n =\\{c\\,\\mathcal H^m\\!\\restriction V_x:0<c<\\infty\\}.\n\\]",
+      "hypotheses_tex": "The measure \\(\\mu\\) is locally finite and \\(m\\)-rectifiable, with \\(0<m\\leq n\\). Tangents use GMT's arbitrary positive scalar normalization.",
+      "actual_lean": {
+        "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
+        "file": "Preiss/Rectifiability/TangentNecessity.lean",
+        "module": "Preiss.Rectifiability.TangentNecessity",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.rectifiable_has_density_and_tangent_plane"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
+            "file": "Preiss/Rectifiability/TangentNecessity.lean",
+            "module": "Preiss.Rectifiability.TangentNecessity",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thm:rectifiable-iff-flat",
+      "title": "Full tangent characterization",
+      "statement": "μ is m-rectifiable iff positive lower and finite upper m-density hold a.e. and every tangent is m-flat a.e.",
+      "hypotheses": "0<m≤n; μ locally finite.",
+      "quantifiers": "RHS plane may depend on tangent; LHS later yields one common plane at ae point.",
+      "dependencies": [
+        "cor:rectifiable-tangent-plane",
+        "thm:mm-measure"
+      ],
+      "proposed_lean_name": "rectifiable_iff_density_bounds_and_flat_tangents",
+      "proposed_file": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "scope": "companion",
+      "note": "",
+      "status": "proposed_interface",
+      "statement_tex": "The measure \\(\\mu\\) is \\(m\\)-rectifiable if and only if positive lower and finite upper \\(m\\)-density hold almost everywhere and every tangent is \\(m\\)-flat almost everywhere. On the right, the plane may depend on the individual tangent; rectifiability subsequently supplies a common plane almost everywhere.",
+      "hypotheses_tex": "The measure \\(\\mu\\) is locally finite and \\(0<m\\leq n\\). No density-limit existence or common-plane hypothesis is assumed on the right.",
+      "actual_lean": {
+        "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
+        "file": "Preiss/Rectifiability/TangentCharacterization.lean",
+        "module": "Preiss.Rectifiability.TangentCharacterization",
+        "status": "sorry_placeholder",
+        "lean_names": [
+          "Preiss.rectifiable_iff_density_bounds_and_flat_tangents"
+        ],
+        "declarations": [
+          {
+            "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
+            "file": "Preiss/Rectifiability/TangentCharacterization.lean",
+            "module": "Preiss.Rectifiability.TangentCharacterization",
+            "status": "sorry_placeholder"
+          }
+        ]
+      }
+    }
+  ]
+}

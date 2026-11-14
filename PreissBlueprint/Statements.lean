@@ -10,9 +10,19 @@ Do not import this module into the reusable library.
 open MeasureTheory Metric Set Filter Topology
 open scoped ENNReal NNReal
 
+open scoped CompactlySupported
+
 namespace PreissBlueprint
 open Preiss
 variable {m n : ℕ}
+
+/-- Image-based rectifiability agrees with countable graph coverage modulo H^m-null sets. -/
+theorem countablyRectifiable_iff_lipschitzGraph_cover (s : Set (Euclidean n)) :
+    CountablyRectifiable m s ↔ ∃ G : Set (Set (Euclidean n)), G.Countable ∧
+      (∀ g ∈ G, IsLipschitzGraph m g) ∧
+      (Measure.hausdorffMeasure (m : ℝ) : Measure (Euclidean n))
+        (s \ ⋃ g ∈ G, g) = 0 := by
+  sorry
 
 theorem density_iff_upstream (μ : Measure (Euclidean n)) (x : Euclidean n) :
     HasPositiveFiniteDensityAt m μ x ↔
@@ -139,6 +149,50 @@ theorem rectifiable_of_all_tangents_flat (hm : 0 < m) (hmn : m ≤ n)
     (hf : ∀ᵐ x ∂μ, ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν) :
     IsRectifiableMeasure m μ := by
   sorry
+
+/-- Rectifiability gives a single flat limit under fixed dimensional normalization.
+The same plane and coefficient work for EVERY positive sequence tending to zero. -/
+theorem rectifiable_has_flat_blowup_limit (hm : 0 < m) (hmn : m ≤ n)
+    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]
+    (hrect : IsRectifiableMeasure m μ) :
+    ∀ᵐ x ∂μ, ∃ (V : Plane m n) (c : ℝ≥0∞), 0 < c ∧ c < ∞ ∧
+      ∀ r : ℕ → ℝ, (∀ i, 0 < r i) → Tendsto r atTop (𝓝 0) →
+        Measure.WeaklyConverges (fun i => dimensionalBlowup m μ x (r i))
+          (c • (Measure.hausdorffMeasure (m : ℝ)).restrict
+            (V.1 : Set (Euclidean n))) := by
+  sorry
+
+/-- With GMT's arbitrary scalar normalization, the tangent set is a whole ray,
+not a singleton. The plane depends on x, but is fixed before quantifying over ν. -/
+theorem rectifiable_has_density_and_tangent_plane (hm : 0 < m) (hmn : m ≤ n)
+    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]
+    (hrect : IsRectifiableMeasure m μ) :
+    ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt m μ x ∧ ∃ V : Plane m n,
+      ∀ ν, IsTangentMeasure μ ν x ↔ ∃ c : ℝ≥0∞, 0 < c ∧ c < ∞ ∧
+        ν = c • (Measure.hausdorffMeasure (m : ℝ)).restrict
+          (V.1 : Set (Euclidean n)) := by
+  sorry
+
+/-- The density hypothesis here only gives two-sided bounds: no density limit
+or common tangent plane is assumed in the right-hand side. -/
+theorem rectifiable_iff_density_bounds_and_flat_tangents (hm : 0 < m) (hmn : m ≤ n)
+    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] :
+    IsRectifiableMeasure m μ ↔
+      (∀ᵐ x ∂μ, HasPositiveFiniteDensitiesAt m μ x) ∧
+      (∀ᵐ x ∂μ, ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν) := by
+  constructor
+  · intro hrect
+    have h := rectifiable_has_density_and_tangent_plane hm hmn μ hrect
+    constructor
+    · filter_upwards [h] with x hx
+      exact hx.1.densities
+    · filter_upwards [h] with x hx
+      obtain ⟨V, hV⟩ := hx.2
+      intro ν hν
+      obtain ⟨c, hc0, hctop, heq⟩ := (hV ν).mp hν
+      exact ⟨V, c, hc0, hctop, heq⟩
+  · rintro ⟨hd, hf⟩
+    exact rectifiable_of_all_tangents_flat hm hmn μ hd hf
 
 /-- Density representation uses a sigma-finite carrier, not ambient H^m.
 Ambient H^m in R^n is generally NOT sigma-finite when m < n. -/

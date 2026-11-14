@@ -203,13 +203,73 @@
       "status": "not_directly_applicable",
       "notes": "Algebraic quotient-rank Grassmannian, not the compact metric m-plane space required for flatness minimization.",
       "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/RingTheory/Grassmannian.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Measure/Basic.lean",
+      "declarations": [
+        "MeasureTheory.Measure.measure_toMeasurable_inter"
+      ],
+      "status": "reuse",
+      "notes": "Exposed by detailed proof audit; preserve precise hypotheses.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Measure/Basic.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Covering/Besicovitch.lean",
+      "declarations": [
+        "Besicovitch.exists_disjoint_closedBall_covering_ae",
+        "Besicovitch.ae_tendsto_rnDeriv",
+        "Besicovitch.ae_tendsto_measure_inter_div_of_measurableSet",
+        "Besicovitch.ae_tendsto_measure_inter_div"
+      ],
+      "status": "reuse",
+      "notes": "Exposed by detailed proof audit; preserve precise hypotheses.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Covering/Besicovitch.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Covering/Vitali.lean",
+      "declarations": [
+        "Vitali.exists_disjoint_subfamily_covering_enlargement_ball"
+      ],
+      "status": "reuse",
+      "notes": "Exposed by detailed proof audit; preserve precise hypotheses.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Covering/Vitali.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Function/Jacobian.lean",
+      "declarations": [
+        "exists_closed_cover_approximatesLinearOn_of_hasFDerivWithinAt",
+        "exists_partition_approximatesLinearOn_of_hasFDerivWithinAt"
+      ],
+      "status": "reuse",
+      "notes": "Generic derivative-controlled closed covers and measurable partitions for maps E to F. The same file does not supply the codimension graph area formula.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Function/Jacobian.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/Probability/Distributions/Gaussian/Multivariate.lean",
+      "declarations": [
+        "ProbabilityTheory.stdGaussian",
+        "ProbabilityTheory.stdGaussian_map",
+        "ProbabilityTheory.stdGaussian_eq_map_pi_orthonormalBasis"
+      ],
+      "status": "reuse",
+      "notes": "Standard Gaussian measure on any finite-dimensional real inner product space, including a plane subtype.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Probability/Distributions/Gaussian/Multivariate.lean"
     }
   ],
   "graph_inventory": {
-    "source": "src/upstream.tex",
-    "nodes": 43,
-    "declarations": 62,
-    "declaration_index": "declarations.json",
-    "note": "The declaration index and upstream graph expand the earlier grouped reuse entries below."
+    "nodes": 229,
+    "edges": 759,
+    "gmt_nodes": 49,
+    "linked_declarations": 315,
+    "declarations_by_project": {
+      "PreissFormalization": 233,
+      "FormalizingGMT": 71,
+      "mathlib": 11
+    }
   }
 }

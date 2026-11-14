@@ -1,0 +1,2403 @@
+{
+  "schema_version": 1,
+  "scope": "Uniform-measure proof branch of Preiss: Parts A/B, moments, conical gap and flat-at-infinity rigidity.",
+  "status": "Mathematical specification audit; proposed Lean names/files are not a claim of completed proofs or compiled interfaces.",
+  "audit_file": "blueprint/reviews/preiss-proof-audit.tex",
+  "shared_conventions": {
+    "dimension": "Specialized uniform-measure statements use natural dimensions 1 <= m <= n. Generic analysis statements use only their explicit dimension hypotheses; dimension zero/excess dimension are handled by the parent inventory.",
+    "measure": "Positive Borel measures on finite-dimensional real Euclidean spaces, regular and finite on compact sets. Every use of vague convergence assumes these conditions for each measure and its limit.",
+    "dilation_tex": "D^m_{a,r}\\mu=r^{-m}(z\\mapsto(z-a)/r)_\\#\\mu,\\ r>0.",
+    "unit_uniform_tex": "\\mathcal U_m=\\{\\nu:0\\in\\operatorname{supp}\\nu,\\ \\nu(B(y,r))=r^m\\text{ for all }y\\in\\operatorname{supp}\\nu,\\ r>0\\}.",
+    "flat_tex": "\\sigma_V\\text{ is the positive multiple of }\\mathcal H^m|V\\text{ satisfying }\\sigma_V(B(0,1))=1.",
+    "rigidity": "All R nodes after the general Gaussian nodes assume nu in U_m with flat blow-down sigma_V; P is the orthogonal projection onto V, Q=1-P, b and omega are the named typed definitions, gamma_V is the covariance-one Gaussian probability.",
+    "gaussian_mass_tex": "I_\\nu(s)=\\int e^{-s|z|^2}\\,d\\nu=\\omega_m^{-1}(\\pi/s)^{m/2}\\quad(s>0,\\nu\\in\\mathcal U_m)."
+  },
+  "type_proposals": {
+    "moment_form": "ContinuousMultilinearMap ℝ (fun _ : Fin k => E) ℝ, with permutation invariance theorem",
+    "coefficient_family": "(k j : ℕ) → ContinuousMultilinearMap ℝ (fun _ : Fin k => E) ℝ",
+    "remainder": "Asymptotics.IsLittleO on the positive neighborhood filter at 0, in the operator norm of continuous multilinear maps",
+    "omega": "V →L[ℝ] V →L[ℝ] Vᗮ, with symmetry theorem",
+    "adjusted_form": "V →L[ℝ] V →L[ℝ] ℝ, with symmetry theorem",
+    "feature_space": "EuclideanSpace ℝ (Σ k : Fin N, (Fin (k.val + 1) → Fin n)); coordinates scaled by sqrt(2^degree / degree!)",
+    "planes": "Either Plane n m plus an explicit compact projection embedding, or the subtype of self-adjoint idempotent endomorphisms with trace m; do not assume a submodule lattice topology.",
+    "trace": "Use the Riesz-represented endomorphism and LinearMap.trace; prove the orthonormal diagonal-sum formula."
+  },
+  "external_dependencies": [
+    "def:flat",
+    "def:tangent-api",
+    "gmt:blowup",
+    "gmt:blowup-regular",
+    "gmt:continuity-sets",
+    "gmt:density-bounds",
+    "gmt:density-points",
+    "gmt:goodsets",
+    "gmt:hyperplane-transport",
+    "gmt:normalized-tangent",
+    "gmt:portmanteau",
+    "gmt:uniform-full-dimension",
+    "gmt:uniform-halfspace",
+    "gmt:uniform-hyperplane",
+    "gmt:uniform-radial",
+    "gmt:uniform-tangents",
+    "gmt:vague",
+    "lem:plane-scaling",
+    "lem:tangent-ray",
+    "lem:uniform-adapter",
+    "thm:compactness",
+    "thm:doubling"
+  ],
+  "excluded_companions": [
+    "Unconditional classification of 1- and 2-uniform measures: unnecessary for the all-m small-energy gap route.",
+    "Lemma 8.6(iii) joint two-variable radial distribution: unnecessary for this proof path.",
+    "Analytic support varieties and the full noninteger-dimensional Marstrand theorem: unnecessary for integer codimension reduction."
+  ],
+  "nodes": [
+    {
+      "id": "lem:vague-moving-tests",
+      "audit_code": "S01",
+      "title": "Vague convergence with uniformly moving compact tests",
+      "statement_tex": "If $\\mu_i\\rightharpoonup\\mu$ vaguely, all measures are regular, $K$ is compact,\nthe continuous tests $f_i,f$ vanish outside $K$, and $f_i\\to f$ uniformly,\nthen $\\int f_i\\,d\\mu_i\\to\\int f\\,d\\mu$. First derive a uniform mass bound on\n$K$ using a compactly supported cutoff equal to one on $K$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:vague",
+        "gmt:portmanteau"
+      ],
+      "lean_name": "Preiss.vague_integral_moving_compact_test",
+      "file": "Preiss/MeasureTheory/Vague/Continuity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "If $\\mu_i\\rightharpoonup\\mu$ vaguely, all measures are regular, $K$ is compact,\nthe continuous tests $f_i,f$ vanish outside $K$, and $f_i\\to f$ uniformly,\nthen $\\int f_i\\,d\\mu_i\\to\\int f\\,d\\mu$. First derive a uniform mass bound on\n$K$ using a compactly supported cutoff equal to one on $K$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:vague-moving-blowups",
+      "audit_code": "S02",
+      "title": "Joint continuity of translated dilations",
+      "statement_tex": "If $\\mu_i\\rightharpoonup\\mu$, $a_i\\to a$, $r_i\\to r>0$, and\n$c_i\\to c\\in[0,\\infty)$, then\n$c_i(T_{a_i,r_i})_\\#\\mu_i\\rightharpoonup c(T_{a,r})_\\#\\mu$.\nAssume regularity of the measures and finite real scalars; no bound at infinity\non their total masses is needed. The preimages of a fixed compact test support\nlie in one compact set because the parameters converge and $r>0$. The pulled\nback tests converge uniformly there. S01 proves the statement. Its special case\n$D^m_{a_i,r_i}\\mu_i\\to D^m_{a,r}\\mu$ is used repeatedly.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-moving-tests",
+        "gmt:blowup-regular"
+      ],
+      "lean_name": "Preiss.vague_smul_map_sub_div",
+      "file": "Preiss/MeasureTheory/Vague/Continuity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "If $\\mu_i\\rightharpoonup\\mu$, $a_i\\to a$, $r_i\\to r>0$, and\n$c_i\\to c\\in[0,\\infty)$, then\n$c_i(T_{a_i,r_i})_\\#\\mu_i\\rightharpoonup c(T_{a,r})_\\#\\mu$.\nAssume regularity of the measures and finite real scalars; no bound at infinity\non their total masses is needed. The preimages of a fixed compact test support\nlie in one compact set because the parameters converge and $r>0$. The pulled\nback tests converge uniformly there. S01 proves the statement. Its special case\n$D^m_{a_i,r_i}\\mu_i\\to D^m_{a,r}\\mu$ is used repeatedly.",
+      "repair": [
+        "Require limiting radius strictly positive; scalars finite and convergent; obtain one common compact set of pulled-back supports."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:blowup-composition",
+      "audit_code": "S03",
+      "title": "Composition, scalar and isometric covariance of blow-ups",
+      "statement_tex": "Prove\n$D^m_{b,s}(D^m_{a,r}\\mu)=D^m_{a+rb,rs}\\mu$;\npositive scalar multiplication commutes with $D$; and pushforward by a linear\nisometric embedding intertwines $D$, at centres in its image. Include inverse\ndilation and preservation of flatness, regularity and uniform ball constants.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:blowup",
+        "gmt:blowup-regular",
+        "lem:plane-scaling"
+      ],
+      "lean_name": "Preiss.dimensionalBlowUp_comp",
+      "file": "Preiss/MeasureTheory/Tangent/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "Prove\n$D^m_{b,s}(D^m_{a,r}\\mu)=D^m_{a+rb,rs}\\mu$;\npositive scalar multiplication commutes with $D$; and pushforward by a linear\nisometric embedding intertwines $D$, at centres in its image. Include inverse\ndilation and preservation of flatness, regularity and uniform ball constants.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:vague-support-approximation",
+      "audit_code": "S04a",
+      "title": "Approximation of support points under vague convergence",
+      "statement_tex": "If regular $\\mu_i\\rightharpoonup\\mu$ and $x\\in\\operatorname{supp}\\mu$, there are, for all sufficiently large $i$, $x_i\\in\\operatorname{supp}\\mu_i$ with $x_i\\to x$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "lean_name": "Preiss.exists_support_sequence_of_vague",
+      "file": "Preiss/MeasureTheory/Vague/Continuity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "If regular $\\mu_i\\rightharpoonup\\mu$ and $x\\in\\operatorname{supp}\\mu$, then\nthere exist $x_i\\in\\operatorname{supp}\\mu_i$ with $x_i\\to x$, after discarding\nfinitely many terms if necessary. Use the open-ball portmanteau inequality.\nConversely, if $x_i\\to x$, $x_i\\in\\operatorname{supp}\\mu_i$, and the measures\nhave a common positive lower support-centred ball bound at each radius, then\n$x\\in\\operatorname{supp}\\mu$. Bare vague convergence does not give this converse.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:vague-support-limit",
+      "audit_code": "S04b",
+      "title": "Limits of support points under lower ball bounds",
+      "statement_tex": "If regular $\\mu_i\\rightharpoonup\\mu$, $x_i\\in\\operatorname{supp}\\mu_i$, $x_i\\to x$, and for every $r>0$ there is $c_r>0$ with $\\mu_i(B(x_i,r))\\geq c_r$ for every sufficiently large $i$, then $x\\in\\operatorname{supp}\\mu$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "lean_name": "Preiss.mem_support_of_vague_lower_ball_bound",
+      "file": "Preiss/MeasureTheory/Vague/Continuity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "If regular $\\mu_i\\rightharpoonup\\mu$ and $x\\in\\operatorname{supp}\\mu$, then\nthere exist $x_i\\in\\operatorname{supp}\\mu_i$ with $x_i\\to x$, after discarding\nfinitely many terms if necessary. Use the open-ball portmanteau inequality.\nConversely, if $x_i\\to x$, $x_i\\in\\operatorname{supp}\\mu_i$, and the measures\nhave a common positive lower support-centred ball bound at each radius, then\n$x\\in\\operatorname{supp}\\mu$. Bare vague convergence does not give this converse.",
+      "repair": [
+        "The positive lower ball hypothesis is necessary; bare vague convergence does not preserve support."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:uniform-vague-closed",
+      "audit_code": "S05a",
+      "title": "Uniform ball laws are closed under vague limits",
+      "statement_tex": "If $\\nu_i\\in\\mathcal U_m$ and $\\nu_i\\rightharpoonup\\nu$ with $\\nu$ regular, then $\\nu\\in\\mathcal U_m$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-support-approximation",
+        "lem:vague-support-limit",
+        "gmt:portmanteau"
+      ],
+      "lean_name": "Preiss.isUnitUniform_of_vague",
+      "file": "Preiss/MeasureTheory/Uniform/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "A vaguely convergent sequence in $\\mathcal U_m$ has a limit in $\\mathcal U_m$.\nThe family is sequentially compact by upstream compact mass bounds.\nFirst approximate support centres using S04; squeeze open and closed radii to\nrecover the exact ball law, rather than assuming spheres of an arbitrary limit\nalready have zero mass. The origin's positive ball mass excludes the zero limit.\nAlso prove the variant where the measures are uniform with the same constant\nand their supports approach the origin, without requiring the origin in every\nsupport. This is needed in the bounded-hole argument R05 below.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:uniform-compactness",
+      "audit_code": "S05b",
+      "title": "Sequential compactness of centered unit uniform measures",
+      "statement_tex": "Every sequence in $\\mathcal U_m$ has a subsequence converging vaguely to an element of $\\mathcal U_m$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:uniform-vague-closed",
+        "thm:compactness"
+      ],
+      "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
+      "file": "Preiss/MeasureTheory/Uniform/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "A vaguely convergent sequence in $\\mathcal U_m$ has a limit in $\\mathcal U_m$.\nThe family is sequentially compact by upstream compact mass bounds.\nFirst approximate support centres using S04; squeeze open and closed radii to\nrecover the exact ball law, rather than assuming spheres of an arbitrary limit\nalready have zero mass. The origin's positive ball mass excludes the zero limit.\nAlso prove the variant where the measures are uniform with the same constant\nand their supports approach the origin, without requiring the origin in every\nsupport. This is needed in the bounded-hole argument R05 below.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:uniform-near-support-compactness",
+      "audit_code": "S05c",
+      "title": "Uniform compactness with centers approaching the support",
+      "statement_tex": "If every $\\nu_i$ has support-centered ball law $\\nu_i(B(y,r))=r^m$ and $\\operatorname{dist}(0,\\operatorname{supp}\\nu_i)\\to0$, then some subsequence converges vaguely to a member of $\\mathcal U_m$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-support-approximation",
+        "lem:vague-support-limit",
+        "thm:compactness"
+      ],
+      "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
+      "file": "Preiss/MeasureTheory/Uniform/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "A vaguely convergent sequence in $\\mathcal U_m$ has a limit in $\\mathcal U_m$.\nThe family is sequentially compact by upstream compact mass bounds.\nFirst approximate support centres using S04; squeeze open and closed radii to\nrecover the exact ball law, rather than assuming spheres of an arbitrary limit\nalready have zero mass. The origin's positive ball mass excludes the zero limit.\nAlso prove the variant where the measures are uniform with the same constant\nand their supports approach the origin, without requiring the origin in every\nsupport. This is needed in the bounded-hole argument R05 below.",
+      "repair": [
+        "Needed when blow-up centers are projections onto a plane rather than support points."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:vague-countable-metric",
+      "audit_code": "S06a",
+      "title": "Countable compact-test metric for locally bounded families",
+      "statement_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "lean_name": "Preiss.vagueMetric_tendsto_iff",
+      "file": "Preiss/MeasureTheory/Vague/Metrization.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:vague-diagonal",
+      "audit_code": "S06b",
+      "title": "Diagonal selection for vague convergence",
+      "statement_tex": "For a countable determining compact-test family, if $\\mu_{i,j}\\rightharpoonup\\mu_i$ as $j\\to\\infty$ and $\\mu_i\\rightharpoonup\\mu$, select $j(i)\\geq i$ such that $\\mu_{i,j(i)}\\rightharpoonup\\mu$; additional finitely many eventual constraints at stage $i$ can be imposed. Assume regularity and the compact mass bounds needed by the determining family.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-countable-metric"
+      ],
+      "lean_name": "Preiss.vague_diagonal_selection",
+      "file": "Preiss/MeasureTheory/Vague/Metrization.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:uniform-finite-metric-covers",
+      "audit_code": "S06c",
+      "title": "Finite metric covers of uniform families",
+      "statement_tex": "For every $\\varepsilon>0$ and $0<c\\leq C<\\infty$, the centered uniform measures with ball constants in $[c,C]$ admit a finite cover by vague-metric balls of radius $\\varepsilon$. This includes the family $\\mathcal U_m$ and all its support-centered translates.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-countable-metric",
+        "lem:uniform-compactness",
+        "lem:vague-moving-blowups"
+      ],
+      "lean_name": "Preiss.unitUniform_totallyBounded",
+      "file": "Preiss/MeasureTheory/Vague/Metrization.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:dimensional-tangent-closed",
+      "audit_code": "S07a",
+      "title": "Closedness of dimensional tangents",
+      "statement_tex": "Assume the original source measure $\\mu$ is locally finite. If every $\\nu_i\\in\\operatorname{Tan}_m(\\mu,x)$, $\\nu_i\\rightharpoonup\\nu$, and $\\nu$ is regular and nonzero, then $\\nu\\in\\operatorname{Tan}_m(\\mu,x)$.",
+      "hypotheses": [
+        "The original source measure mu is locally finite; its Euclidean regularity follows. The Lean statement requires [IsLocallyFiniteMeasure mu].",
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-diagonal",
+        "def:flat"
+      ],
+      "lean_name": "Preiss.dimensionalTangent_closed",
+      "file": "Preiss/Tangent/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
+      "repair": [],
+      "interface_status": "canonical sorry statement written; not yet Lean-compiled",
+      "hypotheses_tex": "The source measure $\\mu$ is locally finite on $\\mathbb R^n$."
+    },
+    {
+      "id": "lem:tangent-closed",
+      "audit_code": "S07b",
+      "title": "Closedness of arbitrary-scalar tangents",
+      "statement_tex": "Assume the original source measure $\\mu$ is locally finite. If every $\\nu_i\\in\\operatorname{Tan}(\\mu,x)$, $\\nu_i\\rightharpoonup\\nu$, and $\\nu$ is regular and nonzero, then $\\nu\\in\\operatorname{Tan}(\\mu,x)$.",
+      "hypotheses": [
+        "The original source measure mu is locally finite; its Euclidean regularity follows. The Lean statement requires [IsLocallyFiniteMeasure mu].",
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-diagonal",
+        "def:tangent-api"
+      ],
+      "lean_name": "Preiss.tangent_closed",
+      "file": "Preiss/Tangent/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
+      "repair": [],
+      "interface_status": "canonical sorry statement written; not yet Lean-compiled",
+      "hypotheses_tex": "The source measure $\\mu$ is locally finite on $\\mathbb R^n$."
+    },
+    {
+      "id": "lem:dimensional-tangent-dilation",
+      "audit_code": "S07c",
+      "title": "Positive dilations preserve dimensional tangents",
+      "statement_tex": "Assume the original source measure $\\mu$ is locally finite. For $r>0$ and $\\nu\\in\\operatorname{Tan}_m(\\mu,x)$, $D^m_{0,r}\\nu\\in\\operatorname{Tan}_m(\\mu,x)$.",
+      "hypotheses": [
+        "The original source measure mu is locally finite; its Euclidean regularity follows. The Lean statement requires [IsLocallyFiniteMeasure mu].",
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:blowup-composition",
+        "lem:vague-moving-blowups"
+      ],
+      "lean_name": "Preiss.dimensionalTangent_dilate",
+      "file": "Preiss/Tangent/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
+      "repair": [],
+      "interface_status": "canonical sorry statement written; not yet Lean-compiled",
+      "hypotheses_tex": "The source measure $\\mu$ is locally finite on $\\mathbb R^n$."
+    },
+    {
+      "id": "lem:dimensional-tangent-compactness",
+      "audit_code": "S07d",
+      "title": "Nonempty compact tangent family at a density point",
+      "statement_tex": "If $0<\\lim_{r\\downarrow0}\\mu(B(x,r))/r^m<\\infty$, the dimensional tangent family is nonempty and sequentially compact; every sequence of sufficiently small dimensional blow-ups has a subsequence with a nonzero regular limit.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:dimensional-tangent-closed",
+        "thm:compactness",
+        "gmt:density-bounds",
+        "gmt:portmanteau"
+      ],
+      "lean_name": "Preiss.dimensionalTangent_nonempty_compact",
+      "file": "Preiss/MeasureTheory/Tangent/Compactness.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:dimensional-tangent-ball-constant",
+      "audit_code": "S08a",
+      "title": "Common tangent normalization at a density point",
+      "statement_tex": "At $x$ with density $q=\\lim_{r\\downarrow0}\\mu(B(x,r))/r^m\\in(0,\\infty)$, if all arbitrary-scalar tangents are uniform, every dimensional tangent contains $0$ in its support and has ball law $\\nu(B(y,r))=qr^m$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "The density q at the selected point is positive and finite, and every arbitrary-scalar tangent at that point is m-uniform.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:normalized-tangent",
+        "gmt:continuity-sets",
+        "thm:doubling",
+        "lem:tangent-ray"
+      ],
+      "lean_name": "Preiss.dimensionalTangent_ball_constant",
+      "file": "Preiss/MeasureTheory/Tangent/Normalization.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "Let $q_x=\\lim_{r\\downarrow0}\\mu(B(x,r))/r^m\\in(0,\\infty)$.\nIf every arbitrary-scalar tangent is uniform, every dimensional tangent\nhas ball constant exactly $q_x$ and contains zero in its support.\nUse doubling to get the support assertion, the uniform sphere-null property,\nand convergence on continuity balls to determine the constant. Dividing the\noriginal measure by $q_x$ therefore puts its dimensional tangents in\n$\\mathcal U_m$. Existing arbitrary-scalar and dimensional tangent sets are rays\nof one another, not literally equal. A pointwise Part B theorem must use this\nadapter before applying a universal flatness threshold.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:density-normalization",
+      "audit_code": "S08b",
+      "title": "Reduction to unit uniform dimensional tangents",
+      "statement_tex": "Under S08a, replacing $\\mu$ by $q^{-1}\\mu$ identifies its dimensional tangent family with $q^{-1}\\operatorname{Tan}_m(\\mu,x)\\subset\\mathcal U_m$ and preserves flatness of tangents.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "The density q at the selected point is positive and finite, and every arbitrary-scalar tangent at that point is m-uniform.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:dimensional-tangent-ball-constant",
+        "lem:blowup-composition"
+      ],
+      "lean_name": "Preiss.density_normalization_unitUniform",
+      "file": "Preiss/MeasureTheory/Tangent/Normalization.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
+      "proof_sketch_tex": "Let $q_x=\\lim_{r\\downarrow0}\\mu(B(x,r))/r^m\\in(0,\\infty)$.\nIf every arbitrary-scalar tangent is uniform, every dimensional tangent\nhas ball constant exactly $q_x$ and contains zero in its support.\nUse doubling to get the support assertion, the uniform sphere-null property,\nand convergence on continuity balls to determine the constant. Dividing the\noriginal measure by $q_x$ therefore puts its dimensional tangents in\n$\\mathcal U_m$. Existing arbitrary-scalar and dimensional tangent sets are rays\nof one another, not literally equal. A pointwise Part B theorem must use this\nadapter before applying a universal flatness threshold.",
+      "repair": [
+        "A universal gap threshold applies after one common normalization, not independently normalized arbitrary-scalar tangents."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "gmt:support-not-full",
+      "audit_code": "A01",
+      "title": "Subambient growth excludes full support",
+      "statement_tex": "For a regular measure $\\nu$ on $\\mathbb R^n$, $s<n$, and $c\\in(0,\\infty]$, if $c\\rho^s\\leq\\nu(\\overline B(x,\\rho))$ for every support point $x$ and $\\rho>0$, then $\\operatorname{supp}\\nu\\ne\\mathbb R^n$. In particular an $m$-uniform measure in dimension greater than $m$ has non-full support.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "support_ne_univ_of_lower_growth",
+      "file": ".lake/packages/FormalizingGMT/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+      "core_vs_companion": "core",
+      "status": "existing upstream",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "For an $m$-uniform measure on $\\mathbb R^k$ with $m<k$, its support is not all\nof $\\mathbb R^k$. Reuse \\texttt{support\\_ne\\_univ\\_of\\_lower\\_growth}; do\nnot reconstruct this from the eventual Preiss theorem.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:halfspace-tangent-witness",
+      "audit_code": "A02",
+      "title": "Half-space reduction retaining the tangent witness",
+      "statement_tex": "For uniform $\\nu$ with non-full support there exist a support point $y$,\na nonzero vector $e$, and a tangent $\\lambda$ at $y$ supported in\n$\\{z:\\langle z,e\\rangle\\geq0\\}$. Preserve the exact normalization when\nchoosing the tangent. GMT's \\texttt{SUniformAux.exists\\_halfSpace} proves\nthis in its body but exports only the existence of the new uniform measure.\nThe adapter should reuse that proof pattern and retain its witness.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= ambient dimension; the starting measure is m-uniform with a fixed positive finite ball constant. Retain that constant in tangent and transport witnesses.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:uniform-halfspace",
+        "gmt:uniform-tangents",
+        "gmt:support-not-full",
+        "lem:dimensional-tangent-ball-constant"
+      ],
+      "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
+      "file": "Preiss/MeasureTheory/Uniform/DimensionReduction.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "For uniform $\\nu$ with non-full support there exist a support point $y$,\na nonzero vector $e$, and a tangent $\\lambda$ at $y$ supported in\n$\\{z:\\langle z,e\\rangle\\geq0\\}$. Preserve the exact normalization when\nchoosing the tangent. GMT's \\texttt{SUniformAux.exists\\_halfSpace} proves\nthis in its body but exports only the existence of the new uniform measure.\nThe adapter should reuse that proof pattern and retain its witness.",
+      "repair": [
+        "Existing upstream existential statement discards the tangent witness; preserve it and its normalization."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:hyperplane-tangent-lineage",
+      "audit_code": "A03",
+      "title": "Corrected hyperplane reduction with lineage",
+      "statement_tex": "For a centred uniform half-space measure $\\nu$, there exist $w\\ne0$ and a\nuniform $\\lambda$ supported in $w^\\perp$ such that either $\\lambda=\\nu$\nor $\\lambda$ is a tangent to $\\nu$ at zero, up to the explicitly fixed\npositive normalization. The new $w$ need not be $e$.\nThe proof of GMT's \\texttt{SUniformAux.exists\\_hyperplane} already has\nexactly these two branches. Expose\n\\texttt{SUniformAux.abs\\_inner\\_integral\\_le},\n\\texttt{SUniformAux.support\\_tangent\\_subset\\_of\\_estimate}, and\n\\texttt{SUniformAux.support\\_subset\\_of\\_integral\\_inner\\_eq\\_zero}\nas upstream prerequisites. The obsolete statement that every tangent lies in\nthe original half-space boundary must not enter the graph.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= ambient dimension; the starting measure is m-uniform with a fixed positive finite ball constant. Retain that constant in tangent and transport witnesses.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:uniform-hyperplane",
+        "gmt:barycenter-quadratic-bound",
+        "gmt:quadratic-support-tangent",
+        "gmt:zero-barycenter-hyperplane"
+      ],
+      "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
+      "file": "Preiss/MeasureTheory/Uniform/DimensionReduction.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "For a centred uniform half-space measure $\\nu$, there exist $w\\ne0$ and a\nuniform $\\lambda$ supported in $w^\\perp$ such that either $\\lambda=\\nu$\nor $\\lambda$ is a tangent to $\\nu$ at zero, up to the explicitly fixed\npositive normalization. The new $w$ need not be $e$.\nThe proof of GMT's \\texttt{SUniformAux.exists\\_hyperplane} already has\nexactly these two branches. Expose\n\\texttt{SUniformAux.abs\\_inner\\_integral\\_le},\n\\texttt{SUniformAux.support\\_tangent\\_subset\\_of\\_estimate}, and\n\\texttt{SUniformAux.support\\_subset\\_of\\_integral\\_inner\\_eq\\_zero}\nas upstream prerequisites. The obsolete statement that every tangent lies in\nthe original half-space boundary must not enter the graph.",
+      "repair": [
+        "Author erratum: the new hyperplane need not be the original half-space boundary. Preserve equality-or-tangent lineage."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:hyperplane-transport-map",
+      "audit_code": "A04",
+      "title": "Hyperplane transport with an explicit isometry",
+      "statement_tex": "Given an isometric identification $L:\\mathbb R^{k-1}\\simeq w^\\perp$, return\nthe transported measure together with the equality of its pushforward with\n$\\lambda$, its ball law, support correspondence and blow-up covariance.\nThe existential theorem\n\\texttt{SUniformAux.exists\\_isSUniform\\_of\\_hyperplane}\ndoes not export enough data by itself.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= ambient dimension; the starting measure is m-uniform with a fixed positive finite ball constant. Retain that constant in tangent and transport witnesses.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:hyperplane-transport",
+        "lem:blowup-composition"
+      ],
+      "lean_name": "Preiss.uniform_hyperplane_transport",
+      "file": "Preiss/MeasureTheory/Uniform/DimensionReduction.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Given an isometric identification $L:\\mathbb R^{k-1}\\simeq w^\\perp$, return\nthe transported measure together with the equality of its pushforward with\n$\\lambda$, its ball law, support correspondence and blow-up covariance.\nThe existential theorem\n\\texttt{SUniformAux.exists\\_isSUniform\\_of\\_hyperplane}\ndoes not export enough data by itself.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:pseudotangent-transitive",
+      "audit_code": "A05",
+      "title": "Transitivity of the support-centered scaling orbit closure",
+      "statement_tex": "Let $\\mathcal O_m(\\nu)$ be the closure of\n$\\{D^m_{y,r}\\nu:y\\in\\operatorname{supp}\\nu,\\ 0<r\\leq1\\}$ within regular\nlocally finite measures. For uniform measures all these limits retain their\nball constant. Prove\n$\\lambda\\in\\mathcal O_m(\\nu)\\Rightarrow\n \\mathcal O_m(\\lambda)\\subseteq\\mathcal O_m(\\nu)$.\nTo compose a rescaling centred at a support point $z$ of $\\lambda$, approximate\n$z$ by support points of the convergent approximating measures (S04), then use\nS02 and S03. Products of radii remain at most one. A diagonal selection turns\nclosure membership into the sequence form in the current Lean statement.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= ambient dimension; the starting measure is m-uniform with a fixed positive finite ball constant. Retain that constant in tangent and transport witnesses.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:vague-support-approximation",
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition",
+        "lem:vague-diagonal"
+      ],
+      "lean_name": "Preiss.uniformPseudotangent_trans",
+      "file": "Preiss/MeasureTheory/Tangent/Pseudotangents.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Let $\\mathcal O_m(\\nu)$ be the closure of\n$\\{D^m_{y,r}\\nu:y\\in\\operatorname{supp}\\nu,\\ 0<r\\leq1\\}$ within regular\nlocally finite measures. For uniform measures all these limits retain their\nball constant. Prove\n$\\lambda\\in\\mathcal O_m(\\nu)\\Rightarrow\n \\mathcal O_m(\\lambda)\\subseteq\\mathcal O_m(\\nu)$.\nTo compose a rescaling centred at a support point $z$ of $\\lambda$, approximate\n$z$ by support points of the convergent approximating measures (S04), then use\nS02 and S03. Products of radii remain at most one. A diagonal selection turns\nclosure membership into the sequence form in the current Lean statement.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:plane-supported-uniform-flat",
+      "audit_code": "A06a",
+      "title": "Classification of plane-supported uniform measures",
+      "statement_tex": "If $\\nu\\in\\mathcal U_m$ and $\\operatorname{supp}\\nu\\subset V$ for an $m$-dimensional linear plane $V$, then $\\nu=\\sigma_V$. More generally a positive uniform ball constant determines the corresponding scalar multiple of $\\sigma_V$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= ambient dimension; the starting measure is m-uniform with a fixed positive finite ball constant. Retain that constant in tangent and transport witnesses.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:uniform-full-dimension",
+        "lem:hyperplane-transport-map",
+        "lem:plane-scaling"
+      ],
+      "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
+      "file": "Preiss/MeasureTheory/Uniform/DimensionReduction.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Induct on ambient codimension using A01--A05. At dimension $m$, use\n\\texttt{mattila\\_14\\_11}, Hausdorff/Lebesgue normalization and isometric\npushforward to identify the terminal uniform measure with a flat one.\nThere is no need for analytic support varieties, a full Marstrand integer\ndimension theorem, or classification of all uniform measures.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:uniform-reduction",
+      "audit_code": "A06b",
+      "title": "Codimension reduction retaining orbit membership",
+      "statement_tex": "If $\\nu\\in\\mathcal U_m$ in ambient dimension $k>m$, there is a unit uniform measure on a $(k-1)$-dimensional Euclidean space whose isometric pushforward belongs to the support-centered scaling orbit closure of $\\nu$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= ambient dimension; the starting measure is m-uniform with a fixed positive finite ball constant. Retain that constant in tangent and transport witnesses.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:support-not-full",
+        "lem:halfspace-tangent-witness",
+        "lem:hyperplane-tangent-lineage",
+        "lem:hyperplane-transport-map",
+        "lem:pseudotangent-transitive"
+      ],
+      "lean_name": "Preiss.uniform_dimension_reduction",
+      "file": "Preiss/MeasureTheory/Uniform/DimensionReduction.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Induct on ambient codimension using A01--A05. At dimension $m$, use\n\\texttt{mattila\\_14\\_11}, Hausdorff/Lebesgue normalization and isometric\npushforward to identify the terminal uniform measure with a flat one.\nThere is no need for analytic support varieties, a full Marstrand integer\ndimension theorem, or classification of all uniform measures.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "thm:flat-pseudotangent",
+      "audit_code": "A06c",
+      "title": "Flat pseudotangent of a uniform measure",
+      "statement_tex": "Induct on ambient codimension using A01--A05. At dimension $m$, use\n\\texttt{mattila\\_14\\_11}, Hausdorff/Lebesgue normalization and isometric\npushforward to identify the terminal uniform measure with a flat one.\nThere is no need for analytic support varieties, a full Marstrand integer\ndimension theorem, or classification of all uniform measures.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= ambient dimension; the starting measure is m-uniform with a fixed positive finite ball constant. Retain that constant in tangent and transport witnesses.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:uniform-reduction",
+        "lem:plane-supported-uniform-flat",
+        "lem:pseudotangent-transitive"
+      ],
+      "lean_name": "Preiss.uniform_has_flat_pseudotangent",
+      "file": "Preiss/MeasureTheory/Tangent/Pseudotangents.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Induct on ambient codimension using A01--A05. At dimension $m$, use\n\\texttt{mattila\\_14\\_11}, Hausdorff/Lebesgue normalization and isometric\npushforward to identify the terminal uniform measure with a flat one.\nThere is no need for analytic support varieties, a full Marstrand integer\ndimension theorem, or classification of all uniform measures.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:measurable-hull-holes",
+      "audit_code": "A07",
+      "title": "Measurable hulls preserve disjoint holes",
+      "statement_tex": "For arbitrary $D$ with $\\mu D<\\infty$, put $H=\\operatorname{toMeasurable}_\\mu D$.\nThen for every measurable $U$ disjoint from $D$, $\\mu(H\\cap U)=0$.\nThis is an immediate use of mathlib's\n\\texttt{Measure.measure\\_toMeasurable\\_inter}; an s-finite version is also\navailable. In particular $\\mu(H\\setminus\\overline D)=0$.\nThis statement requires no measurability of $D$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "D is arbitrary, not assumed measurable, and mu(D)<infinity; U is measurable and disjoint from D.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "Preiss.measure_toMeasurable_inter_eq_zero_of_disjoint",
+      "file": "Preiss/MeasureTheory/Tangent/Recentering.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "For arbitrary $D$ with $\\mu D<\\infty$, put $H=\\operatorname{toMeasurable}_\\mu D$.\nThen for every measurable $U$ disjoint from $D$, $\\mu(H\\cap U)=0$.\nThis is an immediate use of mathlib's\n\\texttt{Measure.measure\\_toMeasurable\\_inter}; an s-finite version is also\navailable. In particular $\\mu(H\\setminus\\overline D)=0$.\nThis statement requires no measurability of $D$.",
+      "repair": [
+        "New proof repair: arbitrary sets of bad centers are not asserted Borel. Use finite-outer-mass localization and Measure.measure_toMeasurable_inter."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:hull-support-approximation",
+      "audit_code": "A08",
+      "title": "Support approximation from arbitrary positive outer measure sets",
+      "statement_tex": "Assume $a\\in D$, $a$ is a density-one point of its measurable hull $H$,\n$\\limsup_{r\\downarrow0}\\mu(B(a,r))/r^m<\\infty$, and\n$D^m_{a,r_i}\\mu\\rightharpoonup\\nu$ with $r_i\\downarrow0$.\nThen for every $y\\in\\operatorname{supp}\\nu$,\n$\\operatorname{dist}(a+r_i y,D)/r_i\\to0$.\nIndeed, a subsequence of holes $B(a+r_i y,\\eta r_i)$ disjoint from $D$ has\nzero $H$-mass by A07. It lies in $B(a,Cr_i)$ for a fixed $C$; its remaining\nmass is $o(r_i^m)$ by density-one and the upper density bound. Portmanteau\nwould then make $\\nu(B(y,\\eta))=0$, a contradiction. Choose approximate\nnearest points in $D$ with error $r_i/i$; no closedness of $D$ is needed.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "D is arbitrary with finite outer measure; a belongs to D and is a density-one point of its mu-measurable hull; upper m-density at a is finite; r_i>0 tends to zero.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:measurable-hull-holes",
+        "gmt:portmanteau",
+        "gmt:density-points"
+      ],
+      "lean_name": "Preiss.dist_badSet_rescaled_tendsto_zero",
+      "file": "Preiss/MeasureTheory/Tangent/Recentering.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Assume $a\\in D$, $a$ is a density-one point of its measurable hull $H$,\n$\\limsup_{r\\downarrow0}\\mu(B(a,r))/r^m<\\infty$, and\n$D^m_{a,r_i}\\mu\\rightharpoonup\\nu$ with $r_i\\downarrow0$.\nThen for every $y\\in\\operatorname{supp}\\nu$,\n$\\operatorname{dist}(a+r_i y,D)/r_i\\to0$.\nIndeed, a subsequence of holes $B(a+r_i y,\\eta r_i)$ disjoint from $D$ has\nzero $H$-mass by A07. It lies in $B(a,Cr_i)$ for a fixed $C$; its remaining\nmass is $o(r_i^m)$ by density-one and the upper density bound. Portmanteau\nwould then make $\\nu(B(y,\\eta))=0$, a contradiction. Choose approximate\nnearest points in $D$ with error $r_i/i$; no closedness of $D$ is needed.",
+      "repair": [
+        "New measurable-hull repair; require density one of the hull and finite upper dimensional density."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:recenter",
+      "audit_code": "A09",
+      "title": "One null exceptional set for all dimensional recenterings",
+      "statement_tex": "Under positive finite existing $m$-density almost everywhere, prove\n\\[\n \\text{for }\\mu\\text{-a.e. }a,\\quad\n \\forall\\nu\\in\\operatorname{Tan}_m(\\mu,a),\\quad\n \\forall y\\in\\operatorname{supp}\\nu,\\quad\\forall r>0,\n \\quad D^m_{y,r}\\nu\\in\\operatorname{Tan}_m(\\mu,a).\n\\]\nHere $\\operatorname{Tan}_m$ uses fixed dimensional normalization.\nIt is enough to prove recentering at radius one; S03 and S07 give all radii.\nFor fixed rational tolerances and radius cutoffs, take the arbitrary set of\nbad centres, stratify its density constants and intersect with a bounded ball.\nIf it has positive outer measure, use a finite metric cover of the compact\nfamily of translated uniform tangents to select one positive-outer-measure\nclass $D$ whose chosen translated tangents are pairwise close.\nTake a density point of its measurable hull lying in $D$: the hull's bad\ndensity points are null and cannot cover a set of positive outer measure.\nApply A08 to select nearby bad centres in $D$ and S02 to compare their blow-ups\nwith the chosen translated tangent. The triangle inequality contradicts the\ndefining fixed separation of the bad centres. Countably many tolerances give\none null exceptional set. This repairs the book's unjustified assertion that\nits existentially defined set $D$ is measurable.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "The existing m-dimensional density is positive and finite at mu-almost every point; 1<=m<=ambient dimension.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:hull-support-approximation",
+        "lem:uniform-finite-metric-covers",
+        "lem:vague-moving-blowups",
+        "lem:dimensional-tangent-closed",
+        "lem:dimensional-tangent-dilation",
+        "lem:uniform-adapter",
+        "lem:dimensional-tangent-ball-constant",
+        "gmt:goodsets"
+      ],
+      "lean_name": "Preiss.ae_recenter_dimensionalTangent",
+      "file": "Preiss/MeasureTheory/Tangent/Recentering.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Under positive finite existing $m$-density almost everywhere, prove\n\\[\n \\text{for }\\mu\\text{-a.e. }a,\\quad\n \\forall\\nu\\in\\operatorname{Tan}_m(\\mu,a),\\quad\n \\forall y\\in\\operatorname{supp}\\nu,\\quad\\forall r>0,\n \\quad D^m_{y,r}\\nu\\in\\operatorname{Tan}_m(\\mu,a).\n\\]\nHere $\\operatorname{Tan}_m$ uses fixed dimensional normalization.\nIt is enough to prove recentering at radius one; S03 and S07 give all radii.\nFor fixed rational tolerances and radius cutoffs, take the arbitrary set of\nbad centres, stratify its density constants and intersect with a bounded ball.\nIf it has positive outer measure, use a finite metric cover of the compact\nfamily of translated uniform tangents to select one positive-outer-measure\nclass $D$ whose chosen translated tangents are pairwise close.\nTake a density point of its measurable hull lying in $D$: the hull's bad\ndensity points are null and cannot cover a set of positive outer measure.\nApply A08 to select nearby bad centres in $D$ and S02 to compare their blow-ups\nwith the chosen translated tangent. The triangle inequality contradicts the\ndefining fixed separation of the bad centres. Countably many tolerances give\none null exceptional set. This repairs the book's unjustified assertion that\nits existentially defined set $D$ is measurable.",
+      "repair": [
+        "New measurable-hull proof replacing unjustified measurability in De Lellis Lemma 6.6; quantify all tangents, support centers and positive radii outside one null set."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "thm:part-a",
+      "audit_code": "A10",
+      "title": "Existence of a flat tangent almost everywhere",
+      "statement_tex": "Intersect the a.e. sets for uniformity, density and A09. Choose any tangent,\nuse A06, recenter every approximating term using A09, and use S07 for the\nnonzero flat limit. This is \\texttt{ae\\_exists\\_flat\\_tangent}.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "The existing m-dimensional density is positive and finite at mu-almost every point; 1<=m<=ambient dimension.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:uniform-adapter",
+        "lem:dimensional-tangent-compactness",
+        "thm:flat-pseudotangent",
+        "lem:recenter",
+        "lem:dimensional-tangent-closed",
+        "lem:tangent-ray"
+      ],
+      "lean_name": "Preiss.ae_exists_flat_tangent",
+      "file": "Preiss/MeasureTheory/Rectifiable/PreissPartA.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
+      "proof_sketch_tex": "Intersect the a.e. sets for uniformity, density and A09. Choose any tangent,\nuse A06, recenter every approximating term using A09, and use S07 for the\nnonzero flat limit. This is \\texttt{ae\\_exists\\_flat\\_tangent}.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:radial",
+      "audit_code": "M01",
+      "title": "Radial pushforward distribution and integrals",
+      "statement_tex": "For $\\nu\\in\\mathcal U_m$ and $y\\in\\operatorname{supp}\\nu$, identify the\npushforward under $z\\mapsto|z-y|$ with that of\n$\\omega_m^{-1}\\mathcal L^m$ under the norm. State nonnegative Borel integrals\nas lintegrals, then derive signed Bochner-integral identities only with their\nintegrability hypotheses. GMT already gives equality of continuous radial\nintegrals on closed balls. The full pushforward distribution and unbounded\nGaussian consequences are new adapters.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "gmt:uniform-radial"
+      ],
+      "lean_name": "Preiss.uniform_radial_pushforward",
+      "file": "Preiss/MeasureTheory/Uniform/Radial.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For $\\nu\\in\\mathcal U_m$ and $y\\in\\operatorname{supp}\\nu$, identify the\npushforward under $z\\mapsto|z-y|$ with that of\n$\\omega_m^{-1}\\mathcal L^m$ under the norm. State nonnegative Borel integrals\nas lintegrals, then derive signed Bochner-integral identities only with their\nintegrability hypotheses. GMT already gives equality of continuous radial\nintegrals on closed balls. The full pushforward distribution and unbounded\nGaussian consequences are new adapters.",
+      "repair": [
+        "State lintegral identity first; signed or Bochner identities require integrability. Merge the two existing consecutive proof blocks under this label."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:gaussian-polynomial-integrable",
+      "audit_code": "M02a",
+      "title": "Gaussian polynomial integrability under polynomial growth",
+      "statement_tex": "For a regular measure with $\\mu(B(0,R))\\leq C(1+R)^p$ for all $R>0$, $C,p\\geq0$, every $d\\in\\mathbb N$ and $s>0$ satisfy $\\int |z|^d e^{-s|z|^2}\\,d\\mu<\\infty$. If $\\mu\\ne0$, its Gaussian mass is positive.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "Every measure in a varying family obeys the same bound mu(B(0,R)) <= C(1+R)^p for all R>0, where C,p are fixed finite nonnegative real numbers. Gaussian rate s is strictly positive.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
+      "file": "Preiss/MeasureTheory/Gaussian/PolynomialGrowth.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:gaussian-uniform-tails",
+      "audit_code": "M02b",
+      "title": "Uniform Gaussian polynomial tails",
+      "statement_tex": "For fixed $C,p\\geq0$, $d\\in\\mathbb N$, $s>0$, the supremum of $\\int_{|z|>R}|z|^d e^{-s|z|^2}\\,d\\mu$ over all regular measures satisfying $\\mu(B(0,t))\\leq C(1+t)^p$ tends to zero as $R\\to\\infty$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "Every measure in a varying family obeys the same bound mu(B(0,R)) <= C(1+R)^p for all R>0, where C,p are fixed finite nonnegative real numbers. Gaussian rate s is strictly positive.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_name": "Preiss.gaussian_polynomial_uniform_tail",
+      "file": "Preiss/MeasureTheory/Gaussian/PolynomialGrowth.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
+      "repair": [
+        "Explicit uniform tail control is required to pass unbounded Gaussian tests through vague limits."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:vague-gaussian-polynomials",
+      "audit_code": "M02c",
+      "title": "Vague convergence of Gaussian polynomial integrals",
+      "statement_tex": "If $\\mu_i\\rightharpoonup\\mu$ regularly with one common polynomial growth bound, then for every real polynomial $P$ and $s>0$, $\\int P(z)e^{-s|z|^2}\\,d\\mu_i\\to\\int P(z)e^{-s|z|^2}\\,d\\mu$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "Every measure in a varying family obeys the same bound mu(B(0,R)) <= C(1+R)^p for all R>0, where C,p are fixed finite nonnegative real numbers. Gaussian rate s is strictly positive.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-uniform-tails",
+        "lem:vague-moving-tests"
+      ],
+      "lean_name": "Preiss.vague_integral_polynomial_mul_gaussian",
+      "file": "Preiss/MeasureTheory/Gaussian/PolynomialGrowth.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
+      "repair": [
+        "Vague convergence alone is insufficient."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:gaussian-parameter-derivative",
+      "audit_code": "M02d",
+      "title": "Differentiation of Gaussian polynomial integrals",
+      "statement_tex": "Under polynomial growth, $s\\mapsto\\int P(z)e^{-s|z|^2}\\,d\\mu$ is differentiable for $s>0$ with derivative $-\\int |z|^2P(z)e^{-s|z|^2}\\,d\\mu$; the identity iterates, with domination uniform on compact positive parameter intervals.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "Every measure in a varying family obeys the same bound mu(B(0,R)) <= C(1+R)^p for all R>0, where C,p are fixed finite nonnegative real numbers. Gaussian rate s is strictly positive.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_name": "Preiss.hasDerivAt_integral_polynomial_mul_gaussian",
+      "file": "Preiss/MeasureTheory/Gaussian/PolynomialGrowth.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "def:moments",
+      "audit_code": "M03a",
+      "title": "Continuous symmetric Gaussian moment forms",
+      "statement_tex": "For $s>0$, define the continuous symmetric $k$-linear form $b_{k,s}(u_1,\\ldots,u_k)=\\frac{(2s)^k}{k! I_\\nu(s)}\\int e^{-s|z|^2}\\prod_{i=1}^k\\langle z,u_i\\rangle\\,d\\nu(z)$. Prove its diagonal evaluation agrees with the scalar Gaussian moment; the degree-zero form equals $1$ for nonzero measures with finite Gaussian mass.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_name": "Preiss.gaussianMomentForm",
+      "file": "Preiss/MeasureTheory/Uniform/MomentForms.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Package the current scalar \\texttt{gaussianMoment} as a continuous symmetric\n$k$-multilinear form, prove the evaluation formula, scalar-invariance,\northogonal covariance, and the scaling law\n\\[\n b^{D^m_{0,r}\\nu}_{k,s}=r^k b^\\nu_{k,s/r^2}.\n\\]\nThe definition with $k=0$ is the constant one for uniform measures; Taylor\ncoefficient assertions below start at $k=1$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-covariance",
+      "audit_code": "M03b",
+      "title": "Moment covariance, scalar invariance and dilation",
+      "statement_tex": "Package the current scalar \\texttt{gaussianMoment} as a continuous symmetric\n$k$-multilinear form, prove the evaluation formula, scalar-invariance,\northogonal covariance, and the scaling law\n\\[\n b^{D^m_{0,r}\\nu}_{k,s}=r^k b^\\nu_{k,s/r^2}.\n\\]\nThe definition with $k=0$ is the constant one for uniform measures; Taylor\ncoefficient assertions below start at $k=1$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "def:moments",
+        "lem:blowup-composition"
+      ],
+      "lean_name": "Preiss.gaussianMomentForm_dilate",
+      "file": "Preiss/MeasureTheory/Uniform/MomentForms.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Package the current scalar \\texttt{gaussianMoment} as a continuous symmetric\n$k$-multilinear form, prove the evaluation formula, scalar-invariance,\northogonal covariance, and the scaling law\n\\[\n b^{D^m_{0,r}\\nu}_{k,s}=r^k b^\\nu_{k,s/r^2}.\n\\]\nThe definition with $k=0$ is the constant one for uniform measures; Taylor\ncoefficient assertions below start at $k=1$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-norm-bound",
+      "audit_code": "M04a",
+      "title": "Uniform operator norm bounds for Gaussian moments",
+      "statement_tex": "For $\\nu\\in\\mathcal U_m$, $k\\geq1$ and $s>0$, $\\|b_{k,s}\\|\\leq C_m 2^k k^{k/2}s^{k/2}/k!$, where $C_m$ depends only on $m$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "def:moments",
+        "lem:radial"
+      ],
+      "lean_name": "Preiss.norm_gaussianMomentForm_le",
+      "file": "Preiss/MeasureTheory/Uniform/MomentForms.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Prove the norm bound\n$|b_{k,s}(u_1,\\ldots,u_k)|\\leq\nC_m 2^k k^{k/2}s^{k/2}\\prod_i|u_i|/k!$.\nFor $x$ in the support, the absolutely convergent series\n$\\sum_{k\\geq0} b_{k,s}(x^k)=e^{s|x|^2}$ follows by translating the\nGaussian. A valid dominating function is\n$e^{-s|z|^2+2s|z||x|}$, bounded by a constant times\n$e^{-(s/2)|z|^2}$, not the expression with a negative cross term printed in\nthe source. Taylor truncation gives, for each $q\\geq1$,\n\\[\n \\left|\\sum_{k=1}^{2q}b_{k,s}(x^k)\n -\\sum_{j=1}^{q}\\frac{s^j|x|^{2j}}{j!}\\right|\n \\leq C_{m,q}(s|x|^2)^{q+1/2}.\n\\]\nFor $s|x|^2\\geq1$ use the finite sum and the norm bound; for small values use\nthe convergent exponential series with its remainder bound.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:gaussian-translation-series",
+      "audit_code": "M04b",
+      "title": "Absolutely convergent Gaussian translation series",
+      "statement_tex": "For $\\nu\\in\\mathcal U_m$, $x\\in\\operatorname{supp}\\nu$, $s>0$, the absolutely convergent series satisfies $\\sum_{k=0}^{\\infty}b_{k,s}(x^k)=e^{s|x|^2}$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:radial",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_name": "Preiss.hasSum_gaussianMoment_diagonal",
+      "file": "Preiss/MeasureTheory/Uniform/MomentForms.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Prove the norm bound\n$|b_{k,s}(u_1,\\ldots,u_k)|\\leq\nC_m 2^k k^{k/2}s^{k/2}\\prod_i|u_i|/k!$.\nFor $x$ in the support, the absolutely convergent series\n$\\sum_{k\\geq0} b_{k,s}(x^k)=e^{s|x|^2}$ follows by translating the\nGaussian. A valid dominating function is\n$e^{-s|z|^2+2s|z||x|}$, bounded by a constant times\n$e^{-(s/2)|z|^2}$, not the expression with a negative cross term printed in\nthe source. Taylor truncation gives, for each $q\\geq1$,\n\\[\n \\left|\\sum_{k=1}^{2q}b_{k,s}(x^k)\n -\\sum_{j=1}^{q}\\frac{s^j|x|^{2j}}{j!}\\right|\n \\leq C_{m,q}(s|x|^2)^{q+1/2}.\n\\]\nFor $s|x|^2\\geq1$ use the finite sum and the norm bound; for small values use\nthe convergent exponential series with its remainder bound.",
+      "repair": [
+        "Use domination exp(-s|z|^2+2s|z||x|) <= C exp(-(s/2)|z|^2); the source has an invalid sign in the displayed dominator."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:taylor-one",
+      "audit_code": "M04c",
+      "title": "Quantitative finite moment remainder",
+      "statement_tex": "For every $m,q\\geq1$ there is $C_{m,q}\\geq0$ such that for every $\\nu\\in\\mathcal U_m$, support point $x$ and $s>0$, $|\\sum_{k=1}^{2q} b_{k,s}(x^k)-\\sum_{j=1}^q s^j|x|^{2j}/j!|\\leq C_{m,q}(s|x|^2)^{q+1/2}$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-translation-series",
+        "lem:moment-norm-bound"
+      ],
+      "lean_name": "Preiss.gaussianMoment_taylor_remainder",
+      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Prove the norm bound\n$|b_{k,s}(u_1,\\ldots,u_k)|\\leq\nC_m 2^k k^{k/2}s^{k/2}\\prod_i|u_i|/k!$.\nFor $x$ in the support, the absolutely convergent series\n$\\sum_{k\\geq0} b_{k,s}(x^k)=e^{s|x|^2}$ follows by translating the\nGaussian. A valid dominating function is\n$e^{-s|z|^2+2s|z||x|}$, bounded by a constant times\n$e^{-(s/2)|z|^2}$, not the expression with a negative cross term printed in\nthe source. Taylor truncation gives, for each $q\\geq1$,\n\\[\n \\left|\\sum_{k=1}^{2q}b_{k,s}(x^k)\n -\\sum_{j=1}^{q}\\frac{s^j|x|^{2j}}{j!}\\right|\n \\leq C_{m,q}(s|x|^2)^{q+1/2}.\n\\]\nFor $s|x|^2\\geq1$ use the finite sum and the norm bound; for small values use\nthe convergent exponential series with its remainder bound.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:graded-analytic-projection",
+      "audit_code": "M05",
+      "title": "Analytic extension of weighted complementary projections",
+      "statement_tex": "This is a measure-independent linear algebra theorem. Let the finite-dimensional\nreal inner-product space $X$ have an orthogonal decomposition\n$X=\\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\\leq X$.\nFor $s>0$ put $A(s)=\\sum_j s^jP_j$ and\n$F_s=A(s)^{-1}(V^\\perp)$. Then $X=V\\oplus F_s$; the projection $Q_s$\nonto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.\nIn particular its operator norm stays bounded as $s\\downarrow0$.\nFor the proof, orthogonally split $V^\\perp$ according to the filtration\n$V^\\perp\\cap\\bigoplus_{j\\leq k}X_j$ and define a polynomial family which\nis identity on $V$ and equals $P_k+sP_{k-1}+\\cdots+s^{k-1}P_1$ on the\n$k$th filtration summand. Its value at zero is invertible, by the\nleast-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial\nfamily. In the least-degree argument the lower-degree vector belongs to the\nsum of all earlier filtration summands, not necessarily only the immediately\npreceding one.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "Preiss.analyticAt_weightedProjection_zero",
+      "file": "Preiss/Analysis/InnerProductSpace/GradedProjection.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "This is a measure-independent linear algebra theorem. Let the finite-dimensional\nreal inner-product space $X$ have an orthogonal decomposition\n$X=\\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\\leq X$.\nFor $s>0$ put $A(s)=\\sum_j s^jP_j$ and\n$F_s=A(s)^{-1}(V^\\perp)$. Then $X=V\\oplus F_s$; the projection $Q_s$\nonto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.\nIn particular its operator norm stays bounded as $s\\downarrow0$.\nFor the proof, orthogonally split $V^\\perp$ according to the filtration\n$V^\\perp\\cap\\bigoplus_{j\\leq k}X_j$ and define a polynomial family which\nis identity on $V$ and equals $P_k+sP_{k-1}+\\cdots+s^{k-1}P_1$ on the\n$k$th filtration summand. Its value at zero is invertible, by the\nleast-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial\nfamily. In the least-degree argument the lower-degree vector belongs to the\nsum of all earlier filtration summands, not necessarily only the immediately\npreceding one.",
+      "repair": [
+        "Generic finite-dimensional replacement for the source tensor argument; filtration decomposition must include all earlier summands."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "def:polynomial-feature",
+      "audit_code": "M06a",
+      "title": "Finite Euclidean polynomial feature map",
+      "statement_tex": "For $1\\leq k\\leq N$, index a Euclidean block by all $\\iota:\\operatorname{Fin}k\\to\\operatorname{Fin}n$ and set $\\Phi_k(x)_\\iota=\\sqrt{2^k/k!}\\prod_j x_{\\iota(j)}$. The block pairing is $\\langle\\Phi_k(x),\\Phi_k(y)\\rangle=(2^k/k!)\\langle x,y\\rangle^k$. The direct sum has orthogonal coordinate projections $P_k$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "Preiss.polynomialFeature",
+      "file": "Preiss/Analysis/InnerProductSpace/PolynomialFeatures.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
+      "repair": [
+        "New coordinate model avoids the incorrectly normalized symmetrized basis in the printed proof."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-feature-annihilation",
+      "audit_code": "M06b",
+      "title": "Feature moment functional and weighted annihilator",
+      "statement_tex": "Let $V=\\operatorname{span}\\Phi(\\operatorname{supp}\\nu)$ and $A(s)=\\sum_{k=1}^{2q}s^kP_k$. The functional $L_s(u)=I(s)^{-1}\\int\\langle A(s)u,\\Phi(z)\\rangle e^{-s|z|^2}\\,d\\nu$ is continuous linear, has $L_s(\\Phi(x))=\\sum_{k=1}^{2q}b_{k,s}(x^k)$, and vanishes on $A(s)^{-1}(V^\\perp)$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "def:polynomial-feature",
+        "def:moments"
+      ],
+      "lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
+      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-feature-remainder",
+      "audit_code": "M06c",
+      "title": "Operator norm remainder from finitely many support features",
+      "statement_tex": "The norm polynomials $|x|^{2j}$ are linear functionals of $\\Phi(x)$ for $j\\leq q$. Choose a finite basis of $V$ from support features. The pointwise remainders at those basis points imply $\\|L_s|V-\\sum_{j=1}^q s^j\\ell_j|V/j!\\|=O(s^{q+1/2})$ as $s\\downarrow0$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:moment-feature-annihilation",
+        "lem:taylor-one",
+        "def:polynomial-feature"
+      ],
+      "lean_name": "Preiss.featureMoment_operator_remainder",
+      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
+      "repair": [
+        "Use a finite support-feature basis to obtain a genuine linear operator-norm estimate."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:taylor-two",
+      "audit_code": "M07a",
+      "title": "Coherent operator-norm moment Taylor coefficients",
+      "statement_tex": "For $\\nu\\in\\mathcal U_m$ there are symmetric continuous forms $b_k^{(j)}$ for $k,j\\geq1$ such that for all $q\\geq1$ and $k\\geq1$, $b_{k,s}=\\sum_{j=1}^q s^j b_k^{(j)}/j!+o(s^q)$ in operator norm as $s\\downarrow0$. These coefficients are unique and independent of truncation order.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:graded-analytic-projection",
+        "lem:moment-feature-remainder",
+        "lem:moment-norm-bound"
+      ],
+      "lean_name": "Preiss.exists_gaussianMoment_taylor_coefficients",
+      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-coefficient-vanishing",
+      "audit_code": "M07b",
+      "title": "Degree restriction on Taylor coefficients",
+      "statement_tex": "For $k,j\\geq1$ with $k>2j$, $b_k^{(j)}=0$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:taylor-two",
+        "lem:moment-norm-bound"
+      ],
+      "lean_name": "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt",
+      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-support-polynomial",
+      "audit_code": "M07c",
+      "title": "Polynomial support identities for Taylor coefficients",
+      "statement_tex": "For every $q\\geq1$ and $x\\in\\operatorname{supp}\\nu$, $\\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:taylor-two",
+        "lem:taylor-one",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "lean_name": "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow",
+      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:scaled-moment-limits",
+      "audit_code": "M08a",
+      "title": "Odd and even leading moment limits",
+      "statement_tex": "For odd $k\\geq1$, $s^{-k/2}b_{k,s}\\to0$. For $j\\geq1$, $s^{-j}b_{2j,s}\\to b_{2j}^{(j)}/j!$, in operator norm as $s\\downarrow0$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:taylor-two",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "lean_name": "Preiss.gaussianMoment_scaled_limit",
+      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For odd $k$, $s^{-k/2}b_{k,s}\\to0$; for $k=2j$,\n$s^{-j}b_{2j,s}\\to b_{2j}^{(j)}/j!$.\nThe factorial is essential; the displayed summary on printed page 74 omits it,\nwhereas the calculation in Chapter 9 includes it correctly.\nUse M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted\npolynomial moment of $D^m_{0,r}\\nu$ as $r\\to\\infty$.",
+      "repair": [
+        "Retain the factorial omitted in the summary on printed p.74."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:blowdown-moment-limits",
+      "audit_code": "M08b",
+      "title": "All Gaussian polynomial moments of blow-downs have limits",
+      "statement_tex": "For $\\nu\\in\\mathcal U_m$ and every polynomial $P$, the limit of $\\int P(z)e^{-|z|^2}\\,d(D^m_{0,r}\\nu)$ exists as $r\\to\\infty$. Degree $2j$ moment forms are determined by $b_{2j}^{(j)}/j!$, and odd-degree moments vanish.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:scaled-moment-limits",
+        "lem:moment-covariance",
+        "lem:radial"
+      ],
+      "lean_name": "Preiss.blowdown_gaussian_polynomial_limit",
+      "file": "Preiss/MeasureTheory/Uniform/TangentAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "For odd $k$, $s^{-k/2}b_{k,s}\\to0$; for $k=2j$,\n$s^{-j}b_{2j,s}\\to b_{2j}^{(j)}/j!$.\nThe factorial is essential; the displayed summary on printed page 74 omits it,\nwhereas the calculation in Chapter 9 includes it correctly.\nUse M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted\npolynomial moment of $D^m_{0,r}\\nu$ as $r\\to\\infty$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-determination",
+      "audit_code": "M09",
+      "title": "Gaussian weighted polynomials determine growing measures",
+      "statement_tex": "Regular measures with a common polynomial growth bound are equal if their\n$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends\nthe equalities from Gaussian rate $t$ to $t+1/2$ for $t\\geq1$ by dominated\nexponential series, then iterates to all positive integer rates.\nThe algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\\geq1$, extends\ncontinuously to the one-point compactification and separates points.\nStone--Weierstrass approximates $e^{|z|^2}\\varphi$ uniformly for compactly\nsupported $\\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.\nExpanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not\njustified by absolute domination, so that step in the book needs this repair\nor a separate uniqueness theorem with checked exponential-moment hypotheses.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "Every measure in a varying family obeys the same bound mu(B(0,R)) <= C(1+R)^p for all R>0, where C,p are fixed finite nonnegative real numbers. Gaussian rate s is strictly positive.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_name": "Preiss.measure_eq_of_gaussian_polynomial_moments_eq",
+      "file": "Preiss/MeasureTheory/Gaussian/MomentDetermination.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Regular measures with a common polynomial growth bound are equal if their\n$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends\nthe equalities from Gaussian rate $t$ to $t+1/2$ for $t\\geq1$ by dominated\nexponential series, then iterates to all positive integer rates.\nThe algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\\geq1$, extends\ncontinuously to the one-point compactification and separates points.\nStone--Weierstrass approximates $e^{|z|^2}\\varphi$ uniformly for compactly\nsupported $\\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.\nExpanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not\njustified by absolute domination, so that step in the book needs this repair\nor a separate uniqueness theorem with checked exponential-moment hypotheses.",
+      "repair": [
+        "New weights repair: extend rates by increments of 1/2 with domination, then use weighted Stone-Weierstrass; arbitrary-rate exponential expansion is unjustified."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:infinity-compactness",
+      "audit_code": "M10a",
+      "title": "Existence of uniform blow-down limits",
+      "statement_tex": "For every $\\nu\\in\\mathcal U_m$ and every sequence $r_i\\to\\infty$ of positive radii, a subsequence of $D^m_{0,r_i}\\nu$ converges vaguely to a member of $\\mathcal U_m$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:blowup-composition"
+      ],
+      "lean_name": "Preiss.exists_tangentAtInfinity",
+      "file": "Preiss/MeasureTheory/Uniform/TangentAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their\nGaussian moments, and M09 to identify the limits. The compactness principle\n``every sequence escaping to infinity has a convergent subsequence with the\nsame limit'' gives full convergence. A separate output is that every positive\nsequence $r_i\\to\\infty$ converges to this same measure. Scaling by a fixed\nfactor preserves the set of limits at infinity, so S02--S03 imply conicality.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "thm:unique-infinity",
+      "audit_code": "M10b",
+      "title": "Uniqueness and full convergence of the blow-down",
+      "statement_tex": "Every $\\nu\\in\\mathcal U_m$ admits a unique $\\lambda\\in\\mathcal U_m$ such that $D^m_{0,r}\\nu\\rightharpoonup\\lambda$ as $r\\to\\infty$. In particular every positive divergent radius sequence has this same limit.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:infinity-compactness",
+        "lem:vague-gaussian-polynomials",
+        "lem:blowdown-moment-limits",
+        "lem:moment-determination",
+        "lem:vague-countable-metric"
+      ],
+      "lean_name": "Preiss.unique_tangent_at_infinity",
+      "file": "Preiss/MeasureTheory/Uniform/TangentAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their\nGaussian moments, and M09 to identify the limits. The compactness principle\n``every sequence escaping to infinity has a convergent subsequence with the\nsame limit'' gives full convergence. A separate output is that every positive\nsequence $r_i\\to\\infty$ converges to this same measure. Scaling by a fixed\nfactor preserves the set of limits at infinity, so S02--S03 imply conicality.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "cor:conical",
+      "audit_code": "M10c",
+      "title": "The unique blow-down is conical",
+      "statement_tex": "For the unique blow-down $\\lambda$ of $\\nu\\in\\mathcal U_m$, $D^m_{0,r}\\lambda=\\lambda$ for every $r>0$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "thm:unique-infinity",
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition"
+      ],
+      "lean_name": "Preiss.tangent_at_infinity_conical",
+      "file": "Preiss/MeasureTheory/Uniform/TangentAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "proof_sketch_tex": "Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their\nGaussian moments, and M09 to identify the limits. The compactness principle\n``every sequence escaping to infinity has a convergent subsequence with the\nsame limit'' gives full convergence. A separate output is that every positive\nsequence $r_i\\to\\infty$ converges to this same measure. Scaling by a fixed\nfactor preserves the set of limits at infinity, so S02--S03 imply conicality.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:conical-moments",
+      "audit_code": "G01",
+      "title": "Homogeneity and parity of conical moments",
+      "statement_tex": "Conicality gives $b_{k,s}=s^{k/2}b_{k,1}$. Comparing with M07 makes odd forms\nzero and gives $b_{2j,s}=s^j b_{2j}^{(j)}/j!$.\nThe support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:moment-covariance",
+        "lem:taylor-two",
+        "lem:moment-support-polynomial"
+      ],
+      "lean_name": "Preiss.conical_gaussianMoment_homogeneous",
+      "file": "Preiss/MeasureTheory/Uniform/ConicalGap.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
+      "proof_sketch_tex": "Conicality gives $b_{k,s}=s^{k/2}b_{k,1}$. Comparing with M07 makes odd forms\nzero and gives $b_{2j,s}=s^j b_{2j}^{(j)}/j!$.\nThe support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:conical-covariance",
+      "audit_code": "G02",
+      "title": "Positive covariance form, trace and support identity",
+      "statement_tex": "The symmetric form $B=b_{2,1}$ is positive semidefinite,\n$\\operatorname{tr}B=m$, and $B(x,x)=|x|^2$ on the support.\nThe trace calculation is the radial Gaussian second moment. This statement\ndoes not require spectral choices.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:conical-moments",
+        "lem:radial",
+        "def:moments"
+      ],
+      "lean_name": "Preiss.conical_covariance_trace_support",
+      "file": "Preiss/MeasureTheory/Uniform/ConicalGap.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
+      "proof_sketch_tex": "The symmetric form $B=b_{2,1}$ is positive semidefinite,\n$\\operatorname{tr}B=m$, and $B(x,x)=|x|^2$ on the support.\nThe trace calculation is the radial Gaussian second moment. This statement\ndoes not require spectral choices.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:homogeneous-energy-radial",
+      "audit_code": "G03",
+      "title": "Comparison of homogeneous ball and Gaussian energies",
+      "statement_tex": "If $\\nu$ is $m$-homogeneous and $h\\geq0$ is measurable and $a$-homogeneous with $m+a>0$ and finite unit-ball integral, then $\\int e^{-|z|^2}h(z)\\,d\\nu=\\Gamma((m+a)/2+1)\\int_{B(0,1)}h(z)\\,d\\nu$. In particular $h(z)=\\operatorname{dist}(z,V)^2$ gives the constant $\\Gamma(m/2+2)$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:radial"
+      ],
+      "lean_name": "Preiss.integral_gaussian_mul_homogeneous",
+      "file": "Preiss/MeasureTheory/Uniform/Radial.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
+      "proof_sketch_tex": "For every plane $V$, the distance-squared measure has homogeneous degree\n$m+2$, so\n$\\int e^{-|z|^2}\\operatorname{dist}(z,V)^2\\,d\\nu\n=C_m\\int_{B(0,1)}\\operatorname{dist}(z,V)^2\\,d\\nu$\nfor a finite positive constant $C_m$ obtained by radial integration.\nState and prove this for nonnegative homogeneous integrands more generally.\nIt is the missing explicit bridge from the theorem's unit-ball energy to the\nGaussian energy used in the spectral proof.",
+      "repair": [
+        "Explicit bridge between the gap theorem unit-ball energy and the spectral Gaussian energy."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:spectral-minimizing-plane",
+      "audit_code": "G04",
+      "title": "Top eigenspaces minimize normal covariance trace",
+      "statement_tex": "For a positive semidefinite symmetric form $B$ on $\\mathbb R^n$, choose an\northonormal eigenbasis with $\\alpha_1\\geq\\cdots\\geq\\alpha_n\\geq0$.\nThe span $V$ of the first $m$ eigenvectors minimizes\n$\\operatorname{tr}(B|W^\\perp)$ over $m$-planes $W$.\nFor G02 this trace is a fixed positive multiple of the Gaussian distance\nenergy. This is a reusable finite-dimensional variational spectral lemma.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "Preiss.trace_orthogonalComplement_minimized_topEigenspace",
+      "file": "Preiss/Analysis/InnerProductSpace/SpectralOptimization.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
+      "proof_sketch_tex": "For a positive semidefinite symmetric form $B$ on $\\mathbb R^n$, choose an\northonormal eigenbasis with $\\alpha_1\\geq\\cdots\\geq\\alpha_n\\geq0$.\nThe span $V$ of the first $m$ eigenvectors minimizes\n$\\operatorname{tr}(B|W^\\perp)$ over $m$-planes $W$.\nFor G02 this trace is a fixed positive multiple of the Gaussian distance\nenergy. This is a reusable finite-dimensional variational spectral lemma.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:small-energy-no-holes",
+      "audit_code": "G05",
+      "title": "Small Gaussian distance energy forces plane support proximity",
+      "statement_tex": "For every $\\delta>0$ there exists $\\eta>0$ such that if $\\nu\\in\\mathcal U_m$\nand $V$ is an $m$-plane with Gaussian distance energy at most $\\eta$, every\n$x\\in V\\cap\\overline B(0,1)$ has distance less than $\\delta$ to the support.\nOtherwise rotate planes to one fixed plane, take a convergent subsequence of\nmeasures and alleged holes, and use S04--S05. Vanishing energy puts the limit's\nsupport in the plane; the plane-supported uniform classification identifies it\nwith $\\sigma_V$, contradicting the persistent hole. This lemma does not\nrequire conicality or eigenvalue assumptions.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:vague-support-approximation",
+        "lem:plane-supported-uniform-flat",
+        "lem:vague-gaussian-polynomials",
+        "lem:grassmannian"
+      ],
+      "lean_name": "Preiss.dist_support_lt_of_small_gaussian_plane_energy",
+      "file": "Preiss/MeasureTheory/Uniform/ConicalGap.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
+      "proof_sketch_tex": "For every $\\delta>0$ there exists $\\eta>0$ such that if $\\nu\\in\\mathcal U_m$\nand $V$ is an $m$-plane with Gaussian distance energy at most $\\eta$, every\n$x\\in V\\cap\\overline B(0,1)$ has distance less than $\\delta$ to the support.\nOtherwise rotate planes to one fixed plane, take a convergent subsequence of\nmeasures and alleged holes, and use S04--S05. Vanishing energy puts the limit's\nsupport in the plane; the plane-supported uniform classification identifies it\nwith $\\sigma_V$, contradicting the persistent hole. This lemma does not\nrequire conicality or eigenvalue assumptions.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:conical-eigenvalue-rigidity",
+      "audit_code": "G06a",
+      "title": "Elementary eigenvalue rigidity from one nearby support point",
+      "statement_tex": "For a PSD form $B$ of trace $m$, a support set satisfying $B(x,x)=|x|^2$, and an ordered orthonormal eigenbasis, suppose there is a support point within $\\delta$ of the $m$th eigenvector, $0<\\delta<1/m$. Then the top $m$ eigenvalues are $1$ and the others $0$; the support is contained in their span.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:conical-covariance",
+        "lem:spectral-minimizing-plane"
+      ],
+      "lean_name": "Preiss.conical_covariance_eq_projection_of_near_eigenvector",
+      "file": "Preiss/MeasureTheory/Uniform/ConicalGap.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
+      "proof_sketch_tex": "Under G02, assume the top-$m$ eigenspace has a support point within distance\n$\\delta$ of its $m$th unit eigenvector, where $0<\\delta<1/m$.\nIf $\\alpha_m<1$, the trace gives\n$\\alpha_i-1\\leq(m-1)(1-\\alpha_m)$ for $i<m$ and\n$\\alpha_i\\leq\\alpha_m$ for $i\\geq m$.\nThe support identity then gives\n$0\\leq(1-\\alpha_m)((m-1)^2\\delta^2-(1-\\delta)^2)<0$.\nThus $\\alpha_m\\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one\nand the rest zero. Hence support is contained in $V$ and $\\nu=\\sigma_V$.\nG03--G06 give the conical gap for all positive $m$ without the flawed\ntwo-dimensional shortcut in the original printed proof.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "thm:gap",
+      "audit_code": "G06b",
+      "title": "Uniform conical flatness gap",
+      "statement_tex": "For $1\\leq m\\leq n$ there is $\\varepsilon_{m,n}>0$ such that if $\\nu\\in\\mathcal U_m$ is conical and for some $m$-plane $V$, $\\int_{B(0,1)}\\operatorname{dist}(z,V)^2\\,d\\nu\\leq\\varepsilon_{m,n}$, then $\\nu$ is flat.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:homogeneous-energy-radial",
+        "lem:spectral-minimizing-plane",
+        "lem:small-energy-no-holes",
+        "lem:conical-eigenvalue-rigidity",
+        "lem:plane-supported-uniform-flat"
+      ],
+      "lean_name": "Preiss.conical_flatness_gap",
+      "file": "Preiss/MeasureTheory/Uniform/ConicalGap.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
+      "proof_sketch_tex": "Under G02, assume the top-$m$ eigenspace has a support point within distance\n$\\delta$ of its $m$th unit eigenvector, where $0<\\delta<1/m$.\nIf $\\alpha_m<1$, the trace gives\n$\\alpha_i-1\\leq(m-1)(1-\\alpha_m)$ for $i<m$ and\n$\\alpha_i\\leq\\alpha_m$ for $i\\geq m$.\nThe support identity then gives\n$0\\leq(1-\\alpha_m)((m-1)^2\\delta^2-(1-\\delta)^2)<0$.\nThus $\\alpha_m\\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one\nand the rest zero. Hence support is contained in $V$ and $\\nu=\\sigma_V$.\nG03--G06 give the conical gap for all positive $m$ without the flawed\ntwo-dimensional shortcut in the original printed proof.",
+      "repair": [
+        "Use the uniform spectral argument for every positive m; no dependence on the erroneous printed m=2 shortcut or unnecessary low-dimensional classification."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:flat-infinity-moments",
+      "audit_code": "R01",
+      "title": "Even Taylor coefficients from a flat blow-down",
+      "statement_tex": "For every $j\\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.\nUse M02, M03 and the Gaussian moment formula of the flat limit, including the\nfactorial from M08.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:scaled-moment-limits",
+        "lem:moment-covariance",
+        "lem:vague-gaussian-polynomials",
+        "lem:flat-gaussian-even-moments"
+      ],
+      "lean_name": "Preiss.evenMomentCoefficient_eq_projection_norm",
+      "file": "Preiss/MeasureTheory/Uniform/FlatAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For every $j\\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.\nUse M02, M03 and the Gaussian moment formula of the flat limit, including the\nfactorial from M08.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:flat-gaussian-even-moments",
+      "audit_code": "R01g",
+      "title": "Gaussian moments of a normalized flat measure",
+      "statement_tex": "For $\\sigma_V$ and $j\\geq0$, its Gaussian moment form satisfies $b_{2j,s}(x^{2j})=s^j|P_Vx|^{2j}/j!$, and its odd moments are zero. Equivalently the one-dimensional standard Gaussian even moment is $(2j)!/(2^j j!)$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:plane-scaling"
+      ],
+      "lean_name": "Preiss.flat_gaussianMoment_diagonal",
+      "file": "Preiss/Probability/Gaussian/QuadraticForms.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For every $j\\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.\nUse M02, M03 and the Gaussian moment formula of the flat limit, including the\nfactorial from M08.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:odd-coefficients-plane-zero",
+      "audit_code": "R02",
+      "title": "Odd top coefficients vanish on the flat limiting plane",
+      "statement_tex": "For $j\\geq1$, the restriction of $b_{2j-1}^{(j)}$ to $V$ is zero.\nFor a nonzero $v\\in V$, use the flat blow-down and S04 to find support points\n$x_i$ with $|x_i|\\to\\infty$ and $x_i/|x_i|\\to v/|v|$.\nThe support polynomial identity, R01 and the fact that all remaining terms have\nlower degree show $b_{2j-1}^{(j)}(v^{2j-1})\\geq0$.\nRepeat with $-v$ and use polarization to obtain the full multilinear restriction.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:flat-infinity-moments",
+        "lem:moment-support-polynomial",
+        "lem:vague-support-approximation"
+      ],
+      "lean_name": "Preiss.oddMomentCoefficient_restrict_plane_eq_zero",
+      "file": "Preiss/MeasureTheory/Uniform/FlatAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For $j\\geq1$, the restriction of $b_{2j-1}^{(j)}$ to $V$ is zero.\nFor a nonzero $v\\in V$, use the flat blow-down and S04 to find support points\n$x_i$ with $|x_i|\\to\\infty$ and $x_i/|x_i|\\to v/|v|$.\nThe support polynomial identity, R01 and the fact that all remaining terms have\nlower degree show $b_{2j-1}^{(j)}(v^{2j-1})\\geq0$.\nRepeat with $-v$ and use polarization to obtain the full multilinear restriction.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "def:rigidity-normal-vector",
+      "audit_code": "R03a",
+      "title": "Normal first-moment vector",
+      "statement_tex": "For $\\nu\\in\\mathcal U_m$ with blow-down $\\sigma_V$, there is a unique $b\\in V^\\perp$ satisfying $b_1^{(1)}(x)=2\\langle b,x\\rangle$ for every $x$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:odd-coefficients-plane-zero"
+      ],
+      "lean_name": "Preiss.rigidityNormalVector",
+      "file": "Preiss/MeasureTheory/Uniform/FlatAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "Riesz representation and R02 give $b\\in V^\\perp$ with\n$b_1^{(1)}(x)=2\\langle b,x\\rangle$. The first support identity gives\n$|Qx|^2=2\\langle b,x\\rangle$ on the support, and hence $|Qx|\\leq2|b|$.\nAlso $|Qx-b|=|b|$ there. Keep these identities as named lemmas.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:uniform-cylinder-identity",
+      "audit_code": "R03b",
+      "title": "Cylinder identity and bounded normal coordinates",
+      "statement_tex": "With $Q=1-P_V$, every $x\\in\\operatorname{supp}\\nu$ satisfies $|Qx|^2=2\\langle b,x\\rangle$, $|Qx-b|=|b|$, and $|Qx|\\leq2|b|$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "def:rigidity-normal-vector",
+        "lem:flat-infinity-moments",
+        "lem:moment-support-polynomial"
+      ],
+      "lean_name": "Preiss.support_normal_sq_eq_inner",
+      "file": "Preiss/MeasureTheory/Uniform/FlatAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "Riesz representation and R02 give $b\\in V^\\perp$ with\n$b_1^{(1)}(x)=2\\langle b,x\\rangle$. The first support identity gives\n$|Qx|^2=2\\langle b,x\\rangle$ on the support, and hence $|Qx|\\leq2|b|$.\nAlso $|Qx-b|=|b|$ there. Keep these identities as named lemmas.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-second-total-trace",
+      "audit_code": "R04a",
+      "title": "Vanishing total second Taylor trace",
+      "statement_tex": "For every $s>0$, $\\operatorname{tr}b_{2,s}=ms$. Consequently $\\operatorname{tr}b_2^{(2)}=0$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:radial",
+        "lem:taylor-two"
+      ],
+      "lean_name": "Preiss.trace_secondMomentCoefficient_eq_zero",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "The exact radial identity $\\operatorname{tr}b_{2,s}=ms$ and M07 imply\n$\\operatorname{tr}b_2^{(2)}=0$.\nR03 and the first-moment expansion give\n$\\operatorname{tr}(b_2^{(2)}|V^\\perp)=8|b|^2\n=2\\|b_1^{(1)}\\|^2$.\nThese are separate, comparatively short lemmas.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:moment-normal-trace",
+      "audit_code": "R04b",
+      "title": "Normal second Taylor trace",
+      "statement_tex": "$\\operatorname{tr}(b_2^{(2)}|V^\\perp)=8|b|^2=2\\|b_1^{(1)}\\|^2$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:uniform-cylinder-identity",
+        "lem:taylor-two"
+      ],
+      "lean_name": "Preiss.trace_secondMomentCoefficient_normal_eq",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "The exact radial identity $\\operatorname{tr}b_{2,s}=ms$ and M07 imply\n$\\operatorname{tr}b_2^{(2)}=0$.\nR03 and the first-moment expansion give\n$\\operatorname{tr}(b_2^{(2)}|V^\\perp)=8|b|^2\n=2\\|b_1^{(1)}\\|^2$.\nThese are separate, comparatively short lemmas.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:flat-infinity-bounded-holes",
+      "audit_code": "R05",
+      "title": "Bounded distance from the limiting plane to the support",
+      "statement_tex": "There exists $R_0<\\infty$ with\n$\\operatorname{dist}(v,\\operatorname{supp}\\nu)<R_0$ for every $v\\in V$.\nIf not, choose $v_i$ with distances $r_i\\to\\infty$, a nearest support point,\nand its projection $z_i\\in V$. The measures $D^m_{z_i,r_i}\\nu$ have\nsupports approaching the origin and lie in shrinking tubes about $V$ by R03.\nS05 gives a unit uniform limit supported in $V$, hence $\\sigma_V$.\nThe original holes give a unit hole centred at a bounded point of $V$, a\ncontradiction. The centres $z_i$ need not lie in the support, which is why the\nnear-support variant of S05 is essential.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:uniform-cylinder-identity",
+        "lem:uniform-near-support-compactness",
+        "lem:plane-supported-uniform-flat",
+        "lem:vague-support-approximation"
+      ],
+      "lean_name": "Preiss.exists_uniform_dist_plane_support_bound",
+      "file": "Preiss/MeasureTheory/Uniform/FlatAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "There exists $R_0<\\infty$ with\n$\\operatorname{dist}(v,\\operatorname{supp}\\nu)<R_0$ for every $v\\in V$.\nIf not, choose $v_i$ with distances $r_i\\to\\infty$, a nearest support point,\nand its projection $z_i\\in V$. The measures $D^m_{z_i,r_i}\\nu$ have\nsupports approaching the origin and lie in shrinking tubes about $V$ by R03.\nS05 gives a unit uniform limit supported in $V$, hence $\\sigma_V$.\nThe original holes give a unit hole centred at a bounded point of $V$, a\ncontradiction. The centres $z_i$ need not lie in the support, which is why the\nnear-support variant of S05 is essential.",
+      "repair": [
+        "The projected rescaling centers need not be in support; invoke the near-support compactness variant."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "def:rigidity-omega",
+      "audit_code": "R06a",
+      "title": "Normal valued bilinear map from the third coefficient",
+      "statement_tex": "Define the continuous symmetric bilinear map $\\omega:V\\times V\\to V^\\perp$ by $\\langle\\omega(u,v),w\\rangle=3b_3^{(2)}(u,v,w)-4\\langle u,v\\rangle\\langle b,w\\rangle$ for every normal $w$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "def:rigidity-normal-vector",
+        "lem:odd-coefficients-plane-zero"
+      ],
+      "lean_name": "Preiss.rigidityOmega",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "Define the symmetric bilinear normal-valued map $\\omega$ by\n\\[\n \\langle\\omega(u,u),w\\rangle\n =3b_3^{(2)}(u,u,w)-4|u|^2\\langle b,w\\rangle\\quad(u\\in V),\n\\]\nand put $\\widehat b(u,u)=b_2^{(2)}(u,u)+\\langle\\omega(u,u),b\\rangle$.\nUse polarization for mixed arguments and R02 to prove $\\omega$ takes values\nin $V^\\perp$. These definitions need actual typed bilinear maps, not just a\nscalar diagonal moment notation.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "def:rigidity-adjusted-form",
+      "audit_code": "R06b",
+      "title": "Adjusted symmetric quadratic form on the limiting plane",
+      "statement_tex": "Define the continuous symmetric bilinear form $\\widehat b(u,v)=b_2^{(2)}(u,v)+\\langle\\omega(u,v),b\\rangle$ on $V$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "def:rigidity-omega"
+      ],
+      "lean_name": "Preiss.rigidityAdjustedForm",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "Define the symmetric bilinear normal-valued map $\\omega$ by\n\\[\n \\langle\\omega(u,u),w\\rangle\n =3b_3^{(2)}(u,u,w)-4|u|^2\\langle b,w\\rangle\\quad(u\\in V),\n\\]\nand put $\\widehat b(u,u)=b_2^{(2)}(u,u)+\\langle\\omega(u,u),b\\rangle$.\nUse polarization for mixed arguments and R02 to prove $\\omega$ takes values\nin $V^\\perp$. These definitions need actual typed bilinear maps, not just a\nscalar diagonal moment notation.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-mixed-gaussian-limit",
+      "audit_code": "R07a",
+      "title": "Mixed Gaussian moment limit defining omega",
+      "statement_tex": "For all ambient $v,w$, $\\lim_{s\\downarrow0}\\frac{8s}{I(s)}\\int e^{-s|z|^2}\\langle z,v\\rangle^2\\langle z-b,w\\rangle\\,d\\nu=3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\\langle b,w\\rangle$. For $v\\in V,w\\in V^\\perp$ this equals $\\langle\\omega(v,v),w\\rangle$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:taylor-two",
+        "lem:flat-infinity-moments",
+        "def:rigidity-omega"
+      ],
+      "lean_name": "Preiss.mixed_gaussian_limit_eq_omega",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For $v,w\\in\\mathbb R^n$, prove\n\\[\n \\lim_{s\\downarrow0}\\frac{8s}{I(s)}\\int e^{-s|z|^2}\n \\langle z,v\\rangle^2\\langle z-b,w\\rangle\\,d\\nu\n =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\\langle b,w\\rangle.\n\\]\nFor $v\\in V,w\\in V^\\perp$ this is $\\langle\\omega(v,v),w\\rangle$.\nFurther prove\n\\[\n \\lim_{s\\downarrow0}\\frac{s}{I(s)}\\int e^{-s|z|^2}\n |Pz|^2\\langle z-b,w\\rangle\\,d\\nu=0.\n\\]\nTo justify the latter, the analogous $|z|^2$ expression has a limit by the\nfirst formula and a finite orthonormal-basis sum. Differentiating the Gaussian\nfirst moment and applying the appropriate one-sided l'Hopital argument\nidentifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.\nRecord differentiability and domination hypotheses before using l'Hopital.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-contracted-limit-zero",
+      "audit_code": "R07b",
+      "title": "Vanishing contracted Gaussian limit",
+      "statement_tex": "For every normal $w$, $\\lim_{s\\downarrow0}\\frac{s}{I(s)}\\int e^{-s|z|^2}|P_Vz|^2\\langle z-b,w\\rangle\\,d\\nu=0$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:gaussian-parameter-derivative",
+        "lem:uniform-cylinder-identity",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_name": "Preiss.contracted_gaussian_limit_eq_zero",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For $v,w\\in\\mathbb R^n$, prove\n\\[\n \\lim_{s\\downarrow0}\\frac{8s}{I(s)}\\int e^{-s|z|^2}\n \\langle z,v\\rangle^2\\langle z-b,w\\rangle\\,d\\nu\n =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\\langle b,w\\rangle.\n\\]\nFor $v\\in V,w\\in V^\\perp$ this is $\\langle\\omega(v,v),w\\rangle$.\nFurther prove\n\\[\n \\lim_{s\\downarrow0}\\frac{s}{I(s)}\\int e^{-s|z|^2}\n |Pz|^2\\langle z-b,w\\rangle\\,d\\nu=0.\n\\]\nTo justify the latter, the analogous $|z|^2$ expression has a limit by the\nfirst formula and a finite orthonormal-basis sum. Differentiating the Gaussian\nfirst moment and applying the appropriate one-sided l'Hopital argument\nidentifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.\nRecord differentiability and domination hypotheses before using l'Hopital.",
+      "repair": [
+        "Establish the derivative-quotient limit first from mixed moments, then apply the one-sided lHopital argument; record domination for Gaussian differentiation."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-omega-trace-zero",
+      "audit_code": "R08a",
+      "title": "Zero Gaussian mean of omega",
+      "statement_tex": "For standard covariance-one Gaussian probability $\\gamma_V$ on $V$, $\\int\\omega(v,v)\\,d\\gamma_V(v)=0$. Equivalently its inner product with every fixed normal vector has integral zero.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:rigidity-contracted-limit-zero",
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:flat-gaussian-even-moments"
+      ],
+      "lean_name": "Preiss.integral_rigidityOmega_eq_zero",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "Let $\\gamma$ be the standard covariance-one Gaussian probability measure on\n$V$. Prove $\\int\\langle\\omega(v,v),b\\rangle\\,d\\gamma(v)=0$ using R07,\nFubini and domination by a constant times $|v|^2$.\nThen\n$\\operatorname{tr}(b_2^{(2)}|V)=\\int\\widehat b(v,v)\\,d\\gamma(v)$.\nThe same argument works against each fixed normal vector, not only $b$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-gaussian-trace",
+      "audit_code": "R08b",
+      "title": "Tangential trace is the mean adjusted form",
+      "statement_tex": "$\\operatorname{tr}(b_2^{(2)}|V)=\\int\\widehat b(v,v)\\,d\\gamma_V(v)$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:rigidity-omega-trace-zero",
+        "def:rigidity-adjusted-form",
+        "lem:flat-gaussian-even-moments"
+      ],
+      "lean_name": "Preiss.trace_tangent_eq_integral_adjustedForm",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "Let $\\gamma$ be the standard covariance-one Gaussian probability measure on\n$V$. Prove $\\int\\langle\\omega(v,v),b\\rangle\\,d\\gamma(v)=0$ using R07,\nFubini and domination by a constant times $|v|^2$.\nThen\n$\\operatorname{tr}(b_2^{(2)}|V)=\\int\\widehat b(v,v)\\,d\\gamma(v)$.\nThe same argument works against each fixed normal vector, not only $b$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-cubic-vanishing",
+      "audit_code": "R09a",
+      "title": "Vanishing normal mixed cubic coefficients",
+      "statement_tex": "For $v\\in V,w\\in V^\\perp$, $b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$. Polarization gives all corresponding mixed restrictions.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:odd-coefficients-plane-zero",
+        "lem:uniform-cylinder-identity",
+        "lem:gaussian-polynomial-integrable",
+        "lem:taylor-two"
+      ],
+      "lean_name": "Preiss.thirdMomentCoefficient_normal_vanishes",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For $v\\in V,w\\in V^\\perp$,\n$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.\nThe first is R02; the others follow by R03's bounded normal coordinates and\nGaussian estimates in the defining limits. Therefore, on the support,\n\\[\n b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)\n =|Qz|^4+2|Pz|^2|Qz|^2.\n\\]\nUse the order-two support identity and R01; do not drop mixed cubic terms\nwithout first establishing these vanishings.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-fourth-support-identity",
+      "audit_code": "R09b",
+      "title": "Fourth degree support identity",
+      "statement_tex": "For every $z\\in\\operatorname{supp}\\nu$, $b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)=|Qz|^4+2|Pz|^2|Qz|^2$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:rigidity-cubic-vanishing",
+        "lem:flat-infinity-moments",
+        "lem:moment-support-polynomial"
+      ],
+      "lean_name": "Preiss.fourth_order_support_identity",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For $v\\in V,w\\in V^\\perp$,\n$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.\nThe first is R02; the others follow by R03's bounded normal coordinates and\nGaussian estimates in the defining limits. Therefore, on the support,\n\\[\n b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)\n =|Qz|^4+2|Pz|^2|Qz|^2.\n\\]\nUse the order-two support identity and R01; do not drop mixed cubic terms\nwithout first establishing these vanishings.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-pointwise-quadratic-bound",
+      "audit_code": "R10",
+      "title": "Pointwise square bound for the adjusted form",
+      "statement_tex": "For all $v\\in V$,\n$\\widehat b(v,v)^2\\leq |b|^2|\\omega(v,v)|^2$.\nChoose support points $t_i v+v_i+w_i$ within bounded distance of $t_i v$ using\nR05. Pass to a convergent subsequence of bounded normal components $w_i$.\nDivide R09 by $t_i^2$ and use R03 to obtain\n$b_2^{(2)}(v,v)+\\langle\\omega(v,v),w\\rangle=0$ and\n$|w|^2=2\\langle b,w\\rangle$.\nThus $|w-b|=|b|$ and\n$\\widehat b(v,v)+\\langle\\omega(v,v),w-b\\rangle=0$; Cauchy--Schwarz proves\nthe inequality.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:flat-infinity-bounded-holes",
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity",
+        "def:rigidity-adjusted-form"
+      ],
+      "lean_name": "Preiss.adjustedForm_sq_le_norm_omega_sq",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For all $v\\in V$,\n$\\widehat b(v,v)^2\\leq |b|^2|\\omega(v,v)|^2$.\nChoose support points $t_i v+v_i+w_i$ within bounded distance of $t_i v$ using\nR05. Pass to a convergent subsequence of bounded normal components $w_i$.\nDivide R09 by $t_i^2$ and use R03 to obtain\n$b_2^{(2)}(v,v)+\\langle\\omega(v,v),w\\rangle=0$ and\n$|w|^2=2\\langle b,w\\rangle$.\nThus $|w-b|=|b|$ and\n$\\widehat b(v,v)+\\langle\\omega(v,v),w-b\\rangle=0$; Cauchy--Schwarz proves\nthe inequality.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-rescaled-error",
+      "audit_code": "R11",
+      "title": "Vanishing lower order Gaussian error",
+      "statement_tex": "R09 and R03 imply that\n$\\widehat b(Pz,Pz)+\\langle\\omega(Pz,Pz),Qz-b\\rangle$\nhas absolute value at most $C(1+|z|)$ on the support.\nHence its integral against $sI(s)^{-1}e^{-s|z|^2}\\nu$ tends to zero.\nThis is equation (9.34); it is a necessary bridge to the global trace bound.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity",
+        "lem:gaussian-polynomial-integrable",
+        "def:rigidity-adjusted-form"
+      ],
+      "lean_name": "Preiss.adjustedForm_gaussian_error_tendsto_zero",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "R09 and R03 imply that\n$\\widehat b(Pz,Pz)+\\langle\\omega(Pz,Pz),Qz-b\\rangle$\nhas absolute value at most $C(1+|z|)$ on the support.\nHence its integral against $sI(s)^{-1}e^{-s|z|^2}\\nu$ tends to zero.\nThis is equation (9.34); it is a necessary bridge to the global trace bound.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:gaussian-wick-fourth",
+      "audit_code": "R12a",
+      "title": "Wick fourth moment of linear Gaussian tests",
+      "statement_tex": "For vectors $y,z$ in a finite-dimensional Euclidean space with standard covariance-one Gaussian probability $\\gamma$, $\\int\\langle y,v\\rangle^2\\langle z,v\\rangle^2\\,d\\gamma(v)=|y|^2|z|^2+2\\langle y,z\\rangle^2$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:flat-gaussian-even-moments"
+      ],
+      "lean_name": "Preiss.gaussian_integral_inner_sq_mul_inner_sq",
+      "file": "Preiss/Probability/Gaussian/QuadraticForms.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For $y,z\\in V$,\n$\\int\\langle y,v\\rangle^2\\langle z,v\\rangle^2\\,d\\gamma\n=|y|^2|z|^2+2\\langle y,z\\rangle^2$.\nCombining this with R07 yields, for $w\\in V^\\perp$,\n\\[\n \\int\\langle y,v\\rangle^2\\langle\\omega(v,v),w\\rangle\\,d\\gamma(v)\n =2\\langle\\omega(y,y),w\\rangle.\n\\]\nJustify limits by Gaussian quartic domination and Fubini.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-omega-reproducing",
+      "audit_code": "R12b",
+      "title": "Gaussian reproducing identity for omega",
+      "statement_tex": "For $y\\in V,w\\in V^\\perp$, $\\int\\langle y,v\\rangle^2\\langle\\omega(v,v),w\\rangle\\,d\\gamma_V(v)=2\\langle\\omega(y,y),w\\rangle$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-wick-fourth",
+        "lem:rigidity-omega-trace-zero",
+        "def:rigidity-omega"
+      ],
+      "lean_name": "Preiss.integral_inner_sq_mul_omega",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For $y,z\\in V$,\n$\\int\\langle y,v\\rangle^2\\langle z,v\\rangle^2\\,d\\gamma\n=|y|^2|z|^2+2\\langle y,z\\rangle^2$.\nCombining this with R07 yields, for $w\\in V^\\perp$,\n\\[\n \\int\\langle y,v\\rangle^2\\langle\\omega(v,v),w\\rangle\\,d\\gamma(v)\n =2\\langle\\omega(y,y),w\\rangle.\n\\]\nJustify limits by Gaussian quartic domination and Fubini.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:rigidity-integral-quadratic-bound",
+      "audit_code": "R13",
+      "title": "Integral quadratic inequality",
+      "statement_tex": "Integrate R10, express $\\int|\\omega(v,v)|^2\\,d\\gamma$ through R07 and R12,\nuse R11, and pass to the flat blow-down using M02. The result is\n\\[\n \\int\\widehat b(v,v)^2\\,d\\gamma(v)\n \\leq-8|b|^2\\int\\widehat b(v,v)\\,d\\gamma(v).\n\\]\nThe inequality must remain an inequality throughout. The equality sign at\nthe start of the second long display on printed page 108 loses the earlier\ninequality; its final statement (9.41) has the correct direction.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:rigidity-pointwise-quadratic-bound",
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:rigidity-omega-reproducing",
+        "lem:rigidity-rescaled-error",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "lean_name": "Preiss.integral_adjustedForm_sq_le",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "Integrate R10, express $\\int|\\omega(v,v)|^2\\,d\\gamma$ through R07 and R12,\nuse R11, and pass to the flat blow-down using M02. The result is\n\\[\n \\int\\widehat b(v,v)^2\\,d\\gamma(v)\n \\leq-8|b|^2\\int\\widehat b(v,v)\\,d\\gamma(v).\n\\]\nThe inequality must remain an inequality throughout. The equality sign at\nthe start of the second long display on printed page 108 loses the earlier\ninequality; its final statement (9.41) has the correct direction.",
+      "repair": [
+        "Preserve the inequality through the calculation; the p.108 intermediate equality is too strong."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:gaussian-quadratic-trace-bound",
+      "audit_code": "R14a",
+      "title": "Gaussian quadratic form second moment and trace bound",
+      "statement_tex": "For a symmetric bilinear form $A$ on an $m$-dimensional Euclidean space, $m>0$, $\\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+2\\|A\\|_{HS}^2\\geq(1+2/m)(\\int A(v,v)\\,d\\gamma)^2$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-wick-fourth"
+      ],
+      "lean_name": "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq",
+      "file": "Preiss/Probability/Gaussian/QuadraticForms.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:trace-rigidity",
+      "audit_code": "R14b",
+      "title": "Positive lower bound for the total second coefficient trace",
+      "statement_tex": "For a unit uniform measure with flat blow-down, $\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$. More precisely $\\int\\widehat b(v,v)\\,d\\gamma_V\\geq-8m|b|^2/(m+2)$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:gaussian-quadratic-trace-bound",
+        "lem:rigidity-integral-quadratic-bound",
+        "lem:rigidity-gaussian-trace",
+        "lem:moment-normal-trace"
+      ],
+      "lean_name": "Preiss.secondMomentCoefficient_trace_lower_bound",
+      "file": "Preiss/MeasureTheory/Uniform/TraceRigidity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "thm:infinity-rigidity",
+      "audit_code": "R14c",
+      "title": "Flatness follows from flatness at infinity",
+      "statement_tex": "If $\\nu\\in\\mathcal U_m$ has a flat tangent at infinity, then $\\nu$ is flat: the trace bounds force $b=0$, the cylinder identity forces support in $V$, and plane-supported uniform classification gives $\\nu=\\sigma_V$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
+        "The dimensional blow-down of nu is sigma_V for an m-dimensional linear plane V; P=P_V and Q=1-P; b, omega and the adjusted form are the specified definitions when used.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:trace-rigidity",
+        "lem:moment-second-total-trace",
+        "lem:uniform-cylinder-identity",
+        "lem:plane-supported-uniform-flat"
+      ],
+      "lean_name": "Preiss.flat_of_flat_at_infinity",
+      "file": "Preiss/MeasureTheory/Uniform/FlatAtInfinity.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "proof_sketch_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:grassmannian",
+      "audit_code": "C01",
+      "title": "Compact projection model of fixed-dimensional planes",
+      "statement_tex": "Use self-adjoint idempotent operators of trace $m$ to model $m$-planes.\nThis is a nonempty compact set when $m\\leq n$.\nIts distance functions converge uniformly on bounded sets when the projections\nconverge. No lattice topology on the submodule type is intended.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "m<=dim E; the cutoff is continuous, compactly supported, nonnegative, equal to one on the closed unit ball and supported in the open ball of radius two. The cutoff condition applies only to the energy nodes.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "Preiss.isCompact_rankOrthogonalProjections",
+      "file": "Preiss/Geometry/Grassmannian.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "Use self-adjoint idempotent operators of trace $m$ to model $m$-planes.\nThis is a nonempty compact set when $m\\leq n$.\nIts distance functions converge uniformly on bounded sets when the projections\nconverge. No lattice topology on the submodule type is intended.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "def:flatness",
+      "audit_code": "C02a",
+      "title": "Nonnegative compactly supported flatness energy",
+      "statement_tex": "Fix $\\phi\\in C_c(E)$ with $0\\leq\\phi\\leq1$, $\\phi=1$ on $\\overline B(0,1)$ and $\\operatorname{supp}\\phi\\subset B(0,2)$. For $m\\leq n$, define $F(\\mu)=\\min_{\\dim V=m}\\int\\phi(z)\\operatorname{dist}(z,V)^2\\,d\\mu$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "m<=dim E; the cutoff is continuous, compactly supported, nonnegative, equal to one on the closed unit ball and supported in the open ball of radius two. The cutoff condition applies only to the energy nodes.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:grassmannian"
+      ],
+      "lean_name": "Preiss.flatness",
+      "file": "Preiss/MeasureTheory/FlatnessEnergy.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "Choose $\\phi\\in C_c(\\mathbb R^n)$ with $0\\leq\\phi\\leq1$,\n$\\phi=1$ on $\\overline B(0,1)$ and support in $B(0,2)$.\nDefine $F(\\mu)=\\min_V\\int\\phi(z)\\operatorname{dist}(z,V)^2\\,d\\mu$.\nThe minimum is attained. S01 and C01 imply sequential continuity for vague\nconvergence; S02 implies continuity of $r\\mapsto F(D^m_{x,r}\\mu)$ for $r>0$.\nFlat measures have $F=0$. For a unit uniform measure, $F\\leq\\varepsilon$\nimplies that some plane has unit-ball energy at most $\\varepsilon$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:flatness-minimum",
+      "audit_code": "C02b",
+      "title": "Attainment, positivity and unit-ball comparison",
+      "statement_tex": "For every regular locally finite $\\mu$, the minimum defining $F$ is attained and nonnegative. Flat measures have $F=0$. If $F(\\mu)\\leq\\varepsilon$, there is an $m$-plane $V$ with $\\int_{B(0,1)}\\operatorname{dist}(z,V)^2\\,d\\mu\\leq\\varepsilon$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "m<=dim E; the cutoff is continuous, compactly supported, nonnegative, equal to one on the closed unit ball and supported in the open ball of radius two. The cutoff condition applies only to the energy nodes.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "def:flatness",
+        "lem:vague-moving-tests",
+        "lem:grassmannian"
+      ],
+      "lean_name": "Preiss.flatness_exists_minimizer",
+      "file": "Preiss/MeasureTheory/FlatnessEnergy.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "Choose $\\phi\\in C_c(\\mathbb R^n)$ with $0\\leq\\phi\\leq1$,\n$\\phi=1$ on $\\overline B(0,1)$ and support in $B(0,2)$.\nDefine $F(\\mu)=\\min_V\\int\\phi(z)\\operatorname{dist}(z,V)^2\\,d\\mu$.\nThe minimum is attained. S01 and C01 imply sequential continuity for vague\nconvergence; S02 implies continuity of $r\\mapsto F(D^m_{x,r}\\mu)$ for $r>0$.\nFlat measures have $F=0$. For a unit uniform measure, $F\\leq\\varepsilon$\nimplies that some plane has unit-ball energy at most $\\varepsilon$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:flatness-continuous",
+      "audit_code": "C02c",
+      "title": "Continuity of flatness under vague convergence",
+      "statement_tex": "For regular locally finite measures $\\mu_i\\rightharpoonup\\mu$, $F(\\mu_i)\\to F(\\mu)$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "m<=dim E; the cutoff is continuous, compactly supported, nonnegative, equal to one on the closed unit ball and supported in the open ball of radius two. The cutoff condition applies only to the energy nodes.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:flatness-minimum",
+        "lem:vague-moving-tests",
+        "lem:grassmannian"
+      ],
+      "lean_name": "Preiss.flatness_continuous",
+      "file": "Preiss/MeasureTheory/FlatnessEnergy.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "Choose $\\phi\\in C_c(\\mathbb R^n)$ with $0\\leq\\phi\\leq1$,\n$\\phi=1$ on $\\overline B(0,1)$ and support in $B(0,2)$.\nDefine $F(\\mu)=\\min_V\\int\\phi(z)\\operatorname{dist}(z,V)^2\\,d\\mu$.\nThe minimum is attained. S01 and C01 imply sequential continuity for vague\nconvergence; S02 implies continuity of $r\\mapsto F(D^m_{x,r}\\mu)$ for $r>0$.\nFlat measures have $F=0$. For a unit uniform measure, $F\\leq\\varepsilon$\nimplies that some plane has unit-ball energy at most $\\varepsilon$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:flatness-radius-continuous",
+      "audit_code": "C02d",
+      "title": "Continuity of the scale function",
+      "statement_tex": "For fixed regular locally finite $\\mu$ and center $x$, $r\\mapsto F(D^m_{x,r}\\mu)$ is continuous on $(0,\\infty)$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "m<=dim E; the cutoff is continuous, compactly supported, nonnegative, equal to one on the closed unit ball and supported in the open ball of radius two. The cutoff condition applies only to the energy nodes.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:flatness-continuous",
+        "lem:vague-moving-blowups"
+      ],
+      "lean_name": "Preiss.continuousOn_flatness_dimensionalBlowUp",
+      "file": "Preiss/MeasureTheory/FlatnessEnergy.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "Choose $\\phi\\in C_c(\\mathbb R^n)$ with $0\\leq\\phi\\leq1$,\n$\\phi=1$ on $\\overline B(0,1)$ and support in $B(0,2)$.\nDefine $F(\\mu)=\\min_V\\int\\phi(z)\\operatorname{dist}(z,V)^2\\,d\\mu$.\nThe minimum is attained. S01 and C01 imply sequential continuity for vague\nconvergence; S02 implies continuity of $r\\mapsto F(D^m_{x,r}\\mu)$ for $r>0$.\nFlat measures have $F=0$. For a unit uniform measure, $F\\leq\\varepsilon$\nimplies that some plane has unit-ball energy at most $\\varepsilon$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:tangent-blowdown",
+      "audit_code": "C03",
+      "title": "Blow-downs of tangents remain tangents",
+      "statement_tex": "Assume the original source measure $\\mu$ is locally finite. If a dimensional tangent $\\zeta$ has a nonzero regular limit at infinity $\\chi$,\nthen $\\chi$ is a dimensional tangent of the original measure at the same point.\nUse S07's positive dilation invariance and closure. This statement is pointwise;\nit needs no almost-everywhere recentering theorem.",
+      "hypotheses": [
+        "The original source measure mu is locally finite; its Euclidean regularity follows. The Lean statement requires [IsLocallyFiniteMeasure mu].",
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:dimensional-tangent-dilation",
+        "lem:dimensional-tangent-closed"
+      ],
+      "lean_name": "Preiss.dimensionalTangent_of_tangentAtInfinity",
+      "file": "Preiss/Tangent/Blowdown.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "If a dimensional tangent $\\zeta$ has a nonzero regular limit at infinity $\\chi$,\nthen $\\chi$ is a dimensional tangent of the original measure at the same point.\nUse S07's positive dilation invariance and closure. This statement is pointwise;\nit needs no almost-everywhere recentering theorem.",
+      "repair": [],
+      "interface_status": "canonical sorry statement written; not yet Lean-compiled",
+      "hypotheses_tex": "The source measure $\\mu$ is locally finite on $\\mathbb R^n$."
+    },
+    {
+      "id": "lem:greatest-crossing",
+      "audit_code": "C04a",
+      "title": "Greatest crossing with an interval bound",
+      "statement_tex": "If $0<a<b$, $f:[a,b]\\to\\mathbb R$ is continuous and $f(a)>\\varepsilon>f(b)$, there is $c\\in(a,b)$ such that $f(c)=\\varepsilon$ and $f(t)\\leq\\varepsilon$ for all $t\\in[c,b]$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [],
+      "lean_name": "Preiss.exists_greatest_crossing",
+      "file": "Preiss/MeasureTheory/Rectifiable/PreissPartB.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "After S08 normalization, suppose $\\alpha$ is a flat dimensional tangent and\n$\\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit\nuniform. Let $\\chi$ be the blow-down of $\\zeta$. Rigidity and the gap give\n$F(\\chi)>\\varepsilon$. Choose $r_i\\to0$ with blow-ups tending to $\\alpha$\nand $s_i<r_i$ with blow-ups tending to $\\chi$; subsequence selection makes\nthe ordering possible. For sufficiently large $i$, the continuous scale\nfunction satisfies $F(D_{x,r_i}^m\\mu)<\\varepsilon$ and\n$F(D_{x,s_i}^m\\mu)>\\varepsilon$.\nChoose $\\sigma_i\\in[s_i,r_i]$ with energy exactly $\\varepsilon$ and energy\nat most $\\varepsilon$ on the entire interval $[\\sigma_i,r_i]$.\nThis is a greatest-crossing/last-crossing assertion, not merely the intermediate\nvalue theorem. Extract a nonzero unit uniform limit $\\xi$ at the $\\sigma_i$.",
+      "repair": [
+        "The ordinary intermediate value theorem alone does not give the full later interval bound."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:first-crossing",
+      "audit_code": "C04b",
+      "title": "First-crossing sequences and their uniform tangent limit",
+      "statement_tex": "After S08 normalization, suppose $\\alpha$ is a flat dimensional tangent and\n$\\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit\nuniform. Let $\\chi$ be the blow-down of $\\zeta$. Rigidity and the gap give\n$F(\\chi)>\\varepsilon$. Choose $r_i\\to0$ with blow-ups tending to $\\alpha$\nand $s_i<r_i$ with blow-ups tending to $\\chi$; subsequence selection makes\nthe ordering possible. For sufficiently large $i$, the continuous scale\nfunction satisfies $F(D_{x,r_i}^m\\mu)<\\varepsilon$ and\n$F(D_{x,s_i}^m\\mu)>\\varepsilon$.\nChoose $\\sigma_i\\in[s_i,r_i]$ with energy exactly $\\varepsilon$ and energy\nat most $\\varepsilon$ on the entire interval $[\\sigma_i,r_i]$.\nThis is a greatest-crossing/last-crossing assertion, not merely the intermediate\nvalue theorem. Extract a nonzero unit uniform limit $\\xi$ at the $\\sigma_i$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "At the fixed center x the existing density is positive finite; all tangents are m-uniform; a flat tangent and a hypothetical nonflat tangent are given; apply the common density normalization before choosing the gap threshold.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:greatest-crossing",
+        "lem:flatness-radius-continuous",
+        "lem:density-normalization",
+        "lem:tangent-blowdown",
+        "thm:unique-infinity",
+        "cor:conical",
+        "thm:gap",
+        "thm:infinity-rigidity",
+        "lem:dimensional-tangent-compactness",
+        "lem:flatness-continuous",
+        "lem:flatness-minimum"
+      ],
+      "lean_name": "Preiss.exists_first_crossing_sequences",
+      "file": "Preiss/MeasureTheory/Rectifiable/PreissPartB.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "After S08 normalization, suppose $\\alpha$ is a flat dimensional tangent and\n$\\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit\nuniform. Let $\\chi$ be the blow-down of $\\zeta$. Rigidity and the gap give\n$F(\\chi)>\\varepsilon$. Choose $r_i\\to0$ with blow-ups tending to $\\alpha$\nand $s_i<r_i$ with blow-ups tending to $\\chi$; subsequence selection makes\nthe ordering possible. For sufficiently large $i$, the continuous scale\nfunction satisfies $F(D_{x,r_i}^m\\mu)<\\varepsilon$ and\n$F(D_{x,s_i}^m\\mu)>\\varepsilon$.\nChoose $\\sigma_i\\in[s_i,r_i]$ with energy exactly $\\varepsilon$ and energy\nat most $\\varepsilon$ on the entire interval $[\\sigma_i,r_i]$.\nThis is a greatest-crossing/last-crossing assertion, not merely the intermediate\nvalue theorem. Extract a nonzero unit uniform limit $\\xi$ at the $\\sigma_i$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:first-crossing-ratio",
+      "audit_code": "C05",
+      "title": "Divergence of the crossing scale ratios",
+      "statement_tex": "Prove $r_i/\\sigma_i\\to\\infty$. If the ratios have a bounded subsequence,\nextract a further limit $R\\in[1,\\infty)$. S02--S03 give\n$D^m_{0,R}\\xi=\\alpha$. Invert the dilation to conclude $\\xi$ flat,\ncontradicting $F(\\xi)=\\varepsilon>0$.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "At the fixed center x the existing density is positive finite; all tangents are m-uniform; a flat tangent and a hypothetical nonflat tangent are given; apply the common density normalization before choosing the gap threshold.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:first-crossing",
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition",
+        "lem:flatness-minimum"
+      ],
+      "lean_name": "Preiss.first_crossing_ratio_tendsto_atTop",
+      "file": "Preiss/MeasureTheory/Rectifiable/PreissPartB.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "Prove $r_i/\\sigma_i\\to\\infty$. If the ratios have a bounded subsequence,\nextract a further limit $R\\in[1,\\infty)$. S02--S03 give\n$D^m_{0,R}\\xi=\\alpha$. Invert the dilation to conclude $\\xi$ flat,\ncontradicting $F(\\xi)=\\varepsilon>0$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "lem:first-crossing-flat-infinity",
+      "audit_code": "C06a",
+      "title": "Crossing limit has flat blow-down",
+      "statement_tex": "For the crossing limit $\\xi$, every $R\\geq1$ satisfies $F(D^m_{0,R}\\xi)\\leq\\varepsilon$. Hence its unique conical blow-down $\\psi$ has $F(\\psi)\\leq\\varepsilon$ and is flat by the conical gap.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "At the fixed center x the existing density is positive finite; all tangents are m-uniform; a flat tangent and a hypothetical nonflat tangent are given; apply the common density normalization before choosing the gap threshold.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:first-crossing-ratio",
+        "lem:first-crossing",
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition",
+        "lem:flatness-continuous",
+        "lem:flatness-minimum",
+        "thm:unique-infinity",
+        "cor:conical",
+        "thm:gap"
+      ],
+      "lean_name": "Preiss.first_crossing_limit_flat_at_infinity",
+      "file": "Preiss/MeasureTheory/Rectifiable/PreissPartB.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "For every fixed $R\\geq1$, eventually $\\sigma_i R\\in[\\sigma_i,r_i]$.\nS02--S03 and C04 give $F(D^m_{0,R}\\xi)\\leq\\varepsilon$.\nLet $R\\to\\infty$. M10 and continuity give $F(\\psi)\\leq\\varepsilon$ for\nthe conical blow-down $\\psi$ of $\\xi$. Apply the conical gap, then rigidity,\nto conclude $\\xi$ flat, the final contradiction.\nKeep the centre $x$ fixed throughout; the printed scale function sometimes\nuses zero where $x$ is intended. Every use of $F$ on a dilated measure must\nretain the factor $R^{-m}$.",
+      "repair": [
+        "Retain the fixed original center x and the full dimensional mass factor R^{-m}."
+      ],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "thm:part-b",
+      "audit_code": "C06b",
+      "title": "One flat tangent implies all tangents are flat",
+      "statement_tex": "At a point $x$ with positive finite existing $m$-density, suppose every tangent is $m$-uniform and at least one tangent is flat. Then every tangent at $x$ is flat. First use the common density normalization for dimensional tangents, then the first-crossing contradiction, and finally transfer to arbitrary-scalar tangents by the ray adapter.",
+      "hypotheses": [
+        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
+        "At the fixed center x the existing density is positive finite; all tangents are m-uniform; a flat tangent and a hypothetical nonflat tangent are given; apply the common density normalization before choosing the gap threshold.",
+        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+      ],
+      "deps": [
+        "lem:first-crossing-flat-infinity",
+        "thm:infinity-rigidity",
+        "lem:first-crossing",
+        "lem:density-normalization",
+        "lem:tangent-ray"
+      ],
+      "lean_name": "Preiss.all_tangents_flat_of_one",
+      "file": "Preiss/MeasureTheory/Rectifiable/PreissPartB.lean",
+      "core_vs_companion": "core",
+      "status": "new",
+      "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
+      "proof_sketch_tex": "For every fixed $R\\geq1$, eventually $\\sigma_i R\\in[\\sigma_i,r_i]$.\nS02--S03 and C04 give $F(D^m_{0,R}\\xi)\\leq\\varepsilon$.\nLet $R\\to\\infty$. M10 and continuity give $F(\\psi)\\leq\\varepsilon$ for\nthe conical blow-down $\\psi$ of $\\xi$. Apply the conical gap, then rigidity,\nto conclude $\\xi$ flat, the final contradiction.\nKeep the centre $x$ fixed throughout; the printed scale function sometimes\nuses zero where $x$ is intended. Every use of $F$ on a dilated measure must\nretain the factor $R^{-m}$.",
+      "repair": [],
+      "interface_status": "proposed; not claimed Lean-compiled"
+    },
+    {
+      "id": "gmt:barycenter-quadratic-bound",
+      "title": "Quadratic support bound for a ball barycenter",
+      "lean_name": "SUniformAux.abs_inner_integral_le",
+      "file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean",
+      "deps": [
+        "gmt:uniform-radial"
+      ],
+      "statement_tex": "For a centered uniform measure and fixed positive radius, the ball barycenter has $|\\langle y,\\int_{\\overline B(0,r)}z\\,d\\nu\\rangle|\\leq C|y|^2$ for support points $|y|\\leq r$, with some $C\\geq0$.",
+      "hypotheses": [
+        "Use the exact hypotheses of the pinned upstream declaration; the statement here summarizes the exported API."
+      ],
+      "core_vs_companion": "core",
+      "status": "existing upstream",
+      "repair": [],
+      "source": "Pinned FormalizingGMT/MarstrandTheorem.lean; De Lellis corrected Lemma 3.8.",
+      "interface_status": "existing declaration, verify exact types when importing"
+    },
+    {
+      "id": "gmt:quadratic-support-tangent",
+      "title": "Quadratic support estimate forces tangent support into a hyperplane",
+      "lean_name": "SUniformAux.support_tangent_subset_of_estimate",
+      "file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean",
+      "deps": [
+        "gmt:uniform-tangents"
+      ],
+      "statement_tex": "A local support estimate $|\\langle y,w\\rangle|\\leq C|y|^2$ at zero forces every tangent at zero to have support in $w^\\perp$.",
+      "hypotheses": [
+        "Use the exact hypotheses of the pinned upstream declaration; the statement here summarizes the exported API."
+      ],
+      "core_vs_companion": "core",
+      "status": "existing upstream",
+      "repair": [],
+      "source": "Pinned FormalizingGMT/MarstrandTheorem.lean; De Lellis corrected Lemma 3.8.",
+      "interface_status": "existing declaration, verify exact types when importing"
+    },
+    {
+      "id": "gmt:zero-barycenter-hyperplane",
+      "title": "Zero ball barycenters in a half-space imply hyperplane support",
+      "lean_name": "SUniformAux.support_subset_of_integral_inner_eq_zero",
+      "file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean",
+      "deps": [
+        "gmt:uniform-radial"
+      ],
+      "statement_tex": "For a centered uniform measure supported in the closed half-space with normal $e$, vanishing normal integrals over every centered ball imply support in $e^\\perp$.",
+      "hypotheses": [
+        "Use the exact hypotheses of the pinned upstream declaration; the statement here summarizes the exported API."
+      ],
+      "core_vs_companion": "core",
+      "status": "existing upstream",
+      "repair": [],
+      "source": "Pinned FormalizingGMT/MarstrandTheorem.lean; De Lellis corrected Lemma 3.8.",
+      "interface_status": "existing declaration, verify exact types when importing"
+    }
+  ],
+  "validation": {
+    "node_count": 97,
+    "all_ids_unique": true,
+    "acyclic_internal_dependencies": true,
+    "all_external_dependencies_are_existing_blueprint_labels": true
+  }
+}

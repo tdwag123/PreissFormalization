@@ -1,0 +1,221 @@
+\chapter{Natural-language proof sketch}
+\label{chap:proof-sketch}
+
+This chapter records the mathematical argument before assigning its obligations
+to Lean modules. The detailed source audits are in
+\href{https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/reviews/rectifiability-audit.tex}{the rectifiability review}
+and
+\href{https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/reviews/preiss-proof-audit.tex}{the uniform-measure review}.
+They include the author's errata and proposed repairs of steps that need more
+justification than the printed argument provides. None of these sketches is a
+claim that the corresponding Lean proofs have been completed.
+
+\section{The target and the normalization}
+Fix natural dimensions $m,n$, and a locally finite Borel measure $\mu$ on
+$\R^n$. Suppose the lower and upper $m$-densities agree and are positive and
+finite at $\mu$-almost every point. We will prove that $\mu\ll\mathcal H^m$
+and that $\mu$ is carried by countably many Lipschitz-parametrized pieces.
+For Euclidean targets these pieces may equivalently be taken to be full
+Lipschitz graphs, up to a Hausdorff-null remainder. The equivalence is a reusable
+result; the difficult image-to-graph direction is not needed by the main proof.
+
+We reuse FormalizingGMT's closed-ball, diameter-normalized density and its
+arbitrary-scalar tangent predicate. For the analytic argument set
+\[
+ T_{x,r}(z)=(z-x)/r,\qquad D^m_{x,r}\mu=r^{-m}(T_{x,r})_\#\mu.
+\]
+At a positive finite density point, dimensional tangents and GMT tangents
+are related by positive finite scalar multiplication. They are different sets.
+Write $q_x=\lim_{r\downarrow0}\mu(B(x,r))/r^m$. When all tangents are uniform,
+every dimensional tangent has the same ball constant $q_x$. Scaling $\mu$
+by $q_x^{-1}$ permits the pointwise argument to use uniform measures with
+unit-ball mass one. The Hausdorff normalization is handled by an explicit
+positive constant on planes; no Euclidean-volume equality is assumed silently.
+
+The cases $m=0$ and $m>n$ are separate. In dimension zero, continuity from
+above on small balls identifies the density with $\mu\{x\}$. The measure is
+therefore carried by its positive-mass atoms, a countable set because $\mu$
+is sigma-finite. Such a measure is zero-dimensional rectifiable. If $m>n$,
+finite upper density implies $\mu\ll\mathcal H^m$, while $\mathcal H^m$
+vanishes on $\R^n$. Thus $\mu=0$. The rest assumes $0<m\leq n$.
+
+\section{The rectifiability criterion needed at the end}
+We first prove the Marstrand--Mattila implication independently of Preiss:
+positive lower and finite upper density, together with flatness of every
+tangent almost everywhere, imply rectifiability. This only assumes two-sided
+density bounds, not an existing density or a common tangent plane.
+
+Stratify into bounded Borel pieces on which the small-ball bounds are uniform.
+Covering comparisons give finite Hausdorff measure and mutually absolutely
+continuous restrictions of $\mu$ and $\mathcal H^m$ on each piece. Apply
+Radon--Nikodym and differentiation on these finite restrictions, never on
+ambient $\mathcal H^m$ when $m<n$. Transfer the tangent hypotheses to
+$\nu=\mathcal H^m|F$ for each finite piece $F$.
+
+At a point with two-sided density bounds, every positive sequence of radii
+tending to zero yields dimensional blow-ups with a nonzero convergent subsequence. If every tangent is flat,
+this forces weak linear approximation: at every sufficiently small radius
+there is a plane near which almost all the mass lies, and every small ball
+centred on that plane carries a definite positive mass. Failure of the first
+clause contradicts compact-set portmanteau for a flat limit. Failure of the
+second supplies moving centres converging to a point of the limiting plane;
+a fixed smaller ball around that point contradicts open-set portmanteau.
+Both clauses are indispensable.
+
+It remains to show that finite-measure weakly linearly approximable sets are
+rectifiable. Take the maximal rectifiable part by a countable maximizing
+sequence. If a positive-measure purely unrectifiable part remains, weak
+approximation passes to it: differentiation and finite upper density make the
+discarded local mass $o(r^m)$.
+
+We can uniformize weak approximation on compact subsets without assuming
+measurability of arbitrary existential plane conditions. Replace strict upper
+bounds by non-strict bounds and open lower-bound balls by closed balls, with
+slack in the aperture. For fixed radius the resulting relation in point and
+plane is closed, by lower semicontinuity of open-set masses and upper
+semicontinuity of closed-ball masses. Projection along the compact space of
+planes preserves closedness. Intersecting over radii gives closed good sets.
+Shrinking and enlarging apertures relates them to the original definition.
+Regularity then supplies the compact subsets used below.
+
+Pure unrectifiability forces arbitrarily nearby pairs that escape any fixed
+cone: otherwise local pieces would lie in Lipschitz graphs. Uniform lower
+mass turns approximate tube concentration into actual tube containment of
+the compact good set. A cone-escaping pair makes its approximating plane
+have a direction with very small projection onto any prescribed comparison
+plane. Linear algebra bounds the projected tube by a thin slab. A disjoint
+almost-everywhere covering and the lower mass bounds show that the projection
+onto each $m$-plane has zero Hausdorff measure.
+
+Now use both directions of approximation on nested compact good sets
+$G\subset F$. In a disk of a comparison plane, choose disjoint disks at scales
+set by distance to the null projection of a compact piece
+$G\cap\overline B(a,2\sigma)$; compactness gives nearest projected points. Their radius powers have a
+positive total comparable to the original scale to the power $m$. Discard
+those cylinders that meet $F$ too deeply; their radius sum is controlled by
+the small discarded mass. Each remaining empty cylinder, together with
+plane-to-$F$ approximation at a nearest projected point, gives a long column
+of disjoint balls centred on $F$. At the local scale
+$r_i=\rho_i/(8\eta)$ there are at least a positive constant times $1/\eta$
+balls, each with its prescribed lower mass. The columns are mutually disjoint.
+Choose the uniform lower-mass constant $\delta$ first, then
+$\eta$ sufficiently small relative to it, then the finer approximation error
+$\gamma$ and discarded-mass threshold $t$. Their total mass contradicts
+the upper bound.
+This local-scale formulation avoids an incorrect scale equality in the source.
+The purely unrectifiable part is null, proving the set criterion and hence
+the measure criterion by countable reassembly.
+
+\section{Part A: obtaining one flat tangent}
+FormalizingGMT already proves that every tangent at almost every positive
+finite existing-density point is uniform. Density bounds also give tangent
+existence. Starting with a uniform tangent in ambient dimension larger than
+$m$, its support is not the whole space. A tangent at a nearest support point
+to a hole lies in a half-space. The corrected barycentre argument produces
+either the same measure or a further tangent supported in some hyperplane.
+The hyperplane need not be the original half-space boundary.
+
+Retain the tangent, normalization, and isometry witnesses through this
+reduction. An existential lower-dimensional measure without those witnesses
+is insufficient. The support-centred scaling orbit is closed under iterating
+these limits, by support-point approximation, joint continuity of blow-ups,
+and diagonal selection. Induction on ambient codimension ends with a
+full-dimensional uniform measure, already classified in GMT as a positive
+multiple of volume. Transport back to obtain a flat pseudotangent of the
+original uniform measure.
+
+To turn this into a tangent of $\mu$ at the original point, prove a single
+almost-everywhere recentering assertion, with all tangents, support centres,
+and positive radii quantified inside the almost-everywhere binder. A
+countable compact-test metric permits a contradiction using a positive-mass
+class of bad centres. Such classes need not be Borel. First localize them to finite mass, then take
+their minimal measurable hulls: a measurable set disjoint from the original class has zero
+intersection mass with its hull. At density-one points of the hull, this
+forces support points of a blow-up to be approximated by original bad centres.
+Joint continuity and the metric separation defining the class contradict one
+another. This is an explicit repair of the measurability issue noted in the
+errata. Recenter the pseudotangent sequence and use closure of the tangent
+set. At least one flat tangent exists almost everywhere.
+
+\section{Uniform measures at infinity}
+We need three facts about unit uniform measures: uniqueness of their limit
+at infinity, a gap between flat and nonflat conical limits, and rigidity when
+the limit at infinity is flat. They are proved without using rectifiability.
+
+The ball law identifies radial distributions and hence Gaussian integrals.
+Polynomial growth gives integrable Gaussian-polynomial bounds and tails that
+are uniform over the normalized family. These estimates extend vague
+convergence to the unbounded tests needed for moments. Divide every Gaussian
+moment by the Gaussian mass, so these moment forms are invariant under
+positive scalar multiplication of the measure.
+
+Translating a Gaussian by a support point gives an exponential identity.
+A dominated Taylor expansion gives quantitative remainders at those points.
+A separate finite-dimensional graded linear-algebra lemma upgrades this to
+an expansion of every moment form: a weighted projection onto the space
+spanned by support-polynomial evaluation vectors extends analytically across
+zero. A finite basis of support evaluations controls its remainder in norm.
+Use a finite coordinate-product model for the polynomial space; it avoids
+incorrectly normalized symmetric-tensor bases. Uniqueness of Taylor
+coefficients makes the expansions coherent across truncation orders.
+
+The scaling identity for moments now identifies every Gaussian-polynomial
+moment of a limit at infinity. Odd scaled moments vanish; even leading
+coefficients carry the essential factorial from their Taylor expansion.
+Two candidate limits have the same moments and hence are equal. For this
+last step, first extend equality between nearby Gaussian rates by a dominated
+series, then iterate. The algebra of Gaussian-weighted polynomials separates
+points on the one-point compactification; weighted Stone--Weierstrass and
+Gaussian integrability identify compact-test integrals. Ordinary polynomial
+approximation on a compact set alone would not control the tails.
+Compactness promotes subsequential uniqueness to full convergence. Dilation
+invariance then makes the unique limit conical.
+
+For a conical measure, scaling and the integer-power expansions force odd
+moments to vanish. Its quadratic moment form is positive semidefinite, has
+trace $m$, and agrees with squared norm on the support. Homogeneous radial
+integration converts unit-ball distance energy to Gaussian distance energy.
+A top-$m$ eigenspace minimizes this energy. Small energy forces every unit
+point of that plane close to the support, by compactness and classification
+of uniform measures supported on a plane. A support point sufficiently close
+to the $m$th eigenvector forces that eigenvalue to be at least one. Trace $m$
+then makes the form a projection and the measure flat. This proof works for
+all positive $m$; the separate low-dimensional classification is unnecessary.
+
+If the limit at infinity is flat on $V$, its Gaussian moments identify the
+leading even coefficients of the original measure. The first support
+identity gives a normal vector $b$ with
+$|Q_Vx|^2=2\langle b,x\rangle$ on the support. Thus the support lies in a
+bounded tube about $V$. A compactness argument also bounds holes along $V$.
+Fourth-order support identities define an adjusted quadratic form and a
+quadratic normal-valued map. Gaussian trace and fourth-moment identities,
+with justified differentiation, Fubini, and limits, give a trace lower bound
+by a positive multiple of $|b|^2$. The same trace is zero. Hence $b=0$,
+the support lies in $V$, and the uniform measure is flat. The intermediate
+trace identities are separate obligations in the revised graph.
+
+\section{Part B and the conclusion}
+At a point with density constant $q_x$, normalize as above so every dimensional
+tangent is unit uniform. A compactly supported squared-distance functional,
+minimized over the compact space of planes, is continuous under vague
+convergence and along positive scaling. A flat tangent yields scales with
+energy tending to zero. A hypothetical nonflat tangent has a nonflat conical
+limit at infinity, by rigidity; the gap gives scales with energy bounded
+away from zero.
+
+Choose threshold-crossing scales between these sequences and pass to a
+convergent subsequence of crossing measures. The limit has positive threshold
+energy. The ratios of the adjacent flat scales to crossing scales must tend
+to infinity: a bounded ratio would relate the limit to a flat measure by a
+finite dilation. The choice of crossing then bounds the energy of every
+large dilation of the crossing limit below the gap threshold. Its limit at
+infinity is flat by the conical gap. Rigidity makes the crossing limit itself
+flat, contradicting its positive energy. Thus every tangent is flat.
+
+Intersect the almost-everywhere sets for density, uniformity, Part A, and
+Part B. Apply the independently established Marstrand--Mattila measure
+criterion, then include the zero and excess-dimensional cases. This is
+Preiss' theorem. The stronger classical characterization with one common
+plane almost everywhere is a separate reusable branch: graph area formula,
+graph blow-up convergence, restriction/density transfer, and tangent
+normalization prove its necessity direction without circular use of Preiss.

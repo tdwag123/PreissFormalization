@@ -1,0 +1,1610 @@
+{
+  "status": "Concrete statements written. Basic closure statements elaborated; full branch checking pending after host memory exhaustion. No theorem proofs claimed.",
+  "labels": {
+    "def:cone": {
+      "lean_name": "Preiss.cone",
+      "file": "Preiss/Geometry/Cones.lean",
+      "module": "Preiss.Geometry.Cones",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.cone",
+        "Preiss.closedTube"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.cone",
+          "file": "Preiss/Geometry/Cones.lean",
+          "module": "Preiss.Geometry.Cones",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.closedTube",
+          "file": "Preiss/Geometry/Cones.lean",
+          "module": "Preiss.Geometry.Cones",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:graph-parametrization": {
+      "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "module": "Preiss.Rectifiability.Graphs",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.graphMap_lipschitz_antilipschitz",
+        "Preiss.graphMap"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
+          "file": "Preiss/Rectifiability/Graphs.lean",
+          "module": "Preiss.Rectifiability.Graphs",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.graphMap",
+          "file": "Preiss/Rectifiability/Graphs.lean",
+          "module": "Preiss.Rectifiability.Graphs",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:plane-hausdorff": {
+      "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
+      "file": "Preiss/Geometry/PlaneMeasure.lean",
+      "module": "Preiss.Geometry.PlaneMeasure",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
+        "Preiss.flatOn",
+        "Preiss.unitFlat",
+        "Preiss.unitFlat_closedBall",
+        "Preiss.planeMeasure_ball_and_sphere"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
+          "file": "Preiss/Geometry/PlaneMeasure.lean",
+          "module": "Preiss.Geometry.PlaneMeasure",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.flatOn",
+          "file": "Preiss/Geometry/PlaneMeasure.lean",
+          "module": "Preiss.Geometry.PlaneMeasure",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.unitFlat",
+          "file": "Preiss/Geometry/PlaneMeasure.lean",
+          "module": "Preiss.Geometry.PlaneMeasure",
+          "status": "definition"
+        },
+        {
+          "lean_name": "Preiss.unitFlat_closedBall",
+          "file": "Preiss/Geometry/PlaneMeasure.lean",
+          "module": "Preiss.Geometry.PlaneMeasure",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.planeMeasure_ball_and_sphere",
+          "file": "Preiss/Geometry/PlaneMeasure.lean",
+          "module": "Preiss.Geometry.PlaneMeasure",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:graph-borel-finite": {
+      "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "module": "Preiss.Rectifiability.Graphs",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.isClosed_and_measure_closedBall_lt_top"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
+          "file": "Preiss/Rectifiability/Graphs.lean",
+          "module": "Preiss.Rectifiability.Graphs",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:graph-rectifiable": {
+      "lean_name": "Preiss.countablyRectifiable_subset_graph",
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "module": "Preiss.Rectifiability.Graphs",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.countablyRectifiable_subset_graph"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.countablyRectifiable_subset_graph",
+          "file": "Preiss/Rectifiability/Graphs.lean",
+          "module": "Preiss.Rectifiability.Graphs",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:domain-extension": {
+      "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
+      "file": "Preiss/Geometry/LipschitzExtension.lean",
+      "module": "Preiss.Geometry.LipschitzExtension",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_lipschitz_extension_euclidean"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
+          "file": "Preiss/Geometry/LipschitzExtension.lean",
+          "module": "Preiss.Geometry.LipschitzExtension",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:carrier-closure": {
+      "lean_name": "Preiss.countablyRectifiable_iUnion",
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "module": "Preiss.Rectifiability.Basic",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.countablyRectifiable_iUnion",
+        "Preiss.countablyRectifiable_mono",
+        "Preiss.countablyRectifiable_image",
+        "Preiss.countablyRectifiable_of_sdiff_null"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.countablyRectifiable_iUnion",
+          "file": "Preiss/Rectifiability/Basic.lean",
+          "module": "Preiss.Rectifiability.Basic",
+          "status": "sorry_placeholder",
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+        },
+        {
+          "lean_name": "Preiss.countablyRectifiable_mono",
+          "file": "Preiss/Rectifiability/Basic.lean",
+          "module": "Preiss.Rectifiability.Basic",
+          "status": "sorry_placeholder",
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+        },
+        {
+          "lean_name": "Preiss.countablyRectifiable_image",
+          "file": "Preiss/Rectifiability/Basic.lean",
+          "module": "Preiss.Rectifiability.Basic",
+          "status": "sorry_placeholder",
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+        },
+        {
+          "lean_name": "Preiss.countablyRectifiable_of_sdiff_null",
+          "file": "Preiss/Rectifiability/Basic.lean",
+          "module": "Preiss.Rectifiability.Basic",
+          "status": "sorry_placeholder",
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+        }
+      ]
+    },
+    "lem:borel-carrier": {
+      "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
+      "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
+      "module": "Preiss.Rectifiability.EuclideanCarrier",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_borel_sigmaFinite_carrier"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
+          "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
+          "module": "Preiss.Rectifiability.EuclideanCarrier",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:carrier-calculus": {
+      "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "module": "Preiss.Rectifiability.Basic",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.isRectifiableMeasure_of_countable_restrict"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
+          "file": "Preiss/Rectifiability/Basic.lean",
+          "module": "Preiss.Rectifiability.Basic",
+          "status": "sorry_placeholder",
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+        }
+      ]
+    },
+    "lem:cone-graph": {
+      "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
+      "file": "Preiss/Rectifiability/Cones.lean",
+      "module": "Preiss.Rectifiability.Cones",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
+          "file": "Preiss/Rectifiability/Cones.lean",
+          "module": "Preiss.Rectifiability.Cones",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "def:purely-unrectifiable": {
+      "lean_name": "Preiss.PurelyUnrectifiable",
+      "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.PurelyUnrectifiable"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.PurelyUnrectifiable",
+          "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+          "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:pure-basic": {
+      "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
+      "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
+        "Preiss.purelyUnrectifiable_mono"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
+          "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+          "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.purelyUnrectifiable_mono",
+          "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+          "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:decomposition": {
+      "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
+      "file": "Preiss/Rectifiability/Decomposition.lean",
+      "module": "Preiss.Rectifiability.Decomposition",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
+        "Preiss.rectifiable_pure_partition_unique"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
+          "file": "Preiss/Rectifiability/Decomposition.lean",
+          "module": "Preiss.Rectifiability.Decomposition",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.rectifiable_pure_partition_unique",
+          "file": "Preiss/Rectifiability/Decomposition.lean",
+          "module": "Preiss.Rectifiability.Decomposition",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:density-measure-comparison": {
+      "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
+      "file": "Preiss/Density/PowerComparison.lean",
+      "module": "Preiss.Density.PowerComparison",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
+        "Preiss.UpperPowerBoundAt",
+        "Preiss.hausdorff_restrict_le_measure_of_ball_bounds"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
+          "file": "Preiss/Density/PowerComparison.lean",
+          "module": "Preiss.Density.PowerComparison",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.UpperPowerBoundAt",
+          "file": "Preiss/Density/PowerComparison.lean",
+          "module": "Preiss.Density.PowerComparison",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
+          "file": "Preiss/Density/PowerComparison.lean",
+          "module": "Preiss.Density.PowerComparison",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:absolute-continuity": {
+      "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
+      "file": "Preiss/Density/HausdorffComparison.lean",
+      "module": "Preiss.Density.HausdorffComparison",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
+          "file": "Preiss/Density/HausdorffComparison.lean",
+          "module": "Preiss.Density.HausdorffComparison",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:finite-pieces": {
+      "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
+      "file": "Preiss/Density/FinitePieces.lean",
+      "module": "Preiss.Density.FinitePieces",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_finite_hausdorff_pieces_of_density_bounds"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
+          "file": "Preiss/Density/FinitePieces.lean",
+          "module": "Preiss.Density.FinitePieces",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:representation": {
+      "lean_name": "Preiss.rectifiable_iff_density_representation",
+      "file": "Preiss/Rectifiability/DensityRepresentation.lean",
+      "module": "Preiss.Rectifiability.DensityRepresentation",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.rectifiable_iff_density_representation"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.rectifiable_iff_density_representation",
+          "file": "Preiss/Rectifiability/DensityRepresentation.lean",
+          "module": "Preiss.Rectifiability.DensityRepresentation",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:finite-piece-transfer": {
+      "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
+      "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
+          "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:dimensional-compactness": {
+      "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
+      "file": "Preiss/Tangent/Compactness.lean",
+      "module": "Preiss.Tangent.Compactness",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_dimensional_tangent_subseq_of_density_bounds"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
+          "file": "Preiss/Tangent/Compactness.lean",
+          "module": "Preiss.Tangent.Compactness",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:flat-limit-tube": {
+      "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
+      "file": "Preiss/Tangent/FlatApproximation.lean",
+      "module": "Preiss.Tangent.FlatApproximation",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.tendsto_mass_outside_tube_of_flat_limit"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
+          "file": "Preiss/Tangent/FlatApproximation.lean",
+          "module": "Preiss.Tangent.FlatApproximation",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:flat-limit-moving-balls": {
+      "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
+      "file": "Preiss/Tangent/FlatApproximation.lean",
+      "module": "Preiss.Tangent.FlatApproximation",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.eventually_ball_mass_lower_bound_of_flat_limit"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
+          "file": "Preiss/Tangent/FlatApproximation.lean",
+          "module": "Preiss.Tangent.FlatApproximation",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:flat-to-approximation": {
+      "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
+      "file": "Preiss/Tangent/FlatApproximation.lean",
+      "module": "Preiss.Tangent.FlatApproximation",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
+          "file": "Preiss/Tangent/FlatApproximation.lean",
+          "module": "Preiss.Tangent.FlatApproximation",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:weak-approximation-lower-density": {
+      "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.lower_density_pos_of_weakApproximation",
+        "Preiss.lower_power_bound_of_weakApproximation"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
+          "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.lower_power_bound_of_weakApproximation",
+          "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Basic",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:weak-approximation-deletion": {
+      "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
+      "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.weakApproximation_restrict_of_negligible_sdiff",
+        "Preiss.negligibleDeletionAt"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
+          "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.negligibleDeletionAt",
+          "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:weak-approximation-restrict-ae": {
+      "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.ae_weaklyLinearlyApproximableAt_subset"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
+          "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "def:weak-approximation-good-set": {
+      "lean_name": "Preiss.weakApproximationGoodSet",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.weakApproximationGoodSet"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.weakApproximationGoodSet",
+          "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:closed-weak-approximation-good-set": {
+      "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.isClosed_weakApproximationGoodSet"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
+          "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:weak-approximation-good-exhaustion": {
+      "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+          "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:uniform-compact-selection": {
+      "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_compact_uniform_weakApproximation_subset"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
+          "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:tube-support-upgrade": {
+      "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.subset_tube_of_lower_mass_and_small_outside_mass"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
+          "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:pure-cone-escape": {
+      "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
+          "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:projected-tube-slab-bound": {
+      "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
+      "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "module": "Preiss.Rectifiability.ProjectionEstimate",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.hausdorffMeasure_projected_tube_le"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
+          "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+          "module": "Preiss.Rectifiability.ProjectionEstimate",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:pure-wla-null-projection": {
+      "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
+          "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:nested-compact-approximation": {
+      "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_nested_compact_twoSided_approximation",
+        "Preiss.TwoSidedApproximation"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.TwoSidedApproximation",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:packing-base-point": {
+      "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_upper_mass_small_sdiff_point",
+        "Preiss.ae_upperPowerBoundAt_restrict_hausdorff"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
+          "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
+          "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:projection-hole-cover": {
+      "lean_name": "Preiss.exists_projection_hole_disk_family",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_projection_hole_disk_family",
+        "Preiss.HoleFamily",
+        "Preiss.projected_distance_le_of_lower_mass"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_projection_hole_disk_family",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.HoleFamily",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.projected_distance_le_of_lower_mass",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:discarded-cylinder-sum": {
+      "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.tsum_hole_radii_bad_indices_le"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:empty-cylinder-direction": {
+      "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+      "file": "Preiss/Geometry/Cylinders.lean",
+      "module": "Preiss.Geometry.Cylinders",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+        "Preiss.cylinder"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+          "file": "Preiss/Geometry/Cylinders.lean",
+          "module": "Preiss.Geometry.Cylinders",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.cylinder",
+          "file": "Preiss/Geometry/Cylinders.lean",
+          "module": "Preiss.Geometry.Cylinders",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:column-packing": {
+      "lean_name": "Preiss.exists_column_disjoint_balls",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_column_disjoint_balls"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_column_disjoint_balls",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:packing-contradiction": {
+      "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.false_of_null_projections_and_uniform_weakApproximation",
+        "Preiss.false_of_column_mass_exceeds_upper_bound"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.false_of_column_mass_exceeds_upper_bound",
+          "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "thm:mm-set": {
+      "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
+      "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
+          "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "thm:mm-measure": {
+      "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
+      "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
+          "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+          "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:lipschitz-null-image": {
+      "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
+          "file": "Preiss/Rectifiability/GraphCover.lean",
+          "module": "Preiss.Rectifiability.GraphCover",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:rank-deficient-image-null": {
+      "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.hausdorffMeasure_image_rank_lt_eq_zero"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
+          "file": "Preiss/Rectifiability/GraphCover.lean",
+          "module": "Preiss.Rectifiability.GraphCover",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:full-rank-graph-pieces": {
+      "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.exists_countable_graph_cover_fullRank_locus"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
+          "file": "Preiss/Rectifiability/GraphCover.lean",
+          "module": "Preiss.Rectifiability.GraphCover",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:graphs": {
+      "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.countablyRectifiable_iff_lipschitzGraph_cover"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+          "file": "Preiss/Rectifiability/GraphCover.lean",
+          "module": "Preiss.Rectifiability.GraphCover",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:graph-affine-area": {
+      "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
+      "file": "Preiss/Rectifiability/GraphArea.lean",
+      "module": "Preiss.Rectifiability.GraphArea",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.map_jacobian_hausdorff_affine_injection",
+        "Preiss.linearJacobian"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
+          "file": "Preiss/Rectifiability/GraphArea.lean",
+          "module": "Preiss.Rectifiability.GraphArea",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.linearJacobian",
+          "file": "Preiss/Rectifiability/GraphArea.lean",
+          "module": "Preiss.Rectifiability.GraphArea",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:graph-area": {
+      "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
+      "file": "Preiss/Rectifiability/GraphArea.lean",
+      "module": "Preiss.Rectifiability.GraphArea",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.map_withDensity_jacobian_eq_graph_hausdorff"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
+          "file": "Preiss/Rectifiability/GraphArea.lean",
+          "module": "Preiss.Rectifiability.GraphArea",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:graph-blowup": {
+      "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
+      "file": "Preiss/Rectifiability/GraphBlowup.lean",
+      "module": "Preiss.Rectifiability.GraphBlowup",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.ae_graph_hausdorff_blowup_limit"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
+          "file": "Preiss/Rectifiability/GraphBlowup.lean",
+          "module": "Preiss.Rectifiability.GraphBlowup",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:normalized-density-transfer": {
+      "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
+      "file": "Preiss/Tangent/DensityTransfer.lean",
+      "module": "Preiss.Tangent.DensityTransfer",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.tendsto_integral_blowup_sub_density_mul"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
+          "file": "Preiss/Tangent/DensityTransfer.lean",
+          "module": "Preiss.Tangent.DensityTransfer",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "thm:rectifiable-blowup": {
+      "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
+      "file": "Preiss/Rectifiability/TangentNecessity.lean",
+      "module": "Preiss.Rectifiability.TangentNecessity",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.rectifiable_has_flat_blowup_limit"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
+          "file": "Preiss/Rectifiability/TangentNecessity.lean",
+          "module": "Preiss.Rectifiability.TangentNecessity",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "cor:rectifiable-tangent-plane": {
+      "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
+      "file": "Preiss/Rectifiability/TangentNecessity.lean",
+      "module": "Preiss.Rectifiability.TangentNecessity",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.rectifiable_has_density_and_tangent_plane"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
+          "file": "Preiss/Rectifiability/TangentNecessity.lean",
+          "module": "Preiss.Rectifiability.TangentNecessity",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "thm:rectifiable-iff-flat": {
+      "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
+      "file": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "module": "Preiss.Rectifiability.TangentCharacterization",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.rectifiable_iff_density_bounds_and_flat_tangents"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
+          "file": "Preiss/Rectifiability/TangentCharacterization.lean",
+          "module": "Preiss.Rectifiability.TangentCharacterization",
+          "status": "sorry_placeholder"
+        }
+      ]
+    },
+    "lem:grassmannian": {
+      "lean_name": "Preiss.isCompact_rankProjectionSet",
+      "file": "Preiss/Geometry/PlaneTopology.lean",
+      "module": "Preiss.Geometry.PlaneTopology",
+      "status": "sorry_placeholder",
+      "lean_names": [
+        "Preiss.isCompact_rankProjectionSet",
+        "Preiss.proj",
+        "Preiss.planeProjection",
+        "Preiss.planeProjection_injective",
+        "Preiss.rankProjectionSet",
+        "Preiss.range_planeProjection"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.isCompact_rankProjectionSet",
+          "file": "Preiss/Geometry/PlaneTopology.lean",
+          "module": "Preiss.Geometry.PlaneTopology",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.proj",
+          "file": "Preiss/Geometry/Projections.lean",
+          "module": "Preiss.Geometry.Projections",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.planeProjection",
+          "file": "Preiss/Geometry/Projections.lean",
+          "module": "Preiss.Geometry.Projections",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.planeProjection_injective",
+          "file": "Preiss/Geometry/Projections.lean",
+          "module": "Preiss.Geometry.Projections",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.rankProjectionSet",
+          "file": "Preiss/Geometry/PlaneTopology.lean",
+          "module": "Preiss.Geometry.PlaneTopology",
+          "status": "sorry_placeholder"
+        },
+        {
+          "lean_name": "Preiss.range_planeProjection",
+          "file": "Preiss/Geometry/PlaneTopology.lean",
+          "module": "Preiss.Geometry.PlaneTopology",
+          "status": "sorry_placeholder"
+        }
+      ]
+    }
+  },
+  "declarations": {
+    "proj": {
+      "lean_name": "Preiss.proj",
+      "file": "Preiss/Geometry/Projections.lean",
+      "module": "Preiss.Geometry.Projections",
+      "status": "sorry_placeholder"
+    },
+    "planeProjection": {
+      "lean_name": "Preiss.planeProjection",
+      "file": "Preiss/Geometry/Projections.lean",
+      "module": "Preiss.Geometry.Projections",
+      "status": "sorry_placeholder"
+    },
+    "planeProjection_injective": {
+      "lean_name": "Preiss.planeProjection_injective",
+      "file": "Preiss/Geometry/Projections.lean",
+      "module": "Preiss.Geometry.Projections",
+      "status": "sorry_placeholder"
+    },
+    "rankProjectionSet": {
+      "lean_name": "Preiss.rankProjectionSet",
+      "file": "Preiss/Geometry/PlaneTopology.lean",
+      "module": "Preiss.Geometry.PlaneTopology",
+      "status": "sorry_placeholder"
+    },
+    "range_planeProjection": {
+      "lean_name": "Preiss.range_planeProjection",
+      "file": "Preiss/Geometry/PlaneTopology.lean",
+      "module": "Preiss.Geometry.PlaneTopology",
+      "status": "sorry_placeholder"
+    },
+    "isCompact_rankProjectionSet": {
+      "lean_name": "Preiss.isCompact_rankProjectionSet",
+      "file": "Preiss/Geometry/PlaneTopology.lean",
+      "module": "Preiss.Geometry.PlaneTopology",
+      "status": "sorry_placeholder"
+    },
+    "closedTube": {
+      "lean_name": "Preiss.closedTube",
+      "file": "Preiss/Geometry/Cones.lean",
+      "module": "Preiss.Geometry.Cones",
+      "status": "sorry_placeholder"
+    },
+    "cone": {
+      "lean_name": "Preiss.cone",
+      "file": "Preiss/Geometry/Cones.lean",
+      "module": "Preiss.Geometry.Cones",
+      "status": "sorry_placeholder"
+    },
+    "cylinder": {
+      "lean_name": "Preiss.cylinder",
+      "file": "Preiss/Geometry/Cylinders.lean",
+      "module": "Preiss.Geometry.Cylinders",
+      "status": "sorry_placeholder"
+    },
+    "exists_unit_small_projection_of_avoids_cylinder": {
+      "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+      "file": "Preiss/Geometry/Cylinders.lean",
+      "module": "Preiss.Geometry.Cylinders",
+      "status": "sorry_placeholder"
+    },
+    "flatOn": {
+      "lean_name": "Preiss.flatOn",
+      "file": "Preiss/Geometry/PlaneMeasure.lean",
+      "module": "Preiss.Geometry.PlaneMeasure",
+      "status": "sorry_placeholder"
+    },
+    "map_hausdorffMeasure_subtype_eq_restrict": {
+      "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
+      "file": "Preiss/Geometry/PlaneMeasure.lean",
+      "module": "Preiss.Geometry.PlaneMeasure",
+      "status": "sorry_placeholder"
+    },
+    "planeMeasure_ball_and_sphere": {
+      "lean_name": "Preiss.planeMeasure_ball_and_sphere",
+      "file": "Preiss/Geometry/PlaneMeasure.lean",
+      "module": "Preiss.Geometry.PlaneMeasure",
+      "status": "sorry_placeholder"
+    },
+    "exists_lipschitz_extension_euclidean": {
+      "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
+      "file": "Preiss/Geometry/LipschitzExtension.lean",
+      "module": "Preiss.Geometry.LipschitzExtension",
+      "status": "sorry_placeholder"
+    },
+    "graphMap": {
+      "lean_name": "Preiss.graphMap",
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "module": "Preiss.Rectifiability.Graphs",
+      "status": "sorry_placeholder"
+    },
+    "graphMap_lipschitz_antilipschitz": {
+      "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "module": "Preiss.Rectifiability.Graphs",
+      "status": "sorry_placeholder"
+    },
+    "isClosed_and_measure_closedBall_lt_top": {
+      "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "module": "Preiss.Rectifiability.Graphs",
+      "status": "sorry_placeholder"
+    },
+    "countablyRectifiable_subset_graph": {
+      "lean_name": "Preiss.countablyRectifiable_subset_graph",
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "module": "Preiss.Rectifiability.Graphs",
+      "status": "sorry_placeholder"
+    },
+    "countablyRectifiable_mono": {
+      "lean_name": "Preiss.countablyRectifiable_mono",
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "module": "Preiss.Rectifiability.Basic",
+      "status": "sorry_placeholder",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+    },
+    "countablyRectifiable_iUnion": {
+      "lean_name": "Preiss.countablyRectifiable_iUnion",
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "module": "Preiss.Rectifiability.Basic",
+      "status": "sorry_placeholder",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+    },
+    "countablyRectifiable_image": {
+      "lean_name": "Preiss.countablyRectifiable_image",
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "module": "Preiss.Rectifiability.Basic",
+      "status": "sorry_placeholder",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+    },
+    "countablyRectifiable_of_sdiff_null": {
+      "lean_name": "Preiss.countablyRectifiable_of_sdiff_null",
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "module": "Preiss.Rectifiability.Basic",
+      "status": "sorry_placeholder",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+    },
+    "isRectifiableMeasure_of_countable_restrict": {
+      "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "module": "Preiss.Rectifiability.Basic",
+      "status": "sorry_placeholder",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+    },
+    "exists_borel_sigmaFinite_carrier": {
+      "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
+      "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
+      "module": "Preiss.Rectifiability.EuclideanCarrier",
+      "status": "sorry_placeholder"
+    },
+    "exists_lipschitzGraph_of_pairwise_mem_cone": {
+      "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
+      "file": "Preiss/Rectifiability/Cones.lean",
+      "module": "Preiss.Rectifiability.Cones",
+      "status": "sorry_placeholder"
+    },
+    "PurelyUnrectifiable": {
+      "lean_name": "Preiss.PurelyUnrectifiable",
+      "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+      "status": "sorry_placeholder"
+    },
+    "purelyUnrectifiable_mono": {
+      "lean_name": "Preiss.purelyUnrectifiable_mono",
+      "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+      "status": "sorry_placeholder"
+    },
+    "purelyUnrectifiable_measure_inter_eq_zero": {
+      "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
+      "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+      "status": "sorry_placeholder"
+    },
+    "exists_rectifiable_purelyUnrectifiable_partition": {
+      "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
+      "file": "Preiss/Rectifiability/Decomposition.lean",
+      "module": "Preiss.Rectifiability.Decomposition",
+      "status": "sorry_placeholder"
+    },
+    "rectifiable_pure_partition_unique": {
+      "lean_name": "Preiss.rectifiable_pure_partition_unique",
+      "file": "Preiss/Rectifiability/Decomposition.lean",
+      "module": "Preiss.Rectifiability.Decomposition",
+      "status": "sorry_placeholder"
+    },
+    "UpperPowerBoundAt": {
+      "lean_name": "Preiss.UpperPowerBoundAt",
+      "file": "Preiss/Density/PowerComparison.lean",
+      "module": "Preiss.Density.PowerComparison",
+      "status": "sorry_placeholder"
+    },
+    "measure_restrict_le_hausdorff_of_ball_bounds": {
+      "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
+      "file": "Preiss/Density/PowerComparison.lean",
+      "module": "Preiss.Density.PowerComparison",
+      "status": "sorry_placeholder"
+    },
+    "hausdorff_restrict_le_measure_of_ball_bounds": {
+      "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
+      "file": "Preiss/Density/PowerComparison.lean",
+      "module": "Preiss.Density.PowerComparison",
+      "status": "sorry_placeholder"
+    },
+    "absolutelyContinuous_hausdorff_of_upper_density_finite": {
+      "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
+      "file": "Preiss/Density/HausdorffComparison.lean",
+      "module": "Preiss.Density.HausdorffComparison",
+      "status": "sorry_placeholder"
+    },
+    "exists_finite_hausdorff_pieces_of_density_bounds": {
+      "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
+      "file": "Preiss/Density/FinitePieces.lean",
+      "module": "Preiss.Density.FinitePieces",
+      "status": "sorry_placeholder"
+    },
+    "rectifiable_iff_density_representation": {
+      "lean_name": "Preiss.rectifiable_iff_density_representation",
+      "file": "Preiss/Rectifiability/DensityRepresentation.lean",
+      "module": "Preiss.Rectifiability.DensityRepresentation",
+      "status": "sorry_placeholder"
+    },
+    "exists_dimensional_tangent_subseq_of_density_bounds": {
+      "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
+      "file": "Preiss/Tangent/Compactness.lean",
+      "module": "Preiss.Tangent.Compactness",
+      "status": "sorry_placeholder"
+    },
+    "tendsto_mass_outside_tube_of_flat_limit": {
+      "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
+      "file": "Preiss/Tangent/FlatApproximation.lean",
+      "module": "Preiss.Tangent.FlatApproximation",
+      "status": "sorry_placeholder"
+    },
+    "eventually_ball_mass_lower_bound_of_flat_limit": {
+      "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
+      "file": "Preiss/Tangent/FlatApproximation.lean",
+      "module": "Preiss.Tangent.FlatApproximation",
+      "status": "sorry_placeholder"
+    },
+    "weaklyLinearlyApproximableAt_of_all_tangents_flat": {
+      "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
+      "file": "Preiss/Tangent/FlatApproximation.lean",
+      "module": "Preiss.Tangent.FlatApproximation",
+      "status": "sorry_placeholder"
+    },
+    "lower_power_bound_of_weakApproximation": {
+      "lean_name": "Preiss.lower_power_bound_of_weakApproximation",
+      "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Basic",
+      "status": "sorry_placeholder"
+    },
+    "negligibleDeletionAt": {
+      "lean_name": "Preiss.negligibleDeletionAt",
+      "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+      "status": "sorry_placeholder"
+    },
+    "weakApproximation_restrict_of_negligible_sdiff": {
+      "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
+      "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+      "status": "sorry_placeholder"
+    },
+    "weakApproximationGoodSet": {
+      "lean_name": "Preiss.weakApproximationGoodSet",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder"
+    },
+    "isClosed_weakApproximationGoodSet": {
+      "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder"
+    },
+    "weaklyLinearlyApproximableAt_iff_goodSet_exhaustion": {
+      "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder"
+    },
+    "exists_compact_uniform_weakApproximation_subset": {
+      "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder"
+    },
+    "subset_tube_of_lower_mass_and_small_outside_mass": {
+      "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "status": "sorry_placeholder"
+    },
+    "hausdorffMeasure_projected_tube_le": {
+      "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
+      "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "module": "Preiss.Rectifiability.ProjectionEstimate",
+      "status": "sorry_placeholder"
+    },
+    "ae_exists_outside_cone_of_purelyUnrectifiable": {
+      "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+      "status": "sorry_placeholder"
+    },
+    "measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation": {
+      "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+      "status": "sorry_placeholder"
+    },
+    "TwoSidedApproximation": {
+      "lean_name": "Preiss.TwoSidedApproximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "exists_nested_compact_twoSided_approximation": {
+      "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "HoleFamily": {
+      "lean_name": "Preiss.HoleFamily",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "exists_projection_hole_disk_family": {
+      "lean_name": "Preiss.exists_projection_hole_disk_family",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "projected_distance_le_of_lower_mass": {
+      "lean_name": "Preiss.projected_distance_le_of_lower_mass",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "tsum_hole_radii_bad_indices_le": {
+      "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "exists_column_disjoint_balls": {
+      "lean_name": "Preiss.exists_column_disjoint_balls",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "false_of_column_mass_exceeds_upper_bound": {
+      "lean_name": "Preiss.false_of_column_mass_exceeds_upper_bound",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "false_of_null_projections_and_uniform_weakApproximation": {
+      "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "status": "sorry_placeholder"
+    },
+    "lower_density_pos_of_weakApproximation": {
+      "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "status": "sorry_placeholder"
+    },
+    "ae_weaklyLinearlyApproximableAt_subset": {
+      "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "status": "sorry_placeholder"
+    },
+    "exists_upper_mass_small_sdiff_point": {
+      "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "status": "sorry_placeholder"
+    },
+    "countablyRectifiable_of_ae_weaklyLinearlyApproximableAt": {
+      "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
+      "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+      "status": "sorry_placeholder"
+    },
+    "ae_density_bounds_and_flat_tangents_restrict_hausdorff": {
+      "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
+      "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+      "status": "sorry_placeholder"
+    },
+    "isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents": {
+      "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
+      "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+      "status": "sorry_placeholder"
+    },
+    "hausdorffMeasure_image_eq_zero_of_lipschitz_null": {
+      "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder"
+    },
+    "hausdorffMeasure_image_rank_lt_eq_zero": {
+      "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder"
+    },
+    "exists_countable_graph_cover_fullRank_locus": {
+      "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder"
+    },
+    "countablyRectifiable_iff_lipschitzGraph_cover": {
+      "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "module": "Preiss.Rectifiability.GraphCover",
+      "status": "sorry_placeholder"
+    },
+    "linearJacobian": {
+      "lean_name": "Preiss.linearJacobian",
+      "file": "Preiss/Rectifiability/GraphArea.lean",
+      "module": "Preiss.Rectifiability.GraphArea",
+      "status": "sorry_placeholder"
+    },
+    "map_jacobian_hausdorff_affine_injection": {
+      "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
+      "file": "Preiss/Rectifiability/GraphArea.lean",
+      "module": "Preiss.Rectifiability.GraphArea",
+      "status": "sorry_placeholder"
+    },
+    "map_withDensity_jacobian_eq_graph_hausdorff": {
+      "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
+      "file": "Preiss/Rectifiability/GraphArea.lean",
+      "module": "Preiss.Rectifiability.GraphArea",
+      "status": "sorry_placeholder"
+    },
+    "ae_graph_hausdorff_blowup_limit": {
+      "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
+      "file": "Preiss/Rectifiability/GraphBlowup.lean",
+      "module": "Preiss.Rectifiability.GraphBlowup",
+      "status": "sorry_placeholder"
+    },
+    "tendsto_integral_blowup_sub_density_mul": {
+      "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
+      "file": "Preiss/Tangent/DensityTransfer.lean",
+      "module": "Preiss.Tangent.DensityTransfer",
+      "status": "sorry_placeholder"
+    },
+    "rectifiable_has_flat_blowup_limit": {
+      "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
+      "file": "Preiss/Rectifiability/TangentNecessity.lean",
+      "module": "Preiss.Rectifiability.TangentNecessity",
+      "status": "sorry_placeholder"
+    },
+    "rectifiable_has_density_and_tangent_plane": {
+      "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
+      "file": "Preiss/Rectifiability/TangentNecessity.lean",
+      "module": "Preiss.Rectifiability.TangentNecessity",
+      "status": "sorry_placeholder"
+    },
+    "rectifiable_iff_density_bounds_and_flat_tangents": {
+      "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
+      "file": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "module": "Preiss.Rectifiability.TangentCharacterization",
+      "status": "sorry_placeholder"
+    },
+    "unitFlat": {
+      "lean_name": "Preiss.unitFlat",
+      "file": "Preiss/Geometry/PlaneMeasure.lean",
+      "module": "Preiss.Geometry.PlaneMeasure",
+      "status": "definition"
+    },
+    "unitFlat_closedBall": {
+      "lean_name": "Preiss.unitFlat_closedBall",
+      "file": "Preiss/Geometry/PlaneMeasure.lean",
+      "module": "Preiss.Geometry.PlaneMeasure",
+      "status": "sorry_placeholder"
+    },
+    "ae_upperPowerBoundAt_restrict_hausdorff": {
+      "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "status": "sorry_placeholder"
+    }
+  }
+}

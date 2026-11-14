@@ -1,0 +1,776 @@
+% Independent mathematical audit, 2026-11-14.
+% Source: user's DeLellis_Rectifiability.pdf, printed pages cited below.
+% This is prose and a specification inventory, not a claim of formal verification.
+\chapter{Proof audit: the uniform-measure branch of Preiss' theorem}
+
+\section{Scope, conventions, and conclusion of the audit}
+The proposed route through Parts A and B is mathematically appropriate, but the
+current graph does not yet specify all the intermediate statements needed for an
+implementation. In particular, its moment-coefficient expansion and trace-rigidity
+nodes each hide a substantial independent development. The list below separates
+these obligations. It is based on Chapters 3 and 6--9 of the supplied book, including
+the author's errata at
+\url{https://www.math.ias.edu/delellis/sites/math.ias.edu.delellis/files/Errata_libro_0.pdf}.
+The errata correct the half-space reduction and the normalized locality theorem,
+and explicitly flag the measurability issue in the almost-everywhere recentering
+argument. The measurable-hull replacement proposed below is a separate argument
+to be proved, not an assertion that the author's suggested projection argument has
+already been formalized.
+
+Throughout this audit, $1\leq m\leq n$, measures are positive locally finite Borel
+measures on a finite-dimensional real Euclidean space, and
+\[
+ D^m_{a,r}\mu=r^{-m}(T_{a,r})_\#\mu,
+ \qquad T_{a,r}(z)=(z-a)/r,\qquad r>0.
+\]
+Here powers and scalar multiplication are interpreted in the nonnegative extended
+reals when acting on measures. Write $\mathcal U_m$ for measures with
+$0\in\operatorname{supp}\nu$ and
+$\nu(B(y,r))=r^m$ at every support centre and every $r>0$.
+This is the project's unit-ball normalization, not the book's $\omega_m r^m$.
+Let $\sigma_V$ be the flat measure on an $m$-plane $V$ normalized by
+$\sigma_V(B(0,1))=1$. Equivalently it is a positive scalar multiple of
+$\mathcal H^m|V$. Positivity, finiteness and independence of the unit-ball
+Hausdorff mass from the choice of plane are explicit normalization lemmas.
+
+Moments divided by their Gaussian mass are unchanged by multiplying the measure
+by a positive constant. Consequently the moment identities, trace $m$, and the
+rigidity calculations below retain their constants under unit normalization.
+The unnormalized Gaussian mass does change: for $\nu\in\mathcal U_m$,
+\[
+ I_\nu(s)=\int e^{-s|z|^2}\,d\nu(z)
+ =\omega_m^{-1}(\pi/s)^{m/2}\quad(s>0),
+\]
+where $\omega_m$ is the Lebesgue measure of the unit ball in $\mathbb R^m$.
+The probability Gaussian on $V$ used in the final trace argument should be
+defined by pushing forward the standard $m$-dimensional Gaussian along a linear
+isometry, rather than by silently identifying mathlib's Hausdorff normalization
+with Lebesgue measure.
+
+\section{Natural-language proof sketch}
+At almost every point of positive finite existing density, the existing GMT
+theorem makes every tangent uniform. There are tangents: two-sided density
+bounds imply local doubling and the upstream compactness theorem then supplies
+a nonzero limit. Work at a point where these assertions, and the recentering
+property below, all hold.
+
+Part A shows that at least one tangent is flat. Starting with any uniform
+tangent, take a tangent at a nearest point to a hole in its support. Its support
+lies in a half-space. The corrected barycentre argument then produces either
+the same measure or a further tangent supported in some hyperplane. Identify
+that hyperplane isometrically with a smaller Euclidean space and repeat.
+After finitely many steps a full-dimensional uniform measure is a multiple of
+Lebesgue measure. Retain every scaling and isometry witness. A diagonal argument
+expresses the result as a limit of rescalings of the original uniform tangent,
+with centres in its support. The almost-everywhere recentering property makes
+each of these rescalings a tangent of the original measure at the original
+point. Closedness of the tangent set then gives a flat tangent.
+
+Part B starts with a flat tangent and excludes a nonflat one. It uses three
+facts about unit uniform measures. First, their blow-downs have a unique limit.
+Second, this limit is conical, and a conical unit uniform measure sufficiently
+close to a plane in an averaged squared-distance sense is flat. Third, a unit
+uniform measure with a flat limit at infinity is already flat.
+
+The first fact follows by Gaussian moments. Uniform ball masses identify every
+radial integral. A Gaussian translation identity gives a finite Taylor estimate
+for moments evaluated at support points. Finite-dimensional graded linear
+algebra upgrades these estimates to Taylor coefficients of every moment form.
+Hence all Gaussian-weighted polynomial moments of any two blow-down limits
+agree. Gaussian tails and a weighted Stone--Weierstrass argument identify the
+two measures. Compactness upgrades uniqueness of subsequential limits to
+convergence of the whole blow-down family. Scaling uniqueness makes the limit
+conical.
+
+For the conical gap, the quadratic Gaussian moment is a positive semidefinite
+form of trace $m$, and it equals $|x|^2$ on the support. Its top-$m$ eigenspace
+minimizes Gaussian distance energy. If that energy is small, compactness forces
+every point of its unit ball to lie near the support. A support point near an
+eigenvector corresponding to the $m$th eigenvalue forces that eigenvalue to be
+at least one. The trace then forces the form to be an orthogonal projection,
+so the measure is supported in an $m$-plane and hence is flat.
+
+For rigidity at infinity, the flat blow-down identifies the leading even
+moment coefficients with powers of orthogonal projection onto the limiting
+plane. The first support identity gives a normal vector $b$ and
+$|Q_Vx|^2=2\langle b,x\rangle$ on the support. Thus the support stays in a bounded
+tube about the plane. A second compactness argument gives bounded distance in
+the other direction. Fourth-order identities produce a quadratic form
+$\widehat b$ on the plane and a quadratic normal-vector map $\omega$.
+Gaussian integration gives an upper bound on the second Gaussian moment of
+$\widehat b$ in terms of its first moment. The elementary fourth-moment formula
+for a Gaussian then yields the sharp trace lower bound. The total trace is also
+zero. These facts force $b=0$, so the support is planar and the measure is flat.
+
+Finally, a compactly supported distance energy is continuous both in a measure
+and along its scale curve. If a point had both a flat and a nonflat tangent,
+the nonflat tangent would have a nonflat blow-down whose energy exceeds the gap
+threshold. Between small-energy scales approaching the flat tangent and
+large-energy scales approaching that blow-down, choose the last crossing of a
+fixed threshold. A subsequence of crossing measures has a uniform limit with
+positive energy. The ratio of the nearby flat scales to crossing scales must
+diverge; otherwise their limits are related by a finite dilation and both are
+flat. Consequently every sufficiently large dilation of the crossing limit
+has energy below the threshold. Its limit at infinity is flat by the conical
+gap, and rigidity then makes the crossing limit flat, a contradiction.
+All tangents are therefore flat almost everywhere. The independently proved
+Marstrand--Mattila criterion concludes rectifiability.
+
+\section{Reusable measure and scaling infrastructure}
+The following are separate reusable statements, not extra assumptions on Preiss.
+
+\paragraph{S01: compact-test convergence with moving tests.}
+If $\mu_i\rightharpoonup\mu$ vaguely, all measures are regular, $K$ is compact,
+the continuous tests $f_i,f$ vanish outside $K$, and $f_i\to f$ uniformly,
+then $\int f_i\,d\mu_i\to\int f\,d\mu$. First derive a uniform mass bound on
+$K$ using a compactly supported cutoff equal to one on $K$.
+
+\paragraph{S02: joint continuity of translated dilations.}
+If $\mu_i\rightharpoonup\mu$, $a_i\to a$, $r_i\to r>0$, and
+$c_i\to c\in[0,\infty)$, then
+$c_i(T_{a_i,r_i})_\#\mu_i\rightharpoonup c(T_{a,r})_\#\mu$.
+Assume regularity of the measures and finite real scalars; no bound at infinity
+on their total masses is needed. The preimages of a fixed compact test support
+lie in one compact set because the parameters converge and $r>0$. The pulled
+back tests converge uniformly there. S01 proves the statement. Its special case
+$D^m_{a_i,r_i}\mu_i\to D^m_{a,r}\mu$ is used repeatedly.
+
+\paragraph{S03: algebra and covariance.}
+Prove
+$D^m_{b,s}(D^m_{a,r}\mu)=D^m_{a+rb,rs}\mu$;
+positive scalar multiplication commutes with $D$; and pushforward by a linear
+isometric embedding intertwines $D$, at centres in its image. Include inverse
+dilation and preservation of flatness, regularity and uniform ball constants.
+
+\paragraph{S04: approximation of support points.}
+If regular $\mu_i\rightharpoonup\mu$ and $x\in\operatorname{supp}\mu$, then
+there exist $x_i\in\operatorname{supp}\mu_i$ with $x_i\to x$, after discarding
+finitely many terms if necessary. Use the open-ball portmanteau inequality.
+Conversely, if $x_i\to x$, $x_i\in\operatorname{supp}\mu_i$, and the measures
+have a common positive lower support-centred ball bound at each radius, then
+$x\in\operatorname{supp}\mu$. Bare vague convergence does not give this converse.
+
+\paragraph{S05: stability and compactness of normalized uniform measures.}
+A vaguely convergent sequence in $\mathcal U_m$ has a limit in $\mathcal U_m$.
+The family is sequentially compact by upstream compact mass bounds.
+First approximate support centres using S04; squeeze open and closed radii to
+recover the exact ball law, rather than assuming spheres of an arbitrary limit
+already have zero mass. The origin's positive ball mass excludes the zero limit.
+Also prove the variant where the measures are uniform with the same constant
+and their supports approach the origin, without requiring the origin in every
+support. This is needed in the bounded-hole argument R05 below.
+
+\paragraph{S06: a countable compact-test metric.}
+Construct or reuse a metric on regular positive locally finite Euclidean
+measures which detects vague convergence on families with common compact mass
+bounds. Include enough cutoff tests to control masses. The necessary outputs are
+sequential convergence equivalence, separation, a diagonal selection lemma,
+and finite covers of a compact family by metric balls. This can live in a
+general vague-convergence module rather than the Preiss theorem file.
+For recentering, the finite-cover statement must also cover centered uniform
+measures whose ball constants range over a fixed compact interval
+$[c,C]\subset(0,\infty)$: density constants at the selected bad centres need
+not agree exactly. Unit uniform compactness and continuity of finite scalar
+multiplication give this extension.
+
+\paragraph{S07: tangent closure and scaling.}
+For a fixed measure and centre, the limit of a vaguely convergent sequence of
+dimensional tangents is a dimensional tangent whenever that limit is regular
+and nonzero. Prove the analogous arbitrary-scalar statement as a separate
+adapter. Constant positive dilations of a dimensional tangent remain dimensional
+tangents. At a positive finite density point the dimensional tangent set is
+nonempty and compact, because every sufficiently small blow-up has compact
+mass bounds and nonzero subsequential limits. A countable-test diagonal lemma
+implements closure without assuming a topology on all raw measures.
+
+\paragraph{S08: normalization at a density point.}
+Let $q_x=\lim_{r\downarrow0}\mu(B(x,r))/r^m\in(0,\infty)$.
+If every arbitrary-scalar tangent is uniform, every dimensional tangent
+has ball constant exactly $q_x$ and contains zero in its support.
+Use doubling to get the support assertion, the uniform sphere-null property,
+and convergence on continuity balls to determine the constant. Dividing the
+original measure by $q_x$ therefore puts its dimensional tangents in
+$\mathcal U_m$. Existing arbitrary-scalar and dimensional tangent sets are rays
+of one another, not literally equal. A pointwise Part B theorem must use this
+adapter before applying a universal flatness threshold.
+
+\section{Part A: exact missing statements and measurable-hull repair}
+References are Lemma 6.6 and Theorem 6.8, printed pages 57--58 and 63--65;
+Corollary 3.9, printed pages 15 and 25--26; and the corrected Lemma 3.8.
+
+\paragraph{A01: support is not full in excess ambient dimension.}
+For an $m$-uniform measure on $\mathbb R^k$ with $m<k$, its support is not all
+of $\mathbb R^k$. Reuse \texttt{support\_ne\_univ\_of\_lower\_growth}; do
+not reconstruct this from the eventual Preiss theorem.
+
+\paragraph{A02: half-space reduction with a retained tangent.}
+For uniform $\nu$ with non-full support there exist a support point $y$,
+a nonzero vector $e$, and a tangent $\lambda$ at $y$ supported in
+$\{z:\langle z,e\rangle\geq0\}$. Preserve the exact normalization when
+choosing the tangent. GMT's \texttt{SUniformAux.exists\_halfSpace} proves
+this in its body but exports only the existence of the new uniform measure.
+The adapter should reuse that proof pattern and retain its witness.
+
+\paragraph{A03: corrected hyperplane reduction with retained lineage.}
+For a centred uniform half-space measure $\nu$, there exist $w\ne0$ and a
+uniform $\lambda$ supported in $w^\perp$ such that either $\lambda=\nu$
+or $\lambda$ is a tangent to $\nu$ at zero, up to the explicitly fixed
+positive normalization. The new $w$ need not be $e$.
+The proof of GMT's \texttt{SUniformAux.exists\_hyperplane} already has
+exactly these two branches. Expose
+\texttt{SUniformAux.abs\_inner\_integral\_le},
+\texttt{SUniformAux.support\_tangent\_subset\_of\_estimate}, and
+\texttt{SUniformAux.support\_subset\_of\_integral\_inner\_eq\_zero}
+as upstream prerequisites. The obsolete statement that every tangent lies in
+the original half-space boundary must not enter the graph.
+
+\paragraph{A04: hyperplane transport with a map.}
+Given an isometric identification $L:\mathbb R^{k-1}\simeq w^\perp$, return
+the transported measure together with the equality of its pushforward with
+$\lambda$, its ball law, support correspondence and blow-up covariance.
+The existential theorem
+\texttt{SUniformAux.exists\_isSUniform\_of\_hyperplane}
+does not export enough data by itself.
+
+\paragraph{A05: closure of the support-centred scaling orbit.}
+Let $\mathcal O_m(\nu)$ be the closure of
+$\{D^m_{y,r}\nu:y\in\operatorname{supp}\nu,\ 0<r\leq1\}$ within regular
+locally finite measures. For uniform measures all these limits retain their
+ball constant. Prove
+$\lambda\in\mathcal O_m(\nu)\Rightarrow
+ \mathcal O_m(\lambda)\subseteq\mathcal O_m(\nu)$.
+To compose a rescaling centred at a support point $z$ of $\lambda$, approximate
+$z$ by support points of the convergent approximating measures (S04), then use
+S02 and S03. Products of radii remain at most one. A diagonal selection turns
+closure membership into the sequence form in the current Lean statement.
+
+\paragraph{A06: a flat measure occurs in that orbit closure.}
+Induct on ambient codimension using A01--A05. At dimension $m$, use
+\texttt{mattila\_14\_11}, Hausdorff/Lebesgue normalization and isometric
+pushforward to identify the terminal uniform measure with a flat one.
+There is no need for analytic support varieties, a full Marstrand integer
+dimension theorem, or classification of all uniform measures.
+
+\paragraph{A07: measurable hulls preserve disjoint open holes.}
+For arbitrary $D$ with $\mu D<\infty$, put $H=\operatorname{toMeasurable}_\mu D$.
+Then for every measurable $U$ disjoint from $D$, $\mu(H\cap U)=0$.
+This is an immediate use of mathlib's
+\texttt{Measure.measure\_toMeasurable\_inter}; an s-finite version is also
+available. In particular $\mu(H\setminus\overline D)=0$.
+This statement requires no measurability of $D$.
+
+\paragraph{A08: support approximation from an arbitrary positive-mass set.}
+Assume $a\in D$, $a$ is a density-one point of its measurable hull $H$,
+$\limsup_{r\downarrow0}\mu(B(a,r))/r^m<\infty$, and
+$D^m_{a,r_i}\mu\rightharpoonup\nu$ with $r_i\downarrow0$.
+Then for every $y\in\operatorname{supp}\nu$,
+$\operatorname{dist}(a+r_i y,D)/r_i\to0$.
+Indeed, a subsequence of holes $B(a+r_i y,\eta r_i)$ disjoint from $D$ has
+zero $H$-mass by A07. It lies in $B(a,Cr_i)$ for a fixed $C$; its remaining
+mass is $o(r_i^m)$ by density-one and the upper density bound. Portmanteau
+would then make $\nu(B(y,\eta))=0$, a contradiction. Choose approximate
+nearest points in $D$ with error $r_i/i$; no closedness of $D$ is needed.
+
+\paragraph{A09: one exceptional set for every recentering.}
+Under positive finite existing $m$-density almost everywhere, prove
+\[
+ \text{for }\mu\text{-a.e. }a,\quad
+ \forall\nu\in\operatorname{Tan}_m(\mu,a),\quad
+ \forall y\in\operatorname{supp}\nu,\quad\forall r>0,
+ \quad D^m_{y,r}\nu\in\operatorname{Tan}_m(\mu,a).
+\]
+Here $\operatorname{Tan}_m$ uses fixed dimensional normalization.
+It is enough to prove recentering at radius one; S03 and S07 give all radii.
+For fixed rational tolerances and radius cutoffs, take the arbitrary set of
+bad centres, stratify its density constants and intersect with a bounded ball.
+If it has positive outer measure, use a finite metric cover of the compact
+family of translated uniform tangents to select one positive-outer-measure
+class $D$ whose chosen translated tangents are pairwise close.
+Take a density point of its measurable hull lying in $D$: the hull's bad
+density points are null and cannot cover a set of positive outer measure.
+Apply A08 to select nearby bad centres in $D$ and S02 to compare their blow-ups
+with the chosen translated tangent. The triangle inequality contradicts the
+defining fixed separation of the bad centres. Countably many tolerances give
+one null exceptional set. This repairs the book's unjustified assertion that
+its existentially defined set $D$ is measurable.
+
+\paragraph{A10: Part A assembly.}
+Intersect the a.e. sets for uniformity, density and A09. Choose any tangent,
+use A06, recenter every approximating term using A09, and use S07 for the
+nonzero flat limit. This is \texttt{ae\_exists\_flat\_tangent}.
+
+\section{Moments and uniqueness at infinity}
+References are Lemma 7.2, Definition 7.4, Lemma 7.6 and Proposition 7.7,
+printed pages 70--84. All claims below concern positive $s$ and $m>0$.
+
+\paragraph{M01: radial distribution, including integrability.}
+For $\nu\in\mathcal U_m$ and $y\in\operatorname{supp}\nu$, identify the
+pushforward under $z\mapsto|z-y|$ with that of
+$\omega_m^{-1}\mathcal L^m$ under the norm. State nonnegative Borel integrals
+as lintegrals, then derive signed Bochner-integral identities only with their
+integrability hypotheses. GMT already gives equality of continuous radial
+integrals on closed balls. The full pushforward distribution and unbounded
+Gaussian consequences are new adapters.
+
+\paragraph{M02: Gaussian growth and uniform tails.}
+For every $d\in\mathbb N$ and $s>0$,
+$\int |z|^d e^{-s|z|^2}\,d\nu<\infty$ and $0<I_\nu(s)<\infty$.
+For fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over
+$\mathcal U_m$. State the more reusable version for a family satisfying one
+common polynomial bound $\mu(B(0,R))\leq C(1+R)^p$.
+Use this to extend vague convergence to polynomial-times-Gaussian tests.
+It also justifies differentiation with respect to positive $s$ locally in $s$.
+
+\paragraph{M03: continuous symmetric moment forms.}
+Package the current scalar \texttt{gaussianMoment} as a continuous symmetric
+$k$-multilinear form, prove the evaluation formula, scalar-invariance,
+orthogonal covariance, and the scaling law
+\[
+ b^{D^m_{0,r}\nu}_{k,s}=r^k b^\nu_{k,s/r^2}.
+\]
+The definition with $k=0$ is the constant one for uniform measures; Taylor
+coefficient assertions below start at $k=1$.
+
+\paragraph{M04: quantitative moment bound and translation identity.}
+Prove the norm bound
+$|b_{k,s}(u_1,\ldots,u_k)|\leq
+C_m 2^k k^{k/2}s^{k/2}\prod_i|u_i|/k!$.
+For $x$ in the support, the absolutely convergent series
+$\sum_{k\geq0} b_{k,s}(x^k)=e^{s|x|^2}$ follows by translating the
+Gaussian. A valid dominating function is
+$e^{-s|z|^2+2s|z||x|}$, bounded by a constant times
+$e^{-(s/2)|z|^2}$, not the expression with a negative cross term printed in
+the source. Taylor truncation gives, for each $q\geq1$,
+\[
+ \left|\sum_{k=1}^{2q}b_{k,s}(x^k)
+ -\sum_{j=1}^{q}\frac{s^j|x|^{2j}}{j!}\right|
+ \leq C_{m,q}(s|x|^2)^{q+1/2}.
+\]
+For $s|x|^2\geq1$ use the finite sum and the norm bound; for small values use
+the convergent exponential series with its remainder bound.
+
+\paragraph{M05: analytic weighted projections in a finite grading.}
+This is a measure-independent linear algebra theorem. Let the finite-dimensional
+real inner-product space $X$ have an orthogonal decomposition
+$X=\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\leq X$.
+For $s>0$ put $A(s)=\sum_j s^jP_j$ and
+$F_s=A(s)^{-1}(V^\perp)$. Then $X=V\oplus F_s$; the projection $Q_s$
+onto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.
+In particular its operator norm stays bounded as $s\downarrow0$.
+For the proof, orthogonally split $V^\perp$ according to the filtration
+$V^\perp\cap\bigoplus_{j\leq k}X_j$ and define a polynomial family which
+is identity on $V$ and equals $P_k+sP_{k-1}+\cdots+s^{k-1}P_1$ on the
+$k$th filtration summand. Its value at zero is invertible, by the
+least-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial
+family. In the least-degree argument the lower-degree vector belongs to the
+sum of all earlier filtration summands, not necessarily only the immediately
+preceding one.
+
+\paragraph{M06: support-polynomial space and coefficient extraction.}
+For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through
+$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned
+by the vectors $(x,x^{\otimes2},\ldots,x^{\otimes2q})$ for support points $x$.
+The moment functional $b_s$ vanishes on $F_s$ and M04 determines
+$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:
+its finitely many remainder estimates give an operator-norm
+$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05
+gives the Taylor expansion of $b_s$.
+Do not implement the source's claim that the unrescaled symmetrized coordinate
+monomials are orthonormal: for example
+$|e_1\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner
+product. Use the inherited tensor inner product or insert multinomial weights.
+A finite polynomial-coordinate model is also possible, provided its pairing
+realizes $\langle u^{\otimes k},v^{\otimes k}\rangle=\langle u,v\rangle^k$.
+
+\paragraph{M07: coherent Taylor coefficients.}
+There exist symmetric continuous forms $b_k^{(j)}$, $k,j\geq1$, such that for
+every $q\geq1$,
+\[
+ b_{k,s}=\sum_{j=1}^{q}\frac{s^j}{j!}b_k^{(j)}+o(s^q),\qquad
+ b_k^{(j)}=0\ (k>2j),\qquad
+ \sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\ (x\in\operatorname{supp}\nu).
+\]
+Uniqueness of finite Taylor coefficients makes choices from different truncation
+orders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm
+statement is stronger and safer than merely pointwise convergence on the support.
+
+\paragraph{M08: leading scaled moments.}
+For odd $k$, $s^{-k/2}b_{k,s}\to0$; for $k=2j$,
+$s^{-j}b_{2j,s}\to b_{2j}^{(j)}/j!$.
+The factorial is essential; the displayed summary on printed page 74 omits it,
+whereas the calculation in Chapter 9 includes it correctly.
+Use M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted
+polynomial moment of $D^m_{0,r}\nu$ as $r\to\infty$.
+
+\paragraph{M09: Gaussian moment determination.}
+Regular measures with a common polynomial growth bound are equal if their
+$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends
+the equalities from Gaussian rate $t$ to $t+1/2$ for $t\geq1$ by dominated
+exponential series, then iterates to all positive integer rates.
+The algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\geq1$, extends
+continuously to the one-point compactification and separates points.
+Stone--Weierstrass approximates $e^{|z|^2}\varphi$ uniformly for compactly
+supported $\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.
+Expanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not
+justified by absolute domination, so that step in the book needs this repair
+or a separate uniqueness theorem with checked exponential-moment hypotheses.
+
+\paragraph{M10: uniqueness and full convergence at infinity.}
+Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their
+Gaussian moments, and M09 to identify the limits. The compactness principle
+``every sequence escaping to infinity has a convergent subsequence with the
+same limit'' gives full convergence. A separate output is that every positive
+sequence $r_i\to\infty$ converges to this same measure. Scaling by a fixed
+factor preserves the set of limits at infinity, so S02--S03 imply conicality.
+
+\section{The conical gap, without unnecessary classification theorems}
+References are Corollary 8.4, Lemmas 8.6--8.7 and Proposition 8.5,
+printed pages 85--94. The proof for small energy works for every $m\geq1$;
+the stronger unconditional classification in dimensions one and two is not
+needed for Preiss and can be omitted. In particular, the two-variable radial
+distribution in Lemma 8.6(iii) is not needed by this minimal gap route.
+
+\paragraph{G01: homogeneous conical moments.}
+Conicality gives $b_{k,s}=s^{k/2}b_{k,1}$. Comparing with M07 makes odd forms
+zero and gives $b_{2j,s}=s^j b_{2j}^{(j)}/j!$.
+The support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.
+
+\paragraph{G02: covariance form and its trace.}
+The symmetric form $B=b_{2,1}$ is positive semidefinite,
+$\operatorname{tr}B=m$, and $B(x,x)=|x|^2$ on the support.
+The trace calculation is the radial Gaussian second moment. This statement
+does not require spectral choices.
+
+\paragraph{G03: energy comparison for a conical measure.}
+For every plane $V$, the distance-squared measure has homogeneous degree
+$m+2$, so
+$\int e^{-|z|^2}\operatorname{dist}(z,V)^2\,d\nu
+=C_m\int_{B(0,1)}\operatorname{dist}(z,V)^2\,d\nu$
+for a finite positive constant $C_m$ obtained by radial integration.
+With this convention $C_m=\Gamma(m/2+2)$.
+State and prove this for nonnegative homogeneous integrands more generally.
+It is the missing explicit bridge from the theorem's unit-ball energy to the
+Gaussian energy used in the spectral proof.
+
+\paragraph{G04: a spectral minimizing plane.}
+For a positive semidefinite symmetric form $B$ on $\mathbb R^n$, choose an
+orthonormal eigenbasis with $\alpha_1\geq\cdots\geq\alpha_n\geq0$.
+The span $V$ of the first $m$ eigenvectors minimizes
+$\operatorname{tr}(B|W^\perp)$ over $m$-planes $W$.
+For G02 this trace is a fixed positive multiple of the Gaussian distance
+energy. This is a reusable finite-dimensional variational spectral lemma.
+
+\paragraph{G05: small energy implies no holes in the comparison plane.}
+For every $\delta>0$ there exists $\eta>0$ such that if $\nu\in\mathcal U_m$
+and $V$ is an $m$-plane with Gaussian distance energy at most $\eta$, every
+$x\in V\cap\overline B(0,1)$ has distance less than $\delta$ to the support.
+Otherwise rotate planes to one fixed plane, take a convergent subsequence of
+measures and alleged holes, and use S04--S05. Vanishing energy puts the limit's
+support in the plane; the plane-supported uniform classification identifies it
+with $\sigma_V$, contradicting the persistent hole. This lemma does not
+require conicality or eigenvalue assumptions.
+
+\paragraph{G06: the elementary eigenvalue rigidity step.}
+Under G02, assume the top-$m$ eigenspace has a support point within distance
+$\delta$ of its $m$th unit eigenvector, where $0<\delta<1/m$.
+If $\alpha_m<1$, the trace gives
+$\alpha_i-1\leq(m-1)(1-\alpha_m)$ for $i<m$ and
+$\alpha_i\leq\alpha_m$ for $i\geq m$.
+The support identity then gives
+$0\leq(1-\alpha_m)((m-1)^2\delta^2-(1-\delta)^2)<0$.
+Thus $\alpha_m\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one
+and the rest zero. Hence support is contained in $V$ and $\nu=\sigma_V$.
+G03--G06 give the conical gap for all positive $m$ without the flawed
+two-dimensional shortcut in the original printed proof.
+
+\section{Rigidity from flatness at infinity: the missing trace chain}
+References are Proposition 9.1, Lemmas 9.2, 9.4, 9.9, 9.10 and Proposition
+9.5, printed pages 95--109. Assume $\nu\in\mathcal U_m$ has blow-down
+$\sigma_V$. Write $P=P_V$, $Q=1-P$, and use the coefficients from M07.
+
+\paragraph{R01: even coefficients determined by the blow-down.}
+For every $j\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.
+Use M02, M03 and the Gaussian moment formula of the flat limit, including the
+factorial from M08.
+
+\paragraph{R02: odd top-degree coefficients vanish on the plane.}
+For $j\geq1$, the restriction of $b_{2j-1}^{(j)}$ to $V$ is zero.
+For a nonzero $v\in V$, use the flat blow-down and S04 to find support points
+$x_i$ with $|x_i|\to\infty$ and $x_i/|x_i|\to v/|v|$.
+The support polynomial identity, R01 and the fact that all remaining terms have
+lower degree show $b_{2j-1}^{(j)}(v^{2j-1})\geq0$.
+Repeat with $-v$ and use polarization to obtain the full multilinear restriction.
+
+\paragraph{R03: the normal vector and the cylinder identity.}
+Riesz representation and R02 give $b\in V^\perp$ with
+$b_1^{(1)}(x)=2\langle b,x\rangle$. The first support identity gives
+$|Qx|^2=2\langle b,x\rangle$ on the support, and hence $|Qx|\leq2|b|$.
+Also $|Qx-b|=|b|$ there. Keep these identities as named lemmas.
+
+\paragraph{R04: total and normal trace identities.}
+The exact radial identity $\operatorname{tr}b_{2,s}=ms$ and M07 imply
+$\operatorname{tr}b_2^{(2)}=0$.
+R03 and the first-moment expansion give
+$\operatorname{tr}(b_2^{(2)}|V^\perp)=8|b|^2
+=2\|b_1^{(1)}\|^2$.
+These are separate, comparatively short lemmas.
+
+\paragraph{R05: bounded holes in the limiting plane.}
+There exists $R_0<\infty$ with
+$\operatorname{dist}(v,\operatorname{supp}\nu)<R_0$ for every $v\in V$.
+If not, choose $v_i$ with distances $r_i\to\infty$, a nearest support point,
+and its projection $z_i\in V$. The measures $D^m_{z_i,r_i}\nu$ have
+supports approaching the origin and lie in shrinking tubes about $V$ by R03.
+S05 gives a unit uniform limit supported in $V$, hence $\sigma_V$.
+The original holes give a unit hole centred at a bounded point of $V$, a
+contradiction. The centres $z_i$ need not lie in the support, which is why the
+near-support variant of S05 is essential.
+
+\paragraph{R06: quadratic normal map and adjusted quadratic form.}
+Define the symmetric bilinear normal-valued map $\omega$ by
+\[
+ \langle\omega(u,u),w\rangle
+ =3b_3^{(2)}(u,u,w)-4|u|^2\langle b,w\rangle\quad(u\in V),
+\]
+and put $\widehat b(u,u)=b_2^{(2)}(u,u)+\langle\omega(u,u),b\rangle$.
+Use polarization for mixed arguments and R02 to prove $\omega$ takes values
+in $V^\perp$. These definitions need actual typed bilinear maps, not just a
+scalar diagonal moment notation.
+
+\paragraph{R07: the Gaussian limit and its vanishing trace contraction.}
+For $v,w\in\mathbb R^n$, prove
+\[
+ \lim_{s\downarrow0}\frac{8s}{I(s)}\int e^{-s|z|^2}
+ \langle z,v\rangle^2\langle z-b,w\rangle\,d\nu
+ =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\langle b,w\rangle.
+\]
+For $v\in V,w\in V^\perp$ this is $\langle\omega(v,v),w\rangle$.
+Further prove
+\[
+ \lim_{s\downarrow0}\frac{s}{I(s)}\int e^{-s|z|^2}
+ |Pz|^2\langle z-b,w\rangle\,d\nu=0.
+\]
+To justify the latter, the analogous $|z|^2$ expression has a limit by the
+first formula and a finite orthonormal-basis sum. Differentiating the Gaussian
+first moment and applying the appropriate one-sided l'Hopital argument
+identifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.
+Record differentiability and domination hypotheses before using l'Hopital.
+
+\paragraph{R08: Gaussian trace formula.}
+Let $\gamma$ be the standard covariance-one Gaussian probability measure on
+$V$. Prove $\int\langle\omega(v,v),b\rangle\,d\gamma(v)=0$ using R07,
+Fubini and domination by a constant times $|v|^2$.
+Then
+$\operatorname{tr}(b_2^{(2)}|V)=\int\widehat b(v,v)\,d\gamma(v)$.
+The same argument works against each fixed normal vector, not only $b$.
+
+\paragraph{R09: vanishings and the fourth-degree support identity.}
+For $v\in V,w\in V^\perp$,
+$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.
+The first is R02; the others follow by R03's bounded normal coordinates and
+Gaussian estimates in the defining limits. Therefore, on the support,
+\[
+ b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)
+ =|Qz|^4+2|Pz|^2|Qz|^2.
+\]
+Use the order-two support identity and R01; do not drop mixed cubic terms
+without first establishing these vanishings.
+
+\paragraph{R10: a pointwise inequality for the adjusted form.}
+For all $v\in V$,
+$\widehat b(v,v)^2\leq |b|^2|\omega(v,v)|^2$.
+Choose support points $t_i v+v_i+w_i$ within bounded distance of $t_i v$ using
+R05. Pass to a convergent subsequence of bounded normal components $w_i$.
+Divide R09 by $t_i^2$ and use R03 to obtain
+$b_2^{(2)}(v,v)+\langle\omega(v,v),w\rangle=0$ and
+$|w|^2=2\langle b,w\rangle$.
+Thus $|w-b|=|b|$ and
+$\widehat b(v,v)+\langle\omega(v,v),w-b\rangle=0$; Cauchy--Schwarz proves
+the inequality.
+
+\paragraph{R11: lower-order error vanishes after Gaussian rescaling.}
+R09 and R03 imply that
+$\widehat b(Pz,Pz)+\langle\omega(Pz,Pz),Qz-b\rangle$
+has absolute value at most $C(1+|z|)$ on the support.
+Hence its integral against $sI(s)^{-1}e^{-s|z|^2}\nu$ tends to zero.
+This is equation (9.34); it is a necessary bridge to the global trace bound.
+
+\paragraph{R12: fourth Gaussian moments and a reproducing identity.}
+For $y,z\in V$,
+$\int\langle y,v\rangle^2\langle z,v\rangle^2\,d\gamma
+=|y|^2|z|^2+2\langle y,z\rangle^2$.
+Combining this with R07 yields, for $w\in V^\perp$,
+\[
+ \int\langle y,v\rangle^2\langle\omega(v,v),w\rangle\,d\gamma(v)
+ =2\langle\omega(y,y),w\rangle.
+\]
+Justify limits by Gaussian quartic domination and Fubini.
+
+\paragraph{R13: the integral quadratic inequality.}
+Integrate R10, express $\int|\omega(v,v)|^2\,d\gamma$ through R07 and R12,
+use R11, and pass to the flat blow-down using M02. The result is
+\[
+ \int\widehat b(v,v)^2\,d\gamma(v)
+ \leq-8|b|^2\int\widehat b(v,v)\,d\gamma(v).
+\]
+The inequality must remain an inequality throughout. The equality sign at
+the start of the second long display on printed page 108 loses the earlier
+inequality; its final statement (9.41) has the correct direction.
+
+\paragraph{R14: abstract Gaussian quadratic-form bound.}
+For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,
+\[
+ \int A(v,v)^2\,d\gamma=(\operatorname{tr}A)^2+
+ 2\|A\|_{\mathrm{HS}}^2
+ \geq(1+2/m)\left(\int A(v,v)\,d\gamma\right)^2.
+\]
+This is a reusable Gaussian/spectral theorem independent of uniform measures.
+Combining it with R13 gives
+$\int\widehat b(v,v)\,d\gamma\geq-8m|b|^2/(m+2)$.
+R08 and R04 therefore give
+$\operatorname{tr}b_2^{(2)}\geq16|b|^2/(m+2)$.
+Since that trace is zero, $b=0$; R03 makes the support planar, and plane-supported
+uniform classification finishes rigidity. This is the actual content hidden
+inside the current single trace-rigidity node.
+
+\section{First-crossing assembly and its exact quantifiers}
+References are Lemma 6.20 and Section 6.4, printed pages 66--69.
+
+\paragraph{C01: compact projection model for planes.}
+Use self-adjoint idempotent operators of trace $m$ to model $m$-planes.
+This is a nonempty compact set when $m\leq n$.
+Its distance functions converge uniformly on bounded sets when the projections
+converge. No lattice topology on the submodule type is intended.
+
+\paragraph{C02: a nonnegative cutoff and energy.}
+Choose $\phi\in C_c(\mathbb R^n)$ with $0\leq\phi\leq1$,
+$\phi=1$ on $\overline B(0,1)$ and support in $B(0,2)$.
+Define $F(\mu)=\min_V\int\phi(z)\operatorname{dist}(z,V)^2\,d\mu$.
+The minimum is attained. S01 and C01 imply sequential continuity for vague
+convergence; S02 implies continuity of $r\mapsto F(D^m_{x,r}\mu)$ for $r>0$.
+Flat measures have $F=0$. For a unit uniform measure, $F\leq\varepsilon$
+implies that some plane has unit-ball energy at most $\varepsilon$.
+
+\paragraph{C03: a blow-down of a tangent is still a tangent.}
+If a dimensional tangent $\zeta$ has a nonzero regular limit at infinity $\chi$,
+then $\chi$ is a dimensional tangent of the original measure at the same point.
+Use S07's positive dilation invariance and closure. This statement is pointwise;
+it needs no almost-everywhere recentering theorem.
+
+\paragraph{C04: first-crossing radii with an interval bound.}
+After S08 normalization, suppose $\alpha$ is a flat dimensional tangent and
+$\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit
+uniform. Let $\chi$ be the blow-down of $\zeta$. Rigidity and the gap give
+$F(\chi)>\varepsilon$. Choose $r_i\to0$ with blow-ups tending to $\alpha$
+and $s_i<r_i$ with blow-ups tending to $\chi$; subsequence selection makes
+the ordering possible. For sufficiently large $i$, the continuous scale
+function satisfies $F(D_{x,r_i}^m\mu)<\varepsilon$ and
+$F(D_{x,s_i}^m\mu)>\varepsilon$.
+Choose $\sigma_i\in[s_i,r_i]$ with energy exactly $\varepsilon$ and energy
+at most $\varepsilon$ on the entire interval $[\sigma_i,r_i]$.
+This is a greatest-crossing/last-crossing assertion, not merely the intermediate
+value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
+
+\paragraph{C05: scale ratios diverge.}
+Prove $r_i/\sigma_i\to\infty$. If the ratios have a bounded subsequence,
+extract a further limit $R\in[1,\infty)$. S02--S03 give
+$D^m_{0,R}\xi=\alpha$. Invert the dilation to conclude $\xi$ flat,
+contradicting $F(\xi)=\varepsilon>0$.
+
+\paragraph{C06: the crossing limit is flat at infinity.}
+For every fixed $R\geq1$, eventually $\sigma_i R\in[\sigma_i,r_i]$.
+S02--S03 and C04 give $F(D^m_{0,R}\xi)\leq\varepsilon$.
+Let $R\to\infty$. M10 and continuity give $F(\psi)\leq\varepsilon$ for
+the conical blow-down $\psi$ of $\xi$. Apply the conical gap, then rigidity,
+to conclude $\xi$ flat, the final contradiction.
+Keep the centre $x$ fixed throughout; the printed scale function sometimes
+uses zero where $x$ is intended. Every use of $F$ on a dilated measure must
+retain the factor $R^{-m}$.
+
+\section{Suggested dependency and module boundaries}
+The key paths are
+\[
+ \text{S01--S08 + A01--A09}\longrightarrow\text{Part A},\qquad
+ \text{M01--M09}\longrightarrow\text{M10},
+\]
+\[
+ \text{M07 + M10 + G01--G06}\longrightarrow\text{conical gap},\qquad
+ \text{M07 + M10 + R01--R14}\longrightarrow\text{rigidity},
+\]
+\[
+ \text{S07--S08 + M10 + gap + rigidity + C01--C06}
+ \longrightarrow\text{Part B}.
+\]
+Part A and Part B then feed the independent Marstrand--Mattila criterion.
+
+S01--S06 belong in general vague-convergence and measure-pushforward modules;
+S07--S08, A05 and A07--A09 belong in tangent-measure modules. The corrected
+uniform-reduction adapters A01--A04 should stay close to the existing GMT
+Marstrand development. M05 belongs in finite-dimensional graded linear algebra;
+M02 and M09 can be general Gaussian-weighted-measure theorems; M03--M08 and
+G01--G02 are uniform-moment modules. C01 is Euclidean Grassmannian geometry,
+G04 finite-dimensional spectral optimization, G05 uniform compactness,
+R14 Gaussian quadratic-form integration. Only the synthesis of those results
+belongs in files called Preiss Part A, Part B or Main.
+
+The current scalar moment definition is an appropriate initial evaluation API,
+but cannot by itself state tensor Taylor expansions, restrictions, traces,
+polarization, $\omega$, or $\widehat b$. Those objects must be designed before
+the blueprint can be called a complete set of Lean interfaces. The generic
+graded projection theorem is a preferable reusable abstraction to formalizing
+all of the book's symmetric-tensor notation literally.
+
+\paragraph{A concrete Lean-friendly alternative to symmetric tensor quotients.}
+For the public API, use
+\texttt{ContinuousMultilinearMap R (fun \_ : Fin k => E) R}
+with a theorem asserting invariance under permutations of the input tuple.
+Coefficient families have type
+\texttt{(k j : Nat) -> ContinuousMultilinearMap R (fun \_ : Fin k => E) R}.
+State their remainder with \texttt{Asymptotics.IsLittleO} along the positive
+neighborhood filter at zero, using the operator norm of continuous multilinear
+maps. State the diagonal support identities separately. A bilinear form can be
+curried into a continuous linear map to the dual, then represented by a
+self-adjoint endomorphism via Riesz. Define its trace using the existing
+\texttt{LinearMap.trace}; independence of orthonormal basis and the diagonal
+sum formula are reusable lemmas, rather than definitions tied to one coordinate
+basis. For $\omega$, use a continuous bilinear map
+$V\to V\to V^\perp$; for $\widehat b$, a continuous symmetric bilinear form
+on the subtype $V$.
+
+The proof of M06 can use only finite Euclidean coordinate spaces, without
+constructing a symmetric-tensor quotient. Index a coordinate block of degree
+$k$ by all functions $\iota:\operatorname{Fin}k\to\operatorname{Fin}n$, and
+define
+\[
+ \Phi_k(x)_\iota=\sqrt{2^k/k!}\prod_{j=1}^k x_{\iota(j)}.
+\]
+The finite-sum/product identity gives
+$\langle\Phi_k(x),\Phi_k(y)\rangle=(2^k/k!)\langle x,y\rangle^k$.
+Take the Euclidean space indexed by the finite disjoint union of blocks
+$1\leq k\leq2q$ and put $\Phi=(\Phi_1,\ldots,\Phi_{2q})$.
+The coordinate-block projections are an orthogonal grading. Its moment
+functional is
+\[
+ u\longmapsto I(s)^{-1}\int
+ \left\langle\left(\sum_{k=1}^{2q}s^kP_k\right)u,\Phi(z)\right\rangle
+ e^{-s|z|^2}\,d\nu(z).
+\]
+Evaluated at $\Phi(x)$, it is exactly $\sum_{k=1}^{2q}b_{k,s}(x^k)$.
+For the subspace spanned by $\Phi(\operatorname{supp}\nu)$ this functional
+vanishes on the weighted complement in M05. The target polynomial
+$\sum_{j=1}^q s^j|x|^{2j}/j!$ is a linear functional of $\Phi(x)$, since each
+homogeneous norm polynomial has an explicit coordinate expansion. M05 now
+applies verbatim. Extract coordinate coefficients and reconstruct the
+multilinear forms by finite sums; permutation symmetry follows from the
+symmetry of the original Gaussian integral and uniqueness of Taylor
+coefficients. The redundant nonsymmetric coordinates cause no problem: the
+support-generated subspace and its orthogonal complement handle them.
+This design uses \texttt{EuclideanSpace}, finite sums, submodules and existing
+continuous linear/multilinear maps; its only new abstract theorem is M05.
+
+The current graph correctly distinguishes unit uniform measures from arbitrary
+positive scalar uniform measures, excludes zero from tangents, and keeps the
+moving-centre pseudotangent theorem separate from ordinary tangents. Preserve
+these distinctions. Merge the two consecutive proof environments currently
+attached to its radial-integral node: the graph checker associates only the
+first one with the statement.

@@ -1,5 +1,12 @@
-import Preiss.Tangent.Defs
-import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
+module
+
+public import Preiss.Geometry.Euclidean
+public import Mathlib.MeasureTheory.Integral.Bochner.Basic
+public import Mathlib.Analysis.SpecialFunctions.Exp
+
+/-! # Scalar Gaussian moments -/
+
+@[expose] public section
 
 open MeasureTheory
 open scoped BigOperators

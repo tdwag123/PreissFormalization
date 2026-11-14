@@ -1,6 +1,17 @@
-import Preiss.Uniform.Moments
+module
+
+public import Preiss.Geometry.Planes
+public import Mathlib.MeasureTheory.Integral.Bochner.Basic
+public import Mathlib.Topology.ContinuousMap.CompactlySupported
+public import Mathlib.Topology.MetricSpace.HausdorffDistance
+
+/-! # Quadratic distance energy and flatness -/
+
+@[expose] public section
 
 open MeasureTheory Metric Set
+
+open scoped CompactlySupported
 
 namespace Preiss
 variable {n : ℕ}

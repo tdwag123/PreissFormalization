@@ -1,0 +1,4088 @@
+\chapter{Audited dependency plan}
+
+The plan lists the intermediate mathematical obligations, existing upstream results, and canonical Lean interfaces. A linked statement may still contain an explicit proof obligation. The full graph includes companion results; the rooted graph isolates the intended dependencies of Preiss.
+
+
+\section{Definitions and Euclidean geometry}
+
+\begin{definition}[Linear planes]
+\label{def:plane}
+\lean{Preiss.Plane}
+
+
+
+
+An $m$-plane in $\R^n$ is an $m$-dimensional real linear subspace through zero.
+Keep its definition independent of tangent measures and of a topology on planes.
+\end{definition}
+
+\begin{definition}[Countable Lipschitz coverage]
+\label{def:coverage}
+\lean{Preiss.CountablyLipschitzCovered}
+
+
+
+
+A set $S$ is countably Lipschitz covered in dimension $m$ if a countable
+family of Lipschitz maps $f:\R^m\to X$ covers $S$. The family may be empty.
+No measurability or finite-measure hypothesis is part of this predicate.
+\end{definition}
+
+\begin{definition}[Lipschitz pieces and countable partial-domain coverage]
+\label{def:parametrized-coverage}
+\lean{Preiss.LipschitzPiece, Preiss.CountablyCoveredByLipschitzPieces}
+
+
+
+
+The target is a metric space.
+A Lipschitz piece consists of an arbitrary subset $A\subset\R^m$ and a Lipschitz map $f:A\to X$. A set is countably covered by such pieces if it lies in the union of the ranges of a countable family. The domains and the family may be empty. No measurability or finite-measure hypothesis is built into the geometric piece.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.LipschitzPiece, Preiss.CountablyCoveredByLipschitzPieces}.
+\end{definition}
+
+\begin{lemma}[Euclidean extension of Lipschitz parametrizations]
+\label{lem:domain-extension}
+\lean{Preiss.exists_lipschitz_extension_euclidean}
+
+
+The subset \(A\) is arbitrary, possibly empty. The conclusion requires some finite Lipschitz constant, not necessarily the original one.
+Every Lipschitz map \(f:A\to\mathbb R^n\), with \(A\subset\mathbb R^m\), admits a globally defined Lipschitz extension \(\widetilde f:\mathbb R^m\to\mathbb R^n\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_lipschitz\_extension\_euclidean}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+Reuse extend\_pi through finite-dimensional coordinates; no optimal Kirszbraun bound needed.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{definition}[Unit uniform measures]
+\label{def:unit-uniform}
+\lean{Preiss.IsUnitUniform}
+
+
+
+
+Write $\nu\in\mathcal U_m$ when $\nu$ is regular, $0\in\operatorname{supp}\nu$, and $\nu(\overline B(x,r))=r^m$ for every support point $x$ and every $r>0$. This definition permits $m=0$. Its adapter to FormalizingGMT's positive-dimensional uniform predicate assumes $m>0$.
+\end{definition}
+
+\begin{definition}[Lipschitz graphs]
+\label{def:lipschitz-graph}
+\lean{Preiss.IsLipschitzGraph}
+\uses{def:plane}
+
+
+
+
+
+
+
+
+A full $m$-dimensional Lipschitz graph is
+$\Gamma=\{v+f(v):v\in V\}$, where $V$ is an $m$-plane and
+$f:V\to V^\perp$ is Lipschitz. The function need not vanish at zero, so
+this includes affine translates. Containment in a graph and coverage modulo
+$\Hm$-null sets are separate assertions. See De Lellis Definition 4.1.
+\end{definition}
+
+\begin{lemma}[Compact projection model of fixed-dimensional planes]
+\label{lem:grassmannian}
+\lean{Preiss.isCompact_rankProjectionSet, Preiss.planeProjection, Preiss.planeProjection_injective, Preiss.proj, Preiss.range_planeProjection, Preiss.rankProjectionSet}
+\uses{def:plane}
+
+
+
+
+
+
+Use self-adjoint idempotent operators of trace $m$ to model $m$-planes.
+This is a nonempty compact set when $m\leq n$.
+Its distance functions converge uniformly on bounded sets when the projections
+converge. No lattice topology on the submodule type is intended.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.isCompact\_rankProjectionSet, Preiss.planeProjection, Preiss.planeProjection\_injective, Preiss.proj, Preiss.range\_planeProjection, Preiss.rankProjectionSet}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+Use self-adjoint idempotent operators of trace $m$ to model $m$-planes.
+This is a nonempty compact set when $m\leq n$.
+Its distance functions converge uniformly on bounded sets when the projections
+converge. No lattice topology on the submodule type is intended.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{definition}[Cones about affine planes]
+\label{def:cone}
+\lean{Preiss.closedTube, Preiss.cone}
+\uses{def:plane}
+
+
+
+
+
+
+Work in a finite-dimensional real inner-product space; \(V\) is a linear subspace.
+For a linear plane \(V\), put \(Q_V=\mathrm{id}-P_V\) and define
+\[
+ C(x,V,\alpha)=\{y:\|Q_V(y-x)\|\leq\alpha\|P_V(y-x)\|\}.
+\]
+Geometric applications use \(\alpha\geq0\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.closedTube, Preiss.cone}.
+\end{definition}
+
+\begin{lemma}[Hausdorff measure on planes]
+\label{lem:plane-hausdorff}
+\lean{Preiss.flatOn, Preiss.map_hausdorffMeasure_subtype_eq_restrict, Preiss.planeMeasure_ball_and_sphere, Preiss.unitFlat, Preiss.unitFlat_closedBall}
+\uses{def:plane}
+
+
+
+
+
+
+The linear subspace \(V\subset\mathbb R^n\) has dimension \(m\). Intrinsic and ambient Hausdorff measures use the same diameter convention.
+For the inclusion \(\iota_V:V\hookrightarrow\mathbb R^n\),
+\[
+ (\iota_V)_\#\mathcal H_V^m=\mathcal H_{\mathbb R^n}^m\!\restriction V.
+\]
+This measure is a positive finite scalar multiple of the induced Haar measure. In particular its ball masses scale as \(r^m\); when \(m>0\), spheres have zero mass.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.flatOn, Preiss.map\_hausdorffMeasure\_subtype\_eq\_restrict, Preiss.planeMeasure\_ball\_and\_sphere, Preiss.unitFlat, Preiss.unitFlat\_closedBall}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+Split normalization, finiteness, and sphere-null corollaries; do not import tangent or uniform-measure theory.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[A plane avoiding an inner cylinder has a small projected direction]
+\label{lem:empty-cylinder-direction}
+\lean{Preiss.cylinder, Preiss.exists_unit_small_projection_of_avoids_cylinder}
+\uses{def:plane}
+
+
+
+
+
+
+The planes \(V,W\) have the same positive finite dimension, \(p\in V\), and \(r,\rho>0\) with \(r\) sufficiently larger than \(\rho\). No measure hypothesis is used.
+If \(\|P_Vz-p\|=\rho\) and
+\[
+ (z+W)\cap B_r(z)\cap\{q:\|P_Vq-p\|<\rho/4\}=\varnothing,
+\]
+then some unit \(w\in W\) satisfies \(\|P_Vw\|\leq C\rho/r\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.cylinder, Preiss.exists\_unit\_small\_projection\_of\_avoids\_cylinder}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{definition}[Flat measures]
+\label{def:flat}
+\lean{Preiss.IsFlat}
+\uses{def:plane}
+
+
+
+
+
+
+
+
+A measure is $m$-flat if it equals $c\,\mathcal H^m\!\restriction V$ for an $m$-dimensional linear plane $V$ and a positive finite scalar $c$.
+\end{definition}
+
+\begin{definition}[Nonnegative compactly supported flatness energy]
+\label{def:flatness}
+\lean{Preiss.flatness, Preiss.flatnessEnergy}
+\uses{def:plane}
+
+
+
+
+
+
+For a compactly supported continuous cutoff $\phi$ and a measure $\mu$, set $E_\phi(\mu,V)=\int\phi(z)\operatorname{dist}(z,V)^2\,d\mu$ and $F_\phi(\mu)=\inf_{\dim V=m}E_\phi(\mu,V)$. The data definition is total. Positivity, attainment and continuity theorems impose $m\leq n$, local finiteness, and the relevant cutoff hypotheses.
+\end{definition}
+\begin{proof}[Planned proof obligations]
+Choose $\phi\in C_c(\mathbb R^n)$ with $0\leq\phi\leq1$,
+$\phi=1$ on $\overline B(0,1)$ and support in $B(0,2)$.
+Define $F(\mu)=\min_V\int\phi(z)\operatorname{dist}(z,V)^2\,d\mu$.
+The minimum is attained. S01 and C01 imply sequential continuity for vague
+convergence; S02 implies continuity of $r\mapsto F(D^m_{x,r}\mu)$ for $r>0$.
+Flat measures have $F=0$. For a unit uniform measure, $F\leq\varepsilon$
+implies that some plane has unit-ball energy at most $\varepsilon$.
+\end{proof}
+
+\begin{definition}[Rectifiable sets and measures]
+\label{def:rectifiable}
+\lean{Preiss.CountablyRectifiable, Preiss.IsRectifiableMeasure}
+\uses{def:parametrized-coverage}
+
+
+
+
+
+
+
+
+Use the Borel measurable structure on the metric target.
+A set $S$ is countably $m$-rectifiable if $\mathcal H^m(S\setminus T)=0$ for a countably Lipschitz-piece-covered set $T$. A measure is $m$-rectifiable if $\mu\ll\mathcal H^m$ and is concentrated on a countably $m$-rectifiable set. Local finiteness, measurability of carriers, and finite Hausdorff mass are separate theorem hypotheses. Absolute continuity absorbs the Hausdorff-null remainder.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.CountablyRectifiable, Preiss.IsRectifiableMeasure}.
+\end{definition}
+
+\begin{lemma}[Unit ball-law normalization adapter]
+\label{lem:unit-uniform-adapter}
+\lean{Preiss.isUnitUniform_iff}
+\uses{def:uniform-api, def:unit-uniform}
+
+
+
+
+
+
+For $m>0$, the pure unit-uniform ball law is equivalent to FormalizingGMT's $m$-uniform predicate together with origin support membership and unit closed-ball mass.
+\end{lemma}
+
+\begin{definition}[Conical measures]
+\label{def:conical}
+\lean{Preiss.IsConical}
+\uses{def:dimensional-blowup}
+
+
+
+
+
+
+
+
+A measure is $m$-conical if $D^m_{0,r}\nu=\nu$ for every $r>0$.
+\end{definition}
+
+\begin{lemma}[Gaussian moments of a normalized flat measure]
+\label{lem:flat-gaussian-even-moments}
+\lean{Preiss.flat_gaussianMoment_diagonal, Preiss.flat_gaussianMoment_odd}
+\uses{def:moments, def:plane, mathlib:standard-gaussian}
+
+
+
+
+
+For $\sigma_V$ and $j\geq0$, its Gaussian moment form satisfies $b_{2j,s}(x^{2j})=s^j|P_Vx|^{2j}/j!$, and its odd moments are zero. Equivalently the one-dimensional standard Gaussian even moment is $(2j)!/(2^j j!)$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.flat\_gaussianMoment\_diagonal, Preiss.flat\_gaussianMoment\_odd}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every $j\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.
+Use M02, M03 and the Gaussian moment formula of the flat limit, including the
+factorial from M08.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{definition}[Pure unrectifiability]
+\label{def:purely-unrectifiable}
+\lean{Preiss.PurelyUnrectifiable}
+\uses{def:rectifiable}
+
+
+
+
+
+
+Neither finite measure nor Borel measurability is built into the definition.
+A set \(E\) is purely \(m\)-unrectifiable if
+\[
+ \mathcal H^m(E\cap R)=0
+ \quad\text{for every countably \(m\)-rectifiable set }R.
+\]
+This canonical definition implies the graph-test version used in the source.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.PurelyUnrectifiable}.
+\end{definition}
+
+\begin{lemma}[Attainment, positivity and unit-ball comparison]
+\label{lem:flatness-minimum}
+\uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests}
+
+
+
+
+For every regular locally finite $\mu$, the minimum defining $F$ is attained and nonnegative. Flat measures have $F=0$. If $F(\mu)\leq\varepsilon$, there is an $m$-plane $V$ with $\int_{B(0,1)}\operatorname{dist}(z,V)^2\,d\mu\leq\varepsilon$.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.flatness\_exists\_minimizer}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Choose $\phi\in C_c(\mathbb R^n)$ with $0\leq\phi\leq1$,
+$\phi=1$ on $\overline B(0,1)$ and support in $B(0,2)$.
+Define $F(\mu)=\min_V\int\phi(z)\operatorname{dist}(z,V)^2\,d\mu$.
+The minimum is attained. S01 and C01 imply sequential continuity for vague
+convergence; S02 implies continuity of $r\mapsto F(D^m_{x,r}\mu)$ for $r>0$.
+Flat measures have $F=0$. For a unit uniform measure, $F\leq\varepsilon$
+implies that some plane has unit-ball energy at most $\varepsilon$.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{lemma}[Continuity of flatness under vague convergence]
+\label{lem:flatness-continuous}
+\uses{def:flatness, lem:flatness-minimum, lem:grassmannian, lem:vague-moving-tests}
+
+
+
+For regular locally finite measures $\mu_i\rightharpoonup\mu$, $F(\mu_i)\to F(\mu)$.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.flatness\_continuous}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Choose $\phi\in C_c(\mathbb R^n)$ with $0\leq\phi\leq1$,
+$\phi=1$ on $\overline B(0,1)$ and support in $B(0,2)$.
+Define $F(\mu)=\min_V\int\phi(z)\operatorname{dist}(z,V)^2\,d\mu$.
+The minimum is attained. S01 and C01 imply sequential continuity for vague
+convergence; S02 implies continuity of $r\mapsto F(D^m_{x,r}\mu)$ for $r>0$.
+Flat measures have $F=0$. For a unit uniform measure, $F\leq\varepsilon$
+implies that some plane has unit-ball energy at most $\varepsilon$.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{lemma}[Density-to-tangent adapters]
+\label{lem:uniform-adapter}
+\lean{Preiss.ae_tangent_uniform}
+\uses{def:positive-density, def:tangent-api, def:uniform-api, gmt:doubling-bounds, gmt:uniform-density-adapter, lem:density-bridge, thm:doubling, thm:uniform-upstream}
+
+
+
+
+
+
+For $m>0$, positive finite existing density almost everywhere implies that almost everywhere all tangent measures are $m$-uniform and contain the origin in their support.
+\end{lemma}
+
+\begin{lemma}[Small Gaussian distance energy forces plane support proximity]
+\label{lem:small-energy-no-holes}
+\uses{def:plane, def:unit-uniform, lem:grassmannian, lem:plane-supported-uniform-flat, lem:uniform-compactness, lem:vague-gaussian-polynomials, lem:vague-support-approximation}
+
+
+
+For every $\delta>0$ there exists $\eta>0$ such that if $\nu\in\mathcal U_m$
+and $V$ is an $m$-plane with Gaussian distance energy at most $\eta$, every
+$x\in V\cap\overline B(0,1)$ has distance less than $\delta$ to the support.
+Otherwise rotate planes to one fixed plane, take a convergent subsequence of
+measures and alleged holes, and use S04--S05. Vanishing energy puts the limit's
+support in the plane; the plane-supported uniform classification identifies it
+with $\sigma_V$, contradicting the persistent hole. This lemma does not
+require conicality or eigenvalue assumptions.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.dist\_support\_lt\_of\_small\_gaussian\_plane\_energy}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every $\delta>0$ there exists $\eta>0$ such that if $\nu\in\mathcal U_m$
+and $V$ is an $m$-plane with Gaussian distance energy at most $\eta$, every
+$x\in V\cap\overline B(0,1)$ has distance less than $\delta$ to the support.
+Otherwise rotate planes to one fixed plane, take a convergent subsequence of
+measures and alleged holes, and use S04--S05. Vanishing energy puts the limit's
+support in the plane; the plane-supported uniform classification identifies it
+with $\sigma_V$, contradicting the persistent hole. This lemma does not
+require conicality or eigenvalue assumptions.
+\par Source: De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.
+\end{proof}
+
+\begin{lemma}[Homogeneity and parity of conical moments]
+\label{lem:conical-moments}
+\uses{def:conical, def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-covariance, lem:moment-support-polynomial, lem:taylor-two}
+
+
+
+Conicality gives $b_{k,s}=s^{k/2}b_{k,1}$. Comparing with M07 makes odd forms
+zero and gives $b_{2j,s}=s^j b_{2j}^{(j)}/j!$.
+The support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.conical\_gaussianMoment\_homogeneous}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Conicality gives $b_{k,s}=s^{k/2}b_{k,1}$. Comparing with M07 makes odd forms
+zero and gives $b_{2j,s}=s^j b_{2j}^{(j)}/j!$.
+The support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.
+\par Source: De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.
+\end{proof}
+
+\begin{lemma}[All Gaussian polynomial moments of blow-downs have limits]
+\label{lem:blowdown-moment-limits}
+\uses{def:dimensional-blowup, def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-covariance, lem:radial, lem:scaled-moment-limits}
+
+
+
+For $\nu\in\mathcal U_m$ and every polynomial $P$, the limit of $\int P(z)e^{-|z|^2}\,d(D^m_{0,r}\nu)$ exists as $r\to\infty$. Degree $2j$ moment forms are determined by $b_{2j}^{(j)}/j!$, and odd-degree moments vanish.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.blowdown\_gaussian\_polynomial\_limit}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For odd $k$, $s^{-k/2}b_{k,s}\to0$; for $k=2j$,
+$s^{-j}b_{2j,s}\to b_{2j}^{(j)}/j!$.
+The factorial is essential; the displayed summary on printed page 74 omits it,
+whereas the calculation in Chapter 9 includes it correctly.
+Use M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted
+polynomial moment of $D^m_{0,r}\nu$ as $r\to\infty$.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Positive covariance form, trace and support identity]
+\label{lem:conical-covariance}
+\uses{def:conical, def:moments, def:unit-uniform, lem:conical-moments, lem:radial}
+
+
+
+
+The symmetric form $B=b_{2,1}$ is positive semidefinite,
+$\operatorname{tr}B=m$, and $B(x,x)=|x|^2$ on the support.
+The trace calculation is the radial Gaussian second moment. This statement
+does not require spectral choices.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.conical\_covariance\_trace\_support}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+The symmetric form $B=b_{2,1}$ is positive semidefinite,
+$\operatorname{tr}B=m$, and $B(x,x)=|x|^2$ on the support.
+The trace calculation is the radial Gaussian second moment. This statement
+does not require spectral choices.
+\par Source: De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.
+\end{proof}
+
+\section{Rectifiable carriers and cones}
+
+\begin{lemma}[Graph parametrization is Lipschitz and antilipschitz]
+\label{lem:graph-parametrization}
+\lean{Preiss.graphMap, Preiss.graphMap_lipschitz_antilipschitz}
+\uses{def:lipschitz-graph}
+
+
+
+
+
+
+The subspace \(V\) is finite-dimensional. A finite Lipschitz bound for \(f\) is given; an optimal bound for \(F\) is unnecessary.
+If \(f:V\to V^\perp\) is Lipschitz, then \(F(v)=v+f(v)\) is Lipschitz and satisfies
+\[
+ \|u-v\|\leq\|F(u)-F(v)\|,\qquad P_V(F(v))=v.
+\]
+Thus \(F\) is injective and its inverse on its range is \(1\)-Lipschitz.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.graphMap, Preiss.graphMap\_lipschitz\_antilipschitz}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Pairwise cone condition implies graph containment]
+\label{lem:cone-graph}
+\lean{Preiss.exists_lipschitzGraph_of_pairwise_mem_cone}
+\uses{def:cone, lem:domain-extension}
+
+
+
+
+
+
+The set \(F\subset\mathbb R^n\) is arbitrary, \(V\) is an \(m\)-plane, and \(0\leq\alpha<\infty\). No measure hypothesis is needed.
+If \(y\in C(x,V,\alpha)\) for every \(x,y\in F\), then there is a Lipschitz \(f:V\to V^\perp\) such that
+\[
+ F\subset\{v+f(v):v\in V\}.
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_lipschitzGraph\_of\_pairwise\_mem\_cone}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Rectifiability closure operations]
+\label{lem:carrier-closure}
+\lean{Preiss.countablyRectifiable_iUnion, Preiss.countablyRectifiable_image, Preiss.countablyRectifiable_mono, Preiss.countablyRectifiable_of_sdiff_null}
+\uses{def:coverage, def:rectifiable}
+
+
+
+
+
+
+Use subset-domain parametrizations in metric targets. For images, source and target Hausdorff measures have the same dimension \(m\).
+Countably \(m\)-rectifiable sets are closed under taking subsets, countable unions, Lipschitz images, and modifications by \(\mathcal H^m\)-null sets.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.countablyRectifiable\_iUnion, Preiss.countablyRectifiable\_image, Preiss.countablyRectifiable\_mono, Preiss.countablyRectifiable\_of\_sdiff\_null}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+Several elementary declarations in one API, not a single conjunction theorem.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Rectifiability of the zero measure]
+\label{lem:zero-measure}
+\lean{Preiss.zero_isRectifiableMeasure}
+\uses{def:rectifiable}
+
+
+
+
+
+
+The zero measure is rectifiable in every natural dimension, on every metric target with its Borel measurable structure.
+\end{lemma}
+
+\begin{lemma}[Graphs and their subsets are rectifiable]
+\label{lem:graph-rectifiable}
+\lean{Preiss.countablyRectifiable_subset_graph}
+\uses{def:rectifiable, lem:graph-parametrization}
+
+
+
+
+
+
+Use the canonical definition by Lipschitz parametrizations on subsets of \(\mathbb R^m\); the target is Euclidean.
+Every full Lipschitz \(m\)-graph is countably \(m\)-rectifiable. Consequently every subset of such a graph is countably \(m\)-rectifiable.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.countablyRectifiable\_subset\_graph}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Borel sigma-finite carrier]
+\label{lem:borel-carrier}
+\lean{Preiss.exists_borel_sigmaFinite_carrier}
+\uses{lem:carrier-closure, lem:domain-extension, lem:plane-hausdorff}
+
+
+
+
+
+The target is Euclidean; \(m\) is a natural dimension. No measurability assumption is part of the rectifiability predicate for \(S\).
+If \(S\subset\mathbb R^n\) is countably \(m\)-rectifiable, there exists a Borel countable union \(T\) of compact Lipschitz images such that
+\[
+ \mathcal H^m(S\setminus T)=0,\qquad
+ \mathcal H^m\!\restriction T\text{ is sigma-finite}.
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_borel\_sigmaFinite\_carrier}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Approximate cone criterion]
+\label{lem:cone-criterion}
+\lean{Preiss.countablyRectifiable_of_ae_cone_approximation}
+\uses{def:rectifiable, gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, gmt:vitali, lem:cone-graph}
+
+
+
+
+
+
+For a Borel set of finite $\Hm$ measure, positive lower density and
+vanishing $r^{-m}$-normalized mass outside a fixed cone at almost every point
+imply countable rectifiability (De Lellis Proposition 4.6).
+\end{lemma}
+\begin{proof}[Planned proof]
+
+Stratify cone directions, apertures, lower-density bounds, and error scales
+into countably many sets satisfying the pairwise cone condition.
+\end{proof}
+
+\begin{lemma}[Pure unrectifiability calculus]
+\label{lem:pure-basic}
+\lean{Preiss.purelyUnrectifiable_measure_inter_eq_zero, Preiss.purelyUnrectifiable_mono}
+\uses{def:purely-unrectifiable, lem:graph-rectifiable}
+
+
+
+
+
+
+Use the canonical pure predicate defined by testing all countably rectifiable sets.
+Every subset of a purely \(m\)-unrectifiable set is purely \(m\)-unrectifiable. Its intersection with any countably \(m\)-rectifiable set, in particular any Lipschitz \(m\)-graph, is \(\mathcal H^m\)-null.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.purelyUnrectifiable\_measure\_inter\_eq\_zero, Preiss.purelyUnrectifiable\_mono}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Carrier API aggregation]
+\label{lem:carrier-calculus}
+\lean{Preiss.isRectifiableMeasure_of_countable_restrict}
+\uses{lem:borel-carrier, lem:carrier-closure}
+
+
+
+
+
+The measure is absolutely continuous with respect to \(\mathcal H^m\). Restriction carriers are measurable and form a countable family covering the measure up to a null set.
+Hausdorff-null changes of carriers preserve rectifiability of measures absolutely continuous with respect to \(\mathcal H^m\). Countably many rectifiable restrictions whose carriers cover almost all the measure assemble to a rectifiable measure.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.isRectifiableMeasure\_of\_countable\_restrict}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Refines existing bundled node; declaration names for the individual elementary facts should be selected during implementation.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Rectifiable/pure decomposition]
+\label{lem:decomposition}
+\lean{Preiss.exists_rectifiable_purelyUnrectifiable_partition, Preiss.rectifiable_pure_partition_unique}
+\uses{lem:carrier-closure, lem:pure-basic}
+
+
+
+
+
+The set \(E\subset\mathbb R^n\) is Borel and \(\mathcal H^m(E)<\infty\).
+There exist disjoint Borel sets \(R,U\subset E\) with
+\[
+ E=R\cup U,\qquad R\text{ countably \(m\)-rectifiable},\qquad
+ U\text{ purely \(m\)-unrectifiable}.
+\]
+Any two such decompositions agree up to \(\mathcal H^m\)-null sets.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_rectifiable\_purelyUnrectifiable\_partition, Preiss.rectifiable\_pure\_partition\_unique}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Maximize mass among Borel canonical rectifiable subsets. Graph-only source definition is not required.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\section{Density and dimension}
+
+\begin{definition}[Positive finite density]
+\label{def:positive-density}
+\lean{Preiss.HasPositiveFiniteDensityAt, Preiss.HasPositiveFiniteDensitiesAt}
+\uses{def:density-api}
+
+
+
+
+
+
+
+
+The first predicate means $0<\Theta_*^m=\Theta^{*m}<\infty$ in the
+upstream convention. The second means only
+$0<\Theta_*^m\leq\Theta^{*m}<\infty$.
+\end{definition}
+
+\begin{lemma}[Measure comparisons on density strata]
+\label{lem:density-measure-comparison}
+\lean{Preiss.UpperPowerBoundAt, Preiss.hausdorff_restrict_le_measure_of_ball_bounds, Preiss.measure_restrict_le_hausdorff_of_ball_bounds}
+\uses{def:density-api, gmt:vitali}
+
+
+
+
+
+
+At every centre of \(S\), the appropriate power bound holds for all radii below one common positive cutoff. The measure is locally finite; localize to bounded strata when claiming finiteness.
+Uniform small-ball upper bounds on a Borel stratum \(S\) imply
+\[
+ \mu\!\restriction S\leq C\,\mathcal H^m\!\restriction S.
+\]
+Uniform positive lower bounds give the reverse comparison, with a finite geometric constant, and finite \(\mathcal H^m\)-measure on bounded strata.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.UpperPowerBoundAt, Preiss.hausdorff\_restrict\_le\_measure\_of\_ball\_bounds, Preiss.measure\_restrict\_le\_hausdorff\_of\_ball\_bounds}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Split upper and lower comparison declarations; constants may be nonoptimal but must be positive finite.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Dimension zero]
+\label{lem:zero-dimension}
+\lean{Preiss.preiss_zero}
+\uses{def:positive-density, def:rectifiable}
+
+
+
+
+
+
+
+
+In dimension zero the density hypothesis implies rectifiability.
+\end{lemma}
+\begin{proof}[Planned proof]
+Continuity from above of the finite measure on a bounded ball identifies
+the small-ball limit with $\mu\{x\}$. The measure is carried by its atoms;
+local finiteness and a countable compact exhaustion make these countable.
+Zero-dimensional Hausdorff measure has no nonempty null sets.
+\end{proof}
+
+\begin{lemma}[Normalization bridges]
+\label{lem:density-bridge}
+\lean{Preiss.density_iff_upstream, Preiss.density_iff_openBall_limit}
+\uses{def:positive-density, gmt:density-bounds, gmt:density-exists-set, gmt:density-limit}
+
+
+
+
+
+
+
+
+Positive finite equal densities are equivalent to membership in the existing
+positive-finite-density-exists set, and to a positive finite limit of
+$\mu(B(x,r))/r^m$.
+\end{lemma}
+\begin{proof}[Planned proof]
+
+Use the complete order topology of ENNReal. Squeeze open and closed balls
+using radii $(1\pm\varepsilon)r$, then let $\varepsilon\downarrow0$.
+The radius-normalized limit is $2^m$ times the diameter-normalized one.
+De Lellis further divides by $\omega_m$; the resulting constant is positive
+and finite. Equality, positivity, and finiteness are invariant under this
+change, but exact constants in uniform-measure lemmas must be transported.
+\end{proof}
+
+\begin{lemma}[Finite upper density implies Hausdorff absolute continuity]
+\label{lem:absolute-continuity}
+\lean{Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite}
+\uses{gmt:density-bounds, lem:density-measure-comparison}
+
+
+
+
+
+\(\mu\) is a locally finite Borel measure on \(\mathbb R^n\); \(m\) is a natural dimension.
+If \(\Theta^{*m}(\mu,x)<\infty\) for \(\mu\)-almost every \(x\), then \(\mu\ll\mathcal H^m\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.absolutelyContinuous\_hausdorff\_of\_upper\_density\_finite}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Finite Hausdorff pieces with comparable measures]
+\label{lem:finite-pieces}
+\lean{Preiss.exists_finite_hausdorff_pieces_of_density_bounds}
+\uses{gmt:density-bounds, gmt:goodsets, lem:density-measure-comparison}
+
+
+
+
+
+\(\mu\) is locally finite and \(0<\Theta_*^m(\mu,x)\leq\Theta^{*m}(\mu,x)<\infty\) for \(\mu\)-almost every \(x\).
+There are bounded Borel sets \(S_j\) carrying \(\mu\), each of finite \(\mathcal H^m\)-measure, such that \(\mu\!\restriction S_j\) and \(\mathcal H^m\!\restriction S_j\) have positive finite two-sided comparison constants. In particular,
+\[
+ \mu\bigl((\bigcup_j S_j)^c\bigr)=0.
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_finite\_hausdorff\_pieces\_of\_density\_bounds}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Dimensions above the ambient dimension]
+\label{lem:excess-dimension}
+\lean{Preiss.measure_zero_of_dimension_gt}
+\uses{def:positive-density, def:rectifiable, lem:absolute-continuity}
+
+
+
+
+
+
+If $m>n$, the positive finite density hypothesis forces $\mu=0$.
+\end{lemma}
+
+\section{Vague limits and tangent measures}
+
+\begin{definition}[Dimensionally normalized blow-ups]
+\label{def:dimensional-blowup}
+\lean{Preiss.dimensionalBlowup}
+
+
+
+
+Set $D^m_{x,r}\mu=r^{-m}(T_{x,r})_\#\mu$, where $T_{x,r}(y)=(y-x)/r$. The definition is total in Lean; geometric theorems assume $r>0$.
+\end{definition}
+
+\begin{definition}[Dimensional tangent measures]
+\label{def:dimensional-tangent}
+\lean{Preiss.IsDimensionalTangent}
+\uses{def:dimensional-blowup, gmt:vague}
+
+
+
+
+
+
+
+
+A nonzero regular measure $\nu$ is a dimensional tangent of $\mu$ at $x$ if $D^m_{x,r_i}\mu\rightharpoonup\nu$ for some positive sequence $r_i\to0$. This fixes the scalar normalization.
+\end{definition}
+
+\begin{definition}[Tangents at infinity]
+\label{def:tangent-at-infinity}
+\lean{Preiss.IsTangentAtInfinity}
+\uses{def:dimensional-blowup, gmt:vague}
+
+
+
+
+
+
+
+
+A nonzero regular measure $\nu$ is a tangent at infinity of $\mu$ if $D^m_{0,r_i}\mu\rightharpoonup\nu$ for some positive sequence $r_i\to\infty$.
+\end{definition}
+
+\begin{lemma}[Flat limit excludes persistent mass away from its plane]
+\label{lem:flat-limit-tube}
+\lean{Preiss.tendsto_mass_outside_tube_of_flat_limit}
+\uses{gmt:portmanteau, lem:plane-hausdorff}
+
+
+
+
+
+All measures are regular, \(V\) is an \(m\)-plane, \(0<c<\infty\), and \(\eta>0\). Use the compact closure of the region.
+If \(\nu_j\rightharpoonup c\mathcal H^m\!\restriction V\), then the mass of any fixed bounded set separated by a positive distance from \(V\) tends to zero. In particular this applies to the region outside an \(\eta\)-tube inside a fixed ball.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.tendsto\_mass\_outside\_tube\_of\_flat\_limit}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Flat limit gives lower mass in moving plane balls]
+\label{lem:flat-limit-moving-balls}
+\lean{Preiss.eventually_ball_mass_lower_bound_of_flat_limit}
+\uses{gmt:portmanteau, lem:plane-hausdorff}
+
+
+
+
+
+All measures are regular, \(0<c<\infty\), and \(V\) is an \(m\)-plane. Extract converging centres and use a fixed smaller open ball.
+If \(\nu_j\rightharpoonup c\mathcal H^m\!\restriction V\), then for each \(R,\eta>0\) there are \(b>0\) and \(j_0\) such that
+\[
+ \nu_j(B_\eta(z))\geq b
+ \quad(j\geq j_0,\ z\in V\cap\overline B_R(0)).
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.eventually\_ball\_mass\_lower\_bound\_of\_flat\_limit}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Fixed-normalization compactness at density-bound points]
+\label{lem:dimensional-compactness}
+\lean{Preiss.exists_dimensional_tangent_subseq_of_density_bounds}
+\uses{gmt:blowup-balls, gmt:blowup-regular, gmt:density-bounds, gmt:portmanteau, thm:compactness}
+
+
+
+
+
+\(\mu\) is locally finite and \(0<\Theta_*^m(\mu,x)\leq\Theta^{*m}(\mu,x)<\infty\) at the fixed point \(x\).
+For every positive sequence \(r_j\to0\), there are a strictly increasing subsequence map \(\phi\) and a nonzero regular measure \(\nu\) such that
+\[
+ D^m_{x,r_{\phi(j)}}\mu\rightharpoonup\nu.
+\]
+The limit is a tangent measure in GMT's arbitrary-scalar convention.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_dimensional\_tangent\_subseq\_of\_density\_bounds}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Composition, scalar and isometric covariance of blow-ups]
+\label{lem:blowup-composition}
+\lean{Preiss.dimensionalBlowup_comp, Preiss.dimensionalBlowup_map_linearIsometry, Preiss.dimensionalBlowup_smul}
+\uses{def:dimensional-blowup, gmt:blowup, gmt:blowup-regular}
+
+
+
+
+Prove
+$D^m_{b,s}(D^m_{a,r}\mu)=D^m_{a+rb,rs}\mu$;
+positive scalar multiplication commutes with $D$; and pushforward by a linear
+isometric embedding intertwines $D$, at centres in its image. Include inverse
+dilation and preservation of flatness, regularity and uniform ball constants.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.dimensionalBlowup\_comp, Preiss.dimensionalBlowup\_map\_linearIsometry, Preiss.dimensionalBlowup\_smul}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Prove
+$D^m_{b,s}(D^m_{a,r}\mu)=D^m_{a+rb,rs}\mu$;
+positive scalar multiplication commutes with $D$; and pushforward by a linear
+isometric embedding intertwines $D$, at centres in its image. Include inverse
+dilation and preservation of flatness, regularity and uniform ball constants.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Support approximation from arbitrary positive outer measure sets]
+\label{lem:hull-support-approximation}
+\lean{Preiss.dist_badSet_rescaled_tendsto_zero}
+\uses{def:dimensional-tangent, gmt:density-points, gmt:portmanteau, lem:measurable-hull-holes}
+
+
+
+
+Assume $a\in D$, $a$ is a density-one point of its measurable hull $H$,
+$\limsup_{r\downarrow0}\mu(B(a,r))/r^m<\infty$, and
+$D^m_{a,r_i}\mu\rightharpoonup\nu$ with $r_i\downarrow0$.
+Then for every $y\in\operatorname{supp}\nu$,
+$\operatorname{dist}(a+r_i y,D)/r_i\to0$.
+Indeed, a subsequence of holes $B(a+r_i y,\eta r_i)$ disjoint from $D$ has
+zero $H$-mass by A07. It lies in $B(a,Cr_i)$ for a fixed $C$; its remaining
+mass is $o(r_i^m)$ by density-one and the upper density bound. Portmanteau
+would then make $\nu(B(y,\eta))=0$, a contradiction. Choose approximate
+nearest points in $D$ with error $r_i/i$; no closedness of $D$ is needed.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.dist\_badSet\_rescaled\_tendsto\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Assume $a\in D$, $a$ is a density-one point of its measurable hull $H$,
+$\limsup_{r\downarrow0}\mu(B(a,r))/r^m<\infty$, and
+$D^m_{a,r_i}\mu\rightharpoonup\nu$ with $r_i\downarrow0$.
+Then for every $y\in\operatorname{supp}\nu$,
+$\operatorname{dist}(a+r_i y,D)/r_i\to0$.
+Indeed, a subsequence of holes $B(a+r_i y,\eta r_i)$ disjoint from $D$ has
+zero $H$-mass by A07. It lies in $B(a,Cr_i)$ for a fixed $C$; its remaining
+mass is $o(r_i^m)$ by density-one and the upper density bound. Portmanteau
+would then make $\nu(B(y,\eta))=0$, a contradiction. Choose approximate
+nearest points in $D$ with error $r_i/i$; no closedness of $D$ is needed.
+\par Corrections and boundary conditions: New measurable-hull repair; require density one of the hull and finite upper dimensional density.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[Joint continuity of translated dilations]
+\label{lem:vague-moving-blowups}
+\lean{Preiss.vague_dimensionalBlowup_moving, Preiss.vague_smul_map_sub_div}
+\uses{def:dimensional-blowup, gmt:blowup-regular, lem:vague-moving-tests}
+
+
+
+
+
+If $\mu_i\rightharpoonup\mu$, $a_i\to a$, $r_i\to r>0$, and
+$c_i\to c\in[0,\infty)$, then
+$c_i(T_{a_i,r_i})_\#\mu_i\rightharpoonup c(T_{a,r})_\#\mu$.
+Assume regularity of the measures and finite real scalars; no bound at infinity
+on their total masses is needed. The preimages of a fixed compact test support
+lie in one compact set because the parameters converge and $r>0$. The pulled
+back tests converge uniformly there. S01 proves the statement. Its special case
+$D^m_{a_i,r_i}\mu_i\to D^m_{a,r}\mu$ is used repeatedly.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.vague\_dimensionalBlowup\_moving, Preiss.vague\_smul\_map\_sub\_div}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+If $\mu_i\rightharpoonup\mu$, $a_i\to a$, $r_i\to r>0$, and
+$c_i\to c\in[0,\infty)$, then
+$c_i(T_{a_i,r_i})_\#\mu_i\rightharpoonup c(T_{a,r})_\#\mu$.
+Assume regularity of the measures and finite real scalars; no bound at infinity
+on their total masses is needed. The preimages of a fixed compact test support
+lie in one compact set because the parameters converge and $r>0$. The pulled
+back tests converge uniformly there. S01 proves the statement. Its special case
+$D^m_{a_i,r_i}\mu_i\to D^m_{a,r}\mu$ is used repeatedly.
+\par Corrections and boundary conditions: Require limiting radius strictly positive; scalars finite and convergent; obtain one common compact set of pulled-back supports.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Closedness of arbitrary-scalar tangents]
+\label{lem:tangent-closed}
+\lean{Preiss.tangent_closed}
+\uses{def:tangent-api, lem:vague-diagonal}
+
+
+The source measure $\mu$ is locally finite.
+
+
+
+
+If every $\nu_i\in\operatorname{Tan}(\mu,x)$, $\nu_i\rightharpoonup\nu$, and $\nu$ is regular and nonzero, then $\nu\in\operatorname{Tan}(\mu,x)$.
+\par\emph{Role: Supporting API.}
+\par Lean declarations: \texttt{Preiss.tangent\_closed}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For a fixed measure and centre, the limit of a vaguely convergent sequence of
+dimensional tangents is a dimensional tangent whenever that limit is regular
+and nonzero. Prove the analogous arbitrary-scalar statement as a separate
+adapter. Constant positive dilations of a dimensional tangent remain dimensional
+tangents. At a positive finite density point the dimensional tangent set is
+nonempty and compact, because every sufficiently small blow-up has compact
+mass bounds and nonzero subsequential limits. A countable-test diagonal lemma
+implements closure without assuming a topology on all raw measures.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Closedness of dimensional tangents]
+\label{lem:dimensional-tangent-closed}
+\lean{Preiss.dimensionalTangent_closed}
+\uses{def:dimensional-tangent, lem:vague-diagonal}
+
+
+The source measure $\mu$ is locally finite.
+
+
+
+
+
+If every $\nu_i\in\operatorname{Tan}_m(\mu,x)$, $\nu_i\rightharpoonup\nu$, and $\nu$ is regular and nonzero, then $\nu\in\operatorname{Tan}_m(\mu,x)$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.dimensionalTangent\_closed}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For a fixed measure and centre, the limit of a vaguely convergent sequence of
+dimensional tangents is a dimensional tangent whenever that limit is regular
+and nonzero. Prove the analogous arbitrary-scalar statement as a separate
+adapter. Constant positive dilations of a dimensional tangent remain dimensional
+tangents. At a positive finite density point the dimensional tangent set is
+nonempty and compact, because every sufficiently small blow-up has compact
+mass bounds and nonzero subsequential limits. A countable-test diagonal lemma
+implements closure without assuming a topology on all raw measures.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[All flat tangents imply weak linear approximation]
+\label{lem:flat-to-approximation}
+\lean{Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat}
+\uses{def:weak-approximation, lem:dimensional-compactness, lem:flat-limit-moving-balls, lem:flat-limit-tube}
+
+
+
+
+
+
+The set \(F\) is Borel with \(\mathcal H^m(F)<\infty\), and \(\mathcal H^m\!\restriction F\) has positive lower and finite upper \(m\)-density at \(x\).
+If every tangent of \(\mathcal H^m\!\restriction F\) at \(x\) is \(m\)-flat, then \(F\) is weakly linearly approximable at \(x\):
+for every \(\eta>0\), some \(\lambda,r_0>0\) work at every \(0<r<r_0\) for both the tube and plane-centred-ball clauses.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.weaklyLinearlyApproximableAt\_of\_all\_tangents\_flat}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Plane and scaling API]
+\label{lem:plane-scaling}
+\lean{Preiss.isFlat_dimensionalBlowup, Preiss.isFlat_map_linearIsometry, Preiss.isFlat_of_dimensionalBlowup_zero}
+\uses{def:dimensional-blowup, def:flat, lem:blowup-composition, lem:plane-hausdorff}
+
+
+
+Flat measures are regular and nonzero. Dimensional dilation and recentering at a point of their supporting plane preserve flatness; pushforward by a linear isometry gives the corresponding flat measure on the image plane. Unit-uniform scaling and blow-up composition have separate interfaces.
+\end{lemma}
+
+\begin{lemma}[Tangent existence under two-sided density bounds]
+\label{lem:tangent-existence}
+\lean{Preiss.tangent_exists}
+\uses{def:positive-density, def:tangent-api, gmt:doubling-bounds, thm:doubling}
+
+
+
+
+
+
+At a point with positive lower and finite upper $m$-density, a locally finite measure has a nonzero tangent measure.
+\end{lemma}
+
+\begin{lemma}[Positive dilations preserve dimensional tangents]
+\label{lem:dimensional-tangent-dilation}
+\lean{Preiss.dimensionalTangent_dilate}
+\uses{def:dimensional-blowup, def:dimensional-tangent, lem:blowup-composition, lem:vague-moving-blowups}
+
+
+The source measure $\mu$ is locally finite.
+
+
+
+For $r>0$ and $\nu\in\operatorname{Tan}_m(\mu,x)$, $D^m_{0,r}\nu\in\operatorname{Tan}_m(\mu,x)$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.dimensionalTangent\_dilate}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For a fixed measure and centre, the limit of a vaguely convergent sequence of
+dimensional tangents is a dimensional tangent whenever that limit is regular
+and nonzero. Prove the analogous arbitrary-scalar statement as a separate
+adapter. Constant positive dilations of a dimensional tangent remain dimensional
+tangents. At a positive finite density point the dimensional tangent set is
+nonempty and compact, because every sufficiently small blow-up has compact
+mass bounds and nonzero subsequential limits. A countable-test diagonal lemma
+implements closure without assuming a topology on all raw measures.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Transitivity of the support-centered scaling orbit closure]
+\label{lem:pseudotangent-transitive}
+\lean{Preiss.uniformPseudotangent_trans}
+\uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation}
+
+
+
+
+Let $\mathcal O_m(\nu)$ be the closure of
+$\{D^m_{y,r}\nu:y\in\operatorname{supp}\nu,\ 0<r\leq1\}$ within regular
+locally finite measures. For uniform measures all these limits retain their
+ball constant. Prove
+$\lambda\in\mathcal O_m(\nu)\Rightarrow
+ \mathcal O_m(\lambda)\subseteq\mathcal O_m(\nu)$.
+To compose a rescaling centred at a support point $z$ of $\lambda$, approximate
+$z$ by support points of the convergent approximating measures (S04), then use
+S02 and S03. Products of radii remain at most one. A diagonal selection turns
+closure membership into the sequence form in the current Lean statement.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.uniformPseudotangent\_trans}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Let $\mathcal O_m(\nu)$ be the closure of
+$\{D^m_{y,r}\nu:y\in\operatorname{supp}\nu,\ 0<r\leq1\}$ within regular
+locally finite measures. For uniform measures all these limits retain their
+ball constant. Prove
+$\lambda\in\mathcal O_m(\nu)\Rightarrow
+ \mathcal O_m(\lambda)\subseteq\mathcal O_m(\nu)$.
+To compose a rescaling centred at a support point $z$ of $\lambda$, approximate
+$z$ by support points of the convergent approximating measures (S04), then use
+S02 and S03. Products of radii remain at most one. A diagonal selection turns
+closure membership into the sequence form in the current Lean statement.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[Nonempty compact tangent family at a density point]
+\label{lem:dimensional-tangent-compactness}
+\lean{Preiss.dimensionalTangent_nonempty_compact}
+\uses{def:dimensional-tangent, def:positive-density, gmt:density-bounds, gmt:portmanteau, lem:dimensional-tangent-closed, thm:compactness}
+
+
+
+
+
+If $0<\lim_{r\downarrow0}\mu(B(x,r))/r^m<\infty$, the dimensional tangent family is nonempty and sequentially compact; every sequence of sufficiently small dimensional blow-ups has a subsequence with a nonzero regular limit.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.dimensionalTangent\_nonempty\_compact}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For a fixed measure and centre, the limit of a vaguely convergent sequence of
+dimensional tangents is a dimensional tangent whenever that limit is regular
+and nonzero. Prove the analogous arbitrary-scalar statement as a separate
+adapter. Constant positive dilations of a dimensional tangent remain dimensional
+tangents. At a positive finite density point the dimensional tangent set is
+nonempty and compact, because every sufficiently small blow-up has compact
+mass bounds and nonzero subsequential limits. A countable-test diagonal lemma
+implements closure without assuming a topology on all raw measures.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Comparison of tangent conventions]
+\label{lem:tangent-ray}
+\lean{Preiss.tangent_iff_dimensional_ray}
+\uses{def:dimensional-tangent, def:flat, def:positive-density, gmt:continuity-sets, gmt:normalized-tangent, lem:density-bridge, lem:plane-scaling, thm:compactness}
+
+
+
+
+
+
+
+
+
+At a positive finite density point of a locally finite measure, an arbitrary
+scalar tangent is exactly a positive finite scalar multiple of a dimensional
+tangent. These two sets of tangents are not equal.
+\end{lemma}
+\begin{proof}[Planned proof]
+
+Control the scalar factors by masses of continuity balls, extract their
+positive finite limit, and pass scaling through compactly supported tests.
+Establish uniform local bounds before passing to the limit.
+\end{proof}
+
+\begin{lemma}[Blow-downs of tangents remain tangents]
+\label{lem:tangent-blowdown}
+\lean{Preiss.dimensionalTangent_of_tangentAtInfinity}
+\uses{def:dimensional-tangent, def:tangent-at-infinity, lem:dimensional-tangent-closed, lem:dimensional-tangent-dilation}
+
+
+The source measure $\mu$ is locally finite.
+
+
+
+If a dimensional tangent $\zeta$ has a nonzero regular limit at infinity $\chi$,
+then $\chi$ is a dimensional tangent of the original measure at the same point.
+Use S07's positive dilation invariance and closure. This statement is pointwise;
+it needs no almost-everywhere recentering theorem.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.dimensionalTangent\_of\_tangentAtInfinity}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+If a dimensional tangent $\zeta$ has a nonzero regular limit at infinity $\chi$,
+then $\chi$ is a dimensional tangent of the original measure at the same point.
+Use S07's positive dilation invariance and closure. This statement is pointwise;
+it needs no almost-everywhere recentering theorem.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{lemma}[Continuity of the scale function]
+\label{lem:flatness-radius-continuous}
+\uses{def:dimensional-blowup, def:flatness, lem:flatness-continuous, lem:vague-moving-blowups}
+
+
+
+For fixed regular locally finite $\mu$ and center $x$, $r\mapsto F(D^m_{x,r}\mu)$ is continuous on $(0,\infty)$.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.continuousOn\_flatness\_dimensionalBlowUp}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Choose $\phi\in C_c(\mathbb R^n)$ with $0\leq\phi\leq1$,
+$\phi=1$ on $\overline B(0,1)$ and support in $B(0,2)$.
+Define $F(\mu)=\min_V\int\phi(z)\operatorname{dist}(z,V)^2\,d\mu$.
+The minimum is attained. S01 and C01 imply sequential continuity for vague
+convergence; S02 implies continuity of $r\mapsto F(D^m_{x,r}\mu)$ for $r>0$.
+Flat measures have $F=0$. For a unit uniform measure, $F\leq\varepsilon$
+implies that some plane has unit-ball energy at most $\varepsilon$.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{lemma}[One null exceptional set for all dimensional recenterings]
+\label{lem:recenter}
+\lean{Preiss.ae_recenter_dimensionalTangent}
+\uses{def:dimensional-tangent, def:positive-density, gmt:goodsets, lem:dimensional-tangent-ball-constant, lem:dimensional-tangent-closed, lem:dimensional-tangent-dilation, lem:hull-support-approximation, lem:uniform-adapter, lem:uniform-finite-metric-covers, lem:vague-moving-blowups}
+
+
+
+
+Under positive finite existing $m$-density almost everywhere, prove
+\[
+ \text{for }\mu\text{-a.e. }a,\quad
+ \forall\nu\in\operatorname{Tan}_m(\mu,a),\quad
+ \forall y\in\operatorname{supp}\nu,\quad\forall r>0,
+ \quad D^m_{y,r}\nu\in\operatorname{Tan}_m(\mu,a).
+\]
+Here $\operatorname{Tan}_m$ uses fixed dimensional normalization.
+It is enough to prove recentering at radius one; S03 and S07 give all radii.
+For fixed rational tolerances and radius cutoffs, take the arbitrary set of
+bad centres, stratify its density constants and intersect with a bounded ball.
+If it has positive outer measure, use a finite metric cover of the compact
+family of translated uniform tangents to select one positive-outer-measure
+class $D$ whose chosen translated tangents are pairwise close.
+Take a density point of its measurable hull lying in $D$: the hull's bad
+density points are null and cannot cover a set of positive outer measure.
+Apply A08 to select nearby bad centres in $D$ and S02 to compare their blow-ups
+with the chosen translated tangent. The triangle inequality contradicts the
+defining fixed separation of the bad centres. Countably many tolerances give
+one null exceptional set. This repairs the book's unjustified assertion that
+its existentially defined set $D$ is measurable.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.ae\_recenter\_dimensionalTangent}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Under positive finite existing $m$-density almost everywhere, prove
+\[
+ \text{for }\mu\text{-a.e. }a,\quad
+ \forall\nu\in\operatorname{Tan}_m(\mu,a),\quad
+ \forall y\in\operatorname{supp}\nu,\quad\forall r>0,
+ \quad D^m_{y,r}\nu\in\operatorname{Tan}_m(\mu,a).
+\]
+Here $\operatorname{Tan}_m$ uses fixed dimensional normalization.
+It is enough to prove recentering at radius one; S03 and S07 give all radii.
+For fixed rational tolerances and radius cutoffs, take the arbitrary set of
+bad centres, stratify its density constants and intersect with a bounded ball.
+If it has positive outer measure, use a finite metric cover of the compact
+family of translated uniform tangents to select one positive-outer-measure
+class $D$ whose chosen translated tangents are pairwise close.
+Take a density point of its measurable hull lying in $D$: the hull's bad
+density points are null and cannot cover a set of positive outer measure.
+Apply A08 to select nearby bad centres in $D$ and S02 to compare their blow-ups
+with the chosen translated tangent. The triangle inequality contradicts the
+defining fixed separation of the bad centres. Countably many tolerances give
+one null exceptional set. This repairs the book's unjustified assertion that
+its existentially defined set $D$ is measurable.
+\par Corrections and boundary conditions: New measurable-hull proof replacing unjustified measurability in De Lellis Lemma 6.6; quantify all tangents, support centers and positive radii outside one null set.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\section{Weak approximation and the sufficient criterion}
+
+\begin{definition}[Relaxed uniform approximation good sets]
+\label{def:weak-approximation-good-set}
+\lean{Preiss.weakApproximationGoodSet}
+\uses{def:plane}
+
+
+
+
+
+
+Parameters \(\eta,\lambda,R\) are positive. Later closedness results assume \(\nu\) finite and regular.
+Let \(G(\nu,m,\eta,\lambda,R)\) consist of points \(x\) for which every \(0<r<R\) admits an \(m\)-plane \(V\) satisfying
+\[
+ \nu\{y:\|y-x\|<r,\ \operatorname{dist}(y-x,V)>\eta r\}\leq\eta r^m,
+\]
+and
+\[
+ \nu(\overline B_{\eta r}(z))\geq\lambda r^m
+ \quad\text{for all }z\in(x+V)\cap B_r(x).
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.weakApproximationGoodSet}.
+\end{definition}
+
+\begin{lemma}[Small tube-error mass implies support containment]
+\label{lem:tube-support-upgrade}
+\lean{Preiss.subset_tube_of_lower_mass_and_small_outside_mass}
+\uses{def:plane}
+
+
+
+
+
+
+The lower bounds hold uniformly at every point of \(C\), and all radii used lie below their common cutoff. Here \(\delta,\eta,r>0\).
+Suppose points \(z\in C\) satisfy \(\nu(B_s(z))\geq\delta s^m\) at small scales. If the mass outside the \(\eta r/2\)-tube about \(a+V\), inside \(B_{2r}(a)\), is less than \(\delta(\eta r/2)^m\), then
+\[
+ C\cap B_r(a)\subset\{z:\operatorname{dist}(z,a+V)\leq\eta r\}.
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.subset\_tube\_of\_lower\_mass\_and\_small\_outside\_mass}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{definition}[Weak linear approximation]
+\label{def:weak-approximation}
+\lean{Preiss.MeasureWeaklyLinearlyApproximableAt, Preiss.WeaklyLinearlyApproximableAt}
+\uses{def:plane}
+
+
+
+
+
+
+
+
+A measure $\mu$ is weakly linearly approximable at $x$ if for every $\eta>0$ there are $a,r_0>0$ such that, for every $0<r<r_0$, some $m$-plane $V$ satisfies both $\mu(B(x,r)\setminus\{z:\operatorname{dist}(z-x,V)\leq\eta r\})<\eta r^m$ and $\mu(B(z,\eta r))\geq ar^m$ for every $z\in(x+V)\cap B(x,r)$. The set predicate specializes this to $\mathcal H^m\!\restriction E$.
+\end{definition}
+
+\begin{lemma}[Small projection direction bounds projected tube measure]
+\label{lem:projected-tube-slab-bound}
+\lean{Preiss.hausdorffMeasure_projected_tube_le}
+\uses{lem:plane-hausdorff}
+
+
+
+
+
+The subspaces \(V,W\) have dimension \(m>0\); \(\varepsilon,\eta\geq0\) and \(R>0\). The constant depends only on dimension and normalization.
+There is \(C_m>0\) such that, if \(w\in W\) is a unit vector with \(\|P_Vw\|\leq\varepsilon\), then
+\[
+ \mathcal H^m\!\left(P_V\bigl(\{z:\operatorname{dist}(z,a+W)\leq\eta R\}\cap\overline B_R(a)\bigr)\right)
+ \leq C_m(\varepsilon+\eta)R^m.
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.hausdorffMeasure\_projected\_tube\_le}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Relaxed approximation good sets are closed]
+\label{lem:closed-weak-approximation-good-set}
+\lean{Preiss.isClosed_weakApproximationGoodSet}
+\uses{def:weak-approximation-good-set, lem:grassmannian}
+
+
+
+
+
+
+\(\nu\) is finite and regular; use the compact orthogonal-projection topology on \(m\)-planes and fixed positive \(\eta,\lambda,R\).
+The relaxed good set \(G(\nu,m,\eta,\lambda,R)\) is closed.
+For each fixed radius, the relation in \(x,V\) is closed; projection along the compact plane space and intersection over radii preserve closedness.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.isClosed\_weakApproximationGoodSet}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Prove joint LSC moving-open-set mass and USC closed-ball mass, approximate centres via projections; project closed relation along compact plane witness.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Weak approximation gives positive lower density]
+\label{lem:weak-approximation-lower-density}
+\lean{Preiss.lower_density_pos_of_weakApproximation, Preiss.lower_power_bound_of_weakApproximation}
+\uses{def:weak-approximation}
+
+
+
+
+
+
+No finite-total-measure assumption is required for this implication. Its pure-measure version concludes a positive local lower power bound.
+Weak linear approximation of \(F\) at \(x\) implies
+\[
+ \Theta_*^m(\mathcal H^m\!\restriction F,x)>0.
+\]
+Use the lower-ball clause at the plane centre \(z=x\) and one fixed aperture.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.lower\_density\_pos\_of\_weakApproximation, Preiss.lower\_power\_bound\_of\_weakApproximation}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Weak approximation survives negligible deletion]
+\label{lem:weak-approximation-deletion}
+\lean{Preiss.negligibleDeletionAt, Preiss.weakApproximation_restrict_of_negligible_sdiff}
+\uses{def:weak-approximation}
+
+
+
+
+
+
+The pointwise theorem assumes the displayed limit. Shrink the source aperture and positive lower-mass constant.
+If \(F\subset E\) and
+\[
+ r^{-m}\mathcal H^m((E\setminus F)\cap B_{2r}(x))\longrightarrow0,
+\]
+then weak linear approximation of \(E\) at \(x\) implies that of \(F\) at \(x\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.negligibleDeletionAt, Preiss.weakApproximation\_restrict\_of\_negligible\_sdiff}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Aperture slack gives countable good-set exhaustion]
+\label{lem:weak-approximation-good-exhaustion}
+\lean{Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion}
+\uses{def:weak-approximation, def:weak-approximation-good-set}
+
+
+
+
+
+
+\(\nu=\mathcal H^m\!\restriction E\) is finite and regular. Use aperture slack to replace non-strict upper inequalities and closed lower balls by the original strict/open clauses.
+Weak linear approximation at \(x\) implies, for every \(\eta>0\), membership in some
+\(G(\nu,m,\eta,1/N,1/N)\), \(N\geq1\).
+Conversely membership with aperture \(\eta/2\) gives the original approximation clauses at aperture \(\eta\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.weaklyLinearlyApproximableAt\_iff\_goodSet\_exhaustion}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Compact subsets with uniform approximation and density bounds]
+\label{lem:uniform-compact-selection}
+\lean{Preiss.exists_compact_uniform_weakApproximation_subset}
+\uses{gmt:goodsets, gmt:hausdorff-regular, lem:closed-weak-approximation-good-set, lem:weak-approximation-good-exhaustion, lem:weak-approximation-lower-density}
+
+
+
+
+
+The Borel set \(E\) has finite \(\mathcal H^m\)-measure and is weakly linearly approximable almost everywhere. Intersect Borel \(E\) with closed good sets before applying inner regularity.
+One can choose compact \(C\subset E\) losing arbitrarily little \(\mathcal H^m\)-measure, on which the selected lower mass bounds and finitely many relaxed weak-approximation conditions have uniform positive parameters.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_compact\_uniform\_weakApproximation\_subset}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Weak approximation restricts to Borel subsets almost everywhere]
+\label{lem:weak-approximation-restrict-ae}
+\lean{Preiss.ae_weaklyLinearlyApproximableAt_subset}
+\uses{gmt:density-points, gmt:hausdorff-density-upper, lem:weak-approximation-deletion, mathlib:besicovitch-differentiation}
+
+
+
+
+
+The set \(E\) is Borel and \(\mathcal H^m(E)<\infty\). Differentiation and finite upper density supply the negligible-deletion estimate.
+If \(E\) is weakly linearly approximable at \(\mathcal H^m\)-almost every point of \(E\), then each Borel \(F\subset E\) is weakly linearly approximable at \(\mathcal H^m\)-almost every point of \(F\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.ae\_weaklyLinearlyApproximableAt\_subset}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Base point with upper mass and small discarded mass]
+\label{lem:packing-base-point}
+\lean{Preiss.ae_upperPowerBoundAt_restrict_hausdorff, Preiss.exists_upper_mass_small_sdiff_point}
+\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper}
+
+
+
+
+
+The Borel sets \(G\subset E\) satisfy \(0<\mathcal H^m(G)\leq\mathcal H^m(E)<\infty\), and \(t>0\) is chosen before \(a,r_0\).
+Choose \(a\in G\) and \(r_0>0\) so that, for \(0<r<r_0\),
+\[
+ \mathcal H^m(E\cap B_r(a))\leq C_m r^m,\qquad
+ \mathcal H^m((E\setminus G)\cap B_{2r}(a))\leq t r^m.
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.ae\_upperPowerBoundAt\_restrict\_hausdorff, Preiss.exists\_upper\_mass\_small\_sdiff\_point}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Transfer density bounds and flat tangents to finite pieces]
+\label{lem:finite-piece-transfer}
+\lean{Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff}
+\uses{gmt:finite-restriction, gmt:restriction-tangents, lem:finite-pieces, mathlib:besicovitch-differentiation, thm:matching}
+
+
+
+
+
+The pieces are Borel, finite in \(\mathcal H^m\), and their restrictions are comparable with positive finite constants. Assume the density and flat-tangent hypotheses for locally finite \(\mu\).
+For each finite piece \(S_j\), the measure \(\nu_j=\mathcal H^m\!\restriction S_j\) has positive lower and finite upper \(m\)-density almost everywhere. If all tangents of \(\mu\) are \(m\)-flat almost everywhere, the same holds for all tangents of \(\nu_j\) at \(\nu_j\)-almost every point.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.ae\_density\_bounds\_and\_flat\_tangents\_restrict\_hausdorff}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Nested compact two-sided approximation]
+\label{lem:nested-compact-approximation}
+\lean{Preiss.TwoSidedApproximation, Preiss.exists_nested_compact_twoSided_approximation}
+\uses{gmt:density-points, lem:tube-support-upgrade, lem:uniform-compact-selection, lem:weak-approximation-restrict-ae}
+
+
+
+
+
+The Borel set \(E\) has positive finite \(\mathcal H^m\)-measure and is weakly linearly approximable almost everywhere. Choose the lower constant \(\delta\) first, then a sufficiently small \(\eta\), then the remaining constants.
+Choose compact positive-measure sets \(G\subset F\subset E\) with uniform lower mass on \(F\). At each \(a\in G\) and each small scale \(r\), a plane \(V\) gives tube containment of \(F\cap B_{2r}(a)\), proximity of \((a+V)\cap B_r(a)\) to \(F\), and a positive lower bound for the \(E\)-mass of plane-centred \(\eta r\)-balls.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.TwoSidedApproximation, Preiss.exists\_nested\_compact\_twoSided\_approximation}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Preserve parameter order δ then η then γ then t.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Pure sets have arbitrarily close points outside fixed cones]
+\label{lem:pure-cone-escape}
+\lean{Preiss.ae_exists_outside_cone_of_purelyUnrectifiable}
+\uses{lem:cone-graph, lem:pure-basic}
+
+
+
+
+
+The set \(C\) is purely \(m\)-unrectifiable. The exceptional null set may depend on \(V,\alpha\); simultaneous quantification over all planes is unnecessary.
+For every fixed \(m\)-plane \(V\) and finite aperture \(\alpha\geq0\), at \(\mathcal H^m\)-almost every \(a\in C\), every \(r>0\) admits
+\[
+ b\in C\cap B_r(a)\setminus C(a,V,\alpha).
+\]
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.ae\_exists\_outside\_cone\_of\_purelyUnrectifiable}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Disjoint projection-hole disks with large radius sum]
+\label{lem:projection-hole-cover}
+\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass}
+\uses{lem:nested-compact-approximation, lem:packing-base-point, lem:plane-hausdorff, mathlib:vitali-enlargement}
+
+
+
+
+
+Use \(P_V(G\cap\overline B_{2\sigma}(a))\), with \(G\) compact and null projection. Plane-centred mass and the small discarded-mass bound give the upper bound on hole radii.
+There is a countable family of hole centres \(p_i\) and radii \(\rho_i\) such that the disks \(D_{4\rho_i}(p_i)\) are disjoint, their fivefold enlargements cover the relevant plane disk up to a null set, and
+\[
+ 0<\rho_i\leq\eta\sigma,\qquad \sum_i\rho_i^m\geq c_m\sigma^m.
+\]
+Each radius is distance to the compact projected set.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.HoleFamily, Preiss.exists\_projection\_hole\_disk\_family, Preiss.projected\_distance\_le\_of\_lower\_mass}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Reuse Vitali.exists\_disjoint\_subfamily\_covering\_enlargement\_ball within the plane.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Pure weakly approximable sets have every-plane null projection]
+\label{lem:pure-wla-null-projection}
+\lean{Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation}
+\uses{lem:projected-tube-slab-bound, lem:pure-cone-escape, lem:tube-support-upgrade, lem:uniform-compact-selection, mathlib:besicovitch-cover}
+
+
+
+
+
+The Borel set \(E\) is purely \(m\)-unrectifiable, has finite \(\mathcal H^m\)-measure, and is weakly linearly approximable almost everywhere; \(0<m\leq n\).
+For every \(m\)-plane \(V\),
+\[
+ \mathcal H^m(P_V(E))=0.
+\]
+This is an every-plane conclusion, not an almost-every-plane projection theorem.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.measure\_projection\_eq\_zero\_of\_purelyUnrectifiable\_weakApproximation}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Also reuse Besicovitch.exists\_disjoint\_closedBall\_covering\_ae and Lipschitz distortion; a fivefold covering alone is not identical.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Cylinders meeting the compact core have small radius sum]
+\label{lem:discarded-cylinder-sum}
+\lean{Preiss.tsum_hole_radii_bad_indices_le}
+\uses{lem:projection-hole-cover}
+
+
+
+
+
+Use the selected disjoint cylinders, uniform lower mass \(\delta\) on \(F\), and small mass of \(E\setminus G\). Choose \(t\) after \(\delta\).
+For indices \(J\) whose inner cylinders meet \(F\),
+\[
+ \sum_{i\in J}\rho_i^m\leq C_m t\sigma^m/\delta.
+\]
+For sufficiently small \(t\), the complementary indices \(K\) retain
+\(\sum_{i\in K}\rho_i^m\geq c_m\sigma^m\).
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.tsum\_hole\_radii\_bad\_indices\_le}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Many disjoint lower-mass balls inside each surviving cylinder]
+\label{lem:column-packing}
+\lean{Preiss.exists_column_disjoint_balls}
+\uses{lem:empty-cylinder-direction, lem:nested-compact-approximation, lem:projection-hole-cover}
+
+
+
+
+
+Use an empty inner cylinder, a compact nearest projected boundary point, two-sided approximation at that point, and sufficiently small \(\eta>0\). Never identify \(\sigma\) with \(\rho_i/(8\eta)\).
+At the local scale \(r_i=\rho_i/(8\eta)\), each surviving cylinder contains at least \(c/\eta\) separated plane points and corresponding nearby centres in \(F\). The resulting balls of radius \(\rho_i/8\) are disjoint, lie inside the \(4\rho_i\)-cylinder and the ambient \(B_\sigma(a)\), and satisfy the prescribed lower mass bound.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_column\_disjoint\_balls}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Null projections contradict weak approximation and finite upper density]
+\label{lem:packing-contradiction}
+\lean{Preiss.false_of_column_mass_exceeds_upper_bound, Preiss.false_of_null_projections_and_uniform_weakApproximation}
+\uses{lem:column-packing, lem:discarded-cylinder-sum, lem:packing-base-point}
+
+
+
+
+
+Use null projections, nested compact approximation, the selected hole disks and the surviving radius sum. Parameter order is \(\delta\), then \(\eta\ll\delta\), then the other approximation constants and \(t\), and finally \(\sigma\).
+Summing the disjoint column balls gives
+\[
+ \mathcal H^m(E\cap B_\sigma(a))
+ \geq c_m\delta\sigma^m/\eta,
+\]
+contradicting the upper bound \(C_m\sigma^m\) when \(\eta\) is sufficiently small.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.false\_of\_column\_mass\_exceeds\_upper\_bound, Preiss.false\_of\_null\_projections\_and\_uniform\_weakApproximation}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{theorem}[Marstrand-Mattila set criterion]
+\label{thm:mm-set}
+\lean{Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt}
+\uses{lem:decomposition, lem:packing-contradiction, lem:pure-wla-null-projection, lem:weak-approximation-restrict-ae}
+
+
+
+
+
+Assume \(0<m\leq n\). The zero-measure case is included and is immediate.
+A Borel set \(E\subset\mathbb R^n\) with finite \(\mathcal H^m\)-measure which is weakly linearly approximable at \(\mathcal H^m\)-almost every point is countably \(m\)-rectifiable.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.countablyRectifiable\_of\_ae\_weaklyLinearlyApproximableAt}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{theorem}[Marstrand-Mattila measure criterion]
+\label{thm:mm-measure}
+\lean{Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents}
+\uses{lem:carrier-calculus, lem:finite-piece-transfer, lem:flat-to-approximation, thm:mm-set}
+
+
+
+
+
+The measure \(\mu\) is locally finite and \(0<m\leq n\). Quantification over all tangents lies inside the almost-everywhere binder.
+If, at \(\mu\)-almost every \(x\),
+\[
+ 0<\Theta_*^m(\mu,x)\leq\Theta^{*m}(\mu,x)<\infty
+\]
+and every tangent measure is \(m\)-flat, then \(\mu\) is \(m\)-rectifiable.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.isRectifiableMeasure\_of\_ae\_density\_bounds\_and\_flat\_tangents}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\section{Generic Gaussian and multilinear analysis}
+
+\begin{lemma}[Gaussian polynomial integrability under polynomial growth]
+\label{lem:gaussian-polynomial-integrable}
+\lean{Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth}
+
+
+For a regular measure with $\mu(B(0,R))\leq C(1+R)^p$ for all $R>0$, $C,p\geq0$, every $d\in\mathbb N$ and $s>0$ satisfy $\int |z|^d e^{-s|z|^2}\,d\mu<\infty$. If $\mu\ne0$, its Gaussian mass is positive.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.integrable\_norm\_pow\_mul\_gaussian\_of\_polynomial\_growth}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+For every $d\in\mathbb N$ and $s>0$,
+$\int |z|^d e^{-s|z|^2}\,d\nu<\infty$ and $0<I_\nu(s)<\infty$.
+For fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over
+$\mathcal U_m$. State the more reusable version for a family satisfying one
+common polynomial bound $\mu(B(0,R))\leq C(1+R)^p$.
+Use this to extend vague convergence to polynomial-times-Gaussian tests.
+It also justifies differentiation with respect to positive $s$ locally in $s$.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Analytic extension of weighted complementary projections]
+\label{lem:graded-analytic-projection}
+\lean{Preiss.IsOrthogonalGrading, Preiss.analyticAt_weightedProjection_zero, Preiss.weightedComplement, Preiss.weightedGrading}
+
+This is a measure-independent linear algebra theorem. Let the finite-dimensional
+real inner-product space $X$ have an orthogonal decomposition
+$X=\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\leq X$.
+For $s>0$ put $A(s)=\sum_j s^jP_j$ and
+$F_s=A(s)^{-1}(V^\perp)$. Then $X=V\oplus F_s$; the projection $Q_s$
+onto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.
+In particular its operator norm stays bounded as $s\downarrow0$.
+For the proof, orthogonally split $V^\perp$ according to the filtration
+$V^\perp\cap\bigoplus_{j\leq k}X_j$ and define a polynomial family which
+is identity on $V$ and equals $P_k+sP_{k-1}+\cdots+s^{k-1}P_1$ on the
+$k$th filtration summand. Its value at zero is invertible, by the
+least-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial
+family. In the least-degree argument the lower-degree vector belongs to the
+sum of all earlier filtration summands, not necessarily only the immediately
+preceding one.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.IsOrthogonalGrading, Preiss.analyticAt\_weightedProjection\_zero, Preiss.weightedComplement, Preiss.weightedGrading}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+This is a measure-independent linear algebra theorem. Let the finite-dimensional
+real inner-product space $X$ have an orthogonal decomposition
+$X=\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\leq X$.
+For $s>0$ put $A(s)=\sum_j s^jP_j$ and
+$F_s=A(s)^{-1}(V^\perp)$. Then $X=V\oplus F_s$; the projection $Q_s$
+onto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.
+In particular its operator norm stays bounded as $s\downarrow0$.
+For the proof, orthogonally split $V^\perp$ according to the filtration
+$V^\perp\cap\bigoplus_{j\leq k}X_j$ and define a polynomial family which
+is identity on $V$ and equals $P_k+sP_{k-1}+\cdots+s^{k-1}P_1$ on the
+$k$th filtration summand. Its value at zero is invertible, by the
+least-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial
+family. In the least-degree argument the lower-degree vector belongs to the
+sum of all earlier filtration summands, not necessarily only the immediately
+preceding one.
+\par Corrections and boundary conditions: Generic finite-dimensional replacement for the source tensor argument; filtration decomposition must include all earlier summands.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Greatest crossing with an interval bound]
+\label{lem:greatest-crossing}
+\lean{Preiss.exists_greatest_crossing}
+
+
+If $0<a<b$, $f:[a,b]\to\mathbb R$ is continuous and $f(a)>\varepsilon>f(b)$, there is $c\in(a,b)$ such that $f(c)=\varepsilon$ and $f(t)\leq\varepsilon$ for all $t\in[c,b]$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_greatest\_crossing}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+After S08 normalization, suppose $\alpha$ is a flat dimensional tangent and
+$\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit
+uniform. Let $\chi$ be the blow-down of $\zeta$. Rigidity and the gap give
+$F(\chi)>\varepsilon$. Choose $r_i\to0$ with blow-ups tending to $\alpha$
+and $s_i<r_i$ with blow-ups tending to $\chi$; subsequence selection makes
+the ordering possible. For sufficiently large $i$, the continuous scale
+function satisfies $F(D_{x,r_i}^m\mu)<\varepsilon$ and
+$F(D_{x,s_i}^m\mu)>\varepsilon$.
+Choose $\sigma_i\in[s_i,r_i]$ with energy exactly $\varepsilon$ and energy
+at most $\varepsilon$ on the entire interval $[\sigma_i,r_i]$.
+This is a greatest-crossing/last-crossing assertion, not merely the intermediate
+value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
+\par Corrections and boundary conditions: The ordinary intermediate value theorem alone does not give the full later interval bound.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{definition}[Finite Euclidean polynomial feature map]
+\label{def:polynomial-feature}
+\lean{Preiss.PolynomialFeatureIndex, Preiss.PolynomialFeatureSpace, Preiss.polynomialFeature, Preiss.polynomialFeatureBlock, Preiss.polynomialFeatureProjection, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeature_inner}
+
+For $1\leq k\leq N$, index a Euclidean block by all $\iota:\operatorname{Fin}k\to\operatorname{Fin}n$ and set $\Phi_k(x)_\iota=\sqrt{2^k/k!}\prod_j x_{\iota(j)}$. The block pairing is $\langle\Phi_k(x),\Phi_k(y)\rangle=(2^k/k!)\langle x,y\rangle^k$. The direct sum has orthogonal coordinate projections $P_k$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.PolynomialFeatureIndex, Preiss.PolynomialFeatureSpace, Preiss.polynomialFeature, Preiss.polynomialFeatureBlock, Preiss.polynomialFeatureProjection, Preiss.polynomialFeatureProjection\_isOrthogonalGrading, Preiss.polynomialFeature\_inner}.
+\end{definition}
+
+\begin{lemma}[Top eigenspaces minimize normal covariance trace]
+\label{lem:spectral-minimizing-plane}
+\uses{def:plane}
+
+
+
+For a positive semidefinite symmetric form $B$ on $\mathbb R^n$, choose an
+orthonormal eigenbasis with $\alpha_1\geq\cdots\geq\alpha_n\geq0$.
+The span $V$ of the first $m$ eigenvectors minimizes
+$\operatorname{tr}(B|W^\perp)$ over $m$-planes $W$.
+For G02 this trace is a fixed positive multiple of the Gaussian distance
+energy. This is a reusable finite-dimensional variational spectral lemma.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.trace\_orthogonalComplement\_minimized\_topEigenspace}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+For a positive semidefinite symmetric form $B$ on $\mathbb R^n$, choose an
+orthonormal eigenbasis with $\alpha_1\geq\cdots\geq\alpha_n\geq0$.
+The span $V$ of the first $m$ eigenvectors minimizes
+$\operatorname{tr}(B|W^\perp)$ over $m$-planes $W$.
+For G02 this trace is a fixed positive multiple of the Gaussian distance
+energy. This is a reusable finite-dimensional variational spectral lemma.
+\par Source: De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.
+\end{proof}
+
+\begin{lemma}[Gaussian weighted polynomials determine growing measures]
+\label{lem:moment-determination}
+\lean{Preiss.measure_eq_of_gaussian_polynomial_moments_eq}
+\uses{lem:gaussian-polynomial-integrable}
+
+
+
+
+
+Regular measures with a common polynomial growth bound are equal if their
+$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends
+the equalities from Gaussian rate $t$ to $t+1/2$ for $t\geq1$ by dominated
+exponential series, then iterates to all positive integer rates.
+The algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\geq1$, extends
+continuously to the one-point compactification and separates points.
+Stone--Weierstrass approximates $e^{|z|^2}\varphi$ uniformly for compactly
+supported $\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.
+Expanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not
+justified by absolute domination, so that step in the book needs this repair
+or a separate uniqueness theorem with checked exponential-moment hypotheses.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.measure\_eq\_of\_gaussian\_polynomial\_moments\_eq}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Regular measures with a common polynomial growth bound are equal if their
+$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends
+the equalities from Gaussian rate $t$ to $t+1/2$ for $t\geq1$ by dominated
+exponential series, then iterates to all positive integer rates.
+The algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\geq1$, extends
+continuously to the one-point compactification and separates points.
+Stone--Weierstrass approximates $e^{|z|^2}\varphi$ uniformly for compactly
+supported $\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.
+Expanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not
+justified by absolute domination, so that step in the book needs this repair
+or a separate uniqueness theorem with checked exponential-moment hypotheses.
+\par Corrections and boundary conditions: New weights repair: extend rates by increments of 1/2 with domination, then use weighted Stone-Weierstrass; arbitrary-rate exponential expansion is unjustified.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Uniform Gaussian polynomial tails]
+\label{lem:gaussian-uniform-tails}
+\lean{Preiss.gaussian_polynomial_uniform_tail}
+\uses{lem:gaussian-polynomial-integrable}
+
+
+
+
+
+For fixed $C,p\geq0$, $d\in\mathbb N$, $s>0$, the supremum of $\int_{|z|>R}|z|^d e^{-s|z|^2}\,d\mu$ over all regular measures satisfying $\mu(B(0,t))\leq C(1+t)^p$ tends to zero as $R\to\infty$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.gaussian\_polynomial\_uniform\_tail}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every $d\in\mathbb N$ and $s>0$,
+$\int |z|^d e^{-s|z|^2}\,d\nu<\infty$ and $0<I_\nu(s)<\infty$.
+For fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over
+$\mathcal U_m$. State the more reusable version for a family satisfying one
+common polynomial bound $\mu(B(0,R))\leq C(1+R)^p$.
+Use this to extend vague convergence to polynomial-times-Gaussian tests.
+It also justifies differentiation with respect to positive $s$ locally in $s$.
+\par Corrections and boundary conditions: Explicit uniform tail control is required to pass unbounded Gaussian tests through vague limits.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Differentiation of Gaussian polynomial integrals]
+\label{lem:gaussian-parameter-derivative}
+\lean{Preiss.hasDerivAt_integral_polynomial_mul_gaussian}
+\uses{lem:gaussian-polynomial-integrable}
+
+
+
+
+
+Under polynomial growth, $s\mapsto\int P(z)e^{-s|z|^2}\,d\mu$ is differentiable for $s>0$ with derivative $-\int |z|^2P(z)e^{-s|z|^2}\,d\mu$; the identity iterates, with domination uniform on compact positive parameter intervals.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.hasDerivAt\_integral\_polynomial\_mul\_gaussian}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every $d\in\mathbb N$ and $s>0$,
+$\int |z|^d e^{-s|z|^2}\,d\nu<\infty$ and $0<I_\nu(s)<\infty$.
+For fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over
+$\mathcal U_m$. State the more reusable version for a family satisfying one
+common polynomial bound $\mu(B(0,R))\leq C(1+R)^p$.
+Use this to extend vague convergence to polynomial-times-Gaussian tests.
+It also justifies differentiation with respect to positive $s$ locally in $s$.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Countable compact-test metric for locally bounded families]
+\label{lem:vague-countable-metric}
+\lean{Preiss.vagueMetric_tendsto_iff}
+\uses{gmt:vague}
+
+
+
+
+
+Construct or reuse a metric on regular positive locally finite Euclidean
+measures which detects vague convergence on families with common compact mass
+bounds. Include enough cutoff tests to control masses. The necessary outputs are
+sequential convergence equivalence, separation, a diagonal selection lemma,
+and finite covers of a compact family by metric balls. This can live in a
+general vague-convergence module rather than the Preiss theorem file.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.vagueMetric\_tendsto\_iff}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+Construct or reuse a metric on regular positive locally finite Euclidean
+measures which detects vague convergence on families with common compact mass
+bounds. Include enough cutoff tests to control masses. The necessary outputs are
+sequential convergence equivalence, separation, a diagonal selection lemma,
+and finite covers of a compact family by metric balls. This can live in a
+general vague-convergence module rather than the Preiss theorem file.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Measurable hulls preserve disjoint holes]
+\label{lem:measurable-hull-holes}
+\lean{Preiss.measure_toMeasurable_inter_eq_zero_of_disjoint}
+\uses{mathlib:measurable-hull}
+
+
+
+
+
+For arbitrary $D$ with $\mu D<\infty$, put $H=\operatorname{toMeasurable}_\mu D$.
+Then for every measurable $U$ disjoint from $D$, $\mu(H\cap U)=0$.
+This is an immediate use of mathlib's
+\texttt{Measure.measure\_toMeasurable\_inter}; an s-finite version is also
+available. In particular $\mu(H\setminus\overline D)=0$.
+This statement requires no measurability of $D$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.measure\_toMeasurable\_inter\_eq\_zero\_of\_disjoint}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For arbitrary $D$ with $\mu D<\infty$, put $H=\operatorname{toMeasurable}_\mu D$.
+Then for every measurable $U$ disjoint from $D$, $\mu(H\cap U)=0$.
+This is an immediate use of mathlib's
+\texttt{Measure.measure\_toMeasurable\_inter}; an s-finite version is also
+available. In particular $\mu(H\setminus\overline D)=0$.
+This statement requires no measurability of $D$.
+\par Corrections and boundary conditions: New proof repair: arbitrary sets of bad centers are not asserted Borel. Use finite-outer-mass localization and Measure.measure\_toMeasurable\_inter.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[Wick fourth moment of linear Gaussian tests]
+\label{lem:gaussian-wick-fourth}
+\lean{Preiss.gaussian_integral_inner_pow_even, Preiss.gaussian_integral_inner_sq_mul_inner_sq}
+\uses{mathlib:standard-gaussian}
+
+
+
+For vectors $y,z$ in a finite-dimensional Euclidean space with standard covariance-one Gaussian probability $\gamma$, $\int\langle y,v\rangle^2\langle z,v\rangle^2\,d\gamma(v)=|y|^2|z|^2+2\langle y,z\rangle^2$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.gaussian\_integral\_inner\_pow\_even, Preiss.gaussian\_integral\_inner\_sq\_mul\_inner\_sq}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $y,z\in V$,
+$\int\langle y,v\rangle^2\langle z,v\rangle^2\,d\gamma
+=|y|^2|z|^2+2\langle y,z\rangle^2$.
+Combining this with R07 yields, for $w\in V^\perp$,
+\[
+ \int\langle y,v\rangle^2\langle\omega(v,v),w\rangle\,d\gamma(v)
+ =2\langle\omega(y,y),w\rangle.
+\]
+Justify limits by Gaussian quartic domination and Fubini.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{definition}[Bilinear trace and restriction]
+\label{def:bilinear-trace}
+\lean{Preiss.bilinearTrace, Preiss.momentBilinear, Preiss.restrictBilinear}
+\uses{def:plane, def:moments}
+For a continuous bilinear form on a finite-dimensional real inner product space, take the trace of its Riesz-represented linear map. Restriction to a subspace and conversion of a two-linear moment form to a bilinear form are concrete data operations.
+\end{definition}
+
+\begin{lemma}[Approximation of support points under vague convergence]
+\label{lem:vague-support-approximation}
+\lean{Preiss.exists_support_sequence_of_vague}
+\uses{gmt:portmanteau}
+
+
+
+
+
+If regular $\mu_i\rightharpoonup\mu$ and $x\in\operatorname{supp}\mu$, there are, for all sufficiently large $i$, $x_i\in\operatorname{supp}\mu_i$ with $x_i\to x$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_support\_sequence\_of\_vague}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+If regular $\mu_i\rightharpoonup\mu$ and $x\in\operatorname{supp}\mu$, then
+there exist $x_i\in\operatorname{supp}\mu_i$ with $x_i\to x$, after discarding
+finitely many terms if necessary. Use the open-ball portmanteau inequality.
+Conversely, if $x_i\to x$, $x_i\in\operatorname{supp}\mu_i$, and the measures
+have a common positive lower support-centred ball bound at each radius, then
+$x\in\operatorname{supp}\mu$. Bare vague convergence does not give this converse.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Limits of support points under lower ball bounds]
+\label{lem:vague-support-limit}
+\lean{Preiss.mem_support_of_vague_lower_ball_bound}
+\uses{gmt:portmanteau}
+
+
+
+
+
+If regular $\mu_i\rightharpoonup\mu$, $x_i\in\operatorname{supp}\mu_i$, $x_i\to x$, and for every $r>0$ there is $c_r>0$ with $\mu_i(B(x_i,r))\geq c_r$ for every sufficiently large $i$, then $x\in\operatorname{supp}\mu$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.mem\_support\_of\_vague\_lower\_ball\_bound}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+If regular $\mu_i\rightharpoonup\mu$ and $x\in\operatorname{supp}\mu$, then
+there exist $x_i\in\operatorname{supp}\mu_i$ with $x_i\to x$, after discarding
+finitely many terms if necessary. Use the open-ball portmanteau inequality.
+Conversely, if $x_i\to x$, $x_i\in\operatorname{supp}\mu_i$, and the measures
+have a common positive lower support-centred ball bound at each radius, then
+$x\in\operatorname{supp}\mu$. Bare vague convergence does not give this converse.
+\par Corrections and boundary conditions: The positive lower ball hypothesis is necessary; bare vague convergence does not preserve support.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Vague convergence with uniformly moving compact tests]
+\label{lem:vague-moving-tests}
+\lean{Preiss.vague_integral_moving_compact_test}
+\uses{gmt:compact-test-perturbation, gmt:portmanteau, gmt:vague}
+
+
+
+
+
+
+If $\mu_i\rightharpoonup\mu$ vaguely, all measures are regular, $K$ is compact,
+the continuous tests $f_i,f$ vanish outside $K$, and $f_i\to f$ uniformly,
+then $\int f_i\,d\mu_i\to\int f\,d\mu$. First derive a uniform mass bound on
+$K$ using a compactly supported cutoff equal to one on $K$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.vague\_integral\_moving\_compact\_test}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+If $\mu_i\rightharpoonup\mu$ vaguely, all measures are regular, $K$ is compact,
+the continuous tests $f_i,f$ vanish outside $K$, and $f_i\to f$ uniformly,
+then $\int f_i\,d\mu_i\to\int f\,d\mu$. First derive a uniform mass bound on
+$K$ using a compactly supported cutoff equal to one on $K$.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Diagonal selection for vague convergence]
+\label{lem:vague-diagonal}
+\lean{Preiss.vague_diagonal_selection}
+\uses{lem:vague-countable-metric}
+
+
+
+
+For a countable determining compact-test family, if $\mu_{i,j}\rightharpoonup\mu_i$ as $j\to\infty$ and $\mu_i\rightharpoonup\mu$, select $j(i)\geq i$ such that $\mu_{i,j(i)}\rightharpoonup\mu$; additional finitely many eventual constraints at stage $i$ can be imposed. Assume regularity and the compact mass bounds needed by the determining family.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.vague\_diagonal\_selection}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Construct or reuse a metric on regular positive locally finite Euclidean
+measures which detects vague convergence on families with common compact mass
+bounds. Include enough cutoff tests to control masses. The necessary outputs are
+sequential convergence equivalence, separation, a diagonal selection lemma,
+and finite covers of a compact family by metric balls. This can live in a
+general vague-convergence module rather than the Preiss theorem file.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Trace as an orthonormal diagonal sum]
+\label{lem:bilinear-trace-basis}
+\lean{Preiss.bilinearTrace_eq_sum_diagonal}
+\uses{def:bilinear-trace}
+The trace of a continuous bilinear form is the sum of its diagonal evaluations on any orthonormal basis.
+\end{lemma}
+
+\begin{lemma}[Vague convergence of Gaussian polynomial integrals]
+\label{lem:vague-gaussian-polynomials}
+\lean{Preiss.vague_integral_polynomial_mul_gaussian}
+\uses{lem:gaussian-uniform-tails, lem:vague-moving-tests}
+
+
+
+
+
+If $\mu_i\rightharpoonup\mu$ regularly with one common polynomial growth bound, then for every real polynomial $P$ and $s>0$, $\int P(z)e^{-s|z|^2}\,d\mu_i\to\int P(z)e^{-s|z|^2}\,d\mu$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.vague\_integral\_polynomial\_mul\_gaussian}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every $d\in\mathbb N$ and $s>0$,
+$\int |z|^d e^{-s|z|^2}\,d\nu<\infty$ and $0<I_\nu(s)<\infty$.
+For fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over
+$\mathcal U_m$. State the more reusable version for a family satisfying one
+common polynomial bound $\mu(B(0,R))\leq C(1+R)^p$.
+Use this to extend vague convergence to polynomial-times-Gaussian tests.
+It also justifies differentiation with respect to positive $s$ locally in $s$.
+\par Corrections and boundary conditions: Vague convergence alone is insufficient.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Gaussian quadratic form second moment and trace bound]
+\label{lem:gaussian-quadratic-trace-bound}
+\lean{Preiss.gaussian_integral_bilinear_eq_trace, Preiss.gaussian_integral_bilinear_sq, Preiss.gaussian_integral_bilinear_sq_ge_trace_sq}
+\uses{def:bilinear-trace, lem:bilinear-trace-basis, lem:gaussian-wick-fourth, mathlib:standard-gaussian}
+
+
+
+
+
+For a symmetric bilinear form $A$ on an $m$-dimensional Euclidean space, $m>0$, $\int A(v,v)^2\,d\gamma=(\operatorname{tr}A)^2+2\|A\|_{HS}^2\geq(1+2/m)(\int A(v,v)\,d\gamma)^2$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.gaussian\_integral\_bilinear\_eq\_trace, Preiss.gaussian\_integral\_bilinear\_sq, Preiss.gaussian\_integral\_bilinear\_sq\_ge\_trace\_sq}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,
+\[
+ \int A(v,v)^2\,d\gamma=(\operatorname{tr}A)^2+
+ 2\|A\|_{\mathrm{HS}}^2
+ \geq(1+2/m)\left(\int A(v,v)\,d\gamma\right)^2.
+\]
+This is a reusable Gaussian/spectral theorem independent of uniform measures.
+Combining it with R13 gives
+$\int\widehat b(v,v)\,d\gamma\geq-8m|b|^2/(m+2)$.
+R08 and R04 therefore give
+$\operatorname{tr}b_2^{(2)}\geq16|b|^2/(m+2)$.
+Since that trace is zero, $b=0$; R03 makes the support planar, and plane-supported
+uniform classification finishes rigidity. This is the actual content hidden
+inside the current single trace-rigidity node.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Operator norm remainder from finitely many support features]
+\label{lem:moment-feature-remainder}
+\lean{Preiss.exists_normPolynomial_feature_functionals, Preiss.featureMoment_operator_remainder}
+\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:moment-feature-annihilation, lem:taylor-one}
+
+
+
+
+
+The norm polynomials $|x|^{2j}$ are linear functionals of $\Phi(x)$ for $j\leq q$. Choose a finite basis of $V$ from support features. The pointwise remainders at those basis points imply $\|L_s|V-\sum_{j=1}^q s^j\ell_j|V/j!\|=O(s^{q+1/2})$ as $s\downarrow0$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_normPolynomial\_feature\_functionals, Preiss.featureMoment\_operator\_remainder}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through
+$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned
+by the vectors $(x,x^{\otimes2},\ldots,x^{\otimes2q})$ for support points $x$.
+The moment functional $b_s$ vanishes on $F_s$ and M04 determines
+$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:
+its finitely many remainder estimates give an operator-norm
+$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05
+gives the Taylor expansion of $b_s$.
+Do not implement the source's claim that the unrescaled symmetrized coordinate
+monomials are orthonormal: for example
+$|e_1\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner
+product. Use the inherited tensor inner product or insert multinomial weights.
+A finite polynomial-coordinate model is also possible, provided its pairing
+realizes $\langle u^{\otimes k},v^{\otimes k}\rangle=\langle u,v\rangle^k$.
+\par Corrections and boundary conditions: Use a finite support-feature basis to obtain a genuine linear operator-norm estimate.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\section{Uniform moments and expansions}
+
+\begin{definition}[Continuous symmetric Gaussian moment forms]
+\label{def:moments}
+\lean{Preiss.MomentForm, Preiss.gaussianMass, Preiss.gaussianMomentForm, Preiss.gaussianMomentForm_permute, Preiss.momentKernel}
+
+
+
+
+For $s>0$, define the continuous symmetric $k$-linear form $b_{k,s}(u_1,\ldots,u_k)=\frac{(2s)^k}{k! I_\nu(s)}\int e^{-s|z|^2}\prod_{i=1}^k\langle z,u_i\rangle\,d\nu(z)$. Prove its diagonal evaluation agrees with the scalar Gaussian moment; the degree-zero form equals $1$ for nonzero measures with finite Gaussian mass.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.MomentForm, Preiss.gaussianMass, Preiss.gaussianMomentForm, Preiss.gaussianMomentForm\_permute, Preiss.momentKernel}.
+\end{definition}
+
+\begin{lemma}[Feature moment functional and weighted annihilator]
+\label{lem:moment-feature-annihilation}
+\lean{Preiss.featureMoment, Preiss.featureMoment_apply_feature, Preiss.featureMoment_vanishes_weightedComplement, Preiss.supportFeatureSpan}
+\uses{def:moments, def:polynomial-feature, def:unit-uniform}
+
+
+
+
+
+Let $V=\operatorname{span}\Phi(\operatorname{supp}\nu)$ and $A(s)=\sum_{k=1}^{2q}s^kP_k$. The functional $L_s(u)=I(s)^{-1}\int\langle A(s)u,\Phi(z)\rangle e^{-s|z|^2}\,d\nu$ is continuous linear, has $L_s(\Phi(x))=\sum_{k=1}^{2q}b_{k,s}(x^k)$, and vanishes on $A(s)^{-1}(V^\perp)$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.featureMoment, Preiss.featureMoment\_apply\_feature, Preiss.featureMoment\_vanishes\_weightedComplement, Preiss.supportFeatureSpan}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through
+$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned
+by the vectors $(x,x^{\otimes2},\ldots,x^{\otimes2q})$ for support points $x$.
+The moment functional $b_s$ vanishes on $F_s$ and M04 determines
+$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:
+its finitely many remainder estimates give an operator-norm
+$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05
+gives the Taylor expansion of $b_s$.
+Do not implement the source's claim that the unrescaled symmetrized coordinate
+monomials are orthonormal: for example
+$|e_1\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner
+product. Use the inherited tensor inner product or insert multinomial weights.
+A finite polynomial-coordinate model is also possible, provided its pairing
+realizes $\langle u^{\otimes k},v^{\otimes k}\rangle=\langle u,v\rangle^k$.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{definition}[Gaussian moment coefficient families]
+\label{def:moment-coefficients}
+\lean{Preiss.IsMomentExpansion, Preiss.MomentCoefficientFamily, Preiss.momentTaylorPolynomial}
+\uses{def:moments}
+
+
+
+
+
+
+A coefficient family assigns a continuous $k$-linear form $B_k^{(j)}$ to each
+pair of natural numbers $k,j$. Its Taylor polynomial of order $q$ is
+$\sum_{j=1}^q s^j B_k^{(j)}/j!$. The expansion predicate requires symmetry
+and an operator-norm remainder $o(s^q)$ as $s\downarrow0$, for every $k,q>0$.
+Existence, uniqueness in positive degrees, degree vanishings, and support
+identities are separate theorems. No coefficient is selected from an
+unproved existence theorem inside this definition.
+\end{definition}
+
+\begin{lemma}[Evaluation of Gaussian moment forms]
+\label{lem:moment-form-evaluation}
+\lean{Preiss.gaussianMomentForm_apply}
+\uses{def:moments}
+If the Gaussian-weighted multilinear kernel is Bochner integrable, evaluation of the bundled moment form agrees with its scalar integral formula.
+\end{lemma}
+
+\begin{lemma}[Radial pushforward distribution and integrals]
+\label{lem:radial}
+\uses{def:unit-uniform, gmt:uniform-radial, lem:unit-uniform-adapter}
+
+
+
+For $\nu\in\mathcal U_m$ and $y\in\operatorname{supp}\nu$, identify the
+pushforward under $z\mapsto|z-y|$ with that of
+$\omega_m^{-1}\mathcal L^m$ under the norm. State nonnegative Borel integrals
+as lintegrals, then derive signed Bochner-integral identities only with their
+integrability hypotheses. GMT already gives equality of continuous radial
+integrals on closed balls. The full pushforward distribution and unbounded
+Gaussian consequences are new adapters.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.uniform\_radial\_pushforward}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $\nu\in\mathcal U_m$ and $y\in\operatorname{supp}\nu$, identify the
+pushforward under $z\mapsto|z-y|$ with that of
+$\omega_m^{-1}\mathcal L^m$ under the norm. State nonnegative Borel integrals
+as lintegrals, then derive signed Bochner-integral identities only with their
+integrability hypotheses. GMT already gives equality of continuous radial
+integrals on closed balls. The full pushforward distribution and unbounded
+Gaussian consequences are new adapters.
+\par Corrections and boundary conditions: State lintegral identity first; signed or Bochner identities require integrability. Merge the two existing consecutive proof blocks under this label.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Moment covariance, scalar invariance and dilation]
+\label{lem:moment-covariance}
+\lean{Preiss.gaussianMomentForm_dilate, Preiss.gaussianMomentForm_map_linearIsometry, Preiss.gaussianMomentForm_smul}
+\uses{def:dimensional-blowup, def:moments, def:unit-uniform, lem:blowup-composition, lem:moment-form-evaluation}
+
+
+
+
+
+
+Package the current scalar \texttt{gaussianMoment} as a continuous symmetric
+$k$-multilinear form, prove the evaluation formula, scalar-invariance,
+orthogonal covariance, and the scaling law
+\[
+ b^{D^m_{0,r}\nu}_{k,s}=r^k b^\nu_{k,s/r^2}.
+\]
+The definition with $k=0$ is the constant one for uniform measures; Taylor
+coefficient assertions below start at $k=1$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.gaussianMomentForm\_dilate, Preiss.gaussianMomentForm\_map\_linearIsometry, Preiss.gaussianMomentForm\_smul}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Package the current scalar \texttt{gaussianMoment} as a continuous symmetric
+$k$-multilinear form, prove the evaluation formula, scalar-invariance,
+orthogonal covariance, and the scaling law
+\[
+ b^{D^m_{0,r}\nu}_{k,s}=r^k b^\nu_{k,s/r^2}.
+\]
+The definition with $k=0$ is the constant one for uniform measures; Taylor
+coefficient assertions below start at $k=1$.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Uniform operator norm bounds for Gaussian moments]
+\label{lem:moment-norm-bound}
+\lean{Preiss.integrable_gaussianMomentKernel, Preiss.norm_gaussianMomentForm_le}
+\uses{def:moments, def:unit-uniform, lem:moment-form-evaluation, lem:radial}
+
+
+
+
+
+
+For $\nu\in\mathcal U_m$, $k\geq1$ and $s>0$, $\|b_{k,s}\|\leq C_m 2^k k^{k/2}s^{k/2}/k!$, where $C_m$ depends only on $m$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.integrable\_gaussianMomentKernel, Preiss.norm\_gaussianMomentForm\_le}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Prove the norm bound
+$|b_{k,s}(u_1,\ldots,u_k)|\leq
+C_m 2^k k^{k/2}s^{k/2}\prod_i|u_i|/k!$.
+For $x$ in the support, the absolutely convergent series
+$\sum_{k\geq0} b_{k,s}(x^k)=e^{s|x|^2}$ follows by translating the
+Gaussian. A valid dominating function is
+$e^{-s|z|^2+2s|z||x|}$, bounded by a constant times
+$e^{-(s/2)|z|^2}$, not the expression with a negative cross term printed in
+the source. Taylor truncation gives, for each $q\geq1$,
+\[
+ \left|\sum_{k=1}^{2q}b_{k,s}(x^k)
+ -\sum_{j=1}^{q}\frac{s^j|x|^{2j}}{j!}\right|
+ \leq C_{m,q}(s|x|^2)^{q+1/2}.
+\]
+For $s|x|^2\geq1$ use the finite sum and the norm bound; for small values use
+the convergent exponential series with its remainder bound.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Comparison of homogeneous ball and Gaussian energies]
+\label{lem:homogeneous-energy-radial}
+\uses{def:conical, def:plane, lem:radial}
+
+
+
+If $\nu$ is $m$-homogeneous and $h\geq0$ is measurable and $a$-homogeneous with $m+a>0$ and finite unit-ball integral, then $\int e^{-|z|^2}h(z)\,d\nu=\Gamma((m+a)/2+1)\int_{B(0,1)}h(z)\,d\nu$. In particular $h(z)=\operatorname{dist}(z,V)^2$ gives the constant $\Gamma(m/2+2)$.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.integral\_gaussian\_mul\_homogeneous}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every plane $V$, the distance-squared measure has homogeneous degree
+$m+2$, so
+$\int e^{-|z|^2}\operatorname{dist}(z,V)^2\,d\nu
+=C_m\int_{B(0,1)}\operatorname{dist}(z,V)^2\,d\nu$
+for a finite positive constant $C_m$ obtained by radial integration.
+State and prove this for nonnegative homogeneous integrands more generally.
+It is the missing explicit bridge from the theorem's unit-ball energy to the
+Gaussian energy used in the spectral proof.
+\par Corrections and boundary conditions: Explicit bridge between the gap theorem unit-ball energy and the spectral Gaussian energy.
+\par Source: De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.
+\end{proof}
+
+\begin{lemma}[Absolutely convergent Gaussian translation series]
+\label{lem:gaussian-translation-series}
+\lean{Preiss.hasSum_gaussianMoment_diagonal}
+\uses{def:moments, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:moment-form-evaluation, lem:moment-norm-bound, lem:radial}
+
+
+
+
+
+For $\nu\in\mathcal U_m$, $x\in\operatorname{supp}\nu$, $s>0$, the absolutely convergent series satisfies $\sum_{k=0}^{\infty}b_{k,s}(x^k)=e^{s|x|^2}$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.hasSum\_gaussianMoment\_diagonal}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Prove the norm bound
+$|b_{k,s}(u_1,\ldots,u_k)|\leq
+C_m 2^k k^{k/2}s^{k/2}\prod_i|u_i|/k!$.
+For $x$ in the support, the absolutely convergent series
+$\sum_{k\geq0} b_{k,s}(x^k)=e^{s|x|^2}$ follows by translating the
+Gaussian. A valid dominating function is
+$e^{-s|z|^2+2s|z||x|}$, bounded by a constant times
+$e^{-(s/2)|z|^2}$, not the expression with a negative cross term printed in
+the source. Taylor truncation gives, for each $q\geq1$,
+\[
+ \left|\sum_{k=1}^{2q}b_{k,s}(x^k)
+ -\sum_{j=1}^{q}\frac{s^j|x|^{2j}}{j!}\right|
+ \leq C_{m,q}(s|x|^2)^{q+1/2}.
+\]
+For $s|x|^2\geq1$ use the finite sum and the norm bound; for small values use
+the convergent exponential series with its remainder bound.
+\par Corrections and boundary conditions: Use domination exp(-s|z|\textasciicircum{}2+2s|z||x|) <= C exp(-(s/2)|z|\textasciicircum{}2); the source has an invalid sign in the displayed dominator.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Quantitative finite moment remainder]
+\label{lem:taylor-one}
+\lean{Preiss.gaussianMoment_taylor_remainder}
+\uses{def:moments, def:unit-uniform, lem:gaussian-translation-series, lem:moment-norm-bound}
+
+
+
+
+
+For every $m,q\geq1$ there is $C_{m,q}\geq0$ such that for every $\nu\in\mathcal U_m$, support point $x$ and $s>0$, $|\sum_{k=1}^{2q} b_{k,s}(x^k)-\sum_{j=1}^q s^j|x|^{2j}/j!|\leq C_{m,q}(s|x|^2)^{q+1/2}$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.gaussianMoment\_taylor\_remainder}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Prove the norm bound
+$|b_{k,s}(u_1,\ldots,u_k)|\leq
+C_m 2^k k^{k/2}s^{k/2}\prod_i|u_i|/k!$.
+For $x$ in the support, the absolutely convergent series
+$\sum_{k\geq0} b_{k,s}(x^k)=e^{s|x|^2}$ follows by translating the
+Gaussian. A valid dominating function is
+$e^{-s|z|^2+2s|z||x|}$, bounded by a constant times
+$e^{-(s/2)|z|^2}$, not the expression with a negative cross term printed in
+the source. Taylor truncation gives, for each $q\geq1$,
+\[
+ \left|\sum_{k=1}^{2q}b_{k,s}(x^k)
+ -\sum_{j=1}^{q}\frac{s^j|x|^{2j}}{j!}\right|
+ \leq C_{m,q}(s|x|^2)^{q+1/2}.
+\]
+For $s|x|^2\geq1$ use the finite sum and the norm bound; for small values use
+the convergent exponential series with its remainder bound.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Coherent operator-norm moment Taylor coefficients]
+\label{lem:taylor-two}
+\lean{Preiss.exists_gaussianMoment_taylor_coefficients, Preiss.gaussianMomentCoefficient_unique}
+\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound}
+
+
+
+
+
+For $\nu\in\mathcal U_m$ there are symmetric continuous forms $b_k^{(j)}$ for $k,j\geq1$ such that for all $q\geq1$ and $k\geq1$, $b_{k,s}=\sum_{j=1}^q s^j b_k^{(j)}/j!+o(s^q)$ in operator norm as $s\downarrow0$. These coefficients are unique and independent of truncation order.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_gaussianMoment\_taylor\_coefficients, Preiss.gaussianMomentCoefficient\_unique}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+There exist symmetric continuous forms $b_k^{(j)}$, $k,j\geq1$, such that for
+every $q\geq1$,
+\[
+ b_{k,s}=\sum_{j=1}^{q}\frac{s^j}{j!}b_k^{(j)}+o(s^q),\qquad
+ b_k^{(j)}=0\ (k>2j),\qquad
+ \sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\ (x\in\operatorname{supp}\nu).
+\]
+Uniqueness of finite Taylor coefficients makes choices from different truncation
+orders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm
+statement is stronger and safer than merely pointwise convergence on the support.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Degree restriction on Taylor coefficients]
+\label{lem:moment-coefficient-vanishing}
+\lean{Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt}
+\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-norm-bound, lem:taylor-two}
+
+
+
+
+
+For $k,j\geq1$ with $k>2j$, $b_k^{(j)}=0$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.gaussianMomentCoefficient\_eq\_zero\_of\_two\_mul\_lt}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+There exist symmetric continuous forms $b_k^{(j)}$, $k,j\geq1$, such that for
+every $q\geq1$,
+\[
+ b_{k,s}=\sum_{j=1}^{q}\frac{s^j}{j!}b_k^{(j)}+o(s^q),\qquad
+ b_k^{(j)}=0\ (k>2j),\qquad
+ \sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\ (x\in\operatorname{supp}\nu).
+\]
+Uniqueness of finite Taylor coefficients makes choices from different truncation
+orders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm
+statement is stronger and safer than merely pointwise convergence on the support.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Vanishing total second Taylor trace]
+\label{lem:moment-second-total-trace}
+\lean{Preiss.trace_gaussianMomentForm_two, Preiss.trace_secondMomentCoefficient_eq_zero}
+\uses{def:bilinear-trace, def:moment-coefficients, def:moments, def:unit-uniform, lem:bilinear-trace-basis, lem:radial, lem:taylor-two}
+
+
+
+
+For every $s>0$, $\operatorname{tr}b_{2,s}=ms$. Consequently $\operatorname{tr}b_2^{(2)}=0$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.trace\_gaussianMomentForm\_two, Preiss.trace\_secondMomentCoefficient\_eq\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+The exact radial identity $\operatorname{tr}b_{2,s}=ms$ and M07 imply
+$\operatorname{tr}b_2^{(2)}=0$.
+R03 and the first-moment expansion give
+$\operatorname{tr}(b_2^{(2)}|V^\perp)=8|b|^2
+=2\|b_1^{(1)}\|^2$.
+These are separate, comparatively short lemmas.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Polynomial support identities for Taylor coefficients]
+\label{lem:moment-support-polynomial}
+\lean{Preiss.sum_gaussianMomentCoefficient_eq_norm_pow}
+\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-coefficient-vanishing, lem:taylor-one, lem:taylor-two}
+
+
+
+
+
+For every $q\geq1$ and $x\in\operatorname{supp}\nu$, $\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.sum\_gaussianMomentCoefficient\_eq\_norm\_pow}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+There exist symmetric continuous forms $b_k^{(j)}$, $k,j\geq1$, such that for
+every $q\geq1$,
+\[
+ b_{k,s}=\sum_{j=1}^{q}\frac{s^j}{j!}b_k^{(j)}+o(s^q),\qquad
+ b_k^{(j)}=0\ (k>2j),\qquad
+ \sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\ (x\in\operatorname{supp}\nu).
+\]
+Uniqueness of finite Taylor coefficients makes choices from different truncation
+orders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm
+statement is stronger and safer than merely pointwise convergence on the support.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Odd and even leading moment limits]
+\label{lem:scaled-moment-limits}
+\lean{Preiss.gaussianMoment_scaled_even_limit, Preiss.gaussianMoment_scaled_odd_limit}
+\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-coefficient-vanishing, lem:taylor-two}
+
+
+
+For odd $k\geq1$, $s^{-k/2}b_{k,s}\to0$. For $j\geq1$, $s^{-j}b_{2j,s}\to b_{2j}^{(j)}/j!$, in operator norm as $s\downarrow0$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.gaussianMoment\_scaled\_even\_limit, Preiss.gaussianMoment\_scaled\_odd\_limit}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For odd $k$, $s^{-k/2}b_{k,s}\to0$; for $k=2j$,
+$s^{-j}b_{2j,s}\to b_{2j}^{(j)}/j!$.
+The factorial is essential; the displayed summary on printed page 74 omits it,
+whereas the calculation in Chapter 9 includes it correctly.
+Use M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted
+polynomial moment of $D^m_{0,r}\nu$ as $r\to\infty$.
+\par Corrections and boundary conditions: Retain the factorial omitted in the summary on printed p.74.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\section{Uniform compactness and dimension reduction}
+
+\begin{lemma}[Uniform ball laws are closed under vague limits]
+\label{lem:uniform-vague-closed}
+\lean{Preiss.isUnitUniform_of_vague}
+\uses{def:unit-uniform, gmt:portmanteau, lem:vague-support-approximation, lem:vague-support-limit}
+
+
+
+
+If $\nu_i\in\mathcal U_m$ and $\nu_i\rightharpoonup\nu$ with $\nu$ regular, then $\nu\in\mathcal U_m$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.isUnitUniform\_of\_vague}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+A vaguely convergent sequence in $\mathcal U_m$ has a limit in $\mathcal U_m$.
+The family is sequentially compact by upstream compact mass bounds.
+First approximate support centres using S04; squeeze open and closed radii to
+recover the exact ball law, rather than assuming spheres of an arbitrary limit
+already have zero mass. The origin's positive ball mass excludes the zero limit.
+Also prove the variant where the measures are uniform with the same constant
+and their supports approach the origin, without requiring the origin in every
+support. This is needed in the bounded-hole argument R05 below.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Uniform compactness with centers approaching the support]
+\label{lem:uniform-near-support-compactness}
+\lean{Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero}
+\uses{def:unit-uniform, lem:vague-support-approximation, lem:vague-support-limit, thm:compactness}
+
+
+
+
+If every $\nu_i$ has support-centered ball law $\nu_i(B(y,r))=r^m$ and $\operatorname{dist}(0,\operatorname{supp}\nu_i)\to0$, then some subsequence converges vaguely to a member of $\mathcal U_m$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_vague\_subsequence\_uniform\_of\_dist\_support\_tendsto\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+A vaguely convergent sequence in $\mathcal U_m$ has a limit in $\mathcal U_m$.
+The family is sequentially compact by upstream compact mass bounds.
+First approximate support centres using S04; squeeze open and closed radii to
+recover the exact ball law, rather than assuming spheres of an arbitrary limit
+already have zero mass. The origin's positive ball mass excludes the zero limit.
+Also prove the variant where the measures are uniform with the same constant
+and their supports approach the origin, without requiring the origin in every
+support. This is needed in the bounded-hole argument R05 below.
+\par Corrections and boundary conditions: Needed when blow-up centers are projections onto a plane rather than support points.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Hyperplane transport with an explicit isometry]
+\label{lem:hyperplane-transport-map}
+\lean{Preiss.uniformWithConstant_transport, Preiss.uniform_hyperplane_transport}
+\uses{def:dimensional-blowup, def:plane, gmt:hyperplane-transport, lem:blowup-composition}
+
+
+
+
+Given an isometric identification $L:\mathbb R^{k-1}\simeq w^\perp$, return
+the transported measure together with the equality of its pushforward with
+$\lambda$, its ball law, support correspondence and blow-up covariance.
+The existential theorem
+\texttt{SUniformAux.exists\_isSUniform\_of\_hyperplane}
+does not export enough data by itself.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.uniformWithConstant\_transport, Preiss.uniform\_hyperplane\_transport}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Given an isometric identification $L:\mathbb R^{k-1}\simeq w^\perp$, return
+the transported measure together with the equality of its pushforward with
+$\lambda$, its ball law, support correspondence and blow-up covariance.
+The existential theorem
+\texttt{SUniformAux.exists\_isSUniform\_of\_hyperplane}
+does not export enough data by itself.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[Sequential compactness of centered unit uniform measures]
+\label{lem:uniform-compactness}
+\lean{Preiss.exists_vague_subsequence_unitUniform}
+\uses{def:unit-uniform, lem:uniform-vague-closed, thm:compactness}
+
+
+
+
+Every sequence in $\mathcal U_m$ has a subsequence converging vaguely to an element of $\mathcal U_m$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_vague\_subsequence\_unitUniform}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+A vaguely convergent sequence in $\mathcal U_m$ has a limit in $\mathcal U_m$.
+The family is sequentially compact by upstream compact mass bounds.
+First approximate support centres using S04; squeeze open and closed radii to
+recover the exact ball law, rather than assuming spheres of an arbitrary limit
+already have zero mass. The origin's positive ball mass excludes the zero limit.
+Also prove the variant where the measures are uniform with the same constant
+and their supports approach the origin, without requiring the origin in every
+support. This is needed in the bounded-hole argument R05 below.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Finite metric covers of uniform families]
+\label{lem:uniform-finite-metric-covers}
+\lean{Preiss.unitUniform_totallyBounded}
+\uses{def:unit-uniform, lem:uniform-compactness, lem:vague-countable-metric, lem:vague-moving-blowups}
+
+
+
+
+For every $\varepsilon>0$ and $0<c\leq C<\infty$, the centered uniform measures with ball constants in $[c,C]$ admit a finite cover by vague-metric balls of radius $\varepsilon$. This includes the family $\mathcal U_m$ and all its support-centered translates.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.unitUniform\_totallyBounded}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Construct or reuse a metric on regular positive locally finite Euclidean
+measures which detects vague convergence on families with common compact mass
+bounds. Include enough cutoff tests to control masses. The necessary outputs are
+sequential convergence equivalence, separation, a diagonal selection lemma,
+and finite covers of a compact family by metric balls. This can live in a
+general vague-convergence module rather than the Preiss theorem file.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Existence of uniform blow-down limits]
+\label{lem:infinity-compactness}
+\lean{Preiss.exists_tangentAtInfinity}
+\uses{def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:uniform-compactness}
+
+
+
+
+For every $\nu\in\mathcal U_m$ and every sequence $r_i\to\infty$ of positive radii, a subsequence of $D^m_{0,r_i}\nu$ converges vaguely to a member of $\mathcal U_m$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_tangentAtInfinity}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their
+Gaussian moments, and M09 to identify the limits. The compactness principle
+``every sequence escaping to infinity has a convergent subsequence with the
+same limit'' gives full convergence. A separate output is that every positive
+sequence $r_i\to\infty$ converges to this same measure. Scaling by a fixed
+factor preserves the set of limits at infinity, so S02--S03 imply conicality.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Common tangent normalization at a density point]
+\label{lem:dimensional-tangent-ball-constant}
+\lean{Preiss.dimensionalTangent_ball_constant}
+\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, gmt:continuity-sets, gmt:normalized-tangent, lem:tangent-ray, thm:doubling}
+
+
+
+
+At $x$ with density $q=\lim_{r\downarrow0}\mu(B(x,r))/r^m\in(0,\infty)$, if all arbitrary-scalar tangents are uniform, every dimensional tangent contains $0$ in its support and has ball law $\nu(B(y,r))=qr^m$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.dimensionalTangent\_ball\_constant}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Let $q_x=\lim_{r\downarrow0}\mu(B(x,r))/r^m\in(0,\infty)$.
+If every arbitrary-scalar tangent is uniform, every dimensional tangent
+has ball constant exactly $q_x$ and contains zero in its support.
+Use doubling to get the support assertion, the uniform sphere-null property,
+and convergence on continuity balls to determine the constant. Dividing the
+original measure by $q_x$ therefore puts its dimensional tangents in
+$\mathcal U_m$. Existing arbitrary-scalar and dimensional tangent sets are rays
+of one another, not literally equal. A pointwise Part B theorem must use this
+adapter before applying a universal flatness threshold.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Reduction to unit uniform dimensional tangents]
+\label{lem:density-normalization}
+\lean{Preiss.density_normalization_unitUniform}
+\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:dimensional-tangent-ball-constant}
+
+
+
+
+Under S08a, replacing $\mu$ by $q^{-1}\mu$ identifies its dimensional tangent family with $q^{-1}\operatorname{Tan}_m(\mu,x)\subset\mathcal U_m$ and preserves flatness of tangents.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.density\_normalization\_unitUniform}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Let $q_x=\lim_{r\downarrow0}\mu(B(x,r))/r^m\in(0,\infty)$.
+If every arbitrary-scalar tangent is uniform, every dimensional tangent
+has ball constant exactly $q_x$ and contains zero in its support.
+Use doubling to get the support assertion, the uniform sphere-null property,
+and convergence on continuity balls to determine the constant. Dividing the
+original measure by $q_x$ therefore puts its dimensional tangents in
+$\mathcal U_m$. Existing arbitrary-scalar and dimensional tangent sets are rays
+of one another, not literally equal. A pointwise Part B theorem must use this
+adapter before applying a universal flatness threshold.
+\par Corrections and boundary conditions: A universal gap threshold applies after one common normalization, not independently normalized arbitrary-scalar tangents.
+\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\end{proof}
+
+\begin{lemma}[Half-space reduction retaining the tangent witness]
+\label{lem:halfspace-tangent-witness}
+\lean{Preiss.exists_halfSpace_dimensionalTangent}
+\uses{gmt:support-not-full, gmt:uniform-halfspace, gmt:uniform-tangents, lem:dimensional-tangent-ball-constant}
+
+
+
+
+For uniform $\nu$ with non-full support there exist a support point $y$,
+a nonzero vector $e$, and a tangent $\lambda$ at $y$ supported in
+$\{z:\langle z,e\rangle\geq0\}$. Preserve the exact normalization when
+choosing the tangent. GMT's \texttt{SUniformAux.exists\_halfSpace} proves
+this in its body but exports only the existence of the new uniform measure.
+The adapter should reuse that proof pattern and retain its witness.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_halfSpace\_dimensionalTangent}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For uniform $\nu$ with non-full support there exist a support point $y$,
+a nonzero vector $e$, and a tangent $\lambda$ at $y$ supported in
+$\{z:\langle z,e\rangle\geq0\}$. Preserve the exact normalization when
+choosing the tangent. GMT's \texttt{SUniformAux.exists\_halfSpace} proves
+this in its body but exports only the existence of the new uniform measure.
+The adapter should reuse that proof pattern and retain its witness.
+\par Corrections and boundary conditions: Existing upstream existential statement discards the tangent witness; preserve it and its normalization.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[Corrected hyperplane reduction with lineage]
+\label{lem:hyperplane-tangent-lineage}
+\lean{Preiss.exists_hyperplane_eq_or_dimensionalTangent}
+\uses{gmt:barycenter-quadratic-bound, gmt:quadratic-support-tangent, gmt:uniform-hyperplane, gmt:zero-barycenter-hyperplane}
+
+
+
+
+For a centred uniform half-space measure $\nu$, there exist $w\ne0$ and a
+uniform $\lambda$ supported in $w^\perp$ such that either $\lambda=\nu$
+or $\lambda$ is a tangent to $\nu$ at zero, up to the explicitly fixed
+positive normalization. The new $w$ need not be $e$.
+The proof of GMT's \texttt{SUniformAux.exists\_hyperplane} already has
+exactly these two branches. Expose
+\texttt{SUniformAux.abs\_inner\_integral\_le},
+\texttt{SUniformAux.support\_tangent\_subset\_of\_estimate}, and
+\texttt{SUniformAux.support\_subset\_of\_integral\_inner\_eq\_zero}
+as upstream prerequisites. The obsolete statement that every tangent lies in
+the original half-space boundary must not enter the graph.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_hyperplane\_eq\_or\_dimensionalTangent}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For a centred uniform half-space measure $\nu$, there exist $w\ne0$ and a
+uniform $\lambda$ supported in $w^\perp$ such that either $\lambda=\nu$
+or $\lambda$ is a tangent to $\nu$ at zero, up to the explicitly fixed
+positive normalization. The new $w$ need not be $e$.
+The proof of GMT's \texttt{SUniformAux.exists\_hyperplane} already has
+exactly these two branches. Expose
+\texttt{SUniformAux.abs\_inner\_integral\_le},
+\texttt{SUniformAux.support\_tangent\_subset\_of\_estimate}, and
+\texttt{SUniformAux.support\_subset\_of\_integral\_inner\_eq\_zero}
+as upstream prerequisites. The obsolete statement that every tangent lies in
+the original half-space boundary must not enter the graph.
+\par Corrections and boundary conditions: Author erratum: the new hyperplane need not be the original half-space boundary. Preserve equality-or-tangent lineage.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[Codimension reduction retaining orbit membership]
+\label{lem:uniform-reduction}
+\lean{Preiss.uniform_dimension_reduction}
+\uses{def:unit-uniform, gmt:support-not-full, lem:halfspace-tangent-witness, lem:hyperplane-tangent-lineage, lem:hyperplane-transport-map, lem:pseudotangent-transitive}
+
+
+
+
+If $\nu\in\mathcal U_m$ in ambient dimension $k>m$, there is a unit uniform measure on a $(k-1)$-dimensional Euclidean space whose isometric pushforward belongs to the support-centered scaling orbit closure of $\nu$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.uniform\_dimension\_reduction}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Induct on ambient codimension using A01--A05. At dimension $m$, use
+\texttt{mattila\_14\_11}, Hausdorff/Lebesgue normalization and isometric
+pushforward to identify the terminal uniform measure with a flat one.
+There is no need for analytic support varieties, a full Marstrand integer
+dimension theorem, or classification of all uniform measures.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[Classification of plane-supported uniform measures]
+\label{lem:plane-supported-uniform-flat}
+\lean{Preiss.uniformWithConstant_eq_flat_of_support_subset_plane, Preiss.unitUniform_eq_flat_of_support_subset_plane}
+\uses{def:flat, def:plane, def:unit-uniform, gmt:uniform-full-dimension, lem:hyperplane-transport-map, lem:plane-scaling}
+
+
+
+
+If $\nu\in\mathcal U_m$ and $\operatorname{supp}\nu\subset V$ for an $m$-dimensional linear plane $V$, then $\nu=\sigma_V$. More generally a positive uniform ball constant determines the corresponding scalar multiple of $\sigma_V$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.uniformWithConstant\_eq\_flat\_of\_support\_subset\_plane, Preiss.unitUniform\_eq\_flat\_of\_support\_subset\_plane}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Induct on ambient codimension using A01--A05. At dimension $m$, use
+\texttt{mattila\_14\_11}, Hausdorff/Lebesgue normalization and isometric
+pushforward to identify the terminal uniform measure with a flat one.
+There is no need for analytic support varieties, a full Marstrand integer
+dimension theorem, or classification of all uniform measures.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{theorem}[Flat pseudotangent of a uniform measure]
+\label{thm:flat-pseudotangent}
+\lean{Preiss.uniform_has_flat_pseudotangent}
+\uses{def:flat, def:unit-uniform, lem:plane-supported-uniform-flat, lem:pseudotangent-transitive, lem:uniform-reduction}
+For $0<m\leq n$ and an $m$-uniform measure $\nu$, there are an $m$-plane $V$, support centres $a_i$, and radii $0<r_i\leq1$ such that $D^m_{a_i,r_i}\nu\rightharpoonup\sigma_V$, where $\sigma_V$ is the unit-ball normalized flat measure on $V$. The centres may move; no assertion that $r_i\to0$ is made.
+\end{theorem}
+\begin{proof}[Planned proof]
+Induct on ambient codimension using A01--A05. At dimension $m$, use
+\texttt{mattila\_14\_11}, Hausdorff/Lebesgue normalization and isometric
+pushforward to identify the terminal uniform measure with a flat one.
+There is no need for analytic support varieties, a full Marstrand integer
+dimension theorem, or classification of all uniform measures.
+\end{proof}
+
+\section{Blow-downs and the conical gap}
+
+\begin{theorem}[Uniqueness and full convergence of the blow-down]
+\label{thm:unique-infinity}
+\uses{def:tangent-at-infinity, def:unit-uniform, lem:blowdown-moment-limits, lem:infinity-compactness, lem:moment-determination, lem:vague-countable-metric, lem:vague-gaussian-polynomials}
+
+
+
+Every $\nu\in\mathcal U_m$ admits a unique $\lambda\in\mathcal U_m$ such that $D^m_{0,r}\nu\rightharpoonup\lambda$ as $r\to\infty$. In particular every positive divergent radius sequence has this same limit.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.unique\_tangent\_at\_infinity}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their
+Gaussian moments, and M09 to identify the limits. The compactness principle
+``every sequence escaping to infinity has a convergent subsequence with the
+same limit'' gives full convergence. A separate output is that every positive
+sequence $r_i\to\infty$ converges to this same measure. Scaling by a fixed
+factor preserves the set of limits at infinity, so S02--S03 imply conicality.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{lemma}[Elementary eigenvalue rigidity from one nearby support point]
+\label{lem:conical-eigenvalue-rigidity}
+\uses{def:conical, def:plane, lem:conical-covariance, lem:spectral-minimizing-plane}
+
+
+
+For a PSD form $B$ of trace $m$, a support set satisfying $B(x,x)=|x|^2$, and an ordered orthonormal eigenbasis, suppose there is a support point within $\delta$ of the $m$th eigenvector, $0<\delta<1/m$. Then the top $m$ eigenvalues are $1$ and the others $0$; the support is contained in their span.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.conical\_covariance\_eq\_projection\_of\_near\_eigenvector}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Under G02, assume the top-$m$ eigenspace has a support point within distance
+$\delta$ of its $m$th unit eigenvector, where $0<\delta<1/m$.
+If $\alpha_m<1$, the trace gives
+$\alpha_i-1\leq(m-1)(1-\alpha_m)$ for $i<m$ and
+$\alpha_i\leq\alpha_m$ for $i\geq m$.
+The support identity then gives
+$0\leq(1-\alpha_m)((m-1)^2\delta^2-(1-\delta)^2)<0$.
+Thus $\alpha_m\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one
+and the rest zero. Hence support is contained in $V$ and $\nu=\sigma_V$.
+G03--G06 give the conical gap for all positive $m$ without the flawed
+two-dimensional shortcut in the original printed proof.
+\par Source: De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.
+\end{proof}
+
+\begin{corollary}[The unique blow-down is conical]
+\label{cor:conical}
+\uses{def:conical, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:vague-moving-blowups, thm:unique-infinity}
+
+
+
+For the unique blow-down $\lambda$ of $\nu\in\mathcal U_m$, $D^m_{0,r}\lambda=\lambda$ for every $r>0$.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.tangent\_at\_infinity\_conical}.
+\end{corollary}
+\begin{proof}[Planned proof obligations]
+
+Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their
+Gaussian moments, and M09 to identify the limits. The compactness principle
+``every sequence escaping to infinity has a convergent subsequence with the
+same limit'' gives full convergence. A separate output is that every positive
+sequence $r_i\to\infty$ converges to this same measure. Scaling by a fixed
+factor preserves the set of limits at infinity, so S02--S03 imply conicality.
+\par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
+\end{proof}
+
+\begin{theorem}[Uniform conical flatness gap]
+\label{thm:gap}
+\uses{def:conical, def:plane, def:unit-uniform, lem:conical-eigenvalue-rigidity, lem:homogeneous-energy-radial, lem:plane-supported-uniform-flat, lem:small-energy-no-holes, lem:spectral-minimizing-plane}
+
+
+
+For $1\leq m\leq n$ there is $\varepsilon_{m,n}>0$ such that if $\nu\in\mathcal U_m$ is conical and for some $m$-plane $V$, $\int_{B(0,1)}\operatorname{dist}(z,V)^2\,d\nu\leq\varepsilon_{m,n}$, then $\nu$ is flat.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.conical\_flatness\_gap}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+Under G02, assume the top-$m$ eigenspace has a support point within distance
+$\delta$ of its $m$th unit eigenvector, where $0<\delta<1/m$.
+If $\alpha_m<1$, the trace gives
+$\alpha_i-1\leq(m-1)(1-\alpha_m)$ for $i<m$ and
+$\alpha_i\leq\alpha_m$ for $i\geq m$.
+The support identity then gives
+$0\leq(1-\alpha_m)((m-1)^2\delta^2-(1-\delta)^2)<0$.
+Thus $\alpha_m\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one
+and the rest zero. Hence support is contained in $V$ and $\nu=\sigma_V$.
+G03--G06 give the conical gap for all positive $m$ without the flawed
+two-dimensional shortcut in the original printed proof.
+\par Corrections and boundary conditions: Use the uniform spectral argument for every positive m; no dependence on the erroneous printed m=2 shortcut or unnecessary low-dimensional classification.
+\par Source: De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.
+\end{proof}
+
+\section{Flat-at-infinity rigidity}
+
+\begin{definition}[Normal first-moment vector]
+\label{def:rigidity-normal-vector}
+\lean{Preiss.IsFirstMomentNormalVector, Preiss.exists_firstMomentNormalVector}
+\uses{def:moment-coefficients, def:plane}
+The interface passes this data explicitly and records its defining identity in a predicate; existence is a separate theorem.
+
+
+
+For $\nu\in\mathcal U_m$ with blow-down $\sigma_V$, there is a unique $b\in V^\perp$ satisfying $b_1^{(1)}(x)=2\langle b,x\rangle$ for every $x$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.IsFirstMomentNormalVector, Preiss.exists\_firstMomentNormalVector}.
+\end{definition}
+
+\begin{definition}[Normal valued bilinear map from the third coefficient]
+\label{def:rigidity-omega}
+\lean{Preiss.IsRigidityOmega, Preiss.RigidityOmega, Preiss.exists_rigidityOmega_and_adjustedForm}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector}
+The interface passes this data explicitly and records its defining identity in a predicate; existence is a separate theorem.
+
+
+
+
+Define the continuous symmetric bilinear map $\omega:V\times V\to V^\perp$ by $\langle\omega(u,v),w\rangle=3b_3^{(2)}(u,v,w)-4\langle u,v\rangle\langle b,w\rangle$ for every normal $w$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.IsRigidityOmega, Preiss.RigidityOmega, Preiss.exists\_rigidityOmega\_and\_adjustedForm}.
+\end{definition}
+
+\begin{definition}[Adjusted symmetric quadratic form on the limiting plane]
+\label{def:rigidity-adjusted-form}
+\lean{Preiss.IsRigidityAdjustedForm, Preiss.RigidityAdjustedForm, Preiss.exists_rigidityOmega_and_adjustedForm}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega}
+The interface passes this data explicitly and records its defining identity in a predicate; existence is a separate theorem.
+
+
+
+
+Define the continuous symmetric bilinear form $\widehat b(u,v)=b_2^{(2)}(u,v)+\langle\omega(u,v),b\rangle$ on $V$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.IsRigidityAdjustedForm, Preiss.RigidityAdjustedForm, Preiss.exists\_rigidityOmega\_and\_adjustedForm}.
+\end{definition}
+
+\begin{lemma}[Even Taylor coefficients from a flat blow-down]
+\label{lem:flat-infinity-moments}
+\lean{Preiss.evenMomentCoefficient_eq_projection_norm}
+\uses{def:moment-coefficients, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:moment-covariance, lem:scaled-moment-limits, lem:vague-gaussian-polynomials}
+
+
+
+
+
+For every $j\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.
+Use M02, M03 and the Gaussian moment formula of the flat limit, including the
+factorial from M08.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.evenMomentCoefficient\_eq\_projection\_norm}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every $j\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.
+Use M02, M03 and the Gaussian moment formula of the flat limit, including the
+factorial from M08.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Odd top coefficients vanish on the flat limiting plane]
+\label{lem:odd-coefficients-plane-zero}
+\lean{Preiss.oddMomentCoefficient_restrict_plane_eq_zero}
+\uses{def:moment-coefficients, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial, lem:vague-support-approximation}
+
+
+
+
+
+For $j\geq1$, the restriction of $b_{2j-1}^{(j)}$ to $V$ is zero.
+For a nonzero $v\in V$, use the flat blow-down and S04 to find support points
+$x_i$ with $|x_i|\to\infty$ and $x_i/|x_i|\to v/|v|$.
+The support polynomial identity, R01 and the fact that all remaining terms have
+lower degree show $b_{2j-1}^{(j)}(v^{2j-1})\geq0$.
+Repeat with $-v$ and use polarization to obtain the full multilinear restriction.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.oddMomentCoefficient\_restrict\_plane\_eq\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $j\geq1$, the restriction of $b_{2j-1}^{(j)}$ to $V$ is zero.
+For a nonzero $v\in V$, use the flat blow-down and S04 to find support points
+$x_i$ with $|x_i|\to\infty$ and $x_i/|x_i|\to v/|v|$.
+The support polynomial identity, R01 and the fact that all remaining terms have
+lower degree show $b_{2j-1}^{(j)}(v^{2j-1})\geq0$.
+Repeat with $-v$ and use polarization to obtain the full multilinear restriction.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Cylinder identity and bounded normal coordinates]
+\label{lem:uniform-cylinder-identity}
+\lean{Preiss.support_normal_sq_eq_inner}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial}
+
+
+
+
+
+
+With $Q=1-P_V$, every $x\in\operatorname{supp}\nu$ satisfies $|Qx|^2=2\langle b,x\rangle$, $|Qx-b|=|b|$, and $|Qx|\leq2|b|$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.support\_normal\_sq\_eq\_inner}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Riesz representation and R02 give $b\in V^\perp$ with
+$b_1^{(1)}(x)=2\langle b,x\rangle$. The first support identity gives
+$|Qx|^2=2\langle b,x\rangle$ on the support, and hence $|Qx|\leq2|b|$.
+Also $|Qx-b|=|b|$ there. Keep these identities as named lemmas.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Mixed Gaussian moment limit defining omega]
+\label{lem:rigidity-mixed-gaussian-limit}
+\lean{Preiss.mixed_gaussian_limit_eq_omega}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:taylor-two}
+
+
+
+
+
+For all ambient $v,w$, $\lim_{s\downarrow0}\frac{8s}{I(s)}\int e^{-s|z|^2}\langle z,v\rangle^2\langle z-b,w\rangle\,d\nu=3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\langle b,w\rangle$. For $v\in V,w\in V^\perp$ this equals $\langle\omega(v,v),w\rangle$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.mixed\_gaussian\_limit\_eq\_omega}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $v,w\in\mathbb R^n$, prove
+\[
+ \lim_{s\downarrow0}\frac{8s}{I(s)}\int e^{-s|z|^2}
+ \langle z,v\rangle^2\langle z-b,w\rangle\,d\nu
+ =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\langle b,w\rangle.
+\]
+For $v\in V,w\in V^\perp$ this is $\langle\omega(v,v),w\rangle$.
+Further prove
+\[
+ \lim_{s\downarrow0}\frac{s}{I(s)}\int e^{-s|z|^2}
+ |Pz|^2\langle z-b,w\rangle\,d\nu=0.
+\]
+To justify the latter, the analogous $|z|^2$ expression has a limit by the
+first formula and a finite orthonormal-basis sum. Differentiating the Gaussian
+first moment and applying the appropriate one-sided l'Hopital argument
+identifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.
+Record differentiability and domination hypotheses before using l'Hopital.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Normal second Taylor trace]
+\label{lem:moment-normal-trace}
+\lean{Preiss.trace_secondMomentCoefficient_normal_eq}
+\uses{def:bilinear-trace, def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:bilinear-trace-basis, lem:taylor-two, lem:uniform-cylinder-identity}
+
+
+
+
+$\operatorname{tr}(b_2^{(2)}|V^\perp)=8|b|^2=2\|b_1^{(1)}\|^2$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.trace\_secondMomentCoefficient\_normal\_eq}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+The exact radial identity $\operatorname{tr}b_{2,s}=ms$ and M07 imply
+$\operatorname{tr}b_2^{(2)}=0$.
+R03 and the first-moment expansion give
+$\operatorname{tr}(b_2^{(2)}|V^\perp)=8|b|^2
+=2\|b_1^{(1)}\|^2$.
+These are separate, comparatively short lemmas.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Bounded distance from the limiting plane to the support]
+\label{lem:flat-infinity-bounded-holes}
+\lean{Preiss.exists_uniform_dist_plane_support_bound}
+\uses{def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:plane-supported-uniform-flat, lem:uniform-cylinder-identity, lem:uniform-near-support-compactness, lem:vague-support-approximation}
+
+
+
+
+
+There exists $R_0<\infty$ with
+$\operatorname{dist}(v,\operatorname{supp}\nu)<R_0$ for every $v\in V$.
+If not, choose $v_i$ with distances $r_i\to\infty$, a nearest support point,
+and its projection $z_i\in V$. The measures $D^m_{z_i,r_i}\nu$ have
+supports approaching the origin and lie in shrinking tubes about $V$ by R03.
+S05 gives a unit uniform limit supported in $V$, hence $\sigma_V$.
+The original holes give a unit hole centred at a bounded point of $V$, a
+contradiction. The centres $z_i$ need not lie in the support, which is why the
+near-support variant of S05 is essential.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.exists\_uniform\_dist\_plane\_support\_bound}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+There exists $R_0<\infty$ with
+$\operatorname{dist}(v,\operatorname{supp}\nu)<R_0$ for every $v\in V$.
+If not, choose $v_i$ with distances $r_i\to\infty$, a nearest support point,
+and its projection $z_i\in V$. The measures $D^m_{z_i,r_i}\nu$ have
+supports approaching the origin and lie in shrinking tubes about $V$ by R03.
+S05 gives a unit uniform limit supported in $V$, hence $\sigma_V$.
+The original holes give a unit hole centred at a bounded point of $V$, a
+contradiction. The centres $z_i$ need not lie in the support, which is why the
+near-support variant of S05 is essential.
+\par Corrections and boundary conditions: The projected rescaling centers need not be in support; invoke the near-support compactness variant.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Vanishing normal mixed cubic coefficients]
+\label{lem:rigidity-cubic-vanishing}
+\lean{Preiss.thirdMomentCoefficient_normal_vanishes}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:odd-coefficients-plane-zero, lem:taylor-two, lem:uniform-cylinder-identity}
+
+
+
+
+For $v\in V,w\in V^\perp$, $b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$. Polarization gives all corresponding mixed restrictions.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.thirdMomentCoefficient\_normal\_vanishes}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $v\in V,w\in V^\perp$,
+$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.
+The first is R02; the others follow by R03's bounded normal coordinates and
+Gaussian estimates in the defining limits. Therefore, on the support,
+\[
+ b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)
+ =|Qz|^4+2|Pz|^2|Qz|^2.
+\]
+Use the order-two support identity and R01; do not drop mixed cubic terms
+without first establishing these vanishings.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Vanishing contracted Gaussian limit]
+\label{lem:rigidity-contracted-limit-zero}
+\lean{Preiss.contracted_gaussian_limit_eq_zero}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-parameter-derivative, lem:gaussian-polynomial-integrable, lem:rigidity-mixed-gaussian-limit, lem:uniform-cylinder-identity}
+
+
+
+
+For every normal $w$, $\lim_{s\downarrow0}\frac{s}{I(s)}\int e^{-s|z|^2}|P_Vz|^2\langle z-b,w\rangle\,d\nu=0$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.contracted\_gaussian\_limit\_eq\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $v,w\in\mathbb R^n$, prove
+\[
+ \lim_{s\downarrow0}\frac{8s}{I(s)}\int e^{-s|z|^2}
+ \langle z,v\rangle^2\langle z-b,w\rangle\,d\nu
+ =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\langle b,w\rangle.
+\]
+For $v\in V,w\in V^\perp$ this is $\langle\omega(v,v),w\rangle$.
+Further prove
+\[
+ \lim_{s\downarrow0}\frac{s}{I(s)}\int e^{-s|z|^2}
+ |Pz|^2\langle z-b,w\rangle\,d\nu=0.
+\]
+To justify the latter, the analogous $|z|^2$ expression has a limit by the
+first formula and a finite orthonormal-basis sum. Differentiating the Gaussian
+first moment and applying the appropriate one-sided l'Hopital argument
+identifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.
+Record differentiability and domination hypotheses before using l'Hopital.
+\par Corrections and boundary conditions: Establish the derivative-quotient limit first from mixed moments, then apply the one-sided lHopital argument; record domination for Gaussian differentiation.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Fourth degree support identity]
+\label{lem:rigidity-fourth-support-identity}
+\lean{Preiss.fourth_order_support_identity}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial, lem:rigidity-cubic-vanishing}
+
+
+
+
+For every $z\in\operatorname{supp}\nu$, $b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)=|Qz|^4+2|Pz|^2|Qz|^2$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.fourth\_order\_support\_identity}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $v\in V,w\in V^\perp$,
+$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.
+The first is R02; the others follow by R03's bounded normal coordinates and
+Gaussian estimates in the defining limits. Therefore, on the support,
+\[
+ b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)
+ =|Qz|^4+2|Pz|^2|Qz|^2.
+\]
+Use the order-two support identity and R01; do not drop mixed cubic terms
+without first establishing these vanishings.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Zero Gaussian mean of omega]
+\label{lem:rigidity-omega-trace-zero}
+\lean{Preiss.integral_rigidityOmega_eq_zero}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-contracted-limit-zero, lem:rigidity-mixed-gaussian-limit}
+
+
+
+
+For standard covariance-one Gaussian probability $\gamma_V$ on $V$, $\int\omega(v,v)\,d\gamma_V(v)=0$. Equivalently its inner product with every fixed normal vector has integral zero.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.integral\_rigidityOmega\_eq\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Let $\gamma$ be the standard covariance-one Gaussian probability measure on
+$V$. Prove $\int\langle\omega(v,v),b\rangle\,d\gamma(v)=0$ using R07,
+Fubini and domination by a constant times $|v|^2$.
+Then
+$\operatorname{tr}(b_2^{(2)}|V)=\int\widehat b(v,v)\,d\gamma(v)$.
+The same argument works against each fixed normal vector, not only $b$.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Pointwise square bound for the adjusted form]
+\label{lem:rigidity-pointwise-quadratic-bound}
+\lean{Preiss.adjustedForm_sq_le_norm_omega_sq}
+\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-bounded-holes, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity}
+
+
+
+
+
+For all $v\in V$,
+$\widehat b(v,v)^2\leq |b|^2|\omega(v,v)|^2$.
+Choose support points $t_i v+v_i+w_i$ within bounded distance of $t_i v$ using
+R05. Pass to a convergent subsequence of bounded normal components $w_i$.
+Divide R09 by $t_i^2$ and use R03 to obtain
+$b_2^{(2)}(v,v)+\langle\omega(v,v),w\rangle=0$ and
+$|w|^2=2\langle b,w\rangle$.
+Thus $|w-b|=|b|$ and
+$\widehat b(v,v)+\langle\omega(v,v),w-b\rangle=0$; Cauchy--Schwarz proves
+the inequality.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.adjustedForm\_sq\_le\_norm\_omega\_sq}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For all $v\in V$,
+$\widehat b(v,v)^2\leq |b|^2|\omega(v,v)|^2$.
+Choose support points $t_i v+v_i+w_i$ within bounded distance of $t_i v$ using
+R05. Pass to a convergent subsequence of bounded normal components $w_i$.
+Divide R09 by $t_i^2$ and use R03 to obtain
+$b_2^{(2)}(v,v)+\langle\omega(v,v),w\rangle=0$ and
+$|w|^2=2\langle b,w\rangle$.
+Thus $|w-b|=|b|$ and
+$\widehat b(v,v)+\langle\omega(v,v),w-b\rangle=0$; Cauchy--Schwarz proves
+the inequality.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Vanishing lower order Gaussian error]
+\label{lem:rigidity-rescaled-error}
+\lean{Preiss.adjustedForm_gaussian_error_tendsto_zero}
+\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity}
+
+
+
+
+
+R09 and R03 imply that
+$\widehat b(Pz,Pz)+\langle\omega(Pz,Pz),Qz-b\rangle$
+has absolute value at most $C(1+|z|)$ on the support.
+Hence its integral against $sI(s)^{-1}e^{-s|z|^2}\nu$ tends to zero.
+This is equation (9.34); it is a necessary bridge to the global trace bound.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.adjustedForm\_gaussian\_error\_tendsto\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+R09 and R03 imply that
+$\widehat b(Pz,Pz)+\langle\omega(Pz,Pz),Qz-b\rangle$
+has absolute value at most $C(1+|z|)$ on the support.
+Hence its integral against $sI(s)^{-1}e^{-s|z|^2}\nu$ tends to zero.
+This is equation (9.34); it is a necessary bridge to the global trace bound.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Tangential trace is the mean adjusted form]
+\label{lem:rigidity-gaussian-trace}
+\lean{Preiss.trace_tangent_eq_integral_adjustedForm}
+\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-omega-trace-zero}
+
+
+
+
+
+$\operatorname{tr}(b_2^{(2)}|V)=\int\widehat b(v,v)\,d\gamma_V(v)$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.trace\_tangent\_eq\_integral\_adjustedForm}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Let $\gamma$ be the standard covariance-one Gaussian probability measure on
+$V$. Prove $\int\langle\omega(v,v),b\rangle\,d\gamma(v)=0$ using R07,
+Fubini and domination by a constant times $|v|^2$.
+Then
+$\operatorname{tr}(b_2^{(2)}|V)=\int\widehat b(v,v)\,d\gamma(v)$.
+The same argument works against each fixed normal vector, not only $b$.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Gaussian reproducing identity for omega]
+\label{lem:rigidity-omega-reproducing}
+\lean{Preiss.integral_inner_sq_mul_omega}
+\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-wick-fourth, lem:rigidity-omega-trace-zero}
+
+
+
+
+
+For $y\in V,w\in V^\perp$, $\int\langle y,v\rangle^2\langle\omega(v,v),w\rangle\,d\gamma_V(v)=2\langle\omega(y,y),w\rangle$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.integral\_inner\_sq\_mul\_omega}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For $y,z\in V$,
+$\int\langle y,v\rangle^2\langle z,v\rangle^2\,d\gamma
+=|y|^2|z|^2+2\langle y,z\rangle^2$.
+Combining this with R07 yields, for $w\in V^\perp$,
+\[
+ \int\langle y,v\rangle^2\langle\omega(v,v),w\rangle\,d\gamma(v)
+ =2\langle\omega(y,y),w\rangle.
+\]
+Justify limits by Gaussian quartic domination and Fubini.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Integral quadratic inequality]
+\label{lem:rigidity-integral-quadratic-bound}
+\lean{Preiss.integral_adjustedForm_sq_le}
+\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:rigidity-mixed-gaussian-limit, lem:rigidity-omega-reproducing, lem:rigidity-pointwise-quadratic-bound, lem:rigidity-rescaled-error, lem:vague-gaussian-polynomials}
+
+
+
+
+Integrate R10, express $\int|\omega(v,v)|^2\,d\gamma$ through R07 and R12,
+use R11, and pass to the flat blow-down using M02. The result is
+\[
+ \int\widehat b(v,v)^2\,d\gamma(v)
+ \leq-8|b|^2\int\widehat b(v,v)\,d\gamma(v).
+\]
+The inequality must remain an inequality throughout. The equality sign at
+the start of the second long display on printed page 108 loses the earlier
+inequality; its final statement (9.41) has the correct direction.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.integral\_adjustedForm\_sq\_le}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Integrate R10, express $\int|\omega(v,v)|^2\,d\gamma$ through R07 and R12,
+use R11, and pass to the flat blow-down using M02. The result is
+\[
+ \int\widehat b(v,v)^2\,d\gamma(v)
+ \leq-8|b|^2\int\widehat b(v,v)\,d\gamma(v).
+\]
+The inequality must remain an inequality throughout. The equality sign at
+the start of the second long display on printed page 108 loses the earlier
+inequality; its final statement (9.41) has the correct direction.
+\par Corrections and boundary conditions: Preserve the inequality through the calculation; the p.108 intermediate equality is too strong.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{lemma}[Positive lower bound for the total second coefficient trace]
+\label{lem:trace-rigidity}
+\lean{Preiss.integral_adjustedForm_lower_bound, Preiss.secondMomentCoefficient_trace_lower_bound}
+\uses{def:bilinear-trace, def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:bilinear-trace-basis, lem:gaussian-quadratic-trace-bound, lem:moment-normal-trace, lem:rigidity-gaussian-trace, lem:rigidity-integral-quadratic-bound}
+
+
+
+
+For a unit uniform measure with flat blow-down, $\operatorname{tr}b_2^{(2)}\geq16|b|^2/(m+2)$. More precisely $\int\widehat b(v,v)\,d\gamma_V\geq-8m|b|^2/(m+2)$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.integral\_adjustedForm\_lower\_bound, Preiss.secondMomentCoefficient\_trace\_lower\_bound}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,
+\[
+ \int A(v,v)^2\,d\gamma=(\operatorname{tr}A)^2+
+ 2\|A\|_{\mathrm{HS}}^2
+ \geq(1+2/m)\left(\int A(v,v)\,d\gamma\right)^2.
+\]
+This is a reusable Gaussian/spectral theorem independent of uniform measures.
+Combining it with R13 gives
+$\int\widehat b(v,v)\,d\gamma\geq-8m|b|^2/(m+2)$.
+R08 and R04 therefore give
+$\operatorname{tr}b_2^{(2)}\geq16|b|^2/(m+2)$.
+Since that trace is zero, $b=0$; R03 makes the support planar, and plane-supported
+uniform classification finishes rigidity. This is the actual content hidden
+inside the current single trace-rigidity node.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\begin{theorem}[Flatness follows from flatness at infinity]
+\label{thm:infinity-rigidity}
+\lean{Preiss.flat_of_flat_at_infinity}
+\uses{def:flat, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:moment-second-total-trace, lem:plane-supported-uniform-flat, lem:trace-rigidity, lem:uniform-cylinder-identity}
+
+
+
+
+
+If $\nu\in\mathcal U_m$ has a flat tangent at infinity, then $\nu$ is flat: the trace bounds force $b=0$, the cylinder identity forces support in $V$, and plane-supported uniform classification gives $\nu=\sigma_V$.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.flat\_of\_flat\_at\_infinity}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,
+\[
+ \int A(v,v)^2\,d\gamma=(\operatorname{tr}A)^2+
+ 2\|A\|_{\mathrm{HS}}^2
+ \geq(1+2/m)\left(\int A(v,v)\,d\gamma\right)^2.
+\]
+This is a reusable Gaussian/spectral theorem independent of uniform measures.
+Combining it with R13 gives
+$\int\widehat b(v,v)\,d\gamma\geq-8m|b|^2/(m+2)$.
+R08 and R04 therefore give
+$\operatorname{tr}b_2^{(2)}\geq16|b|^2/(m+2)$.
+Since that trace is zero, $b=0$; R03 makes the support planar, and plane-supported
+uniform classification finishes rigidity. This is the actual content hidden
+inside the current single trace-rigidity node.
+\par Source: De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.
+\end{proof}
+
+\section{Preiss theorem assembly}
+
+\begin{theorem}[Existence of a flat tangent almost everywhere]
+\label{thm:part-a}
+\lean{Preiss.ae_exists_flat_tangent}
+\uses{def:flat, def:positive-density, lem:dimensional-tangent-closed, lem:dimensional-tangent-compactness, lem:recenter, lem:tangent-existence, lem:tangent-ray, lem:uniform-adapter, thm:flat-pseudotangent}
+
+
+
+
+
+Intersect the a.e. sets for uniformity, density and A09. Choose any tangent,
+use A06, recenter every approximating term using A09, and use S07 for the
+nonzero flat limit. This is \texttt{ae\_exists\_flat\_tangent}.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.ae\_exists\_flat\_tangent}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+Intersect the a.e. sets for uniformity, density and A09. Choose any tangent,
+use A06, recenter every approximating term using A09, and use S07 for the
+nonzero flat limit. This is \texttt{ae\_exists\_flat\_tangent}.
+\par Source: De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.
+\end{proof}
+
+\begin{lemma}[First-crossing sequences and their uniform tangent limit]
+\label{lem:first-crossing}
+\uses{cor:conical, def:dimensional-tangent, def:flat, def:flatness, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:density-normalization, lem:dimensional-tangent-compactness, lem:flatness-continuous, lem:flatness-minimum, lem:flatness-radius-continuous, lem:greatest-crossing, lem:tangent-blowdown, thm:gap, thm:infinity-rigidity, thm:unique-infinity}
+
+
+
+After S08 normalization, suppose $\alpha$ is a flat dimensional tangent and
+$\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit
+uniform. Let $\chi$ be the blow-down of $\zeta$. Rigidity and the gap give
+$F(\chi)>\varepsilon$. Choose $r_i\to0$ with blow-ups tending to $\alpha$
+and $s_i<r_i$ with blow-ups tending to $\chi$; subsequence selection makes
+the ordering possible. For sufficiently large $i$, the continuous scale
+function satisfies $F(D_{x,r_i}^m\mu)<\varepsilon$ and
+$F(D_{x,s_i}^m\mu)>\varepsilon$.
+Choose $\sigma_i\in[s_i,r_i]$ with energy exactly $\varepsilon$ and energy
+at most $\varepsilon$ on the entire interval $[\sigma_i,r_i]$.
+This is a greatest-crossing/last-crossing assertion, not merely the intermediate
+value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.exists\_first\_crossing\_sequences}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+After S08 normalization, suppose $\alpha$ is a flat dimensional tangent and
+$\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit
+uniform. Let $\chi$ be the blow-down of $\zeta$. Rigidity and the gap give
+$F(\chi)>\varepsilon$. Choose $r_i\to0$ with blow-ups tending to $\alpha$
+and $s_i<r_i$ with blow-ups tending to $\chi$; subsequence selection makes
+the ordering possible. For sufficiently large $i$, the continuous scale
+function satisfies $F(D_{x,r_i}^m\mu)<\varepsilon$ and
+$F(D_{x,s_i}^m\mu)>\varepsilon$.
+Choose $\sigma_i\in[s_i,r_i]$ with energy exactly $\varepsilon$ and energy
+at most $\varepsilon$ on the entire interval $[\sigma_i,r_i]$.
+This is a greatest-crossing/last-crossing assertion, not merely the intermediate
+value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{lemma}[Divergence of the crossing scale ratios]
+\label{lem:first-crossing-ratio}
+\uses{def:dimensional-tangent, def:flat, def:flatness, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:flatness-minimum, lem:vague-moving-blowups}
+
+
+
+Prove $r_i/\sigma_i\to\infty$. If the ratios have a bounded subsequence,
+extract a further limit $R\in[1,\infty)$. S02--S03 give
+$D^m_{0,R}\xi=\alpha$. Invert the dilation to conclude $\xi$ flat,
+contradicting $F(\xi)=\varepsilon>0$.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.first\_crossing\_ratio\_tendsto\_atTop}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Prove $r_i/\sigma_i\to\infty$. If the ratios have a bounded subsequence,
+extract a further limit $R\in[1,\infty)$. S02--S03 give
+$D^m_{0,R}\xi=\alpha$. Invert the dilation to conclude $\xi$ flat,
+contradicting $F(\xi)=\varepsilon>0$.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{lemma}[Crossing limit has flat blow-down]
+\label{lem:first-crossing-flat-infinity}
+\uses{cor:conical, def:dimensional-tangent, def:flat, def:flatness, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:first-crossing-ratio, lem:flatness-continuous, lem:flatness-minimum, lem:vague-moving-blowups, thm:gap, thm:unique-infinity}
+
+
+
+For the crossing limit $\xi$, every $R\geq1$ satisfies $F(D^m_{0,R}\xi)\leq\varepsilon$. Hence its unique conical blow-down $\psi$ has $F(\psi)\leq\varepsilon$ and is flat by the conical gap.
+\par\emph{Role: Preiss proof.}
+\par Planned Lean declaration: \texttt{Preiss.first\_crossing\_limit\_flat\_at\_infinity}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+For every fixed $R\geq1$, eventually $\sigma_i R\in[\sigma_i,r_i]$.
+S02--S03 and C04 give $F(D^m_{0,R}\xi)\leq\varepsilon$.
+Let $R\to\infty$. M10 and continuity give $F(\psi)\leq\varepsilon$ for
+the conical blow-down $\psi$ of $\xi$. Apply the conical gap, then rigidity,
+to conclude $\xi$ flat, the final contradiction.
+Keep the centre $x$ fixed throughout; the printed scale function sometimes
+uses zero where $x$ is intended. Every use of $F$ on a dilated measure must
+retain the factor $R^{-m}$.
+\par Corrections and boundary conditions: Retain the fixed original center x and the full dimensional mass factor R\textasciicircum{}\{-m\}.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{theorem}[One flat tangent implies all tangents are flat]
+\label{thm:part-b}
+\lean{Preiss.all_tangents_flat_of_one}
+\uses{def:dimensional-tangent, def:flat, def:positive-density, lem:density-normalization, lem:first-crossing, lem:first-crossing-flat-infinity, lem:tangent-ray, thm:infinity-rigidity}
+
+
+
+
+
+At a point $x$ with positive finite existing $m$-density, suppose every tangent is $m$-uniform and at least one tangent is flat. Then every tangent at $x$ is flat. First use the common density normalization for dimensional tangents, then the first-crossing contradiction, and finally transfer to arbitrary-scalar tangents by the ray adapter.
+\par\emph{Role: Preiss proof.}
+\par Lean declarations: \texttt{Preiss.all\_tangents\_flat\_of\_one}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+For every fixed $R\geq1$, eventually $\sigma_i R\in[\sigma_i,r_i]$.
+S02--S03 and C04 give $F(D^m_{0,R}\xi)\leq\varepsilon$.
+Let $R\to\infty$. M10 and continuity give $F(\psi)\leq\varepsilon$ for
+the conical blow-down $\psi$ of $\xi$. Apply the conical gap, then rigidity,
+to conclude $\xi$ flat, the final contradiction.
+Keep the centre $x$ fixed throughout; the printed scale function sometimes
+uses zero where $x$ is intended. Every use of $F$ on a dilated measure must
+retain the factor $R^{-m}$.
+\par Source: De Lellis Lemma 6.20 and Section 6.4, pp.66-69.
+\end{proof}
+
+\begin{theorem}[Preiss]
+\label{thm:preiss}
+\lean{Preiss.preiss}
+\uses{def:positive-density, def:rectifiable, lem:excess-dimension, lem:uniform-adapter, lem:zero-dimension, lem:zero-measure, thm:mm-measure, thm:part-a, thm:part-b}
+
+
+
+
+
+
+
+
+Let $m,n\in\N$ and let $\mu$ be a locally finite Borel measure on $\R^n$.
+If $0<\Theta_*^m(\mu,x)=\Theta^{*m}(\mu,x)<\infty$ for
+$\mu$-almost every $x$, then $\mu$ is an $m$-rectifiable measure.
+\end{theorem}
+\begin{proof}[Assembly, still dependent on unproved obligations]
+
+For $0<m\leq n$, intersect the finitely many full-measure sets, apply
+Parts A and B pointwise, and use the measure criterion. Handle $m=0$ and
+$m>n$ separately. The Lean assembly already expresses this dependency
+structure, but inherits the unproved obligations' axioms.
+\end{proof}
+
+\section{Companion characterization}
+
+\begin{lemma}[Lipschitz maps take null domain sets to Hausdorff-null sets]
+\label{lem:lipschitz-null-image}
+\lean{Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null}
+\uses{lem:plane-hausdorff}
+
+
+
+
+
+Here \(A\subset\mathbb R^m\). Use the Hausdorff/Lebesgue normalization on the domain and Lipschitz distortion.
+If \(f:A\to\mathbb R^n\) is Lipschitz and \(\mathcal L^m(A)=0\), then \(\mathcal H^m(f(A))=0\).
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.hausdorffMeasure\_image\_eq\_zero\_of\_lipschitz\_null}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Affine graph area formula]
+\label{lem:graph-affine-area}
+\lean{Preiss.linearJacobian, Preiss.map_jacobian_hausdorff_affine_injection}
+\uses{lem:plane-hausdorff}
+
+
+
+
+
+The spaces are finite-dimensional Euclidean spaces and the affine linear part is injective. State an equality of measures, hence a formula on every Borel restriction.
+For an injective affine graph parametrization, pushforward of its Jacobian-weighted source Haar measure equals Hausdorff measure on the affine graph, with the fixed normalization factor.
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.linearJacobian, Preiss.map\_jacobian\_hausdorff\_affine\_injection}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Graphs are closed with finite bounded measure]
+\label{lem:graph-borel-finite}
+\lean{Preiss.isClosed_and_measure_closedBall_lt_top}
+\uses{lem:graph-parametrization, lem:plane-hausdorff}
+
+
+
+
+
+\(\Gamma=\{v+f(v):v\in V\}\), where \(\dim V=m\) and \(f:V\to V^\perp\) is Lipschitz.
+Every full Lipschitz \(m\)-graph \(\Gamma\) is closed, and
+\[
+ \mathcal H^m(\Gamma\cap\overline B_R(x))<\infty
+\]
+for every \(x\in\mathbb R^n\) and finite radius \(R\).
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.isClosed\_and\_measure\_closedBall\_lt\_top}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Full-rank differentiability locus maps into countably many graphs]
+\label{lem:full-rank-graph-pieces}
+\lean{Preiss.exists_countable_graph_cover_fullRank_locus}
+\uses{lem:cone-graph, mathlib:derivative-partitions}
+
+
+
+
+
+
+Use countable derivative-control pieces and a countable family of approximating full-rank matrices. For a nonempty rank-\(m\) locus, \(m\leq n\).
+The image of the full-rank differentiability locus of a Lipschitz \(f:\mathbb R^m\to\mathbb R^n\) is covered by countably many full Lipschitz \(m\)-graphs.
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.exists\_countable\_graph\_cover\_fullRank\_locus}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Rank-deficient derivative image is null]
+\label{lem:rank-deficient-image-null}
+\lean{Preiss.hausdorffMeasure_image_rank_lt_eq_zero}
+\uses{lem:lipschitz-null-image}
+
+
+
+
+
+Work with measurable pieces or suitable measurable envelopes. This is the rank-deficient-image lemma, not an invocation of an already available full area formula.
+For a Lipschitz \(f:\mathbb R^m\to\mathbb R^n\), the image of its differentiability locus where \(\operatorname{rank}(Df)<m\) is \(\mathcal H^m\)-null.
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.hausdorffMeasure\_image\_rank\_lt\_eq\_zero}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+De Lellis Lemma4.11; do not claim the full area formula already exists.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Area formula for Lipschitz graph parametrizations]
+\label{lem:graph-area}
+\lean{Preiss.map_withDensity_jacobian_eq_graph_hausdorff}
+\uses{lem:graph-affine-area, lem:lipschitz-null-image, mathlib:derivative-partitions}
+
+
+
+
+
+
+Define the Jacobian on the differentiability locus and choose a measurable extension on its null complement. The map \(F\) is injective.
+For a Lipschitz graph parametrization \(F(v)=v+f(v)\), Hausdorff measure on its graph is the pushforward of the measurable Jacobian-weighted domain measure, with the normalization established in the affine case.
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.map\_withDensity\_jacobian\_eq\_graph\_hausdorff}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Fixed-dimensional blow-up transfer under density change]
+\label{lem:normalized-density-transfer}
+\lean{Preiss.tendsto_integral_blowup_sub_density_mul}
+\uses{gmt:compact-test-perturbation, gmt:density-bounds, gmt:density-points, gmt:scaled-discarded-mass, mathlib:besicovitch-differentiation}
+
+
+
+
+
+The measures are locally finite; \(f\geq0\) is locally \(\mu\)-integrable; \(x\) is a differentiation point and has finite upper \(m\)-density for \(\mu\).
+If \(\lambda=f\mu\), then at good differentiation points \(x\), for every compactly supported continuous \(\varphi\),
+\[
+ \int\varphi\,dD^m_{x,r}\lambda-
+ f(x)\int\varphi\,dD^m_{x,r}\mu\longrightarrow0.
+\]
+The exact multiplier \(f(x)\) is retained.
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.tendsto\_integral\_blowup\_sub\_density\_mul}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+Reuse GMT MatchingTangents norm\_integral\_cc\_le, weaklyConverges\_of\_tendsto\_integral\_sub, tendsto\_mul\_measure\_diff\_zero. Finite upper density addresses author erratum for Prop3.12.
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Lipschitz-image and graph rectifiability agree]
+\label{lem:graphs}
+\lean{Preiss.countablyRectifiable_iff_lipschitzGraph_cover}
+\uses{lem:domain-extension, lem:full-rank-graph-pieces, lem:graph-rectifiable, lem:lipschitz-null-image, lem:rank-deficient-image-null}
+
+
+
+
+
+Natural dimensions \(m,n\) are arbitrary. For \(m>n\), use \(\mathcal H^m(\mathbb R^n)=0\) and the empty graph family. Measurability is not intrinsic to this set predicate.
+A set \(S\subset\mathbb R^n\) is countably \(m\)-rectifiable if and only if there is a countable family of full Lipschitz \(m\)-graphs \(\Gamma_j\) such that
+\[
+ \mathcal H^m(S\setminus\bigcup_j\Gamma_j)=0.
+\]
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.countablyRectifiable\_iff\_lipschitzGraph\_cover}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Blow-ups of graph measure converge to its derivative plane]
+\label{lem:graph-blowup}
+\lean{Preiss.ae_graph_hausdorff_blowup_limit}
+\uses{lem:graph-area, lem:graph-borel-finite, lem:plane-hausdorff}
+
+
+
+
+
+Assume \(m>0\). Local finiteness follows from the graph measure API. Choose \(V_x\) before quantifying over positive sequences of radii.
+For \(\mathcal H^m\)-almost every \(x\) of a full Lipschitz graph \(\Gamma\), one plane \(V_x\) satisfies
+\[
+ D^m_{x,r}(\mathcal H^m\!\restriction\Gamma)
+ \rightharpoonup\mathcal H^m\!\restriction V_x
+ \quad(r\downarrow0).
+\]
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.ae\_graph\_hausdorff\_blowup\_limit}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{lemma}[Density representation on a sigma-finite carrier]
+\label{lem:representation}
+\lean{Preiss.rectifiable_iff_density_representation}
+\uses{lem:borel-carrier}
+
+
+
+
+
+\(\mu\) is locally finite. Radon--Nikodym is applied on the carrier restriction, not on ambient \(\mathcal H^m\) when \(m<n\).
+The measure \(\mu\) is \(m\)-rectifiable if and only if
+\[
+ \mu=(\mathcal H^m\!\restriction S)\mathbin{\mathrm{withDensity}} f
+\]
+for a Borel countably \(m\)-rectifiable set \(S\), a sigma-finite restriction \(\mathcal H^m\!\restriction S\), and a measurable \(f:\mathbb R^n\to[0,\infty]\).
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.rectifiable\_iff\_density\_representation}.
+\end{lemma}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{theorem}[Rectifiable measures have a single normalized flat limit]
+\label{thm:rectifiable-blowup}
+\lean{Preiss.rectifiable_has_flat_blowup_limit}
+\uses{lem:graph-blowup, lem:graphs, lem:normalized-density-transfer, lem:representation}
+
+
+
+
+
+The measure \(\mu\) is locally finite and \(m\)-rectifiable, with \(0<m\leq n\).
+At \(\mu\)-almost every \(x\) there exist one \(m\)-plane \(V_x\) and one \(0<c_x<\infty\) such that
+\[
+ D^m_{x,r}\mu\rightharpoonup c_x\mathcal H^m\!\restriction V_x
+ \quad(r\downarrow0).
+\]
+The same \(V_x,c_x\) work for every positive sequence \(r_j\to0\).
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.rectifiable\_has\_flat\_blowup\_limit}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{corollary}[Rectifiable density and common tangent plane]
+\label{cor:rectifiable-tangent-plane}
+\lean{Preiss.rectifiable_has_density_and_tangent_plane}
+\uses{gmt:continuity-sets, lem:plane-hausdorff, lem:tangent-ray, thm:rectifiable-blowup}
+
+
+
+
+
+The measure \(\mu\) is locally finite and \(m\)-rectifiable, with \(0<m\leq n\). Tangents use GMT's arbitrary positive scalar normalization.
+At \(\mu\)-almost every \(x\), the \(m\)-density exists and is positive and finite, and there is one \(m\)-plane \(V_x\) such that
+\[
+ \operatorname{Tan}(\mu,x)
+ =\{c\,\mathcal H^m\!\restriction V_x:0<c<\infty\}.
+\]
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.rectifiable\_has\_density\_and\_tangent\_plane}.
+\end{corollary}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}
+
+\begin{theorem}[Full tangent characterization]
+\label{thm:rectifiable-iff-flat}
+\lean{Preiss.rectifiable_iff_density_bounds_and_flat_tangents}
+\uses{cor:rectifiable-tangent-plane, thm:mm-measure}
+
+
+
+
+
+The measure \(\mu\) is locally finite and \(0<m\leq n\). No density-limit existence or common-plane hypothesis is assumed on the right.
+The measure \(\mu\) is \(m\)-rectifiable if and only if positive lower and finite upper \(m\)-density hold almost everywhere and every tangent is \(m\)-flat almost everywhere. On the right, the plane may depend on the individual tangent; rectifiability subsequently supplies a common plane almost everywhere.
+\par\emph{Role: Rectifiability characterization.}
+\par Lean declarations: \texttt{Preiss.rectifiable\_iff\_density\_bounds\_and\_flat\_tangents}.
+\end{theorem}
+\begin{proof}[Planned proof obligations]
+
+\par Source: De Lellis Chapters 4--5; see the rectifiability audit.
+\end{proof}

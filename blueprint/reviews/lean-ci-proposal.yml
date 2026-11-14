@@ -1,0 +1,35 @@
+name: Check Lean statements
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+      - name: Compile definitions and all draft statements
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: true
+          build-args: 'Preiss PreissBlueprint'
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: true
+      - name: Check blueprint declaration names in the compiled environment
+        run: |
+          python scripts/check_blueprint.py
+          lake env lean tmp/blueprint_checks.lean

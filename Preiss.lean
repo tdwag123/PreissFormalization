@@ -1,6 +1,12 @@
 import Preiss.Rectifiability.Defs
+import Preiss.Rectifiability.Graphs
 import Preiss.Density.Defs
 import Preiss.Tangent.Defs
 import Preiss.Uniform.Moments
 import Preiss.Rectifiability.Approximation
 import Preiss.Uniform.Flatness
+import Preiss.Geometry.FlatMeasure
+import Preiss.Uniform.Defs
+import FormalizingGMT.MarstrandTheorem
+import Preiss.Main
+import Preiss.Rectifiability.TangentCharacterization

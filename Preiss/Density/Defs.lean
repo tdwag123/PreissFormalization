@@ -1,4 +1,4 @@
-import Preiss.Rectifiability.Defs
+import Preiss.Geometry.Euclidean
 import FormalizingGMT.Densities.Basic
 
 open MeasureTheory

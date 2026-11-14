@@ -1,0 +1,1323 @@
+{
+  "status": "Checkpoint declaration map, not a proof-completion or elaboration claim. Only MomentForms/MomentCoefficients/MomentExpansion were successfully elaborated before later source additions.",
+  "nodes": {
+    "lem:vague-moving-tests": {
+      "lean_names": [
+        "Preiss.vague_integral_moving_compact_test"
+      ],
+      "planned_lean_names": [
+        "Preiss.vague_integral_moving_compact_test"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/Vague/CompactTests.lean"
+      ],
+      "planned_file": "Preiss/Analysis/Vague/CompactTests.lean"
+    },
+    "lem:vague-moving-blowups": {
+      "lean_names": [
+        "Preiss.vague_smul_map_sub_div",
+        "Preiss.vague_dimensionalBlowup_moving"
+      ],
+      "planned_lean_names": [
+        "Preiss.vague_smul_map_sub_div",
+        "Preiss.vague_dimensionalBlowup_moving"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Continuity.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Continuity.lean"
+    },
+    "lem:blowup-composition": {
+      "lean_names": [
+        "Preiss.dimensionalBlowup_comp",
+        "Preiss.dimensionalBlowup_smul",
+        "Preiss.dimensionalBlowup_map_linearIsometry"
+      ],
+      "planned_lean_names": [
+        "Preiss.dimensionalBlowup_comp",
+        "Preiss.dimensionalBlowup_smul",
+        "Preiss.dimensionalBlowup_map_linearIsometry"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Algebra.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Algebra.lean"
+    },
+    "lem:vague-support-approximation": {
+      "lean_names": [
+        "Preiss.exists_support_sequence_of_vague"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_support_sequence_of_vague"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/Vague/Support.lean"
+      ],
+      "planned_file": "Preiss/Analysis/Vague/Support.lean"
+    },
+    "lem:vague-support-limit": {
+      "lean_names": [
+        "Preiss.mem_support_of_vague_lower_ball_bound"
+      ],
+      "planned_lean_names": [
+        "Preiss.mem_support_of_vague_lower_ball_bound"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/Vague/Support.lean"
+      ],
+      "planned_file": "Preiss/Analysis/Vague/Support.lean"
+    },
+    "lem:uniform-vague-closed": {
+      "lean_names": [
+        "Preiss.isUnitUniform_of_vague"
+      ],
+      "planned_lean_names": [
+        "Preiss.isUnitUniform_of_vague"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Uniform/Compactness.lean"
+    },
+    "lem:uniform-compactness": {
+      "lean_names": [
+        "Preiss.exists_vague_subsequence_unitUniform"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_vague_subsequence_unitUniform"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Uniform/Compactness.lean"
+    },
+    "lem:uniform-near-support-compactness": {
+      "lean_names": [
+        "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Uniform/Compactness.lean"
+    },
+    "lem:vague-countable-metric": {
+      "lean_names": [
+        "Preiss.vagueMetric_tendsto_iff"
+      ],
+      "planned_lean_names": [
+        "Preiss.vagueMetric_tendsto_iff"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ],
+      "planned_file": "Preiss/Analysis/Vague/Metrization.lean"
+    },
+    "lem:vague-diagonal": {
+      "lean_names": [
+        "Preiss.vague_diagonal_selection"
+      ],
+      "planned_lean_names": [
+        "Preiss.vague_diagonal_selection"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ],
+      "planned_file": "Preiss/Analysis/Vague/Metrization.lean"
+    },
+    "lem:uniform-finite-metric-covers": {
+      "lean_names": [
+        "Preiss.unitUniform_totallyBounded"
+      ],
+      "planned_lean_names": [
+        "Preiss.unitUniform_totallyBounded"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Uniform/Compactness.lean"
+    },
+    "lem:dimensional-tangent-closed": {
+      "lean_names": [
+        "Preiss.dimensionalTangent_closed"
+      ],
+      "planned_lean_names": [
+        "Preiss.dimensionalTangent_closed"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Compactness.lean"
+    },
+    "lem:tangent-closed": {
+      "lean_names": [
+        "Preiss.tangent_closed"
+      ],
+      "planned_lean_names": [
+        "Preiss.tangent_closed"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Compactness.lean"
+    },
+    "lem:dimensional-tangent-dilation": {
+      "lean_names": [
+        "Preiss.dimensionalTangent_dilate"
+      ],
+      "planned_lean_names": [
+        "Preiss.dimensionalTangent_dilate"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Compactness.lean"
+    },
+    "lem:dimensional-tangent-compactness": {
+      "lean_names": [
+        "Preiss.dimensionalTangent_nonempty_compact"
+      ],
+      "planned_lean_names": [
+        "Preiss.dimensionalTangent_nonempty_compact"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Compactness.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Compactness.lean"
+    },
+    "lem:dimensional-tangent-ball-constant": {
+      "lean_names": [
+        "Preiss.dimensionalTangent_ball_constant"
+      ],
+      "planned_lean_names": [
+        "Preiss.dimensionalTangent_ball_constant"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/TangentNormalization.lean"
+      ],
+      "planned_file": "Preiss/Uniform/TangentNormalization.lean"
+    },
+    "lem:density-normalization": {
+      "lean_names": [
+        "Preiss.density_normalization_unitUniform"
+      ],
+      "planned_lean_names": [
+        "Preiss.density_normalization_unitUniform"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/TangentNormalization.lean"
+      ],
+      "planned_file": "Preiss/Uniform/TangentNormalization.lean"
+    },
+    "gmt:support-not-full": {
+      "lean_names": [
+        "support_ne_univ_of_lower_growth"
+      ],
+      "status": "existing upstream",
+      "files": [
+        ".lake/packages/FormalizingGMT/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean"
+      ]
+    },
+    "lem:halfspace-tangent-witness": {
+      "lean_names": [
+        "Preiss.exists_halfSpace_dimensionalTangent"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_halfSpace_dimensionalTangent"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/DimensionReduction.lean"
+      ],
+      "planned_file": "Preiss/Uniform/DimensionReduction.lean"
+    },
+    "lem:hyperplane-tangent-lineage": {
+      "lean_names": [
+        "Preiss.exists_hyperplane_eq_or_dimensionalTangent"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_hyperplane_eq_or_dimensionalTangent"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/DimensionReduction.lean"
+      ],
+      "planned_file": "Preiss/Uniform/DimensionReduction.lean"
+    },
+    "lem:hyperplane-transport-map": {
+      "lean_names": [
+        "Preiss.uniform_hyperplane_transport"
+      ],
+      "planned_lean_names": [
+        "Preiss.uniform_hyperplane_transport"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/Transport.lean"
+      ],
+      "planned_file": "Preiss/Uniform/Transport.lean"
+    },
+    "lem:pseudotangent-transitive": {
+      "lean_names": [
+        "Preiss.uniformPseudotangent_trans"
+      ],
+      "planned_lean_names": [
+        "Preiss.uniformPseudotangent_trans"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/ScalingOrbit.lean"
+      ],
+      "planned_file": "Preiss/Tangent/ScalingOrbit.lean"
+    },
+    "lem:plane-supported-uniform-flat": {
+      "lean_names": [
+        "Preiss.unitUniform_eq_flat_of_support_subset_plane"
+      ],
+      "planned_lean_names": [
+        "Preiss.unitUniform_eq_flat_of_support_subset_plane"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/Classification.lean"
+      ],
+      "planned_file": "Preiss/Uniform/Classification.lean"
+    },
+    "lem:uniform-reduction": {
+      "lean_names": [
+        "Preiss.uniform_dimension_reduction"
+      ],
+      "planned_lean_names": [
+        "Preiss.uniform_dimension_reduction"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/DimensionReduction.lean"
+      ],
+      "planned_file": "Preiss/Uniform/DimensionReduction.lean"
+    },
+    "thm:flat-pseudotangent": {
+      "lean_names": [
+        "Preiss.uniform_has_flat_pseudotangent"
+      ],
+      "planned_lean_names": [
+        "Preiss.uniform_has_flat_pseudotangent"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatPseudotangent.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatPseudotangent.lean"
+    },
+    "lem:measurable-hull-holes": {
+      "lean_names": [
+        "Preiss.measure_toMeasurable_inter_eq_zero_of_disjoint"
+      ],
+      "planned_lean_names": [
+        "Preiss.measure_toMeasurable_inter_eq_zero_of_disjoint"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/MeasureHull.lean"
+      ],
+      "planned_file": "Preiss/Analysis/MeasureHull.lean"
+    },
+    "lem:hull-support-approximation": {
+      "lean_names": [
+        "Preiss.dist_badSet_rescaled_tendsto_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.dist_badSet_rescaled_tendsto_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/SupportApproximation.lean"
+      ],
+      "planned_file": "Preiss/Tangent/SupportApproximation.lean"
+    },
+    "lem:recenter": {
+      "lean_names": [
+        "Preiss.ae_recenter_dimensionalTangent"
+      ],
+      "planned_lean_names": [
+        "Preiss.ae_recenter_dimensionalTangent"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Recentering.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Recentering.lean"
+    },
+    "thm:part-a": {
+      "lean_names": [
+        "Preiss.ae_exists_flat_tangent"
+      ],
+      "planned_lean_names": [
+        "Preiss.ae_exists_flat_tangent"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Theorem/PartA.lean"
+      ],
+      "planned_file": "Preiss/Theorem/PartA.lean"
+    },
+    "lem:radial": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.uniform_radial_pushforward"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/Radial.lean"
+    },
+    "lem:gaussian-polynomial-integrable": {
+      "lean_names": [
+        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
+      ],
+      "planned_lean_names": [
+        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    "lem:gaussian-uniform-tails": {
+      "lean_names": [
+        "Preiss.gaussian_polynomial_uniform_tail"
+      ],
+      "planned_lean_names": [
+        "Preiss.gaussian_polynomial_uniform_tail"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    "lem:vague-gaussian-polynomials": {
+      "lean_names": [
+        "Preiss.vague_integral_polynomial_mul_gaussian"
+      ],
+      "planned_lean_names": [
+        "Preiss.vague_integral_polynomial_mul_gaussian"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    "lem:gaussian-parameter-derivative": {
+      "lean_names": [
+        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian"
+      ],
+      "planned_lean_names": [
+        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    "def:moments": {
+      "lean_names": [
+        "Preiss.MomentForm",
+        "Preiss.momentKernel",
+        "Preiss.gaussianMass",
+        "Preiss.gaussianMomentForm",
+        "Preiss.gaussianMomentForm_permute"
+      ],
+      "planned_lean_names": [
+        "Preiss.MomentForm",
+        "Preiss.momentKernel",
+        "Preiss.gaussianMass",
+        "Preiss.gaussianMomentForm",
+        "Preiss.gaussianMomentForm_permute"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentForms.lean"
+    },
+    "lem:moment-covariance": {
+      "lean_names": [
+        "Preiss.gaussianMomentForm_dilate",
+        "Preiss.gaussianMomentForm_smul",
+        "Preiss.gaussianMomentForm_map_linearIsometry"
+      ],
+      "planned_lean_names": [
+        "Preiss.gaussianMomentForm_dilate",
+        "Preiss.gaussianMomentForm_smul",
+        "Preiss.gaussianMomentForm_map_linearIsometry"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentCovariance.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentCovariance.lean"
+    },
+    "lem:moment-norm-bound": {
+      "lean_names": [
+        "Preiss.integrable_gaussianMomentKernel",
+        "Preiss.norm_gaussianMomentForm_le"
+      ],
+      "planned_lean_names": [
+        "Preiss.integrable_gaussianMomentKernel",
+        "Preiss.norm_gaussianMomentForm_le"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentEstimates.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentEstimates.lean"
+    },
+    "lem:gaussian-translation-series": {
+      "lean_names": [
+        "Preiss.hasSum_gaussianMoment_diagonal"
+      ],
+      "planned_lean_names": [
+        "Preiss.hasSum_gaussianMoment_diagonal"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentEstimates.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentEstimates.lean"
+    },
+    "lem:taylor-one": {
+      "lean_names": [
+        "Preiss.gaussianMoment_taylor_remainder"
+      ],
+      "planned_lean_names": [
+        "Preiss.gaussianMoment_taylor_remainder"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentEstimates.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentEstimates.lean"
+    },
+    "lem:graded-analytic-projection": {
+      "lean_names": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedGrading",
+        "Preiss.weightedComplement",
+        "Preiss.analyticAt_weightedProjection_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedGrading",
+        "Preiss.weightedComplement",
+        "Preiss.analyticAt_weightedProjection_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GradedProjection.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GradedProjection.lean"
+    },
+    "def:polynomial-feature": {
+      "lean_names": [
+        "Preiss.PolynomialFeatureIndex",
+        "Preiss.PolynomialFeatureSpace",
+        "Preiss.polynomialFeature",
+        "Preiss.polynomialFeatureBlock",
+        "Preiss.polynomialFeatureProjection",
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeatureProjection_isOrthogonalGrading"
+      ],
+      "planned_lean_names": [
+        "Preiss.PolynomialFeatureIndex",
+        "Preiss.PolynomialFeatureSpace",
+        "Preiss.polynomialFeature",
+        "Preiss.polynomialFeatureBlock",
+        "Preiss.polynomialFeatureProjection",
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeatureProjection_isOrthogonalGrading"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ],
+      "planned_file": "Preiss/Analysis/PolynomialFeatures.lean"
+    },
+    "lem:moment-feature-annihilation": {
+      "lean_names": [
+        "Preiss.supportFeatureSpan",
+        "Preiss.featureMoment",
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_vanishes_weightedComplement"
+      ],
+      "planned_lean_names": [
+        "Preiss.supportFeatureSpan",
+        "Preiss.featureMoment",
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_vanishes_weightedComplement"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentFeatures.lean"
+    },
+    "lem:moment-feature-remainder": {
+      "lean_names": [
+        "Preiss.exists_normPolynomial_feature_functionals",
+        "Preiss.featureMoment_operator_remainder"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_normPolynomial_feature_functionals",
+        "Preiss.featureMoment_operator_remainder"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/PolynomialFeatures.lean",
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentFeatures.lean"
+    },
+    "lem:taylor-two": {
+      "lean_names": [
+        "Preiss.exists_gaussianMoment_taylor_coefficients",
+        "Preiss.gaussianMomentCoefficient_unique"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_gaussianMoment_taylor_coefficients",
+        "Preiss.gaussianMomentCoefficient_unique"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentExpansion.lean"
+    },
+    "lem:moment-coefficient-vanishing": {
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt"
+      ],
+      "planned_lean_names": [
+        "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentExpansion.lean"
+    },
+    "lem:moment-support-polynomial": {
+      "lean_names": [
+        "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow"
+      ],
+      "planned_lean_names": [
+        "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentExpansion.lean"
+    },
+    "lem:scaled-moment-limits": {
+      "lean_names": [
+        "Preiss.gaussianMoment_scaled_odd_limit",
+        "Preiss.gaussianMoment_scaled_even_limit"
+      ],
+      "planned_lean_names": [
+        "Preiss.gaussianMoment_scaled_odd_limit",
+        "Preiss.gaussianMoment_scaled_even_limit"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentExpansion.lean"
+    },
+    "lem:blowdown-moment-limits": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.blowdown_gaussian_polynomial_limit"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    "lem:moment-determination": {
+      "lean_names": [
+        "Preiss.measure_eq_of_gaussian_polynomial_moments_eq"
+      ],
+      "planned_lean_names": [
+        "Preiss.measure_eq_of_gaussian_polynomial_moments_eq"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GaussianMomentDetermination.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GaussianMomentDetermination.lean"
+    },
+    "lem:infinity-compactness": {
+      "lean_names": [
+        "Preiss.exists_tangentAtInfinity"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_tangentAtInfinity"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/BlowdownCompactness.lean"
+      ],
+      "planned_file": "Preiss/Uniform/BlowdownCompactness.lean"
+    },
+    "thm:unique-infinity": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.unique_tangent_at_infinity"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    "cor:conical": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.tangent_at_infinity_conical"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    "lem:conical-moments": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.conical_gaussianMoment_homogeneous"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/ConicalMoments.lean"
+    },
+    "lem:conical-covariance": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.conical_covariance_trace_support"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/ConicalMoments.lean"
+    },
+    "lem:homogeneous-energy-radial": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.integral_gaussian_mul_homogeneous"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/Radial.lean"
+    },
+    "lem:spectral-minimizing-plane": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.trace_orthogonalComplement_minimized_topEigenspace"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Analysis/SpectralOptimization.lean"
+    },
+    "lem:small-energy-no-holes": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.dist_support_lt_of_small_gaussian_plane_energy"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/SupportProximity.lean"
+    },
+    "lem:conical-eigenvalue-rigidity": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.conical_covariance_eq_projection_of_near_eigenvector"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/ConicalGap.lean"
+    },
+    "thm:gap": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.conical_flatness_gap"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/ConicalGap.lean"
+    },
+    "lem:flat-infinity-moments": {
+      "lean_names": [
+        "Preiss.evenMomentCoefficient_eq_projection_norm"
+      ],
+      "planned_lean_names": [
+        "Preiss.evenMomentCoefficient_eq_projection_norm"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    "lem:flat-gaussian-even-moments": {
+      "lean_names": [
+        "Preiss.flat_gaussianMoment_diagonal",
+        "Preiss.flat_gaussianMoment_odd"
+      ],
+      "planned_lean_names": [
+        "Preiss.flat_gaussianMoment_diagonal",
+        "Preiss.flat_gaussianMoment_odd"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatMoments.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatMoments.lean"
+    },
+    "lem:odd-coefficients-plane-zero": {
+      "lean_names": [
+        "Preiss.oddMomentCoefficient_restrict_plane_eq_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.oddMomentCoefficient_restrict_plane_eq_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    "def:rigidity-normal-vector": {
+      "lean_names": [
+        "Preiss.IsFirstMomentNormalVector",
+        "Preiss.exists_firstMomentNormalVector"
+      ],
+      "planned_lean_names": [
+        "Preiss.IsFirstMomentNormalVector",
+        "Preiss.exists_firstMomentNormalVector"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    "lem:uniform-cylinder-identity": {
+      "lean_names": [
+        "Preiss.support_normal_sq_eq_inner"
+      ],
+      "planned_lean_names": [
+        "Preiss.support_normal_sq_eq_inner"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    "lem:moment-second-total-trace": {
+      "lean_names": [
+        "Preiss.trace_gaussianMomentForm_two",
+        "Preiss.trace_secondMomentCoefficient_eq_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.trace_gaussianMomentForm_two",
+        "Preiss.trace_secondMomentCoefficient_eq_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/MomentTrace.lean"
+      ],
+      "planned_file": "Preiss/Uniform/MomentTrace.lean"
+    },
+    "lem:moment-normal-trace": {
+      "lean_names": [
+        "Preiss.trace_secondMomentCoefficient_normal_eq"
+      ],
+      "planned_lean_names": [
+        "Preiss.trace_secondMomentCoefficient_normal_eq"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    "lem:flat-infinity-bounded-holes": {
+      "lean_names": [
+        "Preiss.exists_uniform_dist_plane_support_bound"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_uniform_dist_plane_support_bound"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    "def:rigidity-omega": {
+      "lean_names": [
+        "Preiss.RigidityOmega",
+        "Preiss.IsRigidityOmega",
+        "Preiss.exists_rigidityOmega_and_adjustedForm"
+      ],
+      "planned_lean_names": [
+        "Preiss.RigidityOmega",
+        "Preiss.IsRigidityOmega",
+        "Preiss.exists_rigidityOmega_and_adjustedForm"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+    },
+    "def:rigidity-adjusted-form": {
+      "lean_names": [
+        "Preiss.RigidityAdjustedForm",
+        "Preiss.IsRigidityAdjustedForm",
+        "Preiss.exists_rigidityOmega_and_adjustedForm"
+      ],
+      "planned_lean_names": [
+        "Preiss.RigidityAdjustedForm",
+        "Preiss.IsRigidityAdjustedForm",
+        "Preiss.exists_rigidityOmega_and_adjustedForm"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+    },
+    "lem:rigidity-mixed-gaussian-limit": {
+      "lean_names": [
+        "Preiss.mixed_gaussian_limit_eq_omega"
+      ],
+      "planned_lean_names": [
+        "Preiss.mixed_gaussian_limit_eq_omega"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean"
+    },
+    "lem:rigidity-contracted-limit-zero": {
+      "lean_names": [
+        "Preiss.contracted_gaussian_limit_eq_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.contracted_gaussian_limit_eq_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean"
+    },
+    "lem:rigidity-omega-trace-zero": {
+      "lean_names": [
+        "Preiss.integral_rigidityOmega_eq_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.integral_rigidityOmega_eq_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+    },
+    "lem:rigidity-gaussian-trace": {
+      "lean_names": [
+        "Preiss.trace_tangent_eq_integral_adjustedForm"
+      ],
+      "planned_lean_names": [
+        "Preiss.trace_tangent_eq_integral_adjustedForm"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+    },
+    "lem:rigidity-cubic-vanishing": {
+      "lean_names": [
+        "Preiss.thirdMomentCoefficient_normal_vanishes"
+      ],
+      "planned_lean_names": [
+        "Preiss.thirdMomentCoefficient_normal_vanishes"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
+    },
+    "lem:rigidity-fourth-support-identity": {
+      "lean_names": [
+        "Preiss.fourth_order_support_identity"
+      ],
+      "planned_lean_names": [
+        "Preiss.fourth_order_support_identity"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
+    },
+    "lem:rigidity-pointwise-quadratic-bound": {
+      "lean_names": [
+        "Preiss.adjustedForm_sq_le_norm_omega_sq"
+      ],
+      "planned_lean_names": [
+        "Preiss.adjustedForm_sq_le_norm_omega_sq"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ],
+      "planned_file": "Preiss/Uniform/TraceRigidity.lean"
+    },
+    "lem:rigidity-rescaled-error": {
+      "lean_names": [
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ],
+      "planned_file": "Preiss/Uniform/TraceRigidity.lean"
+    },
+    "lem:gaussian-wick-fourth": {
+      "lean_names": [
+        "Preiss.gaussian_integral_inner_pow_even",
+        "Preiss.gaussian_integral_inner_sq_mul_inner_sq"
+      ],
+      "planned_lean_names": [
+        "Preiss.gaussian_integral_inner_pow_even",
+        "Preiss.gaussian_integral_inner_sq_mul_inner_sq"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GaussianQuadraticForms.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GaussianQuadraticForms.lean"
+    },
+    "lem:rigidity-omega-reproducing": {
+      "lean_names": [
+        "Preiss.integral_inner_sq_mul_omega"
+      ],
+      "planned_lean_names": [
+        "Preiss.integral_inner_sq_mul_omega"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+    },
+    "lem:rigidity-integral-quadratic-bound": {
+      "lean_names": [
+        "Preiss.integral_adjustedForm_sq_le"
+      ],
+      "planned_lean_names": [
+        "Preiss.integral_adjustedForm_sq_le"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ],
+      "planned_file": "Preiss/Uniform/TraceRigidity.lean"
+    },
+    "lem:gaussian-quadratic-trace-bound": {
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_trace",
+        "Preiss.gaussian_integral_bilinear_sq",
+        "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq"
+      ],
+      "planned_lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_trace",
+        "Preiss.gaussian_integral_bilinear_sq",
+        "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GaussianQuadraticForms.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GaussianQuadraticForms.lean"
+    },
+    "lem:trace-rigidity": {
+      "lean_names": [
+        "Preiss.integral_adjustedForm_lower_bound",
+        "Preiss.secondMomentCoefficient_trace_lower_bound"
+      ],
+      "planned_lean_names": [
+        "Preiss.integral_adjustedForm_lower_bound",
+        "Preiss.secondMomentCoefficient_trace_lower_bound"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ],
+      "planned_file": "Preiss/Uniform/TraceRigidity.lean"
+    },
+    "thm:infinity-rigidity": {
+      "lean_names": [
+        "Preiss.flat_of_flat_at_infinity"
+      ],
+      "planned_lean_names": [
+        "Preiss.flat_of_flat_at_infinity"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/FlatAtInfinity/Rigidity.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatAtInfinity/Rigidity.lean"
+    },
+    "lem:grassmannian": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.isCompact_rankOrthogonalProjections"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Geometry/PlaneTopology.lean"
+    },
+    "def:flatness": {
+      "lean_names": [
+        "Preiss.flatness"
+      ],
+      "planned_lean_names": [
+        "Preiss.flatness"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Uniform/Flatness.lean"
+      ],
+      "planned_file": "Preiss/Uniform/Flatness.lean"
+    },
+    "lem:flatness-minimum": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.flatness_exists_minimizer"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/FlatnessContinuity.lean"
+    },
+    "lem:flatness-continuous": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.flatness_continuous"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Uniform/FlatnessContinuity.lean"
+    },
+    "lem:flatness-radius-continuous": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.continuousOn_flatness_dimensionalBlowUp"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Tangent/Flatness.lean"
+    },
+    "lem:tangent-blowdown": {
+      "lean_names": [
+        "Preiss.dimensionalTangent_of_tangentAtInfinity"
+      ],
+      "planned_lean_names": [
+        "Preiss.dimensionalTangent_of_tangentAtInfinity"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Tangent/Blowdown.lean"
+      ],
+      "planned_file": "Preiss/Tangent/Blowdown.lean"
+    },
+    "lem:greatest-crossing": {
+      "lean_names": [
+        "Preiss.exists_greatest_crossing"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_greatest_crossing"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Analysis/GreatestCrossing.lean"
+      ],
+      "planned_file": "Preiss/Analysis/GreatestCrossing.lean"
+    },
+    "lem:first-crossing": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.exists_first_crossing_sequences"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    "lem:first-crossing-ratio": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.first_crossing_ratio_tendsto_atTop"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    "lem:first-crossing-flat-infinity": {
+      "lean_names": [],
+      "planned_lean_names": [
+        "Preiss.first_crossing_limit_flat_at_infinity"
+      ],
+      "status": "pending source interface",
+      "files": [],
+      "planned_file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    "thm:part-b": {
+      "lean_names": [
+        "Preiss.all_tangents_flat_of_one"
+      ],
+      "planned_lean_names": [
+        "Preiss.all_tangents_flat_of_one"
+      ],
+      "status": "source interface written",
+      "files": [
+        "Preiss/Theorem/PartB.lean"
+      ],
+      "planned_file": "Preiss/Theorem/PartB.lean"
+    },
+    "gmt:barycenter-quadratic-bound": {
+      "lean_names": [
+        "SUniformAux.abs_inner_integral_le"
+      ],
+      "status": "existing upstream",
+      "files": [
+        ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      ]
+    },
+    "gmt:quadratic-support-tangent": {
+      "lean_names": [
+        "SUniformAux.support_tangent_subset_of_estimate"
+      ],
+      "status": "existing upstream",
+      "files": [
+        ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      ]
+    },
+    "gmt:zero-barycenter-hyperplane": {
+      "lean_names": [
+        "SUniformAux.support_subset_of_integral_inner_eq_zero"
+      ],
+      "status": "existing upstream",
+      "files": [
+        ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      ]
+    },
+    "def:moment-coefficients": {
+      "lean_names": [
+        "Preiss.MomentCoefficientFamily",
+        "Preiss.momentTaylorPolynomial",
+        "Preiss.IsMomentExpansion"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Uniform/MomentCoefficients.lean"
+      ]
+    },
+    "lem:moment-form-evaluation": {
+      "lean_names": [
+        "Preiss.gaussianMomentForm_apply"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ]
+    },
+    "lem:plane-scaling": {
+      "lean_names": [
+        "Preiss.isFlat_dimensionalBlowup",
+        "Preiss.isFlat_of_dimensionalBlowup_zero",
+        "Preiss.isFlat_map_linearIsometry"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Tangent/FlatScaling.lean"
+      ]
+    },
+    "def:bilinear-trace": {
+      "lean_names": [
+        "Preiss.bilinearTrace",
+        "Preiss.restrictBilinear",
+        "Preiss.momentBilinear"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/BilinearTrace.lean",
+        "Preiss/Uniform/MomentForms.lean"
+      ]
+    },
+    "lem:bilinear-trace-basis": {
+      "lean_names": [
+        "Preiss.bilinearTrace_eq_sum_diagonal"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/BilinearTrace.lean"
+      ]
+    }
+  },
+  "pending": [
+    "lem:radial",
+    "lem:blowdown-moment-limits",
+    "thm:unique-infinity",
+    "cor:conical",
+    "lem:conical-moments",
+    "lem:conical-covariance",
+    "lem:homogeneous-energy-radial",
+    "lem:spectral-minimizing-plane",
+    "lem:small-energy-no-holes",
+    "lem:conical-eigenvalue-rigidity",
+    "thm:gap",
+    "lem:grassmannian",
+    "lem:flatness-minimum",
+    "lem:flatness-continuous",
+    "lem:flatness-radius-continuous",
+    "lem:first-crossing",
+    "lem:first-crossing-ratio",
+    "lem:first-crossing-flat-infinity"
+  ]
+}

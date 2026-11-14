@@ -1,60 +1,51 @@
-This is a standard [LeanBlueprint](https://github.com/PatrickMassot/leanblueprint) project.
-The canonical mathematical sources are [src/content.tex](src/content.tex) and
-[src/upstream.tex](src/upstream.tex). The shared site is
-https://tdwag123.github.io/PreissFormalization/.
+# LeanBlueprint
 
-Install Graphviz and `pip install -r blueprint/requirements.txt`. From the repository root,
-LeanBlueprint's CLI can build and serve the site once the project is in a Git repository:
+This is a standard [LeanBlueprint](https://github.com/PatrickMassot/leanblueprint) project.
+The canonical mathematical document is `src/content.tex`, which includes the proof
+sketch, architecture, upstream inventory, and audited plan. The shared site is
+[tdwag123.github.io/PreissFormalization](https://tdwag123.github.io/PreissFormalization/).
+
+Install Graphviz and `pip install -r blueprint/requirements.txt`. From the repository root:
 
 ```console
+python scripts/test_source_checks.py
+python scripts/check_blueprint.py
+python scripts/declaration_links.py
 leanblueprint web
 python scripts/declaration_links.py --site
+python scripts/export_core_graph.py --site
+python scripts/check_module_plan.py --site
 python scripts/check_render.py
 leanblueprint serve
 ```
 
-The equivalent renderer invocation also works without Git: run `plastex -c plastex.cfg web.tex`
-from `blueprint/src`. This loads the actual LeanBlueprint and dependency-graph plugins.
-The generated site is `blueprint/web/index.html`; its dependency graph links to individual statements.
-GitHub Actions validates and renders every pull request, and publishes `main` to GitHub Pages.
-Lean links open a portable declaration viewer with pinned upstream source links and explicit
-status labels. It shows source syntax, not elaborated doc-gen types; surrounding implicit
-parameters and instances must be read in the linked source.
+Alternatively, run `plastex -c plastex.cfg web.tex` from `blueprint/src`.
+The configuration loads the actual LeanBlueprint and dependency-graph plugins.
+The generated HTML is `blueprint/web/index.html`. All TeX inputs are adjacent to
+`web.tex` so the fallback input resolver also works without a full TeX distribution.
 
-`src/print.tex` also supports a print build when a LaTeX toolchain is available.
-The HTML build is the primary output for this initial blueprint.
+The full interactive graph includes companion results. `preiss-core.svg` contains
+only ancestors of the final theorem; `modules.svg` is the proposed import graph.
+The corresponding JSON files support independent inspection. The architecture is
+proposed; actual source imports may evolve while interfaces are elaborated.
 
-The lightweight graph exports use the same source:
+After editing mathematical dependencies or Lean declarations, regenerate the committed data:
 
 ```console
 python scripts/check_blueprint.py --write
-python scripts/check_blueprint.py
 python scripts/declaration_links.py --write
+python scripts/export_core_graph.py
 dot -Tsvg blueprint/dependencies.dot -o blueprint/dependencies.svg
-lake build Preiss PreissBlueprint
-lake env lean tmp/blueprint_checks.lean
 ```
 
-`dependencies.json` distinguishes statement and intended proof dependencies. In the standalone
-graph, green means formalized upstream (source audited), blue means a local definition, amber means a draft
-Lean statement, and gray means a mathematical plan without a finalized Lean declaration.
-These colors do not certify proofs. `PreissBlueprint.preiss` depends on `sorryAx`.
+The declaration index links upstream declarations to pinned sources and local
+statements to their canonical files. Its viewer displays source syntax, not doc-gen's
+elaborated types; implicit parameters and instances remain visible in the source file.
+Source-derived status never certifies a proof. The separate Lean workflow elaborates
+every local module and inspects `#print axioms` output, including transitive `sorryAx`.
+Definitions with placeholder dependencies and new nonstandard axioms fail that audit.
+Theorems with explicit obligations are reported as unfinished.
 
-The 43 existing GMT nodes use `\leanok` markers for declarations and proof bodies present in
-upstream source. New planned theorems have no such markers. This source audit does not claim a
-complete fresh kernel build of upstream or successful elaboration of the downstream draft library.
-The first-crossing argument and technical moment identities still need more detailed Lean
-interfaces; their requirements and source sections are recorded.
-
-The graph contains 89 nodes and 261 edges. Its 62 GMT declarations include density bounds,
-Hausdorff density estimates, finite-restriction regularity, Vitali covering, vague compactness,
-tangent existence/matching, good sets, Mattila 14.7 and 14.9, radial integral equality, and uniform
-measure dimension reduction. New adapters preserve the blow-up witnesses absent from existing
-existential dimension-reduction statements. Edges show selected mathematical dependencies and
-proposed downstream uses, not an exhaustive extraction of Lean proof terms.
-
-`declarations.json` is a committed source index for all 101 linked declarations. Regenerate it
-with `python scripts/declaration_links.py --write` after `lake update` if upstream revisions or
-Lean declarations change. Site builds validate this index without downloading the Lean toolchain.
-See `validation.json` for the incomplete Lean-build status; the Pages workflow checks documentation,
-not Lean proofs.
+The Pages workflow validates, renders, and publishes the documentation on `main`.
+It does not establish that the mathematics is proved. See `validation.json` and the
+Lean workflow's kernel-status artifact for their separate scopes.

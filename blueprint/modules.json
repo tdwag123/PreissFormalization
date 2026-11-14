@@ -1,0 +1,3926 @@
+{
+  "status": "Proposed imports, including current source imports; acyclic. Source presence does not certify elaboration or proof.",
+  "modules": [
+    {
+      "module": "Preiss.Geometry.Euclidean",
+      "local_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.Normed.Lp.MeasurableSpace"
+      ],
+      "gmt_imports": [],
+      "purpose": "Euclidean space abbreviation and minimal measurable/metric instances.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/Euclidean.lean",
+      "nodes": [],
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.Normed.Lp.MeasurableSpace"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.BilinearTrace",
+      "local_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Dual",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.Normed.Operator.Bilinear",
+        "Mathlib.LinearAlgebra.Trace"
+      ],
+      "gmt_imports": [],
+      "scope": "core",
+      "purpose": "Canonical interface module.",
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Dual",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.Normed.Operator.Bilinear",
+        "Mathlib.LinearAlgebra.Trace"
+      ],
+      "source_exists": true,
+      "file": "Preiss/Analysis/BilinearTrace.lean",
+      "nodes": []
+    },
+    {
+      "module": "Preiss.Analysis.GradedProjection",
+      "local_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Analytic.Basic",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ],
+      "gmt_imports": [],
+      "purpose": "Generic analytic extension of weighted complementary projections in a finite orthogonal grading.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/GradedProjection.lean",
+      "nodes": [
+        "lem:graded-analytic-projection"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Analysis.Analytic.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.GreatestCrossing",
+      "local_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Topology.Order.IntermediateValue"
+      ],
+      "gmt_imports": [],
+      "purpose": "Greatest crossing of a continuous real function with an entire later interval below the threshold.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/GreatestCrossing.lean",
+      "nodes": [
+        "lem:greatest-crossing"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Mathlib.Topology.Order.IntermediateValue"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.MeasureHull",
+      "local_imports": [],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Basic"
+      ],
+      "gmt_imports": [],
+      "purpose": "Finite outer-mass measurable hulls preserve disjoint measurable holes; general measure-space lemma.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/MeasureHull.lean",
+      "nodes": [
+        "lem:measurable-hull-holes"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Measure.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas1",
+      "local_imports": [],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "GMT: lower growth excludes full support",
+      "scope": "core",
+      "file": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+      "nodes": [
+        "gmt:support-not-full"
+      ],
+      "source_exists": false
+    },
+    {
+      "module": "FormalizingGMT.MarstrandTheorem",
+      "local_imports": [],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "GMT: vanishing half-space integrals force a hyperplane",
+      "scope": "core",
+      "file": "FormalizingGMT/MarstrandTheorem.lean",
+      "nodes": [
+        "gmt:zero-barycenter-hyperplane",
+        "gmt:barycenter-quadratic-bound",
+        "gmt:quadratic-support-tangent"
+      ],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Geometry.Planes",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.LinearAlgebra.FiniteDimensional.Basic"
+      ],
+      "gmt_imports": [],
+      "purpose": "Plane subtype and finrank facts; no rectifiability, measure, or tangent definitions.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/Planes.lean",
+      "nodes": [
+        "def:plane"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Geometry.LipschitzExtension",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.MetricSpace.Lipschitz"
+      ],
+      "gmt_imports": [],
+      "purpose": "Coordinatewise extension of subset-domain Euclidean Lipschitz maps.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/LipschitzExtension.lean",
+      "nodes": [
+        "lem:domain-extension"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Mathlib.Topology.MetricSpace.Lipschitz"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.Defs",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.Topology.MetricSpace.Lipschitz"
+      ],
+      "gmt_imports": [],
+      "purpose": "LipschitzPiece on a subtype domain, canonical countable rectifiability, global coverage convenience, rectifiable measures via AC and a rectifiable carrier.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/Defs.lean",
+      "nodes": [
+        "def:coverage",
+        "def:parametrized-coverage",
+        "def:rectifiable"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Mathlib.MeasureTheory.Measure.Hausdorff"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Density.PowerComparison",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Covering.Vitali",
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "gmt_imports": [],
+      "purpose": "Pure measure-theoretic local power-bound comparison with Hausdorff measure.",
+      "scope": "core",
+      "notes": "State bounds directly, without importing GMT density predicates. Mathlib covering suffices for this leaf; a GMT variant can remain an optional adapter.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Density/PowerComparison.lean",
+      "nodes": [
+        "lem:density-measure-comparison"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.MeasureTheory.Covering.Vitali",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Density.Defs",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.Densities.Basic"
+      ],
+      "purpose": "Reuse GMT lower/upper density predicates; project positive finite density wrappers.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": true,
+      "file": "Preiss/Density/Defs.lean",
+      "nodes": [
+        "def:positive-density"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "FormalizingGMT.Densities.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Blowup",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Map"
+      ],
+      "gmt_imports": [],
+      "purpose": "Fixed-dimensional blowup definition using the GMT blowUpMap.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": true,
+      "file": "Preiss/Tangent/Blowup.lean",
+      "nodes": [
+        "def:dimensional-blowup"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Mathlib.MeasureTheory.Measure.Map"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.Vague.CompactTests",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Moving compact tests and common compact mass bounds.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/Vague/CompactTests.lean",
+      "nodes": [
+        "lem:vague-moving-tests"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.Vague.Support",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Support approximation and support limit with lower ball bounds.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/Vague/Support.lean",
+      "nodes": [
+        "lem:vague-support-approximation",
+        "lem:vague-support-limit"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Moments",
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exp",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic"
+      ],
+      "gmt_imports": [],
+      "purpose": "Existing pure scalar gaussianMoment definition; no tangent, uniform, or GMT imports.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/Moments.lean",
+      "nodes": [],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Exp"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.GaussianQuadraticForms",
+      "local_imports": [
+        "Preiss.Analysis.BilinearTrace"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Spectrum",
+        "Mathlib.Probability.Distributions.Gaussian.Multivariate"
+      ],
+      "gmt_imports": [],
+      "purpose": "General covariance-one Gaussian even/Wick moments and symmetric quadratic trace inequality; no uniform moment imports.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "nodes": [
+        "lem:gaussian-wick-fourth",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Analysis.BilinearTrace",
+        "Mathlib.Probability.Distributions.Gaussian.Multivariate"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.PolynomialFeatures",
+      "local_imports": [
+        "Preiss.Analysis.GradedProjection",
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Sqrt"
+      ],
+      "gmt_imports": [],
+      "purpose": "Finite Euclidean feature blocks and exact power-pairing formula; no measure imports.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "nodes": [
+        "def:polynomial-feature"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Analysis.GradedProjection",
+        "Mathlib.Analysis.SpecialFunctions.Sqrt"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Geometry.Projections",
+      "local_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ],
+      "gmt_imports": [],
+      "purpose": "Orthogonal projection API and continuity in finite-dimensional parameters.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/Projections.lean",
+      "nodes": [],
+      "current_source_imports": [
+        "Preiss.Geometry.Planes",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Analysis.InnerProductSpace.Adjoint"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Geometry.PlaneMeasure",
+      "local_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace",
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+        "Mathlib.MeasureTheory.Measure.Map"
+      ],
+      "gmt_imports": [],
+      "purpose": "Intrinsic-to-ambient Hausdorff restriction; plane/Haar normalization, ball powers and sphere-null facts.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/PlaneMeasure.lean",
+      "nodes": [
+        "lem:plane-hausdorff"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Planes",
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+        "Mathlib.MeasureTheory.Measure.Map"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Geometry.FlatMeasure",
+      "local_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Hausdorff"
+      ],
+      "gmt_imports": [],
+      "purpose": "Flat measure predicate only; measure-theoretic facts follow in downstream modules.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/FlatMeasure.lean",
+      "nodes": [
+        "def:flat"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Planes",
+        "Mathlib.MeasureTheory.Measure.Hausdorff"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.GraphDefs",
+      "local_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Orthogonal",
+        "Mathlib.Topology.MetricSpace.Lipschitz"
+      ],
+      "gmt_imports": [],
+      "purpose": "Full Lipschitz graph predicate, separated from graph theorems.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/GraphDefs.lean",
+      "nodes": [
+        "def:lipschitz-graph"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Planes",
+        "Mathlib.Analysis.InnerProductSpace.Orthogonal"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.WeakApproximation.Defs",
+      "local_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "gmt_imports": [],
+      "purpose": "Generic measure-based two-clause weak linear approximation; set specialization using H^m restriction.",
+      "scope": "core",
+      "notes": "Canonical name Preiss.MeasureWeaklyLinearlyApproximableAt; Preiss.WeaklyLinearlyApproximableAt is the Hausdorff restriction specialization.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/WeakApproximation/Defs.lean",
+      "nodes": [
+        "def:weak-approximation"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Planes",
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.Basic",
+      "local_imports": [
+        "Preiss.Rectifiability.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Heredity, null-set invariance, countable unions and basic measure/carrier closure API.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/Basic.lean",
+      "nodes": [
+        "lem:carrier-closure",
+        "lem:carrier-calculus"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.Zero",
+      "local_imports": [
+        "Preiss.Rectifiability.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "scope": "core",
+      "purpose": "Canonical interface module.",
+      "current_source_imports": [
+        "Preiss.Rectifiability.Defs"
+      ],
+      "source_exists": true,
+      "file": "Preiss/Rectifiability/Zero.lean",
+      "nodes": [
+        "lem:zero-measure"
+      ]
+    },
+    {
+      "module": "Preiss.Density.HausdorffComparison",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Density.PowerComparison"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Finite upper density implies Hausdorff absolute continuity; density-point corollaries of pure power-bound comparisons.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Density/HausdorffComparison.lean",
+      "nodes": [
+        "lem:absolute-continuity"
+      ],
+      "current_source_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Density.PowerComparison"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Density.Adapters",
+      "local_imports": [
+        "Preiss.Density.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "purpose": "Root-owned density_iff_upstream and density_iff_openBall_limit.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Density/Adapters.lean",
+      "nodes": [
+        "lem:density-bridge"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Density.Defs"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Density.Defs",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Density.Dimension",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Rectifiability.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Dimension zero",
+      "scope": "core",
+      "file": "Preiss/Density/Dimension.lean",
+      "nodes": [
+        "lem:zero-dimension",
+        "lem:excess-dimension"
+      ],
+      "current_source_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Rectifiability.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Defs",
+      "local_imports": [
+        "Preiss.Tangent.Blowup"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Dimensional tangent and tangent-at-infinity predicates.",
+      "scope": "core",
+      "notes": "Remove IsFlat to Geometry.FlatMeasure and IsUnitUniform to a uniform-measure definition file; do not import MarstrandTheorem here.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": true,
+      "file": "Preiss/Tangent/Defs.lean",
+      "nodes": [
+        "def:dimensional-tangent",
+        "def:tangent-at-infinity"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Blowup",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Algebra",
+      "local_imports": [
+        "Preiss.Tangent.Blowup"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Map",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "purpose": "Composition, finite scalar multiplication, isometric covariance and nonzero-radius inverse identities for dimensionalBlowup.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/Algebra.lean",
+      "nodes": [
+        "lem:blowup-composition"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Blowup"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Blowup",
+        "Mathlib.MeasureTheory.Measure.Map"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Defs",
+      "local_imports": [
+        "Preiss.Tangent.Blowup"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.MeasureTheory.Measure.Support"
+      ],
+      "gmt_imports": [],
+      "purpose": "Pure closed-ball definition of IsUnitUniform and exact dimensional scaling definition of IsConical.",
+      "notes": "Definition allows m=0; adapters to IsSUniform require 0<m.",
+      "scope": "core",
+      "file": "Preiss/Uniform/Defs.lean",
+      "nodes": [
+        "def:unit-uniform",
+        "def:conical"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Tangent.Blowup"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Tangent.Blowup",
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.GaussianGrowth",
+      "local_imports": [
+        "Preiss.Analysis.Vague.CompactTests",
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Polynomial-growth Gaussian integrability, uniform tails, vague test extension and positive-parameter differentiation.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/GaussianGrowth.lean",
+      "nodes": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:gaussian-uniform-tails",
+        "lem:gaussian-parameter-derivative",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.Vague.CompactTests"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Geometry.Euclidean",
+        "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence",
+        "Mathlib.Algebra.MvPolynomial.Eval"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.Vague.Metrization",
+      "local_imports": [
+        "Preiss.Analysis.Vague.CompactTests"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.MetricSpace.Defs"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Countable determining tests, metric, diagonal selection; no uniform-measure compactness.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/Vague/Metrization.lean",
+      "nodes": [
+        "lem:vague-countable-metric",
+        "lem:vague-diagonal"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.Vague.CompactTests"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Analysis.Vague.CompactTests",
+        "Mathlib.Topology.MetricSpace.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Continuity",
+      "local_imports": [
+        "Preiss.Analysis.Vague.CompactTests",
+        "Preiss.Tangent.Blowup"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Joint positive-radius continuity of translated blow-up maps and finite scalar factors.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/Continuity.lean",
+      "nodes": [
+        "lem:vague-moving-blowups"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Blowup"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.Vague.CompactTests"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Blowup",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Geometry.PlaneTopology",
+      "local_imports": [
+        "Preiss.Geometry.Projections"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "Mathlib.Analysis.InnerProductSpace.Spectrum"
+      ],
+      "gmt_imports": [],
+      "purpose": "Compact metric space of planes represented by self-adjoint idempotents with fixed rank.",
+      "scope": "core",
+      "notes": "Common foundation for Chapter5 closed-goodsets and PartB flatness; no dependence on tangent or uniform measures.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/PlaneTopology.lean",
+      "nodes": [
+        "lem:grassmannian"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Projections",
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "Mathlib.Analysis.InnerProductSpace.Spectrum"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Geometry.Cones",
+      "local_imports": [
+        "Preiss.Geometry.Projections"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "gmt_imports": [],
+      "purpose": "Cone and tube definitions, translations, scaling, inclusion geometry.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/Cones.lean",
+      "nodes": [
+        "def:cone"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Projections",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Geometry.Cylinders",
+      "local_imports": [
+        "Preiss.Geometry.Projections"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Spectrum"
+      ],
+      "gmt_imports": [],
+      "purpose": "Equal-dimensional projection and empty-cylinder geometry; no measures.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Geometry/Cylinders.lean",
+      "nodes": [
+        "lem:empty-cylinder-direction"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Projections",
+        "Mathlib.Analysis.InnerProductSpace.Spectrum"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.SpectralOptimization",
+      "local_imports": [
+        "Preiss.Geometry.Projections"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Spectrum"
+      ],
+      "gmt_imports": [],
+      "purpose": "Top eigenspaces minimize complement trace of a positive symmetric form.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/SpectralOptimization.lean",
+      "nodes": [
+        "lem:spectral-minimizing-plane"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes"
+      ],
+      "proof_local_imports": [
+        "Preiss.Geometry.Projections"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Rectifiability.WeakApproximation.Basic",
+      "local_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Aperture slack, local lower power bounds, elementary invariances and negligible-deletion estimate.",
+      "scope": "core",
+      "notes": "Conclude direct power bounds here; GMT density-language corollaries go into HausdorffInputs or Density adapters.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
+      "nodes": [],
+      "current_source_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.Approximation",
+      "local_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "scope": "core",
+      "purpose": "Canonical interface module.",
+      "current_source_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Defs"
+      ],
+      "source_exists": true,
+      "file": "Preiss/Rectifiability/Approximation.lean",
+      "nodes": []
+    },
+    {
+      "module": "Preiss.Rectifiability.EuclideanCarrier",
+      "local_imports": [
+        "Preiss.Geometry.LipschitzExtension",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Rectifiability.Basic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Compactness.SigmaCompact"
+      ],
+      "gmt_imports": [],
+      "purpose": "Borel sigma-finite Euclidean carrier via countable compact-image cover.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
+      "nodes": [
+        "lem:borel-carrier"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Basic",
+        "Preiss.Geometry.LipschitzExtension",
+        "Preiss.Geometry.PlaneMeasure",
+        "Mathlib.Topology.Compactness.SigmaCompact",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.Graphs",
+      "local_imports": [
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.Projections",
+        "Preiss.Rectifiability.Basic",
+        "Preiss.Rectifiability.GraphDefs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Graph parametrization, rectifiability, closedness and local finite Hausdorff measure.",
+      "scope": "core",
+      "notes": "Graph predicate lives in GraphDefs.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/Graphs.lean",
+      "nodes": [
+        "lem:graph-parametrization",
+        "lem:graph-borel-finite",
+        "lem:graph-rectifiable"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Basic",
+        "Preiss.Geometry.Projections",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Rectifiability.GraphDefs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.PurelyUnrectifiable",
+      "local_imports": [
+        "Preiss.Rectifiability.Basic"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Canonical pure predicate testing all countably rectifiable sets, heredity and intersections.",
+      "scope": "core",
+      "notes": "No image-to-graph equivalence dependency. Graph tests are a corollary wherever Graphs is imported.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "nodes": [
+        "def:purely-unrectifiable",
+        "lem:pure-basic"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Density.FinitePieces",
+      "local_imports": [
+        "Preiss.Density.HausdorffComparison"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas2"
+      ],
+      "purpose": "Borel density strata and countable finite-Hausdorff comparable pieces.",
+      "scope": "core",
+      "notes": "Can narrow GMT import if upstream density good-set API moves to a smaller file; do not import FormalizingGMT umbrella.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": true,
+      "file": "Preiss/Density/FinitePieces.lean",
+      "nodes": [
+        "lem:finite-pieces"
+      ],
+      "current_source_imports": [
+        "Preiss.Density.HausdorffComparison",
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas2"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Existence",
+      "local_imports": [
+        "Preiss.Density.Adapters",
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic",
+        "FormalizingGMT.TangentMeasures.Doubling"
+      ],
+      "purpose": "Root-owned tangent_exists at positive finite density points.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/Existence.lean",
+      "nodes": [
+        "lem:tangent-existence"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Density.Adapters"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "proof_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Doubling"
+      ],
+      "current_source_imports": [
+        "Preiss.Density.Defs",
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Restriction",
+      "local_imports": [
+        "Preiss.Tangent.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.MatchingTangents"
+      ],
+      "purpose": "Restriction and compact-test perturbation adapters, retaining fixed normalization where required.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": true,
+      "file": "Preiss/Tangent/Restriction.lean",
+      "nodes": [],
+      "current_source_imports": [
+        "Preiss.Tangent.Defs",
+        "FormalizingGMT.TangentMeasures.MatchingTangents"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.SupportApproximation",
+      "local_imports": [
+        "Preiss.Analysis.MeasureHull",
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Defs"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas2",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Density-one measurable hull gives approximation of tangent support by arbitrary bad-center sets.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/SupportApproximation.lean",
+      "nodes": [
+        "lem:hull-support-approximation"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.MeasureHull",
+        "Preiss.Density.Defs"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas2",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Defs",
+        "Preiss.Density.Defs",
+        "Preiss.Analysis.MeasureHull",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.FlatScaling",
+      "local_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Blowup"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Flat measure and normalized plane measure covariance under dilations/isometries; outward wrapper over generic algebra.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/FlatScaling.lean",
+      "nodes": [
+        "lem:plane-scaling"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Tangent.Blowup"
+      ],
+      "proof_local_imports": [
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Tangent.Algebra"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Tangent.Blowup",
+        "Preiss.Geometry.FlatMeasure"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Scaling",
+      "local_imports": [
+        "Preiss.Tangent.Algebra",
+        "Preiss.Uniform.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Unit uniformity and conicality under support-centered dimensional scaling; separates uniform predicates from generic blow-up algebra.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/Scaling.lean",
+      "nodes": [],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Algebra"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.Defs",
+        "Preiss.Tangent.Algebra"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.GMTAdapters",
+      "local_imports": [
+        "Preiss.Density.Adapters",
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "purpose": "Root-owned unit-uniform equivalence and ae_tangent_uniform adapter; explicit legacy boundary.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/GMTAdapters.lean",
+      "nodes": [
+        "lem:unit-uniform-adapter",
+        "lem:uniform-adapter"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Density.Adapters"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.Defs",
+        "Preiss.Density.Defs",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Analysis.GaussianMomentDetermination",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.ContinuousMap.StoneWeierstrass"
+      ],
+      "gmt_imports": [],
+      "purpose": "Weighted polynomial moments determine polynomial-growth measures; incremented Gaussian-rate repair.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Analysis/GaussianMomentDetermination.lean",
+      "nodes": [
+        "lem:moment-determination"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Analysis.GaussianGrowth"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.MomentForms",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.Moments"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.LinearMap",
+        "Mathlib.Analysis.Normed.Module.Multilinear.Basic",
+        "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic"
+      ],
+      "gmt_imports": [],
+      "purpose": "Continuous multilinear packaging of scalar moments, permutation symmetry, and diagonal evaluation.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/MomentForms.lean",
+      "nodes": [
+        "def:moments"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Uniform.Moments"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.Moments",
+        "Mathlib.Analysis.InnerProductSpace.LinearMap",
+        "Mathlib.Analysis.Normed.Module.Multilinear.Basic",
+        "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Compactness",
+      "local_imports": [
+        "Preiss.Analysis.Vague.Metrization",
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Tangent.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.Densities.Basic",
+        "FormalizingGMT.TangentMeasures.Basic",
+        "FormalizingGMT.WeakConvergence.Basic",
+        "FormalizingGMT.WeakConvergence.CompactnessCriterion"
+      ],
+      "purpose": "Fixed-dimensional subsequence compactness under pointwise density bounds.",
+      "scope": "core",
+      "notes": "GMT TangentMeasures.Basic already imports weak compactness; no uniform-measure imports.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Tangent/Compactness.lean",
+      "nodes": [
+        "lem:dimensional-compactness",
+        "lem:tangent-closed",
+        "lem:dimensional-tangent-closed",
+        "lem:dimensional-tangent-dilation",
+        "lem:dimensional-tangent-compactness"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Defs",
+        "Preiss.Density.Defs",
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Flatness",
+      "local_imports": [
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Geometry.Planes"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Topology.ContinuousMap.CompactlySupported",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "gmt_imports": [],
+      "purpose": "Only scalar flatnessEnergy/flatness definitions; remove existing Moments import.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/Flatness.lean",
+      "nodes": [
+        "def:flatness"
+      ],
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "statement_local_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "proof_local_imports": [
+        "Preiss.Geometry.PlaneTopology"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Geometry.Planes",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Topology.ContinuousMap.CompactlySupported",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.ProjectionEstimate",
+      "local_imports": [
+        "Preiss.Geometry.Cones",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.Projections"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic"
+      ],
+      "gmt_imports": [],
+      "purpose": "Small projected direction implies thin projected slab and quantitative Hausdorff bound.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "nodes": [
+        "lem:projected-tube-slab-bound"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Projections",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.Cones",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
+      "local_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Basic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Covering.Besicovitch",
+        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "gmt_imports": [],
+      "purpose": "Generic a.e. restriction/deletion stability under explicitly assumed local upper power bounds.",
+      "scope": "core",
+      "notes": "The finite-Hausdorff specialization without an extra upper-bound hypothesis belongs in HausdorffInputs; this keeps the generic proof modern.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "nodes": [
+        "lem:weak-approximation-deletion"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Basic",
+        "Mathlib.MeasureTheory.Covering.Besicovitch",
+        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+      "local_imports": [
+        "Preiss.Geometry.Cones",
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Rectifiability.WeakApproximation.Basic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Basic",
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Semicontinuity.Basic"
+      ],
+      "gmt_imports": [],
+      "purpose": "Moving open/closed set mass semicontinuity; closed relaxed good sets; aperture-slack exhaustion and compact uniform selection.",
+      "scope": "core",
+      "notes": "Finite regular measure hypothesis is explicit. Do not silently assume existential-plane predicates Borel.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "nodes": [
+        "def:weak-approximation-good-set",
+        "lem:tube-support-upgrade",
+        "lem:closed-weak-approximation-good-set",
+        "lem:weak-approximation-good-exhaustion",
+        "lem:uniform-compact-selection"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Basic",
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Geometry.Cones",
+        "Mathlib.Topology.Semicontinuity.Basic",
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.DensityRepresentation",
+      "local_imports": [
+        "Preiss.Rectifiability.EuclideanCarrier"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym"
+      ],
+      "gmt_imports": [],
+      "purpose": "RN representation on Borel sigma-finite carriers and bounded-density strata.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/DensityRepresentation.lean",
+      "nodes": [
+        "lem:representation"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.EuclideanCarrier",
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.Cones",
+      "local_imports": [
+        "Preiss.Geometry.Cones",
+        "Preiss.Geometry.LipschitzExtension",
+        "Preiss.Rectifiability.Graphs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Pairwise cone condition gives graph containment.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/Cones.lean",
+      "nodes": [
+        "lem:cone-graph"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Cones",
+        "Preiss.Geometry.LipschitzExtension",
+        "Preiss.Rectifiability.Graphs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.GraphArea",
+      "local_imports": [
+        "Preiss.Rectifiability.Graphs"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Calculus.Rademacher",
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "Mathlib.MeasureTheory.Function.Jacobian"
+      ],
+      "gmt_imports": [],
+      "purpose": "Affine and Lipschitz injective graph Jacobian area formulas.",
+      "scope": "companion",
+      "notes": "Jacobian.lean supplies generic derivative-control partitions and same-dimension change of variables; it does not provide the codimension graph area formula.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/GraphArea.lean",
+      "nodes": [
+        "lem:graph-affine-area",
+        "lem:graph-area"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Graphs",
+        "Mathlib.Analysis.Calculus.Rademacher",
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "Mathlib.MeasureTheory.Function.Jacobian"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.Decomposition",
+      "local_imports": [
+        "Preiss.Rectifiability.EuclideanCarrier",
+        "Preiss.Rectifiability.PurelyUnrectifiable"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "gmt_imports": [],
+      "purpose": "Borel finite-measure rectifiable/pure decomposition and uniqueness.",
+      "scope": "core",
+      "notes": "EuclideanCarrier turns arbitrary rectifiable test sets into Borel rectifiable supersets modulo null sets when establishing purity.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/Decomposition.lean",
+      "nodes": [
+        "lem:decomposition"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.PurelyUnrectifiable",
+        "Preiss.Rectifiability.EuclideanCarrier",
+        "Mathlib.MeasureTheory.Measure.Regular"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.DensityTransfer",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Density.PowerComparison",
+        "Preiss.Tangent.Restriction"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym"
+      ],
+      "gmt_imports": [],
+      "purpose": "Arbitrary-scalar matching adapters for measure changes and exact-multiplier fixed-normalization transfer.",
+      "scope": "core_and_companion",
+      "notes": "The normalized transfer requires finite upper density; arbitrary-scalar GMT matching has its own precise hypotheses.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Tangent/DensityTransfer.lean",
+      "nodes": [
+        "lem:normalized-density-transfer"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Restriction",
+        "Preiss.Density.Defs",
+        "Preiss.Density.PowerComparison",
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Compactness",
+      "local_imports": [
+        "Preiss.Analysis.Vague.Metrization",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.Scaling"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic",
+        "FormalizingGMT.WeakConvergence.CompactnessCriterion"
+      ],
+      "purpose": "Unit uniform vague closedness, support-near-zero variant, compactness and finite covers with ball constants in [c,C].",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "nodes": [
+        "lem:uniform-vague-closed",
+        "lem:uniform-near-support-compactness",
+        "lem:uniform-compactness",
+        "lem:uniform-finite-metric-covers"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.Vague.Metrization",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Uniform.Scaling"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.CompactnessCriterion"
+      ],
+      "current_source_imports": [
+        "Preiss.Uniform.Scaling",
+        "Preiss.Analysis.Vague.Metrization",
+        "FormalizingGMT.WeakConvergence.CompactnessCriterion"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Transport",
+      "local_imports": [
+        "Preiss.Geometry.Projections",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.Scaling"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "purpose": "Isometric hyperplane transport with explicit map/pushforward witnesses.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/Transport.lean",
+      "nodes": [
+        "lem:hyperplane-transport-map"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Blowup"
+      ],
+      "proof_local_imports": [
+        "Preiss.Geometry.Projections",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.Scaling",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Radial",
+      "local_imports": [
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "purpose": "Radial distribution, Gaussian mass, and homogeneous integrand energy identity.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/Radial.lean",
+      "nodes": [
+        "lem:radial",
+        "lem:homogeneous-energy-radial"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Uniform.MomentCovariance",
+      "local_imports": [
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Blowup",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Moment scalar invariance, isometric covariance and dilation formula.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/MomentCovariance.lean",
+      "nodes": [
+        "lem:moment-covariance"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Blowup",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Algebra"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.MomentForms",
+        "Preiss.Tangent.Blowup"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.MomentCoefficients",
+      "local_imports": [
+        "Preiss.Uniform.MomentForms"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Asymptotics.Defs"
+      ],
+      "gmt_imports": [],
+      "purpose": "Explicit coefficient-family data and IsMomentExpansion proposition; no hidden choices from unproved existence.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/MomentCoefficients.lean",
+      "nodes": [
+        "def:moment-coefficients"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.MomentForms",
+        "Mathlib.Analysis.Asymptotics.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.FlatMoments",
+      "local_imports": [
+        "Preiss.Analysis.GaussianQuadraticForms",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.Projections",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Specialize intrinsic Gaussian moments to normalized flat measures; keeps Gaussian analysis independent of uniform moment forms.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatMoments.lean",
+      "nodes": [
+        "lem:flat-gaussian-even-moments"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianQuadraticForms",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.Projections"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.MomentForms",
+        "Preiss.Geometry.Projections",
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Normalization",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Defs",
+        "Preiss.Tangent.FlatScaling"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic",
+        "FormalizingGMT.TangentMeasures.Doubling"
+      ],
+      "purpose": "Compare arbitrary-scalar and fixed-dimensional tangent conventions.",
+      "scope": "core",
+      "notes": "Does not require flatness or uniformity.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": true,
+      "file": "Preiss/Tangent/Normalization.lean",
+      "nodes": [
+        "lem:tangent-ray"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Defs",
+        "Preiss.Density.Defs",
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.FlatApproximation",
+      "local_imports": [
+        "Preiss.Geometry.Cones",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Rectifiability.WeakApproximation.Defs",
+        "Preiss.Tangent.Compactness"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Flat-limit tube and moving-ball estimates; pointwise flat-tangent-to-weak-approximation implication.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Tangent/FlatApproximation.lean",
+      "nodes": [
+        "lem:flat-limit-tube",
+        "lem:flat-limit-moving-balls",
+        "lem:flat-to-approximation"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Compactness",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Rectifiability.WeakApproximation.Defs",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.Cones"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Blowdown",
+      "local_imports": [
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "A nonzero regular blow-down of a dimensional tangent remains a tangent; no uniform moment/uniqueness dependency.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/Blowdown.lean",
+      "nodes": [
+        "lem:tangent-blowdown"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Compactness"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Tangent.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.FlatnessContinuity",
+      "local_imports": [
+        "Preiss.Analysis.Vague.CompactTests",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Uniform.Flatness"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Attained minimum, flat vanishing, unit-ball bound and vague continuity; independent of moment machinery.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatnessContinuity.lean",
+      "nodes": [
+        "lem:flatness-minimum",
+        "lem:flatness-continuous"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.Flatness"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.Vague.CompactTests",
+        "Preiss.Geometry.PlaneTopology"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Density.PowerComparison",
+        "Preiss.Rectifiability.WeakApproximation.Restriction"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.Densities.HausdorffUpperDensityInside",
+        "FormalizingGMT.Densities.HausdorffUpperDensityOutside"
+      ],
+      "purpose": "Finite-Hausdorff upper power bounds, outside density zero, and restriction-specialization adapters.",
+      "scope": "core",
+      "notes": "Thin GMT-consuming bridge; should not import any tangent or uniform-measure module.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": true,
+      "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "nodes": [
+        "lem:weak-approximation-lower-density",
+        "lem:weak-approximation-restrict-ae",
+        "lem:packing-base-point"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Restriction",
+        "Preiss.Density.Defs",
+        "Preiss.Density.PowerComparison",
+        "FormalizingGMT.Densities.HausdorffUpperDensityInside",
+        "FormalizingGMT.Densities.HausdorffUpperDensityOutside"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
+      "local_imports": [
+        "Preiss.Density.PowerComparison",
+        "Preiss.Geometry.Cylinders",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Rectifiability.WeakApproximation.Restriction",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Covering.Vitali"
+      ],
+      "gmt_imports": [],
+      "purpose": "Nested compact preparation under direct upper-power bounds; hole disks, discarded radius sums, column packing and contradiction.",
+      "scope": "core",
+      "notes": "Generic quantitative inputs keep this file GMT-free. Preserve parameter order and local scales; final finite-Hausdorff upper-density facts are passed in.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "nodes": [
+        "lem:nested-compact-approximation",
+        "lem:projection-hole-cover",
+        "lem:discarded-cylinder-sum",
+        "lem:column-packing",
+        "lem:packing-contradiction"
+      ],
+      "current_source_imports": [
+        "Preiss.Geometry.Cylinders",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization",
+        "Preiss.Rectifiability.WeakApproximation.Restriction",
+        "Preiss.Density.PowerComparison",
+        "Mathlib.MeasureTheory.Covering.Vitali"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+      "local_imports": [
+        "Preiss.Rectifiability.Cones",
+        "Preiss.Rectifiability.ProjectionEstimate",
+        "Preiss.Rectifiability.PurelyUnrectifiable",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Covering.Besicovitch",
+        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace"
+      ],
+      "gmt_imports": [],
+      "purpose": "Cone escape and every-plane null projection for pure weakly approximable finite-Hausdorff sets.",
+      "scope": "core",
+      "notes": "This proof uses actual a.e. disjoint covering and projection distortion, not a general Besicovitch-Federer projection theorem.",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "nodes": [
+        "lem:pure-cone-escape",
+        "lem:pure-wla-null-projection"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.PurelyUnrectifiable",
+        "Preiss.Rectifiability.Cones",
+        "Preiss.Rectifiability.ProjectionEstimate",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization",
+        "Mathlib.MeasureTheory.Covering.Besicovitch",
+        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.GraphCover",
+      "local_imports": [
+        "Preiss.Rectifiability.Cones",
+        "Preiss.Rectifiability.EuclideanCarrier"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Calculus.Rademacher",
+        "Mathlib.MeasureTheory.Covering.Vitali",
+        "Mathlib.MeasureTheory.Function.Jacobian"
+      ],
+      "gmt_imports": [],
+      "purpose": "Null image and rank-deficient image lemmas; full-rank graph partition; image/graph equivalence.",
+      "scope": "companion",
+      "notes": "",
+      "gmt_in_import_closure": false,
+      "classification": "pure_modern",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/GraphCover.lean",
+      "nodes": [
+        "lem:lipschitz-null-image",
+        "lem:full-rank-graph-pieces",
+        "lem:rank-deficient-image-null",
+        "lem:graphs"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Cones",
+        "Preiss.Rectifiability.EuclideanCarrier",
+        "Mathlib.Analysis.Calculus.Rademacher",
+        "Mathlib.MeasureTheory.Covering.Vitali",
+        "Mathlib.MeasureTheory.Function.Jacobian"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.ConeCriterion",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Rectifiability.Cones"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Approximate cone criterion",
+      "scope": "core",
+      "file": "Preiss/Rectifiability/ConeCriterion.lean",
+      "nodes": [
+        "lem:cone-criterion"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Cones",
+        "Preiss.Density.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.GraphBlowup",
+      "local_imports": [
+        "Preiss.Rectifiability.GraphArea",
+        "Preiss.Tangent.Restriction"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Graph Hausdorff measure blow-up limit via differentiability and Jacobian differentiation.",
+      "scope": "companion",
+      "notes": "Legacy boundary is needed only for the adopted GMT weak-convergence and blow-up APIs.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/GraphBlowup.lean",
+      "nodes": [
+        "lem:graph-blowup"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.GraphArea",
+        "Preiss.Tangent.Restriction"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.ScalingOrbit",
+      "local_imports": [
+        "Preiss.Analysis.Vague.Metrization",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Support-centered scaling orbit closure and transitivity; contains no dimension reduction or flat pseudotangent theorem.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/ScalingOrbit.lean",
+      "nodes": [
+        "lem:pseudotangent-transitive"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Blowup"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.Vague.Metrization",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Uniform.Compactness"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.BlowdownCompactness",
+      "local_imports": [
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Compactness"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Existence of unit uniform blow-down limits, independent of moments.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/BlowdownCompactness.lean",
+      "nodes": [
+        "lem:infinity-compactness"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Algebra",
+        "Preiss.Uniform.Compactness"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.Compactness",
+        "Preiss.Tangent.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.Classification",
+      "local_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Tangent.FlatScaling",
+        "Preiss.Uniform.Transport"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "purpose": "Only plane-supported full-dimensional uniform classification, reusing GMT.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/Classification.lean",
+      "nodes": [
+        "lem:plane-supported-uniform-flat"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.FlatScaling",
+        "Preiss.Uniform.Transport"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "current_source_imports": [
+        "Preiss.Uniform.Transport",
+        "Preiss.Geometry.PlaneMeasure",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.MomentEstimates",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentForms",
+        "Preiss.Uniform.Radial"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.Algebra.InfiniteSum.Real"
+      ],
+      "gmt_imports": [],
+      "purpose": "Moment norm bound, Gaussian translation series and finite Taylor remainder; no coefficient expansion import.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/MomentEstimates.lean",
+      "nodes": [
+        "lem:moment-norm-bound",
+        "lem:gaussian-translation-series",
+        "lem:taylor-one"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.Radial"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.MomentForms",
+        "Preiss.Uniform.Defs",
+        "Mathlib.Topology.Algebra.InfiniteSum.Real"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.TangentNormalization",
+      "local_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.Scaling"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem",
+        "FormalizingGMT.TangentMeasures.Doubling",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "purpose": "Common ball constant q at a density point and the shared unit normalization mu/q.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/TangentNormalization.lean",
+      "nodes": [
+        "lem:dimensional-tangent-ball-constant",
+        "lem:density-normalization"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Doubling",
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "current_source_imports": [
+        "Preiss.Uniform.Scaling",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Geometry.FlatMeasure",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.TangentUniformity",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "A.e. uniformity adapter from existing GMT density theorem, plus tangent existence.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/TangentUniformity.lean",
+      "nodes": [],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "proof_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Tangent.Flatness",
+      "local_imports": [
+        "Preiss.Tangent.Continuity",
+        "Preiss.Uniform.FlatnessContinuity"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Positive-radius continuity of r \u21a6 flatness(dimensionalBlowup ... r).",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/Flatness.lean",
+      "nodes": [
+        "lem:flatness-radius-continuous"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Blowup",
+        "Preiss.Uniform.Flatness"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Continuity",
+        "Preiss.Uniform.FlatnessContinuity"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+      "local_imports": [
+        "Preiss.Rectifiability.Decomposition",
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "Preiss.Rectifiability.MarstrandMattila.ProjectionNull"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Final finite-Hausdorff weak-approximation criterion.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+      "nodes": [
+        "thm:mm-set"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.Decomposition",
+        "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+        "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.TangentNecessity",
+      "local_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Rectifiability.DensityRepresentation",
+        "Preiss.Rectifiability.GraphBlowup",
+        "Preiss.Rectifiability.GraphCover",
+        "Preiss.Tangent.DensityTransfer",
+        "Preiss.Tangent.Normalization"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Rectifiable normalized flat limits, existing density and one common tangent plane.",
+      "scope": "companion",
+      "notes": "No Marstrand-Mattila or Preiss theorem imported into this necessity proof.",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/TangentNecessity.lean",
+      "nodes": [
+        "thm:rectifiable-blowup",
+        "cor:rectifiable-tangent-plane"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.GraphCover",
+        "Preiss.Rectifiability.DensityRepresentation",
+        "Preiss.Rectifiability.GraphBlowup",
+        "Preiss.Tangent.DensityTransfer",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.SupportProximity",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Compactness"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Small Gaussian plane energy gives no holes in a bounded piece of the plane.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/SupportProximity.lean",
+      "nodes": [
+        "lem:small-energy-no-holes"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Compactness"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Uniform.MomentFeatures",
+      "local_imports": [
+        "Preiss.Analysis.PolynomialFeatures",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentEstimates",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Asymptotics.Defs"
+      ],
+      "gmt_imports": [],
+      "purpose": "Support-feature span, weighted annihilator and finite-support-basis operator remainder.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "nodes": [
+        "lem:moment-feature-annihilation",
+        "lem:moment-feature-remainder"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Analysis.PolynomialFeatures",
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Analysis.PolynomialFeatures",
+        "Preiss.Uniform.MomentForms",
+        "Preiss.Uniform.Defs",
+        "Mathlib.Analysis.Asymptotics.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.DimensionReduction",
+      "local_imports": [
+        "Preiss.Tangent.ScalingOrbit",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.TangentNormalization",
+        "Preiss.Uniform.Transport"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem",
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas1"
+      ],
+      "purpose": "Half-space and corrected hyperplane witnesses, then one-step codimension reduction.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "nodes": [
+        "lem:halfspace-tangent-witness",
+        "lem:hyperplane-tangent-lineage",
+        "lem:uniform-reduction"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.ScalingOrbit",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.TangentNormalization",
+        "Preiss.Uniform.Transport"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "proof_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas1"
+      ],
+      "current_source_imports": [
+        "Preiss.Uniform.TangentNormalization",
+        "Preiss.Uniform.Transport",
+        "Preiss.Tangent.ScalingOrbit",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Tangent.Recentering",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Tangent.Defs",
+        "Preiss.Tangent.SupportApproximation",
+        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.TangentNormalization",
+        "Preiss.Uniform.TangentUniformity"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas1"
+      ],
+      "purpose": "A.e. recentering for all dimensional tangents using arbitrary-set measurable hulls.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Tangent/Recentering.lean",
+      "nodes": [
+        "lem:recenter"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_boundary",
+      "statement_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Tangent.SupportApproximation",
+        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.TangentNormalization",
+        "Preiss.Uniform.TangentUniformity"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas1"
+      ],
+      "current_source_imports": [
+        "Preiss.Tangent.Defs",
+        "Preiss.Density.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+      "local_imports": [
+        "Preiss.Density.FinitePieces",
+        "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+        "Preiss.Tangent.DensityTransfer",
+        "Preiss.Tangent.FlatApproximation"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Transfer to finite Hausdorff pieces and assemble the measure criterion.",
+      "scope": "core",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "nodes": [
+        "lem:finite-piece-transfer",
+        "thm:mm-measure"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+        "Preiss.Density.FinitePieces",
+        "Preiss.Tangent.FlatApproximation",
+        "Preiss.Tangent.DensityTransfer"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.MomentExpansion",
+      "local_imports": [
+        "Preiss.Analysis.GradedProjection",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentEstimates",
+        "Preiss.Uniform.MomentFeatures"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Coherent moment coefficient family, operator little-o expansion, degree vanishings and support identities.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/MomentExpansion.lean",
+      "nodes": [
+        "lem:taylor-two",
+        "lem:moment-coefficient-vanishing",
+        "lem:moment-support-polynomial",
+        "lem:scaled-moment-limits"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GradedProjection",
+        "Preiss.Uniform.MomentEstimates",
+        "Preiss.Uniform.MomentFeatures"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.Defs"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.FlatPseudotangent",
+      "local_imports": [
+        "Preiss.Tangent.ScalingOrbit",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.DimensionReduction"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Induction on ambient codimension assembles a flat member of the scaling-orbit closure.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatPseudotangent.lean",
+      "nodes": [
+        "thm:flat-pseudotangent"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.ScalingOrbit",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.DimensionReduction"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.DimensionReduction",
+        "Preiss.Uniform.Classification"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Rectifiability.TangentCharacterization",
+      "local_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+        "Preiss.Rectifiability.TangentNecessity"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Combine necessity and sufficiency for the full density-bound/flat-tangent iff.",
+      "scope": "companion",
+      "notes": "",
+      "gmt_in_import_closure": true,
+      "classification": "legacy_gmt_consumer",
+      "direct_legacy_boundary": false,
+      "file": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "nodes": [
+        "thm:rectifiable-iff-flat"
+      ],
+      "current_source_imports": [
+        "Preiss.Rectifiability.TangentNecessity",
+        "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.ConicalMoments",
+      "local_imports": [
+        "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.MomentForms",
+        "Preiss.Uniform.Radial"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Conical homogeneity/parity and positive covariance trace m.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/ConicalMoments.lean",
+      "nodes": [
+        "lem:conical-moments",
+        "lem:conical-covariance"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.Radial"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Uniform.FlatAtInfinity.Basic",
+      "local_imports": [
+        "Preiss.Analysis.BilinearTrace",
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.Projections",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatMoments",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentExpansion"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Even/odd limiting coefficients, normal first-moment vector, cylinder identities, normal trace and bounded holes. No TraceRigidity/Rigidity import.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "nodes": [
+        "lem:flat-infinity-moments",
+        "lem:odd-coefficients-plane-zero",
+        "def:rigidity-normal-vector",
+        "lem:uniform-cylinder-identity",
+        "lem:moment-normal-trace",
+        "lem:flat-infinity-bounded-holes"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentCoefficients"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.FlatMoments",
+        "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentExpansion"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.Defs",
+        "Preiss.Tangent.Defs",
+        "Preiss.Geometry.Projections",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Analysis.BilinearTrace"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.MomentTrace",
+      "local_imports": [
+        "Preiss.Analysis.BilinearTrace",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.Radial"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Total second-moment trace formula and vanishing second Taylor trace; independent of flat-at-infinity hypotheses.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/MomentTrace.lean",
+      "nodes": [
+        "lem:moment-second-total-trace"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.Radial"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.Defs",
+        "Preiss.Analysis.BilinearTrace"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.BlowdownMoments",
+      "local_imports": [
+        "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.Radial"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Gaussian polynomial limits for divergent dilations; no uniqueness-at-infinity import.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "nodes": [
+        "lem:blowdown-moment-limits"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Blowup",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "proof_local_imports": [
+        "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.Radial"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Theorem.PartA",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Existence",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Tangent.Recentering",
+        "Preiss.Uniform.FlatPseudotangent",
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "purpose": "Assemble almost-everywhere existence of a flat tangent.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Theorem/PartA.lean",
+      "nodes": [
+        "thm:part-a"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.FlatMeasure"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Existence",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Tangent.Recentering",
+        "Preiss.Uniform.FlatPseudotangent",
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.FlatMeasure",
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.ConicalGap",
+      "local_imports": [
+        "Preiss.Analysis.SpectralOptimization",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.ConicalMoments",
+        "Preiss.Uniform.Radial",
+        "Preiss.Uniform.SupportProximity"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Elementary eigenvalue rigidity and dimension-uniform conical flatness gap.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/ConicalGap.lean",
+      "nodes": [
+        "lem:conical-eigenvalue-rigidity",
+        "thm:gap"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.SpectralOptimization",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.ConicalMoments",
+        "Preiss.Uniform.Radial",
+        "Preiss.Uniform.SupportProximity"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Uniform.FlatAtInfinity.TraceData",
+      "local_imports": [
+        "Preiss.Uniform.FlatAtInfinity.Basic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Data.Fin.VecNotation"
+      ],
+      "gmt_imports": [],
+      "purpose": "Typed continuous bilinear normal map omega and adjusted real form; definitions separated from trace estimates.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "nodes": [
+        "def:rigidity-omega",
+        "def:rigidity-adjusted-form"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.MomentCoefficients"
+      ],
+      "proof_local_imports": [],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Mathlib.Data.Fin.VecNotation"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.TangentAtInfinity",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianMomentDetermination",
+        "Preiss.Analysis.Vague.Metrization",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Uniform.BlowdownCompactness",
+        "Preiss.Uniform.BlowdownMoments"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Unique full blow-down convergence and conicality.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/TangentAtInfinity.lean",
+      "nodes": [
+        "thm:unique-infinity",
+        "cor:conical"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianMomentDetermination",
+        "Preiss.Analysis.Vague.Metrization",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Uniform.BlowdownCompactness",
+        "Preiss.Uniform.BlowdownMoments"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.MomentExpansion"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Mixed cubic vanishings and the fourth-order support identity.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean",
+      "nodes": [
+        "lem:rigidity-cubic-vanishing",
+        "lem:rigidity-fourth-support-identity"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.MomentCoefficients"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.MomentExpansion"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.MomentExpansion"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Mixed Gaussian limit and derivative-contracted vanishing limit.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean",
+      "nodes": [
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:rigidity-contracted-limit-zero"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.MomentCoefficients"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.MomentExpansion"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+      "local_imports": [
+        "Preiss.Analysis.GaussianQuadraticForms",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+        "Preiss.Uniform.FlatMoments"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Zero omega trace, adjusted-form Gaussian mean and omega reproducing identity.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
+      "nodes": [
+        "lem:rigidity-omega-trace-zero",
+        "lem:rigidity-gaussian-trace",
+        "lem:rigidity-omega-reproducing"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.MomentCoefficients"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianQuadraticForms",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+        "Preiss.Uniform.FlatMoments"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Analysis.GaussianQuadraticForms"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.TraceRigidity",
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianQuadraticForms",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Pointwise inequality, rescaled error, integral inequality and positive total-trace lower bound.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/TraceRigidity.lean",
+      "nodes": [
+        "lem:rigidity-pointwise-quadratic-bound",
+        "lem:rigidity-rescaled-error",
+        "lem:rigidity-integral-quadratic-bound",
+        "lem:trace-rigidity"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.MomentCoefficients"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianQuadraticForms",
+        "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
+        "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Analysis.GaussianQuadraticForms"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Uniform.FlatAtInfinity.Rigidity",
+      "local_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.MomentTrace",
+        "Preiss.Uniform.TraceRigidity"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Final b=0 and plane-supported classification; consumes Basic/TraceRigidity without a reverse import.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Uniform/FlatAtInfinity/Rigidity.lean",
+      "nodes": [
+        "thm:infinity-rigidity"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.Planes",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.MomentTrace",
+        "Preiss.Uniform.TraceRigidity"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Uniform.Defs",
+        "Preiss.Tangent.Defs",
+        "Preiss.Geometry.FlatMeasure"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Theorem.FirstCrossing",
+      "local_imports": [
+        "Preiss.Analysis.GreatestCrossing",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Blowdown",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Tangent.Flatness",
+        "Preiss.Uniform.ConicalGap",
+        "Preiss.Uniform.FlatAtInfinity.Rigidity",
+        "Preiss.Uniform.FlatnessContinuity",
+        "Preiss.Uniform.TangentAtInfinity",
+        "Preiss.Uniform.TangentNormalization"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "First-crossing scales, divergent scale ratios, and flatness at infinity of the crossing limit.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "nodes": [
+        "lem:first-crossing",
+        "lem:first-crossing-ratio",
+        "lem:first-crossing-flat-infinity"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Tangent.Defs",
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.Flatness"
+      ],
+      "proof_local_imports": [
+        "Preiss.Analysis.GreatestCrossing",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Blowdown",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Continuity",
+        "Preiss.Tangent.Flatness",
+        "Preiss.Uniform.ConicalGap",
+        "Preiss.Uniform.FlatAtInfinity.Rigidity",
+        "Preiss.Uniform.FlatnessContinuity",
+        "Preiss.Uniform.TangentAtInfinity",
+        "Preiss.Uniform.TangentNormalization"
+      ],
+      "statement_gmt_imports": [],
+      "proof_gmt_imports": [],
+      "source_exists": false
+    },
+    {
+      "module": "Preiss.Theorem.PartB",
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Theorem.FirstCrossing",
+        "Preiss.Uniform.FlatAtInfinity.Rigidity",
+        "Preiss.Uniform.TangentNormalization"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "purpose": "Assemble one-flat-tangent implies all tangents flat.",
+      "notes": "",
+      "scope": "core",
+      "file": "Preiss/Theorem/PartB.lean",
+      "nodes": [
+        "thm:part-b"
+      ],
+      "gmt_in_import_closure": true,
+      "classification": "legacy_dependent",
+      "statement_local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.Euclidean",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Tangent.Defs"
+      ],
+      "proof_local_imports": [
+        "Preiss.Tangent.Normalization",
+        "Preiss.Theorem.FirstCrossing",
+        "Preiss.Uniform.FlatAtInfinity.Rigidity",
+        "Preiss.Uniform.TangentNormalization"
+      ],
+      "statement_gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "proof_gmt_imports": [],
+      "current_source_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Geometry.FlatMeasure",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "source_exists": true
+    },
+    {
+      "module": "Preiss.Main",
+      "local_imports": [
+        "Preiss.Density.Dimension",
+        "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+        "Preiss.Rectifiability.Zero",
+        "Preiss.Theorem.PartA",
+        "Preiss.Theorem.PartB",
+        "Preiss.Uniform.GMTAdapters"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "purpose": "Preiss",
+      "scope": "core",
+      "file": "Preiss/Main.lean",
+      "nodes": [
+        "thm:preiss"
+      ],
+      "current_source_imports": [
+        "Preiss.Density.Dimension",
+        "Preiss.Rectifiability.Zero",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+        "Preiss.Theorem.PartA",
+        "Preiss.Theorem.PartB"
+      ],
+      "source_exists": true
+    }
+  ],
+  "topological_order": [
+    "Preiss.Geometry.Euclidean",
+    "Preiss.Analysis.BilinearTrace",
+    "Preiss.Analysis.GradedProjection",
+    "Preiss.Analysis.GreatestCrossing",
+    "Preiss.Analysis.MeasureHull",
+    "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas1",
+    "FormalizingGMT.MarstrandTheorem",
+    "Preiss.Geometry.Planes",
+    "Preiss.Geometry.LipschitzExtension",
+    "Preiss.Rectifiability.Defs",
+    "Preiss.Density.PowerComparison",
+    "Preiss.Density.Defs",
+    "Preiss.Tangent.Blowup",
+    "Preiss.Analysis.Vague.CompactTests",
+    "Preiss.Analysis.Vague.Support",
+    "Preiss.Uniform.Moments",
+    "Preiss.Analysis.GaussianQuadraticForms",
+    "Preiss.Analysis.PolynomialFeatures",
+    "Preiss.Geometry.Projections",
+    "Preiss.Geometry.PlaneMeasure",
+    "Preiss.Geometry.FlatMeasure",
+    "Preiss.Rectifiability.GraphDefs",
+    "Preiss.Rectifiability.WeakApproximation.Defs",
+    "Preiss.Rectifiability.Basic",
+    "Preiss.Rectifiability.Zero",
+    "Preiss.Density.HausdorffComparison",
+    "Preiss.Density.Adapters",
+    "Preiss.Density.Dimension",
+    "Preiss.Tangent.Defs",
+    "Preiss.Tangent.Algebra",
+    "Preiss.Uniform.Defs",
+    "Preiss.Analysis.GaussianGrowth",
+    "Preiss.Analysis.Vague.Metrization",
+    "Preiss.Tangent.Continuity",
+    "Preiss.Geometry.PlaneTopology",
+    "Preiss.Geometry.Cones",
+    "Preiss.Geometry.Cylinders",
+    "Preiss.Analysis.SpectralOptimization",
+    "Preiss.Rectifiability.WeakApproximation.Basic",
+    "Preiss.Rectifiability.Approximation",
+    "Preiss.Rectifiability.EuclideanCarrier",
+    "Preiss.Rectifiability.Graphs",
+    "Preiss.Rectifiability.PurelyUnrectifiable",
+    "Preiss.Density.FinitePieces",
+    "Preiss.Tangent.Existence",
+    "Preiss.Tangent.Restriction",
+    "Preiss.Tangent.SupportApproximation",
+    "Preiss.Tangent.FlatScaling",
+    "Preiss.Uniform.Scaling",
+    "Preiss.Uniform.GMTAdapters",
+    "Preiss.Analysis.GaussianMomentDetermination",
+    "Preiss.Uniform.MomentForms",
+    "Preiss.Tangent.Compactness",
+    "Preiss.Uniform.Flatness",
+    "Preiss.Rectifiability.ProjectionEstimate",
+    "Preiss.Rectifiability.WeakApproximation.Restriction",
+    "Preiss.Rectifiability.WeakApproximation.Uniformization",
+    "Preiss.Rectifiability.DensityRepresentation",
+    "Preiss.Rectifiability.Cones",
+    "Preiss.Rectifiability.GraphArea",
+    "Preiss.Rectifiability.Decomposition",
+    "Preiss.Tangent.DensityTransfer",
+    "Preiss.Uniform.Compactness",
+    "Preiss.Uniform.Transport",
+    "Preiss.Uniform.Radial",
+    "Preiss.Uniform.MomentCovariance",
+    "Preiss.Uniform.MomentCoefficients",
+    "Preiss.Uniform.FlatMoments",
+    "Preiss.Tangent.Normalization",
+    "Preiss.Tangent.FlatApproximation",
+    "Preiss.Tangent.Blowdown",
+    "Preiss.Uniform.FlatnessContinuity",
+    "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+    "Preiss.Rectifiability.MarstrandMattila.Packing",
+    "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+    "Preiss.Rectifiability.GraphCover",
+    "Preiss.Rectifiability.ConeCriterion",
+    "Preiss.Rectifiability.GraphBlowup",
+    "Preiss.Tangent.ScalingOrbit",
+    "Preiss.Uniform.BlowdownCompactness",
+    "Preiss.Uniform.Classification",
+    "Preiss.Uniform.MomentEstimates",
+    "Preiss.Uniform.TangentNormalization",
+    "Preiss.Uniform.TangentUniformity",
+    "Preiss.Tangent.Flatness",
+    "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+    "Preiss.Rectifiability.TangentNecessity",
+    "Preiss.Uniform.SupportProximity",
+    "Preiss.Uniform.MomentFeatures",
+    "Preiss.Uniform.DimensionReduction",
+    "Preiss.Tangent.Recentering",
+    "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+    "Preiss.Uniform.MomentExpansion",
+    "Preiss.Uniform.FlatPseudotangent",
+    "Preiss.Rectifiability.TangentCharacterization",
+    "Preiss.Uniform.ConicalMoments",
+    "Preiss.Uniform.FlatAtInfinity.Basic",
+    "Preiss.Uniform.MomentTrace",
+    "Preiss.Uniform.BlowdownMoments",
+    "Preiss.Theorem.PartA",
+    "Preiss.Uniform.ConicalGap",
+    "Preiss.Uniform.FlatAtInfinity.TraceData",
+    "Preiss.Uniform.TangentAtInfinity",
+    "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
+    "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+    "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+    "Preiss.Uniform.TraceRigidity",
+    "Preiss.Uniform.FlatAtInfinity.Rigidity",
+    "Preiss.Theorem.FirstCrossing",
+    "Preiss.Theorem.PartB",
+    "Preiss.Main"
+  ],
+  "node_modules": {
+    "def:plane": "Preiss/Geometry/Planes.lean",
+    "def:coverage": "Preiss/Rectifiability/Defs.lean",
+    "def:parametrized-coverage": "Preiss/Rectifiability/Defs.lean",
+    "lem:domain-extension": "Preiss/Geometry/LipschitzExtension.lean",
+    "lem:gaussian-polynomial-integrable": "Preiss/Analysis/GaussianGrowth.lean",
+    "lem:graded-analytic-projection": "Preiss/Analysis/GradedProjection.lean",
+    "lem:greatest-crossing": "Preiss/Analysis/GreatestCrossing.lean",
+    "def:polynomial-feature": "Preiss/Analysis/PolynomialFeatures.lean",
+    "def:unit-uniform": "Preiss/Uniform/Defs.lean",
+    "def:dimensional-blowup": "Preiss/Tangent/Blowup.lean",
+    "lem:gaussian-wick-fourth": "Preiss/Analysis/GaussianQuadraticForms.lean",
+    "lem:spectral-minimizing-plane": "Preiss/Analysis/SpectralOptimization.lean",
+    "def:lipschitz-graph": "Preiss/Rectifiability/GraphDefs.lean",
+    "lem:grassmannian": "Preiss/Geometry/PlaneTopology.lean",
+    "def:cone": "Preiss/Geometry/Cones.lean",
+    "lem:plane-hausdorff": "Preiss/Geometry/PlaneMeasure.lean",
+    "def:weak-approximation-good-set": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+    "lem:tube-support-upgrade": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+    "lem:empty-cylinder-direction": "Preiss/Geometry/Cylinders.lean",
+    "def:flat": "Preiss/Geometry/FlatMeasure.lean",
+    "def:weak-approximation": "Preiss/Rectifiability/WeakApproximation/Defs.lean",
+    "def:rectifiable": "Preiss/Rectifiability/Defs.lean",
+    "def:positive-density": "Preiss/Density/Defs.lean",
+    "gmt:support-not-full": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+    "gmt:zero-barycenter-hyperplane": "FormalizingGMT/MarstrandTheorem.lean",
+    "lem:density-measure-comparison": "Preiss/Density/PowerComparison.lean",
+    "def:moments": "Preiss/Uniform/MomentForms.lean",
+    "lem:moment-determination": "Preiss/Analysis/GaussianMomentDetermination.lean",
+    "lem:gaussian-uniform-tails": "Preiss/Analysis/GaussianGrowth.lean",
+    "lem:gaussian-parameter-derivative": "Preiss/Analysis/GaussianGrowth.lean",
+    "lem:vague-countable-metric": "Preiss/Analysis/Vague/Metrization.lean",
+    "lem:measurable-hull-holes": "Preiss/Analysis/MeasureHull.lean",
+    "lem:unit-uniform-adapter": "Preiss/Uniform/GMTAdapters.lean",
+    "def:dimensional-tangent": "Preiss/Tangent/Defs.lean",
+    "def:tangent-at-infinity": "Preiss/Tangent/Defs.lean",
+    "def:conical": "Preiss/Uniform/Defs.lean",
+    "lem:gaussian-quadratic-trace-bound": "Preiss/Analysis/GaussianQuadraticForms.lean",
+    "lem:graph-parametrization": "Preiss/Rectifiability/Graphs.lean",
+    "def:flatness": "Preiss/Uniform/Flatness.lean",
+    "lem:cone-graph": "Preiss/Rectifiability/Cones.lean",
+    "lem:projected-tube-slab-bound": "Preiss/Rectifiability/ProjectionEstimate.lean",
+    "lem:lipschitz-null-image": "Preiss/Rectifiability/GraphCover.lean",
+    "lem:graph-affine-area": "Preiss/Rectifiability/GraphArea.lean",
+    "lem:closed-weak-approximation-good-set": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+    "lem:weak-approximation-lower-density": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+    "lem:weak-approximation-deletion": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+    "lem:weak-approximation-good-exhaustion": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+    "lem:carrier-closure": "Preiss/Rectifiability/Basic.lean",
+    "def:purely-unrectifiable": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+    "lem:zero-measure": "Preiss/Rectifiability/Zero.lean",
+    "lem:zero-dimension": "Preiss/Density/Dimension.lean",
+    "lem:density-bridge": "Preiss/Density/Adapters.lean",
+    "lem:radial": "Preiss/Uniform/Radial.lean",
+    "gmt:barycenter-quadratic-bound": "FormalizingGMT/MarstrandTheorem.lean",
+    "lem:absolute-continuity": "Preiss/Density/HausdorffComparison.lean",
+    "lem:moment-feature-annihilation": "Preiss/Uniform/MomentFeatures.lean",
+    "lem:flat-gaussian-even-moments": "Preiss/Uniform/FlatMoments.lean",
+    "def:moment-coefficients": "Preiss/Uniform/MomentCoefficients.lean",
+    "lem:flat-limit-tube": "Preiss/Tangent/FlatApproximation.lean",
+    "lem:flat-limit-moving-balls": "Preiss/Tangent/FlatApproximation.lean",
+    "lem:vague-support-approximation": "Preiss/Analysis/Vague/Support.lean",
+    "lem:vague-support-limit": "Preiss/Analysis/Vague/Support.lean",
+    "lem:vague-moving-tests": "Preiss/Analysis/Vague/CompactTests.lean",
+    "lem:vague-diagonal": "Preiss/Analysis/Vague/Metrization.lean",
+    "lem:dimensional-compactness": "Preiss/Tangent/Compactness.lean",
+    "lem:blowup-composition": "Preiss/Tangent/Algebra.lean",
+    "gmt:quadratic-support-tangent": "FormalizingGMT/MarstrandTheorem.lean",
+    "lem:hull-support-approximation": "Preiss/Tangent/SupportApproximation.lean",
+    "lem:graph-borel-finite": "Preiss/Rectifiability/Graphs.lean",
+    "lem:graph-rectifiable": "Preiss/Rectifiability/Graphs.lean",
+    "lem:full-rank-graph-pieces": "Preiss/Rectifiability/GraphCover.lean",
+    "lem:rank-deficient-image-null": "Preiss/Rectifiability/GraphCover.lean",
+    "lem:graph-area": "Preiss/Rectifiability/GraphArea.lean",
+    "lem:borel-carrier": "Preiss/Rectifiability/EuclideanCarrier.lean",
+    "lem:finite-pieces": "Preiss/Density/FinitePieces.lean",
+    "lem:uniform-compact-selection": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+    "lem:moment-norm-bound": "Preiss/Uniform/MomentEstimates.lean",
+    "lem:homogeneous-energy-radial": "Preiss/Uniform/Radial.lean",
+    "lem:excess-dimension": "Preiss/Density/Dimension.lean",
+    "lem:weak-approximation-restrict-ae": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+    "lem:cone-criterion": "Preiss/Rectifiability/ConeCriterion.lean",
+    "lem:packing-base-point": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+    "lem:uniform-vague-closed": "Preiss/Uniform/Compactness.lean",
+    "lem:uniform-near-support-compactness": "Preiss/Uniform/Compactness.lean",
+    "lem:vague-moving-blowups": "Preiss/Tangent/Continuity.lean",
+    "lem:vague-gaussian-polynomials": "Preiss/Analysis/GaussianGrowth.lean",
+    "lem:flatness-minimum": "Preiss/Uniform/FlatnessContinuity.lean",
+    "lem:tangent-closed": "Preiss/Tangent/Compactness.lean",
+    "lem:dimensional-tangent-closed": "Preiss/Tangent/Compactness.lean",
+    "lem:normalized-density-transfer": "Preiss/Tangent/DensityTransfer.lean",
+    "lem:flat-to-approximation": "Preiss/Tangent/FlatApproximation.lean",
+    "lem:plane-scaling": "Preiss/Tangent/FlatScaling.lean",
+    "lem:hyperplane-transport-map": "Preiss/Uniform/Transport.lean",
+    "lem:moment-covariance": "Preiss/Uniform/MomentCovariance.lean",
+    "lem:tangent-existence": "Preiss/Tangent/Existence.lean",
+    "lem:pure-basic": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+    "lem:graphs": "Preiss/Rectifiability/GraphCover.lean",
+    "lem:graph-blowup": "Preiss/Rectifiability/GraphBlowup.lean",
+    "lem:carrier-calculus": "Preiss/Rectifiability/Basic.lean",
+    "lem:representation": "Preiss/Rectifiability/DensityRepresentation.lean",
+    "lem:finite-piece-transfer": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+    "lem:gaussian-translation-series": "Preiss/Uniform/MomentEstimates.lean",
+    "lem:nested-compact-approximation": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+    "lem:uniform-compactness": "Preiss/Uniform/Compactness.lean",
+    "lem:dimensional-tangent-dilation": "Preiss/Tangent/Compactness.lean",
+    "lem:pseudotangent-transitive": "Preiss/Tangent/ScalingOrbit.lean",
+    "lem:flatness-continuous": "Preiss/Uniform/FlatnessContinuity.lean",
+    "lem:dimensional-tangent-compactness": "Preiss/Tangent/Compactness.lean",
+    "lem:tangent-ray": "Preiss/Tangent/Normalization.lean",
+    "lem:decomposition": "Preiss/Rectifiability/Decomposition.lean",
+    "lem:pure-cone-escape": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+    "thm:rectifiable-blowup": "Preiss/Rectifiability/TangentNecessity.lean",
+    "lem:taylor-one": "Preiss/Uniform/MomentEstimates.lean",
+    "lem:projection-hole-cover": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+    "lem:uniform-finite-metric-covers": "Preiss/Uniform/Compactness.lean",
+    "lem:infinity-compactness": "Preiss/Uniform/BlowdownCompactness.lean",
+    "lem:tangent-blowdown": "Preiss/Tangent/Blowdown.lean",
+    "lem:flatness-radius-continuous": "Preiss/Tangent/Flatness.lean",
+    "lem:dimensional-tangent-ball-constant": "Preiss/Uniform/TangentNormalization.lean",
+    "lem:uniform-adapter": "Preiss/Uniform/GMTAdapters.lean",
+    "lem:pure-wla-null-projection": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+    "cor:rectifiable-tangent-plane": "Preiss/Rectifiability/TangentNecessity.lean",
+    "lem:moment-feature-remainder": "Preiss/Uniform/MomentFeatures.lean",
+    "lem:discarded-cylinder-sum": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+    "lem:column-packing": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+    "lem:density-normalization": "Preiss/Uniform/TangentNormalization.lean",
+    "lem:halfspace-tangent-witness": "Preiss/Uniform/DimensionReduction.lean",
+    "lem:hyperplane-tangent-lineage": "Preiss/Uniform/DimensionReduction.lean",
+    "lem:recenter": "Preiss/Tangent/Recentering.lean",
+    "lem:taylor-two": "Preiss/Uniform/MomentExpansion.lean",
+    "lem:packing-contradiction": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+    "lem:uniform-reduction": "Preiss/Uniform/DimensionReduction.lean",
+    "lem:moment-coefficient-vanishing": "Preiss/Uniform/MomentExpansion.lean",
+    "lem:moment-second-total-trace": "Preiss/Uniform/MomentTrace.lean",
+    "thm:mm-set": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+    "lem:plane-supported-uniform-flat": "Preiss/Uniform/Classification.lean",
+    "lem:moment-support-polynomial": "Preiss/Uniform/MomentExpansion.lean",
+    "lem:scaled-moment-limits": "Preiss/Uniform/MomentExpansion.lean",
+    "thm:mm-measure": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+    "thm:flat-pseudotangent": "Preiss/Uniform/FlatPseudotangent.lean",
+    "lem:small-energy-no-holes": "Preiss/Uniform/SupportProximity.lean",
+    "lem:conical-moments": "Preiss/Uniform/ConicalMoments.lean",
+    "lem:flat-infinity-moments": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+    "lem:blowdown-moment-limits": "Preiss/Uniform/BlowdownMoments.lean",
+    "thm:rectifiable-iff-flat": "Preiss/Rectifiability/TangentCharacterization.lean",
+    "thm:part-a": "Preiss/Theorem/PartA.lean",
+    "lem:conical-covariance": "Preiss/Uniform/ConicalMoments.lean",
+    "lem:odd-coefficients-plane-zero": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+    "thm:unique-infinity": "Preiss/Uniform/TangentAtInfinity.lean",
+    "lem:conical-eigenvalue-rigidity": "Preiss/Uniform/ConicalGap.lean",
+    "def:rigidity-normal-vector": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+    "cor:conical": "Preiss/Uniform/TangentAtInfinity.lean",
+    "thm:gap": "Preiss/Uniform/ConicalGap.lean",
+    "lem:uniform-cylinder-identity": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+    "def:rigidity-omega": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+    "lem:moment-normal-trace": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+    "lem:flat-infinity-bounded-holes": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+    "lem:rigidity-cubic-vanishing": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean",
+    "def:rigidity-adjusted-form": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+    "lem:rigidity-mixed-gaussian-limit": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean",
+    "lem:rigidity-fourth-support-identity": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean",
+    "lem:rigidity-contracted-limit-zero": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean",
+    "lem:rigidity-pointwise-quadratic-bound": "Preiss/Uniform/TraceRigidity.lean",
+    "lem:rigidity-rescaled-error": "Preiss/Uniform/TraceRigidity.lean",
+    "lem:rigidity-omega-trace-zero": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
+    "lem:rigidity-gaussian-trace": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
+    "lem:rigidity-omega-reproducing": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
+    "lem:rigidity-integral-quadratic-bound": "Preiss/Uniform/TraceRigidity.lean",
+    "lem:trace-rigidity": "Preiss/Uniform/TraceRigidity.lean",
+    "thm:infinity-rigidity": "Preiss/Uniform/FlatAtInfinity/Rigidity.lean",
+    "lem:first-crossing": "Preiss/Theorem/FirstCrossing.lean",
+    "lem:first-crossing-ratio": "Preiss/Theorem/FirstCrossing.lean",
+    "lem:first-crossing-flat-infinity": "Preiss/Theorem/FirstCrossing.lean",
+    "thm:part-b": "Preiss/Theorem/PartB.lean",
+    "thm:preiss": "Preiss/Main.lean"
+  }
+}

@@ -1,0 +1,164 @@
+Lean build audit -- 2026-11-14
+
+Scope
+This is a compiler/performance audit of the current definitions and draft statement
+laboratory. It does not certify the full Preiss library or prove the draft theorems.
+No primary source files were modified by the audit agent.
+
+Observed compiler checks
+1. Direct core-only Lean (#eval 1 + 1) completed in 1.83 seconds.
+2. A temporary legacy file importing the compiled Rectifiability.Defs plus mathlib
+   Orthogonal and containing the Plane/IsLipschitzGraph declarations took 202.73
+   seconds in the sandbox, or 117.45 seconds outside it. Both correctly reported
+   the missing NNReal scope in Graphs.lean. Because the check script originally
+   printed elapsed time after Lean, its PowerShell exit code was misleadingly zero;
+   the Lean error output is authoritative. Subsequent scripts preserve Lean's exit.
+3. A temporary modern-module check containing the exact Rectifiability.Defs,
+   Plane, and corrected IsLipschitzGraph bodies passed in 24.18 seconds, exit 0.
+   It used module/public import/public section and open scoped NNReal.
+   #print axioms Preiss.IsLipschitzGraph returned only propext, Classical.choice,
+   Quot.sound, and no sorryAx. Artifact: tmp/lean-audit/ModernGraphCheck.lean.
+   This validates these declarations together; the final file import graph still
+   needs an ordinary Lake build after reorganization.
+4. Root independently reported Geometry.Planes built in 202 seconds and Graphs
+   failed after 19 seconds on the same missing scope; root has added the scope.
+
+Corrections reported to root
+- Preiss/Rectifiability/Graphs.lean needs open scoped NNReal for the NNReal notation.
+- Preiss/Uniform/Flatness.lean and PreissBlueprint/Statements.lean need
+  open scoped CompactlySupported for C_c(...). The notation is scoped in
+  Mathlib/Topology/ContinuousMap/CompactlySupported.lean, lines 46--51.
+  The latter finding is from source inspection; the full draft has not yet compiled.
+
+Performance diagnosis
+Large cached imports are the bottleneck, rather than a hard theorem or absent
+Orthogonal artifact. During the slow checks compilers spent only 7--18 CPU seconds
+across minutes of wall time and remained at roughly 100--150 MB working sets.
+The legacy Planes.setup.json includes olean.server and olean.private files for all
+transitive imports. Pinned mathlib uses the modern module system. The controlled
+modern-module check was substantially faster, though differing cold-cache state
+means the exact speedup should not be treated as a benchmark. Use the modern convention only in branches whose transitive dependencies permit it;
+see the interoperability correction below.
+Do not remove module artifacts or disable security tools to improve build speed.
+An unrelated user Lean 4.24 build was observed and left untouched.
+
+Pinned upstream evidence
+FormalizingGMT commit c14a8d07b2df61798fc184fd53ff6f72d858ae48 has a successful
+Lean Action CI run:
+https://github.com/uw-math-ai/FormalizingGMT/actions/runs/37343794109
+The Linux lean-action step ran from 16:49:46 to 16:51:36 UTC (110 seconds);
+the total job including docgen ran 3 minutes 31 seconds. This establishes an
+upstream successful build, not a downstream compatibility or axiom audit.
+The upstream workflow is .github/workflows/lean_action_ci.yml and uses
+leanprover/lean-action@v1. It also runs docgen; docgen is unnecessary for our
+statement-elaboration check and should remain separate from the Pages workflow.
+
+Recommended Linux CI
+A candidate is supplied as lean-ci-proposal.yml in this directory. Install the
+pinned toolchain and fetch the mathlib cache through the standard Lean action.
+Do not run lake update in CI: preserve the committed lake-manifest.json.
+Explicitly build both current libraries while they exist, because the default
+build excludes PreissBlueprint. After canonical topic modules replace that
+laboratory, adjust the targets and build every canonical umbrella.
+Keep the successful statement build distinct from proof completion. Expected
+sorry obligations are acceptable during the requested statement phase, but
+must be tracked and ultimately removed. Do not enable an allowlist excluding
+sorryAx on the draft library before the proof phase, and do not claim that
+successful elaboration establishes Preiss.
+
+Primary action reference inspected on 2026-11-14:
+https://github.com/leanprover/lean-action/blob/v1/action.yml
+It supports build-args, use-mathlib-cache, use-github-cache, auto-config,
+and explicit build/test/lint controls. Its default .lake cache key incorporates
+the OS, architecture, lean-toolchain, manifest, and commit, and restores the
+previous matching dependency cache. This is distinct from mathlib's cache get.
+
+Additional import organization findings
+Use @[expose] public section for definitions that need downstream unfolding;
+that is the actual convention in the pinned mathlib Hausdorff, Support,
+CompactlySupported, and Orthogonal modules. The timed scratch did not test
+cross-file unfolding. Keep the definition modules' imports smaller:
+- Gaussian moment definitions need exp and integration, not GaussianIntegral.
+- Flatness definitions need planes, infDist, integrals, and compact support;
+  they do not mathematically depend on Gaussian moments or Marstrand's theorem.
+- Weak linear approximation needs planes, infDist, Hausdorff measure; it does
+  not mathematically depend on the tangent-measure implementation.
+These current transitive dependencies should be removed in the new organization.
+
+Module boundary correction (compiler-confirmed)
+The first full interface scratch attempt failed before elaboration with:
+  cannot import non-`module` FormalizingGMT.Densities.Basic from `module`
+The installed Lean Environment.lean, lines 2115--2119, rejects any direct legacy
+import from a modern module. Import-all annotations do not bypass this condition.
+Thus keep GMT-dependent modules and their umbrella legacy unless GMT is migrated
+upstream. Modern geometry/rectifiability leaves importing only modern mathlib
+can still use the efficient modern convention. Do not migrate upstream merely
+to check the downstream plan. A temporary definitions-only projection is being
+used for early interface diagnostics; real pinned-import CI remains necessary.
+
+Completed interface diagnostic
+The definitions-only projection passed in 44.12 seconds, Lean exit 0:
+  tmp/lean-audit/StatementInterfaces.lean
+It contains the current local definitions and all 27 draft theorems, after the
+NNReal/CompactlySupported scope fixes. There were exactly 25 expected sorry
+warnings and no errors. Both existing Preiss assembly and the newly added
+rectifiability iff assembly elaborated. Their printed axiom sets contain
+propext, sorryAx, Classical.choice, Quot.sound, as expected for unfinished work.
+
+The scratch file copies only exact upstream API bodies from the pinned sources:
+- density ratio/lower/upper/density/HasDensity and the already-proved elementary
+  equal-density bridge used by the local definition API;
+- Measure.WeaklyConverges;
+- blowUpMap and IsTangentMeasure;
+- IsSUniform and positiveFiniteDensityExistsSet.
+No new axiom substitutes were introduced. It imports modern mathlib directly,
+so it does not check the real GMT module graph or real downstream symbol
+visibility. This is useful early signature/assembly verification, not a substitute
+for the ordinary pinned-dependency Linux build. The original source files retain
+actual FormalizingGMT imports; no copied API was added to the reusable library.
+The diagnostic log is tmp/lean-audit/statement-interfaces.log (UTF-16 from
+PowerShell redirection, ignored by version control).
+
+Next action
+Run the candidate Linux workflow against the final canonical organization. This
+should be the phase gate before beginning mathematical proofs. Do not report the
+new whole library as compiler-validated until that real-import build succeeds.
+
+Canonical partial-domain proposal (completed)
+The requested proposal is tmp/lean-audit/CanonicalDefs.lean. It compiled with
+Lean4.34.1 and autoImplicit=false, exit0, in223.33 seconds. Every checked
+object has exactly the standard axioms propext, Classical.choice, Quot.sound,
+with no sorryAx. No mathematical theorem proofs were added.
+
+Recommended public API in namespace Preiss:
+- LipschitzPiece (m : Nat) (X : Type*) [MetricSpace X], a structure with
+  domain : Set (Euclidean m), toFun : domain -> X, and
+  lipschitz : exists K : NNReal, LipschitzWith K toFun.
+- Dependent CoeFun instance permits writing p x for x : p.domain.
+- LipschitzPiece.range p := Set.range p.toFun.
+- CountablyCoveredByLipschitzPieces m s: a countable set of pieces covers s
+  pointwise, without a null remainder. The family may be empty.
+- CountablyLipschitzCovered m s retains the previous full-domain-map convenience
+  predicate. Equivalence with partial-domain coverage needs an extension theorem
+  specific to the target, so it must not be assumed for an arbitrary metric target.
+- CountablyRectifiable m s: exists t with partial-domain countable coverage and
+  HausdorffMeasure m (s minus t) = 0.
+- IsRectifiableMeasure m mu: mu absolutely continuous with respect to Hm, and
+  exists a CountablyRectifiable carrier s with mu(s complement)=0.
+- Plane and IsLipschitzGraph retain the previously proposed Euclidean definitions.
+
+The Lipschitz bound is an existential proof field rather than arbitrary numeric
+structure data; different witnesses for the same domain and map do not distinguish
+pieces. Measurability is not imposed on parametrization domains or graph maps.
+The rectifiability predicates use the existing Borel-space Hausdorff measure API.
+Measurable carriers, sigma-finiteness, finite-mass pieces, and extension to full
+maps remain separate lemmas. The full proposal uses only four modern mathlib
+imports (PiL2, Lp.MeasurableSpace, Measure.Hausdorff, and Orthogonal), and
+@[expose] public section. No permanent source file was changed.
+
+Performance caution
+The223s canonical check, despite modern headers and a previously warm import
+set, shows the earlier24s timing is not a reliable performance guarantee. Shared
+host I/O/load varied substantially. Linux CI should be the actual integration
+verification path; module headers should follow API boundaries and mathlib style,
+not be justified by an assumed fixed speedup.

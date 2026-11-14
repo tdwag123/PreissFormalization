@@ -510,3 +510,148 @@ An $n$-uniform measure on $\R^n$ is a positive finite scalar multiple of Lebesgu
 \uses{gmt:uniform-lower-dim}
 Import the existing declaration.
 \end{proof}
+
+\section{Additional reuse exposed by the proof audit}
+
+\begin{lemma}[GMT: lower growth excludes full support]
+\label{gmt:support-not-full}
+\lean{support_ne_univ_of_lower_growth}
+\leanok
+A regular measure on $\R^n$ with a common positive support-centred lower $s$-power bound has non-full support if $s<n$.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+\uses{def:uniform-api}
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[GMT: quadratic barycentre estimate]
+\label{gmt:barycenter-quadratic-bound}
+\lean{SUniformAux.abs_inner_integral_le}
+\leanok
+For a uniform measure with zero in its support and each positive radius $r$, the inner product of a support point $y$ with the vector integral over $\overline B(0,r)$ is bounded in absolute value by $C|y|^2$ for $|y|\leq r$.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+\uses{def:uniform-api,gmt:uniform-radial}
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[GMT: tangent support from a quadratic estimate]
+\label{gmt:quadratic-support-tangent}
+\lean{SUniformAux.support_tangent_subset_of_estimate}
+\leanok
+If $|\langle y,w\rangle|\leq C|y|^2$ holds on the support near zero, every tangent at zero is supported in $w^\perp$. The estimate has nonnegative finite $C$ and a positive radius of validity.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+\uses{def:uniform-api,def:tangent-api}
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[GMT: vanishing half-space integrals force a hyperplane]
+\label{gmt:zero-barycenter-hyperplane}
+\lean{SUniformAux.support_subset_of_integral_inner_eq_zero}
+\leanok
+For a uniform measure supported where $\langle z,e\rangle\geq0$, vanishing of the integral of this inner product over every positive-radius centred closed ball forces its support into $e^\perp$.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+\uses{def:uniform-api}
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[GMT: compact-test estimates and perturbation]
+\label{gmt:compact-test-perturbation}
+\lean{norm_integral_cc_le,weaklyConverges_of_tendsto_integral_sub}
+\leanok
+A compact-test integral is bounded by the test supremum norm times the finite mass of a containing support set. Two sequences whose compact-test integral differences tend to zero have the same vague limits.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+\uses{gmt:vague}
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[GMT: negligible discarded mass in normalized blow-ups]
+\label{gmt:scaled-discarded-mass}
+\lean{tendsto_nhdsGT_zero_of_pos,eventually_smul_measure_closedBall_le,tendsto_mul_measure_diff_zero}
+\leanok
+Positive radii tending to zero tend through the positive neighborhood filter. Convergent scaled blow-ups have eventual local ball bounds. At a support point where a restriction has relative density one, those bounds make the scaled discarded ball mass tend to zero.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+\uses{gmt:blowup-balls,gmt:portmanteau}
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[mathlib: measurable hull intersection identity]
+\label{mathlib:measurable-hull}
+\lean{MeasureTheory.Measure.measure_toMeasurable_inter}
+\leanok
+For a set $D$ of finite measure and measurable $U$, $\mu(\operatorname{toMeasurable}_\mu D\cap U)=\mu(D\cap U)$. No measurability of $D$ is required.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[mathlib: disjoint almost-everywhere ball covering]
+\label{mathlib:besicovitch-cover}
+\lean{Besicovitch.exists_disjoint_closedBall_covering_ae}
+\leanok
+For an s-finite measure in a space with the Besicovitch covering property, a fine family of positive-radius closed balls admits a countable disjoint subfamily covering the target set almost everywhere, with prescribed positive upper radius bounds.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[mathlib: differentiation of measures and restrictions]
+\label{mathlib:besicovitch-differentiation}
+\lean{Besicovitch.ae_tendsto_rnDeriv,Besicovitch.ae_tendsto_measure_inter_div_of_measurableSet,Besicovitch.ae_tendsto_measure_inter_div}
+\leanok
+For locally finite measures on finite-dimensional real normed spaces, closed-ball measure ratios converge almost everywhere to the Radon--Nikodym density. Restrictions have relative density one almost everywhere on the restricted set; the arbitrary-set version uses the restricted measure.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+\begin{lemma}[mathlib: disjoint selection with enlarged ball covering]
+\label{mathlib:vitali-enlargement}
+\lean{Vitali.exists_disjoint_subfamily_covering_enlargement_ball}
+\leanok
+A bounded-radius ball family admits a disjoint subfamily such that each original ball is contained in an enlargement of a selected ball by any fixed factor greater than three. This is distinct from a disjoint almost-everywhere covering without enlargement.
+\end{lemma}
+\begin{proof}[Existing formalization]
+\leanok
+Import the linked declaration at the pinned source revision.
+\end{proof}
+
+
+
+\section{Further generic mathlib infrastructure}
+\begin{lemma}[Derivative-controlled closed covers and measurable partitions]
+\label{mathlib:derivative-partitions}
+\lean{exists_closed_cover_approximatesLinearOn_of_hasFDerivWithinAt, exists_partition_approximatesLinearOn_of_hasFDerivWithinAt}
+\leanok
+For a differentiable map between finite-dimensional normed spaces, mathlib supplies
+countable pieces with uniform linear approximation by actual derivatives.
+These generic results apply in codimension; the same-dimensional change-of-variables
+formula in that file does not itself supply the graph area formula.
+\end{lemma}
+\begin{proof}[Existing upstream proof]
+\leanok
+Source: \texttt{Mathlib/MeasureTheory/Function/Jacobian.lean}.
+\end{proof}
+
+\begin{definition}[Intrinsic standard Gaussian measure]
+\label{mathlib:standard-gaussian}
+\lean{ProbabilityTheory.stdGaussian, ProbabilityTheory.stdGaussian_map, ProbabilityTheory.stdGaussian_eq_map_pi_orthonormalBasis}
+\leanok
+Mathlib defines the standard Gaussian measure on a finite-dimensional real inner
+product space, proves its behavior under linear isometries, and identifies it with
+the orthonormal-coordinate product Gaussian. Use this measure on a plane subtype
+instead of defining a second Gaussian distribution.
+\end{definition}

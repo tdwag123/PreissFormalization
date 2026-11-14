@@ -1,0 +1,538 @@
+{
+  "status": "All source interfaces written; no local compile after host memory exhaustion.",
+  "labels": {
+    "lem:uniform-vague-closed": {
+      "lean_name": "Preiss.isUnitUniform_of_vague",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.isUnitUniform_of_vague"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.isUnitUniform_of_vague",
+          "file": "Preiss/Uniform/Compactness.lean",
+          "module": "Preiss.Uniform.Compactness",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:uniform-compactness": {
+      "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.exists_vague_subsequence_unitUniform"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
+          "file": "Preiss/Uniform/Compactness.lean",
+          "module": "Preiss.Uniform.Compactness",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:uniform-near-support-compactness": {
+      "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
+          "file": "Preiss/Uniform/Compactness.lean",
+          "module": "Preiss.Uniform.Compactness",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:uniform-finite-metric-covers": {
+      "lean_name": "Preiss.unitUniform_totallyBounded",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.unitUniform_totallyBounded"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.unitUniform_totallyBounded",
+          "file": "Preiss/Uniform/Compactness.lean",
+          "module": "Preiss.Uniform.Compactness",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:dimensional-tangent-ball-constant": {
+      "lean_name": "Preiss.dimensionalTangent_ball_constant",
+      "file": "Preiss/Uniform/TangentNormalization.lean",
+      "module": "Preiss.Uniform.TangentNormalization",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.dimensionalTangent_ball_constant"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.dimensionalTangent_ball_constant",
+          "file": "Preiss/Uniform/TangentNormalization.lean",
+          "module": "Preiss.Uniform.TangentNormalization",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:density-normalization": {
+      "lean_name": "Preiss.density_normalization_unitUniform",
+      "file": "Preiss/Uniform/TangentNormalization.lean",
+      "module": "Preiss.Uniform.TangentNormalization",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.density_normalization_unitUniform"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.density_normalization_unitUniform",
+          "file": "Preiss/Uniform/TangentNormalization.lean",
+          "module": "Preiss.Uniform.TangentNormalization",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:hyperplane-transport-map": {
+      "lean_name": "Preiss.uniform_hyperplane_transport",
+      "file": "Preiss/Uniform/Transport.lean",
+      "module": "Preiss.Uniform.Transport",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.uniform_hyperplane_transport",
+        "Preiss.uniformWithConstant_transport"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.uniform_hyperplane_transport",
+          "file": "Preiss/Uniform/Transport.lean",
+          "module": "Preiss.Uniform.Transport",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        },
+        {
+          "lean_name": "Preiss.uniformWithConstant_transport",
+          "file": "Preiss/Uniform/Transport.lean",
+          "module": "Preiss.Uniform.Transport",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:plane-supported-uniform-flat": {
+      "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
+      "file": "Preiss/Uniform/Classification.lean",
+      "module": "Preiss.Uniform.Classification",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.unitUniform_eq_flat_of_support_subset_plane",
+        "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
+          "file": "Preiss/Uniform/Classification.lean",
+          "module": "Preiss.Uniform.Classification",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        },
+        {
+          "lean_name": "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
+          "file": "Preiss/Uniform/Classification.lean",
+          "module": "Preiss.Uniform.Classification",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:halfspace-tangent-witness": {
+      "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "module": "Preiss.Uniform.DimensionReduction",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.exists_halfSpace_dimensionalTangent"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
+          "file": "Preiss/Uniform/DimensionReduction.lean",
+          "module": "Preiss.Uniform.DimensionReduction",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:hyperplane-tangent-lineage": {
+      "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "module": "Preiss.Uniform.DimensionReduction",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.exists_hyperplane_eq_or_dimensionalTangent"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
+          "file": "Preiss/Uniform/DimensionReduction.lean",
+          "module": "Preiss.Uniform.DimensionReduction",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:uniform-reduction": {
+      "lean_name": "Preiss.uniform_dimension_reduction",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "module": "Preiss.Uniform.DimensionReduction",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.uniform_dimension_reduction"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.uniform_dimension_reduction",
+          "file": "Preiss/Uniform/DimensionReduction.lean",
+          "module": "Preiss.Uniform.DimensionReduction",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "thm:flat-pseudotangent": {
+      "lean_name": "Preiss.uniform_has_flat_pseudotangent",
+      "file": "Preiss/Uniform/FlatPseudotangent.lean",
+      "module": "Preiss.Uniform.FlatPseudotangent",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.uniform_has_flat_pseudotangent"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.uniform_has_flat_pseudotangent",
+          "file": "Preiss/Uniform/FlatPseudotangent.lean",
+          "module": "Preiss.Uniform.FlatPseudotangent",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    },
+    "lem:infinity-compactness": {
+      "lean_name": "Preiss.exists_tangentAtInfinity",
+      "file": "Preiss/Uniform/BlowdownCompactness.lean",
+      "module": "Preiss.Uniform.BlowdownCompactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending",
+      "lean_names": [
+        "Preiss.exists_tangentAtInfinity"
+      ],
+      "declarations": [
+        {
+          "lean_name": "Preiss.exists_tangentAtInfinity",
+          "file": "Preiss/Uniform/BlowdownCompactness.lean",
+          "module": "Preiss.Uniform.BlowdownCompactness",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        }
+      ]
+    }
+  },
+  "additional_lean_names_by_label": {
+    "def:unit-uniform": [
+      {
+        "lean_name": "Preiss.IsUniformWithConstant",
+        "file": "Preiss/Uniform/Scaling.lean",
+        "module": "Preiss.Uniform.Scaling",
+        "status": "definition",
+        "verification": "source reviewed; compilation pending"
+      },
+      {
+        "lean_name": "Preiss.isUnitUniform_iff_constant_one",
+        "file": "Preiss/Uniform/Scaling.lean",
+        "module": "Preiss.Uniform.Scaling",
+        "status": "sorry_placeholder",
+        "verification": "source reviewed; compilation pending"
+      }
+    ],
+    "lem:blowup-composition": [
+      {
+        "lean_name": "Preiss.uniformWithConstant_dimensionalBlowup",
+        "file": "Preiss/Uniform/Scaling.lean",
+        "module": "Preiss.Uniform.Scaling",
+        "status": "sorry_placeholder",
+        "verification": "source reviewed; compilation pending"
+      },
+      {
+        "lean_name": "Preiss.isUnitUniform_dimensionalBlowup",
+        "file": "Preiss/Uniform/Scaling.lean",
+        "module": "Preiss.Uniform.Scaling",
+        "status": "sorry_placeholder",
+        "verification": "source reviewed; compilation pending"
+      },
+      {
+        "lean_name": "Preiss.uniformWithConstant_smul",
+        "file": "Preiss/Uniform/Scaling.lean",
+        "module": "Preiss.Uniform.Scaling",
+        "status": "sorry_placeholder",
+        "verification": "source reviewed; compilation pending"
+      }
+    ]
+  },
+  "declarations": {
+    "IsUniformWithConstant": {
+      "lean_name": "Preiss.IsUniformWithConstant",
+      "file": "Preiss/Uniform/Scaling.lean",
+      "module": "Preiss.Uniform.Scaling",
+      "status": "definition",
+      "verification": "source reviewed; compilation pending"
+    },
+    "isUnitUniform_iff_constant_one": {
+      "lean_name": "Preiss.isUnitUniform_iff_constant_one",
+      "file": "Preiss/Uniform/Scaling.lean",
+      "module": "Preiss.Uniform.Scaling",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniformWithConstant_dimensionalBlowup": {
+      "lean_name": "Preiss.uniformWithConstant_dimensionalBlowup",
+      "file": "Preiss/Uniform/Scaling.lean",
+      "module": "Preiss.Uniform.Scaling",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "isUnitUniform_dimensionalBlowup": {
+      "lean_name": "Preiss.isUnitUniform_dimensionalBlowup",
+      "file": "Preiss/Uniform/Scaling.lean",
+      "module": "Preiss.Uniform.Scaling",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniformWithConstant_smul": {
+      "lean_name": "Preiss.uniformWithConstant_smul",
+      "file": "Preiss/Uniform/Scaling.lean",
+      "module": "Preiss.Uniform.Scaling",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "isUnitUniform_of_vague": {
+      "lean_name": "Preiss.isUnitUniform_of_vague",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "exists_vague_subsequence_unitUniform": {
+      "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "exists_vague_subsequence_uniform_of_dist_support_tendsto_zero": {
+      "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "unitUniform_totallyBounded": {
+      "lean_name": "Preiss.unitUniform_totallyBounded",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "module": "Preiss.Uniform.Compactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "dimensionalTangent_ball_constant": {
+      "lean_name": "Preiss.dimensionalTangent_ball_constant",
+      "file": "Preiss/Uniform/TangentNormalization.lean",
+      "module": "Preiss.Uniform.TangentNormalization",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "density_normalization_unitUniform": {
+      "lean_name": "Preiss.density_normalization_unitUniform",
+      "file": "Preiss/Uniform/TangentNormalization.lean",
+      "module": "Preiss.Uniform.TangentNormalization",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniform_hyperplane_transport": {
+      "lean_name": "Preiss.uniform_hyperplane_transport",
+      "file": "Preiss/Uniform/Transport.lean",
+      "module": "Preiss.Uniform.Transport",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniformWithConstant_transport": {
+      "lean_name": "Preiss.uniformWithConstant_transport",
+      "file": "Preiss/Uniform/Transport.lean",
+      "module": "Preiss.Uniform.Transport",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "unitUniform_eq_flat_of_support_subset_plane": {
+      "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
+      "file": "Preiss/Uniform/Classification.lean",
+      "module": "Preiss.Uniform.Classification",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniformWithConstant_eq_flat_of_support_subset_plane": {
+      "lean_name": "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
+      "file": "Preiss/Uniform/Classification.lean",
+      "module": "Preiss.Uniform.Classification",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "exists_halfSpace_dimensionalTangent": {
+      "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "module": "Preiss.Uniform.DimensionReduction",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "exists_hyperplane_eq_or_dimensionalTangent": {
+      "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "module": "Preiss.Uniform.DimensionReduction",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniform_dimension_reduction": {
+      "lean_name": "Preiss.uniform_dimension_reduction",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "module": "Preiss.Uniform.DimensionReduction",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniform_has_flat_pseudotangent": {
+      "lean_name": "Preiss.uniform_has_flat_pseudotangent",
+      "file": "Preiss/Uniform/FlatPseudotangent.lean",
+      "module": "Preiss.Uniform.FlatPseudotangent",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "exists_tangentAtInfinity": {
+      "lean_name": "Preiss.exists_tangentAtInfinity",
+      "file": "Preiss/Uniform/BlowdownCompactness.lean",
+      "module": "Preiss.Uniform.BlowdownCompactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    }
+  },
+  "modules": [
+    {
+      "module": "Preiss.Uniform.Scaling",
+      "file": "Preiss/Uniform/Scaling.lean",
+      "imports": [
+        "Preiss.Uniform.Defs",
+        "Preiss.Tangent.Algebra"
+      ],
+      "modern_module": true
+    },
+    {
+      "module": "Preiss.Uniform.Compactness",
+      "file": "Preiss/Uniform/Compactness.lean",
+      "imports": [
+        "Preiss.Uniform.Scaling",
+        "Preiss.Analysis.Vague.Metrization",
+        "FormalizingGMT.WeakConvergence.CompactnessCriterion"
+      ],
+      "modern_module": false
+    },
+    {
+      "module": "Preiss.Uniform.TangentNormalization",
+      "file": "Preiss/Uniform/TangentNormalization.lean",
+      "imports": [
+        "Preiss.Uniform.Scaling",
+        "Preiss.Tangent.Normalization",
+        "Preiss.Geometry.FlatMeasure",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "modern_module": false
+    },
+    {
+      "module": "Preiss.Uniform.Transport",
+      "file": "Preiss/Uniform/Transport.lean",
+      "imports": [
+        "Preiss.Uniform.Scaling",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ],
+      "modern_module": true
+    },
+    {
+      "module": "Preiss.Uniform.Classification",
+      "file": "Preiss/Uniform/Classification.lean",
+      "imports": [
+        "Preiss.Uniform.Transport",
+        "Preiss.Geometry.PlaneMeasure",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "modern_module": false
+    },
+    {
+      "module": "Preiss.Uniform.DimensionReduction",
+      "file": "Preiss/Uniform/DimensionReduction.lean",
+      "imports": [
+        "Preiss.Uniform.TangentNormalization",
+        "Preiss.Uniform.Transport",
+        "Preiss.Tangent.ScalingOrbit",
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "modern_module": false
+    },
+    {
+      "module": "Preiss.Uniform.FlatPseudotangent",
+      "file": "Preiss/Uniform/FlatPseudotangent.lean",
+      "imports": [
+        "Preiss.Uniform.DimensionReduction",
+        "Preiss.Uniform.Classification"
+      ],
+      "modern_module": false
+    },
+    {
+      "module": "Preiss.Uniform.BlowdownCompactness",
+      "file": "Preiss/Uniform/BlowdownCompactness.lean",
+      "imports": [
+        "Preiss.Uniform.Compactness",
+        "Preiss.Tangent.Defs"
+      ],
+      "modern_module": false
+    }
+  ],
+  "mathematical_notes": [
+    "IsUniformWithConstant explicitly includes nonempty support, excluding infDist-to-empty artifacts.",
+    "One radius-power density q normalizes every tangent; q differs from diameter density by 2^m.",
+    "Hyperplane normal may differ from original half-space normal; equality-or-dimensional-tangent lineage is explicit.",
+    "Codimension induction returns a specific linear isometric embedding and a bounded-radius pseudotangent witness.",
+    "Flat pseudotangent witnesses retain 0 < r_i <= 1."
+  ]
+}

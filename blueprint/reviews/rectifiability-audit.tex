@@ -1,0 +1,492 @@
+% Independent mathematical audit, 2026-11-14.
+% This is review material, not a verified proof or a substitute for elaborated Lean interfaces.
+\section{Rectifiability branch: proof sketch and interface audit}
+
+This audit uses the supplied De Lellis PDF: Chapter 4 is printed pp.~27--39
+(PDF pp.~31--43), Chapter 5 is printed pp.~40--55 (PDF pp.~44--59).
+References below refer to this version, not the older 2006 lecture-note pagination.
+The input document supplies mathematics, not workflow instructions.
+The published author errata must also be consulted:
+\url{https://www.math.ias.edu/delellis/sites/math.ias.edu.delellis/files/Errata_libro_0.pdf}.
+
+\subsection{What the main Preiss proof actually needs}
+
+Let $H=\mathcal H^m$ with the project's fixed normalization, and let
+$D_{x,r}\mu=r^{-m}(T_{x,r})_\#\mu$.
+For $0<m\leq n$, the rectifiability input to Preiss is the implication
+\[
+\left[0<\Theta_*^m(\mu,x)\leq\Theta^{*m}(\mu,x)<\infty
+\ \hbox{and every tangent is flat, for $\mu$-a.e. $x$}\right]
+\Longrightarrow \mu\text{ is }m\text{-rectifiable}.
+\]
+This is Theorem 5.1. It does not assume existence of the density limit,
+and does not assume that all tangent measures at a point use the same plane.
+The latter stronger property follows almost everywhere after rectifiability,
+using Chapter 4. It must not be substituted for the hypothesis in the main proof.
+
+Here is the complete architecture of the Chapter 5 argument.
+First stratify the positive finite density bounds on bounded Borel pieces.
+Covering comparisons show that these pieces have finite $H$ measure and that
+$\mu$ and $H$ restricted to each piece are mutually absolutely continuous,
+with uniformly positive finite comparison constants after further stratification.
+Use Radon--Nikodym on each finite restriction, never on ambient $H$ when $m<n$.
+Differentiate the density and restrictions to transfer the hypotheses to
+$\nu=H|F$ on each finite piece. Consequently, $\nu$ has positive lower and
+finite upper $m$-density and every nonzero tangent is flat at almost every
+point of $F$.
+
+These two properties imply weak linear approximation at each such point.
+If either clause of Definition 5.4 fails, choose bad radii decreasing to zero
+with error threshold $\eta>0$ and lower-mass threshold $1/j$.
+The upper density bound gives uniform mass bounds on compact sets for
+$D_{x,r_j}\nu$. Compactness supplies a vaguely convergent subsequence, and
+the lower density bound makes its limit nonzero. It is a tangent, hence
+$cH|V$ with $c>0$. Failure of the tube clause leaves positive mass in a
+compact set separated from $V$, contradicting compact-set portmanteau.
+Failure of the plane-centred-ball clause gives centres in the unit disk of
+$V$ with masses tending to zero. Extract a convergent subsequence of centres
+and put a fixed smaller ball around the limiting centre inside the moving
+balls. Open-set portmanteau contradicts the positive flat mass. This last
+fixed-smaller-ball argument is the rigorous version of the informal moving-ball
+limit in equation (5.36). No continuity-set theorem for moving balls is needed.
+
+It remains to prove Proposition 5.5: a finite-Hausdorff-measure Borel set
+which is weakly linearly approximable almost everywhere is rectifiable.
+The proof has substantially more content than the current single graph node.
+Decompose a counterexample into rectifiable and purely unrectifiable parts.
+Weak linear approximation passes to the latter at density-one points,
+using finite upper density to convert relative discarded mass into $o(r^m)$.
+Thus a positive-measure purely unrectifiable counterexample exists.
+
+Lemma 5.9 then proves that every orthogonal projection of this counterexample
+onto an $m$-plane has zero $H$ measure. This is stronger than the usual
+almost-every-plane projection theorem and uses weak linear approximation.
+Uniformize on large compact subsets: lower mass bounds hold uniformly, and
+weak tube concentration upgrades to actual containment of the compact subset
+in a thin tube. A point of the compact subset outside the tube would carry a
+small ball with too much mass. Pure unrectifiability and the cone-to-graph
+lemma imply that almost every point has arbitrarily close neighbours almost
+orthogonal to any fixed projection plane. At the scale of such a pair, the
+approximating plane therefore has a unit direction with small projection.
+Elementary linear algebra puts the projected tube into a thin slab. Its
+$m$-measure is small. A disjoint almost-everywhere ball covering and the lower
+mass bound sum these small projection estimates. The compact complement has
+small measure and its projection has no larger measure. Letting that error
+tend to zero proves the projection is null.
+
+Finally, null projections are incompatible with weak linear approximation
+and positive finite $H$ measure. Choose nested positive-measure compact sets
+$G\subset F\subset E$, uniform lower mass bounds on $F$, and at each point of
+$G$ scale-dependent approximating planes. Both directions of approximation
+are needed: points of $F$ lie near the plane, and points of the plane lie near
+$F$. At a good point of $G$, $H(E\cap B_r)$ has a uniform upper bound and
+$H((E\setminus G)\cap B_{2r})$ is as small as desired compared with $r^m$.
+Fix its approximating plane $W$ at scale $\sigma$.
+Since $P_W(G)$ is null, almost all of the $W$ disk consists of holes in the
+projection. Select disjoint disks at their distance-to-projection radii.
+The sum of their $m$th powers is bounded below by a constant times $\sigma^m$.
+Discard disks whose inner cylinders meet $F$: the discarded radius sum is
+controlled by the small mass of $E\setminus G$.
+For each remaining disk, a nearest projected point of compact $G$ gives a
+boundary point $z_i$. The approximating plane there must contain a direction
+almost perpendicular to $W$; otherwise it enters the empty inner cylinder.
+Along this direction place at least a constant times $1/\eta$ separated balls.
+Plane-to-$F$ approximation moves their centres onto $F$, so every ball has a
+uniform lower mass bound. All these balls, across different disks as well,
+are disjoint. Their total mass is at least
+$c\delta\sigma^m/\eta$, contradicting the upper mass bound when $\eta$ is
+chosen sufficiently small. This proves Proposition 5.5 and then Theorem 5.1.
+
+\subsection{Definitions and theorem statements which must be explicit}
+
+The following inventory supplies boundaries for reusable Lean declarations.
+Each mathematical bullet should have its own declaration or a small API,
+not merely a sentence hidden inside the proof of the final criterion.
+Definitions should not build in local finiteness or measurability unless
+those properties are intrinsic; theorems should state such hypotheses.
+
+\begin{enumerate}
+\item \textbf{Cones and graph parametrizations.}
+For a finite-dimensional plane $V$, use the existing orthogonal projection
+$P_V$, define $Q_V=\mathrm{id}-P_V$, and define
+$C(x,V,\alpha)=\{y:\|Q_V(y-x)\|\leq\alpha\|P_V(y-x)\|\}$.
+Record translations, positive homotheties, closedness, and aperture monotonicity.
+For a Lipschitz $f:V\to V^\perp$, the graph is the range of $v\mapsto v+f(v)$.
+Record that this map is Lipschitz and antilipschitz, its inverse on the graph
+is $P_V$, the full graph is closed, and bounded graph pieces have finite $H$ measure.
+
+\item \textbf{Cone-to-graph, De Lellis Lemma 4.7.}
+For an arbitrary set $F$, if $y\in C(x,V,\alpha)$ for all $x,y\in F$,
+with $\alpha\geq0$, then $F$ is contained in a full Lipschitz graph over $V$.
+No measure hypotheses are needed. The graphing function first exists on
+$P_V(F)$; extend into $V^\perp$ using finite-dimensional coordinates.
+The empty-set case should avoid choosing an element of $F$.
+
+\item \textbf{Countable rectifiability calculus.}
+Empty sets, subsets, countable unions, Lipschitz images, isometric images,
+Hausdorff-null modifications, Borel carriers, and sigma-finite Hausdorff
+restriction to a countably parametrized Euclidean carrier need separate lemmas.
+The Borel carrier is the union of compact images of closed bounded domain
+pieces after extending parametrizations into a Euclidean target.
+
+\item \textbf{Pure unrectifiability, Definition 5.6.}
+For the canonical reusable definition require $H(E\cap R)=0$ for every
+countably rectifiable $R$. This directly gives heredity and the null-intersection
+API, and it implies the graph-test condition of De Lellis Definition 5.6
+because every graph is rectifiable. Equivalence with graph tests can be proved
+on the companion image-to-graph branch. Finite measure belongs in later
+theorem hypotheses, not in the definition. This choice keeps the core
+decomposition and Chapter 5 argument independent of the area-formula branch.
+
+\item \textbf{Finite-measure decomposition, Theorem 5.7.}
+If $E$ is Borel and $H(E)<\infty$, obtain Borel disjoint subsets $R,U$ with
+$E=R\cup U$, $R$ rectifiable, and $U$ purely unrectifiable. Prove uniqueness
+modulo $H$-null sets. Use a supremum and a countable maximizing family, then
+rectifiability of a countable union. This does not require the area formula.
+
+\item \textbf{Density-to-Hausdorff comparisons.}
+State local comparison inequalities on sets where all sufficiently small
+ball masses obey common power bounds. Derive absolute continuity from finite
+upper density; derive finite Hausdorff measure of bounded lower-bound strata;
+then obtain countably many Borel finite-measure pieces and two-sided measure
+comparisons. This is the reusable content behind Proposition 2.16 and the
+current bundled finite-pieces node. Lower density may be weakened in other
+versions, but the main Preiss route already supplies the stronger hypothesis.
+
+\item \textbf{Density and tangent transfer to pieces.}
+On each finite piece use its Hausdorff restriction as the reference measure,
+not ambient $H$. Establish positivity/finiteness of the Radon--Nikodym density
+at the relevant almost-everywhere points, its local integrability, and
+restriction regularity. Transfer arbitrary-scalar tangent sets using GMT.
+For fixed normalization, additionally prove a compact-test difference tends
+to zero with the explicit density multiplier. Mere equality of GMT tangent
+sets loses this multiplier.
+
+\item \textbf{Fixed-normalization compactness at a density-bound point.}
+Given $0<\Theta_*^m(\nu,x)\leq\Theta^{*m}(\nu,x)<\infty$ and any positive
+$r_j\to0$, obtain a subsequence of $D_{x,r_j}\nu$ converging to a nonzero
+regular measure. Obtain local upper bounds from density and bound the finite
+initial segment separately. A closed-ball lower mass bound and portmanteau
+prove nonzeroness. Show the resulting limit satisfies GMT's tangent predicate.
+
+\item \textbf{Flat tangents imply weak linear approximation.}
+For $H(F)<\infty$, at a point with the preceding density bounds where every
+GMT tangent of $H|F$ is $m$-flat, prove the two clauses of Definition 5.4.
+The theorem is pointwise and should not repeat the almost-everywhere
+localization to $F$. Separate compact-tube and moving-ball contradiction lemmas.
+
+\item \textbf{Weak approximation gives positive lower density.}
+Take the plane-centred-ball clause at $z=x$ and one fixed aperture. This
+supplies the lower density needed for subsequent uniform strata. Do not
+mistake the general Hausdorff lower bound on \emph{upper} density for this result.
+
+\item \textbf{Weak approximation survives negligible deletion.}
+If $F\subset E$ and $H((E\setminus F)\cap B_{2r}(x))=o(r^m)$, weak linear
+approximation of $E$ at $x$ implies that of $F$. Shrink the lower-ball
+constant and the error aperture. Combine differentiation of a restriction
+with finite upper density to produce this hypothesis almost everywhere in $F$.
+This is the substantive content of Lemma 5.8, beyond decomposition.
+
+\item \textbf{Closed uniform good-set exhaustion.}
+Fix a finite regular measure $\nu$, an aperture $\eta>0$, mass constant
+$\lambda>0$, and radius cutoff $R>0$. Define the relaxed good set by requiring,
+for every $0<r<R$, some $m$-plane $V$ with
+\[
+\nu\{y:|y-x|<r,\ \operatorname{dist}(y-x,V)>\eta r\}
+\leq\eta r^m,
+\]
+and
+\[
+\nu(\overline B_{\eta r}(z))\geq\lambda r^m
+\quad\text{for all }z\in(x+V)\cap B_r(x).
+\]
+This good set is closed in $x$, after giving the planes their compact
+orthogonal-projection topology. For fixed $r$, the first condition is closed
+in $(x,V)$ by lower semicontinuity of the mass of a moving open set. The
+second is closed by upper semicontinuity of closed-ball mass and approximation
+of each test centre $z$ by $x_i+P_{V_i}(z-x)$; the strict condition $|z-x|<r$
+persists for large $i$. Projection of this closed relation along compact
+plane space is closed, and intersection over all $0<r<R$ remains closed.
+Thus no reduction to rational radii or general measurable-projection theorem
+is needed for this construction. Existing weak approximation at aperture
+$\eta/2$ implies a relaxed $\eta$ condition. Conversely, a relaxed
+$\eta/2$ condition implies the original aperture-$\eta$ condition: enlarge
+the tube and use $\overline B_{\eta r/2}\subset B_{\eta r}$, retaining the
+positive lower constant and obtaining strict upper error from $\eta/2<\eta$.
+A countable choice of rational lower constants and radius cutoffs now gives
+Borel exhaustions after intersection with Borel $E$. Apply inner regularity
+there to choose compact pieces. A measurable hull of an arbitrary good set
+alone would not justify choosing compact subsets of that original set.
+This compact-plane and semicontinuity API is therefore foundational for
+Chapter 5 as well as for the later flatness functional.
+
+\item \textbf{Tube concentration to support containment.}
+Suppose every $z\in C$ has $H(E\cap B_s(z))\geq\delta s^m$ for small $s$.
+If the mass of $E\cap B_{2r}(a)$ outside the $(\eta r/2)$-tube about $a+W$
+is less than $\delta(\eta r/2)^m$, then
+$C\cap B_r(a)$ lies in the $\eta r$-tube. This is a direct geometric
+ball-inclusion argument and works for measures more generally than $H$.
+
+\item \textbf{Purely unrectifiable sets escape every fixed cone.}
+For every plane $V$ and fixed finite aperture, at $H$-almost every point of a
+purely unrectifiable set $C$, there are points of $C$ outside that cone at
+arbitrarily small distances. The exceptional set is a countable union of
+local cone-condition pieces; cover each by countably many small balls and
+apply the cone-to-graph lemma. This is the Step 2 input to Lemma 5.9.
+
+\item \textbf{Small projection direction gives a thin projected slab.}
+For $m$-planes $V,W$, a unit $w\in W$ with $\|P_Vw\|\leq\varepsilon$
+implies that the projection onto $V$ of the $\eta R$-tube about $a+W$ inside
+$B_R(a)$ has $H$ measure at most $C_m(\eta+\varepsilon)R^m$.
+Choose a unit vector in $V$ orthogonal to $P_V(W\cap w^\perp)$, contain the
+projection in a slab, and estimate its volume by orthogonal coordinates.
+Closed bounded tube variants avoid measurability problems for image sets.
+
+\item \textbf{Every-plane null projections, Lemma 5.9.}
+A Borel purely unrectifiable finite-$H$ set weakly linearly approximable
+almost everywhere has null projection onto \emph{each} $m$-plane.
+This needs the preceding compact uniformization, tube containment,
+cone escape, slab bound, Lipschitz Hausdorff distortion, and an actual
+almost-everywhere disjoint Besicovitch covering.
+It is not a consequence of GMT's fivefold-covering statement alone without
+additional work accounting for uncovered mass.
+
+\item \textbf{Nested compact two-sided approximation.}
+For a positive finite-$H$ weakly approximable set, extract compact
+$G\subset F\subset E$ of positive measure, uniform lower mass at $F$, and
+planes at points of $G$ giving both tube containment of $F$ and proximity of
+plane points to $F$. Retain the lower mass condition on plane-centred balls
+of $E$. Density differentiation of $F$ in $E$ upgrades that mass condition
+to proximity. This is Section 5.2 Step 1, equations (5.15)--(5.21).
+
+\item \textbf{Good base point with small discarded mass.}
+Select $a\in G$ with a uniform upper bound on $H(E\cap B_r(a))$ and
+$H((E\setminus G)\cap B_{2r}(a))\leq t r^m$ for all sufficiently small $r$.
+Use the upper Hausdorff-density bound for $G$, and the outside-density-zero
+bound for $E\setminus G$, or differentiation plus finite upper density.
+Constants depend on the chosen Hausdorff normalization.
+
+\item \textbf{Distance-to-projection disk selection and radius sum.}
+For compact $G$ and fixed $W$, let the hole radius be distance to the compact
+projection of $G\cap\overline B_{2\sigma}(a)$.
+Its positivity on the complement, its upper bound $\eta\sigma$, and a
+fivefold covering give disjoint disks $D_{4\rho_i}$ whose $D_{20\rho_i}$
+cover almost all a fixed $W$ disk. Therefore $\sum_i\rho_i^m\geq c_m\sigma^m$.
+Use the closed ball in the compact projection; an intersection with an open
+ball need not be compact and nearest projected points need not exist.
+
+\item \textbf{Discarded cylinders have small radius sum.}
+Cylinders whose inner halves meet $F$ contain small balls based at $F$ and
+avoiding $G$. Lower mass and disjointness give
+$\sum_{i\in J}\rho_i^m\leq C_m t\sigma^m/\delta$.
+Choose $t$ after $\delta,\eta,\gamma$ so that the remaining sum retains a
+positive dimensional multiple of $\sigma^m$.
+
+\item \textbf{Empty-cylinder linear geometry.}
+Let $V,W$ be $m$-planes, $p\in V$, and $\|P_Vz-p\|=\rho>0$.
+If $(z+W)\cap B_r(z)$ avoids the cylinder
+$\{q:\|P_Vq-p\|<\rho/4\}$ and $r$ is sufficiently larger than $\rho$,
+then $W$ has a unit vector $w$ with $\|P_Vw\|\leq C\rho/r$.
+If the restricted projection has kernel, this is immediate; otherwise use
+its least singular value and equality of the two plane dimensions.
+A segment of length $c r$ based at $z$ therefore remains in the larger
+$2\rho$ cylinder. This standalone lemma supplies the geometric step omitted
+as an ``easy computation'' in Section 5.2.
+
+\item \textbf{Disjoint column packing and mass contradiction.}
+At the local scale $r_i=\rho_i/(8\eta)$, the preceding segment contains at
+least $c/\eta$ suitably separated centres. Approximate them by points of $F$
+to distance $\rho_i/8$ and use balls of radius $\rho_i/8$.
+Their masses are at least $c_m\delta\rho_i^m$, and their locations are in
+pairwise disjoint $4\rho_i$ cylinders and inside $B_\sigma(a)$.
+Conclude $H(E\cap B_\sigma(a))\geq c_m\delta\sigma^m/\eta$, contradicting
+the upper bound. Constants and the integer rounding in the number of balls
+must be stated explicitly or hidden behind proved positive-dimensional constants.
+
+\item \textbf{Marstrand--Mattila assembly.}
+The preceding contradiction proves Proposition 5.5. Apply it to each finite
+Hausdorff piece, then reassemble the countable rectifiable carrier to prove
+Theorem 5.1. Separately combine it with the necessity direction below for
+the user's requested if-and-only-if characterization.
+\end{enumerate}
+
+\subsection{The reusable reverse direction: not a prerequisite of Preiss}
+
+The current new statements correctly distinguish a common tangent plane
+from arbitrary planes depending on individual tangents. For locally finite
+rectifiable $\mu$, one has, at almost every $x$, a single $V_x$ and $c_x>0$
+with convergence along every positive sequence $r_j\to0$:
+\[
+D_{x,r_j}\mu\rightharpoonup c_xH|V_x.
+\]
+Consequently, GMT's tangent set is the whole positive ray
+$\{cH|V_x:0<c<\infty\}$, not a singleton. The diameter-normalized density
+is $c_x H(V_x\cap\overline B_1)/(2^m)$; identify it with $c_x$ only
+after proving the plane ball normalization for the chosen Hausdorff convention.
+
+To prove this branch without circular use of Preiss, expose these obligations:
+\begin{enumerate}
+\item Lipschitz maps send Lebesgue-null domain sets to $H$-null images.
+This follows from the Lipschitz Hausdorff distortion bound and the domain
+Hausdorff/Lebesgue normalization.
+\item The image of the derivative-rank-deficient part is $H$-null
+(De Lellis Lemma 4.11); the full-rank differentiability locus can be partitioned
+into countably many graph pieces. These prove image/graph equivalence without
+requiring the entire multiplicity area formula.
+\item For injective graph parametrizations, prove the affine Jacobian
+change-of-variables case and then the graph area formula by differentiability
+and countable derivative-control pieces (Sections 4.1--4.2).
+\item At points of differentiability and Lebesgue differentiation of the
+Jacobian, compactly supported integrals of the blown-up graph measure tend
+to those on the derivative plane. This is a graph-level theorem.
+\item Restrict to Borel graph pieces at density-one points, transfer by the
+Radon--Nikodym density with its exact coefficient, and patch the countable
+family. This proves Corollary 4.4 and the necessity direction of Theorem 4.8.
+\item Continuity balls of the flat limit give positive finite density.
+The tangent-normalization adapter identifies the complete positive ray.
+Combine with Theorem 5.1 for the full characterization using two-sided bounds.
+\end{enumerate}
+Whitney extension and $C^1$ graph equivalence are not needed for either the
+main Preiss route or this Lipschitz graph necessity proof.
+
+\subsection{Specific source errors and cautions}
+
+The supplied PDF was visually checked at PDF pp.~56--57. The proof really
+prints $c_1\sigma=c_1\rho_i/(8\eta)$ and
+$N\geq c_2\sigma/\rho_i=c_2/(8\eta)$, although only
+$\rho_i\leq\eta\sigma$ was established. These equalities cannot be used.
+Work at the local scale $r_i=\rho_i/(8\eta)$, obtain a segment of length
+comparable to $r_i$, and derive $N\geq c/\eta$ directly. This is sufficient
+for the final contradiction. The local approximation statement applies
+inside $B_{r_i}(z_i)$, not automatically throughout the much larger ambient
+ball displayed in the prose. The standalone empty-cylinder lemma above is
+intended to repair this logical boundary; its proof must be checked.
+
+Other typographical errors should not be copied into Lean: (5.5) lists
+self-rectifiable intersections where the cross intersections are intended;
+Theorem 5.7 is called Lemma 5.8 in the proof of Lemma 5.8; the lower-bound
+ball in the proof following (5.10) is centred at the outlying point $z$, not
+at $a$; Section 5.3 writes $c\in]1,0[$ instead of $0<c<1$; and some factors
+$\omega_m$ are suppressed in the last display. The normalization-free
+statements above absorb fixed positive constants correctly.
+
+The author errata adds substantial corrections outside Chapters 4--5 which
+also affect this project's whole DAG: the hyperplane in Lemma 3.8 need not
+be the boundary of the original half-space; the normalized tangent-transfer
+Proposition 3.12 requires finite upper density; the $m=2$ argument for (8.21)
+must be replaced using the trace identities and (8.22); and measurability of
+the exceptional set in the recentering argument is a nontrivial measurable
+projection problem. These corrections must be separate review obligations.
+
+\subsection{Pinned-source reuse audit}
+
+The following names were checked in the existing checkout, not guessed.
+They are starting points for imports and adapters, not a declaration that
+all desired composite statements are already formalized.
+\begin{itemize}
+\item \texttt{Mathlib/Topology/MetricSpace/Lipschitz.lean}:
+\texttt{LipschitzOnWith.extend\_real} and
+\texttt{LipschitzOnWith.extend\_pi}; transport finite coordinate extensions
+back to Euclidean subspaces. The optimal Kirszbraun constant is unnecessary.
+\item \texttt{Mathlib/Analysis/Calculus/Rademacher.lean}:
+\texttt{LipschitzWith.ae\_differentiableAt}.
+\item \texttt{Mathlib/MeasureTheory/Measure/Hausdorff.lean}:
+\texttt{LipschitzOnWith.hausdorffMeasure\_image\_le},
+\texttt{LipschitzWith.hausdorffMeasure\_image\_le},
+\texttt{Isometry.hausdorffMeasure\_image},
+\texttt{Isometry.map\_hausdorffMeasure}, homothety scaling, and
+\texttt{MeasureTheory.hausdorffMeasure\_orthogonalProjectionOnto\_le}.
+Beware: \texttt{hausdorffMeasure\_pi\_real} uses the function-space norm,
+not automatically the Euclidean $\ell^2$ norm.
+\item \texttt{Mathlib/MeasureTheory/Covering/Besicovitch.lean}:
+\texttt{Besicovitch.exists\_disjoint\_closedBall\_covering\_ae},
+\texttt{Besicovitch.ae\_tendsto\_rnDeriv}, and
+\texttt{Besicovitch.ae\_tendsto\_measure\_inter\_div}.
+The density-ratio theorem needs both measures locally finite, satisfied on
+finite Hausdorff pieces. Its balls are closed; supply open/closed adapters.
+\item \texttt{Mathlib/MeasureTheory/Covering/Vitali.lean}:
+\texttt{Vitali.exists\_disjoint\_subfamily\_covering\_enlargement\_ball}
+for the fivefold disk selection. It is distinct from an almost-everywhere
+covering by the disjoint balls themselves.
+\item \texttt{Mathlib/MeasureTheory/Measure/Decomposition/}:
+Radon--Nikodym, \texttt{Measure.rnDeriv\_ne\_top}, measurable density
+representatives, and with-density absolute continuity. Instantiate these on
+$H|F$ or a sigma-finite Borel carrier, not on ambient $H$.
+\item FormalizingGMT's existing graph nodes supply finite-restriction
+regularity, upper-density estimates inside and outside finite Hausdorff sets,
+vague compactness, portmanteau, blow-up ball identities, and tangent matching.
+\item Further reusable declarations in
+\texttt{FormalizingGMT/TangentMeasures/MatchingTangents.lean} are
+\texttt{tendsto\_nhdsGT\_zero\_of\_pos},
+\texttt{norm\_integral\_cc\_le},
+\texttt{weaklyConverges\_of\_tendsto\_integral\_sub},
+\texttt{eventually\_smul\_measure\_closedBall\_le}, and
+\texttt{tendsto\_mul\_measure\_diff\_zero}. These are useful for the
+fixed-dimensional-normalization restriction and density adapters too.
+\end{itemize}
+
+\subsection{Recommended file boundaries and genericity}
+
+Use dependency-driven files rather than one monolithic statement laboratory.
+A project namespace is suitable while developing, but reusable concepts
+should have mathlib-style logical ownership and minimal imports.
+\begin{itemize}
+\item \texttt{Geometry/Planes}: finite-dimensional linear planes and
+orthogonal projection geometry, independent of measures and tangent predicates.
+A Euclidean space abbreviation should live in a minimal geometry/basic file,
+not require importing rectifiability definitions.
+\item \texttt{Rectifiability/Defs}, \texttt{Rectifiability/Basic}:
+canonical countably rectifiable sets, rectifiable measures, countable-carrier
+calculus, and almost-everywhere invariance.
+\item \texttt{Rectifiability/Graphs}, \texttt{Rectifiability/Cones}:
+graph parametrization API, coordinate extensions, cone-to-graph geometry.
+\item \texttt{Rectifiability/PurelyUnrectifiable} and
+\texttt{Rectifiability/Decomposition}: the pure predicate and finite-measure
+decomposition, using graph coverage but not tangent measures.
+\item \texttt{Density/HausdorffComparison}, \texttt{Density/FinitePieces}:
+density-to-Hausdorff comparisons and sigma-finite carrier stratification.
+\item \texttt{Rectifiability/DensityRepresentation}:
+Radon--Nikodym characterization and bounded-density pieces.
+\item \texttt{Tangent/Restriction}, \texttt{Tangent/DensityTransfer}:
+adapters preserving dimensional normalization and its exact coefficient.
+\item \texttt{Rectifiability/WeakApproximation/Defs},
+\texttt{.../Restriction}, \texttt{.../Uniformization}:
+the two-clause approximation predicate, deletion stability and closed good-set
+uniform compact selection. These definitions only need geometry and
+Hausdorff measure; do not import tangent or uniform-measure theory here.
+\item \texttt{Rectifiability/ProjectionEstimate},
+\texttt{Rectifiability/MarstrandMattila/ProjectionNull},
+\texttt{.../Packing}, \texttt{.../SetCriterion}, \texttt{.../MeasureCriterion}:
+isolate the long Chapter 5 chain and reusable linear geometry from its
+measure-theoretic contradiction.
+\item \texttt{Rectifiability/GraphCover}, \texttt{Rectifiability/GraphArea},
+\texttt{Rectifiability/GraphBlowup}, \texttt{Rectifiability/TangentCharacterization}:
+the reverse-direction branch and full characterization. It should not enter
+the import closure of the Preiss assembly unless actually used there.
+\end{itemize}
+
+For arbitrary metric targets, the canonical definition should allow Lipschitz
+maps on subsets of Euclidean space. A globally parametrized coverage predicate
+is useful separately, and agrees with the standard definition for Euclidean
+targets after an extension theorem. It is too restrictive in general: a
+positive-measure fat Cantor set, considered as a metric target, is parametrized
+by its identity on that subset of the line, while every continuous map from
+the whole line into it is constant. Subtype-domain maps avoid empty-target
+extension issues. One can define rectifiable measures by absolute continuity
+with respect to $H$ and concentration on a countably rectifiable carrier;
+absolute continuity absorbs the carrier's Hausdorff-null remainder.
+
+The current density-representation equivalence is mathematically sound with
+its explicit Borel and sigma-finite carrier. Its converse remains valid for
+nonnegative extended-valued densities: a Hausdorff-null remainder has zero
+weighted measure even when the weight takes the value infinity there.
+
+This audit does not certify the current Lean source as elaborated. In particular,
+all technical nodes listed above still require exact checked Lean interfaces
+and proofs; source availability and a rendered DAG are not proof verification.
+
+The machine-readable companion to this review is \texttt{rectifiability-nodes.json}:
+53 proposed interface nodes, comprising 42 core and 11 companion nodes.
+Existing labels are refined rather than duplicated. In particular, move
+compact plane-space theory into the common geometric foundation: its current
+placement near the Part B flatness functional conceals its Chapter 5 use.

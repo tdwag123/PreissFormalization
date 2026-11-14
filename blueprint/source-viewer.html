@@ -11,8 +11,18 @@ const name = location.hash.startsWith('#doc/') ? decodeURIComponent(location.has
 document.getElementById('name').textContent = name || 'Lean declaration source';
 fetch('declarations.json').then(r => {if(!r.ok) throw Error('Source index unavailable'); return r.json()}).then(data => {
  const entry = data[name]; if(!entry) throw Error('No indexed declaration matches this link.');
- const upstream = entry.project === 'FormalizingGMT';
- document.getElementById('status').textContent = upstream ? 'Existing FormalizingGMT declaration at revision ' + entry.revision + '. The downstream build remains incomplete.' : name.startsWith('PreissBlueprint.') ? 'Draft interface: this library has unfinished sorry obligations. Preiss is not proved.' : 'Reusable local definition or elementary bridge. See the repository validation record for build status.';
+ const upstream = entry.project !== 'PreissFormalization';
+ const statuses = {
+   definition: 'Reusable definition with no source placeholder detected. This source index is not a kernel certificate.',
+   unproved_statement: 'Unproved theorem statement: its proof contains an explicit sorry obligation.',
+   depends_on_unproved: 'Proof assembly depending on unfinished obligations. It is not a completed proof.',
+   definition_depends_on_unproved: 'This definition depends on an unfinished obligation and is not verified.',
+   proof_candidate: 'Proof body present with no detected unfinished source dependencies. Consult the compiled axiom report for certification.'
+ };
+ document.getElementById('status').textContent = upstream
+   ? 'Existing ' + entry.project + ' declaration at revision ' + entry.revision + '. Consult the compiled axiom report for verification.'
+   : (statuses[entry.source_status] || 'Source status unavailable; no proof certification is claimed.');
+
  const link = document.getElementById('source'); link.href = entry.url; link.hidden = false;
  document.getElementById('signature').textContent = entry.signature;
 }).catch(e => {document.getElementById('status').textContent = e.message;});

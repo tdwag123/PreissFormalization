@@ -28,6 +28,7 @@ jobs:
           python -m pip install -r blueprint/requirements.txt
       - name: Validate dependencies and declaration links
         run: |
+          python scripts/test_source_checks.py
           python scripts/check_blueprint.py
           python scripts/declaration_links.py
       - name: Render LeanBlueprint
@@ -35,6 +36,8 @@ jobs:
       - name: Add declaration viewer and verify HTML
         run: |
           python scripts/declaration_links.py --site
+          python scripts/export_core_graph.py --site
+          python scripts/check_module_plan.py --site
           python scripts/check_render.py
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

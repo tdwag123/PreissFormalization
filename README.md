@@ -1,61 +1,74 @@
 # PreissFormalization
 
-A reusable LeanBlueprint for Preiss' rectifiability theorem, following De Lellis, Theorem 6.1.
-This is the initial **definitions and proof-plan stage**, not a completed formalization.
+A reusable Lean library and LeanBlueprint for Preiss's rectifiability theorem,
+following De Lellis's *Lecture Notes on Rectifiable Sets, Densities, and Tangent Measures*.
+**This is an unfinished formalization. The theorem still depends on `sorryAx`.**
 
-Open the [shared LeanBlueprint](https://tdwag123.github.io/PreissFormalization/) or its
-[interactive dependency graph](https://tdwag123.github.io/PreissFormalization/dep_graph_document.html).
-The graph has **89 nodes and 261 edges**, including **43 existing FormalizingGMT nodes**
-covering **62 upstream declarations**, with links to pinned source locations.
+- [Read the shared LeanBlueprint](https://tdwag123.github.io/PreissFormalization/).
+- [Explore the complete dependency graph](https://tdwag123.github.io/PreissFormalization/dep_graph_document.html).
+- [View the dependencies of Preiss alone](https://tdwag123.github.io/PreissFormalization/preiss-core.svg).
+- [Inspect the proposed module graph](https://tdwag123.github.io/PreissFormalization/modules.svg).
 
-Start with [the blueprint](blueprint/src/content.tex), its [build instructions](blueprint/README.md),
-and the [dependency graph](blueprint/dependencies.svg). The rendered LeanBlueprint is generated at
-`blueprint/web/index.html`. [The dependency data](blueprint/dependencies.json) is generated from the
-same LaTeX source, with separate statement and intended proof edges.
+The blueprint begins with a [natural-language proof sketch](blueprint/src/proof-sketch.tex),
+then explains the [library organization](blueprint/src/architecture.tex) and gives the
+[intermediate mathematical obligations](blueprint/src/plan.tex).
+[Existing FormalizingGMT results](blueprint/src/upstream.tex) appear as dependency nodes,
+with exact names and links to pinned source. [The reuse inventory](blueprint/reuse.json)
+also identifies mathlib tools. The [validation record](blueprint/validation.json)
+distinguishes source checks, statement compilation, and completed proofs.
 
-The main route is:
+The proof route is:
 
-1. Reuse FormalizingGMT's density and tangent APIs, especially `mattila_14_9` (all tangents uniform).
-2. Obtain a flat tangent almost everywhere (De Lellis 6.8).
-3. Prove uniqueness at infinity, the conical flatness gap, and rigidity from flatness at infinity.
-4. Use the first-crossing argument to make every tangent flat (6.10).
-5. Apply the Marstrand–Mattila rectifiability criterion (5.1).
+1. Reuse FormalizingGMT to show that almost every tangent is uniform.
+2. Use recentering and dimension reduction to find a flat tangent almost everywhere.
+3. Prove uniform-measure blow-down uniqueness, a conical flatness gap, and rigidity
+   when the blow-down is flat.
+4. Use a greatest-crossing argument to show that every tangent is flat.
+5. Apply the Marstrand–Mattila sufficient criterion for rectifiability.
 
-`Preiss/` contains reusable definitions and elementary proved bridges, with no `sorry` or axioms.
-`PreissBlueprint/` is a separate statement laboratory with explicit `sorry` obligations. Its final
-theorem assembles the intended argument but still depends on those obligations. Compiling it checks
-interfaces, not proofs. Technical nodes without Lean links remain mathematical specifications.
+The plan includes Lipschitz graphs, partial-domain Lipschitz parametrizations,
+rectifiable sets and measures, and the full tangent-measure characterization.
+Its converse, graph decomposition, and graph area formula form a companion branch
+outside the main Preiss proof. Under positive finite lower and upper density bounds,
+rectifiability is equivalent to every tangent being flat almost everywhere.
+Rectifiability further yields one common tangent plane and an existing density there.
 
 ```lean
-theorem preiss (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]
-    (h : ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt m μ x) :
-    IsRectifiableMeasure m μ
+theorem Preiss.preiss (μ : Measure (Preiss.Euclidean n)) [IsLocallyFiniteMeasure μ]
+    (h : ∀ᵐ x ∂μ, Preiss.HasPositiveFiniteDensityAt m μ x) :
+    Preiss.IsRectifiableMeasure m μ
 ```
 
-Here `m n : ℕ`, `Euclidean n = EuclideanSpace ℝ (Fin n)`, and the density predicate uses
-FormalizingGMT's closed-ball ratio `μ (closedBall x r) / (2*r)^m`. The blueprint explicitly includes
-the open-ball normalization bridge, dimension zero, and `m > n`.
+Here `m n : ℕ`; the zero and excessive dimensions are included. Density uses
+FormalizingGMT's closed-ball, diameter-normalized convention. Fixed-dimensional
+blow-ups have a separate definition: arbitrary-scalar tangents form a positive ray,
+while a rectifiable measure has a single limit under fixed-dimensional normalization.
 
-Rectifiable measures require both absolute continuity with respect to mathlib's Hausdorff measure
-and concentration on countably many Lipschitz images. The graph/image equivalence and density
-representation on a sigma-finite carrier are separate obligations. The general metric-target
-definition uses globally defined Euclidean parametrizations; equivalence with arbitrary-domain
-parametrizations is intended here for Euclidean targets, not asserted for every metric target.
+Canonical statements live in their topic files under `Preiss/`, with explicit `sorry`
+bodies until proved. Definitions contain no placeholders. `PreissBlueprint/` retains
+the earlier statement laboratory during migration. A source link means that a
+statement is written, not that it has compiled or been proved. The full intended DAG
+is not an extraction of completed Lean proof terms.
 
-The existing `IsTangentMeasure`, `IsSUniform`, and `Measure.WeaklyConverges` are imported.
-Fixed-dimensional tangents are separate: arbitrary-scalar tangents are positive multiples of them,
-not literally the same set. Quantitative flatness statements use unit-mass uniform measures.
-
-Dependencies: FormalizingGMT `c14a8d07b2df61798fc184fd53ff6f72d858ae48`,
-mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, Lean `v4.34.1`.
-See [the reuse inventory](blueprint/reuse.json) and [validation record](blueprint/validation.json).
+Dependencies are pinned to FormalizingGMT `c14a8d07b2df61798fc184fd53ff6f72d858ae48`,
+mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, and Lean `v4.34.1`.
+Preserve `lake-manifest.json` when reproducing the build.
 
 ```console
-lake update
-lake build Preiss
-lake build PreissBlueprint
 python scripts/check_blueprint.py
-lake env lean tmp/blueprint_checks.lean
+python scripts/check_module_plan.py
+python scripts/declaration_links.py
 ```
 
-The default build includes only `Preiss`. No proved theorem should import the draft library.
+The Lean CI workflow builds **every local module**, including modules absent from
+an umbrella import, then records actual transitive axiom dependencies. To build the
+same target list in PowerShell:
+
+```powershell
+$preissTargets = (python scripts/lean_targets.py) -split ' '
+lake build @preissTargets
+lake env lean tmp/blueprint_checks.lean | Tee-Object tmp/blueprint-kernel.log
+python scripts/check_kernel_axioms.py tmp/blueprint-kernel.log
+```
+
+See [blueprint build instructions](blueprint/README.md) for the rendered documentation.

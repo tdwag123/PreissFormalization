@@ -33,8 +33,10 @@ parser.feed(graph)
 missing = [n['id'] for n in data['nodes'] if n['id'] + '_modal' not in parser.ids]
 assert not missing, f'Missing graph nodes: {missing}'
 assert '.renderDot(' in graph, 'Missing dependency graph data'
-assert 'PreissBlueprint.preiss' in graph
-assert any('sorry' in p.read_text(encoding='utf-8') for p in web.glob('*.html'))
+final_node = next(n for n in data['nodes'] if n['id'] == 'thm:preiss')
+assert all(name in graph for name in final_node['lean'])
+if any(n['lean'] and n['status'] in {'unproved_statement', 'depends_on_unproved', 'definition_depends_on_unproved'} for n in data['nodes']):
+    assert any('sorry' in p.read_text(encoding='utf-8') for p in web.glob('*.html')), 'Missing unfinished-proof disclosure'
 for asset in parser.local_assets:
     if not re.match(r'^(https?:)?//', asset):
         assert (web / asset).is_file(), f'Missing JavaScript: {asset}'

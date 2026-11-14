@@ -1,0 +1,69 @@
+\chapter{Library organization and Lean interfaces}
+
+The file organization follows the mathematical dependency plan. The complete
+node-to-file assignment and import graph are recorded in
+\href{modules.json}{the module manifest}; the
+\href{modules.svg}{module graph} records the proposed imports.
+This is a proposed architecture, checked for cycles. A file appearing there
+need not yet contain a compiled statement. Source validation and Lean build
+results are reported separately.
+
+\section{Principles}
+Definitions carry only the structure needed to state the notion. Local
+finiteness, positivity of dimension, measurability, and finite Hausdorff mass
+are theorem hypotheses when required. The library reuses mathlib's measures,
+Hausdorff measure, Euclidean spaces, continuous multilinear maps, projections,
+and Gaussian distributions. It reuses FormalizingGMT's density and tangent
+predicates and compact-test convergence; convention changes have named adapters.
+
+This follows mathlib's guidance on
+\href{https://mathlib.org/contribute/style.html}{file organization and style}
+and \href{https://mathlib.org/contribute/naming.html}{declaration naming}:
+put reusable results in their mathematical topic, use meaningful theorem names,
+and keep imports narrow. The initial namespace is \texttt{Preiss}; moving a
+result upstream should not require changing its mathematical hypotheses.
+
+\section{File families}
+\begin{itemize}
+\item \texttt{Geometry}: Euclidean spaces, planes, projections, compact plane
+parameters, cones, Lipschitz extension, and Hausdorff measure on planes.
+These files do not import tangent-measure or uniform-measure theory.
+\item \texttt{Rectifiability/Defs} and \texttt{GraphDefs}: partial-domain
+Lipschitz pieces, exact countable coverage, rectifiability modulo null sets,
+rectifiable measures, and Lipschitz graphs. Basic carrier calculus and
+rectifiable/purely unrectifiable decomposition build on these definitions.
+\item \texttt{Density}: conventions, power-law comparisons with Hausdorff
+measure, finite carrier pieces, and the zero/excess-dimension endpoints.
+\item \texttt{Tangent}: dimensional scaling, normalization adapters,
+compactness, restrictions, recentering, and closure under further blow-ups.
+Generic scaling algebra is separate from the final flat-pseudotangent theorem.
+\item \texttt{Analysis} and \texttt{MeasureTheory}: graded projections,
+polynomial feature maps, spectral optimization, vague convergence, and
+Gaussian integrability/determination. These statements should be useful
+without assuming that a measure is uniform.
+\item \texttt{Uniform}: unit ball laws, radial integrals, moment forms,
+Taylor coefficients, blow-downs, conical gaps, and flat-at-infinity rigidity.
+Coefficient families are explicit data; their asymptotic properties are
+hypotheses or conclusions of named theorems.
+\item \texttt{Rectifiability/WeakApproximation} and
+\texttt{Rectifiability/MarstrandMattila}: approximation, restriction,
+projection estimates, packing, and the sufficient rectifiability criterion.
+\item The companion graph-cover, graph-area, and tangent-necessity modules
+prove the converse and full characterization. They are outside the main
+Preiss theorem's import closure.
+\item \texttt{Main} assembles the two tangent arguments, the sufficient
+criterion, and the endpoint dimensions. It introduces no new geometric notion.
+\end{itemize}
+
+\section{Statement and proof status}
+Each theorem is introduced in its canonical topic file with an explicit
+\texttt{sorry} body, then proved in place. The earlier
+\texttt{PreissBlueprint} statement laboratory is temporary during migration.
+Concrete definitions must not contain placeholders. Compiling all statements
+is a separate milestone from proving them: an assembly theorem may have a
+written proof but still depend transitively on \texttt{sorryAx}.
+
+Pure local modules use Lean's modern module system. FormalizingGMT currently
+uses legacy modules, so files importing it remain explicit legacy boundaries;
+a blanket conversion would be rejected by the compiler. This is a build
+constraint, not an additional mathematical dependency.
