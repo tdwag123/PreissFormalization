@@ -56,7 +56,7 @@ theorem uniformWithConstant_dimensionalBlowup (μ : Measure (Euclidean n))
     have hmap : Measurable (fun z : Euclidean n ↦ r⁻¹ • (z - a)) :=
       ((continuous_id.sub continuous_const).const_smul r⁻¹).measurable
     rw [dimensionalBlowup, Measure.smul_apply, smul_eq_mul,
-      Measure.map_apply hmap measurableSet_closedBall, hpre,
+      Measure.map_apply hmap isClosed_closedBall.measurableSet, hpre,
       hμ.2.2.2 y hy (r * ρ) (mul_pos hr hρ)]
     have hreal : q * (r * ρ) ^ m = r ^ m * (q * ρ ^ m) := by rw [mul_pow]; ring
     rw [hreal, ENNReal.ofReal_mul (pow_nonneg hr.le m), ← mul_assoc,
