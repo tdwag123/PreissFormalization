@@ -59,6 +59,17 @@ theorem norm_momentKernel_le (k : ℕ) (z : Euclidean n) :
   simpa [momentKernel] using ContinuousMultilinearMap.norm_compContinuousLinearMap_le
     (ContinuousMultilinearMap.mkPiAlgebra ℝ (Fin k) ℝ) (fun _ => innerSL ℝ z)
 
+theorem norm_momentKernel {n : ℕ} (k : ℕ) (z : Euclidean n) :
+    ‖momentKernel k z‖ = ‖z‖ ^ k := by
+  apply le_antisymm (norm_momentKernel_le k z)
+  by_cases hz : ‖z‖ ^ k = 0
+  · simpa only [hz] using norm_nonneg (momentKernel k z)
+  · have hpos : 0 < ‖z‖ ^ k := lt_of_le_of_ne (by positivity) (Ne.symm hz)
+    have h := (momentKernel k z).le_opNorm (fun _ => z)
+    have hdiag : ‖z‖ ^ k * ‖z‖ ^ k ≤ ‖momentKernel k z‖ * ‖z‖ ^ k := by
+      simpa [momentKernel_apply, real_inner_self_eq_norm_sq, pow_two, mul_pow] using h
+    exact (mul_le_mul_iff_left₀ hpos).mp (by simpa only [mul_comm] using hdiag)
+
 noncomputable def gaussianMass (μ : Measure (Euclidean n)) (s : ℝ) : ℝ :=
   ∫ z, Real.exp (-s * ‖z‖ ^ 2) ∂μ
 

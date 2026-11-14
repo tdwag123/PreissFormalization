@@ -1,4 +1,5 @@
 import Preiss.Uniform.Flatness
+import Preiss.Uniform.FlatnessBasic
 import Preiss.Geometry.FlatMeasure
 import FormalizingGMT.WeakConvergence.Basic
 
@@ -25,12 +26,12 @@ theorem flatness_exists_minimizer (hmn : m ≤ n)
 theorem flatness_nonneg (hmn : m ≤ n) (φ : C_c(Euclidean n, ℝ))
     (hφ : IsFlatnessCutoff φ) (μ : Measure (Euclidean n)) (hμ : μ.Regular) :
     0 ≤ flatness m φ μ := by
-  sorry
+  exact flatness_nonneg_of_nonneg m φ (fun z => (hφ.1 z).1) μ
 
 theorem flatness_eq_zero_of_isFlat (φ : C_c(Euclidean n, ℝ))
     (hφ : IsFlatnessCutoff φ) (μ : Measure (Euclidean n)) (hμ : IsFlat m μ) :
     flatness m φ μ = 0 := by
-  sorry
+  exact flatness_eq_zero_of_isFlat_of_nonneg φ (fun z => (hφ.1 z).1) μ hμ
 
 theorem exists_plane_ball_energy_le_of_flatness_le
     (hmn : m ≤ n) (φ : C_c(Euclidean n, ℝ)) (hφ : IsFlatnessCutoff φ)

@@ -1,0 +1,11 @@
+{
+  "local_check": "tmp/MomentDilationCheck.lean exited zero; both covariance theorems printed only propext, Classical.choice, Quot.sound. Canonical promotion awaits current CI.",
+  "existing_node_additional_deps": {
+    "lem:moment-covariance": [
+      "lem:moment-kernel-calculus",
+      "lem:moment-form-evaluation"
+    ]
+  },
+  "kernel_norm_name": "Preiss.norm_momentKernel",
+  "proof_sketch": "Dilation follows from scalar-measure cancellation, integral_map and kernel homogeneity. Isometry covariance first uses the exact kernel norm to transfer Bochner integrability between source and target dimensions, then treats integrable and nonintegrable branches separately."
+}

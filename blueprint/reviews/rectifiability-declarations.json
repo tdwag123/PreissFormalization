@@ -1,5 +1,5 @@
 {
-  "status": "Full project elaboration and compiled kernel axiom audit passed at 759c384. Current source statuses below are not certification of later edits. Newly added cone-escape, WLA lower-bound, uniform-scaling, and support proofs passed a separate local Lean/kernel check with only standard axioms; full integration CI remains separate.",
+  "status": "Authoritative compiled status: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json (consult its source_revision). Source-status fields classify current source and do not certify later edits. The latest FinitePieces proof draft still requires integration CI.",
   "labels": {
     "def:cone": {
       "lean_name": "Preiss.cone",
@@ -16,17 +16,17 @@
           "file": "Preiss/Geometry/Cones.lean",
           "module": "Preiss.Geometry.Cones",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.closedTube",
           "file": "Preiss/Geometry/Cones.lean",
           "module": "Preiss.Geometry.Cones",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:graph-parametrization": {
       "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
@@ -43,17 +43,17 @@
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.graphMap",
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:plane-hausdorff": {
       "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
@@ -73,38 +73,38 @@
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.flatOn",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.unitFlat",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.unitFlat_closedBall",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.planeMeasure_ball_and_sphere",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:graph-borel-finite": {
       "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
@@ -120,10 +120,10 @@
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:graph-rectifiable": {
       "lean_name": "Preiss.countablyRectifiable_subset_graph",
@@ -139,10 +139,10 @@
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:domain-extension": {
       "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
@@ -159,17 +159,17 @@
           "file": "Preiss/Geometry/LipschitzExtension.lean",
           "module": "Preiss.Geometry.LipschitzExtension",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.exists_lipschitz_extension_finiteDimensional",
           "file": "Preiss/Geometry/LipschitzExtension.lean",
           "module": "Preiss.Geometry.LipschitzExtension",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:carrier-closure": {
       "lean_name": "Preiss.countablyRectifiable_iUnion",
@@ -190,7 +190,7 @@
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
           "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.countablyRectifiable_mono",
@@ -198,7 +198,7 @@
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
           "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.countablyRectifiable_image",
@@ -206,7 +206,7 @@
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
           "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.countablyRectifiable_of_sdiff_null",
@@ -214,17 +214,17 @@
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
           "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.countablyRectifiable_union",
           "file": "Preiss/Rectifiability/Basic.lean",
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:borel-carrier": {
       "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
@@ -240,10 +240,10 @@
           "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
           "module": "Preiss.Rectifiability.EuclideanCarrier",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:carrier-calculus": {
       "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
@@ -260,10 +260,10 @@
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
           "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:cone-graph": {
       "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
@@ -279,10 +279,10 @@
           "file": "Preiss/Rectifiability/Cones.lean",
           "module": "Preiss.Rectifiability.Cones",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "def:purely-unrectifiable": {
       "lean_name": "Preiss.PurelyUnrectifiable",
@@ -298,10 +298,10 @@
           "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
           "module": "Preiss.Rectifiability.PurelyUnrectifiable",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:pure-basic": {
       "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
@@ -318,17 +318,17 @@
           "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
           "module": "Preiss.Rectifiability.PurelyUnrectifiable",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.purelyUnrectifiable_mono",
           "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
           "module": "Preiss.Rectifiability.PurelyUnrectifiable",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:decomposition": {
       "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
@@ -345,17 +345,17 @@
           "file": "Preiss/Rectifiability/Decomposition.lean",
           "module": "Preiss.Rectifiability.Decomposition",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.rectifiable_pure_partition_unique",
           "file": "Preiss/Rectifiability/Decomposition.lean",
           "module": "Preiss.Rectifiability.Decomposition",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:density-measure-comparison": {
       "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
@@ -373,24 +373,24 @@
           "file": "Preiss/Density/PowerComparison.lean",
           "module": "Preiss.Density.PowerComparison",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.UpperPowerBoundAt",
           "file": "Preiss/Density/PowerComparison.lean",
           "module": "Preiss.Density.PowerComparison",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
           "file": "Preiss/Density/PowerComparison.lean",
           "module": "Preiss.Density.PowerComparison",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:absolute-continuity": {
       "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
@@ -406,16 +406,16 @@
           "file": "Preiss/Density/HausdorffComparison.lean",
           "module": "Preiss.Density.HausdorffComparison",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:finite-pieces": {
       "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
       "file": "Preiss/Density/FinitePieces.lean",
       "module": "Preiss.Density.FinitePieces",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.exists_finite_hausdorff_pieces_of_density_bounds"
       ],
@@ -424,11 +424,11 @@
           "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
           "file": "Preiss/Density/FinitePieces.lean",
           "module": "Preiss.Density.FinitePieces",
-          "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "status": "proof_candidate",
+          "verification": "Local check elaborated the complete proof except one obsolete scalar-monotonicity lemma name; replacement is a proof draft pending full CI."
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Local check elaborated the complete proof except one obsolete scalar-monotonicity lemma name; replacement is a proof draft pending full CI."
     },
     "lem:representation": {
       "lean_name": "Preiss.rectifiable_iff_density_representation",
@@ -444,10 +444,10 @@
           "file": "Preiss/Rectifiability/DensityRepresentation.lean",
           "module": "Preiss.Rectifiability.DensityRepresentation",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:finite-piece-transfer": {
       "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
@@ -463,10 +463,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:dimensional-compactness": {
       "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
@@ -482,10 +482,10 @@
           "file": "Preiss/Tangent/Compactness.lean",
           "module": "Preiss.Tangent.Compactness",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:flat-limit-tube": {
       "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
@@ -501,10 +501,10 @@
           "file": "Preiss/Tangent/FlatApproximation.lean",
           "module": "Preiss.Tangent.FlatApproximation",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:flat-limit-moving-balls": {
       "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
@@ -520,10 +520,10 @@
           "file": "Preiss/Tangent/FlatApproximation.lean",
           "module": "Preiss.Tangent.FlatApproximation",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:flat-to-approximation": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
@@ -539,10 +539,10 @@
           "file": "Preiss/Tangent/FlatApproximation.lean",
           "module": "Preiss.Tangent.FlatApproximation",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:weak-approximation-lower-density": {
       "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
@@ -559,17 +559,17 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.lower_power_bound_of_weakApproximation",
           "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Basic",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:weak-approximation-deletion": {
       "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
@@ -586,17 +586,17 @@
           "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.negligibleDeletionAt",
           "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:weak-approximation-restrict-ae": {
       "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
@@ -612,10 +612,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "def:weak-approximation-good-set": {
       "lean_name": "Preiss.weakApproximationGoodSet",
@@ -631,10 +631,10 @@
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:closed-weak-approximation-good-set": {
       "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
@@ -650,10 +650,10 @@
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:weak-approximation-good-exhaustion": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
@@ -669,10 +669,10 @@
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:uniform-compact-selection": {
       "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
@@ -688,10 +688,10 @@
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:tube-support-upgrade": {
       "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
@@ -707,10 +707,10 @@
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:pure-cone-escape": {
       "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
@@ -726,10 +726,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:projected-tube-slab-bound": {
       "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
@@ -745,10 +745,10 @@
           "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
           "module": "Preiss.Rectifiability.ProjectionEstimate",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:pure-wla-null-projection": {
       "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
@@ -764,10 +764,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:nested-compact-approximation": {
       "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
@@ -784,17 +784,17 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.TwoSidedApproximation",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:packing-base-point": {
       "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
@@ -811,17 +811,17 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:projection-hole-cover": {
       "lean_name": "Preiss.exists_projection_hole_disk_family",
@@ -839,24 +839,24 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.HoleFamily",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.projected_distance_le_of_lower_mass",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:discarded-cylinder-sum": {
       "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
@@ -872,10 +872,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:empty-cylinder-direction": {
       "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
@@ -892,17 +892,17 @@
           "file": "Preiss/Geometry/Cylinders.lean",
           "module": "Preiss.Geometry.Cylinders",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.cylinder",
           "file": "Preiss/Geometry/Cylinders.lean",
           "module": "Preiss.Geometry.Cylinders",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:column-packing": {
       "lean_name": "Preiss.exists_column_disjoint_balls",
@@ -918,10 +918,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:packing-contradiction": {
       "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
@@ -938,17 +938,17 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.false_of_column_mass_exceeds_upper_bound",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "thm:mm-set": {
       "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
@@ -964,10 +964,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "thm:mm-measure": {
       "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
@@ -983,10 +983,10 @@
           "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:lipschitz-null-image": {
       "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
@@ -1002,10 +1002,10 @@
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:rank-deficient-image-null": {
       "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
@@ -1021,10 +1021,10 @@
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:full-rank-graph-pieces": {
       "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
@@ -1040,10 +1040,10 @@
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:graphs": {
       "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
@@ -1059,10 +1059,10 @@
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:graph-affine-area": {
       "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
@@ -1079,17 +1079,17 @@
           "file": "Preiss/Rectifiability/GraphArea.lean",
           "module": "Preiss.Rectifiability.GraphArea",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.linearJacobian",
           "file": "Preiss/Rectifiability/GraphArea.lean",
           "module": "Preiss.Rectifiability.GraphArea",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:graph-area": {
       "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
@@ -1105,10 +1105,10 @@
           "file": "Preiss/Rectifiability/GraphArea.lean",
           "module": "Preiss.Rectifiability.GraphArea",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:graph-blowup": {
       "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
@@ -1124,10 +1124,10 @@
           "file": "Preiss/Rectifiability/GraphBlowup.lean",
           "module": "Preiss.Rectifiability.GraphBlowup",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:normalized-density-transfer": {
       "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
@@ -1143,10 +1143,10 @@
           "file": "Preiss/Tangent/DensityTransfer.lean",
           "module": "Preiss.Tangent.DensityTransfer",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "thm:rectifiable-blowup": {
       "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
@@ -1162,10 +1162,10 @@
           "file": "Preiss/Rectifiability/TangentNecessity.lean",
           "module": "Preiss.Rectifiability.TangentNecessity",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "cor:rectifiable-tangent-plane": {
       "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
@@ -1181,10 +1181,10 @@
           "file": "Preiss/Rectifiability/TangentNecessity.lean",
           "module": "Preiss.Rectifiability.TangentNecessity",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "thm:rectifiable-iff-flat": {
       "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
@@ -1200,10 +1200,10 @@
           "file": "Preiss/Rectifiability/TangentCharacterization.lean",
           "module": "Preiss.Rectifiability.TangentCharacterization",
           "status": "depends_on_unproved",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:grassmannian": {
       "lean_name": "Preiss.isCompact_rankProjectionSet",
@@ -1224,45 +1224,45 @@
           "file": "Preiss/Geometry/PlaneTopology.lean",
           "module": "Preiss.Geometry.PlaneTopology",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.proj",
           "file": "Preiss/Geometry/Projections.lean",
           "module": "Preiss.Geometry.Projections",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.planeProjection",
           "file": "Preiss/Geometry/Projections.lean",
           "module": "Preiss.Geometry.Projections",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.planeProjection_injective",
           "file": "Preiss/Geometry/Projections.lean",
           "module": "Preiss.Geometry.Projections",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.rankProjectionSet",
           "file": "Preiss/Geometry/PlaneTopology.lean",
           "module": "Preiss.Geometry.PlaneTopology",
           "status": "definition",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.range_planeProjection",
           "file": "Preiss/Geometry/PlaneTopology.lean",
           "module": "Preiss.Geometry.PlaneTopology",
           "status": "proof_candidate",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     }
   },
   "declarations": {
@@ -1271,126 +1271,126 @@
       "file": "Preiss/Geometry/Projections.lean",
       "module": "Preiss.Geometry.Projections",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "planeProjection": {
       "lean_name": "Preiss.planeProjection",
       "file": "Preiss/Geometry/Projections.lean",
       "module": "Preiss.Geometry.Projections",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "planeProjection_injective": {
       "lean_name": "Preiss.planeProjection_injective",
       "file": "Preiss/Geometry/Projections.lean",
       "module": "Preiss.Geometry.Projections",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "rankProjectionSet": {
       "lean_name": "Preiss.rankProjectionSet",
       "file": "Preiss/Geometry/PlaneTopology.lean",
       "module": "Preiss.Geometry.PlaneTopology",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "range_planeProjection": {
       "lean_name": "Preiss.range_planeProjection",
       "file": "Preiss/Geometry/PlaneTopology.lean",
       "module": "Preiss.Geometry.PlaneTopology",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isCompact_rankProjectionSet": {
       "lean_name": "Preiss.isCompact_rankProjectionSet",
       "file": "Preiss/Geometry/PlaneTopology.lean",
       "module": "Preiss.Geometry.PlaneTopology",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "closedTube": {
       "lean_name": "Preiss.closedTube",
       "file": "Preiss/Geometry/Cones.lean",
       "module": "Preiss.Geometry.Cones",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "cone": {
       "lean_name": "Preiss.cone",
       "file": "Preiss/Geometry/Cones.lean",
       "module": "Preiss.Geometry.Cones",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "cylinder": {
       "lean_name": "Preiss.cylinder",
       "file": "Preiss/Geometry/Cylinders.lean",
       "module": "Preiss.Geometry.Cylinders",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_unit_small_projection_of_avoids_cylinder": {
       "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
       "file": "Preiss/Geometry/Cylinders.lean",
       "module": "Preiss.Geometry.Cylinders",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "flatOn": {
       "lean_name": "Preiss.flatOn",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "map_hausdorffMeasure_subtype_eq_restrict": {
       "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "planeMeasure_ball_and_sphere": {
       "lean_name": "Preiss.planeMeasure_ball_and_sphere",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_lipschitz_extension_euclidean": {
       "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
       "file": "Preiss/Geometry/LipschitzExtension.lean",
       "module": "Preiss.Geometry.LipschitzExtension",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "graphMap": {
       "lean_name": "Preiss.graphMap",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "graphMap_lipschitz_antilipschitz": {
       "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isClosed_and_measure_closedBall_lt_top": {
       "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "countablyRectifiable_subset_graph": {
       "lean_name": "Preiss.countablyRectifiable_subset_graph",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "countablyRectifiable_mono": {
       "lean_name": "Preiss.countablyRectifiable_mono",
@@ -1398,7 +1398,7 @@
       "module": "Preiss.Rectifiability.Basic",
       "status": "proof_candidate",
       "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "countablyRectifiable_iUnion": {
       "lean_name": "Preiss.countablyRectifiable_iUnion",
@@ -1406,7 +1406,7 @@
       "module": "Preiss.Rectifiability.Basic",
       "status": "proof_candidate",
       "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "countablyRectifiable_image": {
       "lean_name": "Preiss.countablyRectifiable_image",
@@ -1414,7 +1414,7 @@
       "module": "Preiss.Rectifiability.Basic",
       "status": "proof_candidate",
       "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "countablyRectifiable_of_sdiff_null": {
       "lean_name": "Preiss.countablyRectifiable_of_sdiff_null",
@@ -1422,7 +1422,7 @@
       "module": "Preiss.Rectifiability.Basic",
       "status": "proof_candidate",
       "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isRectifiableMeasure_of_countable_restrict": {
       "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
@@ -1430,413 +1430,413 @@
       "module": "Preiss.Rectifiability.Basic",
       "status": "proof_candidate",
       "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_borel_sigmaFinite_carrier": {
       "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
       "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
       "module": "Preiss.Rectifiability.EuclideanCarrier",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_lipschitzGraph_of_pairwise_mem_cone": {
       "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
       "file": "Preiss/Rectifiability/Cones.lean",
       "module": "Preiss.Rectifiability.Cones",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "PurelyUnrectifiable": {
       "lean_name": "Preiss.PurelyUnrectifiable",
       "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
       "module": "Preiss.Rectifiability.PurelyUnrectifiable",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "purelyUnrectifiable_mono": {
       "lean_name": "Preiss.purelyUnrectifiable_mono",
       "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
       "module": "Preiss.Rectifiability.PurelyUnrectifiable",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "purelyUnrectifiable_measure_inter_eq_zero": {
       "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
       "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
       "module": "Preiss.Rectifiability.PurelyUnrectifiable",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_rectifiable_purelyUnrectifiable_partition": {
       "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
       "file": "Preiss/Rectifiability/Decomposition.lean",
       "module": "Preiss.Rectifiability.Decomposition",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "rectifiable_pure_partition_unique": {
       "lean_name": "Preiss.rectifiable_pure_partition_unique",
       "file": "Preiss/Rectifiability/Decomposition.lean",
       "module": "Preiss.Rectifiability.Decomposition",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "UpperPowerBoundAt": {
       "lean_name": "Preiss.UpperPowerBoundAt",
       "file": "Preiss/Density/PowerComparison.lean",
       "module": "Preiss.Density.PowerComparison",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "measure_restrict_le_hausdorff_of_ball_bounds": {
       "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
       "file": "Preiss/Density/PowerComparison.lean",
       "module": "Preiss.Density.PowerComparison",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "hausdorff_restrict_le_measure_of_ball_bounds": {
       "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
       "file": "Preiss/Density/PowerComparison.lean",
       "module": "Preiss.Density.PowerComparison",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "absolutelyContinuous_hausdorff_of_upper_density_finite": {
       "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
       "file": "Preiss/Density/HausdorffComparison.lean",
       "module": "Preiss.Density.HausdorffComparison",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_finite_hausdorff_pieces_of_density_bounds": {
       "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
       "file": "Preiss/Density/FinitePieces.lean",
       "module": "Preiss.Density.FinitePieces",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "rectifiable_iff_density_representation": {
       "lean_name": "Preiss.rectifiable_iff_density_representation",
       "file": "Preiss/Rectifiability/DensityRepresentation.lean",
       "module": "Preiss.Rectifiability.DensityRepresentation",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_dimensional_tangent_subseq_of_density_bounds": {
       "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
       "file": "Preiss/Tangent/Compactness.lean",
       "module": "Preiss.Tangent.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "tendsto_mass_outside_tube_of_flat_limit": {
       "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "module": "Preiss.Tangent.FlatApproximation",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "eventually_ball_mass_lower_bound_of_flat_limit": {
       "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "module": "Preiss.Tangent.FlatApproximation",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "weaklyLinearlyApproximableAt_of_all_tangents_flat": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "module": "Preiss.Tangent.FlatApproximation",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lower_power_bound_of_weakApproximation": {
       "lean_name": "Preiss.lower_power_bound_of_weakApproximation",
       "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Basic",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "negligibleDeletionAt": {
       "lean_name": "Preiss.negligibleDeletionAt",
       "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "weakApproximation_restrict_of_negligible_sdiff": {
       "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
       "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "weakApproximationGoodSet": {
       "lean_name": "Preiss.weakApproximationGoodSet",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isClosed_weakApproximationGoodSet": {
       "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "weaklyLinearlyApproximableAt_iff_goodSet_exhaustion": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_compact_uniform_weakApproximation_subset": {
       "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "subset_tube_of_lower_mass_and_small_outside_mass": {
       "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "hausdorffMeasure_projected_tube_le": {
       "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
       "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
       "module": "Preiss.Rectifiability.ProjectionEstimate",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "ae_exists_outside_cone_of_purelyUnrectifiable": {
       "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
       "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation": {
       "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "TwoSidedApproximation": {
       "lean_name": "Preiss.TwoSidedApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_nested_compact_twoSided_approximation": {
       "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "HoleFamily": {
       "lean_name": "Preiss.HoleFamily",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_projection_hole_disk_family": {
       "lean_name": "Preiss.exists_projection_hole_disk_family",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "projected_distance_le_of_lower_mass": {
       "lean_name": "Preiss.projected_distance_le_of_lower_mass",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "tsum_hole_radii_bad_indices_le": {
       "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_column_disjoint_balls": {
       "lean_name": "Preiss.exists_column_disjoint_balls",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "false_of_column_mass_exceeds_upper_bound": {
       "lean_name": "Preiss.false_of_column_mass_exceeds_upper_bound",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "false_of_null_projections_and_uniform_weakApproximation": {
       "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lower_density_pos_of_weakApproximation": {
       "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "ae_weaklyLinearlyApproximableAt_subset": {
       "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_upper_mass_small_sdiff_point": {
       "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "countablyRectifiable_of_ae_weaklyLinearlyApproximableAt": {
       "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
       "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "ae_density_bounds_and_flat_tangents_restrict_hausdorff": {
       "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
       "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents": {
       "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
       "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "hausdorffMeasure_image_eq_zero_of_lipschitz_null": {
       "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "hausdorffMeasure_image_rank_lt_eq_zero": {
       "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_countable_graph_cover_fullRank_locus": {
       "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "countablyRectifiable_iff_lipschitzGraph_cover": {
       "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "linearJacobian": {
       "lean_name": "Preiss.linearJacobian",
       "file": "Preiss/Rectifiability/GraphArea.lean",
       "module": "Preiss.Rectifiability.GraphArea",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "map_jacobian_hausdorff_affine_injection": {
       "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
       "file": "Preiss/Rectifiability/GraphArea.lean",
       "module": "Preiss.Rectifiability.GraphArea",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "map_withDensity_jacobian_eq_graph_hausdorff": {
       "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
       "file": "Preiss/Rectifiability/GraphArea.lean",
       "module": "Preiss.Rectifiability.GraphArea",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "ae_graph_hausdorff_blowup_limit": {
       "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
       "file": "Preiss/Rectifiability/GraphBlowup.lean",
       "module": "Preiss.Rectifiability.GraphBlowup",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "tendsto_integral_blowup_sub_density_mul": {
       "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
       "file": "Preiss/Tangent/DensityTransfer.lean",
       "module": "Preiss.Tangent.DensityTransfer",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "rectifiable_has_flat_blowup_limit": {
       "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
       "file": "Preiss/Rectifiability/TangentNecessity.lean",
       "module": "Preiss.Rectifiability.TangentNecessity",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "rectifiable_has_density_and_tangent_plane": {
       "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
       "file": "Preiss/Rectifiability/TangentNecessity.lean",
       "module": "Preiss.Rectifiability.TangentNecessity",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "rectifiable_iff_density_bounds_and_flat_tangents": {
       "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
       "file": "Preiss/Rectifiability/TangentCharacterization.lean",
       "module": "Preiss.Rectifiability.TangentCharacterization",
       "status": "depends_on_unproved",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "unitFlat": {
       "lean_name": "Preiss.unitFlat",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "unitFlat_closedBall": {
       "lean_name": "Preiss.unitFlat_closedBall",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "ae_upperPowerBoundAt_restrict_hausdorff": {
       "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     }
   }
 }

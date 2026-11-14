@@ -334,7 +334,7 @@ This canonical definition implies the graph-test version used in the source.
 \begin{lemma}[Attainment, positivity and unit-ball comparison]
 \label{lem:flatness-minimum}
 \lean{Preiss.flatness_exists_minimizer, Preiss.flatness_nonneg, Preiss.flatness_eq_zero_of_isFlat, Preiss.exists_plane_ball_energy_le_of_flatness_le}
-\uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff}
+\uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff, lem:flatness-basic-nonneg, lem:flatness-basic-zero}
 
 
 
@@ -891,7 +891,7 @@ If \(\Theta^{*m}(\mu,x)<\infty\) for \(\mu\)-almost every \(x\), then \(\mu\ll\m
 \begin{lemma}[Finite Hausdorff pieces with comparable measures]
 \label{lem:finite-pieces}
 \lean{Preiss.exists_finite_hausdorff_pieces_of_density_bounds}
-\uses{gmt:density-bounds, gmt:goodsets, lem:density-measure-comparison}
+\uses{gmt:density-bounds, gmt:goodsets, lem:density-measure-comparison, lem:density-bounds-good-set}
 
 
 
@@ -1198,7 +1198,7 @@ for every \(\eta>0\), some \(\lambda,r_0>0\) work at every \(0<r<r_0\) for both 
 \begin{lemma}[Plane and scaling API]
 \label{lem:plane-scaling}
 \lean{Preiss.isFlat_dimensionalBlowup, Preiss.isFlat_of_dimensionalBlowup_zero, Preiss.isFlat_map_linearIsometry}
-\uses{def:dimensional-blowup, def:flat, lem:blowup-composition, lem:plane-hausdorff}
+\uses{def:dimensional-blowup, def:flat, lem:blowup-composition, lem:plane-hausdorff, lem:measure-support-transport, lem:flat-plane-blowup}
 
 
 
@@ -2601,7 +2601,7 @@ Gaussian consequences are new adapters.
 \begin{lemma}[Moment covariance, scalar invariance and dilation]
 \label{lem:moment-covariance}
 \lean{Preiss.gaussianMomentForm_dilate, Preiss.gaussianMomentForm_smul, Preiss.gaussianMomentForm_map_linearIsometry}
-\uses{def:dimensional-blowup, def:moments, def:unit-uniform, lem:blowup-composition, lem:moment-form-evaluation}
+\uses{def:dimensional-blowup, def:moments, def:unit-uniform, lem:blowup-composition, lem:moment-form-evaluation, lem:moment-kernel-calculus}
 
 
 
@@ -4543,7 +4543,7 @@ For an outer measure on a pseudo extended metric space and any real dimension pa
 
 \begin{lemma}[Continuity, homogeneity, and norm bounds for moment kernels]
 \label{lem:moment-kernel-calculus}
-\lean{Preiss.continuous_momentKernel, Preiss.momentKernel_smul, Preiss.norm_momentKernel_le}
+\lean{Preiss.continuous_momentKernel, Preiss.momentKernel_smul, Preiss.norm_momentKernel_le, Preiss.norm_momentKernel}
 \uses{def:moments}
 The degree-$k$ multilinear moment kernel depends continuously on its vector argument,
 is homogeneous of degree $k$ under real scalar multiplication, and has operator norm
@@ -4701,4 +4701,36 @@ For a homeomorphism $e:X\to Y$ of Borel topological spaces and any measure $\mu$
 \uses{def:dimensional-blowup, lem:measure-support-transport}
 
 For every $m,n\in\mathbb N$, measure $\mu$ on $\mathbb R^n$, point $a$, and radius $r>0$, the dimensional blow-up $\mu_{a,r}=r^{-m}(T_{a,r})_\#\mu$ has support $T_{a,r}(\operatorname{spt}\mu)$, where $T_{a,r}(y)=(y-a)/r$. If $\mu$ is regular, then $\mu_{a,r}$ is regular.
+\end{lemma}
+
+\begin{lemma}[Rational good sets from positive finite density bounds]
+\label{lem:density-bounds-good-set}
+\lean{Preiss.exists_goodSet_mem_of_density_bounds}
+\uses{def:positive-density, gmt:goodsets}
+
+If $0<\Theta_*^m(\mu,x)$ and $\Theta^{m,*}(\mu,x)<\infty$, then there are positive rational numbers $p,q$ and $k\in\mathbb N$ such that, for every $0<r<1/(k+1)$, $p r^m\leq\mu(\overline B(x,r))\leq q r^m$. Equivalently, $x\in\mathrm{goodSet}(m,p,q,k,\mu)$ using the existing FormalizingGMT definition.
+\end{lemma}
+
+\begin{lemma}[Exact blow-up invariance of flat plane measures]
+\label{lem:flat-plane-blowup}
+\lean{Preiss.dimensionalBlowup_flatOn}
+\uses{def:dimensional-blowup, lem:plane-hausdorff, lem:blowup-composition}
+
+For an $m$-plane $V$, every scalar $c\in[0,\infty]$, every $x\in V$, and $r>0$, $D^m_{x,r}(c\,\mathcal H^m\!\restriction V)=c\,\mathcal H^m\!\restriction V$. This includes $m=0$ and does not require $c$ positive or finite.
+\end{lemma}
+
+\begin{lemma}[Nonnegativity of distance energy and flatness]
+\label{lem:flatness-basic-nonneg}
+\lean{Preiss.flatnessEnergy_nonneg, Preiss.flatness_nonneg_of_nonneg}
+\uses{def:flatness}
+
+For every nonnegative compactly supported continuous cutoff and every measure, the squared-distance energy of every plane is nonnegative, and so is its infimum defining flatness. No regularity or minimizing-plane theorem is needed; when the plane type is empty, the real infimum convention gives zero.
+\end{lemma}
+
+\begin{lemma}[Vanishing distance energy on a supporting plane]
+\label{lem:flatness-basic-zero}
+\lean{Preiss.flatnessEnergy_restrict_plane, Preiss.flatness_eq_zero_of_isFlat_of_nonneg}
+\uses{def:flatness, def:flat, lem:flatness-basic-nonneg}
+
+The squared-distance energy on $V$ of $c\,\mathcal H^m\!\restriction V$ is zero for any scalar $c\in[0,\infty]$. Consequently every flat measure has zero flatness for every nonnegative cutoff, without regularity or existence of a global minimizer.
 \end{lemma}

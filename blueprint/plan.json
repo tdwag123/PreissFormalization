@@ -1263,6 +1263,8 @@
         "def:flatness",
         "def:flatness-cutoff",
         "def:plane",
+        "lem:flatness-basic-nonneg",
+        "lem:flatness-basic-zero",
         "lem:grassmannian",
         "lem:vague-moving-tests"
       ],
@@ -1896,6 +1898,7 @@
       "deps": [
         "gmt:density-bounds",
         "gmt:goodsets",
+        "lem:density-bounds-good-set",
         "lem:density-measure-comparison"
       ],
       "lean_names": [
@@ -2256,6 +2259,8 @@
         "def:dimensional-blowup",
         "def:flat",
         "lem:blowup-composition",
+        "lem:flat-plane-blowup",
+        "lem:measure-support-transport",
         "lem:plane-hausdorff"
       ],
       "branch": "Existing interfaces",
@@ -3745,7 +3750,8 @@
         "def:moments",
         "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:moment-form-evaluation"
+        "lem:moment-form-evaluation",
+        "lem:moment-kernel-calculus"
       ],
       "lean_names": [
         "Preiss.gaussianMomentForm_dilate",
@@ -6095,6 +6101,7 @@
       "lean_names": [
         "Preiss.continuous_momentKernel",
         "Preiss.momentKernel_smul",
+        "Preiss.norm_momentKernel",
         "Preiss.norm_momentKernel_le"
       ],
       "deps": [
@@ -6378,6 +6385,81 @@
         "Preiss/Tangent/BlowupSupport.lean"
       ],
       "proposed_file": "Preiss/Tangent/BlowupSupport.lean"
+    },
+    {
+      "id": "lem:density-bounds-good-set",
+      "kind": "lemma",
+      "title": "Rational good sets from positive finite density bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_goodSet_mem_of_density_bounds"
+      ],
+      "deps": [
+        "def:positive-density",
+        "gmt:goodsets"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/FinitePieces.lean"
+      ],
+      "proposed_file": "Preiss/Density/FinitePieces.lean"
+    },
+    {
+      "id": "lem:flat-plane-blowup",
+      "kind": "lemma",
+      "title": "Exact blow-up invariance of flat plane measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_flatOn"
+      ],
+      "deps": [
+        "def:dimensional-blowup",
+        "lem:blowup-composition",
+        "lem:plane-hausdorff"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/FlatScaling.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/FlatScaling.lean"
+    },
+    {
+      "id": "lem:flatness-basic-nonneg",
+      "kind": "lemma",
+      "title": "Nonnegativity of distance energy and flatness",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatnessEnergy_nonneg",
+        "Preiss.flatness_nonneg_of_nonneg"
+      ],
+      "deps": [
+        "def:flatness"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessBasic.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessBasic.lean"
+    },
+    {
+      "id": "lem:flatness-basic-zero",
+      "kind": "lemma",
+      "title": "Vanishing distance energy on a supporting plane",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatnessEnergy_restrict_plane",
+        "Preiss.flatness_eq_zero_of_isFlat_of_nonneg"
+      ],
+      "deps": [
+        "def:flat",
+        "def:flatness",
+        "lem:flatness-basic-nonneg"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessBasic.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessBasic.lean"
     }
   ],
   "preiss_core": [
@@ -6466,6 +6548,7 @@
     "lem:conical-moments",
     "lem:countable-carrier",
     "lem:decomposition",
+    "lem:density-bounds-good-set",
     "lem:density-bridge",
     "lem:density-limit-values",
     "lem:density-measure-comparison",
@@ -6491,7 +6574,10 @@
     "lem:flat-infinity-moments",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
+    "lem:flat-plane-blowup",
     "lem:flat-to-approximation",
+    "lem:flatness-basic-nonneg",
+    "lem:flatness-basic-zero",
     "lem:flatness-continuous",
     "lem:flatness-cutoff-exists",
     "lem:flatness-gap-cutoff",
@@ -6668,6 +6754,7 @@
     "lem:column-packing",
     "lem:cone-graph",
     "lem:decomposition",
+    "lem:density-bounds-good-set",
     "lem:density-bridge",
     "lem:density-limit-values",
     "lem:density-measure-comparison",
@@ -6680,6 +6767,7 @@
     "lem:finite-pieces",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
+    "lem:flat-plane-blowup",
     "lem:flat-to-approximation",
     "lem:full-rank-graph-pieces",
     "lem:graph-affine-area",
@@ -6695,6 +6783,7 @@
     "lem:lower-ball-open-comparison",
     "lem:lower-ball-restrict-comparison",
     "lem:lower-ball-small-cover",
+    "lem:measure-support-transport",
     "lem:nested-compact-approximation",
     "lem:normalized-density-transfer",
     "lem:packing-base-point",

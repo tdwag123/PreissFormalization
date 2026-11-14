@@ -265,6 +265,10 @@ flowchart LR
   lem_lower_ball_restrict_comparison["Restricted lower ball comparison"]
   lem_measure_support_transport["Support under homeomorphisms and nonzero scalar multiplication"]
   lem_dimensional_blowup_support["Support and regularity of dimensional blow-ups"]
+  lem_density_bounds_good_set["Rational good sets from positive finite density bounds"]
+  lem_flat_plane_blowup["Exact blow-up invariance of flat plane measures"]
+  lem_flatness_basic_nonneg["Nonnegativity of distance energy and flatness"]
+  lem_flatness_basic_zero["Vanishing distance energy on a supporting plane"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -379,6 +383,8 @@ flowchart LR
   def_flatness --> lem_flatness_minimum
   def_flatness_cutoff --> lem_flatness_minimum
   def_plane --> lem_flatness_minimum
+  lem_flatness_basic_nonneg --> lem_flatness_minimum
+  lem_flatness_basic_zero --> lem_flatness_minimum
   lem_grassmannian --> lem_flatness_minimum
   lem_vague_moving_tests --> lem_flatness_minimum
   def_flatness --> lem_flatness_continuous
@@ -463,6 +469,7 @@ flowchart LR
   lem_upper_density_localization --> lem_absolute_continuity
   gmt_density_bounds --> lem_finite_pieces
   gmt_goodsets --> lem_finite_pieces
+  lem_density_bounds_good_set --> lem_finite_pieces
   lem_density_measure_comparison --> lem_finite_pieces
   def_positive_density --> lem_excess_dimension
   gmt_uniform_dimension_bound --> lem_excess_dimension
@@ -502,6 +509,8 @@ flowchart LR
   def_dimensional_blowup --> lem_plane_scaling
   def_flat --> lem_plane_scaling
   lem_blowup_composition --> lem_plane_scaling
+  lem_flat_plane_blowup --> lem_plane_scaling
+  lem_measure_support_transport --> lem_plane_scaling
   lem_plane_hausdorff --> lem_plane_scaling
   def_positive_density --> lem_tangent_existence
   def_tangent_api --> lem_tangent_existence
@@ -654,6 +663,7 @@ flowchart LR
   def_unit_uniform --> lem_moment_covariance
   lem_blowup_composition --> lem_moment_covariance
   lem_moment_form_evaluation --> lem_moment_covariance
+  lem_moment_kernel_calculus --> lem_moment_covariance
   def_moments --> lem_moment_norm_bound
   def_unit_uniform --> lem_moment_norm_bound
   lem_moment_form_evaluation --> lem_moment_norm_bound
@@ -1111,3 +1121,12 @@ flowchart LR
   lem_lower_ball_hausdorff_bound --> lem_lower_ball_restrict_comparison
   def_dimensional_blowup --> lem_dimensional_blowup_support
   lem_measure_support_transport --> lem_dimensional_blowup_support
+  def_positive_density --> lem_density_bounds_good_set
+  gmt_goodsets --> lem_density_bounds_good_set
+  def_dimensional_blowup --> lem_flat_plane_blowup
+  lem_blowup_composition --> lem_flat_plane_blowup
+  lem_plane_hausdorff --> lem_flat_plane_blowup
+  def_flatness --> lem_flatness_basic_nonneg
+  def_flat --> lem_flatness_basic_zero
+  def_flatness --> lem_flatness_basic_zero
+  lem_flatness_basic_nonneg --> lem_flatness_basic_zero

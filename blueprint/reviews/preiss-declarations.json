@@ -1377,6 +1377,26 @@
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
       ]
     },
+    "lem:measure-support-transport": {
+      "lean_names": [
+        "Preiss.measure_support_map_homeomorph",
+        "Preiss.measure_support_smul"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/MeasureSupport.lean"
+      ]
+    },
+    "lem:dimensional-blowup-support": {
+      "lean_names": [
+        "Preiss.dimensionalBlowup_support",
+        "Preiss.regular_dimensionalBlowup"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Tangent/BlowupSupport.lean"
+      ]
+    },
     "lem:homogeneous-ball-scaling": {
       "lean_names": [
         "Preiss.integral_homogeneous_closedBall",
@@ -1476,7 +1496,8 @@
       "lean_names": [
         "Preiss.continuous_momentKernel",
         "Preiss.momentKernel_smul",
-        "Preiss.norm_momentKernel_le"
+        "Preiss.norm_momentKernel_le",
+        "Preiss.norm_momentKernel"
       ],
       "status": "additional concrete data or source interface",
       "files": [
@@ -1609,38 +1630,6 @@
       "planned_file": "Preiss/Analysis/HausdorffLowerBound.lean",
       "status": "local Lean/kernel check passed; canonical integration pending"
     },
-    "lem:measure-support-transport": {
-      "lean_names": [
-        "Preiss.measure_support_map_homeomorph",
-        "Preiss.measure_support_smul"
-      ],
-      "planned_lean_names": [
-        "Preiss.measure_support_map_homeomorph",
-        "Preiss.measure_support_smul"
-      ],
-      "status": "proof_candidate",
-      "files": [
-        "Preiss/Analysis/MeasureSupport.lean"
-      ],
-      "planned_file": "Preiss/Analysis/MeasureSupport.lean",
-      "verification": "Local Lean/kernel scratch check passed with only standard axioms; full integration CI is separate."
-    },
-    "lem:dimensional-blowup-support": {
-      "lean_names": [
-        "Preiss.dimensionalBlowup_support",
-        "Preiss.regular_dimensionalBlowup"
-      ],
-      "planned_lean_names": [
-        "Preiss.dimensionalBlowup_support",
-        "Preiss.regular_dimensionalBlowup"
-      ],
-      "status": "proof_candidate",
-      "files": [
-        "Preiss/Tangent/BlowupSupport.lean"
-      ],
-      "planned_file": "Preiss/Tangent/BlowupSupport.lean",
-      "verification": "Local Lean/kernel scratch check passed with only standard axioms; full integration CI is separate."
-    },
     "thm:rectifiable-iff-flat": {
       "lean_names": [
         "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
@@ -1651,31 +1640,61 @@
       ],
       "planned_file": "Preiss/Rectifiability/TangentCharacterization.lean",
       "status": "Assembly proofs; necessity and sufficiency dependencies still unfinished."
+    },
+    "lem:density-bounds-good-set": {
+      "lean_names": [
+        "Preiss.exists_goodSet_mem_of_density_bounds"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_goodSet_mem_of_density_bounds"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Density/FinitePieces.lean"
+      ],
+      "planned_file": "Preiss/Density/FinitePieces.lean",
+      "verification": "Local Lean/kernel check passed with only standard axioms; full integration CI is separate."
+    },
+    "lem:flat-plane-blowup": {
+      "lean_names": [
+        "Preiss.dimensionalBlowup_flatOn"
+      ],
+      "files": [
+        "Preiss/Tangent/FlatScaling.lean"
+      ],
+      "planned_file": "Preiss/Tangent/FlatScaling.lean",
+      "status": "Proof draft awaiting canonical CI."
+    },
+    "lem:flatness-basic-nonneg": {
+      "lean_names": [
+        "Preiss.flatnessEnergy_nonneg",
+        "Preiss.flatness_nonneg_of_nonneg"
+      ],
+      "files": [
+        "Preiss/Uniform/FlatnessBasic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatnessBasic.lean",
+      "status": "Proof draft awaiting canonical CI."
+    },
+    "lem:flatness-basic-zero": {
+      "lean_names": [
+        "Preiss.flatnessEnergy_restrict_plane",
+        "Preiss.flatness_eq_zero_of_isFlat_of_nonneg"
+      ],
+      "files": [
+        "Preiss/Uniform/FlatnessBasic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatnessBasic.lean",
+      "status": "Proof draft awaiting canonical CI."
     }
   },
   "pending": [],
   "proof_validation": {
-    "local_direct_lean_exit_zero": [
-      "Preiss.momentBilinear_apply",
-      "Preiss.momentKernel_apply",
-      "Preiss.gaussianMomentForm_apply",
-      "Preiss.gaussianMomentForm_permute",
-      "Preiss.bilinearTrace_eq_sum_diagonal"
-    ],
-    "linux_ci_a34b830_modules_passed": [
-      "Preiss.polynomialFeature_inner",
-      "Preiss.gaussianMomentForm_smul",
-      "Preiss.eq_zero_of_isLittleO_pow_smul",
-      "Preiss.gaussianMomentCoefficient_unique"
-    ],
-    "drafts_awaiting_ci": [
-      "Preiss.gaussian_integral_bilinear_eq_trace",
-      "Preiss.continuous_momentKernel",
-      "Preiss.momentKernel_smul",
-      "Preiss.norm_momentKernel_le",
-      "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
-      "Preiss.integrable_gaussianMomentKernel_of_integrable_norm",
-      "Preiss.integrable_gaussianMomentKernel"
-    ]
+    "authoritative_ci_report": "blueprint/kernel-checkpoint.json",
+    "latest_local_checks": {
+      "GaussianGrowth": "tmp/AnnulusIntegrability.lean and tmp/GaussianDerivativeCheck.lean exited zero; foundational conclusions printed no sorryAx",
+      "MomentCovariance": "tmp/MomentDilationCheck.lean exited zero; dilation and isometry covariance printed no sorryAx"
+    },
+    "note": "Current CI is authoritative for canonical file/module elaboration and transitive sorry dependencies."
   }
 }

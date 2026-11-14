@@ -1309,6 +1309,8 @@
         "def:flatness",
         "def:flatness-cutoff",
         "def:plane",
+        "lem:flatness-basic-nonneg",
+        "lem:flatness-basic-zero",
         "lem:grassmannian",
         "lem:vague-moving-tests"
       ],
@@ -1412,7 +1414,6 @@
       "proof_dependencies": [],
       "expanded_line": 1490,
       "unfinished_dependencies": [
-        "lem:moment-covariance",
         "lem:moment-support-polynomial",
         "lem:taylor-two"
       ]
@@ -1438,7 +1439,6 @@
       "proof_dependencies": [],
       "expanded_line": 1512,
       "unfinished_dependencies": [
-        "lem:moment-covariance",
         "lem:scaled-moment-limits"
       ]
     },
@@ -1793,7 +1793,7 @@
       "id": "lem:finite-pieces",
       "title": "Finite Hausdorff pieces with comparable measures",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_finite_hausdorff_pieces_of_density_bounds"
       ],
@@ -1801,6 +1801,7 @@
       "statement_dependencies": [
         "gmt:density-bounds",
         "gmt:goodsets",
+        "lem:density-bounds-good-set",
         "lem:density-measure-comparison"
       ],
       "proof_dependencies": [],
@@ -2055,7 +2056,7 @@
       "id": "lem:plane-scaling",
       "title": "Plane and scaling API",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.isFlat_dimensionalBlowup",
         "Preiss.isFlat_map_linearIsometry",
@@ -2066,6 +2067,8 @@
         "def:dimensional-blowup",
         "def:flat",
         "lem:blowup-composition",
+        "lem:flat-plane-blowup",
+        "lem:measure-support-transport",
         "lem:plane-hausdorff"
       ],
       "proof_dependencies": [],
@@ -2181,8 +2184,7 @@
       "proof_dependencies": [],
       "expanded_line": 2380,
       "unfinished_dependencies": [
-        "lem:density-bridge",
-        "lem:plane-scaling"
+        "lem:density-bridge"
       ]
     },
     {
@@ -2475,9 +2477,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 2777,
-      "unfinished_dependencies": [
-        "lem:finite-pieces"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:nested-compact-approximation",
@@ -3144,7 +3144,7 @@
       "id": "lem:moment-covariance",
       "title": "Moment covariance, scalar invariance and dilation",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.gaussianMomentForm_dilate",
         "Preiss.gaussianMomentForm_map_linearIsometry",
@@ -3156,7 +3156,8 @@
         "def:moments",
         "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:moment-form-evaluation"
+        "lem:moment-form-evaluation",
+        "lem:moment-kernel-calculus"
       ],
       "proof_dependencies": [],
       "expanded_line": 3661,
@@ -3639,8 +3640,7 @@
       "proof_dependencies": [],
       "expanded_line": 4293,
       "unfinished_dependencies": [
-        "lem:hyperplane-transport-map",
-        "lem:plane-scaling"
+        "lem:hyperplane-transport-map"
       ]
     },
     {
@@ -3857,7 +3857,6 @@
       "expanded_line": 4487,
       "unfinished_dependencies": [
         "lem:flat-gaussian-even-moments",
-        "lem:moment-covariance",
         "lem:scaled-moment-limits",
         "lem:vague-gaussian-polynomials"
       ]
@@ -5063,6 +5062,7 @@
       "lean": [
         "Preiss.continuous_momentKernel",
         "Preiss.momentKernel_smul",
+        "Preiss.norm_momentKernel",
         "Preiss.norm_momentKernel_le"
       ],
       "verification": "source_audit_only",
@@ -5329,6 +5329,77 @@
       "proof_dependencies": [],
       "expanded_line": 5758,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:density-bounds-good-set",
+      "title": "Rational good sets from positive finite density bounds",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_goodSet_mem_of_density_bounds"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:positive-density",
+        "gmt:goodsets"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5766,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-plane-blowup",
+      "title": "Exact blow-up invariance of flat plane measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.dimensionalBlowup_flatOn"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:dimensional-blowup",
+        "lem:blowup-composition",
+        "lem:plane-hausdorff"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5774,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flatness-basic-nonneg",
+      "title": "Nonnegativity of distance energy and flatness",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flatnessEnergy_nonneg",
+        "Preiss.flatness_nonneg_of_nonneg"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:flatness"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5782,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flatness-basic-zero",
+      "title": "Vanishing distance energy on a supporting plane",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flatnessEnergy_restrict_plane",
+        "Preiss.flatness_eq_zero_of_isFlat_of_nonneg"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:flat",
+        "def:flatness",
+        "lem:flatness-basic-nonneg"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5790,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -5356,6 +5427,7 @@
     "def:moments",
     "def:flatness-cutoff",
     "lem:zero-hausdorff-ac",
+    "lem:measure-support-transport",
     "def:polynomial-growth-bound",
     "lem:annulus-integrability",
     "lem:gaussian-annulus-majorant",
@@ -5366,7 +5438,6 @@
     "def:uniform-constant",
     "lem:nonnegative-integral-cover-bound",
     "lem:gaussian-annulus-integral",
-    "lem:measure-support-transport",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -5416,11 +5487,11 @@
     "lem:moment-form-symmetry",
     "lem:moment-kernel-calculus",
     "lem:flatness-cutoff-exists",
+    "lem:dimensional-blowup-support",
     "lem:gaussian-polynomial-integrable",
     "lem:polynomial-feature-identities",
     "lem:bilinear-trace-basis",
     "lem:uniform-constant-one",
-    "lem:dimensional-blowup-support",
     "gmt:goodsets",
     "lem:upper-density-localization",
     "lem:density-bridge",
@@ -5452,6 +5523,7 @@
     "lem:lipschitz-null-image",
     "lem:graph-affine-area",
     "def:first-crossing-data",
+    "lem:flatness-basic-nonneg",
     "lem:closed-weak-approximation-good-set",
     "lem:weak-approximation-lower-density",
     "lem:weak-approximation-deletion",
@@ -5471,19 +5543,19 @@
     "lem:moment-feature-annihilation",
     "lem:gaussian-quadratic-trace-bound",
     "gmt:uniform-density-adapter",
+    "lem:density-bounds-good-set",
     "gmt:hausdorff-density-lower",
     "lem:packing-base-point",
     "lem:uniform-vague-closed",
     "lem:uniform-near-support-compactness",
-    "lem:flatness-minimum",
     "lem:vague-moving-blowups",
     "lem:tangent-closed",
     "lem:dimensional-tangent-closed",
     "lem:normalized-density-transfer",
-    "lem:plane-scaling",
     "lem:moment-covariance",
     "lem:hyperplane-transport-map",
     "lem:uniform-scaling",
+    "lem:flat-plane-blowup",
     "gmt:normalized-tangent",
     "gmt:mattila-14-7-4",
     "lem:tangent-existence",
@@ -5497,6 +5569,7 @@
     "lem:flat-to-approximation",
     "lem:rank-deficient-image-null",
     "lem:graph-area",
+    "lem:flatness-basic-zero",
     "lem:weak-approximation-restrict-ae",
     "lem:uniform-compact-selection",
     "lem:borel-carrier",
@@ -5508,17 +5581,17 @@
     "lem:gaussian-uniform-tails",
     "lem:gaussian-parameter-derivative",
     "lem:uniform-compactness",
-    "lem:flatness-continuous",
     "lem:dimensional-tangent-dilation",
     "lem:pseudotangent-transitive",
     "lem:dimensional-tangent-compactness",
-    "lem:tangent-ray",
+    "lem:plane-scaling",
     "gmt:uniform-tangents",
     "thm:uniform-upstream",
     "lem:lower-ball-restrict-comparison",
     "lem:pure-basic",
     "lem:graphs",
     "lem:graph-blowup",
+    "lem:flatness-minimum",
     "lem:nested-compact-approximation",
     "lem:representation",
     "lem:gaussian-translation-series",
@@ -5526,35 +5599,37 @@
     "lem:vague-gaussian-polynomials",
     "lem:uniform-finite-metric-covers",
     "lem:infinity-compactness",
-    "lem:flatness-radius-continuous",
     "lem:tangent-blowdown",
-    "lem:dimensional-tangent-ball-constant",
+    "lem:tangent-ray",
     "gmt:uniform-halfspace",
     "gmt:uniform-hyperplane",
     "lem:uniform-adapter",
     "lem:density-measure-comparison",
     "lem:decomposition",
     "lem:pure-cone-escape",
+    "lem:flatness-continuous",
     "lem:projection-hole-cover",
     "thm:rectifiable-blowup",
     "lem:taylor-one",
-    "lem:density-normalization",
-    "lem:halfspace-tangent-witness",
+    "lem:dimensional-tangent-ball-constant",
     "gmt:uniform-lower-dim",
     "lem:hyperplane-tangent-lineage",
     "lem:excess-dimension",
-    "lem:recenter",
     "lem:finite-pieces",
     "lem:pure-wla-null-projection",
+    "lem:flatness-radius-continuous",
     "lem:discarded-cylinder-sum",
     "lem:column-packing",
     "cor:rectifiable-tangent-plane",
     "lem:moment-feature-remainder",
+    "lem:recenter",
+    "lem:density-normalization",
+    "lem:halfspace-tangent-witness",
     "gmt:uniform-full-dimension",
-    "lem:uniform-reduction",
     "lem:finite-piece-transfer",
     "lem:packing-contradiction",
     "lem:taylor-two",
+    "lem:uniform-reduction",
     "lem:plane-supported-uniform-flat",
     "thm:mm-set",
     "lem:moment-coefficient-vanishing",

@@ -178,7 +178,7 @@
       "id": "lem:moment-kernel-calculus",
       "title": "Continuity, homogeneity, and norm bound of moment kernels",
       "kind": "lemma",
-      "statement_tex": "The map z to momentKernel(k,z) is continuous, momentKernel(k,a z)=a^k momentKernel(k,z) for every real scalar a, and its operator norm is at most norm(z)^k. These assertions hold in every natural degree, including zero.",
+      "statement_tex": "The map z to momentKernel(k,z) is continuous, momentKernel(k,a z)=a^k momentKernel(k,z) for every real scalar a, and its operator norm equals norm(z)^k. The upper-bound lemma remains independently available. These assertions hold in every natural degree, including zero.",
       "definition_dependencies": [
         "def:moments"
       ],
@@ -186,7 +186,8 @@
       "lean_names": [
         "Preiss.continuous_momentKernel",
         "Preiss.momentKernel_smul",
-        "Preiss.norm_momentKernel_le"
+        "Preiss.norm_momentKernel_le",
+        "Preiss.norm_momentKernel"
       ],
       "file": "Preiss/Uniform/MomentForms.lean"
     },
@@ -387,6 +388,86 @@
       "source": "Homeomorphic affine transport, nonzero finite scalar normalization, and mathlib regularity under maps and scalar multiplication.",
       "used_by": [
         "lem:uniform-scaling"
+      ]
+    },
+    {
+      "id": "lem:density-bounds-good-set",
+      "title": "Rational good sets from positive finite density bounds",
+      "kind": "lemma",
+      "statement_tex": "If $0<\\Theta_*^m(\\mu,x)$ and $\\Theta^{m,*}(\\mu,x)<\\infty$, then there are positive rational numbers $p,q$ and $k\\in\\mathbb N$ such that, for every $0<r<1/(k+1)$, $p r^m\\leq\\mu(\\overline B(x,r))\\leq q r^m$. Equivalently, $x\\in\\mathrm{goodSet}(m,p,q,k,\\mu)$ using the existing FormalizingGMT definition.",
+      "hypotheses_tex": "$m,n\\in\\mathbb N$, $\\mu$ is a measure on $\\mathbb R^n$, and the lower and upper densities obey the displayed positive finite bounds. A density limit and local finiteness are not required.",
+      "definition_dependencies": [
+        "def:positive-density"
+      ],
+      "deps": [
+        "gmt:goodsets"
+      ],
+      "lean_names": [
+        "Preiss.exists_goodSet_mem_of_density_bounds"
+      ],
+      "file": "Preiss/Density/FinitePieces.lean",
+      "source": "Choose a positive real number below RatioOfDensities and apply FormalizingGMT.exists_goodSet_mem.",
+      "used_by": [
+        "lem:finite-pieces"
+      ]
+    },
+    {
+      "id": "lem:flat-plane-blowup",
+      "title": "Exact blow-up invariance of flat plane measures",
+      "kind": "lemma",
+      "statement_tex": "For an $m$-plane $V$, every scalar $c\\in[0,\\infty]$, every $x\\in V$, and $r>0$, $D^m_{x,r}(c\\,\\mathcal H^m\\!\\restriction V)=c\\,\\mathcal H^m\\!\\restriction V$. This includes $m=0$ and does not require $c$ positive or finite.",
+      "definition_dependencies": [
+        "def:dimensional-blowup"
+      ],
+      "deps": [
+        "lem:plane-hausdorff",
+        "lem:blowup-composition"
+      ],
+      "lean_names": [
+        "Preiss.dimensionalBlowup_flatOn"
+      ],
+      "file": "Preiss/Tangent/FlatScaling.lean",
+      "used_by": [
+        "lem:plane-scaling"
+      ]
+    },
+    {
+      "id": "lem:flatness-basic-nonneg",
+      "title": "Nonnegativity of distance energy and flatness",
+      "kind": "lemma",
+      "statement_tex": "For every nonnegative compactly supported continuous cutoff and every measure, the squared-distance energy of every plane is nonnegative, and so is its infimum defining flatness. No regularity or minimizing-plane theorem is needed; when the plane type is empty, the real infimum convention gives zero.",
+      "definition_dependencies": [
+        "def:flatness"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.flatnessEnergy_nonneg",
+        "Preiss.flatness_nonneg_of_nonneg"
+      ],
+      "file": "Preiss/Uniform/FlatnessBasic.lean",
+      "used_by": [
+        "lem:flatness-minimum"
+      ]
+    },
+    {
+      "id": "lem:flatness-basic-zero",
+      "title": "Vanishing distance energy on a supporting plane",
+      "kind": "lemma",
+      "statement_tex": "The squared-distance energy on $V$ of $c\\,\\mathcal H^m\\!\\restriction V$ is zero for any scalar $c\\in[0,\\infty]$. Consequently every flat measure has zero flatness for every nonnegative cutoff, without regularity or existence of a global minimizer.",
+      "definition_dependencies": [
+        "def:flatness",
+        "def:flat"
+      ],
+      "deps": [
+        "lem:flatness-basic-nonneg"
+      ],
+      "lean_names": [
+        "Preiss.flatnessEnergy_restrict_plane",
+        "Preiss.flatness_eq_zero_of_isFlat_of_nonneg"
+      ],
+      "file": "Preiss/Uniform/FlatnessBasic.lean",
+      "used_by": [
+        "lem:flatness-minimum"
       ]
     }
   ],

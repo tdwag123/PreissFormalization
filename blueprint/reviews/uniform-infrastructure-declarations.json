@@ -1,12 +1,12 @@
 {
-  "status": "Full project elaboration and compiled kernel axiom audit passed at 759c384. Current source statuses below are not certification of later edits. Newly added cone-escape, WLA lower-bound, uniform-scaling, and support proofs passed a separate local Lean/kernel check with only standard axioms; full integration CI remains separate.",
+  "status": "Authoritative compiled status: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json (consult its source_revision). Source-status fields classify current source and do not certify later edits. The latest FinitePieces proof draft still requires integration CI.",
   "labels": {
     "lem:uniform-vague-closed": {
       "lean_name": "Preiss.isUnitUniform_of_vague",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.isUnitUniform_of_vague"
       ],
@@ -16,7 +16,7 @@
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -25,7 +25,7 @@
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.exists_vague_subsequence_unitUniform"
       ],
@@ -35,7 +35,7 @@
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -44,7 +44,7 @@
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero"
       ],
@@ -54,7 +54,7 @@
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -63,7 +63,7 @@
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.unitUniform_totallyBounded"
       ],
@@ -73,7 +73,7 @@
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -82,7 +82,7 @@
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.dimensionalTangent_ball_constant"
       ],
@@ -92,7 +92,7 @@
           "file": "Preiss/Uniform/TangentNormalization.lean",
           "module": "Preiss.Uniform.TangentNormalization",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -101,7 +101,7 @@
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.density_normalization_unitUniform"
       ],
@@ -111,7 +111,7 @@
           "file": "Preiss/Uniform/TangentNormalization.lean",
           "module": "Preiss.Uniform.TangentNormalization",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -120,7 +120,7 @@
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.uniform_hyperplane_transport",
         "Preiss.uniformWithConstant_transport",
@@ -133,28 +133,28 @@
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.uniformWithConstant_transport",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.uniformWithConstant_map_linearIsometry",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.isUnitUniform_map_linearIsometry",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -163,7 +163,7 @@
       "file": "Preiss/Uniform/Classification.lean",
       "module": "Preiss.Uniform.Classification",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.unitUniform_eq_flat_of_support_subset_plane",
         "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane"
@@ -174,14 +174,14 @@
           "file": "Preiss/Uniform/Classification.lean",
           "module": "Preiss.Uniform.Classification",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
           "lean_name": "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
           "file": "Preiss/Uniform/Classification.lean",
           "module": "Preiss.Uniform.Classification",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -190,7 +190,7 @@
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.exists_halfSpace_dimensionalTangent"
       ],
@@ -200,7 +200,7 @@
           "file": "Preiss/Uniform/DimensionReduction.lean",
           "module": "Preiss.Uniform.DimensionReduction",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -209,7 +209,7 @@
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.exists_hyperplane_eq_or_dimensionalTangent"
       ],
@@ -219,7 +219,7 @@
           "file": "Preiss/Uniform/DimensionReduction.lean",
           "module": "Preiss.Uniform.DimensionReduction",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -228,7 +228,7 @@
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.uniform_dimension_reduction"
       ],
@@ -238,7 +238,7 @@
           "file": "Preiss/Uniform/DimensionReduction.lean",
           "module": "Preiss.Uniform.DimensionReduction",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -247,7 +247,7 @@
       "file": "Preiss/Uniform/FlatPseudotangent.lean",
       "module": "Preiss.Uniform.FlatPseudotangent",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.uniform_has_flat_pseudotangent"
       ],
@@ -257,7 +257,7 @@
           "file": "Preiss/Uniform/FlatPseudotangent.lean",
           "module": "Preiss.Uniform.FlatPseudotangent",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     },
@@ -266,7 +266,7 @@
       "file": "Preiss/Uniform/BlowdownCompactness.lean",
       "module": "Preiss.Uniform.BlowdownCompactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json",
       "lean_names": [
         "Preiss.exists_tangentAtInfinity"
       ],
@@ -276,7 +276,7 @@
           "file": "Preiss/Uniform/BlowdownCompactness.lean",
           "module": "Preiss.Uniform.BlowdownCompactness",
           "status": "unproved_statement",
-          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ]
     }
@@ -288,14 +288,14 @@
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
         "status": "definition",
-        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+        "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
       },
       {
         "lean_name": "Preiss.isUnitUniform_iff_constant_one",
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
         "status": "proof_candidate",
-        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+        "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
       }
     ],
     "lem:blowup-composition": [
@@ -304,21 +304,21 @@
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
         "status": "proof_candidate",
-        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+        "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
       },
       {
         "lean_name": "Preiss.isUnitUniform_dimensionalBlowup",
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
         "status": "proof_candidate",
-        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+        "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
       },
       {
         "lean_name": "Preiss.uniformWithConstant_smul",
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
         "status": "proof_candidate",
-        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+        "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
       }
     ],
     "lem:uniform-transport": []
@@ -329,182 +329,182 @@
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
       "status": "definition",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isUnitUniform_iff_constant_one": {
       "lean_name": "Preiss.isUnitUniform_iff_constant_one",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniformWithConstant_dimensionalBlowup": {
       "lean_name": "Preiss.uniformWithConstant_dimensionalBlowup",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isUnitUniform_dimensionalBlowup": {
       "lean_name": "Preiss.isUnitUniform_dimensionalBlowup",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniformWithConstant_smul": {
       "lean_name": "Preiss.uniformWithConstant_smul",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isUnitUniform_of_vague": {
       "lean_name": "Preiss.isUnitUniform_of_vague",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_vague_subsequence_unitUniform": {
       "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_vague_subsequence_uniform_of_dist_support_tendsto_zero": {
       "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "unitUniform_totallyBounded": {
       "lean_name": "Preiss.unitUniform_totallyBounded",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "dimensionalTangent_ball_constant": {
       "lean_name": "Preiss.dimensionalTangent_ball_constant",
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "density_normalization_unitUniform": {
       "lean_name": "Preiss.density_normalization_unitUniform",
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniform_hyperplane_transport": {
       "lean_name": "Preiss.uniform_hyperplane_transport",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniformWithConstant_transport": {
       "lean_name": "Preiss.uniformWithConstant_transport",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "unitUniform_eq_flat_of_support_subset_plane": {
       "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
       "file": "Preiss/Uniform/Classification.lean",
       "module": "Preiss.Uniform.Classification",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniformWithConstant_eq_flat_of_support_subset_plane": {
       "lean_name": "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
       "file": "Preiss/Uniform/Classification.lean",
       "module": "Preiss.Uniform.Classification",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_halfSpace_dimensionalTangent": {
       "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_hyperplane_eq_or_dimensionalTangent": {
       "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniform_dimension_reduction": {
       "lean_name": "Preiss.uniform_dimension_reduction",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniform_has_flat_pseudotangent": {
       "lean_name": "Preiss.uniform_has_flat_pseudotangent",
       "file": "Preiss/Uniform/FlatPseudotangent.lean",
       "module": "Preiss.Uniform.FlatPseudotangent",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "exists_tangentAtInfinity": {
       "lean_name": "Preiss.exists_tangentAtInfinity",
       "file": "Preiss/Uniform/BlowdownCompactness.lean",
       "module": "Preiss.Uniform.BlowdownCompactness",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "uniformWithConstant_map_linearIsometry": {
       "lean_name": "Preiss.uniformWithConstant_map_linearIsometry",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "isUnitUniform_map_linearIsometry": {
       "lean_name": "Preiss.isUnitUniform_map_linearIsometry",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
       "status": "unproved_statement",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "measure_support_map_homeomorph": {
       "lean_name": "Preiss.measure_support_map_homeomorph",
       "file": "Preiss/Analysis/MeasureSupport.lean",
       "module": "Preiss.Analysis.MeasureSupport",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "measure_support_smul": {
       "lean_name": "Preiss.measure_support_smul",
       "file": "Preiss/Analysis/MeasureSupport.lean",
       "module": "Preiss.Analysis.MeasureSupport",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "dimensionalBlowup_support": {
       "lean_name": "Preiss.dimensionalBlowup_support",
       "file": "Preiss/Tangent/BlowupSupport.lean",
       "module": "Preiss.Tangent.BlowupSupport",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "regular_dimensionalBlowup": {
       "lean_name": "Preiss.regular_dimensionalBlowup",
       "file": "Preiss/Tangent/BlowupSupport.lean",
       "module": "Preiss.Tangent.BlowupSupport",
       "status": "proof_candidate",
-      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     }
   },
   "modules": [

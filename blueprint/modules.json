@@ -581,6 +581,7 @@
         "Preiss.Density.HausdorffComparison"
       ],
       "local_imports": [
+        "Preiss.Density.Defs",
         "Preiss.Density.HausdorffComparison",
         "Preiss.Density.PowerComparison"
       ],
@@ -589,10 +590,12 @@
         "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas2"
       ],
       "proof_imports": [
+        "Preiss.Density.Defs",
         "Preiss.Density.PowerComparison"
       ],
       "nodes": [
-        "lem:finite-pieces"
+        "lem:finite-pieces",
+        "lem:density-bounds-good-set"
       ],
       "source_exists": true,
       "scope": "core",
@@ -2113,28 +2116,33 @@
       "module": "Preiss.Tangent.FlatScaling",
       "file": "Preiss/Tangent/FlatScaling.lean",
       "current_source_imports": [
-        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar",
+        "Preiss.Analysis.MeasureSupport",
         "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Blowup"
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Tangent.Algebra"
       ],
       "local_imports": [
+        "Preiss.Analysis.MeasureSupport",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup"
       ],
       "mathlib_imports": [
-        "Mathlib.MeasureTheory.Measure.Support"
+        "Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar"
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.MeasureSupport",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup"
       ],
       "nodes": [
-        "lem:plane-scaling"
+        "lem:plane-scaling",
+        "lem:flat-plane-blowup"
       ],
       "source_exists": true,
       "scope": "core",
@@ -3000,19 +3008,49 @@
       "purpose": "Canonical Uniform.Flatness interfaces."
     },
     {
+      "module": "Preiss.Uniform.FlatnessBasic",
+      "file": "Preiss/Uniform/FlatnessBasic.lean",
+      "purpose": "Reusable Uniform.FlatnessBasic interfaces.",
+      "current_source_imports": [
+        "Mathlib.Topology.Algebra.Module.FiniteDimension",
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Uniform.Flatness"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.Algebra.Module.FiniteDimension"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Uniform.Flatness"
+      ],
+      "nodes": [
+        "lem:flatness-basic-nonneg",
+        "lem:flatness-basic-zero"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Uniform.Flatness"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.FlatnessContinuity",
       "file": "Preiss/Uniform/FlatnessContinuity.lean",
       "current_source_imports": [
         "FormalizingGMT.WeakConvergence.Basic",
         "Preiss.Geometry.FlatMeasure",
-        "Preiss.Uniform.Flatness"
+        "Preiss.Uniform.Flatness",
+        "Preiss.Uniform.FlatnessBasic"
       ],
       "local_imports": [
         "Preiss.Analysis.Vague.CompactTests",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneTopology",
         "Preiss.Geometry.Planes",
-        "Preiss.Uniform.Flatness"
+        "Preiss.Uniform.Flatness",
+        "Preiss.Uniform.FlatnessBasic"
       ],
       "mathlib_imports": [],
       "gmt_imports": [
@@ -3023,7 +3061,8 @@
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneTopology",
         "Preiss.Geometry.Planes",
-        "Preiss.Uniform.Flatness"
+        "Preiss.Uniform.Flatness",
+        "Preiss.Uniform.FlatnessBasic"
       ],
       "nodes": [
         "lem:flatness-minimum",
@@ -3690,6 +3729,7 @@
     "Preiss.Geometry.PlaneTopology",
     "Preiss.Rectifiability.Approximation",
     "Preiss.Rectifiability.WeakApproximation.Basic",
+    "Preiss.Uniform.FlatnessBasic",
     "Preiss.Rectifiability.EuclideanCarrier",
     "Preiss.Rectifiability.Graphs",
     "Preiss.Density.ZeroDimension",
@@ -3706,8 +3746,8 @@
     "Preiss.Uniform.MomentCovariance",
     "Preiss.Density.FinitePieces",
     "Preiss.Rectifiability.ProjectionEstimate",
-    "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Rectifiability.WeakApproximation.Restriction",
+    "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Rectifiability.DensityRepresentation",
     "Preiss.Rectifiability.Cones",
     "Preiss.Rectifiability.PurelyUnrectifiable",
@@ -3719,8 +3759,8 @@
     "Preiss.Uniform.Radial",
     "Preiss.Uniform.Compactness",
     "Preiss.Uniform.Transport",
-    "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+    "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.ConeCriterion",
     "Preiss.Rectifiability.GraphCover",
     "Preiss.Rectifiability.Decomposition",
@@ -3857,6 +3897,7 @@
     "Preiss.Uniform.FlatMoments",
     "Preiss.Uniform.FlatPseudotangent",
     "Preiss.Uniform.Flatness",
+    "Preiss.Uniform.FlatnessBasic",
     "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Uniform.GMTAdapters",
     "Preiss.Uniform.Homogeneous",

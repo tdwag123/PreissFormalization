@@ -232,7 +232,14 @@ For every plane $V$ and fixed finite aperture, at $H$-almost every point of a
 purely unrectifiable set $C$, there are points of $C$ outside that cone at
 arbitrarily small distances. The exceptional set is a countable union of
 local cone-condition pieces; cover each by countably many small balls and
-apply the cone-to-graph lemma. This is the Step 2 input to Lemma 5.9.
+apply the cone-to-graph lemma. For an arbitrary (possibly nonmeasurable) $C$,
+use the fixed-radius bad-anchor sets
+$B_r=\{a:\forall b\in C,\ d(a,b)<r\Rightarrow b\in X(a,V,A)\}$.
+These sets are closed, since each implication is a union of two closed
+conditions. The graph argument proves $H(C\cap B_r)=0$; measurability of
+$B_r$ then gives $(H|_C)(B_r)=0$ without assuming measurability of $C$.
+A countable sequence of radii completes the almost-everywhere assertion.
+This is the Step 2 input to Lemma 5.9.
 
 \item \textbf{Small projection direction gives a thin projected slab.}
 For $m$-planes $V,W$, a unit $w\in W$ with $\|P_Vw\|\leq\varepsilon$

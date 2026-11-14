@@ -101,7 +101,7 @@ digraph Preiss {
   "lem:zero-density-atoms" [label="Zero-dimensional density equals atomic mass", fillcolor="#dce5ee"];
   "lem:density-bridge" [label="Normalization bridges", fillcolor="#fff0bf"];
   "lem:absolute-continuity" [label="Finite upper density implies Hausdorff absolute continuity", fillcolor="#dce5ee"];
-  "lem:finite-pieces" [label="Finite Hausdorff pieces with comparable measures", fillcolor="#fff0bf"];
+  "lem:finite-pieces" [label="Finite Hausdorff pieces with comparable measures", fillcolor="#dce5ee"];
   "lem:excess-dimension" [label="Dimensions above the ambient dimension", fillcolor="#ffe0b2"];
   "def:dimensional-blowup" [label="Dimensionally normalized blow-ups", fillcolor="#d9eaf7"];
   "def:dimensional-tangent" [label="Dimensional tangent measures", fillcolor="#d9eaf7"];
@@ -115,7 +115,7 @@ digraph Preiss {
   "lem:tangent-closed" [label="Closedness of arbitrary-scalar tangents", fillcolor="#fff0bf"];
   "lem:dimensional-tangent-closed" [label="Closedness of dimensional tangents", fillcolor="#fff0bf"];
   "lem:flat-to-approximation" [label="All flat tangents imply weak linear approximation", fillcolor="#fff0bf"];
-  "lem:plane-scaling" [label="Plane and scaling API", fillcolor="#fff0bf"];
+  "lem:plane-scaling" [label="Plane and scaling API", fillcolor="#dce5ee"];
   "lem:tangent-existence" [label="Tangent existence under two-sided density bounds", fillcolor="#dce5ee"];
   "lem:dimensional-tangent-dilation" [label="Positive dilations preserve dimensional tangents", fillcolor="#fff0bf"];
   "lem:pseudotangent-transitive" [label="Transitivity of the support-centered scaling orbit closure", fillcolor="#fff0bf"];
@@ -170,7 +170,7 @@ digraph Preiss {
   "def:moment-coefficients" [label="Gaussian moment coefficient families", fillcolor="#d9eaf7"];
   "lem:moment-form-evaluation" [label="Evaluation of Gaussian moment forms", fillcolor="#dce5ee"];
   "lem:radial" [label="Radial pushforward distribution and integrals", fillcolor="#dce5ee"];
-  "lem:moment-covariance" [label="Moment covariance, scalar invariance and dilation", fillcolor="#fff0bf"];
+  "lem:moment-covariance" [label="Moment covariance, scalar invariance and dilation", fillcolor="#dce5ee"];
   "lem:moment-norm-bound" [label="Uniform operator norm bounds for Gaussian moments", fillcolor="#fff0bf"];
   "lem:homogeneous-energy-radial" [label="Comparison of homogeneous ball and Gaussian energies", fillcolor="#fff0bf"];
   "lem:gaussian-translation-series" [label="Absolutely convergent Gaussian translation series", fillcolor="#fff0bf"];
@@ -267,6 +267,10 @@ digraph Preiss {
   "lem:lower-ball-restrict-comparison" [label="Restricted lower ball comparison", fillcolor="#dce5ee"];
   "lem:measure-support-transport" [label="Support under homeomorphisms and nonzero scalar multiplication", fillcolor="#dce5ee"];
   "lem:dimensional-blowup-support" [label="Support and regularity of dimensional blow-ups", fillcolor="#dce5ee"];
+  "lem:density-bounds-good-set" [label="Rational good sets from positive finite density bounds", fillcolor="#dce5ee"];
+  "lem:flat-plane-blowup" [label="Exact blow-up invariance of flat plane measures", fillcolor="#dce5ee"];
+  "lem:flatness-basic-nonneg" [label="Nonnegativity of distance energy and flatness", fillcolor="#dce5ee"];
+  "lem:flatness-basic-zero" [label="Vanishing distance energy on a supporting plane", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -381,6 +385,8 @@ digraph Preiss {
   "def:flatness" -> "lem:flatness-minimum";
   "def:flatness-cutoff" -> "lem:flatness-minimum";
   "def:plane" -> "lem:flatness-minimum";
+  "lem:flatness-basic-nonneg" -> "lem:flatness-minimum";
+  "lem:flatness-basic-zero" -> "lem:flatness-minimum";
   "lem:grassmannian" -> "lem:flatness-minimum";
   "lem:vague-moving-tests" -> "lem:flatness-minimum";
   "def:flatness" -> "lem:flatness-continuous";
@@ -465,6 +471,7 @@ digraph Preiss {
   "lem:upper-density-localization" -> "lem:absolute-continuity";
   "gmt:density-bounds" -> "lem:finite-pieces";
   "gmt:goodsets" -> "lem:finite-pieces";
+  "lem:density-bounds-good-set" -> "lem:finite-pieces";
   "lem:density-measure-comparison" -> "lem:finite-pieces";
   "def:positive-density" -> "lem:excess-dimension";
   "gmt:uniform-dimension-bound" -> "lem:excess-dimension";
@@ -504,6 +511,8 @@ digraph Preiss {
   "def:dimensional-blowup" -> "lem:plane-scaling";
   "def:flat" -> "lem:plane-scaling";
   "lem:blowup-composition" -> "lem:plane-scaling";
+  "lem:flat-plane-blowup" -> "lem:plane-scaling";
+  "lem:measure-support-transport" -> "lem:plane-scaling";
   "lem:plane-hausdorff" -> "lem:plane-scaling";
   "def:positive-density" -> "lem:tangent-existence";
   "def:tangent-api" -> "lem:tangent-existence";
@@ -656,6 +665,7 @@ digraph Preiss {
   "def:unit-uniform" -> "lem:moment-covariance";
   "lem:blowup-composition" -> "lem:moment-covariance";
   "lem:moment-form-evaluation" -> "lem:moment-covariance";
+  "lem:moment-kernel-calculus" -> "lem:moment-covariance";
   "def:moments" -> "lem:moment-norm-bound";
   "def:unit-uniform" -> "lem:moment-norm-bound";
   "lem:moment-form-evaluation" -> "lem:moment-norm-bound";
@@ -1113,4 +1123,13 @@ digraph Preiss {
   "lem:lower-ball-hausdorff-bound" -> "lem:lower-ball-restrict-comparison";
   "def:dimensional-blowup" -> "lem:dimensional-blowup-support";
   "lem:measure-support-transport" -> "lem:dimensional-blowup-support";
+  "def:positive-density" -> "lem:density-bounds-good-set";
+  "gmt:goodsets" -> "lem:density-bounds-good-set";
+  "def:dimensional-blowup" -> "lem:flat-plane-blowup";
+  "lem:blowup-composition" -> "lem:flat-plane-blowup";
+  "lem:plane-hausdorff" -> "lem:flat-plane-blowup";
+  "def:flatness" -> "lem:flatness-basic-nonneg";
+  "def:flat" -> "lem:flatness-basic-zero";
+  "def:flatness" -> "lem:flatness-basic-zero";
+  "lem:flatness-basic-nonneg" -> "lem:flatness-basic-zero";
 }

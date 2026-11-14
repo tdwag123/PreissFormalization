@@ -105,6 +105,7 @@ Preiss.density_iff_upstream
 Preiss.density_normalization_unitUniform
 Preiss.dimensionalBlowup
 Preiss.dimensionalBlowup_comp
+Preiss.dimensionalBlowup_flatOn
 Preiss.dimensionalBlowup_map_linearIsometry
 Preiss.dimensionalBlowup_smul
 Preiss.dimensionalBlowup_support
@@ -134,6 +135,7 @@ Preiss.exists_flatnessGap
 Preiss.exists_gaussianMoment_taylor_coefficients
 Preiss.exists_goodBallSet_mem_of_closedBall_upper_bound
 Preiss.exists_goodBallSet_mem_of_upperDensity_lt_top
+Preiss.exists_goodSet_mem_of_density_bounds
 Preiss.exists_greatest_crossing
 Preiss.exists_halfSpace_dimensionalTangent
 Preiss.exists_hyperplane_eq_or_dimensionalTangent
@@ -170,10 +172,14 @@ Preiss.flat_gaussianMoment_odd
 Preiss.flat_of_flat_at_infinity
 Preiss.flatness
 Preiss.flatnessEnergy
+Preiss.flatnessEnergy_nonneg
+Preiss.flatnessEnergy_restrict_plane
 Preiss.flatness_continuous
 Preiss.flatness_eq_zero_of_isFlat
+Preiss.flatness_eq_zero_of_isFlat_of_nonneg
 Preiss.flatness_exists_minimizer
 Preiss.flatness_nonneg
+Preiss.flatness_nonneg_of_nonneg
 Preiss.fourth_order_support_identity
 Preiss.gaussianMass
 Preiss.gaussianMoment
@@ -263,6 +269,7 @@ Preiss.momentKernel_smul
 Preiss.momentTaylorPolynomial
 Preiss.negligibleDeletionAt
 Preiss.norm_gaussianMomentForm_le
+Preiss.norm_momentKernel
 Preiss.norm_momentKernel_le
 Preiss.oddMomentCoefficient_restrict_plane_eq_zero
 Preiss.planeMeasure_ball_and_sphere
