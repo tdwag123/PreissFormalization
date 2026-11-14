@@ -22,4 +22,10 @@ theorem uniformPseudotangent_trans (ν ξ ζ : Measure (Euclidean n))
     (hζ : IsUniformPseudotangent m ξ ζ) : IsUniformPseudotangent m ν ζ := by
   sorry
 
+theorem uniformPseudotangent_map_linearIsometry {k : ℕ}
+    (L : Euclidean n →ₗᵢ[ℝ] Euclidean k) (ν ξ : Measure (Euclidean n))
+    (hν : IsUnitUniform m ν) (hξ : IsUniformPseudotangent m ν ξ) :
+    IsUniformPseudotangent m (ν.map L) (ξ.map L) := by
+  sorry
+
 end Preiss

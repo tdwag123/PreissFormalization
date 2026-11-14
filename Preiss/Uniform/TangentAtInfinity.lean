@@ -15,7 +15,7 @@ theorem unique_tangent_at_infinity (hm : 0 < m) (hmn : m ≤ n)
 theorem blowdown_sequence_converges (hm : 0 < m) (hmn : m ≤ n)
     (ν ξ : Measure (Euclidean n)) (hν : IsUnitUniform m ν)
     (hξ : IsTangentAtInfinity m ν ξ) (r : ℕ → ℝ)
-    (hr : ∀ i, 0 < r i) (hr∞ : Tendsto r atTop atTop) :
+    (hr : ∀ i, 0 < r i) (hrInfinity : Tendsto r atTop atTop) :
     Measure.WeaklyConverges (fun i => dimensionalBlowup m ν 0 (r i)) ξ := by
   sorry
 

@@ -123,7 +123,9 @@
       "verification": "source reviewed; compilation pending",
       "lean_names": [
         "Preiss.uniform_hyperplane_transport",
-        "Preiss.uniformWithConstant_transport"
+        "Preiss.uniformWithConstant_transport",
+        "Preiss.uniformWithConstant_map_linearIsometry",
+        "Preiss.isUnitUniform_map_linearIsometry"
       ],
       "declarations": [
         {
@@ -135,6 +137,20 @@
         },
         {
           "lean_name": "Preiss.uniformWithConstant_transport",
+          "file": "Preiss/Uniform/Transport.lean",
+          "module": "Preiss.Uniform.Transport",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        },
+        {
+          "lean_name": "Preiss.uniformWithConstant_map_linearIsometry",
+          "file": "Preiss/Uniform/Transport.lean",
+          "module": "Preiss.Uniform.Transport",
+          "status": "sorry_placeholder",
+          "verification": "source reviewed; compilation pending"
+        },
+        {
+          "lean_name": "Preiss.isUnitUniform_map_linearIsometry",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
           "status": "sorry_placeholder",
@@ -444,6 +460,20 @@
       "lean_name": "Preiss.exists_tangentAtInfinity",
       "file": "Preiss/Uniform/BlowdownCompactness.lean",
       "module": "Preiss.Uniform.BlowdownCompactness",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "uniformWithConstant_map_linearIsometry": {
+      "lean_name": "Preiss.uniformWithConstant_map_linearIsometry",
+      "file": "Preiss/Uniform/Transport.lean",
+      "module": "Preiss.Uniform.Transport",
+      "status": "sorry_placeholder",
+      "verification": "source reviewed; compilation pending"
+    },
+    "isUnitUniform_map_linearIsometry": {
+      "lean_name": "Preiss.isUnitUniform_map_linearIsometry",
+      "file": "Preiss/Uniform/Transport.lean",
+      "module": "Preiss.Uniform.Transport",
       "status": "sorry_placeholder",
       "verification": "source reviewed; compilation pending"
     }

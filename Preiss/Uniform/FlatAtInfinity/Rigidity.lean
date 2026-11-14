@@ -8,7 +8,7 @@ variable {n m : ℕ}
 
 theorem flat_of_flat_at_infinity (μ ν : Measure (Euclidean n))
     (hm : 0 < m) (hμ : IsUnitUniform m μ)
-    (h∞ : IsTangentAtInfinity m μ ν) (hν : IsFlat m ν) : IsFlat m μ := by
+    (hInfinity : IsTangentAtInfinity m μ ν) (hν : IsFlat m ν) : IsFlat m μ := by
   sorry
 
 end Preiss

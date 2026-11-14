@@ -1,0 +1,134 @@
+{
+  "status": "Concrete data and genuine helper assertions exposed while implementing the audited nodes. Proofs remain pending; these are not additional assumptions replacing the original obligations.",
+  "nodes": [
+    {
+      "id": "def:moment-coefficients",
+      "title": "Explicit moment coefficient data",
+      "kind": "definition",
+      "statement_tex": "A coefficient family assigns a continuous symmetric k-linear form B_k^(j) to every pair of natural indices. IsMomentExpansion(mu,B) requires permutation symmetry and, for every k,q>=1, the operator-norm expansion b_(k,s)=sum_(j=1)^q s^j B_k^(j)/j!+o(s^q) as s decreases to zero through positive values. Degree vanishing and support identities are separate theorems.",
+      "definition_dependencies": ["def:moments"],
+      "deps": [],
+      "lean_names": ["Preiss.MomentCoefficientFamily", "Preiss.momentTaylorPolynomial", "Preiss.IsMomentExpansion"],
+      "file": "Preiss/Uniform/MomentCoefficients.lean"
+    },
+    {
+      "id": "lem:moment-form-evaluation",
+      "title": "Evaluation of the Bochner moment form",
+      "kind": "lemma",
+      "statement_tex": "The kernel momentKernel(k,z) evaluates to the product of the inner products with z. If the Gaussian-weighted kernel is Bochner integrable, evaluation of gaussianMomentForm(mu,k,s) at a tuple equals the existing scalar gaussianMoment. The curried second-degree form momentBilinear(A) evaluates at (u,v) as A(u,v).",
+      "hypotheses": ["The weighted multilinear kernel is integrable for the integral-evaluation assertion."],
+      "definition_dependencies": ["def:moments"],
+      "deps": [],
+      "lean_names": ["Preiss.momentKernel_apply", "Preiss.gaussianMomentForm_apply", "Preiss.momentBilinear_apply"],
+      "files": ["Preiss/Uniform/MomentForms.lean"]
+    },
+    {
+      "id": "lem:moment-form-symmetry",
+      "title": "Permutation symmetry of Gaussian moment forms",
+      "kind": "lemma",
+      "statement_tex": "For every measure, degree, real Gaussian parameter, permutation sigma of Fin k, and tuple u, b_(k,s)(u composed with sigma)=b_(k,s)(u). The total Bochner definition is symmetric even when its integral takes the default zero value.",
+      "definition_dependencies": ["def:moments"],
+      "deps": [],
+      "lean_names": ["Preiss.gaussianMomentForm_permute"],
+      "file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "def:polynomial-growth-bound",
+      "title": "A common polynomial growth bound",
+      "kind": "definition",
+      "statement_tex": "HasPolynomialGrowthBound(mu,C,p) means C,p>=0 and mu(closedBall(0,R)) <= ofReal(C(1+R)^p) for every R>0. Families use the same finite real constants C,p.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": ["Preiss.HasPolynomialGrowthBound"],
+      "file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    {
+      "id": "def:bilinear-trace",
+      "title": "Trace and restriction of continuous bilinear forms",
+      "kind": "definition",
+      "statement_tex": "For a continuous real bilinear form A on a finite-dimensional Euclidean space, bilinearTrace(A) is LinearMap.trace of the endomorphism obtained by Riesz representation. restrictBilinear(A,V) precomposes both variables with the subtype inclusion of V. momentBilinear curries a degree-two continuous multilinear form.",
+      "definition_dependencies": ["def:moments"],
+      "deps": [],
+      "lean_names": ["Preiss.bilinearTrace", "Preiss.restrictBilinear", "Preiss.momentBilinear"],
+      "files": ["Preiss/Analysis/BilinearTrace.lean", "Preiss/Uniform/MomentForms.lean"]
+    },
+    {
+      "id": "lem:bilinear-trace-basis",
+      "title": "Trace as an orthonormal diagonal sum",
+      "kind": "lemma",
+      "statement_tex": "For every finite orthonormal basis e, bilinearTrace(A)=sum_i A(e_i,e_i).",
+      "definition_dependencies": ["def:bilinear-trace"],
+      "deps": [],
+      "lean_names": ["Preiss.bilinearTrace_eq_sum_diagonal"],
+      "file": "Preiss/Analysis/BilinearTrace.lean"
+    },
+    {
+      "id": "def:flatness-cutoff",
+      "title": "An admissible flatness cutoff",
+      "kind": "definition",
+      "statement_tex": "A continuous compactly supported real function phi is admissible if 0<=phi<=1, phi=1 on the closed unit ball, and its topological support is contained in the open ball of radius two.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": ["Preiss.IsFlatnessCutoff"],
+      "file": "Preiss/Uniform/FlatnessContinuity.lean"
+    },
+    {
+      "id": "lem:flatness-cutoff-exists",
+      "title": "Existence of an admissible cutoff",
+      "kind": "lemma",
+      "statement_tex": "For every ambient Euclidean dimension there exists an admissible flatness cutoff.",
+      "definition_dependencies": ["def:flatness-cutoff"],
+      "deps": [],
+      "lean_names": ["Preiss.exists_flatnessCutoff"],
+      "file": "Preiss/Uniform/FlatnessContinuity.lean"
+    },
+    {
+      "id": "def:flatness-gap",
+      "title": "A cutoff flatness gap threshold",
+      "kind": "definition",
+      "statement_tex": "IsFlatnessGap(m,phi,epsilon) means epsilon>0 and every centered unit m-uniform conical measure with cutoff flatness at most epsilon is flat.",
+      "definition_dependencies": ["def:unit-uniform", "def:conical", "def:flatness", "def:flat"],
+      "deps": [],
+      "lean_names": ["Preiss.IsFlatnessGap"],
+      "file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    {
+      "id": "lem:flatness-gap-cutoff",
+      "title": "Transfer the conical gap to cutoff flatness",
+      "kind": "lemma",
+      "statement_tex": "For 1<=m<=n and an admissible cutoff phi, there exists epsilon such that IsFlatnessGap(m,phi,epsilon).",
+      "definition_dependencies": ["def:flatness-gap", "def:flatness-cutoff"],
+      "deps": ["thm:gap", "lem:flatness-minimum"],
+      "lean_names": ["Preiss.exists_flatnessGap"],
+      "file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    {
+      "id": "def:first-crossing-data",
+      "title": "Quantified crossing scale data",
+      "kind": "definition",
+      "statement_tex": "FirstCrossingData records positive sigma_i<=r_i, r_i tending to zero, vague convergence of the r_i blow-ups to alpha and sigma_i blow-ups to xi, energy exactly epsilon at every sigma_i and at xi, and energy at most epsilon on every entire interval [sigma_i,r_i]. Divergence of r_i/sigma_i and flatness at infinity are separate theorems.",
+      "definition_dependencies": ["def:dimensional-blowup", "def:flatness", "gmt:vague"],
+      "deps": [],
+      "lean_names": ["Preiss.FirstCrossingData"],
+      "file": "Preiss/Theorem/FirstCrossing.lean"
+    }
+  ],
+  "definition_edge_additions": {
+    "lem:gaussian-polynomial-integrable": ["def:polynomial-growth-bound"],
+    "lem:gaussian-uniform-tails": ["def:polynomial-growth-bound"],
+    "lem:vague-gaussian-polynomials": ["def:polynomial-growth-bound"],
+    "lem:gaussian-parameter-derivative": ["def:polynomial-growth-bound"],
+    "lem:moment-determination": ["def:polynomial-growth-bound"],
+    "lem:moment-second-total-trace": ["def:bilinear-trace"],
+    "lem:moment-normal-trace": ["def:bilinear-trace"],
+    "lem:rigidity-gaussian-trace": ["def:bilinear-trace"],
+    "lem:gaussian-quadratic-trace-bound": ["def:bilinear-trace"],
+    "lem:trace-rigidity": ["def:bilinear-trace"],
+    "lem:flatness-minimum": ["def:flatness-cutoff"],
+    "lem:flatness-continuous": ["def:flatness-cutoff"],
+    "lem:flatness-radius-continuous": ["def:flatness-cutoff"],
+    "lem:first-crossing": ["def:flatness-gap", "def:first-crossing-data", "def:flatness-cutoff"],
+    "lem:first-crossing-ratio": ["def:first-crossing-data", "def:flatness-cutoff"],
+    "lem:first-crossing-flat-infinity": ["def:first-crossing-data", "def:flatness-gap", "def:flatness-cutoff"]
+  }
+}

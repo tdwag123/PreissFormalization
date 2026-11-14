@@ -1,6 +1,7 @@
 module
 public import Preiss.Tangent.Blowup
 public import Preiss.Geometry.FlatMeasure
+public import Mathlib.MeasureTheory.Measure.Support
 
 @[expose] public section
 open MeasureTheory

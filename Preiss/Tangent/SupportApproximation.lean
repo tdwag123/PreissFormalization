@@ -1,6 +1,7 @@
 import Preiss.Tangent.Defs
 import Preiss.Density.Defs
 import Preiss.Analysis.MeasureHull
+import Mathlib.MeasureTheory.Measure.Support
 import Mathlib.Topology.MetricSpace.HausdorffDistance
 
 open MeasureTheory Metric Filter Set

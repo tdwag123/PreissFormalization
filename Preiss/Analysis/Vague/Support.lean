@@ -1,5 +1,6 @@
 import Preiss.Geometry.Euclidean
 import FormalizingGMT.WeakConvergence.Basic
+import Mathlib.MeasureTheory.Measure.Support
 
 open MeasureTheory Filter Metric Set
 open scoped Topology ENNReal

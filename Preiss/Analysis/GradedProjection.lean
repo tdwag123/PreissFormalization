@@ -17,7 +17,7 @@ def IsOrthogonalGrading (P : Fin N → E →L[ℝ] E) : Prop :=
 noncomputable def weightedGrading (P : Fin N → E →L[ℝ] E) (s : ℝ) : E →L[ℝ] E :=
   ∑ i, (s ^ (i.val + 1)) • P i
 
-def weightedComplement (P : Fin N → E →L[ℝ] E) (V : Submodule ℝ E) (s : ℝ) :
+noncomputable def weightedComplement (P : Fin N → E →L[ℝ] E) (V : Submodule ℝ E) (s : ℝ) :
     Submodule ℝ E := Vᗮ.comap (weightedGrading P s).toLinearMap
 
 theorem analyticAt_weightedProjection_zero (P : Fin N → E →L[ℝ] E)

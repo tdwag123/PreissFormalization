@@ -1,5 +1,6 @@
 import Preiss.Tangent.Defs
 import Preiss.Density.Defs
+import Mathlib.MeasureTheory.Measure.Support
 
 /-! # Simultaneous recentering of dimensional tangents
 

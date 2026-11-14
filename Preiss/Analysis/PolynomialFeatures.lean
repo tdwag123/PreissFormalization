@@ -35,6 +35,14 @@ theorem polynomialFeatureProjection_isOrthogonalGrading (n N : ℕ) :
     IsOrthogonalGrading (polynomialFeatureProjection (n := n) (N := N)) := by
   sorry
 
+theorem polynomialFeatureProjection_inner {n N : ℕ} (k : Fin N)
+    (x y : Euclidean n) :
+    inner ℝ (polynomialFeatureProjection k (polynomialFeature N x))
+      (polynomialFeature N y) =
+      ((2 : ℝ) ^ (k.val + 1) / ((k.val + 1).factorial : ℝ)) *
+        (inner ℝ x y) ^ (k.val + 1) := by
+  sorry
+
 theorem exists_normPolynomial_feature_functionals (n q : ℕ) :
     ∃ L : Fin q → PolynomialFeatureSpace n (2 * q) →L[ℝ] ℝ,
       ∀ j x, L j (polynomialFeature (2 * q) x) = ‖x‖ ^ (2 * (j.val + 1)) := by

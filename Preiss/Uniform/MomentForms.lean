@@ -25,13 +25,21 @@ abbrev MomentForm (n k : ℕ) :=
 
 noncomputable def momentBilinear (A : MomentForm n 2) :
     Euclidean n →L[ℝ] Euclidean n →L[ℝ] ℝ :=
-  (continuousMultilinearCurryFin1 ℝ (Euclidean n) ℝ).toContinuousLinearEquiv
-    .toContinuousLinearMap.comp A.curryLeft
+  ((continuousMultilinearCurryFin1 ℝ (Euclidean n) ℝ).toContinuousLinearEquiv.toContinuousLinearMap).comp
+    A.curryLeft
+
+theorem momentBilinear_apply (A : MomentForm n 2) (u v : Euclidean n) :
+    momentBilinear A u v = A (Fin.cons u (fun _ => v)) := by
+  sorry
 
 /-- Product of the continuous linear functionals given by inner product with `z`. -/
 noncomputable def momentKernel (k : ℕ) (z : Euclidean n) : MomentForm n k :=
   (ContinuousMultilinearMap.mkPiAlgebra ℝ (Fin k) ℝ).compContinuousLinearMap
     (fun _ => innerSL ℝ z)
+
+theorem momentKernel_apply (k : ℕ) (z : Euclidean n) (u : Fin k → Euclidean n) :
+    momentKernel k z u = ∏ i, inner ℝ z (u i) := by
+  sorry
 
 noncomputable def gaussianMass (μ : Measure (Euclidean n)) (s : ℝ) : ℝ :=
   ∫ z, Real.exp (-s * ‖z‖ ^ 2) ∂μ

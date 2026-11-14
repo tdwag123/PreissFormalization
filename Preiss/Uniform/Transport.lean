@@ -15,6 +15,18 @@ open scoped ENNReal
 namespace Preiss
 variable {m n k : ℕ}
 
+/-- Forward transport preserves the fixed ball constant, with no change of normalization. -/
+theorem uniformWithConstant_map_linearIsometry (L : Euclidean k →ₗᵢ[ℝ] Euclidean n)
+    (ν : Measure (Euclidean k)) {q : ℝ} (hν : IsUniformWithConstant m q ν) :
+    IsUniformWithConstant m q (ν.map L) := by
+  sorry
+
+/-- Forward transport is the map direction needed when lifting codimension induction. -/
+theorem isUnitUniform_map_linearIsometry (L : Euclidean k →ₗᵢ[ℝ] Euclidean n)
+    (ν : Measure (Euclidean k)) (hν : IsUnitUniform m ν) :
+    IsUnitUniform m (ν.map L) := by
+  sorry
+
 /-- A04, generalized to any linear isometric embedding of Euclidean spaces. -/
 theorem uniform_hyperplane_transport (L : Euclidean k →ₗᵢ[ℝ] Euclidean n)
     (μ : Measure (Euclidean n)) (hμ : IsUnitUniform m μ)
