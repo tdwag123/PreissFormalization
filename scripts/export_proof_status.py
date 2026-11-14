@@ -39,6 +39,18 @@ def main():
                     f'<td><a href="{escape(url, quote=True)}">{escape(name)}</a></td>'
                     f'<td>{labels[status]}</td><td>{escape(path)}</td></tr>')
     unfinished = counts["unproved_statement"] + counts["depends_on_sorry"]
+    preiss_proved = records.get("Preiss.preiss", {}).get("kernel_status") == "proved"
+    characterization_proved = records.get(
+        "Preiss.rectifiable_iff_density_and_tangent_plane", {}
+    ).get("kernel_status") == "proved"
+    theorem_status = (
+        "Preiss’s theorem is proved using only the permitted standard foundations. "
+        if preiss_proved else "Preiss’s theorem remains unfinished. "
+    ) + (
+        "The full flat-tangent rectifiability characterization is also proved."
+        if characterization_proved else
+        "The full flat-tangent rectifiability characterization remains unfinished."
+    )
     page = '''<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Verified proof progress — Preiss Formalization</title>
@@ -59,7 +71,7 @@ code{background:#edf2f6;padding:2px 4px}.table-wrap{overflow-x:auto}
              'Links open source at the verified revision. Later edits and new declarations are not certified by this checkpoint.</p>'
              '<p>A proved result has no transitive <code>sorryAx</code> dependency. '
              '“Uses unfinished proof” means its own proof may be written, but one of its dependencies remains unfinished. '
-             'Preiss’s theorem and the full flat-tangent rectifiability characterization remain unfinished.</p>')
+             + theorem_status + '</p>')
     page += '<div class="counts">' + ''.join(
         f'<div><strong>{number}</strong>{label}</div>' for number, label in [
             (counts["proved"], "proved local declarations"),

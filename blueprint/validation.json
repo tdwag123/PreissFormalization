@@ -30,13 +30,23 @@
     },
     "current_proof_changes": "Undergoing separate CI verification.",
     "proof_checkpoint": {
-      "commit": "9bb8591",
-      "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43649281204",
+      "commit": "f84dbbb",
+      "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43649878386",
       "all_modules_compiled": true,
       "kernel_axiom_audit": "passed",
-      "declarations_checked": 779,
-      "sorry_dependent": 24,
-      "report": "blueprint/kernel-checkpoint.json"
+      "declarations_checked": 781,
+      "sorry_dependent": 14,
+      "report": "blueprint/kernel-checkpoint.json",
+      "note": "Preiss.preiss is proved with only propext, Classical.choice, and Quot.sound. Remaining unfinished declarations belong to the companion branch and are not dependencies of Preiss.preiss.",
+      "target_theorem": {
+        "name": "Preiss.preiss",
+        "kernel_status": "proved",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
     }
   },
   "render_validation": {

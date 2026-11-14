@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "9bb8591e2e65e1a532b85b2138376214f47c787b",
+  "source_revision": "f84dbbb86b225ca76747162532c6c767d91ad4ee",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -1060,6 +1060,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.all_dimensionalTangents_flat_of_one": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Theorem/PartB.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.all_dimensionalTangents_flat_of_smul": {
       "project": "local",
       "kind": "theorem",
@@ -1087,15 +1099,14 @@
     "Preiss.all_tangents_flat_of_one": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Theorem/PartB.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.analyticAt_dividedFlagMap": {
       "project": "local",
@@ -2397,6 +2408,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_dilate_flatness_gt_of_unitUniform_not_flat": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Theorem/FirstCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_dimensional_tangent_subseq_of_ball_bounds": {
       "project": "local",
       "kind": "theorem",
@@ -2472,15 +2495,14 @@
     "Preiss.exists_first_crossing_sequences": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Theorem/FirstCrossing.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_first_crossing_sequences_of_flatness_gt": {
       "project": "local",
@@ -3469,15 +3491,14 @@
     "Preiss.flat_of_flat_at_infinity": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/Rigidity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.flatness": {
       "project": "local",
@@ -4839,28 +4860,26 @@
     "Preiss.integral_adjustedForm_lower_bound": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TraceRigidity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.integral_adjustedForm_sq_le": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TraceRigidity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.integral_apply_eq_zero_of_ae": {
       "project": "local",
@@ -5021,15 +5040,14 @@
     "Preiss.integral_inner_sq_mul_omega": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.integral_norm_pow_mul_gaussian_le_halfMass": {
       "project": "local",
@@ -5070,15 +5088,14 @@
     "Preiss.integral_rigidityOmega_eq_zero": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.integral_weighted_planeEnergy_eq_sub_sum": {
       "project": "local",
@@ -6657,15 +6674,14 @@
     "Preiss.preiss": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "depends_on_unproved",
+      "source_status": "proof_candidate",
       "path": "Preiss/Main.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "depends_on_sorry"
+      "kernel_status": "proved"
     },
     "Preiss.preiss_zero": {
       "project": "local",
@@ -7010,15 +7026,14 @@
     "Preiss.secondMomentCoefficient_trace_lower_bound": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TraceRigidity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.starProjection_comp_of_ge": {
       "project": "local",
@@ -7721,15 +7736,14 @@
     "Preiss.trace_tangent_eq_integral_adjustedForm": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.tsum_hole_radii_bad_indices_le": {
       "project": "local",

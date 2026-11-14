@@ -2,7 +2,8 @@
 
 A reusable Lean library and LeanBlueprint for Preiss's rectifiability theorem,
 following De Lellis's *Lecture Notes on Rectifiable Sets, Densities, and Tangent Measures*.
-**This is an unfinished formalization. The theorem still depends on `sorryAx`.**
+**`Preiss.preiss` is proved. Its transitive axiom dependencies are only**
+**`propext`, `Classical.choice`, and `Quot.sound`; it does not depend on `sorryAx`.**
 
 - [Read the shared LeanBlueprint](https://tdwag123.github.io/PreissFormalization/).
 - [Explore the complete dependency graph](https://tdwag123.github.io/PreissFormalization/dep_graph_document.html).
@@ -17,10 +18,11 @@ with exact names and links to pinned source. [The reuse inventory](blueprint/reu
 also identifies mathlib tools. The [validation record](blueprint/validation.json)
 distinguishes source checks, statement compilation, and completed proofs.
 
-The [verified proof checkpoint](https://github.com/tdwag123/PreissFormalization/actions/runs/43649281204)
-at `9bb8591` built every local module and audited 779 declarations. Its
-[kernel report](blueprint/kernel-checkpoint.json) records 24 declarations still
-depending on `sorryAx`; later working changes require their own verification.
+The [verified proof checkpoint](https://github.com/tdwag123/PreissFormalization/actions/runs/43649878386)
+at `f84dbbb` built every local module and audited 781 declarations. Its
+[kernel report](blueprint/kernel-checkpoint.json) verifies `Preiss.preiss` with only the
+three permitted foundations. 14 companion declarations still depend on `sorryAx`;
+none is a dependency of the main theorem.
 
 The proof policy permits only Lean/mathlib's standard foundations: `propext`,
 `Classical.choice`, and `Quot.sound`. CI rejects nonstandard axioms, unfinished
@@ -38,8 +40,9 @@ The proof route is:
 
 The plan includes Lipschitz graphs, partial-domain Lipschitz parametrizations,
 rectifiable sets and measures, and the full tangent-measure characterization.
-Its converse, graph decomposition, and graph area formula form a companion branch
-outside the main Preiss proof. Under positive finite lower and upper density bounds,
+Its converse, graph decomposition, and graph area formula form an unfinished companion
+branch outside the main Preiss proof. The following characterization statements are
+included in the blueprint but are not yet completely formalized: under positive finite lower and upper density bounds,
 rectifiability is equivalent to every tangent being flat almost everywhere.
 Rectifiability further yields one common tangent plane and an existing density there.
 
@@ -54,8 +57,8 @@ FormalizingGMT's closed-ball, diameter-normalized convention. Fixed-dimensional
 blow-ups have a separate definition: arbitrary-scalar tangents form a positive ray,
 while a rectifiable measure has a single limit under fixed-dimensional normalization.
 
-Canonical statements live in their topic files under `Preiss/`, with explicit `sorry`
-bodies until proved. Definitions contain no placeholders. `PreissBlueprint/` is now a compatibility import of the canonical library. A source link means that a
+Canonical statements and proofs live in their topic files under `Preiss/`.
+Remaining companion obligations retain explicit `sorry` bodies; definitions contain no placeholders. `PreissBlueprint/` is now a compatibility import of the canonical library. A source link means that a
 statement is written, not that it has compiled or been proved. The full intended DAG
 is not an extraction of completed Lean proof terms.
 

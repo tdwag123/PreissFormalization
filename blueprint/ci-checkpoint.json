@@ -126,14 +126,23 @@
     "note": "Other compiled modules include graph rectifiability, density adapters, tangent existence, excess-dimension endpoint, coefficient uniqueness, and scalar covariance. Repairs awaiting the next full build and axiom audit."
   },
   "latest_proof_checkpoint": {
-    "commit": "9bb8591",
-    "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43649281204",
+    "commit": "f84dbbb",
+    "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43649878386",
     "status": "success",
     "all_local_modules_compiled": true,
     "kernel_axiom_audit": "passed",
-    "axiom_reports": 779,
-    "unfinished_declarations": 24,
+    "axiom_reports": 781,
+    "unfinished_declarations": 14,
     "report": "blueprint/kernel-checkpoint.json",
-    "note": "Preiss.preiss remains dependent on sorryAx. Later working edits require separate verification."
+    "note": "Preiss.preiss is proved with only propext, Classical.choice, and Quot.sound. Remaining unfinished declarations belong to the companion branch and are not dependencies of Preiss.preiss.",
+    "target_theorem": {
+      "name": "Preiss.preiss",
+      "kernel_status": "proved",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
   }
 }
