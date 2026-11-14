@@ -4758,6 +4758,7 @@
       "file": "Preiss/Uniform/Transport.lean",
       "current_source_imports": [
         "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metric",
         "Preiss.Analysis.ProperMeasureTransport",
         "Preiss.Uniform.Scaling"
       ],
@@ -4769,7 +4770,8 @@
         "Preiss.Uniform.Scaling"
       ],
       "mathlib_imports": [
-        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metric"
       ],
       "gmt_imports": [],
       "proof_imports": [

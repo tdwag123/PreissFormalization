@@ -2,6 +2,7 @@ module
 
 public import Preiss.Uniform.Scaling
 public import Preiss.Analysis.ProperMeasureTransport
+public import Mathlib.MeasureTheory.Constructions.BorelSpace.Metric
 public import Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional
 
 /-! # Uniform measures under isometric identifications
