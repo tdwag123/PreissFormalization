@@ -881,6 +881,20 @@
       "source_files": []
     },
     {
+      "id": "gmt:tangent-open-null",
+      "kind": "lemma",
+      "title": "FormalizingGMT: tangent nullity from excluded support images",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "SUniformAux.measure_open_eq_zero_of_isTangentMeasure"
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "role": "Preiss proof",
+      "source_files": []
+    },
+    {
       "id": "def:plane",
       "kind": "definition",
       "title": "Linear planes",
@@ -2599,7 +2613,10 @@
       "hypotheses_tex": "The subspaces \\(V,W\\) have dimension \\(m>0\\); \\(\\varepsilon,\\eta\\geq0\\) and \\(R>0\\). The constant depends only on dimension and normalization.",
       "proof_tex": "",
       "deps": [
-        "lem:plane-hausdorff"
+        "lem:empty-cylinder-direction",
+        "lem:plane-hausdorff",
+        "lem:plane-slab-measure",
+        "lem:projected-tube-contained-slab"
       ],
       "lean_names": [
         "Preiss.hausdorffMeasure_projected_tube_le"
@@ -3141,7 +3158,8 @@
       "proof_tex": "This is a measure-independent linear algebra theorem. Let the finite-dimensional\nreal inner-product space $X$ have an orthogonal decomposition\n$X=\\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\\leq X$.\nFor $s>0$ put $A(s)=\\sum_j s^jP_j$ and\n$F_s=A(s)^{-1}(V^\\perp)$. Then $X=V\\oplus F_s$; the projection $Q_s$\nonto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.\nIn particular its operator norm stays bounded as $s\\downarrow0$.\nFor the proof, orthogonally split $V^\\perp$ according to the filtration\n$V^\\perp\\cap\\bigoplus_{j\\leq k}X_j$ and define a polynomial family which\nis identity on $V$ and equals $P_k+sP_{k-1}+\\cdots+s^{k-1}P_1$ on the\n$k$th filtration summand. Its value at zero is invertible, by the\nleast-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial\nfamily. In the least-degree argument the lower-degree vector belongs to the\nsum of all earlier filtration summands, not necessarily only the immediately\npreceding one.",
       "deps": [
         "def:orthogonal-grading",
-        "lem:divided-grading-constant-injective",
+        "lem:divided-operator-positive-inverse",
+        "lem:kernel-flag-divided-operators",
         "lem:weighted-grading-positive-complement"
       ],
       "lean_names": [
@@ -3994,6 +4012,7 @@
         "def:moment-coefficients",
         "def:moments",
         "def:unit-uniform",
+        "lem:asymptotic-taylor-vanishing",
         "lem:feature-moment-vanishing",
         "lem:feature-norm-functionals",
         "lem:graded-analytic-projection",
@@ -4001,7 +4020,6 @@
         "lem:moment-norm-bound"
       ],
       "lean_names": [
-        "Preiss.eq_zero_of_isLittleO_pow_smul",
         "Preiss.exists_gaussianMoment_taylor_coefficients",
         "Preiss.gaussianMomentCoefficient_unique"
       ],
@@ -4026,10 +4044,8 @@
       "proof_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
       "deps": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-norm-bound",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:moment-operator-growth"
       ],
       "lean_names": [
         "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt"
@@ -4117,10 +4133,8 @@
       "proof_tex": "For odd $k$, $s^{-k/2}b_{k,s}\\to0$; for $k=2j$,\n$s^{-j}b_{2j,s}\\to b_{2j}^{(j)}/j!$.\nThe factorial is essential; the displayed summary on printed page 74 omits it,\nwhereas the calculation in Chapter 9 includes it correctly.\nUse M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted\npolynomial moment of $D^m_{0,r}\\nu$ as $r\\to\\infty$.",
       "deps": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-coefficient-vanishing",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:moment-coefficient-vanishing"
       ],
       "lean_names": [
         "Preiss.gaussianMoment_scaled_even_limit",
@@ -4395,9 +4409,11 @@
       "proof_tex": "For uniform $\\nu$ with non-full support there exist a support point $y$,\na nonzero vector $e$, and a tangent $\\lambda$ at $y$ supported in\n$\\{z:\\langle z,e\\rangle\\geq0\\}$. Preserve the exact normalization when\nchoosing the tangent. GMT's \\texttt{SUniformAux.exists\\_halfSpace} proves\nthis in its body but exports only the existence of the new uniform measure.\nThe adapter should reuse that proof pattern and retain its witness.",
       "deps": [
         "gmt:support-not-full",
+        "gmt:tangent-open-null",
         "gmt:uniform-halfspace",
         "gmt:uniform-tangents",
-        "lem:dimensional-tangent-ball-constant"
+        "lem:dimensional-tangent-ball-constant",
+        "lem:unit-uniform-tangent-existence"
       ],
       "lean_names": [
         "Preiss.exists_halfSpace_dimensionalTangent"
@@ -4427,7 +4443,8 @@
         "gmt:barycenter-quadratic-bound",
         "gmt:quadratic-support-tangent",
         "gmt:uniform-hyperplane",
-        "gmt:zero-barycenter-hyperplane"
+        "gmt:zero-barycenter-hyperplane",
+        "lem:unit-uniform-tangent-existence"
       ],
       "lean_names": [
         "Preiss.exists_hyperplane_eq_or_dimensionalTangent"
@@ -4456,9 +4473,11 @@
       "deps": [
         "def:unit-uniform",
         "gmt:support-not-full",
+        "lem:dimensional-tangent-bounded-orbit",
         "lem:halfspace-tangent-witness",
         "lem:hyperplane-tangent-lineage",
         "lem:hyperplane-transport-map",
+        "lem:plane-isometric-parametrization",
         "lem:pseudotangent-transitive"
       ],
       "lean_names": [
@@ -8167,6 +8186,265 @@
         "Preiss/Uniform/FullDimension.lean"
       ],
       "proposed_file": "Preiss/Uniform/FullDimension.lean"
+    },
+    {
+      "id": "lem:asymptotic-taylor-vanishing",
+      "kind": "lemma",
+      "title": "Taylor coefficient vanishing from a growth exponent",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.eq_zero_of_isLittleO_pow_smul",
+        "Preiss.isLittleO_rpow_nhdsGT_zero",
+        "Preiss.taylorCoefficient_eq_zero_of_lt_growth"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AsymptoticCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AsymptoticCoefficients.lean"
+    },
+    {
+      "id": "lem:moment-operator-growth",
+      "kind": "lemma",
+      "title": "Operator-norm growth of Gaussian moments at zero",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMoment_isBigO_rpow"
+      ],
+      "deps": [
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentAsymptotics.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentAsymptotics.lean"
+    },
+    {
+      "id": "lem:graded-polynomial-division",
+      "kind": "lemma",
+      "title": "Polynomial division along a triangular grading",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.analyticAt_dividedGradingMap",
+        "Preiss.dividedGradingMap",
+        "Preiss.dividedGradingMap_row",
+        "Preiss.dividedGradingMap_zero",
+        "Preiss.weightedGrading_comp_dividedGradingMap"
+      ],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedDivision.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedDivision.lean"
+    },
+    {
+      "id": "lem:kernel-flag-divided-operators",
+      "kind": "lemma",
+      "title": "Analytic divided operators for the kernel flag",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.analyticAt_dividedFlagMap",
+        "Preiss.analyticAt_dividedFlagOperator",
+        "Preiss.dividedFlagMap",
+        "Preiss.dividedFlagOperator",
+        "Preiss.dividedFlagOperator_zero",
+        "Preiss.flagProjectionLayer_projectedGradingPiece_eq_zero",
+        "Preiss.isUnit_dividedFlagOperator_zero",
+        "Preiss.projectedGradingPiece",
+        "Preiss.weightedGrading_comp_dividedFlagMap"
+      ],
+      "deps": [
+        "lem:divided-grading-constant-injective",
+        "lem:graded-polynomial-division",
+        "lem:kernel-flag-layer-grading"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjectionFlag.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjectionFlag.lean"
+    },
+    {
+      "id": "lem:divided-operator-positive-inverse",
+      "kind": "lemma",
+      "title": "Invertibility of the divided operator at positive scales",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isUnit_dividedFlagOperator_pos"
+      ],
+      "deps": [
+        "lem:kernel-flag-divided-operators",
+        "lem:weighted-grading-positive-complement"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjection.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjection.lean"
+    },
+    {
+      "id": "lem:plane-slab-measure",
+      "kind": "lemma",
+      "title": "Uniform Hausdorff bounds for slabs in linear planes",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.hausdorffMeasure_plane_slab_le"
+      ],
+      "deps": [
+        "def:plane"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneSlab.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneSlab.lean"
+    },
+    {
+      "id": "lem:projected-tube-contained-slab",
+      "kind": "lemma",
+      "title": "A projected tube lies in a thin plane slab",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.projected_tube_subset_slab"
+      ],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/ProjectionEstimate.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/ProjectionEstimate.lean"
+    },
+    {
+      "id": "lem:fivefold-image-covering",
+      "kind": "lemma",
+      "title": "Image-measure bounds from a buffered Vitali cover",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_image_le_mul_of_ball_image_bounds"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/CoveringImage.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/CoveringImage.lean"
+    },
+    {
+      "id": "lem:unit-uniform-tangent-existence",
+      "kind": "lemma",
+      "title": "Unit uniform dimensional tangents at every support point",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_unitUniform_dimensionalTangent"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:uniform-compactness",
+        "lem:uniform-scaling"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentExistence.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentExistence.lean"
+    },
+    {
+      "id": "lem:analytic-finite-jets",
+      "kind": "lemma",
+      "title": "Finite Taylor jets of normed-space-valued analytic functions",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_positive_taylor_jets_of_analyticAt_zero",
+        "Preiss.exists_taylor_jets_of_analyticAt_zero"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/AnalyticJets.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AnalyticJets.lean"
+    },
+    {
+      "id": "lem:analytic-projection-approximation",
+      "kind": "lemma",
+      "title": "Extending analytic approximations from a subspace",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_analyticApproximation_of_weightedComplement",
+        "Preiss.functional_comp_projection_eq_self"
+      ],
+      "deps": [
+        "lem:graded-analytic-projection"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/AnalyticProjectionApproximation.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AnalyticProjectionApproximation.lean"
+    },
+    {
+      "id": "lem:dimensional-tangent-bounded-orbit",
+      "kind": "lemma",
+      "title": "Dimensional tangents lie in the bounded-radius scaling orbit closure",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.IsDimensionalTangent.isUniformPseudotangent"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:pseudotangent-transitive"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/ScalingOrbit.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/ScalingOrbit.lean"
+    },
+    {
+      "id": "lem:cone-projection-direction",
+      "kind": "lemma",
+      "title": "Small projected directions from plane proximity and cone escape",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_unit_small_projection_of_near_plane",
+        "Preiss.norm_projection_lt_of_outside_cone"
+      ],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Geometry/Cylinders.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/Cylinders.lean"
+    },
+    {
+      "id": "lem:uniform-tube-projection-cover",
+      "kind": "lemma",
+      "title": "Quantitative projection bounds from uniform tubes and cone escape",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape"
+      ],
+      "deps": [
+        "lem:cone-projection-direction",
+        "lem:fivefold-image-covering",
+        "lem:projected-tube-slab-bound"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean"
     }
   ],
   "preiss_core": [
@@ -8235,6 +8513,7 @@
     "gmt:quadratic-support-tangent",
     "gmt:restriction-tangents",
     "gmt:support-not-full",
+    "gmt:tangent-open-null",
     "gmt:transfer-ball-bounds",
     "gmt:uniform-density-adapter",
     "gmt:uniform-dimension-bound",
@@ -8247,6 +8526,7 @@
     "gmt:vague",
     "gmt:zero-barycenter-hyperplane",
     "lem:annulus-integrability",
+    "lem:asymptotic-taylor-vanishing",
     "lem:ball-upper-hausdorff-bound",
     "lem:bilinear-trace-basis",
     "lem:blowdown-moment-limits",
@@ -8286,6 +8566,7 @@
     "lem:dimensional-family-compact-ball-bounds",
     "lem:dimensional-moving-centers",
     "lem:dimensional-tangent-ball-constant",
+    "lem:dimensional-tangent-bounded-orbit",
     "lem:dimensional-tangent-closed",
     "lem:dimensional-tangent-compactness",
     "lem:dimensional-tangent-dilation",
@@ -8294,6 +8575,7 @@
     "lem:dimensional-tangent-origin-ball-law",
     "lem:discarded-cylinder-sum",
     "lem:divided-grading-constant-injective",
+    "lem:divided-operator-positive-inverse",
     "lem:domain-extension",
     "lem:empty-cylinder-direction",
     "lem:excess-dimension",
@@ -8342,6 +8624,7 @@
     "lem:gaussian-wick-fourth",
     "lem:general-tangent-scalar",
     "lem:graded-analytic-projection",
+    "lem:graded-polynomial-division",
     "lem:graph-parametrization",
     "lem:graph-rectifiable",
     "lem:grassmannian",
@@ -8356,6 +8639,7 @@
     "lem:integral-operator-annihilation",
     "lem:integrated-gaussian-exponential-series",
     "lem:iterated-derivative-id-product",
+    "lem:kernel-flag-divided-operators",
     "lem:kernel-flag-layer-grading",
     "lem:kernel-grading-flag",
     "lem:lower-ball-hausdorff-bound",
@@ -8374,6 +8658,7 @@
     "lem:moment-kernel-calculus",
     "lem:moment-norm-bound",
     "lem:moment-normal-trace",
+    "lem:moment-operator-growth",
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
     "lem:moving-set-measure-bounds",
@@ -8389,11 +8674,13 @@
     "lem:plane-hausdorff",
     "lem:plane-isometric-parametrization",
     "lem:plane-projection-subsequence",
+    "lem:plane-slab-measure",
     "lem:plane-supported-uniform-flat",
     "lem:polynomial-feature-identities",
     "lem:polynomial-gaussian-integrability",
     "lem:polynomial-gaussian-norm-tails",
     "lem:polynomial-norm-growth",
+    "lem:projected-tube-contained-slab",
     "lem:projected-tube-slab-bound",
     "lem:projection-distance",
     "lem:projection-energy-continuity",
@@ -8453,6 +8740,7 @@
     "lem:unit-flat-support-regularity",
     "lem:unit-flat-unit-uniform",
     "lem:unit-uniform-adapter",
+    "lem:unit-uniform-tangent-existence",
     "lem:vague-cocompact-pushforward",
     "lem:vague-compact-null-mass",
     "lem:vague-countable-metric",
@@ -8590,6 +8878,8 @@
     "lem:plane-distance-homogeneous",
     "lem:plane-hausdorff",
     "lem:plane-projection-subsequence",
+    "lem:plane-slab-measure",
+    "lem:projected-tube-contained-slab",
     "lem:projected-tube-slab-bound",
     "lem:projection-distance",
     "lem:projection-hole-cover",

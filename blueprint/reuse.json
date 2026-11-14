@@ -91,7 +91,8 @@
         "IsSUniform",
         "SUniformAux.not_isSUniform_of_lt",
         "mattila_14_9",
-        "positiveFiniteDensityExistsSet"
+        "positiveFiniteDensityExistsSet",
+        "SUniformAux.measure_open_eq_zero_of_isTangentMeasure"
       ],
       "status": "reuse",
       "notes": "The principal shortcut: all tangents are uniform outside one null set. IsSUniform requires s > 0; handle zero dimension separately.",
@@ -295,13 +296,13 @@
     }
   ],
   "graph_inventory": {
-    "nodes": 362,
-    "edges": 1050,
-    "gmt_nodes": 44,
-    "linked_declarations": 595,
+    "nodes": 377,
+    "edges": 1078,
+    "gmt_nodes": 45,
+    "linked_declarations": 626,
     "declarations_by_project": {
-      "PreissFormalization": 507,
-      "FormalizingGMT": 75,
+      "PreissFormalization": 537,
+      "FormalizingGMT": 76,
       "mathlib": 13
     }
   }

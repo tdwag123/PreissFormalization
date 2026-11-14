@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "13836b476018adcba11d34e21cdcc09c2a5da467",
+  "source_revision": "2c6b7886d879de47733b845cfd45fd3ef933b7cd",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -1116,6 +1116,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.compressedGradingPiece": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
     "Preiss.cone": {
       "project": "local",
       "kind": "def",
@@ -1799,6 +1811,30 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.dividedGradingConstant": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.dividedGradingConstant_injective": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.eq_zero_of_isLittleO_pow_smul": {
       "project": "local",
       "kind": "theorem",
@@ -2155,6 +2191,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.exists_linearIsometry_range_plane": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneEmbedding.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone": {
       "project": "local",
       "kind": "theorem",
@@ -2457,6 +2505,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_unit_small_projection_swapped": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/Cylinders.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_upper_mass_small_sdiff_point": {
       "project": "local",
       "kind": "theorem",
@@ -2517,18 +2577,29 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.false_of_compact_twoSided_approximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/MarstrandMattila/PackingCore.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.false_of_null_projections_and_uniform_weakApproximation": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/PackingContradiction.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.featureMoment": {
       "project": "local",
@@ -2628,6 +2699,54 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.flagProjectionLayer": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.flagProjectionLayer_compressed_inner": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.flagProjectionLayer_dividedGradingConstant": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.flagProjectionLayer_isOrthogonalGrading": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.flatOn": {
       "project": "local",
       "kind": "def",
@@ -2645,6 +2764,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Geometry/PlaneRegularity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.flatOn_support": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/UnitFlat.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4010,6 +4141,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.isUnitUniform_unitFlat": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.iteratedDeriv_exp_quadratic_even": {
       "project": "local",
       "kind": "theorem",
@@ -4027,6 +4170,54 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianDerivatives.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.kernelGradingFlag": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.kernelGradingFlag_antitone": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.kernelGradingFlag_end": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.kernelGradingFlag_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4373,6 +4564,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.mem_kernelGradingFlag": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.mem_support_of_vague_lower_ball_bound": {
       "project": "local",
       "kind": "theorem",
@@ -4487,6 +4690,78 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/WeakApproximation/Density.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.nestedProjectionLayer": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/NestedProjections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.nestedProjectionLayer_comp_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.nestedProjectionLayer_eq_zero_of_mem": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.nestedProjectionLayer_idempotent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.nestedProjectionLayer_mem": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.nestedProjectionLayer_symmetric": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4796,6 +5071,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.projected_distance_le_of_affine_plane_lower_mass": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.projected_distance_le_of_lower_mass": {
       "project": "local",
       "kind": "theorem",
@@ -4968,6 +5255,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.regular_unitFlat": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/UnitFlat.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.restrictBilinear": {
       "project": "local",
       "kind": "def",
@@ -5018,6 +5317,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.starProjection_comp_of_ge": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.starProjection_span_orthonormal": {
       "project": "local",
       "kind": "theorem",
@@ -5035,6 +5346,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/OrthonormalProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.sub_nestedProjectionLayer_mem": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -5066,6 +5389,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.sum_nestedProjectionLayer": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NestedProjections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.summable_gaussian_annulus_majorant": {
       "project": "local",
@@ -5439,15 +5774,26 @@
     "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/Classification.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.uniformWithConstant_eq_of_fullDimension": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FullDimension.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.uniformWithConstant_map_linearIsometry": {
       "project": "local",
@@ -5572,6 +5918,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.unitFlat_support": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/UnitFlat.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.unitUniform_ball_ae_eq_closedBall": {
       "project": "local",
       "kind": "theorem",
@@ -5587,15 +5945,14 @@
     "Preiss.unitUniform_eq_flat_of_support_subset_plane": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/Classification.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.unitUniform_totallyBounded": {
       "project": "local",

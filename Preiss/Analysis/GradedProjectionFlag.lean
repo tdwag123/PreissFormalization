@@ -1,5 +1,7 @@
 module
 public import Preiss.Analysis.Grading
+public import Preiss.Analysis.GradedDivision
+public import Mathlib.Analysis.Normed.Operator.Banach
 public import Preiss.Analysis.NestedProjections
 public import Mathlib.Tactic
 
@@ -131,5 +133,72 @@ theorem dividedGradingConstant_injective {N : ℕ} (P : Fin N → E →L[ℝ] E)
   have hbottom := hflag N le_rfl
   rw [kernelGradingFlag_end P hP V] at hbottom
   exact hbottom
+
+
+noncomputable def projectedGradingPiece {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (V : Submodule ℝ E) (i : Fin N) : E →L[ℝ] V :=
+  V.orthogonalProjectionOnto.comp (P i)
+
+theorem flagProjectionLayer_projectedGradingPiece_eq_zero {N : ℕ}
+    (P : Fin N → E →L[ℝ] E) (hP : IsOrthogonalGrading P) (V : Submodule ℝ E)
+    (i j : Fin N) (hji : j.val < i.val) :
+    (flagProjectionLayer P V i).comp (projectedGradingPiece P V j) = 0 := by
+  ext x
+  apply (inner_self_eq_zero (𝕜 := ℝ)).mp
+  change inner ℝ (flagProjectionLayer P V i (projectedGradingPiece P V j x))
+    (flagProjectionLayer P V i (projectedGradingPiece P V j x)) = 0
+  rw [flagProjectionLayer, nestedProjectionLayer_symmetric]
+  change inner ℝ (V.orthogonalProjectionOnto (P j x))
+    (flagProjectionLayer P V i (flagProjectionLayer P V i (projectedGradingPiece P V j x))) = 0
+  rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right, hP.1]
+  have hmem := nestedProjectionLayer_mem (kernelGradingFlag P V)
+    (kernelGradingFlag_antitone P V) i.val
+    (flagProjectionLayer P V i (projectedGradingPiece P V j x))
+  have hz : P j ((flagProjectionLayer P V i (flagProjectionLayer P V i
+      (projectedGradingPiece P V j x)) : V) : E) = 0 := hmem j hji
+  rw [hz, inner_zero_right]
+
+noncomputable def dividedFlagMap {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (V : Submodule ℝ E) (s : ℝ) : E →L[ℝ] V :=
+  dividedGradingMap (flagProjectionLayer P V) (projectedGradingPiece P V) s
+
+noncomputable def dividedFlagOperator {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (V : Submodule ℝ E) (s : ℝ) : V →L[ℝ] V :=
+  (dividedFlagMap P V s).comp V.subtypeL
+
+theorem dividedFlagOperator_zero {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (V : Submodule ℝ E) : dividedFlagOperator P V 0 = dividedGradingConstant P V := by
+  ext x
+  simp only [dividedFlagOperator, dividedFlagMap, dividedGradingMap_zero,
+    ContinuousLinearMap.comp_apply, ContinuousLinearMap.sum_apply, dividedGradingConstant]
+  rfl
+
+theorem weightedGrading_comp_dividedFlagMap {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (hP : IsOrthogonalGrading P) (V : Submodule ℝ E) (s : ℝ) :
+    (weightedGrading (flagProjectionLayer P V) s).comp (dividedFlagMap P V s) =
+      V.orthogonalProjectionOnto.comp (weightedGrading P s) := by
+  rw [dividedFlagMap, weightedGrading_comp_dividedGradingMap _
+    (flagProjectionLayer_isOrthogonalGrading P hP V) _
+    (flagProjectionLayer_projectedGradingPiece_eq_zero P hP V)]
+  ext x
+  simp only [weightedGrading, ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply,
+    ContinuousLinearMap.comp_apply, map_sum, map_smul, projectedGradingPiece]
+
+theorem analyticAt_dividedFlagMap {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (V : Submodule ℝ E) (s : ℝ) : AnalyticAt ℝ (dividedFlagMap P V) s :=
+  analyticAt_dividedGradingMap _ _ _
+
+theorem analyticAt_dividedFlagOperator {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (V : Submodule ℝ E) (s : ℝ) : AnalyticAt ℝ (dividedFlagOperator P V) s := by
+  exact ((ContinuousLinearMap.compL ℝ V E V).analyticAt_bilinear _).comp₂
+    (analyticAt_dividedFlagMap P V s) analyticAt_const
+
+theorem isUnit_dividedFlagOperator_zero {N : ℕ} (P : Fin N → E →L[ℝ] E)
+    (hP : IsOrthogonalGrading P) (V : Submodule ℝ E) :
+    IsUnit (dividedFlagOperator P V 0) := by
+  rw [dividedFlagOperator_zero, ContinuousLinearMap.isUnit_iff_bijective]
+  exact ⟨dividedGradingConstant_injective P hP V,
+    LinearMap.surjective_of_injective (f := (dividedGradingConstant P V).toLinearMap)
+      (dividedGradingConstant_injective P hP V)⟩
 
 end Preiss

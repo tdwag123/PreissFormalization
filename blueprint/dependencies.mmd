@@ -58,6 +58,7 @@ flowchart LR
   gmt_goodballs["GMT: closed sets controlling all balls through a point"]
   mathlib_hausdorff_mass_bound["mathlib: mass-distribution bound for Hausdorff measure"]
   mathlib_regular_measure_ext["mathlib: compact tests determine regular measures"]
+  gmt_tangent_open_null["FormalizingGMT: tangent nullity from excluded support images"]
   def_plane["Linear planes"]
   def_coverage["Countable Lipschitz coverage"]
   def_parametrized_coverage["Lipschitz pieces and countable partial-domain coverage"]
@@ -361,6 +362,20 @@ flowchart LR
   lem_kernel_flag_layer_grading["Orthogonal grading by kernel-flag layers"]
   lem_divided_grading_constant_injective["Injectivity of the constant divided grading operator"]
   lem_uniform_full_dimension_unique["Uniqueness of full-dimensional uniform measures with fixed ball constant"]
+  lem_asymptotic_taylor_vanishing["Taylor coefficient vanishing from a growth exponent"]
+  lem_moment_operator_growth["Operator-norm growth of Gaussian moments at zero"]
+  lem_graded_polynomial_division["Polynomial division along a triangular grading"]
+  lem_kernel_flag_divided_operators["Analytic divided operators for the kernel flag"]
+  lem_divided_operator_positive_inverse["Invertibility of the divided operator at positive scales"]
+  lem_plane_slab_measure["Uniform Hausdorff bounds for slabs in linear planes"]
+  lem_projected_tube_contained_slab["A projected tube lies in a thin plane slab"]
+  lem_fivefold_image_covering["Image-measure bounds from a buffered Vitali cover"]
+  lem_unit_uniform_tangent_existence["Unit uniform dimensional tangents at every support point"]
+  lem_analytic_finite_jets["Finite Taylor jets of normed-space-valued analytic functions"]
+  lem_analytic_projection_approximation["Extending analytic approximations from a subspace"]
+  lem_dimensional_tangent_bounded_orbit["Dimensional tangents lie in the bounded-radius scaling orbit closure"]
+  lem_cone_projection_direction["Small projected directions from plane proximity and cone escape"]
+  lem_uniform_tube_projection_cover["Quantitative projection bounds from uniform tubes and cone escape"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -456,6 +471,7 @@ flowchart LR
   gmt_portmanteau --> gmt_scaled_discarded_mass
   def_uniform_api --> gmt_uniform_dimension_bound
   def_density_api --> gmt_goodballs
+  gmt_portmanteau --> gmt_tangent_open_null
   def_plane --> def_lipschitz_graph
   def_plane --> lem_grassmannian
   def_plane --> def_cone
@@ -656,7 +672,10 @@ flowchart LR
   def_plane --> def_weak_approximation_good_set
   def_plane --> lem_tube_support_upgrade
   def_plane --> def_weak_approximation
+  lem_empty_cylinder_direction --> lem_projected_tube_slab_bound
   lem_plane_hausdorff --> lem_projected_tube_slab_bound
+  lem_plane_slab_measure --> lem_projected_tube_slab_bound
+  lem_projected_tube_contained_slab --> lem_projected_tube_slab_bound
   def_weak_approximation_good_set --> lem_closed_weak_approximation_good_set
   lem_grassmannian --> lem_closed_weak_approximation_good_set
   lem_moving_set_measure_bounds --> lem_closed_weak_approximation_good_set
@@ -725,7 +744,8 @@ flowchart LR
   lem_annulus_integrability --> lem_gaussian_polynomial_integrable
   lem_gaussian_annulus_majorant --> lem_gaussian_polynomial_integrable
   def_orthogonal_grading --> lem_graded_analytic_projection
-  lem_divided_grading_constant_injective --> lem_graded_analytic_projection
+  lem_divided_operator_positive_inverse --> lem_graded_analytic_projection
+  lem_kernel_flag_divided_operators --> lem_graded_analytic_projection
   lem_weighted_grading_positive_complement --> lem_graded_analytic_projection
   def_plane --> lem_spectral_minimizing_plane
   def_polynomial_growth_bound --> lem_moment_determination
@@ -819,16 +839,15 @@ flowchart LR
   def_moment_coefficients --> lem_taylor_two
   def_moments --> lem_taylor_two
   def_unit_uniform --> lem_taylor_two
+  lem_asymptotic_taylor_vanishing --> lem_taylor_two
   lem_feature_moment_vanishing --> lem_taylor_two
   lem_feature_norm_functionals --> lem_taylor_two
   lem_graded_analytic_projection --> lem_taylor_two
   lem_moment_feature_remainder --> lem_taylor_two
   lem_moment_norm_bound --> lem_taylor_two
   def_moment_coefficients --> lem_moment_coefficient_vanishing
-  def_moments --> lem_moment_coefficient_vanishing
-  def_unit_uniform --> lem_moment_coefficient_vanishing
-  lem_moment_norm_bound --> lem_moment_coefficient_vanishing
-  lem_taylor_two --> lem_moment_coefficient_vanishing
+  lem_asymptotic_taylor_vanishing --> lem_moment_coefficient_vanishing
+  lem_moment_operator_growth --> lem_moment_coefficient_vanishing
   def_bilinear_trace --> lem_moment_second_total_trace
   def_moment_coefficients --> lem_moment_second_total_trace
   def_moments --> lem_moment_second_total_trace
@@ -843,10 +862,8 @@ flowchart LR
   lem_taylor_one --> lem_moment_support_polynomial
   lem_taylor_two --> lem_moment_support_polynomial
   def_moment_coefficients --> lem_scaled_moment_limits
-  def_moments --> lem_scaled_moment_limits
-  def_unit_uniform --> lem_scaled_moment_limits
+  lem_asymptotic_taylor_vanishing --> lem_scaled_moment_limits
   lem_moment_coefficient_vanishing --> lem_scaled_moment_limits
-  lem_taylor_two --> lem_scaled_moment_limits
   def_unit_uniform --> lem_uniform_vague_closed
   gmt_portmanteau --> lem_uniform_vague_closed
   lem_vague_support_approximation --> lem_uniform_vague_closed
@@ -895,18 +912,23 @@ flowchart LR
   lem_flat_positive_scalar --> lem_density_normalization
   lem_uniform_scaling --> lem_density_normalization
   gmt_support_not_full --> lem_halfspace_tangent_witness
+  gmt_tangent_open_null --> lem_halfspace_tangent_witness
   gmt_uniform_halfspace --> lem_halfspace_tangent_witness
   gmt_uniform_tangents --> lem_halfspace_tangent_witness
   lem_dimensional_tangent_ball_constant --> lem_halfspace_tangent_witness
+  lem_unit_uniform_tangent_existence --> lem_halfspace_tangent_witness
   gmt_barycenter_quadratic_bound --> lem_hyperplane_tangent_lineage
   gmt_quadratic_support_tangent --> lem_hyperplane_tangent_lineage
   gmt_uniform_hyperplane --> lem_hyperplane_tangent_lineage
   gmt_zero_barycenter_hyperplane --> lem_hyperplane_tangent_lineage
+  lem_unit_uniform_tangent_existence --> lem_hyperplane_tangent_lineage
   def_unit_uniform --> lem_uniform_reduction
   gmt_support_not_full --> lem_uniform_reduction
+  lem_dimensional_tangent_bounded_orbit --> lem_uniform_reduction
   lem_halfspace_tangent_witness --> lem_uniform_reduction
   lem_hyperplane_tangent_lineage --> lem_uniform_reduction
   lem_hyperplane_transport_map --> lem_uniform_reduction
+  lem_plane_isometric_parametrization --> lem_uniform_reduction
   lem_pseudotangent_transitive --> lem_uniform_reduction
   lem_hyperplane_transport_map --> lem_plane_supported_uniform_flat
   lem_plane_isometric_parametrization --> lem_plane_supported_uniform_flat
@@ -1411,3 +1433,24 @@ flowchart LR
   lem_kernel_grading_flag --> lem_divided_grading_constant_injective
   gmt_uniform_full_dimension --> lem_uniform_full_dimension_unique
   lem_uniform_scaling --> lem_uniform_full_dimension_unique
+  lem_moment_norm_bound --> lem_moment_operator_growth
+  def_orthogonal_grading --> lem_graded_polynomial_division
+  lem_divided_grading_constant_injective --> lem_kernel_flag_divided_operators
+  lem_graded_polynomial_division --> lem_kernel_flag_divided_operators
+  lem_kernel_flag_layer_grading --> lem_kernel_flag_divided_operators
+  lem_kernel_flag_divided_operators --> lem_divided_operator_positive_inverse
+  lem_weighted_grading_positive_complement --> lem_divided_operator_positive_inverse
+  def_plane --> lem_plane_slab_measure
+  def_cone --> lem_projected_tube_contained_slab
+  lem_projection_distance --> lem_projected_tube_contained_slab
+  def_dimensional_tangent --> lem_unit_uniform_tangent_existence
+  lem_uniform_compactness --> lem_unit_uniform_tangent_existence
+  lem_uniform_scaling --> lem_unit_uniform_tangent_existence
+  lem_graded_analytic_projection --> lem_analytic_projection_approximation
+  def_dimensional_tangent --> lem_dimensional_tangent_bounded_orbit
+  lem_pseudotangent_transitive --> lem_dimensional_tangent_bounded_orbit
+  def_cone --> lem_cone_projection_direction
+  lem_projection_distance --> lem_cone_projection_direction
+  lem_cone_projection_direction --> lem_uniform_tube_projection_cover
+  lem_fivefold_image_covering --> lem_uniform_tube_projection_cover
+  lem_projected_tube_slab_bound --> lem_uniform_tube_projection_cover

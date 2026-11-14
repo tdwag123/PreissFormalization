@@ -1,0 +1,16 @@
+{
+  "existing_node_additional_deps": {
+    "lem:halfspace-tangent-witness": [
+      "gmt:tangent-open-null"
+    ],
+    "lem:hyperplane-tangent-lineage": [
+      "gmt:zero-barycenter-hyperplane",
+      "gmt:quadratic-support-tangent"
+    ],
+    "lem:uniform-reduction": [
+      "lem:dimensional-tangent-bounded-orbit",
+      "lem:plane-isometric-parametrization",
+      "gmt:support-not-full"
+    ]
+  }
+}

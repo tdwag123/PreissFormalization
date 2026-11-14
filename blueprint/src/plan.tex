@@ -1519,7 +1519,7 @@ A measure $\mu$ is weakly linearly approximable at $x$ if for every $\eta>0$ the
 \begin{lemma}[Small projection direction bounds projected tube measure]
 \label{lem:projected-tube-slab-bound}
 \lean{Preiss.hausdorffMeasure_projected_tube_le}
-\uses{lem:plane-hausdorff}
+\uses{lem:plane-hausdorff, lem:plane-slab-measure, lem:projected-tube-contained-slab, lem:empty-cylinder-direction}
 
 
 
@@ -1960,7 +1960,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Analytic extension of weighted complementary projections]
 \label{lem:graded-analytic-projection}
-\uses{def:orthogonal-grading, lem:weighted-grading-positive-complement, lem:divided-grading-constant-injective}
+\uses{def:orthogonal-grading, lem:kernel-flag-divided-operators, lem:divided-operator-positive-inverse, lem:weighted-grading-positive-complement}
 \lean{Preiss.analyticAt_weightedProjection_zero}
 
 
@@ -2731,8 +2731,8 @@ the convergent exponential series with its remainder bound.
 
 \begin{lemma}[Coherent operator-norm moment Taylor coefficients]
 \label{lem:taylor-two}
-\lean{Preiss.exists_gaussianMoment_taylor_coefficients, Preiss.gaussianMomentCoefficient_unique, Preiss.eq_zero_of_isLittleO_pow_smul}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound, lem:feature-norm-functionals, lem:feature-moment-vanishing}
+\lean{Preiss.exists_gaussianMoment_taylor_coefficients, Preiss.gaussianMomentCoefficient_unique}
+\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound, lem:feature-norm-functionals, lem:feature-moment-vanishing, lem:asymptotic-taylor-vanishing}
 
 
 
@@ -2762,7 +2762,7 @@ statement is stronger and safer than merely pointwise convergence on the support
 \begin{lemma}[Degree restriction on Taylor coefficients]
 \label{lem:moment-coefficient-vanishing}
 \lean{Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-norm-bound, lem:taylor-two}
+\uses{def:moment-coefficients, lem:asymptotic-taylor-vanishing, lem:moment-operator-growth}
 
 
 
@@ -2847,7 +2847,7 @@ statement is stronger and safer than merely pointwise convergence on the support
 \begin{lemma}[Odd and even leading moment limits]
 \label{lem:scaled-moment-limits}
 \lean{Preiss.gaussianMoment_scaled_odd_limit, Preiss.gaussianMoment_scaled_even_limit}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-coefficient-vanishing, lem:taylor-two}
+\uses{def:moment-coefficients, lem:moment-coefficient-vanishing, lem:asymptotic-taylor-vanishing}
 
 
 
@@ -3070,7 +3070,7 @@ adapter before applying a universal flatness threshold.
 \begin{lemma}[Half-space reduction retaining the tangent witness]
 \label{lem:halfspace-tangent-witness}
 \lean{Preiss.exists_halfSpace_dimensionalTangent}
-\uses{gmt:support-not-full, gmt:uniform-halfspace, gmt:uniform-tangents, lem:dimensional-tangent-ball-constant}
+\uses{gmt:support-not-full, gmt:uniform-halfspace, gmt:uniform-tangents, lem:dimensional-tangent-ball-constant, lem:unit-uniform-tangent-existence, gmt:tangent-open-null}
 
 
 
@@ -3101,7 +3101,7 @@ The adapter should reuse that proof pattern and retain its witness.
 \begin{lemma}[Corrected hyperplane reduction with lineage]
 \label{lem:hyperplane-tangent-lineage}
 \lean{Preiss.exists_hyperplane_eq_or_dimensionalTangent}
-\uses{gmt:barycenter-quadratic-bound, gmt:quadratic-support-tangent, gmt:uniform-hyperplane, gmt:zero-barycenter-hyperplane}
+\uses{gmt:barycenter-quadratic-bound, gmt:quadratic-support-tangent, gmt:uniform-hyperplane, gmt:zero-barycenter-hyperplane, lem:unit-uniform-tangent-existence}
 
 
 
@@ -3142,7 +3142,7 @@ the original half-space boundary must not enter the graph.
 \begin{lemma}[Codimension reduction retaining orbit membership]
 \label{lem:uniform-reduction}
 \lean{Preiss.uniform_dimension_reduction}
-\uses{def:unit-uniform, gmt:support-not-full, lem:halfspace-tangent-witness, lem:hyperplane-tangent-lineage, lem:hyperplane-transport-map, lem:pseudotangent-transitive}
+\uses{def:unit-uniform, gmt:support-not-full, lem:halfspace-tangent-witness, lem:hyperplane-tangent-lineage, lem:hyperplane-transport-map, lem:pseudotangent-transitive, lem:dimensional-tangent-bounded-orbit, lem:plane-isometric-parametrization}
 
 
 
@@ -5354,4 +5354,113 @@ Let $D_i$ be the kernel-flag layers and $R_i$ the compression of $P_i$ to $V$. T
 \uses{gmt:uniform-full-dimension, lem:uniform-scaling}
 
 In positive dimension $m$, two $m$-uniform measures on $\mathbb R^m$ with the same positive ball constant are equal. This reuses FormalizingGMT\textquotesingle s full-dimensional classification and identifies the scalar by the unit-ball mass.
+\end{lemma}
+
+\begin{lemma}[Taylor coefficient vanishing from a growth exponent]
+\label{lem:asymptotic-taylor-vanishing}
+\lean{Preiss.isLittleO_rpow_nhdsGT_zero, Preiss.eq_zero_of_isLittleO_pow_smul, Preiss.taylorCoefficient_eq_zero_of_lt_growth}
+
+For positive scales, $s^a=o(s^b)$ when $b<a$. A constant vector whose multiple $s^qv$ is $o(s^q)$ must vanish. Consequently, a normed-space-valued function bounded by $O(s^a)$ and admitting Taylor expansions has zero coefficients in all positive integer degrees below $a$.
+\end{lemma}
+
+\begin{lemma}[Operator-norm growth of Gaussian moments at zero]
+\label{lem:moment-operator-growth}
+\lean{Preiss.gaussianMoment_isBigO_rpow}
+\uses{lem:moment-norm-bound}
+
+For a positive-dimensional unit uniform measure and $k>0$, its $k$-linear Gaussian moment is $O(s^{k/2})$ in operator norm as $s\downarrow0$.
+\end{lemma}
+
+\begin{lemma}[Polynomial division along a triangular grading]
+\label{lem:graded-polynomial-division}
+\lean{Preiss.dividedGradingMap, Preiss.dividedGradingMap_row, Preiss.weightedGrading_comp_dividedGradingMap, Preiss.dividedGradingMap_zero, Preiss.analyticAt_dividedGradingMap}
+\uses{def:orthogonal-grading}
+
+For an orthogonal grading $(D_i)$ and operators $R_j$ with $D_iR_j=0$ when $j<i$, the polynomial $H(s)=\sum_{i\le j}s^{j-i}D_iR_j$ satisfies $(\sum_i s^{i+1}D_i)H(s)=\sum_j s^{j+1}R_j$. Its rows and value at zero are explicit, and it is analytic at every real parameter.
+\end{lemma}
+
+\begin{lemma}[Analytic divided operators for the kernel flag]
+\label{lem:kernel-flag-divided-operators}
+\lean{Preiss.projectedGradingPiece, Preiss.flagProjectionLayer_projectedGradingPiece_eq_zero, Preiss.dividedFlagMap, Preiss.dividedFlagOperator, Preiss.dividedFlagOperator_zero, Preiss.weightedGrading_comp_dividedFlagMap, Preiss.analyticAt_dividedFlagMap, Preiss.analyticAt_dividedFlagOperator, Preiss.isUnit_dividedFlagOperator_zero}
+\uses{lem:graded-polynomial-division, lem:kernel-flag-layer-grading, lem:divided-grading-constant-injective}
+
+Compressing the original grading to a subspace gives the triangular relations needed for polynomial division. The resulting divided map and its restriction to the subspace are analytic; their weighted factorization is exact, and the restricted operator is invertible at zero.
+\end{lemma}
+
+\begin{lemma}[Invertibility of the divided operator at positive scales]
+\label{lem:divided-operator-positive-inverse}
+\lean{Preiss.isUnit_dividedFlagOperator_pos}
+\uses{lem:kernel-flag-divided-operators, lem:weighted-grading-positive-complement}
+
+The restricted divided kernel-flag operator is invertible at every positive parameter, by its weighted factorization and positivity of the original weighted grading.
+\end{lemma}
+
+\begin{lemma}[Uniform Hausdorff bounds for slabs in linear planes]
+\label{lem:plane-slab-measure}
+\lean{Preiss.hausdorffMeasure_plane_slab_le}
+\uses{def:plane}
+
+For $m>0$, a universal constant bounds the $m$-dimensional Hausdorff measure of $\{z\in V:\|z-c\|\le R,\ |\langle v,z-c\rangle|\le dR\}$ by $CdR^m$, for every $m$-plane, center in that plane, unit normal in that plane, and nonnegative $R,d$.
+\end{lemma}
+
+\begin{lemma}[A projected tube lies in a thin plane slab]
+\label{lem:projected-tube-contained-slab}
+\lean{Preiss.projected_tube_subset_slab}
+\uses{def:cone, lem:projection-distance}
+
+If a unit vector $v\in V$ has $\|P_Wv\|\le\varepsilon$, the projection onto $V$ of the radius-$R$ portion of an $\eta R$-tube about $a+W$ lies in the radius-$R$ slab centered at $P_Va$ of relative thickness $\varepsilon+\eta$.
+\end{lemma}
+
+\begin{lemma}[Image-measure bounds from a buffered Vitali cover]
+\label{lem:fivefold-image-covering}
+\lean{Preiss.measure_image_le_mul_of_ball_image_bounds}
+
+In a separable pseudometric space with measurable open sets, assume every point of $C$ admits a positive radius bounded by a common upper bound and $\nu(f(C\cap B(x,5r)))\le K\mu(B(x,r))$. A disjoint Vitali subfamily gives $\nu(f(C))\le K\mu(X)$. No measurability of $f$ or $C$ is needed.
+\end{lemma}
+
+\begin{lemma}[Unit uniform dimensional tangents at every support point]
+\label{lem:unit-uniform-tangent-existence}
+\lean{Preiss.exists_unitUniform_dimensionalTangent}
+\uses{lem:uniform-compactness, lem:uniform-scaling, def:dimensional-tangent}
+
+A unit $m$-uniform measure admits a unit $m$-uniform dimensional tangent at every support point, including $m=0$.
+\end{lemma}
+
+\begin{lemma}[Finite Taylor jets of normed-space-valued analytic functions]
+\label{lem:analytic-finite-jets}
+\lean{Preiss.exists_taylor_jets_of_analyticAt_zero, Preiss.exists_positive_taylor_jets_of_analyticAt_zero}
+
+Every real-parameter analytic function into a real normed space has one coefficient sequence whose degree-$q$ truncation differs from the function by $o(s^q)$ near zero, for every $q$. Its constant coefficient is the value at zero. If that value is zero, the truncations start in degree one.
+\end{lemma}
+
+\begin{lemma}[Extending analytic approximations from a subspace]
+\label{lem:analytic-projection-approximation}
+\lean{Preiss.functional_comp_projection_eq_self, Preiss.exists_analyticApproximation_of_weightedComplement}
+\uses{lem:graded-analytic-projection}
+
+Let $f(s)$ be continuous linear maps into a normed space annihilating the weighted complement of $V$ for positive $s$. If an analytic family $g(s)$, vanishing at zero, approximates $f(s)$ on $V$ with operator error $O(r(s))$, then an analytic family vanishing at zero approximates $f(s)$ on the whole space with the same error order.
+\end{lemma}
+
+\begin{lemma}[Dimensional tangents lie in the bounded-radius scaling orbit closure]
+\label{lem:dimensional-tangent-bounded-orbit}
+\lean{Preiss.IsDimensionalTangent.isUniformPseudotangent}
+\uses{def:dimensional-tangent, lem:pseudotangent-transitive}
+
+Every dimensional tangent at a support point lies in the support-centered scaling orbit closure with radii at most one. The proof discards finitely many large radii; no uniformity of the source measure is needed.
+\end{lemma}
+
+\begin{lemma}[Small projected directions from plane proximity and cone escape]
+\label{lem:cone-projection-direction}
+\lean{Preiss.exists_unit_small_projection_of_near_plane, Preiss.norm_projection_lt_of_outside_cone}
+\uses{def:cone, lem:projection-distance}
+
+A nonzero displacement close to a plane and with small projection onto another plane yields a unit direction in the first plane with quantitatively small projection. Escaping a cone supplies the required nonzero displacement and projection bound.
+\end{lemma}
+
+\begin{lemma}[Quantitative projection bounds from uniform tubes and cone escape]
+\label{lem:uniform-tube-projection-cover}
+\lean{Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape}
+\uses{lem:fivefold-image-covering, lem:projected-tube-slab-bound, lem:cone-projection-direction}
+
+If $D\subseteq C$ has uniform lower ball mass $\delta r^m$, the carrier $C$ lies in sufficiently thin approximating tubes around points of $D$, and every such point admits arbitrarily small cone-escaping displacements, then $\mathcal H^m(P_VD)\le (K\varepsilon/\delta)\mu(X)$. The fivefold-cover estimate uses the tube information at a larger scale, preserving the entire image mass.
 \end{lemma}

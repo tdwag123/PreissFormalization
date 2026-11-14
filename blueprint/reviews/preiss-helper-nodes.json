@@ -2287,6 +2287,251 @@
       ],
       "used_by": [],
       "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:asymptotic-taylor-vanishing",
+      "kind": "lemma",
+      "title": "Taylor coefficient vanishing from a growth exponent",
+      "lean_names": [
+        "Preiss.isLittleO_rpow_nhdsGT_zero",
+        "Preiss.eq_zero_of_isLittleO_pow_smul",
+        "Preiss.taylorCoefficient_eq_zero_of_lt_growth"
+      ],
+      "file": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "statement_tex": "For positive scales, $s^a=o(s^b)$ when $b<a$. A constant vector whose multiple $s^qv$ is $o(s^q)$ must vanish. Consequently, a normed-space-valued function bounded by $O(s^a)$ and admitting Taylor expansions has zero coefficients in all positive integer degrees below $a$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:moment-operator-growth",
+      "kind": "lemma",
+      "title": "Operator-norm growth of Gaussian moments at zero",
+      "lean_names": [
+        "Preiss.gaussianMoment_isBigO_rpow"
+      ],
+      "file": "Preiss/Uniform/MomentAsymptotics.lean",
+      "statement_tex": "For a positive-dimensional unit uniform measure and $k>0$, its $k$-linear Gaussian moment is $O(s^{k/2})$ in operator norm as $s\\downarrow0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:graded-polynomial-division",
+      "kind": "lemma",
+      "title": "Polynomial division along a triangular grading",
+      "lean_names": [
+        "Preiss.dividedGradingMap",
+        "Preiss.dividedGradingMap_row",
+        "Preiss.weightedGrading_comp_dividedGradingMap",
+        "Preiss.dividedGradingMap_zero",
+        "Preiss.analyticAt_dividedGradingMap"
+      ],
+      "file": "Preiss/Analysis/GradedDivision.lean",
+      "statement_tex": "For an orthogonal grading $(D_i)$ and operators $R_j$ with $D_iR_j=0$ when $j<i$, the polynomial $H(s)=\\sum_{i\\le j}s^{j-i}D_iR_j$ satisfies $(\\sum_i s^{i+1}D_i)H(s)=\\sum_j s^{j+1}R_j$. Its rows and value at zero are explicit, and it is analytic at every real parameter.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:kernel-flag-divided-operators",
+      "kind": "lemma",
+      "title": "Analytic divided operators for the kernel flag",
+      "lean_names": [
+        "Preiss.projectedGradingPiece",
+        "Preiss.flagProjectionLayer_projectedGradingPiece_eq_zero",
+        "Preiss.dividedFlagMap",
+        "Preiss.dividedFlagOperator",
+        "Preiss.dividedFlagOperator_zero",
+        "Preiss.weightedGrading_comp_dividedFlagMap",
+        "Preiss.analyticAt_dividedFlagMap",
+        "Preiss.analyticAt_dividedFlagOperator",
+        "Preiss.isUnit_dividedFlagOperator_zero"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "Compressing the original grading to a subspace gives the triangular relations needed for polynomial division. The resulting divided map and its restriction to the subspace are analytic; their weighted factorization is exact, and the restricted operator is invertible at zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:graded-polynomial-division",
+        "lem:kernel-flag-layer-grading",
+        "lem:divided-grading-constant-injective"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:divided-operator-positive-inverse",
+      "kind": "lemma",
+      "title": "Invertibility of the divided operator at positive scales",
+      "lean_names": [
+        "Preiss.isUnit_dividedFlagOperator_pos"
+      ],
+      "file": "Preiss/Analysis/GradedProjection.lean",
+      "statement_tex": "The restricted divided kernel-flag operator is invertible at every positive parameter, by its weighted factorization and positivity of the original weighted grading.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:kernel-flag-divided-operators",
+        "lem:weighted-grading-positive-complement"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:plane-slab-measure",
+      "kind": "lemma",
+      "title": "Uniform Hausdorff bounds for slabs in linear planes",
+      "lean_names": [
+        "Preiss.hausdorffMeasure_plane_slab_le"
+      ],
+      "file": "Preiss/Geometry/PlaneSlab.lean",
+      "statement_tex": "For $m>0$, a universal constant bounds the $m$-dimensional Hausdorff measure of $\\{z\\in V:\\|z-c\\|\\le R,\\ |\\langle v,z-c\\rangle|\\le dR\\}$ by $CdR^m$, for every $m$-plane, center in that plane, unit normal in that plane, and nonnegative $R,d$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:plane"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:projected-tube-contained-slab",
+      "kind": "lemma",
+      "title": "A projected tube lies in a thin plane slab",
+      "lean_names": [
+        "Preiss.projected_tube_subset_slab"
+      ],
+      "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "statement_tex": "If a unit vector $v\\in V$ has $\\|P_Wv\\|\\le\\varepsilon$, the projection onto $V$ of the radius-$R$ portion of an $\\eta R$-tube about $a+W$ lies in the radius-$R$ slab centered at $P_Va$ of relative thickness $\\varepsilon+\\eta$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:fivefold-image-covering",
+      "kind": "lemma",
+      "title": "Image-measure bounds from a buffered Vitali cover",
+      "lean_names": [
+        "Preiss.measure_image_le_mul_of_ball_image_bounds"
+      ],
+      "file": "Preiss/Analysis/CoveringImage.lean",
+      "statement_tex": "In a separable pseudometric space with measurable open sets, assume every point of $C$ admits a positive radius bounded by a common upper bound and $\\nu(f(C\\cap B(x,5r)))\\le K\\mu(B(x,r))$. A disjoint Vitali subfamily gives $\\nu(f(C))\\le K\\mu(X)$. No measurability of $f$ or $C$ is needed.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-tangent-existence",
+      "kind": "lemma",
+      "title": "Unit uniform dimensional tangents at every support point",
+      "lean_names": [
+        "Preiss.exists_unitUniform_dimensionalTangent"
+      ],
+      "file": "Preiss/Uniform/TangentExistence.lean",
+      "statement_tex": "A unit $m$-uniform measure admits a unit $m$-uniform dimensional tangent at every support point, including $m=0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-scaling",
+        "def:dimensional-tangent"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:analytic-finite-jets",
+      "kind": "lemma",
+      "title": "Finite Taylor jets of normed-space-valued analytic functions",
+      "lean_names": [
+        "Preiss.exists_taylor_jets_of_analyticAt_zero",
+        "Preiss.exists_positive_taylor_jets_of_analyticAt_zero"
+      ],
+      "file": "Preiss/Analysis/AnalyticJets.lean",
+      "statement_tex": "Every real-parameter analytic function into a real normed space has one coefficient sequence whose degree-$q$ truncation differs from the function by $o(s^q)$ near zero, for every $q$. Its constant coefficient is the value at zero. If that value is zero, the truncations start in degree one.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:analytic-projection-approximation",
+      "kind": "lemma",
+      "title": "Extending analytic approximations from a subspace",
+      "lean_names": [
+        "Preiss.functional_comp_projection_eq_self",
+        "Preiss.exists_analyticApproximation_of_weightedComplement"
+      ],
+      "file": "Preiss/Analysis/AnalyticProjectionApproximation.lean",
+      "statement_tex": "Let $f(s)$ be continuous linear maps into a normed space annihilating the weighted complement of $V$ for positive $s$. If an analytic family $g(s)$, vanishing at zero, approximates $f(s)$ on $V$ with operator error $O(r(s))$, then an analytic family vanishing at zero approximates $f(s)$ on the whole space with the same error order.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:graded-analytic-projection"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:dimensional-tangent-bounded-orbit",
+      "kind": "lemma",
+      "title": "Dimensional tangents lie in the bounded-radius scaling orbit closure",
+      "lean_names": [
+        "Preiss.IsDimensionalTangent.isUniformPseudotangent"
+      ],
+      "file": "Preiss/Tangent/ScalingOrbit.lean",
+      "statement_tex": "Every dimensional tangent at a support point lies in the support-centered scaling orbit closure with radii at most one. The proof discards finitely many large radii; no uniformity of the source measure is needed.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:pseudotangent-transitive"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:cone-projection-direction",
+      "kind": "lemma",
+      "title": "Small projected directions from plane proximity and cone escape",
+      "lean_names": [
+        "Preiss.exists_unit_small_projection_of_near_plane",
+        "Preiss.norm_projection_lt_of_outside_cone"
+      ],
+      "file": "Preiss/Geometry/Cylinders.lean",
+      "statement_tex": "A nonzero displacement close to a plane and with small projection onto another plane yields a unit direction in the first plane with quantitatively small projection. Escaping a cone supplies the required nonzero displacement and projection bound.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:uniform-tube-projection-cover",
+      "kind": "lemma",
+      "title": "Quantitative projection bounds from uniform tubes and cone escape",
+      "lean_names": [
+        "Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean",
+      "statement_tex": "If $D\\subseteq C$ has uniform lower ball mass $\\delta r^m$, the carrier $C$ lies in sufficiently thin approximating tubes around points of $D$, and every such point admits arbitrarily small cone-escaping displacements, then $\\mathcal H^m(P_VD)\\le (K\\varepsilon/\\delta)\\mu(X)$. The fivefold-cover estimate uses the tube information at a larger scale, preserving the entire image mass.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:fivefold-image-covering",
+        "lem:projected-tube-slab-bound",
+        "lem:cone-projection-direction"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
     }
   ],
   "definition_edge_additions": {
