@@ -1,8 +1,13 @@
-import Preiss.Uniform.Compactness
-import Preiss.Uniform.Classification
-import Preiss.Analysis.Vague.Support
-import Preiss.Geometry.Projections
-import Mathlib.Tactic
+module
+public import Preiss.Uniform.Compactness
+public import Preiss.Uniform.Classification
+public import Preiss.Analysis.Vague.Support
+public import Preiss.Geometry.Projections
+public import Mathlib.Tactic
+
+/-! # Uniform measures supported in bounded tubes have bounded holes along the plane. -/
+
+@[expose] public section
 open MeasureTheory Metric Set Filter Topology
 open scoped ENNReal
 namespace Preiss
@@ -114,5 +119,4 @@ theorem exists_plane_to_support_bound_of_bounded_normal_coordinates
     exact hhole (κ i) (y i) hi)
   norm_num at hbad
 
-#print axioms exists_plane_to_support_bound_of_bounded_normal_coordinates
 end Preiss

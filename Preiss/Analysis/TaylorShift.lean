@@ -1,6 +1,11 @@
-import Preiss.Analysis.AsymptoticCoefficients
-import Mathlib.Analysis.Asymptotics.Ring
-import Mathlib.Tactic
+module
+public import Preiss.Analysis.AsymptoticCoefficients
+public import Mathlib.Analysis.Asymptotics.Ring
+public import Mathlib.Tactic
+
+/-! # Scalar Taylor coefficients under multiplication by the scale. -/
+
+@[expose] public section
 open Filter Set Asymptotics
 open scoped Topology
 namespace Preiss
@@ -36,5 +41,4 @@ theorem first_second_taylor_coefficients_of_mul_scale
     (by simpa only [hb, mul_zero, zero_add, smul_eq_mul] using hpoly)
   exact ⟨hb, by nlinarith⟩
 
-#print axioms first_second_taylor_coefficients_of_mul_scale
 end Preiss

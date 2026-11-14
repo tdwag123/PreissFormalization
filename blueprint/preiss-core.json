@@ -1284,6 +1284,24 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:conical-covariance",
+      "title": "Positive covariance form, trace and support identity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.conical_covariance_trace_support"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:conical-support-covariance",
+        "lem:even-moment-positivity",
+        "lem:moment-second-total-trace"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 1571,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:graph-parametrization",
       "title": "Graph parametrization is Lipschitz and antilipschitz",
       "kind": "lemma",
@@ -2432,22 +2450,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:spectral-minimizing-plane",
-      "title": "Top eigenspaces minimize normal covariance trace",
-      "kind": "lemma",
-      "status": "unproved_statement",
-      "lean": [
-        "Preiss.trace_orthogonalComplement_minimized_topEigenspace"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:plane"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 3139,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:moment-determination",
       "title": "Gaussian weighted polynomials determine growing measures",
       "kind": "lemma",
@@ -3339,27 +3341,23 @@
       "id": "thm:gap",
       "title": "Uniform conical flatness gap",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.conical_flatness_gap"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:plane",
-        "def:unit-uniform",
+        "lem:conical-covariance",
         "lem:conical-eigenvalue-rigidity",
-        "lem:homogeneous-energy-radial",
-        "lem:plane-supported-uniform-flat",
-        "lem:small-energy-no-holes",
-        "lem:spectral-minimizing-plane",
-        "lem:uniform-ball-boundary"
+        "lem:conical-gaussian-ball-energy",
+        "lem:covariance-minimizing-plane",
+        "lem:gaussian-bilinear-covariance",
+        "lem:ordered-bilinear-spectrum",
+        "lem:small-energy-no-holes"
       ],
       "proof_dependencies": [],
       "expanded_line": 4378,
-      "unfinished_dependencies": [
-        "lem:spectral-minimizing-plane"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "def:rigidity-normal-vector",
@@ -3429,20 +3427,15 @@
       "id": "lem:flat-infinity-moments",
       "title": "Even Taylor coefficients from a flat blow-down",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.evenMomentCoefficient_eq_projection_norm"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:blowdown-even-moment-limit",
         "lem:flat-gaussian-even-moments",
-        "lem:moment-covariance",
-        "lem:scaled-moment-limits",
-        "lem:vague-gaussian-polynomials"
+        "lem:vague-gaussian-moments"
       ],
       "proof_dependencies": [],
       "expanded_line": 4456,
@@ -3468,9 +3461,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4481,
-      "unfinished_dependencies": [
-        "lem:flat-infinity-moments"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:uniform-cylinder-identity",
@@ -3493,8 +3484,7 @@
       "proof_dependencies": [],
       "expanded_line": 4512,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
-        "lem:flat-infinity-moments"
+        "def:rigidity-normal-vector"
       ]
     },
     {
@@ -3520,8 +3510,7 @@
       "expanded_line": 4537,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "lem:flat-infinity-moments"
+        "def:rigidity-omega"
       ]
     },
     {
@@ -3658,7 +3647,6 @@
       "expanded_line": 4703,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "lem:flat-infinity-moments",
         "lem:rigidity-cubic-vanishing"
       ]
     },
@@ -3971,7 +3959,6 @@
       "proof_dependencies": [],
       "expanded_line": 5011,
       "unfinished_dependencies": [
-        "thm:gap",
         "thm:infinity-rigidity"
       ]
     },
@@ -4036,8 +4023,7 @@
       "expanded_line": 5075,
       "unfinished_dependencies": [
         "lem:first-crossing",
-        "lem:first-crossing-ratio",
-        "thm:gap"
+        "lem:first-crossing-ratio"
       ]
     },
     {
@@ -4196,9 +4182,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 5508,
-      "unfinished_dependencies": [
-        "thm:gap"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "def:first-crossing-data",
@@ -4846,39 +4830,6 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 5837,
-      "unfinished_dependencies": []
-    },
-    {
-      "id": "lem:continuous-ball-profile-boundary",
-      "title": "Continuous finite ball profiles have null spheres",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.ball_ae_eq_closedBall_of_continuous_profile",
-        "Preiss.integral_ball_eq_closedBall_of_continuous_profile",
-        "Preiss.measure_sphere_eq_zero_of_continuous_profile"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [],
-      "proof_dependencies": [],
-      "expanded_line": 5845,
-      "unfinished_dependencies": []
-    },
-    {
-      "id": "lem:uniform-ball-boundary",
-      "title": "Open and closed uniform balls agree almost everywhere",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.unitUniform_ball_ae_eq_closedBall"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:unit-uniform",
-        "lem:continuous-ball-profile-boundary"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 5852,
       "unfinished_dependencies": []
     },
     {
@@ -6714,6 +6665,23 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:even-moment-positivity",
+      "title": "Even diagonal Gaussian moments are nonnegative",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_even_nonneg"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:moments",
+        "lem:moment-form-evaluation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6722,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:conical-moment-scaling",
       "title": "Exact moment homogeneity for conical measures",
       "kind": "lemma",
@@ -6728,6 +6696,25 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6730,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-support-covariance",
+      "title": "Conical covariance equals squared norm on the support",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.conical_covariance_eq_norm_sq_on_support"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:conical-moment-scaling",
+        "lem:moment-support-polynomial",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6738,
       "unfinished_dependencies": []
     },
     {
@@ -6899,6 +6886,88 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:orthonormal-spectral-sum-bound",
+      "title": "Orthonormal sums are bounded by leading eigenvalues",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.orthonormal_diagonal_sum_le_initial_sum"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:ordered-trace-bounds"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6831,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:ordered-bilinear-spectrum",
+      "title": "Ordered spectrum of a positive symmetric bilinear form",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_ordered_spectral_representation"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:bilinear-trace"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6839,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:orthonormal-plane-distance",
+      "title": "Distance to a plane in orthonormal coordinates",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_plane_of_orthonormalBasis_finset",
+        "Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6847,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:blowdown-even-moment-limit",
+      "title": "Explicit even moment limits of blowdowns",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.blowdown_gaussianMoment_even_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance",
+        "lem:scaled-moment-limits"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6854,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vague-gaussian-moments",
+      "title": "Gaussian moment continuity under vague convergence",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.vague_gaussianMomentForm_apply"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:moment-norm-bound",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6862,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:exact-homogeneous-moment-coefficients",
       "title": "Taylor coefficients of an exactly homogeneous moment",
       "kind": "lemma",
@@ -6947,6 +7016,59 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6886,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:weighted-plane-energy-decomposition",
+      "title": "Weighted plane energy in orthonormal coordinates",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integral_weighted_planeEnergy_eq_sub_sum"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:orthonormal-plane-distance"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6901,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:covariance-minimizing-plane",
+      "title": "Leading covariance eigenspaces minimize plane energy",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_minimizing_plane_of_ordered_covariance"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:orthonormal-spectral-sum-bound",
+        "lem:weighted-plane-energy-decomposition"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6909,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-bilinear-covariance",
+      "title": "Gaussian bilinear covariance identities",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel",
+        "Preiss.integral_gaussian_inner_sq_eq_momentBilinear",
+        "Preiss.momentBilinear_diag",
+        "Preiss.momentBilinear_gaussianMomentForm_symmetric"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6917,
       "unfinished_dependencies": []
     },
     {
@@ -7052,6 +7174,22 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6964,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-gaussian-ball-energy",
+      "title": "Conical Gaussian energy and unit-ball energy",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.conical_gaussian_planeEnergy_eq_ball"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:homogeneous-energy-radial"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6979,
       "unfinished_dependencies": []
     }
   ]

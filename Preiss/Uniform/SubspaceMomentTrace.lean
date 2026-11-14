@@ -1,8 +1,9 @@
-import Preiss.Analysis.BilinearTrace
-import Preiss.Uniform.MomentForms
-import Preiss.Geometry.Projections
-import Mathlib.Tactic
+module
+public import Preiss.Analysis.BilinearTrace
+public import Preiss.Uniform.MomentForms
+public import Mathlib.Tactic
 
+@[expose] public section
 open MeasureTheory Filter Set
 open scoped BigOperators
 namespace Preiss
@@ -77,8 +78,3 @@ theorem subspaceTrace_gaussianMoment_of_cylinder
   ring
 
 end Preiss
-#print axioms Preiss.subspaceMomentTraceCLM
-#print axioms Preiss.subspaceMomentTraceCLM_apply
-#print axioms Preiss.subspaceMomentTraceCLM_momentKernel
-#print axioms Preiss.subspaceTrace_gaussianMoment_eq_integral
-#print axioms Preiss.subspaceTrace_gaussianMoment_of_cylinder

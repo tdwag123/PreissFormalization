@@ -1,0 +1,18 @@
+{
+  "existing_node_replacement_deps": {
+    "thm:gap": [
+      "lem:ordered-bilinear-spectrum",
+      "lem:covariance-minimizing-plane",
+      "lem:gaussian-bilinear-covariance",
+      "lem:conical-gaussian-ball-energy",
+      "lem:small-energy-no-holes",
+      "lem:conical-covariance",
+      "lem:conical-eigenvalue-rigidity"
+    ],
+    "lem:flat-infinity-moments": [
+      "lem:blowdown-even-moment-limit",
+      "lem:vague-gaussian-moments",
+      "lem:flat-gaussian-even-moments"
+    ]
+  }
+}

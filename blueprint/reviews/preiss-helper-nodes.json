@@ -3448,6 +3448,142 @@
       "deps": [],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-gaussian-ball-energy",
+      "kind": "lemma",
+      "title": "Conical Gaussian energy and unit-ball energy",
+      "lean_names": [
+        "Preiss.conical_gaussian_planeEnergy_eq_ball"
+      ],
+      "file": "Preiss/Uniform/ConicalPlaneEnergy.lean",
+      "statement_tex": "For a conical unit-uniform measure, Gaussian squared-distance energy equals unit-ball squared-distance energy times the corresponding Gamma factor.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:homogeneous-energy-radial"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-norm-half-mass",
+      "kind": "lemma",
+      "title": "Gaussian norm moments bounded by half-scale mass",
+      "lean_names": [
+        "Preiss.integral_norm_pow_mul_gaussian_le_halfMass"
+      ],
+      "file": "Preiss/Analysis/GaussianNormBounds.lean",
+      "statement_tex": "An integrable Gaussian norm moment of positive degree $k$ is bounded by $(k/s)^{k/2}$ times the Gaussian mass at parameter $s/2$, for any measure on a real normed additive group.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:uniform-normalized-gaussian-norm",
+      "kind": "lemma",
+      "title": "Normalized Gaussian norm bounds for uniform measures",
+      "lean_names": [
+        "Preiss.gaussianMass_half_unitUniform",
+        "Preiss.integral_norm_pow_mul_gaussian_le_unitUniform",
+        "Preiss.normalized_gaussian_norm_pow_le_unitUniform"
+      ],
+      "file": "Preiss/Uniform/GaussianNormBounds.lean",
+      "statement_tex": "For positive-dimensional unit-uniform measures, halving the Gaussian parameter scales its mass by $2^{m/2}$. Dividing Gaussian norm moments by Gaussian mass gives an explicit bound of order $s^{-k/2}$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-norm-half-mass",
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:moment-coefficient-growth-images",
+      "kind": "lemma",
+      "title": "Coefficient vanishing from growth of linear images",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth",
+        "Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth"
+      ],
+      "file": "Preiss/Uniform/MomentCoefficientEstimates.lean",
+      "statement_tex": "If a continuous linear image of a positive-degree Gaussian moment is $O(s^a)$, every positive Taylor coefficient of degree $j<a$ has zero image. Fixed-vector evaluation is a specialization.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:subspace-moment-trace",
+      "kind": "lemma",
+      "title": "Continuous trace of moments on a subspace",
+      "lean_names": [
+        "Preiss.subspaceMomentTraceCLM",
+        "Preiss.subspaceMomentTraceCLM_apply",
+        "Preiss.subspaceMomentTraceCLM_momentKernel"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "statement_tex": "Tracing a degree-two moment on a subspace is a continuous linear functional. On the moment kernel it equals the squared norm of orthogonal projection.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:subspace-gaussian-trace-cylinder",
+      "kind": "lemma",
+      "title": "Subspace Gaussian trace under a cylinder identity",
+      "lean_names": [
+        "Preiss.subspaceTrace_gaussianMoment_eq_integral",
+        "Preiss.subspaceTrace_gaussianMoment_of_cylinder"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "statement_tex": "The subspace trace of the Gaussian second moment is an explicit integral of squared projection. If that squared projection equals $2\\langle b,z\\rangle$ almost everywhere, the trace equals $2s$ times the first moment evaluated at $b$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:subspace-moment-trace"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:taylor-multiply-scale",
+      "kind": "lemma",
+      "title": "Taylor coefficients after multiplication by scale",
+      "lean_names": [
+        "Preiss.first_second_taylor_coefficients_of_mul_scale"
+      ],
+      "file": "Preiss/Analysis/TaylorShift.lean",
+      "statement_tex": "If $f(s)=sa+o(s)$, $g(s)=sb+s^2c/2+o(s^2)$, and $g(s)=dsf(s)$ near zero through positive values, then $b=0$ and $c=2da$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bounded-tube-plane-to-support",
+      "kind": "lemma",
+      "title": "Bounded holes in a plane near a uniform support",
+      "lean_names": [
+        "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates"
+      ],
+      "file": "Preiss/Uniform/BoundedTube.lean",
+      "statement_tex": "If the support of an $m$-dimensional unit-uniform measure lies in a bounded tube around an $m$-plane, every point of that plane lies within a uniform finite distance of the support.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-vague-closed",
+        "lem:vague-support-approximation"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

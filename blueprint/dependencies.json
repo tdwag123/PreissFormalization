@@ -3689,27 +3689,23 @@
       "id": "thm:gap",
       "title": "Uniform conical flatness gap",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.conical_flatness_gap"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:plane",
-        "def:unit-uniform",
+        "lem:conical-covariance",
         "lem:conical-eigenvalue-rigidity",
-        "lem:homogeneous-energy-radial",
-        "lem:plane-supported-uniform-flat",
-        "lem:small-energy-no-holes",
-        "lem:spectral-minimizing-plane",
-        "lem:uniform-ball-boundary"
+        "lem:conical-gaussian-ball-energy",
+        "lem:covariance-minimizing-plane",
+        "lem:gaussian-bilinear-covariance",
+        "lem:ordered-bilinear-spectrum",
+        "lem:small-energy-no-holes"
       ],
       "proof_dependencies": [],
       "expanded_line": 4378,
-      "unfinished_dependencies": [
-        "lem:spectral-minimizing-plane"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "def:rigidity-normal-vector",
@@ -3779,20 +3775,15 @@
       "id": "lem:flat-infinity-moments",
       "title": "Even Taylor coefficients from a flat blow-down",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.evenMomentCoefficient_eq_projection_norm"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:blowdown-even-moment-limit",
         "lem:flat-gaussian-even-moments",
-        "lem:moment-covariance",
-        "lem:scaled-moment-limits",
-        "lem:vague-gaussian-polynomials"
+        "lem:vague-gaussian-moments"
       ],
       "proof_dependencies": [],
       "expanded_line": 4456,
@@ -3818,9 +3809,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4481,
-      "unfinished_dependencies": [
-        "lem:flat-infinity-moments"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:uniform-cylinder-identity",
@@ -3843,8 +3832,7 @@
       "proof_dependencies": [],
       "expanded_line": 4512,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
-        "lem:flat-infinity-moments"
+        "def:rigidity-normal-vector"
       ]
     },
     {
@@ -3870,8 +3858,7 @@
       "expanded_line": 4537,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "lem:flat-infinity-moments"
+        "def:rigidity-omega"
       ]
     },
     {
@@ -4008,7 +3995,6 @@
       "expanded_line": 4703,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "lem:flat-infinity-moments",
         "lem:rigidity-cubic-vanishing"
       ]
     },
@@ -4321,7 +4307,6 @@
       "proof_dependencies": [],
       "expanded_line": 5011,
       "unfinished_dependencies": [
-        "thm:gap",
         "thm:infinity-rigidity"
       ]
     },
@@ -4386,8 +4371,7 @@
       "expanded_line": 5075,
       "unfinished_dependencies": [
         "lem:first-crossing",
-        "lem:first-crossing-ratio",
-        "thm:gap"
+        "lem:first-crossing-ratio"
       ]
     },
     {
@@ -4792,9 +4776,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 5508,
-      "unfinished_dependencies": [
-        "thm:gap"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "def:first-crossing-data",
@@ -7972,6 +7954,142 @@
       "proof_dependencies": [],
       "expanded_line": 6972,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-gaussian-ball-energy",
+      "title": "Conical Gaussian energy and unit-ball energy",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.conical_gaussian_planeEnergy_eq_ball"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:homogeneous-energy-radial"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6979,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-norm-half-mass",
+      "title": "Gaussian norm moments bounded by half-scale mass",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integral_norm_pow_mul_gaussian_le_halfMass"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6987,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:uniform-normalized-gaussian-norm",
+      "title": "Normalized Gaussian norm bounds for uniform measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMass_half_unitUniform",
+        "Preiss.integral_norm_pow_mul_gaussian_le_unitUniform",
+        "Preiss.normalized_gaussian_norm_pow_le_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-norm-half-mass",
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6994,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:moment-coefficient-growth-images",
+      "title": "Coefficient vanishing from growth of linear images",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth",
+        "Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7002,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:subspace-moment-trace",
+      "title": "Continuous trace of moments on a subspace",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.subspaceMomentTraceCLM",
+        "Preiss.subspaceMomentTraceCLM_apply",
+        "Preiss.subspaceMomentTraceCLM_momentKernel"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7010,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:subspace-gaussian-trace-cylinder",
+      "title": "Subspace Gaussian trace under a cylinder identity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.subspaceTrace_gaussianMoment_eq_integral",
+        "Preiss.subspaceTrace_gaussianMoment_of_cylinder"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:subspace-moment-trace"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7018,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:taylor-multiply-scale",
+      "title": "Taylor coefficients after multiplication by scale",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.first_second_taylor_coefficients_of_mul_scale"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7026,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:bounded-tube-plane-to-support",
+      "title": "Bounded holes in a plane near a uniform support",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:uniform-compactness",
+        "lem:uniform-vague-closed",
+        "lem:vague-support-approximation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7034,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -8047,6 +8165,7 @@
     "lem:symmetric-multilinear-diagonal-injective",
     "lem:unit-uniform-nonzero",
     "lem:leading-homogeneous-term",
+    "lem:gaussian-norm-half-mass",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -8117,8 +8236,11 @@
     "lem:moment-kernel-calculus",
     "def:feature-moment",
     "lem:gaussian-bilinear-covariance",
+    "lem:subspace-moment-trace",
     "lem:coherent-finite-jets",
     "lem:exact-monomial-coefficients",
+    "lem:moment-coefficient-growth-images",
+    "lem:taylor-multiply-scale",
     "lem:uniform-constant-one",
     "lem:polynomial-feature-identities",
     "lem:gaussian-ball-power",
@@ -8204,6 +8326,7 @@
     "def:symmetric-moment-form",
     "lem:reflection-odd-gaussian-moments",
     "lem:feature-moment-vanishing",
+    "lem:subspace-gaussian-trace-cylinder",
     "lem:exact-homogeneous-moment-coefficients",
     "lem:feature-multilinear-block",
     "lem:gaussian-ball-power-parameter",
@@ -8283,6 +8406,7 @@
     "lem:flatness-minimum",
     "lem:flatness-vague-general",
     "lem:representation",
+    "lem:conical-gaussian-ball-energy",
     "lem:polynomial-gaussian-norm-tails",
     "lem:kernel-flag-divided-operators",
     "def:rigidity-adjusted-form",
@@ -8292,6 +8416,7 @@
     "lem:gaussian-plane-energy-integrable",
     "lem:gaussian-radial-second-moment",
     "lem:gaussian-product-moment-conversion",
+    "lem:uniform-normalized-gaussian-norm",
     "lem:gaussian-quadratic-trace-bound",
     "lem:vague-diagonal",
     "lem:uniform-near-support-compactness",
@@ -8299,6 +8424,7 @@
     "lem:infinity-compactness",
     "lem:unit-uniform-tangent-existence",
     "lem:unit-uniform-infinity-existence",
+    "lem:bounded-tube-plane-to-support",
     "lem:dimensional-tangent-dilation",
     "lem:dimensional-extraction-ball-bounds",
     "lem:recenter-separated-set-null",
@@ -8363,21 +8489,21 @@
     "thm:mm-set",
     "lem:taylor-two",
     "thm:flat-pseudotangent",
-    "thm:gap",
     "thm:mm-measure",
     "lem:conical-moments",
     "lem:conical-support-covariance",
     "lem:blowdown-form-limits",
     "lem:flat-tangent-from-uniform-recentering",
-    "lem:flatness-gap-cutoff",
     "thm:rectifiable-iff-flat",
     "lem:conical-moment-coefficients",
     "lem:conical-covariance",
     "lem:blowdown-product-limits",
     "thm:part-a",
     "lem:conical-even-support-moments",
+    "thm:gap",
     "lem:blowdown-moment-limits",
     "lem:flat-gaussian-even-moments",
+    "lem:flatness-gap-cutoff",
     "lem:unit-uniform-infinity-unique",
     "lem:flat-infinity-moments",
     "thm:unique-infinity",

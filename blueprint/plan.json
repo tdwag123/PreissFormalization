@@ -1481,7 +1481,7 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ConicalMoments.lean"
       ]
@@ -3242,7 +3242,7 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Analysis/SpectralOptimization.lean"
       ]
@@ -4624,15 +4624,13 @@
       "hypotheses_tex": "",
       "proof_tex": "Under G02, assume the top-$m$ eigenspace has a support point within distance\n$\\delta$ of its $m$th unit eigenvector, where $0<\\delta<1/m$.\nIf $\\alpha_m<1$, the trace gives\n$\\alpha_i-1\\leq(m-1)(1-\\alpha_m)$ for $i<m$ and\n$\\alpha_i\\leq\\alpha_m$ for $i\\geq m$.\nThe support identity then gives\n$0\\leq(1-\\alpha_m)((m-1)^2\\delta^2-(1-\\delta)^2)<0$.\nThus $\\alpha_m\\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one\nand the rest zero. Hence support is contained in $V$ and $\\nu=\\sigma_V$.\nG03--G06 give the conical gap for all positive $m$ without the flawed\ntwo-dimensional shortcut in the original printed proof.",
       "deps": [
-        "def:conical",
-        "def:plane",
-        "def:unit-uniform",
+        "lem:conical-covariance",
         "lem:conical-eigenvalue-rigidity",
-        "lem:homogeneous-energy-radial",
-        "lem:plane-supported-uniform-flat",
-        "lem:small-energy-no-holes",
-        "lem:spectral-minimizing-plane",
-        "lem:uniform-ball-boundary"
+        "lem:conical-gaussian-ball-energy",
+        "lem:covariance-minimizing-plane",
+        "lem:gaussian-bilinear-covariance",
+        "lem:ordered-bilinear-spectrum",
+        "lem:small-energy-no-holes"
       ],
       "lean_names": [
         "Preiss.conical_flatness_gap"
@@ -4745,14 +4743,9 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $j\\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.\nUse M02, M03 and the Gaussian moment formula of the flat limit, including the\nfactorial from M08.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:blowdown-even-moment-limit",
         "lem:flat-gaussian-even-moments",
-        "lem:moment-covariance",
-        "lem:scaled-moment-limits",
-        "lem:vague-gaussian-polynomials"
+        "lem:vague-gaussian-moments"
       ],
       "lean_names": [
         "Preiss.evenMomentCoefficient_eq_projection_norm"
@@ -6744,7 +6737,7 @@
         "Preiss.measure_sphere_eq_zero_of_continuous_profile"
       ],
       "deps": [],
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Analysis/BallBoundary.lean"
       ],
@@ -6762,7 +6755,7 @@
         "def:unit-uniform",
         "lem:continuous-ball-profile-boundary"
       ],
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/BallBoundary.lean"
       ],
@@ -8808,7 +8801,7 @@
         "def:moments",
         "lem:moment-form-evaluation"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MomentForms.lean"
       ],
@@ -8846,7 +8839,7 @@
         "lem:scaled-moment-limits",
         "lem:taylor-two"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ConicalMoments.lean"
       ],
@@ -9059,7 +9052,7 @@
       "deps": [
         "lem:ordered-trace-bounds"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/OrderedSpectralBound.lean"
       ],
@@ -9076,7 +9069,7 @@
       "deps": [
         "def:bilinear-trace"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/BilinearSpectrum.lean"
       ],
@@ -9092,7 +9085,7 @@
         "Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Geometry/OrthonormalPlane.lean"
       ],
@@ -9111,7 +9104,7 @@
         "lem:moment-covariance",
         "lem:scaled-moment-limits"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/BlowdownMoments.lean"
       ],
@@ -9129,7 +9122,7 @@
         "lem:moment-norm-bound",
         "lem:vague-gaussian-polynomials"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MomentVague.lean"
       ],
@@ -9215,7 +9208,7 @@
       "deps": [
         "lem:orthonormal-plane-distance"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Geometry/SpectralPlaneEnergy.lean"
       ],
@@ -9233,7 +9226,7 @@
         "lem:orthonormal-spectral-sum-bound",
         "lem:weighted-plane-energy-decomposition"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Geometry/SpectralPlaneEnergy.lean"
       ],
@@ -9254,7 +9247,7 @@
         "def:bilinear-trace",
         "def:moments"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/GaussianCovariance.lean"
       ],
@@ -9386,6 +9379,150 @@
         "Preiss/Analysis/LeadingHomogeneousTerm.lean"
       ],
       "proposed_file": "Preiss/Analysis/LeadingHomogeneousTerm.lean"
+    },
+    {
+      "id": "lem:conical-gaussian-ball-energy",
+      "kind": "lemma",
+      "title": "Conical Gaussian energy and unit-ball energy",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.conical_gaussian_planeEnergy_eq_ball"
+      ],
+      "deps": [
+        "lem:homogeneous-energy-radial"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:gaussian-norm-half-mass",
+      "kind": "lemma",
+      "title": "Gaussian norm moments bounded by half-scale mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_norm_pow_mul_gaussian_le_halfMass"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianNormBounds.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianNormBounds.lean"
+    },
+    {
+      "id": "lem:uniform-normalized-gaussian-norm",
+      "kind": "lemma",
+      "title": "Normalized Gaussian norm bounds for uniform measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMass_half_unitUniform",
+        "Preiss.integral_norm_pow_mul_gaussian_le_unitUniform",
+        "Preiss.normalized_gaussian_norm_pow_le_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-norm-half-mass",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/GaussianNormBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianNormBounds.lean"
+    },
+    {
+      "id": "lem:moment-coefficient-growth-images",
+      "kind": "lemma",
+      "title": "Coefficient vanishing from growth of linear images",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth",
+        "Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/MomentCoefficientEstimates.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentCoefficientEstimates.lean"
+    },
+    {
+      "id": "lem:subspace-moment-trace",
+      "kind": "lemma",
+      "title": "Continuous trace of moments on a subspace",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.subspaceMomentTraceCLM",
+        "Preiss.subspaceMomentTraceCLM_apply",
+        "Preiss.subspaceMomentTraceCLM_momentKernel"
+      ],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentTrace.lean"
+    },
+    {
+      "id": "lem:subspace-gaussian-trace-cylinder",
+      "kind": "lemma",
+      "title": "Subspace Gaussian trace under a cylinder identity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.subspaceTrace_gaussianMoment_eq_integral",
+        "Preiss.subspaceTrace_gaussianMoment_of_cylinder"
+      ],
+      "deps": [
+        "lem:subspace-moment-trace"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentTrace.lean"
+    },
+    {
+      "id": "lem:taylor-multiply-scale",
+      "kind": "lemma",
+      "title": "Taylor coefficients after multiplication by scale",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.first_second_taylor_coefficients_of_mul_scale"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/TaylorShift.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/TaylorShift.lean"
+    },
+    {
+      "id": "lem:bounded-tube-plane-to-support",
+      "kind": "lemma",
+      "title": "Bounded holes in a plane near a uniform support",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates"
+      ],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-vague-closed",
+        "lem:vague-support-approximation"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/BoundedTube.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BoundedTube.lean"
     }
   ],
   "preiss_core": [
@@ -9476,6 +9613,7 @@
     "lem:asymptotic-taylor-vanishing",
     "lem:ball-upper-hausdorff-bound",
     "lem:bilinear-trace-basis",
+    "lem:blowdown-even-moment-limit",
     "lem:blowdown-form-limits",
     "lem:blowdown-moment-limits",
     "lem:blowdown-product-limits",
@@ -9495,16 +9633,19 @@
     "lem:complex-mgf-moment-determination",
     "lem:cone-graph",
     "lem:cone-projection-direction",
+    "lem:conical-covariance",
     "lem:conical-eigenvalue-rigidity",
     "lem:conical-even-support-moments",
+    "lem:conical-gaussian-ball-energy",
     "lem:conical-moment-coefficients",
     "lem:conical-moment-scaling",
     "lem:conical-moments",
-    "lem:continuous-ball-profile-boundary",
+    "lem:conical-support-covariance",
     "lem:coordinate-product-representation",
     "lem:countable-carrier",
     "lem:countable-coordinate-metric",
     "lem:countable-coordinate-second-countability",
+    "lem:covariance-minimizing-plane",
     "lem:decomposition",
     "lem:dense-compact-tests-exist",
     "lem:dense-continuous-approximation",
@@ -9533,6 +9674,7 @@
     "lem:divided-operator-positive-inverse",
     "lem:domain-extension",
     "lem:empty-cylinder-direction",
+    "lem:even-moment-positivity",
     "lem:exact-homogeneous-moment-coefficients",
     "lem:exact-monomial-coefficients",
     "lem:excess-dimension",
@@ -9576,6 +9718,7 @@
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-ball-power",
     "lem:gaussian-ball-power-parameter",
+    "lem:gaussian-bilinear-covariance",
     "lem:gaussian-feature-integrability",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-plane-energy-integrable",
@@ -9638,8 +9781,11 @@
     "lem:nested-orthogonal-layers",
     "lem:nonnegative-integral-cover-bound",
     "lem:odd-coefficients-plane-zero",
+    "lem:ordered-bilinear-spectrum",
     "lem:ordered-trace-bounds",
+    "lem:orthonormal-plane-distance",
     "lem:orthonormal-span-projection",
+    "lem:orthonormal-spectral-sum-bound",
     "lem:packing-base-point",
     "lem:packing-contradiction",
     "lem:plane-distance-homogeneous",
@@ -9689,7 +9835,6 @@
     "lem:scaled-moment-limits",
     "lem:sequential-uniform-scale",
     "lem:small-energy-no-holes",
-    "lem:spectral-minimizing-plane",
     "lem:subsequence-limit-criterion",
     "lem:tangent-blowdown",
     "lem:tangent-existence",
@@ -9701,7 +9846,6 @@
     "lem:tube-support-upgrade",
     "lem:two-sided-packing-core",
     "lem:uniform-adapter",
-    "lem:uniform-ball-boundary",
     "lem:uniform-compact-selection",
     "lem:uniform-compactness",
     "lem:uniform-constant-one",
@@ -9725,6 +9869,7 @@
     "lem:vague-countable-metric",
     "lem:vague-determining-tests",
     "lem:vague-diagonal",
+    "lem:vague-gaussian-moments",
     "lem:vague-gaussian-polynomials",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
@@ -9744,6 +9889,7 @@
     "lem:weak-approximation-scale-transfer",
     "lem:weighted-energy-limit-support",
     "lem:weighted-grading-positive-complement",
+    "lem:weighted-plane-energy-decomposition",
     "lem:zero-density-atoms",
     "lem:zero-dimension",
     "lem:zero-dimensional-flat-moments",

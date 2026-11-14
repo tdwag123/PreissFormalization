@@ -1,3 +1,8 @@
+import Preiss.Uniform.MomentVague
+import Preiss.Uniform.BlowdownMoments
+import Preiss.Uniform.FlatMoments
+import Preiss.Uniform.FlatMeasure
+import Preiss.Uniform.Scaling
 import Preiss.Uniform.MomentCoefficients
 import Preiss.Uniform.Defs
 import Preiss.Tangent.Defs
@@ -7,7 +12,8 @@ import Preiss.Analysis.BilinearTrace
 import Preiss.Geometry.NormalCoordinates
 import Mathlib.Analysis.Normed.Module.Multilinear.Curry
 
-open MeasureTheory Metric
+open MeasureTheory Metric Filter
+open scoped Topology
 namespace Preiss
 variable {n m : ℕ}
 
@@ -46,7 +52,20 @@ theorem evenMomentCoefficient_eq_projection_norm
     (V : Plane m n) (hV : IsTangentAtInfinity m μ (unitFlat V))
     (j : ℕ) (hj : 0 < j) (x : Euclidean n) :
     B (2 * j) j (fun _ => x) = ‖proj V x‖ ^ (2 * j) := by
-  sorry
+  obtain ⟨hreg, _, r, hr, hrinf, hlim⟩ := hV
+  have hν (i : ℕ) := isUnitUniform_dimensionalBlowup μ hμ 0 hμ.2.1 (hr i)
+  have hmoment := (blowdown_gaussianMoment_even_limit μ hm hμ B hB j hj).comp hrinf
+  have heval := ((ContinuousMultilinearMap.apply ℝ
+    (fun _ : Fin (2*j) => Euclidean n) ℝ (fun _ => x)).continuous.tendsto
+      ((j.factorial : ℝ)⁻¹ • B (2*j) j)).comp hmoment
+  have hvague := vague_gaussianMomentForm_apply hm _ (unitFlat V) hν
+    (isUnitUniform_unitFlat V) hlim (2*j) 1 zero_lt_one (fun _ => x)
+  have heq := tendsto_nhds_unique heval hvague
+  simp only [ContinuousMultilinearMap.apply_apply, ContinuousMultilinearMap.smul_apply, smul_eq_mul,
+    flat_gaussianMoment_diagonal V j 1 zero_lt_one x, one_pow, one_mul] at heq
+  have hf : (j.factorial : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (Nat.factorial_ne_zero j)
+  apply mul_left_cancel₀ (inv_ne_zero hf)
+  simpa only [div_eq_mul_inv, mul_comm] using heq
 
 theorem oddMomentCoefficient_restrict_plane_eq_zero
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)

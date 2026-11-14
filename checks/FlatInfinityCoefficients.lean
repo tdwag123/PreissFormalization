@@ -73,7 +73,8 @@ theorem oddMomentCoefficient_restrict_plane_eq_zero_draft
     have hrescale : ∀ᶠ i in atTop, r i • y i ∈ μ.support := by
       filter_upwards [hmem] with i hi
       rw [dimensionalBlowup_support μ 0 (hr i)] at hi
-      obtain ⟨z, hz, rfl⟩ := hi
+      obtain ⟨z, hz, hzy⟩ := hi
+      rw [← hzy]
       simpa only [sub_zero, smul_smul, mul_inv_cancel₀ (hr i).ne', one_smul] using hz
     have h := leading_diagonal_nonneg_of_rescaled_points A d μ.support hpoly
       r hr hrinf y v hy hrescale

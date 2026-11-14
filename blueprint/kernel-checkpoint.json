@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "983d8194c68011e6c663e9863ef862453b1a006e",
+  "source_revision": "1ca73520747f34c69b7e67a7dd7d93de0272c41b",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -619,6 +619,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.IsUnitUniform.ne_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/TangentAtInfinity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.LipschitzPiece": {
       "project": "local",
       "kind": "structure",
@@ -1186,15 +1198,14 @@
     "Preiss.blowdown_sequence_converges": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TangentAtInfinity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.closedTube": {
       "project": "local",
@@ -2888,6 +2899,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_unitUniform_tangentAtInfinity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/TangentAtInfinity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_unit_small_projection_of_avoids_cylinder": {
       "project": "local",
       "kind": "theorem",
@@ -3241,15 +3264,26 @@
     "Preiss.flat_gaussianMoment_diagonal": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatMoments.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.flat_gaussianMoment_diagonal_dim_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.flat_gaussianMoment_odd": {
       "project": "local",
@@ -3577,6 +3611,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussianMomentForm_dirac_zero_diagonal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg": {
       "project": "local",
       "kind": "theorem",
@@ -3642,6 +3688,30 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentForm_unitFlat_diagonal_project": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentForm_unitFlat_zero_diagonal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatMomentGeometry.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4638,6 +4708,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.isConical_unitFlat": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.isFiniteMeasure_withDensity_gaussian": {
       "project": "local",
       "kind": "theorem",
@@ -4806,6 +4888,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.isUnitUniform_of_tangentAtInfinity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/TangentAtInfinity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.isUnitUniform_of_vague": {
       "project": "local",
       "kind": "theorem",
@@ -4943,6 +5037,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/MovingSets.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.leading_diagonal_nonneg_of_rescaled_points": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/LeadingHomogeneousTerm.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6534,18 +6640,29 @@
       ],
       "kernel_status": "proved"
     },
-    "Preiss.tangent_at_infinity_conical": {
+    "Preiss.tangentAtInfinity_eq_of_unitUniform": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TangentAtInfinity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.tangent_at_infinity_conical": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/TangentAtInfinity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.tangent_closed": {
       "project": "local",
@@ -6721,6 +6838,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Density/Vanishing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.tendsto_scaled_homogeneous_sum": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/LeadingHomogeneousTerm.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6999,15 +7128,14 @@
     "Preiss.unique_tangent_at_infinity": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TangentAtInfinity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.unitFlat": {
       "project": "local",
@@ -7026,6 +7154,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.unitFlat_eq_dirac_of_dim_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatMomentGeometry.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

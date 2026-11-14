@@ -539,6 +539,30 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.GaussianNormBounds",
+      "file": "Preiss/Analysis/GaussianNormBounds.lean",
+      "purpose": "Reusable Analysis.GaussianNormBounds interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Tactic.Ring",
+        "Preiss.Analysis.GaussianBallPowerParameter"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Tactic.Ring"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:gaussian-norm-half-mass"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.GaussianBallPowerParameter"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.GaussianQuadraticForms",
       "file": "Preiss/Analysis/GaussianQuadraticForms.lean",
       "current_source_imports": [
@@ -1300,6 +1324,32 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Analysis.SpectralOptimization interfaces."
+    },
+    {
+      "module": "Preiss.Analysis.TaylorShift",
+      "file": "Preiss/Analysis/TaylorShift.lean",
+      "purpose": "Reusable Analysis.TaylorShift interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Asymptotics.Ring",
+        "Mathlib.Tactic",
+        "Preiss.Analysis.AsymptoticCoefficients"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Asymptotics.Ring",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.AsymptoticCoefficients"
+      ],
+      "nodes": [
+        "lem:taylor-multiply-scale"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.AsymptoticCoefficients"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Analysis.Vague.CompactMass",
@@ -4670,6 +4720,37 @@
       "purpose": "Canonical Uniform.BlowdownMoments interfaces."
     },
     {
+      "module": "Preiss.Uniform.BoundedTube",
+      "file": "Preiss/Uniform/BoundedTube.lean",
+      "purpose": "Reusable Uniform.BoundedTube interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Geometry.Projections",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Compactness"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Uniform.Compactness"
+      ],
+      "nodes": [
+        "lem:bounded-tube-plane-to-support"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Geometry.Projections",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Compactness"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.Classification",
       "file": "Preiss/Uniform/Classification.lean",
       "current_source_imports": [
@@ -4782,34 +4863,35 @@
       "module": "Preiss.Uniform.ConicalGap",
       "file": "Preiss/Uniform/ConicalGap.lean",
       "current_source_imports": [
-        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Tactic",
+        "Preiss.Analysis.BilinearSpectrum",
         "Preiss.Analysis.QuadraticSpectralRigidity",
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Uniform.Defs"
+        "Preiss.Geometry.SpectralPlaneEnergy",
+        "Preiss.Uniform.ConicalMoments",
+        "Preiss.Uniform.ConicalPlaneEnergy",
+        "Preiss.Uniform.GaussianCovariance",
+        "Preiss.Uniform.SupportProximity"
       ],
       "local_imports": [
+        "Preiss.Analysis.BilinearSpectrum",
         "Preiss.Analysis.QuadraticSpectralRigidity",
-        "Preiss.Analysis.SpectralOptimization",
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Geometry.Planes",
-        "Preiss.Uniform.BallBoundary",
-        "Preiss.Uniform.Classification",
-        "Preiss.Uniform.Defs",
-        "Preiss.Uniform.Radial",
+        "Preiss.Geometry.SpectralPlaneEnergy",
+        "Preiss.Uniform.ConicalMoments",
+        "Preiss.Uniform.ConicalPlaneEnergy",
+        "Preiss.Uniform.GaussianCovariance",
         "Preiss.Uniform.SupportProximity"
       ],
       "mathlib_imports": [
-        "Mathlib.MeasureTheory.Integral.Bochner.Basic"
+        "Mathlib.Tactic"
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.BilinearSpectrum",
         "Preiss.Analysis.QuadraticSpectralRigidity",
-        "Preiss.Analysis.SpectralOptimization",
-        "Preiss.Geometry.Planes",
-        "Preiss.Uniform.BallBoundary",
-        "Preiss.Uniform.Classification",
-        "Preiss.Uniform.Defs",
-        "Preiss.Uniform.Radial",
+        "Preiss.Geometry.SpectralPlaneEnergy",
+        "Preiss.Uniform.ConicalMoments",
+        "Preiss.Uniform.ConicalPlaneEnergy",
+        "Preiss.Uniform.GaussianCovariance",
         "Preiss.Uniform.SupportProximity"
       ],
       "nodes": [
@@ -4858,6 +4940,38 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Uniform.ConicalMoments interfaces."
+    },
+    {
+      "module": "Preiss.Uniform.ConicalPlaneEnergy",
+      "file": "Preiss/Uniform/ConicalPlaneEnergy.lean",
+      "purpose": "Reusable Uniform.ConicalPlaneEnergy interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Function.LocallyIntegrable",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Tactic.Positivity",
+        "Preiss.Geometry.PlaneDistance",
+        "Preiss.Uniform.BallBoundary",
+        "Preiss.Uniform.Radial"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Function.LocallyIntegrable",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Uniform.Radial"
+      ],
+      "nodes": [
+        "lem:conical-gaussian-ball-energy"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.PlaneDistance",
+        "Preiss.Uniform.BallBoundary",
+        "Preiss.Uniform.Radial"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Uniform.Defs",
@@ -4939,25 +5053,32 @@
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Projections",
         "Preiss.Tangent.Defs",
+        "Preiss.Uniform.BlowdownMoments",
         "Preiss.Uniform.Defs",
-        "Preiss.Uniform.MomentCoefficients"
+        "Preiss.Uniform.FlatMeasure",
+        "Preiss.Uniform.FlatMoments",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentVague",
+        "Preiss.Uniform.Scaling"
       ],
       "local_imports": [
         "Preiss.Analysis.BilinearTrace",
-        "Preiss.Analysis.GaussianVague",
         "Preiss.Analysis.Vague.Support",
         "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Planes",
         "Preiss.Geometry.Projections",
         "Preiss.Tangent.Defs",
+        "Preiss.Uniform.BlowdownMoments",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.Compactness",
         "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatMeasure",
         "Preiss.Uniform.FlatMoments",
         "Preiss.Uniform.MomentCoefficients",
-        "Preiss.Uniform.MomentCovariance",
-        "Preiss.Uniform.MomentExpansion"
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.MomentVague",
+        "Preiss.Uniform.Scaling"
       ],
       "mathlib_imports": [
         "Mathlib.Analysis.Normed.Module.Multilinear.Curry"
@@ -4965,18 +5086,18 @@
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.BilinearTrace",
-        "Preiss.Analysis.GaussianVague",
         "Preiss.Analysis.Vague.Support",
         "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.Planes",
         "Preiss.Tangent.Defs",
+        "Preiss.Uniform.BlowdownMoments",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.Compactness",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.FlatMoments",
         "Preiss.Uniform.MomentCoefficients",
-        "Preiss.Uniform.MomentCovariance",
-        "Preiss.Uniform.MomentExpansion"
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.MomentVague"
       ],
       "nodes": [
         "def:rigidity-normal-vector",
@@ -5545,6 +5666,37 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Uniform.GaussianNormBounds",
+      "file": "Preiss/Uniform/GaussianNormBounds.lean",
+      "purpose": "Reusable Uniform.GaussianNormBounds interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring",
+        "Preiss.Analysis.GaussianNormBounds",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.GaussianNormBounds",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "nodes": [
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.GaussianNormBounds",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.GaussianPlaneEnergy",
       "file": "Preiss/Uniform/GaussianPlaneEnergy.lean",
       "purpose": "Reusable Uniform.GaussianPlaneEnergy interfaces.",
@@ -5651,6 +5803,32 @@
       "source_exists": true,
       "local_imports": [
         "Preiss.Uniform.MomentEstimates"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Uniform.MomentCoefficientEstimates",
+      "file": "Preiss/Uniform/MomentCoefficientEstimates.lean",
+      "purpose": "Reusable Uniform.MomentCoefficientEstimates interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Normed.Operator.Asymptotics",
+        "Preiss.Analysis.AsymptoticCoefficients",
+        "Preiss.Uniform.MomentCoefficients"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Normed.Operator.Asymptotics"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.AsymptoticCoefficients"
+      ],
+      "nodes": [
+        "lem:moment-coefficient-growth-images"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.AsymptoticCoefficients",
+        "Preiss.Uniform.MomentCoefficients"
       ],
       "scope": "core"
     },
@@ -6091,6 +6269,34 @@
       "purpose": "Canonical Uniform.Scaling interfaces."
     },
     {
+      "module": "Preiss.Uniform.SubspaceMomentTrace",
+      "file": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "purpose": "Reusable Uniform.SubspaceMomentTrace interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Preiss.Analysis.BilinearTrace",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.BilinearTrace",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "nodes": [
+        "lem:subspace-moment-trace",
+        "lem:subspace-gaussian-trace-cylinder"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.BilinearTrace",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.SupportProximity",
       "file": "Preiss/Uniform/SupportProximity.lean",
       "current_source_imports": [
@@ -6377,6 +6583,7 @@
     "Preiss.Density.Vanishing",
     "Preiss.Geometry.NormalCoordinates",
     "Preiss.Geometry.RescaledDistance",
+    "Preiss.Analysis.TaylorShift",
     "Preiss.Analysis.BilinearSpectrum",
     "Preiss.Analysis.CountableCoordinateTopology",
     "Preiss.Analysis.Vague.DeterminingTests",
@@ -6401,6 +6608,7 @@
     "Preiss.Analysis.QuadraticSpectralRigidity",
     "Preiss.Analysis.PolynomialFeatures",
     "Preiss.Analysis.Vague.Metrization",
+    "Preiss.Analysis.GaussianNormBounds",
     "Preiss.Analysis.GaussianQuadraticForms",
     "Preiss.Analysis.GaussianWeight",
     "Preiss.Analysis.Vague.ProjectionEnergy",
@@ -6461,6 +6669,7 @@
     "Preiss.Uniform.GaussianCovariance",
     "Preiss.Uniform.MomentCoefficients",
     "Preiss.Uniform.MomentCovariance",
+    "Preiss.Uniform.SubspaceMomentTrace",
     "Preiss.Analysis.GradedProjection",
     "Preiss.Density.FinitePieces",
     "Preiss.Geometry.UnitFlat",
@@ -6481,6 +6690,7 @@
     "Preiss.Uniform.Compactness",
     "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.Transport",
+    "Preiss.Uniform.MomentCoefficientEstimates",
     "Preiss.Analysis.AnalyticProjectionApproximation",
     "Preiss.Uniform.FlatMeasure",
     "Preiss.Rectifiability.ProjectionEstimate",
@@ -6492,6 +6702,7 @@
     "Preiss.Tangent.Compactness",
     "Preiss.Tangent.Normalization",
     "Preiss.Density.Dimension",
+    "Preiss.Uniform.ConicalPlaneEnergy",
     "Preiss.Uniform.MomentEstimates",
     "Preiss.Tangent.ScalingOrbit",
     "Preiss.Uniform.BlowdownCompactness",
@@ -6505,11 +6716,13 @@
     "Preiss.Tangent.FlatApproximation",
     "Preiss.Uniform.TangentNormalization",
     "Preiss.Uniform.FlatMomentGeometry",
+    "Preiss.Uniform.GaussianNormBounds",
     "Preiss.Uniform.GaussianPlaneEnergy",
     "Preiss.Uniform.MomentAsymptotics",
     "Preiss.Uniform.MomentFeatures",
     "Preiss.Uniform.MomentTrace",
     "Preiss.Uniform.MomentVague",
+    "Preiss.Uniform.BoundedTube",
     "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
     "Preiss.Rectifiability.GraphBlowup",
@@ -6520,7 +6733,6 @@
     "Preiss.Rectifiability.WeakApproximation.UniformTubes",
     "Preiss.Rectifiability.TangentNecessity",
     "Preiss.Uniform.FlatPseudotangent",
-    "Preiss.Uniform.ConicalGap",
     "Preiss.Uniform.MomentExpansion",
     "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
@@ -6531,6 +6743,7 @@
     "Preiss.Theorem.PartA",
     "Preiss.Uniform.TangentAtInfinity",
     "Preiss.Uniform.ConicalCoefficients",
+    "Preiss.Uniform.ConicalGap",
     "Preiss.Rectifiability.MarstrandMattila.PackingCore",
     "Preiss.Uniform.FlatMoments",
     "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
@@ -6554,6 +6767,7 @@
     "Preiss.Analysis.AnnulusIntegrability",
     "Preiss.Analysis.AsymptoticCoefficients",
     "Preiss.Analysis.BallBoundary",
+    "Preiss.Analysis.BilinearSpectrum",
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Analysis.CompactExhaustion",
     "Preiss.Analysis.CountableCoordinateMetric",
@@ -6585,6 +6799,7 @@
     "Preiss.Analysis.MovingSets",
     "Preiss.Analysis.MultilinearSymmetrization",
     "Preiss.Analysis.NestedProjections",
+    "Preiss.Analysis.OrderedSpectralBound",
     "Preiss.Analysis.OrderedSums",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PolynomialFeatures",
@@ -6594,7 +6809,6 @@
     "Preiss.Analysis.QuadraticSpectralRigidity",
     "Preiss.Analysis.SequentialLimits",
     "Preiss.Analysis.SequentialScale",
-    "Preiss.Analysis.SpectralOptimization",
     "Preiss.Analysis.Vague.CompactMass",
     "Preiss.Analysis.Vague.CompactTests",
     "Preiss.Analysis.Vague.DeterminingTests",
@@ -6629,6 +6843,7 @@
     "Preiss.Geometry.FlatScalar",
     "Preiss.Geometry.LipschitzExtension",
     "Preiss.Geometry.NormalCoordinates",
+    "Preiss.Geometry.OrthonormalPlane",
     "Preiss.Geometry.PlaneDistance",
     "Preiss.Geometry.PlaneEmbedding",
     "Preiss.Geometry.PlaneMeasure",
@@ -6639,6 +6854,7 @@
     "Preiss.Geometry.Planes",
     "Preiss.Geometry.Projections",
     "Preiss.Geometry.RescaledDistance",
+    "Preiss.Geometry.SpectralPlaneEnergy",
     "Preiss.Geometry.UnitFlat",
     "Preiss.Main",
     "Preiss.Rectifiability.Basic",
@@ -6702,6 +6918,7 @@
     "Preiss.Uniform.ConicalCoefficients",
     "Preiss.Uniform.ConicalGap",
     "Preiss.Uniform.ConicalMoments",
+    "Preiss.Uniform.ConicalPlaneEnergy",
     "Preiss.Uniform.Defs",
     "Preiss.Uniform.DimensionReduction",
     "Preiss.Uniform.FlatAtInfinity.Basic",
@@ -6721,6 +6938,7 @@
     "Preiss.Uniform.FlatnessVague",
     "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.GMTAdapters",
+    "Preiss.Uniform.GaussianCovariance",
     "Preiss.Uniform.GaussianPlaneEnergy",
     "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.MomentAsymptotics",
@@ -6732,6 +6950,7 @@
     "Preiss.Uniform.MomentForms",
     "Preiss.Uniform.MomentTaylorJets",
     "Preiss.Uniform.MomentTrace",
+    "Preiss.Uniform.MomentVague",
     "Preiss.Uniform.Moments",
     "Preiss.Uniform.Radial",
     "Preiss.Uniform.Scaling",

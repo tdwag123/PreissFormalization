@@ -429,6 +429,14 @@ flowchart LR
   lem_unit_uniform_infinity_existence["Existence and uniformity of tangents at infinity"]
   lem_unit_uniform_infinity_unique["Uniqueness of tangents at infinity"]
   lem_leading_homogeneous_term["Leading homogeneous terms along escaping sequences"]
+  lem_conical_gaussian_ball_energy["Conical Gaussian energy and unit-ball energy"]
+  lem_gaussian_norm_half_mass["Gaussian norm moments bounded by half-scale mass"]
+  lem_uniform_normalized_gaussian_norm["Normalized Gaussian norm bounds for uniform measures"]
+  lem_moment_coefficient_growth_images["Coefficient vanishing from growth of linear images"]
+  lem_subspace_moment_trace["Continuous trace of moments on a subspace"]
+  lem_subspace_gaussian_trace_cylinder["Subspace Gaussian trace under a cylinder identity"]
+  lem_taylor_multiply_scale["Taylor coefficients after multiplication by scale"]
+  lem_bounded_tube_plane_to_support["Bounded holes in a plane near a uniform support"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -982,15 +990,13 @@ flowchart LR
   lem_blowup_composition --> cor_conical
   lem_unit_uniform_infinity_unique --> cor_conical
   lem_vague_moving_blowups --> cor_conical
-  def_conical --> thm_gap
-  def_plane --> thm_gap
-  def_unit_uniform --> thm_gap
+  lem_conical_covariance --> thm_gap
   lem_conical_eigenvalue_rigidity --> thm_gap
-  lem_homogeneous_energy_radial --> thm_gap
-  lem_plane_supported_uniform_flat --> thm_gap
+  lem_conical_gaussian_ball_energy --> thm_gap
+  lem_covariance_minimizing_plane --> thm_gap
+  lem_gaussian_bilinear_covariance --> thm_gap
+  lem_ordered_bilinear_spectrum --> thm_gap
   lem_small_energy_no_holes --> thm_gap
-  lem_spectral_minimizing_plane --> thm_gap
-  lem_uniform_ball_boundary --> thm_gap
   def_moment_coefficients --> def_rigidity_normal_vector
   def_plane --> def_rigidity_normal_vector
   def_moment_coefficients --> def_rigidity_omega
@@ -1000,14 +1006,9 @@ flowchart LR
   def_plane --> def_rigidity_adjusted_form
   def_rigidity_normal_vector --> def_rigidity_adjusted_form
   def_rigidity_omega --> def_rigidity_adjusted_form
-  def_moment_coefficients --> lem_flat_infinity_moments
-  def_plane --> lem_flat_infinity_moments
-  def_tangent_at_infinity --> lem_flat_infinity_moments
-  def_unit_uniform --> lem_flat_infinity_moments
+  lem_blowdown_even_moment_limit --> lem_flat_infinity_moments
   lem_flat_gaussian_even_moments --> lem_flat_infinity_moments
-  lem_moment_covariance --> lem_flat_infinity_moments
-  lem_scaled_moment_limits --> lem_flat_infinity_moments
-  lem_vague_gaussian_polynomials --> lem_flat_infinity_moments
+  lem_vague_gaussian_moments --> lem_flat_infinity_moments
   def_moment_coefficients --> lem_odd_coefficients_plane_zero
   def_plane --> lem_odd_coefficients_plane_zero
   def_tangent_at_infinity --> lem_odd_coefficients_plane_zero
@@ -1578,3 +1579,14 @@ flowchart LR
   lem_moment_determination --> lem_unit_uniform_infinity_unique
   lem_unit_uniform_infinity_existence --> lem_unit_uniform_infinity_unique
   lem_vague_gaussian_polynomials --> lem_unit_uniform_infinity_unique
+  lem_homogeneous_energy_radial --> lem_conical_gaussian_ball_energy
+  lem_gaussian_norm_half_mass --> lem_uniform_normalized_gaussian_norm
+  lem_moment_norm_bound --> lem_uniform_normalized_gaussian_norm
+  lem_asymptotic_taylor_vanishing --> lem_moment_coefficient_growth_images
+  def_bilinear_trace --> lem_subspace_moment_trace
+  def_moments --> lem_subspace_moment_trace
+  lem_subspace_moment_trace --> lem_subspace_gaussian_trace_cylinder
+  lem_asymptotic_taylor_vanishing --> lem_taylor_multiply_scale
+  lem_uniform_compactness --> lem_bounded_tube_plane_to_support
+  lem_uniform_vague_closed --> lem_bounded_tube_plane_to_support
+  lem_vague_support_approximation --> lem_bounded_tube_plane_to_support
