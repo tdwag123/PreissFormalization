@@ -1,15 +1,12 @@
-module
-
-public import Preiss.Uniform.FlatnessMinimum
-public import Preiss.Analysis.SequentialLimits
-public import Preiss.Analysis.Vague.ProjectionEnergy
-public import Mathlib.Topology.Sequences
+import Preiss.Uniform.FlatnessMinimum
+import Preiss.Analysis.SequentialLimits
+import Preiss.Analysis.Vague.ProjectionEnergy
+import Mathlib.Topology.Sequences
 
 /-! # Vague continuity of minimum distance energy
 
 Compactly supported continuous cutoffs may have either sign. -/
 
-@[expose] public section
 open MeasureTheory Metric Set Filter Topology
 open scoped CompactlySupported ENNReal
 noncomputable section

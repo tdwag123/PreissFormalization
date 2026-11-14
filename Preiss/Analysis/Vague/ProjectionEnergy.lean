@@ -1,11 +1,8 @@
-module
-
-public import Preiss.Analysis.Vague.CompactTests
-public import Mathlib.Topology.UniformSpace.HeineCantor
+import Preiss.Analysis.Vague.CompactTests
+import Mathlib.Topology.UniformSpace.HeineCantor
 
 /-! # Moving squared-projection integrals under vague convergence -/
 
-@[expose] public section
 open MeasureTheory Metric Set Filter Topology
 open scoped CompactlySupported ENNReal
 noncomputable section
