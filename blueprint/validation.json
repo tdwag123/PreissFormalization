@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-14T20:45:13.208986+00:00",
+  "updated_at": "2026-11-14T20:53:35.953036+00:00",
   "stage": "Proof development after the complete canonical statement build passed.",
   "graph": {
-    "nodes": 404,
-    "edges": 1116,
+    "nodes": 411,
+    "edges": 1124,
     "acyclic": true,
     "status_counts": {
       "formalized_upstream": 60,
       "definition": 33,
-      "proof_candidate": 262,
-      "unproved_statement": 44,
-      "depends_on_unproved": 5
+      "proof_candidate": 269,
+      "unproved_statement": 43,
+      "depends_on_unproved": 6
     }
   },
   "source_validation": {

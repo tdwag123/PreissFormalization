@@ -4,6 +4,8 @@ import Preiss.Tangent.Defs
 import Preiss.Geometry.Projections
 import Preiss.Geometry.PlaneMeasure
 import Preiss.Analysis.BilinearTrace
+import Preiss.Geometry.NormalCoordinates
+import Mathlib.Analysis.Normed.Module.Multilinear.Curry
 
 open MeasureTheory Metric
 namespace Preiss
@@ -13,6 +15,30 @@ variable {n m : ℕ}
 def IsFirstMomentNormalVector (B : MomentCoefficientFamily n) (V : Plane m n)
     (b : V.1ᗮ) : Prop :=
   ∀ x : Euclidean n, B 1 1 (fun _ => x) = 2 * inner ℝ (b : Euclidean n) x
+
+/-- The first coefficient has a normal Riesz representative whenever its restriction
+to the plane vanishes. This lemma does not assume a moment expansion or a blow-down. -/
+theorem exists_firstMomentNormalVector_of_restrict_eq_zero
+    (B : MomentCoefficientFamily n) (V : Plane m n)
+    (hzero : ∀ u : V.1, B 1 1 (fun _ => (u : Euclidean n)) = 0) :
+    ∃ b : V.1ᗮ, IsFirstMomentNormalVector B V b := by
+  let A : Euclidean n →L[ℝ] ℝ :=
+    continuousMultilinearCurryFin1 ℝ (Euclidean n) ℝ (B 1 1)
+  have hA (x : Euclidean n) : A x = B 1 1 (fun _ => x) := by
+    dsimp only [A]
+    rw [continuousMultilinearCurryFin1_apply]
+    congr 1
+  let L : Euclidean n →L[ℝ] ℝ := (1 / 2 : ℝ) • A
+  have hL : ∀ x ∈ V.1, L x = 0 := by
+    intro x hx
+    have hz := hzero ⟨x, hx⟩
+    simp only [L, ContinuousLinearMap.smul_apply, smul_eq_mul, hA, hz, mul_zero]
+  obtain ⟨b, hb⟩ := exists_orthogonal_representative V.1 L hL
+  refine ⟨b, ?_⟩
+  intro x
+  have h := hb x
+  simp only [L, ContinuousLinearMap.smul_apply, smul_eq_mul, hA] at h
+  linarith
 
 theorem evenMomentCoefficient_eq_projection_norm
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)

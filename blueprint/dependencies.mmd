@@ -403,6 +403,13 @@ flowchart LR
   lem_gaussian_radial_second_moment["Radial second Gaussian moment of a unit-uniform measure"]
   lem_ordered_trace_bounds["Finite ordered trace bounds and extremizers"]
   lem_quadratic_near_basis_rigidity["Quadratic rigidity near a critical basis vector"]
+  lem_exact_monomial_coefficients["Taylor coefficients of an exact monomial"]
+  lem_first_moment_normal_from_vanishing["A normal vector from first-moment plane vanishing"]
+  lem_inverse_square_positive_limit["Inverse-square scales approach zero through positive values"]
+  lem_gaussian_product_moment_conversion["Gaussian product integrals and moment forms on unit-uniform measures"]
+  lem_coordinate_product_representation["Coordinate monomials are finite products of linear inner products"]
+  lem_blowdown_product_limits["Gaussian linear-product tests have blowdown limits"]
+  lem_blowdown_form_limits["Every positive-degree Gaussian moment has a blowdown limit"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -548,13 +555,9 @@ flowchart LR
   lem_conical_moment_scaling --> lem_conical_moments
   lem_scaled_moment_limits --> lem_conical_moments
   lem_taylor_two --> lem_conical_moments
-  def_dimensional_blowup --> lem_blowdown_moment_limits
-  def_moment_coefficients --> lem_blowdown_moment_limits
-  def_moments --> lem_blowdown_moment_limits
-  def_unit_uniform --> lem_blowdown_moment_limits
-  lem_moment_covariance --> lem_blowdown_moment_limits
-  lem_radial --> lem_blowdown_moment_limits
-  lem_scaled_moment_limits --> lem_blowdown_moment_limits
+  lem_blowdown_product_limits --> lem_blowdown_moment_limits
+  lem_coordinate_product_representation --> lem_blowdown_moment_limits
+  lem_gaussian_product_moment_conversion --> lem_blowdown_moment_limits
   lem_conical_support_covariance --> lem_conical_covariance
   lem_even_moment_positivity --> lem_conical_covariance
   lem_moment_second_total_trace --> lem_conical_covariance
@@ -1519,3 +1522,15 @@ flowchart LR
   lem_gaussian_parameter_derivative --> lem_gaussian_radial_second_moment
   lem_moment_norm_bound --> lem_gaussian_radial_second_moment
   lem_ordered_trace_bounds --> lem_quadratic_near_basis_rigidity
+  lem_asymptotic_taylor_vanishing --> lem_exact_monomial_coefficients
+  def_rigidity_normal_vector --> lem_first_moment_normal_from_vanishing
+  lem_normal_coordinate_identities --> lem_first_moment_normal_from_vanishing
+  lem_moment_norm_bound --> lem_gaussian_product_moment_conversion
+  lem_polynomial_gaussian_integrability --> lem_gaussian_product_moment_conversion
+  lem_blowdown_form_limits --> lem_blowdown_product_limits
+  lem_gaussian_product_moment_conversion --> lem_blowdown_product_limits
+  lem_uniform_scaling --> lem_blowdown_product_limits
+  lem_inverse_square_positive_limit --> lem_blowdown_form_limits
+  lem_moment_covariance --> lem_blowdown_form_limits
+  lem_scaled_moment_limits --> lem_blowdown_form_limits
+  lem_taylor_two --> lem_blowdown_form_limits

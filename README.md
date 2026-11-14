@@ -83,7 +83,7 @@ python scripts/check_kernel_axioms.py tmp/blueprint-kernel.log
 See [blueprint build instructions](blueprint/README.md) for the rendered documentation.
 
 Independent proof candidates in `checks/*.lean` run on separate GitHub Actions
-runners, with up to three concurrent jobs. They import the pinned canonical
+runners, with up to four concurrent jobs. They import the pinned canonical
 modules and audit every named candidate declaration against the same three
 standard foundations. These checks supplement the full project build; candidate
 files are not imported into the library or counted as completed blueprint nodes.

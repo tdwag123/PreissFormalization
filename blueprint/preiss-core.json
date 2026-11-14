@@ -1248,19 +1248,15 @@
       "id": "lem:blowdown-moment-limits",
       "title": "All Gaussian polynomial moments of blow-downs have limits",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.blowdown_gaussian_polynomial_limit"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:dimensional-blowup",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:radial",
-        "lem:scaled-moment-limits"
+        "lem:blowdown-product-limits",
+        "lem:coordinate-product-representation",
+        "lem:gaussian-product-moment-conversion"
       ],
       "proof_dependencies": [],
       "expanded_line": 1548,
@@ -3306,9 +3302,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4304,
-      "unfinished_dependencies": [
-        "lem:blowdown-moment-limits"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:conical-eigenvalue-rigidity",
@@ -6784,6 +6778,89 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6769,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:inverse-square-positive-limit",
+      "title": "Inverse-square scales approach zero through positive values",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_inv_sq_atTop_nhdsGT_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6793,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-product-moment-conversion",
+      "title": "Gaussian product integrals and moment forms on unit-uniform measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_integral_product_eq_moment",
+        "Preiss.integrable_polynomial_gaussian_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:moment-norm-bound",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6800,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:coordinate-product-representation",
+      "title": "Coordinate monomials are finite products of linear inner products",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_coordinate_product_representation"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6808,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:blowdown-product-limits",
+      "title": "Gaussian linear-product tests have blowdown limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_blowdown_product_gaussian_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:blowdown-form-limits",
+        "lem:gaussian-product-moment-conversion",
+        "lem:uniform-scaling"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6815,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:blowdown-form-limits",
+      "title": "Every positive-degree Gaussian moment has a blowdown limit",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_blowdown_gaussianMoment_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6823,
       "unfinished_dependencies": []
     }
   ]

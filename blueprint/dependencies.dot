@@ -83,7 +83,7 @@ digraph Preiss {
   "lem:uniform-adapter" [label="Density-to-tangent adapters", fillcolor="#ffe0b2"];
   "lem:small-energy-no-holes" [label="Small Gaussian distance energy forces plane support proximity", fillcolor="#dce5ee"];
   "lem:conical-moments" [label="Homogeneity and parity of conical moments", fillcolor="#dce5ee"];
-  "lem:blowdown-moment-limits" [label="All Gaussian polynomial moments of blow-downs have limits", fillcolor="#fff0bf"];
+  "lem:blowdown-moment-limits" [label="All Gaussian polynomial moments of blow-downs have limits", fillcolor="#dce5ee"];
   "lem:conical-covariance" [label="Positive covariance form, trace and support identity", fillcolor="#dce5ee"];
   "lem:graph-parametrization" [label="Graph parametrization is Lipschitz and antilipschitz", fillcolor="#dce5ee"];
   "lem:cone-graph" [label="Pairwise cone condition implies graph containment", fillcolor="#dce5ee"];
@@ -405,6 +405,13 @@ digraph Preiss {
   "lem:gaussian-radial-second-moment" [label="Radial second Gaussian moment of a unit-uniform measure", fillcolor="#dce5ee"];
   "lem:ordered-trace-bounds" [label="Finite ordered trace bounds and extremizers", fillcolor="#dce5ee"];
   "lem:quadratic-near-basis-rigidity" [label="Quadratic rigidity near a critical basis vector", fillcolor="#dce5ee"];
+  "lem:exact-monomial-coefficients" [label="Taylor coefficients of an exact monomial", fillcolor="#dce5ee"];
+  "lem:first-moment-normal-from-vanishing" [label="A normal vector from first-moment plane vanishing", fillcolor="#ffe0b2"];
+  "lem:inverse-square-positive-limit" [label="Inverse-square scales approach zero through positive values", fillcolor="#dce5ee"];
+  "lem:gaussian-product-moment-conversion" [label="Gaussian product integrals and moment forms on unit-uniform measures", fillcolor="#dce5ee"];
+  "lem:coordinate-product-representation" [label="Coordinate monomials are finite products of linear inner products", fillcolor="#dce5ee"];
+  "lem:blowdown-product-limits" [label="Gaussian linear-product tests have blowdown limits", fillcolor="#dce5ee"];
+  "lem:blowdown-form-limits" [label="Every positive-degree Gaussian moment has a blowdown limit", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -550,13 +557,9 @@ digraph Preiss {
   "lem:conical-moment-scaling" -> "lem:conical-moments";
   "lem:scaled-moment-limits" -> "lem:conical-moments";
   "lem:taylor-two" -> "lem:conical-moments";
-  "def:dimensional-blowup" -> "lem:blowdown-moment-limits";
-  "def:moment-coefficients" -> "lem:blowdown-moment-limits";
-  "def:moments" -> "lem:blowdown-moment-limits";
-  "def:unit-uniform" -> "lem:blowdown-moment-limits";
-  "lem:moment-covariance" -> "lem:blowdown-moment-limits";
-  "lem:radial" -> "lem:blowdown-moment-limits";
-  "lem:scaled-moment-limits" -> "lem:blowdown-moment-limits";
+  "lem:blowdown-product-limits" -> "lem:blowdown-moment-limits";
+  "lem:coordinate-product-representation" -> "lem:blowdown-moment-limits";
+  "lem:gaussian-product-moment-conversion" -> "lem:blowdown-moment-limits";
   "lem:conical-support-covariance" -> "lem:conical-covariance";
   "lem:even-moment-positivity" -> "lem:conical-covariance";
   "lem:moment-second-total-trace" -> "lem:conical-covariance";
@@ -1521,4 +1524,16 @@ digraph Preiss {
   "lem:gaussian-parameter-derivative" -> "lem:gaussian-radial-second-moment";
   "lem:moment-norm-bound" -> "lem:gaussian-radial-second-moment";
   "lem:ordered-trace-bounds" -> "lem:quadratic-near-basis-rigidity";
+  "lem:asymptotic-taylor-vanishing" -> "lem:exact-monomial-coefficients";
+  "def:rigidity-normal-vector" -> "lem:first-moment-normal-from-vanishing";
+  "lem:normal-coordinate-identities" -> "lem:first-moment-normal-from-vanishing";
+  "lem:moment-norm-bound" -> "lem:gaussian-product-moment-conversion";
+  "lem:polynomial-gaussian-integrability" -> "lem:gaussian-product-moment-conversion";
+  "lem:blowdown-form-limits" -> "lem:blowdown-product-limits";
+  "lem:gaussian-product-moment-conversion" -> "lem:blowdown-product-limits";
+  "lem:uniform-scaling" -> "lem:blowdown-product-limits";
+  "lem:inverse-square-positive-limit" -> "lem:blowdown-form-limits";
+  "lem:moment-covariance" -> "lem:blowdown-form-limits";
+  "lem:scaled-moment-limits" -> "lem:blowdown-form-limits";
+  "lem:taylor-two" -> "lem:blowdown-form-limits";
 }

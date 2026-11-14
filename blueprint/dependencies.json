@@ -1443,19 +1443,15 @@
       "id": "lem:blowdown-moment-limits",
       "title": "All Gaussian polynomial moments of blow-downs have limits",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.blowdown_gaussian_polynomial_limit"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:dimensional-blowup",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:radial",
-        "lem:scaled-moment-limits"
+        "lem:blowdown-product-limits",
+        "lem:coordinate-product-representation",
+        "lem:gaussian-product-moment-conversion"
       ],
       "proof_dependencies": [],
       "expanded_line": 1548,
@@ -3655,9 +3651,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4304,
-      "unfinished_dependencies": [
-        "lem:blowdown-moment-limits"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:conical-eigenvalue-rigidity",
@@ -7555,6 +7549,124 @@
       "proof_dependencies": [],
       "expanded_line": 6769,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:exact-monomial-coefficients",
+      "title": "Taylor coefficients of an exact monomial",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.taylorCoefficient_eq_of_exact_monomial"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6777,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:first-moment-normal-from-vanishing",
+      "title": "A normal vector from first-moment plane vanishing",
+      "kind": "lemma",
+      "status": "depends_on_unproved",
+      "lean": [
+        "Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-normal-vector",
+        "lem:normal-coordinate-identities"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6785,
+      "unfinished_dependencies": [
+        "def:rigidity-normal-vector"
+      ]
+    },
+    {
+      "id": "lem:inverse-square-positive-limit",
+      "title": "Inverse-square scales approach zero through positive values",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_inv_sq_atTop_nhdsGT_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6793,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-product-moment-conversion",
+      "title": "Gaussian product integrals and moment forms on unit-uniform measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_integral_product_eq_moment",
+        "Preiss.integrable_polynomial_gaussian_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:moment-norm-bound",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6800,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:coordinate-product-representation",
+      "title": "Coordinate monomials are finite products of linear inner products",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_coordinate_product_representation"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6808,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:blowdown-product-limits",
+      "title": "Gaussian linear-product tests have blowdown limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_blowdown_product_gaussian_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:blowdown-form-limits",
+        "lem:gaussian-product-moment-conversion",
+        "lem:uniform-scaling"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6815,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:blowdown-form-limits",
+      "title": "Every positive-degree Gaussian moment has a blowdown limit",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_blowdown_gaussianMoment_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6823,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -7582,6 +7694,7 @@
     "def:dimensional-blowup",
     "def:moments",
     "def:flatness-cutoff",
+    "lem:coordinate-product-representation",
     "lem:zero-hausdorff-ac",
     "lem:rescaled-distance-selection",
     "lem:sequential-uniform-scale",
@@ -7624,6 +7737,7 @@
     "def:symmetric-multilinear",
     "lem:normal-coordinate-identities",
     "lem:ordered-trace-bounds",
+    "lem:inverse-square-positive-limit",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -7694,6 +7808,7 @@
     "lem:countable-coordinate-second-countability",
     "lem:bilinear-trace-basis",
     "lem:coherent-finite-jets",
+    "lem:exact-monomial-coefficients",
     "lem:uniform-constant-one",
     "lem:polynomial-feature-identities",
     "lem:gaussian-ball-power",
@@ -7818,6 +7933,7 @@
     "lem:zero-dimension",
     "lem:homogeneous-energy-radial",
     "def:rigidity-omega",
+    "lem:first-moment-normal-from-vanishing",
     "lem:flat-gaussian-odd-moments",
     "lem:gaussian-uniform-tails",
     "lem:gaussian-parameter-derivative",
@@ -7858,6 +7974,7 @@
     "lem:moment-operator-growth",
     "lem:gaussian-plane-energy-integrable",
     "lem:gaussian-radial-second-moment",
+    "lem:gaussian-product-moment-conversion",
     "lem:gaussian-quadratic-trace-bound",
     "lem:vague-diagonal",
     "lem:uniform-near-support-compactness",
@@ -7911,14 +8028,12 @@
     "lem:discarded-cylinder-sum",
     "lem:column-packing",
     "lem:analytic-projection-approximation",
-    "lem:blowdown-moment-limits",
     "lem:flat-infinity-moments",
     "lem:dimensional-tangent-ball-constant",
     "cor:rectifiable-tangent-plane",
     "lem:uniform-full-dimension-unique",
     "lem:two-sided-packing-core",
     "lem:feature-moment-analytic-approximation",
-    "thm:unique-infinity",
     "lem:odd-coefficients-plane-zero",
     "lem:uniform-cylinder-identity",
     "lem:density-normalization",
@@ -7926,7 +8041,6 @@
     "lem:plane-supported-uniform-flat",
     "lem:packing-contradiction",
     "lem:finite-moment-taylor-jets",
-    "cor:conical",
     "lem:rigidity-normal-vector-exists",
     "lem:uniform-reduction",
     "lem:small-energy-no-holes",
@@ -7942,19 +8056,24 @@
     "lem:moment-normal-trace",
     "lem:rigidity-cubic-vanishing",
     "lem:conical-support-covariance",
+    "lem:blowdown-form-limits",
     "lem:flat-tangent-from-uniform-recentering",
     "lem:flatness-gap-cutoff",
     "thm:rectifiable-iff-flat",
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-fourth-support-identity",
     "lem:conical-covariance",
+    "lem:blowdown-product-limits",
     "thm:part-a",
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
+    "lem:blowdown-moment-limits",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-omega-reproducing",
+    "thm:unique-infinity",
     "lem:rigidity-integral-quadratic-bound",
+    "cor:conical",
     "lem:trace-rigidity",
     "thm:infinity-rigidity",
     "lem:first-crossing",

@@ -3012,6 +3012,122 @@
       ],
       "used_by": [],
       "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:exact-monomial-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exact monomial",
+      "lean_names": [
+        "Preiss.taylorCoefficient_eq_of_exact_monomial"
+      ],
+      "file": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "statement_tex": "If a normed-space-valued function equals $s^d a$ for positive $s$ and admits compatible Taylor remainders of every order, its only nonzero positive-order Taylor coefficient is $a$ in degree $d>0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:first-moment-normal-from-vanishing",
+      "kind": "lemma",
+      "title": "A normal vector from first-moment plane vanishing",
+      "lean_names": [
+        "Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero"
+      ],
+      "file": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "statement_tex": "If the first coefficient form vanishes on a plane, half its Riesz representative lies in the orthogonal complement and represents that form as $x\\mapsto2\\langle b,x\\rangle$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:normal-coordinate-identities",
+        "def:rigidity-normal-vector"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:inverse-square-positive-limit",
+      "kind": "lemma",
+      "title": "Inverse-square scales approach zero through positive values",
+      "lean_names": [
+        "Preiss.tendsto_inv_sq_atTop_nhdsGT_zero"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "As $r\\to\\infty$, the scale $r^{-2}$ tends to zero through positive values.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:blowdown-form-limits",
+      "kind": "lemma",
+      "title": "Every positive-degree Gaussian moment has a blowdown limit",
+      "lean_names": [
+        "Preiss.exists_blowdown_gaussianMoment_limit"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "Every positive-degree Gaussian multilinear moment at parameter one has a limit along the dimensional blowdowns of a positive-dimensional unit-uniform measure. The even limits come from leading Taylor coefficients; the odd limits vanish.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:inverse-square-positive-limit",
+        "lem:taylor-two",
+        "lem:scaled-moment-limits",
+        "lem:moment-covariance"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-product-moment-conversion",
+      "kind": "lemma",
+      "title": "Gaussian product integrals and moment forms on unit-uniform measures",
+      "lean_names": [
+        "Preiss.gaussian_integral_product_eq_moment",
+        "Preiss.integrable_polynomial_gaussian_unitUniform"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "For a unit-uniform measure, Gaussian integrals of products of linear functionals equal explicit scalar multiples of their moment forms. Polynomial Gaussian tests are integrable.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:coordinate-product-representation",
+      "kind": "lemma",
+      "title": "Coordinate monomials are finite products of linear inner products",
+      "lean_names": [
+        "Preiss.exists_coordinate_product_representation"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "Every coordinate monomial can be represented as a finite product of inner products with coordinate basis vectors.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:blowdown-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian linear-product tests have blowdown limits",
+      "lean_names": [
+        "Preiss.exists_blowdown_product_gaussian_limit"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "Gaussian integrals of every finite product of linear functionals have a limit along dimensional blowdowns of a positive-dimensional unit-uniform measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:blowdown-form-limits",
+        "lem:gaussian-product-moment-conversion",
+        "lem:uniform-scaling"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

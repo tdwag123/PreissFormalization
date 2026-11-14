@@ -452,7 +452,7 @@ The support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.
 \begin{lemma}[All Gaussian polynomial moments of blow-downs have limits]
 \label{lem:blowdown-moment-limits}
 \lean{Preiss.blowdown_gaussian_polynomial_limit}
-\uses{def:dimensional-blowup, def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-covariance, lem:radial, lem:scaled-moment-limits}
+\uses{lem:coordinate-product-representation, lem:blowdown-product-limits, lem:gaussian-product-moment-conversion}
 
 
 
@@ -5676,4 +5676,58 @@ An antitone nonnegative tuple of total $m$ has its $m$-th entry at most one; equ
 \uses{lem:ordered-trace-bounds}
 
 In a real inner-product space with a finite orthonormal basis, an ordered nonnegative spectrum of total $m$ is the rank-$m$ indicator spectrum if its quadratic identity holds at a point within distance $\delta<1/m$ of the $m$-th basis vector.
+\end{lemma}
+
+\begin{lemma}[Taylor coefficients of an exact monomial]
+\label{lem:exact-monomial-coefficients}
+\lean{Preiss.taylorCoefficient_eq_of_exact_monomial}
+\uses{lem:asymptotic-taylor-vanishing}
+
+If a normed-space-valued function equals $s^d a$ for positive $s$ and admits compatible Taylor remainders of every order, its only nonzero positive-order Taylor coefficient is $a$ in degree $d>0$.
+\end{lemma}
+
+\begin{lemma}[A normal vector from first-moment plane vanishing]
+\label{lem:first-moment-normal-from-vanishing}
+\lean{Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero}
+\uses{lem:normal-coordinate-identities, def:rigidity-normal-vector}
+
+If the first coefficient form vanishes on a plane, half its Riesz representative lies in the orthogonal complement and represents that form as $x\mapsto2\langle b,x\rangle$.
+\end{lemma}
+
+\begin{lemma}[Inverse-square scales approach zero through positive values]
+\label{lem:inverse-square-positive-limit}
+\lean{Preiss.tendsto_inv_sq_atTop_nhdsGT_zero}
+
+As $r\to\infty$, the scale $r^{-2}$ tends to zero through positive values.
+\end{lemma}
+
+\begin{lemma}[Gaussian product integrals and moment forms on unit-uniform measures]
+\label{lem:gaussian-product-moment-conversion}
+\lean{Preiss.gaussian_integral_product_eq_moment, Preiss.integrable_polynomial_gaussian_unitUniform}
+\uses{lem:moment-norm-bound, lem:polynomial-gaussian-integrability}
+
+For a unit-uniform measure, Gaussian integrals of products of linear functionals equal explicit scalar multiples of their moment forms. Polynomial Gaussian tests are integrable.
+\end{lemma}
+
+\begin{lemma}[Coordinate monomials are finite products of linear inner products]
+\label{lem:coordinate-product-representation}
+\lean{Preiss.exists_coordinate_product_representation}
+
+Every coordinate monomial can be represented as a finite product of inner products with coordinate basis vectors.
+\end{lemma}
+
+\begin{lemma}[Gaussian linear-product tests have blowdown limits]
+\label{lem:blowdown-product-limits}
+\lean{Preiss.exists_blowdown_product_gaussian_limit}
+\uses{lem:blowdown-form-limits, lem:gaussian-product-moment-conversion, lem:uniform-scaling}
+
+Gaussian integrals of every finite product of linear functionals have a limit along dimensional blowdowns of a positive-dimensional unit-uniform measure.
+\end{lemma}
+
+\begin{lemma}[Every positive-degree Gaussian moment has a blowdown limit]
+\label{lem:blowdown-form-limits}
+\lean{Preiss.exists_blowdown_gaussianMoment_limit}
+\uses{lem:inverse-square-positive-limit, lem:taylor-two, lem:scaled-moment-limits, lem:moment-covariance}
+
+Every positive-degree Gaussian multilinear moment at parameter one has a limit along the dimensional blowdowns of a positive-dimensional unit-uniform measure. The even limits come from leading Taylor coefficients; the odd limits vanish.
 \end{lemma}

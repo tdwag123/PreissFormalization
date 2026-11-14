@@ -1,6 +1,8 @@
 module
 
 public import Mathlib.Data.Real.Basic
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Algebra.BigOperators.Ring.Finset
 public import Mathlib.Order.Interval.Finset.Fin
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum

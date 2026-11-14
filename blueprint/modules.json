@@ -83,11 +83,13 @@
       "file": "Preiss/Analysis/AsymptoticCoefficients.lean",
       "purpose": "Reusable Analysis.AsymptoticCoefficients interfaces.",
       "current_source_imports": [
+        "Mathlib.Analysis.Asymptotics.Arith",
         "Mathlib.Analysis.Asymptotics.Lemmas",
         "Mathlib.Analysis.SpecialFunctions.Pow.Continuity",
         "Mathlib.Tactic"
       ],
       "mathlib_imports": [
+        "Mathlib.Analysis.Asymptotics.Arith",
         "Mathlib.Analysis.Asymptotics.Lemmas",
         "Mathlib.Analysis.SpecialFunctions.Pow.Continuity",
         "Mathlib.Tactic"
@@ -96,7 +98,8 @@
       "proof_imports": [],
       "nodes": [
         "lem:asymptotic-taylor-vanishing",
-        "lem:coherent-finite-jets"
+        "lem:coherent-finite-jets",
+        "lem:exact-monomial-coefficients"
       ],
       "source_exists": true,
       "local_imports": [],
@@ -942,6 +945,8 @@
       "file": "Preiss/Analysis/OrderedSums.lean",
       "purpose": "Reusable Analysis.OrderedSums interfaces.",
       "current_source_imports": [
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
         "Mathlib.Data.Real.Basic",
         "Mathlib.Order.Interval.Finset.Fin",
         "Mathlib.Tactic.Linarith",
@@ -949,6 +954,8 @@
         "Mathlib.Tactic.Ring"
       ],
       "mathlib_imports": [
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
         "Mathlib.Data.Real.Basic",
         "Mathlib.Order.Interval.Finset.Fin",
         "Mathlib.Tactic.Linarith",
@@ -4466,34 +4473,40 @@
       "module": "Preiss.Uniform.BlowdownMoments",
       "file": "Preiss/Uniform/BlowdownMoments.lean",
       "current_source_imports": [
-        "Mathlib.Algebra.MvPolynomial.Eval",
-        "Preiss.Uniform.Defs",
-        "Preiss.Uniform.MomentCoefficients"
-      ],
-      "local_imports": [
-        "Preiss.Tangent.Blowup",
-        "Preiss.Uniform.Defs",
-        "Preiss.Uniform.MomentCoefficients",
+        "Mathlib.Algebra.BigOperators.Finsupp.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+        "Mathlib.Tactic",
         "Preiss.Uniform.MomentCovariance",
         "Preiss.Uniform.MomentExpansion",
-        "Preiss.Uniform.MomentForms",
-        "Preiss.Uniform.Radial"
+        "Preiss.Uniform.Scaling"
+      ],
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentEstimates",
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.Scaling"
       ],
       "mathlib_imports": [
-        "Mathlib.Algebra.MvPolynomial.Eval"
+        "Mathlib.Algebra.BigOperators.Finsupp.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+        "Mathlib.Tactic"
       ],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Tangent.Blowup",
-        "Preiss.Uniform.Defs",
-        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Analysis.GaussianGrowth",
         "Preiss.Uniform.MomentCovariance",
+        "Preiss.Uniform.MomentEstimates",
         "Preiss.Uniform.MomentExpansion",
-        "Preiss.Uniform.MomentForms",
-        "Preiss.Uniform.Radial"
+        "Preiss.Uniform.Scaling"
       ],
       "nodes": [
-        "lem:blowdown-moment-limits"
+        "lem:blowdown-moment-limits",
+        "lem:inverse-square-positive-limit",
+        "lem:gaussian-product-moment-conversion",
+        "lem:coordinate-product-representation",
+        "lem:blowdown-product-limits",
+        "lem:blowdown-form-limits"
       ],
       "source_exists": true,
       "scope": "core",
@@ -4732,7 +4745,9 @@
       "module": "Preiss.Uniform.FlatAtInfinity.Basic",
       "file": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
       "current_source_imports": [
+        "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
         "Preiss.Analysis.BilinearTrace",
+        "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Projections",
         "Preiss.Tangent.Defs",
@@ -4743,6 +4758,7 @@
         "Preiss.Analysis.BilinearTrace",
         "Preiss.Analysis.GaussianVague",
         "Preiss.Analysis.Vague.Support",
+        "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Planes",
         "Preiss.Geometry.Projections",
@@ -4755,12 +4771,15 @@
         "Preiss.Uniform.MomentCovariance",
         "Preiss.Uniform.MomentExpansion"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Normed.Module.Multilinear.Curry"
+      ],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.BilinearTrace",
         "Preiss.Analysis.GaussianVague",
         "Preiss.Analysis.Vague.Support",
+        "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.Planes",
         "Preiss.Tangent.Defs",
         "Preiss.Uniform.Classification",
@@ -4778,7 +4797,8 @@
         "lem:uniform-cylinder-identity",
         "lem:moment-normal-trace",
         "lem:flat-infinity-bounded-holes",
-        "lem:rigidity-normal-vector-exists"
+        "lem:rigidity-normal-vector-exists",
+        "lem:first-moment-normal-from-vanishing"
       ],
       "source_exists": true,
       "scope": "core",
@@ -6298,6 +6318,7 @@
     "Preiss.Geometry.FlatMeasure",
     "Preiss.Geometry.FlatScalar",
     "Preiss.Geometry.LipschitzExtension",
+    "Preiss.Geometry.NormalCoordinates",
     "Preiss.Geometry.PlaneDistance",
     "Preiss.Geometry.PlaneEmbedding",
     "Preiss.Geometry.PlaneMeasure",

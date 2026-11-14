@@ -1438,13 +1438,9 @@
       "hypotheses_tex": "",
       "proof_tex": "For odd $k$, $s^{-k/2}b_{k,s}\\to0$; for $k=2j$,\n$s^{-j}b_{2j,s}\\to b_{2j}^{(j)}/j!$.\nThe factorial is essential; the displayed summary on printed page 74 omits it,\nwhereas the calculation in Chapter 9 includes it correctly.\nUse M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted\npolynomial moment of $D^m_{0,r}\\nu$ as $r\\to\\infty$.",
       "deps": [
-        "def:dimensional-blowup",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:radial",
-        "lem:scaled-moment-limits"
+        "lem:blowdown-product-limits",
+        "lem:coordinate-product-representation",
+        "lem:gaussian-product-moment-conversion"
       ],
       "lean_names": [
         "Preiss.blowdown_gaussian_polynomial_limit"
@@ -8933,6 +8929,129 @@
         "Preiss/Analysis/QuadraticSpectralRigidity.lean"
       ],
       "proposed_file": "Preiss/Analysis/QuadraticSpectralRigidity.lean"
+    },
+    {
+      "id": "lem:exact-monomial-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exact monomial",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.taylorCoefficient_eq_of_exact_monomial"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/AsymptoticCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AsymptoticCoefficients.lean"
+    },
+    {
+      "id": "lem:first-moment-normal-from-vanishing",
+      "kind": "lemma",
+      "title": "A normal vector from first-moment plane vanishing",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero"
+      ],
+      "deps": [
+        "def:rigidity-normal-vector",
+        "lem:normal-coordinate-identities"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    {
+      "id": "lem:inverse-square-positive-limit",
+      "kind": "lemma",
+      "title": "Inverse-square scales approach zero through positive values",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_inv_sq_atTop_nhdsGT_zero"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:gaussian-product-moment-conversion",
+      "kind": "lemma",
+      "title": "Gaussian product integrals and moment forms on unit-uniform measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_product_eq_moment",
+        "Preiss.integrable_polynomial_gaussian_unitUniform"
+      ],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:coordinate-product-representation",
+      "kind": "lemma",
+      "title": "Coordinate monomials are finite products of linear inner products",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_coordinate_product_representation"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:blowdown-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian linear-product tests have blowdown limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_blowdown_product_gaussian_limit"
+      ],
+      "deps": [
+        "lem:blowdown-form-limits",
+        "lem:gaussian-product-moment-conversion",
+        "lem:uniform-scaling"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:blowdown-form-limits",
+      "kind": "lemma",
+      "title": "Every positive-degree Gaussian moment has a blowdown limit",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_blowdown_gaussianMoment_limit"
+      ],
+      "deps": [
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
     }
   ],
   "preiss_core": [
@@ -9023,7 +9142,9 @@
     "lem:asymptotic-taylor-vanishing",
     "lem:ball-upper-hausdorff-bound",
     "lem:bilinear-trace-basis",
+    "lem:blowdown-form-limits",
     "lem:blowdown-moment-limits",
+    "lem:blowdown-product-limits",
     "lem:blowup-composition",
     "lem:carrier-calculus",
     "lem:carrier-closure",
@@ -9042,6 +9163,7 @@
     "lem:cone-projection-direction",
     "lem:conical-eigenvalue-rigidity",
     "lem:continuous-ball-profile-boundary",
+    "lem:coordinate-product-representation",
     "lem:countable-carrier",
     "lem:countable-coordinate-metric",
     "lem:countable-coordinate-second-countability",
@@ -9117,6 +9239,7 @@
     "lem:gaussian-plane-energy-integrable",
     "lem:gaussian-polynomial-integrable",
     "lem:gaussian-power-envelope",
+    "lem:gaussian-product-moment-conversion",
     "lem:gaussian-projection-integrability",
     "lem:gaussian-quadratic-trace-bound",
     "lem:gaussian-radial-second-moment",
@@ -9142,6 +9265,7 @@
     "lem:infinity-compactness",
     "lem:integral-operator-annihilation",
     "lem:integrated-gaussian-exponential-series",
+    "lem:inverse-square-positive-limit",
     "lem:iterated-derivative-id-product",
     "lem:kernel-flag-divided-operators",
     "lem:kernel-flag-layer-grading",
