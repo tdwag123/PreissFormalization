@@ -3360,11 +3360,10 @@
       "id": "def:rigidity-omega",
       "title": "Normal valued bilinear map from the third coefficient",
       "kind": "definition",
-      "status": "proof_candidate",
+      "status": "definition",
       "lean": [
         "Preiss.IsRigidityOmega",
-        "Preiss.RigidityOmega",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityOmega"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -3380,11 +3379,10 @@
       "id": "def:rigidity-adjusted-form",
       "title": "Adjusted symmetric quadratic form on the limiting plane",
       "kind": "definition",
-      "status": "proof_candidate",
+      "status": "definition",
       "lean": [
         "Preiss.IsRigidityAdjustedForm",
-        "Preiss.RigidityAdjustedForm",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityAdjustedForm"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -3488,24 +3486,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:flat-infinity-bounded-holes",
-      "title": "Bounded distance from the limiting plane to the support",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.exists_uniform_dist_plane_support_bound"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "lem:bounded-tube-plane-to-support",
-        "lem:rigidity-normal-vector-exists",
-        "lem:uniform-cylinder-identity"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 4599,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:rigidity-contracted-limit-zero",
       "title": "Vanishing contracted Gaussian limit",
       "kind": "lemma",
@@ -3587,20 +3567,14 @@
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-bounded-holes",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-linear-growth",
+        "lem:rigidity-pointwise-from-growth"
       ],
       "proof_dependencies": [],
       "expanded_line": 4757,
-      "unfinished_dependencies": []
+      "unfinished_dependencies": [
+        "lem:rigidity-error-linear-growth"
+      ]
     },
     {
       "id": "lem:rigidity-rescaled-error",
@@ -3608,26 +3582,18 @@
       "kind": "lemma",
       "status": "unproved_statement",
       "lean": [
-        "Preiss.adjustedForm_gaussian_error_tendsto_zero",
-        "Preiss.rigidityError",
-        "Preiss.rigidityError_le_linear_growth"
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-limit-from-growth",
+        "lem:rigidity-error-linear-growth"
       ],
       "proof_dependencies": [],
       "expanded_line": 4796,
-      "unfinished_dependencies": []
+      "unfinished_dependencies": [
+        "lem:rigidity-error-linear-growth"
+      ]
     },
     {
       "id": "lem:rigidity-gaussian-trace",
@@ -7168,24 +7134,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:bounded-tube-plane-to-support",
-      "title": "Bounded holes in a plane near a uniform support",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "lem:uniform-compactness",
-        "lem:uniform-vague-closed",
-        "lem:vague-support-approximation"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 7034,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:moment-taylor-linear-image",
       "title": "Taylor remainders under scalar linear maps",
       "kind": "lemma",
@@ -7295,6 +7243,51 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:quadratic-bound-bounded-offsets",
+      "title": "Quadratic bound from bounded offsets",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.quadratic_square_bound_of_bounded_offsets"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7117,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-linear-growth-integral",
+      "title": "Gaussian integrals of functions with linear growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_integral_bound_of_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7124,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:uniform-gaussian-linear-growth-limit",
+      "title": "Vanishing of scaled Gaussian linear-growth averages",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-linear-growth-integral",
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7131,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:low-order-moment-limits",
       "title": "First and second scaled moment limits",
       "kind": "lemma",
@@ -7327,6 +7320,78 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 7229,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "def:rigidity-error",
+      "title": "The quadratic rigidity error",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.rigidityError"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-omega"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7245,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-error-linear-growth",
+      "title": "Linear growth of the rigidity error",
+      "kind": "lemma",
+      "status": "unproved_statement",
+      "lean": [
+        "Preiss.rigidityError_le_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-error",
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7253,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-pointwise-from-growth",
+      "title": "Pointwise quadratic bound from linear error growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-error",
+        "lem:quadratic-bound-bounded-offsets",
+        "lem:uniform-cylinder-identity",
+        "lem:vague-support-approximation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7269,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-error-limit-from-growth",
+      "title": "Gaussian error limit from linear growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.continuous_rigidityError",
+        "Preiss.gaussian_rigidityError_limit_of_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-error",
+        "lem:uniform-gaussian-linear-growth-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7277,
       "unfinished_dependencies": []
     }
   ]

@@ -1,4 +1,4 @@
-import Preiss.Uniform.TraceRigidity
+import Preiss.Uniform.RigidityError
 import Preiss.Uniform.GaussianLinearGrowth
 import Mathlib.Analysis.Normed.Operator.BoundedLinearMaps
 import Mathlib.Tactic
@@ -29,5 +29,3 @@ theorem gaussian_rigidityError_limit_of_linear_growth
   filter_upwards [μ.support_mem_ae] with z hz
   exact hbound z hz
 end Preiss
-#print axioms Preiss.continuous_rigidityError
-#print axioms Preiss.gaussian_rigidityError_limit_of_linear_growth

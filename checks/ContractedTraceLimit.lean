@@ -35,6 +35,8 @@ theorem hasDerivAt_normalized_polynomial_gaussian_unitUniform
       hg.1 hg.2.2 (1 : MvPolynomial (Fin n) ℝ) s hs
     simp only [map_one, mul_one, one_mul] at h
     rw [integral_norm_sq_gaussian_unitUniform μ hm hμ s hs] at h
+    have heq : (fun t : ℝ => ∫ z, Real.exp (-t * ‖z‖^2) ∂μ) = gaussianMass μ := rfl
+    rw [← heq]
     simpa only [gaussianMass, neg_mul] using h
   have hmass : gaussianMass μ s ≠ 0 := by
     rw [gaussianMass_unitUniform μ hm hμ s hs]
@@ -94,7 +96,8 @@ theorem exists_normalized_norm_sq_centered_gaussian_limit
     have hi₂ : Integrable (fun z => Real.exp (-s * ‖z‖^2) * (inner ℝ z (e i))^2) μ := by
       simpa [Function.comp_def, ContinuousMultilinearMap.smul_apply, momentKernel_apply,
         Fin.prod_univ_two, pow_two, mul_assoc] using h₂
-    simpa only [Pi.sub_apply, inner_sub_left, mul_sub] using hi₃.sub (hi₂.mul_const (inner ℝ b w))
+    apply (hi₃.sub (hi₂.mul_const (inner ℝ b w))).congr
+    exact Eventually.of_forall fun z => by simp only [Pi.sub_apply, inner_sub_left, mul_sub]
   rw [← Finset.mul_sum, ← integral_finsetSum _ (fun i _ => hint i)]
   have hsum (z : Euclidean n) :
       (∑ i, Real.exp (-s * ‖z‖^2) * (inner ℝ z (e i))^2 * inner ℝ (z-b) w) =

@@ -1,5 +1,5 @@
 import Preiss.Analysis.QuadraticBoundedOffset
-import Preiss.Uniform.TraceRigidity
+import Preiss.Uniform.RigidityError
 import Preiss.Analysis.Vague.Support
 import Preiss.Uniform.Scaling
 import Mathlib.Tactic
@@ -68,4 +68,3 @@ theorem adjustedForm_sq_le_of_rigidityError_linear_growth
     u v hu q ‖b‖ (norm_nonneg b) hq herr
 end Preiss
 
-#print axioms Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth

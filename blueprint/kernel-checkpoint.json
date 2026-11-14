@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "b730e970c629a01b0cf1f7a561b2dd15c77a8514",
+  "source_revision": "bb73e1dc00817ace2188a11f7b6c9c2d32b09ef8",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -300,6 +300,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Density/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.HasPositiveFiniteDensityAt.smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Scalar.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -1038,6 +1050,30 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.all_dimensionalTangents_flat_of_smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/FlatNormalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.all_tangents_flat_of_dimensionalTangents": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/FlatNormalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.all_tangents_flat_of_one": {
       "project": "local",
       "kind": "theorem",
@@ -1176,6 +1212,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/BilinearTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.bilinear_diagonal_eq_sum_orthonormalBasis": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BilinearIntegralLimits.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -2401,6 +2449,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.exists_flat_dimensionalTangent_of_flat_tangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/FlatNormalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_flat_dimensionalTangent_of_uniform_recenter": {
       "project": "local",
       "kind": "theorem",
@@ -2428,15 +2488,14 @@
     "Preiss.exists_flatnessGap": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Theorem/FirstCrossing.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_gaussianMoment_finite_jets": {
       "project": "local",
@@ -3173,28 +3232,26 @@
     "Preiss.first_crossing_limit_flat_at_infinity": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Theorem/FirstCrossing.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.first_crossing_ratio_tendsto_atTop": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Theorem/FirstCrossing.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.first_second_taylor_coefficients_of_mul_scale": {
       "project": "local",
@@ -3524,15 +3581,14 @@
     "Preiss.fourth_order_support_identity": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.functional_comp_projection_eq_self": {
       "project": "local",
@@ -3822,6 +3878,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussianMoment_first_scaled_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentCoefficientLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussianMoment_isBigO_rpow": {
       "project": "local",
       "kind": "theorem",
@@ -3851,6 +3919,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMoment_second_scaled_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentCoefficientLimits.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -3894,6 +3974,30 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianQuadraticLowerBound.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussian_integral_bilinear_eq_basis_sum": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBilinearVectorTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussian_integral_bilinear_eq_trace": {
       "project": "local",
       "kind": "theorem",
@@ -3930,11 +4034,35 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussian_integral_bound_of_linear_growth": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianLinearGrowth.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussian_integral_four_inner": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBilinearVectorTrace.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -3966,11 +4094,35 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBilinearVectorTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussian_integral_inner_sq_mul_inner_sq": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBilinearNorm.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4423,6 +4575,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.integrable_gaussian_norm_sq_bilinear": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBilinearNorm.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integrable_gaussian_planeEnergy_of_unitUniform": {
       "project": "local",
       "kind": "theorem",
@@ -4500,6 +4664,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/BlowdownMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_weighted_mul_of_squares": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/WeightedIntegralPolarization.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -5572,15 +5748,26 @@
     "Preiss.mixed_gaussian_limit_eq_omega": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.mixed_gaussian_limit_of_moment_expansion": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.momentBilinear": {
       "project": "local",
@@ -5822,6 +6009,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.norm_bilinear_diagonal_sub_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BilinearDiagonalDifference.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.norm_gaussianMomentForm_le": {
       "project": "local",
       "kind": "theorem",
@@ -5899,6 +6098,30 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Geometry/NormalCoordinates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.normalized_centered_gaussian_limit_of_first_coefficient": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianLinearGrowth.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6332,6 +6555,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.quadratic_lower_bound_of_square_upper": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianQuadraticLowerBound.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -7138,18 +7373,53 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/WeightedIntegralPolarization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.tendsto_weighted_integral_finite_linear_combination": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BilinearIntegralLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.tendsto_weighted_integral_mul_of_square_limits": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/WeightedIntegralPolarization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.thirdMomentCoefficient_normal_vanishes": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube": {
       "project": "local",
@@ -7698,6 +7968,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/Vague/ProjectionEnergy.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.vague_limit_unique": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/Uniqueness.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

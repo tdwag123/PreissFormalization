@@ -464,6 +464,13 @@ flowchart LR
   lem_low_order_moment_limits["First and second scaled moment limits"]
   lem_mixed_centered_gaussian_limit["Centered mixed Gaussian limit from Taylor coefficients"]
   lem_centered_gaussian_mean_limit["Centered Gaussian mean from its first coefficient"]
+  def_rigidity_error["The quadratic rigidity error"]
+  lem_rigidity_error_linear_growth["Linear growth of the rigidity error"]
+  lem_rigidity_error_remainder["Coefficient remainder identity for the rigidity error"]
+  lem_rigidity_pointwise_from_growth["Pointwise quadratic bound from linear error growth"]
+  lem_rigidity_error_limit_from_growth["Gaussian error limit from linear growth"]
+  lem_gaussian_mean_zero_correction["Gaussian traces are unchanged by a zero-mean correction"]
+  lem_first_crossing_from_large_flatness["First-crossing sequences from a large-flatness tangent"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -1082,26 +1089,10 @@ flowchart LR
   lem_flat_gaussian_even_moments --> lem_rigidity_omega_trace_zero
   lem_rigidity_contracted_limit_zero --> lem_rigidity_omega_trace_zero
   lem_rigidity_mixed_gaussian_limit --> lem_rigidity_omega_trace_zero
-  def_moment_coefficients --> lem_rigidity_pointwise_quadratic_bound
-  def_plane --> lem_rigidity_pointwise_quadratic_bound
-  def_rigidity_adjusted_form --> lem_rigidity_pointwise_quadratic_bound
-  def_rigidity_normal_vector --> lem_rigidity_pointwise_quadratic_bound
-  def_rigidity_omega --> lem_rigidity_pointwise_quadratic_bound
-  def_tangent_at_infinity --> lem_rigidity_pointwise_quadratic_bound
-  def_unit_uniform --> lem_rigidity_pointwise_quadratic_bound
-  lem_flat_infinity_bounded_holes --> lem_rigidity_pointwise_quadratic_bound
-  lem_rigidity_fourth_support_identity --> lem_rigidity_pointwise_quadratic_bound
-  lem_uniform_cylinder_identity --> lem_rigidity_pointwise_quadratic_bound
-  def_moment_coefficients --> lem_rigidity_rescaled_error
-  def_plane --> lem_rigidity_rescaled_error
-  def_rigidity_adjusted_form --> lem_rigidity_rescaled_error
-  def_rigidity_normal_vector --> lem_rigidity_rescaled_error
-  def_rigidity_omega --> lem_rigidity_rescaled_error
-  def_tangent_at_infinity --> lem_rigidity_rescaled_error
-  def_unit_uniform --> lem_rigidity_rescaled_error
-  lem_gaussian_polynomial_integrable --> lem_rigidity_rescaled_error
-  lem_rigidity_fourth_support_identity --> lem_rigidity_rescaled_error
-  lem_uniform_cylinder_identity --> lem_rigidity_rescaled_error
+  lem_rigidity_error_linear_growth --> lem_rigidity_pointwise_quadratic_bound
+  lem_rigidity_pointwise_from_growth --> lem_rigidity_pointwise_quadratic_bound
+  lem_rigidity_error_limit_from_growth --> lem_rigidity_rescaled_error
+  lem_rigidity_error_linear_growth --> lem_rigidity_rescaled_error
   def_bilinear_trace --> lem_rigidity_gaussian_trace
   def_moment_coefficients --> lem_rigidity_gaussian_trace
   def_plane --> lem_rigidity_gaussian_trace
@@ -1585,3 +1576,21 @@ flowchart LR
   lem_low_order_moment_limits --> lem_mixed_centered_gaussian_limit
   lem_moment_coefficient_vanishing --> lem_mixed_centered_gaussian_limit
   lem_low_order_moment_limits --> lem_centered_gaussian_mean_limit
+  def_rigidity_adjusted_form --> def_rigidity_error
+  def_rigidity_omega --> def_rigidity_error
+  def_rigidity_error --> lem_rigidity_error_linear_growth
+  lem_rigidity_fourth_support_identity --> lem_rigidity_error_linear_growth
+  lem_uniform_cylinder_identity --> lem_rigidity_error_linear_growth
+  def_rigidity_adjusted_form --> lem_rigidity_error_remainder
+  def_rigidity_error --> lem_rigidity_error_remainder
+  def_rigidity_omega --> lem_rigidity_error_remainder
+  def_rigidity_error --> lem_rigidity_pointwise_from_growth
+  lem_quadratic_bound_bounded_offsets --> lem_rigidity_pointwise_from_growth
+  lem_uniform_cylinder_identity --> lem_rigidity_pointwise_from_growth
+  lem_vague_support_approximation --> lem_rigidity_pointwise_from_growth
+  def_rigidity_error --> lem_rigidity_error_limit_from_growth
+  lem_uniform_gaussian_linear_growth_limit --> lem_rigidity_error_limit_from_growth
+  lem_gaussian_vector_trace_contractions --> lem_gaussian_mean_zero_correction
+  lem_dimensional_compactness --> lem_first_crossing_from_large_flatness
+  lem_flatness_radius_continuous --> lem_first_crossing_from_large_flatness
+  lem_greatest_crossing --> lem_first_crossing_from_large_flatness

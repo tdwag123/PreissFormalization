@@ -3729,11 +3729,10 @@
       "id": "def:rigidity-omega",
       "title": "Normal valued bilinear map from the third coefficient",
       "kind": "definition",
-      "status": "proof_candidate",
+      "status": "definition",
       "lean": [
         "Preiss.IsRigidityOmega",
-        "Preiss.RigidityOmega",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityOmega"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -3749,11 +3748,10 @@
       "id": "def:rigidity-adjusted-form",
       "title": "Adjusted symmetric quadratic form on the limiting plane",
       "kind": "definition",
-      "status": "proof_candidate",
+      "status": "definition",
       "lean": [
         "Preiss.IsRigidityAdjustedForm",
-        "Preiss.RigidityAdjustedForm",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityAdjustedForm"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -3977,20 +3975,14 @@
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-bounded-holes",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-linear-growth",
+        "lem:rigidity-pointwise-from-growth"
       ],
       "proof_dependencies": [],
       "expanded_line": 4757,
-      "unfinished_dependencies": []
+      "unfinished_dependencies": [
+        "lem:rigidity-error-linear-growth"
+      ]
     },
     {
       "id": "lem:rigidity-rescaled-error",
@@ -3998,26 +3990,18 @@
       "kind": "lemma",
       "status": "unproved_statement",
       "lean": [
-        "Preiss.adjustedForm_gaussian_error_tendsto_zero",
-        "Preiss.rigidityError",
-        "Preiss.rigidityError_le_linear_growth"
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-limit-from-growth",
+        "lem:rigidity-error-linear-growth"
       ],
       "proof_dependencies": [],
       "expanded_line": 4796,
-      "unfinished_dependencies": []
+      "unfinished_dependencies": [
+        "lem:rigidity-error-linear-growth"
+      ]
     },
     {
       "id": "lem:rigidity-gaussian-trace",
@@ -8383,6 +8367,130 @@
       "proof_dependencies": [],
       "expanded_line": 7237,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "def:rigidity-error",
+      "title": "The quadratic rigidity error",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.rigidityError"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-omega"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7245,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-error-linear-growth",
+      "title": "Linear growth of the rigidity error",
+      "kind": "lemma",
+      "status": "unproved_statement",
+      "lean": [
+        "Preiss.rigidityError_le_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-error",
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7253,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-error-remainder",
+      "title": "Coefficient remainder identity for the rigidity error",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.rigidityError_eq_coefficient_remainder"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-error",
+        "def:rigidity-omega"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7261,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-pointwise-from-growth",
+      "title": "Pointwise quadratic bound from linear error growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-error",
+        "lem:quadratic-bound-bounded-offsets",
+        "lem:uniform-cylinder-identity",
+        "lem:vague-support-approximation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7269,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-error-limit-from-growth",
+      "title": "Gaussian error limit from linear growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.continuous_rigidityError",
+        "Preiss.gaussian_rigidityError_limit_of_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-error",
+        "lem:uniform-gaussian-linear-growth-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7277,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-mean-zero-correction",
+      "title": "Gaussian traces are unchanged by a zero-mean correction",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_integral_bilinear_eq_trace_of_mean_zero_correction"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-vector-trace-contractions"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7285,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:first-crossing-from-large-flatness",
+      "title": "First-crossing sequences from a large-flatness tangent",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_first_crossing_sequences_of_flatness_gt"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:dimensional-compactness",
+        "lem:flatness-radius-continuous",
+        "lem:greatest-crossing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7293,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -8754,6 +8862,7 @@
     "thm:rectifiable-blowup",
     "lem:vague-gaussian-polynomials",
     "lem:divided-operator-positive-inverse",
+    "def:rigidity-error",
     "lem:taylor-one",
     "lem:moment-coefficient-vanishing",
     "lem:moment-second-total-trace",
@@ -8778,11 +8887,13 @@
     "lem:flatness-radius-continuous",
     "lem:vague-gaussian-moments",
     "lem:graded-analytic-projection",
+    "lem:rigidity-error-remainder",
     "lem:moment-feature-remainder",
     "lem:moment-support-polynomial",
     "lem:scaled-moment-limits",
     "lem:mixed-centered-gaussian-limit",
     "lem:bounded-tube-cubic-vanishing",
+    "lem:rigidity-error-limit-from-growth",
     "lem:gaussian-vector-trace-contractions",
     "lem:tangent-blowdown",
     "lem:dimensional-tangent-bounded-orbit",
@@ -8794,9 +8905,11 @@
     "lem:pure-wla-null-projection",
     "lem:discarded-cylinder-sum",
     "lem:column-packing",
+    "lem:first-crossing-from-large-flatness",
     "lem:analytic-projection-approximation",
     "lem:blowdown-even-moment-limit",
     "lem:rigidity-mixed-gaussian-limit",
+    "lem:gaussian-mean-zero-correction",
     "lem:dimensional-tangent-ball-constant",
     "cor:rectifiable-tangent-plane",
     "lem:uniform-full-dimension-unique",
@@ -8839,12 +8952,14 @@
     "lem:rigidity-cubic-vanishing",
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-fourth-support-identity",
+    "lem:rigidity-pointwise-from-growth",
     "lem:flat-infinity-bounded-holes",
     "lem:rigidity-omega-trace-zero",
-    "lem:rigidity-rescaled-error",
-    "lem:rigidity-pointwise-quadratic-bound",
+    "lem:rigidity-error-linear-growth",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-omega-reproducing",
+    "lem:rigidity-pointwise-quadratic-bound",
+    "lem:rigidity-rescaled-error",
     "lem:rigidity-integral-quadratic-bound",
     "lem:trace-rigidity",
     "thm:infinity-rigidity",

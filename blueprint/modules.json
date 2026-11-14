@@ -469,7 +469,8 @@
         "Preiss.Analysis.GaussianQuadraticForms"
       ],
       "nodes": [
-        "lem:gaussian-vector-trace-contractions"
+        "lem:gaussian-vector-trace-contractions",
+        "lem:gaussian-mean-zero-correction"
       ],
       "source_exists": true,
       "local_imports": [
@@ -4843,13 +4844,16 @@
       "file": "Preiss/Theorem/FirstCrossing.lean",
       "current_source_imports": [
         "Mathlib.Tactic",
+        "Preiss.Analysis.GreatestCrossing",
         "Preiss.Analysis.Vague.Uniqueness",
         "Preiss.Density.Defs",
         "Preiss.Geometry.PlaneRegularity",
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Continuity",
         "Preiss.Tangent.Defs",
+        "Preiss.Tangent.Extraction",
         "Preiss.Tangent.FlatScaling",
+        "Preiss.Tangent.Flatness",
         "Preiss.Uniform.ConicalGap",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.FlatnessContinuity",
@@ -4867,6 +4871,7 @@
         "Preiss.Tangent.Compactness",
         "Preiss.Tangent.Continuity",
         "Preiss.Tangent.Defs",
+        "Preiss.Tangent.Extraction",
         "Preiss.Tangent.FlatScaling",
         "Preiss.Tangent.Flatness",
         "Preiss.Uniform.ConicalGap",
@@ -4891,6 +4896,7 @@
         "Preiss.Tangent.Compactness",
         "Preiss.Tangent.Continuity",
         "Preiss.Tangent.Defs",
+        "Preiss.Tangent.Extraction",
         "Preiss.Tangent.FlatScaling",
         "Preiss.Tangent.Flatness",
         "Preiss.Uniform.ConicalGap",
@@ -4907,7 +4913,8 @@
         "lem:first-crossing-flat-infinity",
         "def:flatness-gap",
         "lem:flatness-gap-cutoff",
-        "def:first-crossing-data"
+        "def:first-crossing-data",
+        "lem:first-crossing-from-large-flatness"
       ],
       "source_exists": true,
       "scope": "core",
@@ -6744,6 +6751,116 @@
       "purpose": "Canonical Uniform.Radial interfaces."
     },
     {
+      "module": "Preiss.Uniform.RigidityError",
+      "file": "Preiss/Uniform/RigidityError.lean",
+      "purpose": "Reusable Uniform.RigidityError interfaces.",
+      "current_source_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData"
+      ],
+      "nodes": [
+        "def:rigidity-error"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Uniform.RigidityErrorBounds",
+      "file": "Preiss/Uniform/RigidityErrorBounds.lean",
+      "purpose": "Reusable Uniform.RigidityErrorBounds interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "nodes": [
+        "lem:rigidity-error-remainder"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Uniform.RigidityErrorLimit",
+      "file": "Preiss/Uniform/RigidityErrorLimit.lean",
+      "purpose": "Reusable Uniform.RigidityErrorLimit interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Normed.Operator.BoundedLinearMaps",
+        "Mathlib.Tactic",
+        "Preiss.Uniform.GaussianLinearGrowth",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Normed.Operator.BoundedLinearMaps",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Uniform.GaussianLinearGrowth",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "nodes": [
+        "lem:rigidity-error-limit-from-growth"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Uniform.GaussianLinearGrowth",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Uniform.RigidityPointwise",
+      "file": "Preiss/Uniform/RigidityPointwise.lean",
+      "purpose": "Reusable Uniform.RigidityPointwise interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Preiss.Analysis.QuadraticBoundedOffset",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Uniform.RigidityError",
+        "Preiss.Uniform.Scaling"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.QuadraticBoundedOffset",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "nodes": [
+        "lem:rigidity-pointwise-from-growth"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.QuadraticBoundedOffset",
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.RigidityError",
+        "Preiss.Uniform.Scaling"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.Scaling",
       "file": "Preiss/Uniform/Scaling.lean",
       "current_source_imports": [
@@ -7008,11 +7125,10 @@
       "file": "Preiss/Uniform/TraceRigidity.lean",
       "current_source_imports": [
         "Preiss.Analysis.GaussianQuadraticForms",
-        "Preiss.Uniform.FlatAtInfinity.TraceData"
+        "Preiss.Uniform.RigidityError"
       ],
       "local_imports": [
         "Preiss.Analysis.BilinearTrace",
-        "Preiss.Analysis.GaussianGrowth",
         "Preiss.Analysis.GaussianQuadraticForms",
         "Preiss.Analysis.GaussianVague",
         "Preiss.Geometry.Planes",
@@ -7023,13 +7139,15 @@
         "Preiss.Uniform.FlatAtInfinity.TraceData",
         "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
         "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-        "Preiss.Uniform.MomentCoefficients"
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.RigidityError",
+        "Preiss.Uniform.RigidityErrorLimit",
+        "Preiss.Uniform.RigidityPointwise"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.BilinearTrace",
-        "Preiss.Analysis.GaussianGrowth",
         "Preiss.Analysis.GaussianQuadraticForms",
         "Preiss.Analysis.GaussianVague",
         "Preiss.Geometry.Planes",
@@ -7040,13 +7158,17 @@
         "Preiss.Uniform.FlatAtInfinity.TraceData",
         "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
         "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-        "Preiss.Uniform.MomentCoefficients"
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.RigidityError",
+        "Preiss.Uniform.RigidityErrorLimit",
+        "Preiss.Uniform.RigidityPointwise"
       ],
       "nodes": [
         "lem:rigidity-pointwise-quadratic-bound",
         "lem:rigidity-rescaled-error",
         "lem:rigidity-integral-quadratic-bound",
-        "lem:trace-rigidity"
+        "lem:trace-rigidity",
+        "lem:rigidity-error-linear-growth"
       ],
       "source_exists": true,
       "scope": "core",
@@ -7319,8 +7441,12 @@
     "Preiss.Uniform.FlatAtInfinity.TraceData",
     "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
     "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+    "Preiss.Uniform.RigidityError",
     "Preiss.Rectifiability.TangentCharacterization",
     "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+    "Preiss.Uniform.RigidityErrorBounds",
+    "Preiss.Uniform.RigidityErrorLimit",
+    "Preiss.Uniform.RigidityPointwise",
     "Preiss.Uniform.TraceRigidity",
     "Preiss.Uniform.FlatAtInfinity.Rigidity",
     "Preiss.Theorem.FirstCrossing",
@@ -7346,6 +7472,7 @@
     "Preiss.Analysis.GaussianDerivatives",
     "Preiss.Analysis.GaussianFeatures",
     "Preiss.Analysis.GaussianGrowth",
+    "Preiss.Analysis.GaussianLinearGrowth",
     "Preiss.Analysis.GaussianMomentDetermination",
     "Preiss.Analysis.GaussianMoments",
     "Preiss.Analysis.GaussianNormBounds",
@@ -7375,6 +7502,7 @@
     "Preiss.Analysis.PolynomialNormBound",
     "Preiss.Analysis.PowerSeriesRemainder",
     "Preiss.Analysis.ProperMeasureTransport",
+    "Preiss.Analysis.QuadraticBoundedOffset",
     "Preiss.Analysis.QuadraticSpectralRigidity",
     "Preiss.Analysis.SequentialLimits",
     "Preiss.Analysis.SequentialScale",
@@ -7513,6 +7641,7 @@
     "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.GMTAdapters",
     "Preiss.Uniform.GaussianCovariance",
+    "Preiss.Uniform.GaussianLinearGrowth",
     "Preiss.Uniform.GaussianNormBounds",
     "Preiss.Uniform.GaussianPlaneEnergy",
     "Preiss.Uniform.Homogeneous",
@@ -7531,6 +7660,9 @@
     "Preiss.Uniform.MomentVague",
     "Preiss.Uniform.Moments",
     "Preiss.Uniform.Radial",
+    "Preiss.Uniform.RigidityError",
+    "Preiss.Uniform.RigidityErrorLimit",
+    "Preiss.Uniform.RigidityPointwise",
     "Preiss.Uniform.Scaling",
     "Preiss.Uniform.SubspaceMomentCoefficients",
     "Preiss.Uniform.SubspaceMomentTrace",

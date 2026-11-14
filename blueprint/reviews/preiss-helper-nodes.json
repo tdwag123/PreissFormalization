@@ -4007,6 +4007,130 @@
       ],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "def:rigidity-error",
+      "kind": "definition",
+      "title": "The quadratic rigidity error",
+      "lean_names": [
+        "Preiss.rigidityError"
+      ],
+      "file": "Preiss/Uniform/RigidityError.lean",
+      "statement_tex": "The error is $A(Pz,Pz)+\\langle\\omega(Pz,Pz),z-Pz-b\\rangle$, where $P$ is the orthogonal projection onto the limiting plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-omega",
+        "def:rigidity-adjusted-form"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-error-linear-growth",
+      "kind": "lemma",
+      "title": "Linear growth of the rigidity error",
+      "lean_names": [
+        "Preiss.rigidityError_le_linear_growth"
+      ],
+      "file": "Preiss/Uniform/TraceRigidity.lean",
+      "statement_tex": "On the support of the unit-uniform measure, the rigidity error is bounded in absolute value by $C(1+\\lVert z\\rVert)$ for some nonnegative constant $C$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity"
+      ],
+      "used_by": [],
+      "verification": "Original endpoint is unfinished; its candidate awaits a complete kernel check."
+    },
+    {
+      "id": "lem:rigidity-error-remainder",
+      "kind": "lemma",
+      "title": "Coefficient remainder identity for the rigidity error",
+      "lean_names": [
+        "Preiss.rigidityError_eq_coefficient_remainder"
+      ],
+      "file": "Preiss/Uniform/RigidityErrorBounds.lean",
+      "statement_tex": "Assuming the cylinder and fourth-order coefficient identities at $z$, the rigidity error equals $\\lVert z-Pz\\rVert^4-B_1^2(z)-(B_2^2(z,z)-B_2^2(Pz,Pz))$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "def:rigidity-omega",
+        "def:rigidity-adjusted-form"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-pointwise-from-growth",
+      "kind": "lemma",
+      "title": "Pointwise quadratic bound from linear error growth",
+      "lean_names": [
+        "Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth"
+      ],
+      "file": "Preiss/Uniform/RigidityPointwise.lean",
+      "statement_tex": "For flat-at-infinity moment data, a linear growth bound on the rigidity error implies $A(v,v)^2\\le\\lVert b\\rVert^2\\lVert\\omega(v,v)\\rVert^2$. The proof uses support points approximating the plane along blowdowns.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "lem:quadratic-bound-bounded-offsets",
+        "lem:uniform-cylinder-identity",
+        "lem:vague-support-approximation"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-error-limit-from-growth",
+      "kind": "lemma",
+      "title": "Gaussian error limit from linear growth",
+      "lean_names": [
+        "Preiss.continuous_rigidityError",
+        "Preiss.gaussian_rigidityError_limit_of_linear_growth"
+      ],
+      "file": "Preiss/Uniform/RigidityErrorLimit.lean",
+      "statement_tex": "The rigidity error is continuous. If it has linear growth on a unit-uniform support, its Gaussian integral multiplied by $s$ and divided by Gaussian mass tends to zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "lem:uniform-gaussian-linear-growth-limit"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-mean-zero-correction",
+      "kind": "lemma",
+      "title": "Gaussian traces are unchanged by a zero-mean correction",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_trace_of_mean_zero_correction"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean",
+      "statement_tex": "Adding a fixed scalar component of a vector-valued bilinear form with zero Gaussian mean leaves the Gaussian integral of a scalar bilinear diagonal unchanged.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-vector-trace-contractions"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:first-crossing-from-large-flatness",
+      "kind": "lemma",
+      "title": "First-crossing sequences from a large-flatness tangent",
+      "lean_names": [
+        "Preiss.exists_first_crossing_sequences_of_flatness_gt"
+      ],
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "statement_tex": "A flat dimensional tangent and a dimensional tangent whose flatness exceeds the threshold produce the full first-crossing scale data, including every intermediate-scale bound.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flatness-radius-continuous",
+        "lem:greatest-crossing",
+        "lem:dimensional-compactness"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

@@ -26,6 +26,8 @@ theorem hasDerivAt_normalized_polynomial_gaussian_unitUniform
       hg.1 hg.2.2 (1 : MvPolynomial (Fin n) ℝ) s hs
     simp only [map_one, mul_one, one_mul] at h
     rw [integral_norm_sq_gaussian_unitUniform μ hm hμ s hs] at h
+    have heq : (fun t : ℝ => ∫ z, Real.exp (-t * ‖z‖^2) ∂μ) = gaussianMass μ := rfl
+    rw [← heq]
     simpa only [gaussianMass, neg_mul] using h
   have hmass : gaussianMass μ s ≠ 0 := by
     rw [gaussianMass_unitUniform μ hm hμ s hs]

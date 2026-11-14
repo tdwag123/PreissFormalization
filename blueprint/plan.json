@@ -4690,8 +4690,7 @@
       ],
       "lean_names": [
         "Preiss.IsRigidityOmega",
-        "Preiss.RigidityOmega",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityOmega"
       ],
       "proposed_lean_name": "Preiss.rigidityOmega",
       "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
@@ -4720,8 +4719,7 @@
       ],
       "lean_names": [
         "Preiss.IsRigidityAdjustedForm",
-        "Preiss.RigidityAdjustedForm",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityAdjustedForm"
       ],
       "proposed_lean_name": "Preiss.rigidityAdjustedForm",
       "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
@@ -4894,7 +4892,7 @@
         "The projected rescaling centers need not be in support; invoke the near-support compactness variant."
       ],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatAtInfinity/Basic.lean"
       ]
@@ -5036,16 +5034,8 @@
       "hypotheses_tex": "",
       "proof_tex": "For all $v\\in V$,\n$\\widehat b(v,v)^2\\leq |b|^2|\\omega(v,v)|^2$.\nChoose support points $t_i v+v_i+w_i$ within bounded distance of $t_i v$ using\nR05. Pass to a convergent subsequence of bounded normal components $w_i$.\nDivide R09 by $t_i^2$ and use R03 to obtain\n$b_2^{(2)}(v,v)+\\langle\\omega(v,v),w\\rangle=0$ and\n$|w|^2=2\\langle b,w\\rangle$.\nThus $|w-b|=|b|$ and\n$\\widehat b(v,v)+\\langle\\omega(v,v),w-b\\rangle=0$; Cauchy--Schwarz proves\nthe inequality.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-bounded-holes",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-linear-growth",
+        "lem:rigidity-pointwise-from-growth"
       ],
       "lean_names": [
         "Preiss.adjustedForm_sq_le_norm_omega_sq"
@@ -5070,21 +5060,11 @@
       "hypotheses_tex": "",
       "proof_tex": "R09 and R03 imply that\n$\\widehat b(Pz,Pz)+\\langle\\omega(Pz,Pz),Qz-b\\rangle$\nhas absolute value at most $C(1+|z|)$ on the support.\nHence its integral against $sI(s)^{-1}e^{-s|z|^2}\\nu$ tends to zero.\nThis is equation (9.34); it is a necessary bridge to the global trace bound.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-limit-from-growth",
+        "lem:rigidity-error-linear-growth"
       ],
       "lean_names": [
-        "Preiss.adjustedForm_gaussian_error_tendsto_zero",
-        "Preiss.rigidityError",
-        "Preiss.rigidityError_le_linear_growth"
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
       ],
       "proposed_lean_name": "Preiss.adjustedForm_gaussian_error_tendsto_zero",
       "proposed_file": "Preiss/Uniform/TraceRigidity.lean",
@@ -9463,7 +9443,7 @@
         "lem:uniform-vague-closed",
         "lem:vague-support-approximation"
       ],
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/BoundedTube.lean"
       ],
@@ -9641,7 +9621,7 @@
         "Preiss.quadratic_square_bound_of_bounded_offsets"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/QuadraticBoundedOffset.lean"
       ],
@@ -9656,7 +9636,7 @@
         "Preiss.gaussian_integral_bound_of_linear_growth"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianLinearGrowth.lean"
       ],
@@ -9674,7 +9654,7 @@
         "lem:gaussian-linear-growth-integral",
         "lem:uniform-normalized-gaussian-norm"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/GaussianLinearGrowth.lean"
       ],
@@ -9918,6 +9898,137 @@
         "Preiss/Uniform/CenteredGaussianLimits.lean"
       ],
       "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "def:rigidity-error",
+      "kind": "definition",
+      "title": "The quadratic rigidity error",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityError"
+      ],
+      "deps": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-omega"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityError.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityError.lean"
+    },
+    {
+      "id": "lem:rigidity-error-linear-growth",
+      "kind": "lemma",
+      "title": "Linear growth of the rigidity error",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityError_le_linear_growth"
+      ],
+      "deps": [
+        "def:rigidity-error",
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TraceRigidity.lean"
+    },
+    {
+      "id": "lem:rigidity-error-remainder",
+      "kind": "lemma",
+      "title": "Coefficient remainder identity for the rigidity error",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityError_eq_coefficient_remainder"
+      ],
+      "deps": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-error",
+        "def:rigidity-omega"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/RigidityErrorBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityErrorBounds.lean"
+    },
+    {
+      "id": "lem:rigidity-pointwise-from-growth",
+      "kind": "lemma",
+      "title": "Pointwise quadratic bound from linear error growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth"
+      ],
+      "deps": [
+        "def:rigidity-error",
+        "lem:quadratic-bound-bounded-offsets",
+        "lem:uniform-cylinder-identity",
+        "lem:vague-support-approximation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityPointwise.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityPointwise.lean"
+    },
+    {
+      "id": "lem:rigidity-error-limit-from-growth",
+      "kind": "lemma",
+      "title": "Gaussian error limit from linear growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.continuous_rigidityError",
+        "Preiss.gaussian_rigidityError_limit_of_linear_growth"
+      ],
+      "deps": [
+        "def:rigidity-error",
+        "lem:uniform-gaussian-linear-growth-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityErrorLimit.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityErrorLimit.lean"
+    },
+    {
+      "id": "lem:gaussian-mean-zero-correction",
+      "kind": "lemma",
+      "title": "Gaussian traces are unchanged by a zero-mean correction",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_trace_of_mean_zero_correction"
+      ],
+      "deps": [
+        "lem:gaussian-vector-trace-contractions"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+    },
+    {
+      "id": "lem:first-crossing-from-large-flatness",
+      "kind": "lemma",
+      "title": "First-crossing sequences from a large-flatness tangent",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_first_crossing_sequences_of_flatness_gt"
+      ],
+      "deps": [
+        "lem:dimensional-compactness",
+        "lem:flatness-radius-continuous",
+        "lem:greatest-crossing"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
     }
   ],
   "preiss_core": [
@@ -9948,6 +10059,7 @@
     "def:purely-unrectifiable",
     "def:rectifiable",
     "def:rigidity-adjusted-form",
+    "def:rigidity-error",
     "def:rigidity-normal-vector",
     "def:rigidity-omega",
     "def:symmetric-feature-recovery",
@@ -10014,7 +10126,6 @@
     "lem:blowdown-product-limits",
     "lem:blowup-composition",
     "lem:bounded-tube-cubic-vanishing",
-    "lem:bounded-tube-plane-to-support",
     "lem:carrier-calculus",
     "lem:carrier-closure",
     "lem:closed-map-outer-regularity",
@@ -10092,7 +10203,6 @@
     "lem:fivefold-image-covering",
     "lem:fixed-lower-density-projection-null",
     "lem:flat-gaussian-even-moments",
-    "lem:flat-infinity-bounded-holes",
     "lem:flat-infinity-moments",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
@@ -10118,6 +10228,7 @@
     "lem:gaussian-ball-power-parameter",
     "lem:gaussian-bilinear-covariance",
     "lem:gaussian-feature-integrability",
+    "lem:gaussian-linear-growth-integral",
     "lem:gaussian-norm-half-mass",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-plane-energy-integrable",
@@ -10216,6 +10327,7 @@
     "lem:pure-basic",
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
+    "lem:quadratic-bound-bounded-offsets",
     "lem:quadratic-exponential-even-derivatives",
     "lem:quadratic-near-basis-rigidity",
     "lem:quantitative-upper-density-bound",
@@ -10227,6 +10339,8 @@
     "lem:recenter-separated-set-null",
     "lem:rescaled-distance-selection",
     "lem:rigidity-contracted-limit-zero",
+    "lem:rigidity-error-limit-from-growth",
+    "lem:rigidity-error-linear-growth",
     "lem:rigidity-forms-exist",
     "lem:rigidity-forms-from-symmetry",
     "lem:rigidity-fourth-support-identity",
@@ -10236,6 +10350,7 @@
     "lem:rigidity-normal-vector-exists",
     "lem:rigidity-omega-reproducing",
     "lem:rigidity-omega-trace-zero",
+    "lem:rigidity-pointwise-from-growth",
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
     "lem:scalar-gaussian-series-remainder",
@@ -10263,6 +10378,7 @@
     "lem:uniform-constant-one",
     "lem:uniform-cylinder-identity",
     "lem:uniform-full-dimension-unique",
+    "lem:uniform-gaussian-linear-growth-limit",
     "lem:uniform-normalized-gaussian-norm",
     "lem:uniform-reduction",
     "lem:uniform-scaling",

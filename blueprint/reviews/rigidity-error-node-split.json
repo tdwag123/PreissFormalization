@@ -1,0 +1,24 @@
+{
+  "nodes": [
+    {
+      "id": "lem:rigidity-rescaled-error",
+      "lean_names": [
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
+      ]
+    },
+    {
+      "id": "def:rigidity-omega",
+      "lean_names": [
+        "Preiss.RigidityOmega",
+        "Preiss.IsRigidityOmega"
+      ]
+    },
+    {
+      "id": "def:rigidity-adjusted-form",
+      "lean_names": [
+        "Preiss.RigidityAdjustedForm",
+        "Preiss.IsRigidityAdjustedForm"
+      ]
+    }
+  ]
+}
