@@ -24,7 +24,7 @@ theorem vague_smul_map_sub_div (μ : ℕ → Measure (Euclidean n))
   -- image of the support of `f` supplies one common compact support for all tests.
   let P : Set (Euclidean n × ℝ) := insert (b, s) (range (fun i => (a i, r i)))
   have hP : IsCompact P := (ha.prodMk_nhds hrs).isCompact_insert_range
-  letI : CompactSpace P := hP.compactSpace
+  letI : CompactSpace P := isCompact_iff_compactSpace.mp hP
   let p₀ : P := ⟨(b, s), mem_insert _ _⟩
   let p : ℕ → P := fun i => ⟨(a i, r i), mem_insert_of_mem _ (mem_range_self i)⟩
   have hp : Tendsto p atTop (𝓝 p₀) := tendsto_subtype_rng.mpr (ha.prodMk_nhds hrs)
@@ -52,7 +52,7 @@ theorem vague_smul_map_sub_div (μ : ℕ → Measure (Euclidean n))
   have hzero (q : P) (z : Euclidean n) (hz : z ∉ K) : g q z = 0 := by
     by_contra h
     exact hz (hsupport q h)
-  letI : CompactSpace K := hK.compactSpace
+  letI : CompactSpace K := isCompact_iff_compactSpace.mp hK
   have hF : Continuous (fun w : P × K => F w.1 w.2) :=
     f.continuous.comp
       (((continuous_fst.subtype_val.snd).inv₀ (fun w => (hpos w.1).ne')).smul
@@ -64,7 +64,11 @@ theorem vague_smul_map_sub_div (μ : ℕ → Measure (Euclidean n))
     filter_upwards [hp.eventually hlocal] with i hi
     intro z
     by_cases hz : z ∈ K
-    · simpa only [Real.dist_eq, abs_sub_comm] using hi ⟨z, hz⟩
+    · change |F (p i) z - F p₀ z| < ε
+      calc
+        _ = |F p₀ z - F (p i) z| := abs_sub_comm _ _
+        _ = dist (F p₀ z) (F (p i) z) := (Real.dist_eq _ _).symm
+        _ < ε := hi ⟨z, hz⟩
     · rw [hzero (p i) z hz, hzero p₀ z hz, sub_self, abs_zero]
       exact hε
   have hint := vague_integral_moving_compact_test μ ν hμ hν hlim K hK
