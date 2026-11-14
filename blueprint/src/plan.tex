@@ -334,7 +334,7 @@ This canonical definition implies the graph-test version used in the source.
 \begin{lemma}[Attainment, positivity and unit-ball comparison]
 \label{lem:flatness-minimum}
 \lean{Preiss.flatness_exists_minimizer, Preiss.flatness_nonneg, Preiss.flatness_eq_zero_of_isFlat, Preiss.exists_plane_ball_energy_le_of_flatness_le}
-\uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff, lem:flatness-basic-nonneg, lem:flatness-basic-zero}
+\uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff, lem:flatness-basic-nonneg, lem:flatness-basic-zero, lem:flatness-minimizer-finite-compacts, lem:flatness-energy-integrable}
 
 
 
@@ -3326,7 +3326,7 @@ factor preserves the set of limits at infinity, so S02--S03 imply conicality.
 \begin{theorem}[Uniform conical flatness gap]
 \label{thm:gap}
 \lean{Preiss.conical_flatness_gap}
-\uses{def:conical, def:plane, def:unit-uniform, lem:conical-eigenvalue-rigidity, lem:homogeneous-energy-radial, lem:plane-supported-uniform-flat, lem:small-energy-no-holes, lem:spectral-minimizing-plane}
+\uses{def:conical, def:plane, def:unit-uniform, lem:conical-eigenvalue-rigidity, lem:homogeneous-energy-radial, lem:plane-supported-uniform-flat, lem:small-energy-no-holes, lem:spectral-minimizing-plane, lem:uniform-ball-boundary}
 
 
 
@@ -4756,4 +4756,51 @@ If $\mu$ on $\mathbb R^n$ obeys $\operatorname{HasPolynomialGrowthBound}(\mu,C,p
 \uses{def:polynomial-growth-bound, lem:gaussian-polynomial-integrable}
 
 If $\operatorname{HasPolynomialGrowthBound}(\mu,C,p)$, then for every $w\in\mathbb R^n$ and $t\in\mathbb R$, the function $e^{-\|z\|^2}e^{t\langle z,w\rangle}$ is $\mu$-integrable. Equivalently, $e^{t\langle z,w\rangle}$ is integrable for the Gaussian weighted measure.
+\end{lemma}
+
+\begin{lemma}[Existence of a plane in every admissible dimension]
+\label{lem:plane-exists}
+\lean{Preiss.nonempty_plane_of_le}
+\uses{def:plane}
+
+If $m\leq n$, the type of $m$-dimensional linear subspaces of $\mathbb R^n$ is nonempty. Choose $m$ linearly independent vectors and take their span.
+\end{lemma}
+
+\begin{lemma}[Continuity of projection energy]
+\label{lem:projection-energy-continuity}
+\lean{Preiss.flatnessEnergy_eq_integral_projection, Preiss.continuous_integral_projectionEnergy}
+\uses{def:flatness}
+
+The distance energy of a plane is the integral of $\varphi(z)|z-P_Vz|^2$. For any compactly supported continuous $\varphi$ and any measure finite on compact sets, the same integral is a continuous function of an arbitrary continuous linear operator $P$.
+\end{lemma}
+
+\begin{lemma}[Minimizing flatness under finiteness on compact sets]
+\label{lem:flatness-minimizer-finite-compacts}
+\lean{Preiss.flatness_exists_minimizer_of_finite_on_compacts}
+\uses{def:flatness, lem:plane-exists, lem:projection-energy-continuity, lem:grassmannian}
+
+For $m\leq n$, every compactly supported continuous real cutoff and every measure finite on compact sets admit a plane attaining the infimum of distance energy. The cutoff need not be nonnegative. Minimize the continuous operator energy over the compact set of rank-$m$ orthogonal projections.
+\end{lemma}
+
+\begin{lemma}[Integrability of compactly weighted distance energy]
+\label{lem:flatness-energy-integrable}
+\lean{Preiss.integrable_flatnessEnergy_integrand}
+\uses{def:flatness}
+
+For every compactly supported continuous real cutoff, every plane, and every measure finite on compact sets, the cutoff times squared distance to the plane is integrable.
+\end{lemma}
+
+\begin{lemma}[Continuous finite ball profiles have null spheres]
+\label{lem:continuous-ball-profile-boundary}
+\lean{Preiss.ball_ae_eq_closedBall_of_continuous_profile, Preiss.measure_sphere_eq_zero_of_continuous_profile, Preiss.integral_ball_eq_closedBall_of_continuous_profile}
+
+Let $\mu$ be a Borel measure on a pseudometric space, $x$ a point, and $r>0$. Suppose a real function $f$ is continuous at $r$ and $\mu(\overline B(x,s))=\operatorname{ofReal}(f(s))$ for every $s>0$. Then $B(x,r)=\overline B(x,r)$ almost everywhere, the sphere of radius $r$ has measure zero, and every normed real vector-valued Bochner integrand has equal integrals on the open and closed balls.
+\end{lemma}
+
+\begin{lemma}[Open and closed uniform balls agree almost everywhere]
+\label{lem:uniform-ball-boundary}
+\lean{Preiss.unitUniform_ball_ae_eq_closedBall}
+\uses{def:unit-uniform, lem:continuous-ball-profile-boundary}
+
+For every unit $m$-uniform measure $\mu$ on $\mathbb R^n$, support center $x$, and positive radius $r$, $B(x,r)=\overline B(x,r)$ almost everywhere for $\mu$. This includes $m=0$.
 \end{lemma}

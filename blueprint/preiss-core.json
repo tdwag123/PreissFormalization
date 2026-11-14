@@ -1152,7 +1152,7 @@
       "id": "lem:flatness-minimum",
       "title": "Attainment, positivity and unit-ball comparison",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_plane_ball_energy_le_of_flatness_le",
         "Preiss.flatness_eq_zero_of_isFlat",
@@ -1167,6 +1167,8 @@
         "def:plane",
         "lem:flatness-basic-nonneg",
         "lem:flatness-basic-zero",
+        "lem:flatness-energy-integrable",
+        "lem:flatness-minimizer-finite-compacts",
         "lem:grassmannian",
         "lem:vague-moving-tests"
       ],
@@ -1192,9 +1194,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 1429,
-      "unfinished_dependencies": [
-        "lem:flatness-minimum"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:uniform-adapter",
@@ -3540,7 +3540,8 @@
         "lem:homogeneous-energy-radial",
         "lem:plane-supported-uniform-flat",
         "lem:small-energy-no-holes",
-        "lem:spectral-minimizing-plane"
+        "lem:spectral-minimizing-plane",
+        "lem:uniform-ball-boundary"
       ],
       "proof_dependencies": [],
       "expanded_line": 4396,
@@ -4192,7 +4193,6 @@
         "lem:density-normalization",
         "lem:dimensional-tangent-compactness",
         "lem:flatness-continuous",
-        "lem:flatness-minimum",
         "lem:flatness-radius-continuous",
         "lem:greatest-crossing",
         "lem:tangent-blowdown",
@@ -4226,8 +4226,7 @@
       "proof_dependencies": [],
       "expanded_line": 5069,
       "unfinished_dependencies": [
-        "lem:first-crossing",
-        "lem:flatness-minimum"
+        "lem:first-crossing"
       ]
     },
     {
@@ -4266,7 +4265,6 @@
         "lem:first-crossing",
         "lem:first-crossing-ratio",
         "lem:flatness-continuous",
-        "lem:flatness-minimum",
         "thm:gap",
         "thm:unique-infinity"
       ]
@@ -4298,7 +4296,6 @@
         "lem:density-normalization",
         "lem:first-crossing",
         "lem:first-crossing-flat-infinity",
-        "lem:flatness-cutoff-exists",
         "lem:flatness-gap-cutoff",
         "lem:tangent-ray",
         "thm:infinity-rigidity"
@@ -4366,7 +4363,7 @@
       "id": "lem:flatness-cutoff-exists",
       "title": "Existence of an admissible cutoff",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_flatnessCutoff"
       ],
@@ -4415,7 +4412,6 @@
       "proof_dependencies": [],
       "expanded_line": 5526,
       "unfinished_dependencies": [
-        "lem:flatness-minimum",
         "thm:gap"
       ]
     },
@@ -4993,6 +4989,107 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 5823,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:plane-exists",
+      "title": "Existence of a plane in every admissible dimension",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.nonempty_plane_of_le"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:plane"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5831,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:projection-energy-continuity",
+      "title": "Continuity of projection energy",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.continuous_integral_projectionEnergy",
+        "Preiss.flatnessEnergy_eq_integral_projection"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:flatness"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5839,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flatness-minimizer-finite-compacts",
+      "title": "Minimizing flatness under finiteness on compact sets",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flatness_exists_minimizer_of_finite_on_compacts"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:flatness",
+        "lem:grassmannian",
+        "lem:plane-exists",
+        "lem:projection-energy-continuity"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5847,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flatness-energy-integrable",
+      "title": "Integrability of compactly weighted distance energy",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_flatnessEnergy_integrand"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:flatness"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5855,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:continuous-ball-profile-boundary",
+      "title": "Continuous finite ball profiles have null spheres",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.ball_ae_eq_closedBall_of_continuous_profile",
+        "Preiss.integral_ball_eq_closedBall_of_continuous_profile",
+        "Preiss.measure_sphere_eq_zero_of_continuous_profile"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5863,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:uniform-ball-boundary",
+      "title": "Open and closed uniform balls agree almost everywhere",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.unitUniform_ball_ae_eq_closedBall"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:unit-uniform",
+        "lem:continuous-ball-profile-boundary"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5870,
       "unfinished_dependencies": []
     }
   ]

@@ -3,6 +3,7 @@ module
 public import Preiss.Uniform.Flatness
 public import Preiss.Geometry.FlatMeasure
 public import Mathlib.Topology.Algebra.Module.FiniteDimension
+public import Mathlib.MeasureTheory.Integral.Bochner.Set
 
 /-! # Positivity and vanishing of flatness
 
@@ -15,6 +16,13 @@ open MeasureTheory Metric Set
 open scoped CompactlySupported ENNReal
 namespace Preiss
 variable {m n : ℕ}
+
+theorem integrable_flatnessEnergy_integrand (φ : C_c(Euclidean n, ℝ))
+    (μ : Measure (Euclidean n)) [IsFiniteMeasureOnCompacts μ] (V : Plane m n) :
+    Integrable (fun z => φ z * (infDist z (V.1 : Set (Euclidean n))) ^ 2) μ := by
+  have hc : Continuous (fun z => φ z * (infDist z (V.1 : Set (Euclidean n))) ^ 2) :=
+    φ.continuous.mul (continuous_infDist_pt.pow 2)
+  exact hc.integrable_of_hasCompactSupport φ.hasCompactSupport.mul_right
 
 theorem flatnessEnergy_nonneg (φ : C_c(Euclidean n, ℝ))
     (hφ : ∀ z, 0 ≤ φ z) (μ : Measure (Euclidean n)) (V : Plane m n) :

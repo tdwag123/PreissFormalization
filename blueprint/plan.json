@@ -1265,6 +1265,8 @@
         "def:plane",
         "lem:flatness-basic-nonneg",
         "lem:flatness-basic-zero",
+        "lem:flatness-energy-integrable",
+        "lem:flatness-minimizer-finite-compacts",
         "lem:grassmannian",
         "lem:vague-moving-tests"
       ],
@@ -4545,7 +4547,8 @@
         "lem:homogeneous-energy-radial",
         "lem:plane-supported-uniform-flat",
         "lem:small-energy-no-holes",
-        "lem:spectral-minimizing-plane"
+        "lem:spectral-minimizing-plane",
+        "lem:uniform-ball-boundary"
       ],
       "lean_names": [
         "Preiss.conical_flatness_gap"
@@ -6567,6 +6570,113 @@
         "Preiss/Analysis/GaussianWeight.lean"
       ],
       "proposed_file": "Preiss/Analysis/GaussianWeight.lean"
+    },
+    {
+      "id": "lem:plane-exists",
+      "kind": "lemma",
+      "title": "Existence of a plane in every admissible dimension",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.nonempty_plane_of_le"
+      ],
+      "deps": [
+        "def:plane"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneTopology.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneTopology.lean"
+    },
+    {
+      "id": "lem:projection-energy-continuity",
+      "kind": "lemma",
+      "title": "Continuity of projection energy",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.continuous_integral_projectionEnergy",
+        "Preiss.flatnessEnergy_eq_integral_projection"
+      ],
+      "deps": [
+        "def:flatness"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessMinimum.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessMinimum.lean"
+    },
+    {
+      "id": "lem:flatness-minimizer-finite-compacts",
+      "kind": "lemma",
+      "title": "Minimizing flatness under finiteness on compact sets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatness_exists_minimizer_of_finite_on_compacts"
+      ],
+      "deps": [
+        "def:flatness",
+        "lem:grassmannian",
+        "lem:plane-exists",
+        "lem:projection-energy-continuity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessMinimum.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessMinimum.lean"
+    },
+    {
+      "id": "lem:flatness-energy-integrable",
+      "kind": "lemma",
+      "title": "Integrability of compactly weighted distance energy",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_flatnessEnergy_integrand"
+      ],
+      "deps": [
+        "def:flatness"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessBasic.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessBasic.lean"
+    },
+    {
+      "id": "lem:continuous-ball-profile-boundary",
+      "kind": "lemma",
+      "title": "Continuous finite ball profiles have null spheres",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ball_ae_eq_closedBall_of_continuous_profile",
+        "Preiss.integral_ball_eq_closedBall_of_continuous_profile",
+        "Preiss.measure_sphere_eq_zero_of_continuous_profile"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/BallBoundary.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/BallBoundary.lean"
+    },
+    {
+      "id": "lem:uniform-ball-boundary",
+      "kind": "lemma",
+      "title": "Open and closed uniform balls agree almost everywhere",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.unitUniform_ball_ae_eq_closedBall"
+      ],
+      "deps": [
+        "def:unit-uniform",
+        "lem:continuous-ball-profile-boundary"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BallBoundary.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BallBoundary.lean"
     }
   ],
   "preiss_core": [
@@ -6654,6 +6764,7 @@
     "lem:conical-covariance",
     "lem:conical-eigenvalue-rigidity",
     "lem:conical-moments",
+    "lem:continuous-ball-profile-boundary",
     "lem:countable-carrier",
     "lem:decomposition",
     "lem:density-bounds-good-set",
@@ -6689,7 +6800,9 @@
     "lem:flatness-basic-zero",
     "lem:flatness-continuous",
     "lem:flatness-cutoff-exists",
+    "lem:flatness-energy-integrable",
     "lem:flatness-gap-cutoff",
+    "lem:flatness-minimizer-finite-compacts",
     "lem:flatness-minimum",
     "lem:flatness-radius-continuous",
     "lem:gaussian-annulus-integral",
@@ -6739,12 +6852,14 @@
     "lem:odd-coefficients-plane-zero",
     "lem:packing-base-point",
     "lem:packing-contradiction",
+    "lem:plane-exists",
     "lem:plane-hausdorff",
     "lem:plane-scaling",
     "lem:plane-supported-uniform-flat",
     "lem:polynomial-feature-identities",
     "lem:polynomial-gaussian-integrability",
     "lem:projected-tube-slab-bound",
+    "lem:projection-energy-continuity",
     "lem:projection-hole-cover",
     "lem:pseudotangent-transitive",
     "lem:pure-basic",
@@ -6775,6 +6890,7 @@
     "lem:trace-rigidity",
     "lem:tube-support-upgrade",
     "lem:uniform-adapter",
+    "lem:uniform-ball-boundary",
     "lem:uniform-compact-selection",
     "lem:uniform-compactness",
     "lem:uniform-constant-one",

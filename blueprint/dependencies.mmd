@@ -275,6 +275,12 @@ flowchart LR
   lem_complex_mgf_moment_determination["All exponential moments make power moments determining"]
   lem_gaussian_weight_finite["Gaussian weighting gives a finite measure"]
   lem_gaussian_weight_exponential["Every projection has all exponential moments after Gaussian weighting"]
+  lem_plane_exists["Existence of a plane in every admissible dimension"]
+  lem_projection_energy_continuity["Continuity of projection energy"]
+  lem_flatness_minimizer_finite_compacts["Minimizing flatness under finiteness on compact sets"]
+  lem_flatness_energy_integrable["Integrability of compactly weighted distance energy"]
+  lem_continuous_ball_profile_boundary["Continuous finite ball profiles have null spheres"]
+  lem_uniform_ball_boundary["Open and closed uniform balls agree almost everywhere"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -391,6 +397,8 @@ flowchart LR
   def_plane --> lem_flatness_minimum
   lem_flatness_basic_nonneg --> lem_flatness_minimum
   lem_flatness_basic_zero --> lem_flatness_minimum
+  lem_flatness_energy_integrable --> lem_flatness_minimum
+  lem_flatness_minimizer_finite_compacts --> lem_flatness_minimum
   lem_grassmannian --> lem_flatness_minimum
   lem_vague_moving_tests --> lem_flatness_minimum
   def_flatness --> lem_flatness_continuous
@@ -812,6 +820,7 @@ flowchart LR
   lem_plane_supported_uniform_flat --> thm_gap
   lem_small_energy_no_holes --> thm_gap
   lem_spectral_minimizing_plane --> thm_gap
+  lem_uniform_ball_boundary --> thm_gap
   def_moment_coefficients --> def_rigidity_normal_vector
   def_plane --> def_rigidity_normal_vector
   def_moment_coefficients --> def_rigidity_omega
@@ -1147,3 +1156,12 @@ flowchart LR
   lem_gaussian_polynomial_integrable --> lem_gaussian_weight_finite
   def_polynomial_growth_bound --> lem_gaussian_weight_exponential
   lem_gaussian_polynomial_integrable --> lem_gaussian_weight_exponential
+  def_plane --> lem_plane_exists
+  def_flatness --> lem_projection_energy_continuity
+  def_flatness --> lem_flatness_minimizer_finite_compacts
+  lem_grassmannian --> lem_flatness_minimizer_finite_compacts
+  lem_plane_exists --> lem_flatness_minimizer_finite_compacts
+  lem_projection_energy_continuity --> lem_flatness_minimizer_finite_compacts
+  def_flatness --> lem_flatness_energy_integrable
+  def_unit_uniform --> lem_uniform_ball_boundary
+  lem_continuous_ball_profile_boundary --> lem_uniform_ball_boundary

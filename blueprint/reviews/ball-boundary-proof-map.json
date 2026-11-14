@@ -1,0 +1,12 @@
+{
+  "existing_node_additional_deps": {
+    "thm:gap": [
+      "lem:uniform-ball-boundary"
+    ]
+  },
+  "interface_repair": "Conical gap uses an open unit ball; homogeneous radial Gaussian identity uses a closed unit ball. The checked positive-radius boundary-null bridge identifies those integrals.",
+  "new_modules": [
+    "Preiss/Analysis/BallBoundary.lean",
+    "Preiss/Uniform/BallBoundary.lean"
+  ]
+}

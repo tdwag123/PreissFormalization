@@ -1377,6 +1377,26 @@
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
       ]
     },
+    "lem:uniform-ball-boundary": {
+      "lean_names": [
+        "Preiss.unitUniform_ball_ae_eq_closedBall"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Uniform/BallBoundary.lean"
+      ]
+    },
+    "lem:continuous-ball-profile-boundary": {
+      "lean_names": [
+        "Preiss.ball_ae_eq_closedBall_of_continuous_profile",
+        "Preiss.measure_sphere_eq_zero_of_continuous_profile",
+        "Preiss.integral_ball_eq_closedBall_of_continuous_profile"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/BallBoundary.lean"
+      ]
+    },
     "lem:complex-mgf-moment-determination": {
       "lean_names": [
         "Preiss.complexMGF_eq_of_all_moments_eq"
@@ -1747,6 +1767,47 @@
       ],
       "planned_file": "Preiss/Density/LowerBounds.lean",
       "verification": "Local Lean/kernel check passed with only standard axioms; full integration CI is separate."
+    },
+    "lem:plane-exists": {
+      "lean_names": [
+        "Preiss.nonempty_plane_of_le"
+      ],
+      "files": [
+        "Preiss/Geometry/PlaneTopology.lean"
+      ],
+      "planned_file": "Preiss/Geometry/PlaneTopology.lean",
+      "status": "Canonical integration CI pending; minimizer helpers locally kernel-checked."
+    },
+    "lem:projection-energy-continuity": {
+      "lean_names": [
+        "Preiss.flatnessEnergy_eq_integral_projection",
+        "Preiss.continuous_integral_projectionEnergy"
+      ],
+      "files": [
+        "Preiss/Uniform/FlatnessMinimum.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatnessMinimum.lean",
+      "status": "Canonical integration CI pending; minimizer helpers locally kernel-checked."
+    },
+    "lem:flatness-minimizer-finite-compacts": {
+      "lean_names": [
+        "Preiss.flatness_exists_minimizer_of_finite_on_compacts"
+      ],
+      "files": [
+        "Preiss/Uniform/FlatnessMinimum.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatnessMinimum.lean",
+      "status": "Canonical integration CI pending; minimizer helpers locally kernel-checked."
+    },
+    "lem:flatness-energy-integrable": {
+      "lean_names": [
+        "Preiss.integrable_flatnessEnergy_integrand"
+      ],
+      "files": [
+        "Preiss/Uniform/FlatnessBasic.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatnessBasic.lean",
+      "status": "Canonical integration CI pending; minimizer helpers locally kernel-checked."
     }
   },
   "pending": [],

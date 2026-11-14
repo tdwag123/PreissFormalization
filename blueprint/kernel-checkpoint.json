@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "8a45bb5d0b094d892b8306ddc063e93d6c8fe246",
+  "source_revision": "e5215f742fe5113490098fa3122e22045d3f2129",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -928,6 +928,18 @@
         "propext"
       ],
       "kernel_status": "definition_checked"
+    },
+    "Preiss.complexMGF_eq_of_all_moments_eq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/MomentDetermination.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.cone": {
       "project": "local",
@@ -2656,6 +2668,30 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.integrable_exp_inner_mul_gaussian": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianWeight.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_exp_inner_withDensity_gaussian": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianWeight.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integrable_gaussianMomentKernel": {
       "project": "local",
       "kind": "theorem",
@@ -2757,15 +2793,26 @@
     "Preiss.integral_gaussian_mul_homogeneous": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/Radial.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.integral_gaussian_of_closedBall_power": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBallPower.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.integral_gaussian_pos_of_ball_bound": {
       "project": "local",
@@ -2859,6 +2906,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Geometry/PlaneTopology.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isFiniteMeasure_withDensity_gaussian": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianWeight.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -3001,6 +3060,30 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.lintegral_exp_neg_Ici": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBallPower.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.lintegral_gaussian_of_closedBall_power": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBallPower.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.lowerDensity_zero_eq_singleton": {
       "project": "local",
       "kind": "theorem",
@@ -3013,18 +3096,29 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.lower_density_ge_of_ball_power_lower_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/LowerBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.lower_density_pos_of_weakApproximation": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.lower_eq_upper_of_hasDensity": {
       "project": "local",
@@ -3091,15 +3185,14 @@
     "Preiss.measure_eq_of_gaussian_polynomial_moments_eq": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianMomentDetermination.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.measure_le_smul_hausdorff_of_diameter_bound": {
       "project": "local",
@@ -4288,15 +4381,14 @@
     "Preiss.weakApproximation_restrict_of_negligible_sdiff": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion": {
       "project": "local",

@@ -76,7 +76,7 @@ digraph Preiss {
   "def:conical" [label="Conical measures", fillcolor="#d9eaf7"];
   "lem:flat-gaussian-even-moments" [label="Gaussian moments of a normalized flat measure", fillcolor="#fff0bf"];
   "def:purely-unrectifiable" [label="Pure unrectifiability", fillcolor="#d9eaf7"];
-  "lem:flatness-minimum" [label="Attainment, positivity and unit-ball comparison", fillcolor="#fff0bf"];
+  "lem:flatness-minimum" [label="Attainment, positivity and unit-ball comparison", fillcolor="#dce5ee"];
   "lem:flatness-continuous" [label="Continuity of flatness under vague convergence", fillcolor="#fff0bf"];
   "lem:uniform-adapter" [label="Density-to-tangent adapters", fillcolor="#ffe0b2"];
   "lem:small-energy-no-holes" [label="Small Gaussian distance energy forces plane support proximity", fillcolor="#fff0bf"];
@@ -239,7 +239,7 @@ digraph Preiss {
   "lem:moment-form-symmetry" [label="Permutation symmetry of Gaussian moment forms", fillcolor="#dce5ee"];
   "def:polynomial-growth-bound" [label="A common polynomial growth bound", fillcolor="#d9eaf7"];
   "def:flatness-cutoff" [label="An admissible flatness cutoff", fillcolor="#d9eaf7"];
-  "lem:flatness-cutoff-exists" [label="Existence of an admissible cutoff", fillcolor="#fff0bf"];
+  "lem:flatness-cutoff-exists" [label="Existence of an admissible cutoff", fillcolor="#dce5ee"];
   "def:flatness-gap" [label="A cutoff flatness gap threshold", fillcolor="#d9eaf7"];
   "lem:flatness-gap-cutoff" [label="Transfer the conical gap to cutoff flatness", fillcolor="#fff0bf"];
   "def:first-crossing-data" [label="Quantified crossing scale data", fillcolor="#d9eaf7"];
@@ -277,6 +277,12 @@ digraph Preiss {
   "lem:complex-mgf-moment-determination" [label="All exponential moments make power moments determining", fillcolor="#dce5ee"];
   "lem:gaussian-weight-finite" [label="Gaussian weighting gives a finite measure", fillcolor="#dce5ee"];
   "lem:gaussian-weight-exponential" [label="Every projection has all exponential moments after Gaussian weighting", fillcolor="#dce5ee"];
+  "lem:plane-exists" [label="Existence of a plane in every admissible dimension", fillcolor="#dce5ee"];
+  "lem:projection-energy-continuity" [label="Continuity of projection energy", fillcolor="#dce5ee"];
+  "lem:flatness-minimizer-finite-compacts" [label="Minimizing flatness under finiteness on compact sets", fillcolor="#dce5ee"];
+  "lem:flatness-energy-integrable" [label="Integrability of compactly weighted distance energy", fillcolor="#dce5ee"];
+  "lem:continuous-ball-profile-boundary" [label="Continuous finite ball profiles have null spheres", fillcolor="#dce5ee"];
+  "lem:uniform-ball-boundary" [label="Open and closed uniform balls agree almost everywhere", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -393,6 +399,8 @@ digraph Preiss {
   "def:plane" -> "lem:flatness-minimum";
   "lem:flatness-basic-nonneg" -> "lem:flatness-minimum";
   "lem:flatness-basic-zero" -> "lem:flatness-minimum";
+  "lem:flatness-energy-integrable" -> "lem:flatness-minimum";
+  "lem:flatness-minimizer-finite-compacts" -> "lem:flatness-minimum";
   "lem:grassmannian" -> "lem:flatness-minimum";
   "lem:vague-moving-tests" -> "lem:flatness-minimum";
   "def:flatness" -> "lem:flatness-continuous";
@@ -814,6 +822,7 @@ digraph Preiss {
   "lem:plane-supported-uniform-flat" -> "thm:gap";
   "lem:small-energy-no-holes" -> "thm:gap";
   "lem:spectral-minimizing-plane" -> "thm:gap";
+  "lem:uniform-ball-boundary" -> "thm:gap";
   "def:moment-coefficients" -> "def:rigidity-normal-vector";
   "def:plane" -> "def:rigidity-normal-vector";
   "def:moment-coefficients" -> "def:rigidity-omega";
@@ -1149,4 +1158,13 @@ digraph Preiss {
   "lem:gaussian-polynomial-integrable" -> "lem:gaussian-weight-finite";
   "def:polynomial-growth-bound" -> "lem:gaussian-weight-exponential";
   "lem:gaussian-polynomial-integrable" -> "lem:gaussian-weight-exponential";
+  "def:plane" -> "lem:plane-exists";
+  "def:flatness" -> "lem:projection-energy-continuity";
+  "def:flatness" -> "lem:flatness-minimizer-finite-compacts";
+  "lem:grassmannian" -> "lem:flatness-minimizer-finite-compacts";
+  "lem:plane-exists" -> "lem:flatness-minimizer-finite-compacts";
+  "lem:projection-energy-continuity" -> "lem:flatness-minimizer-finite-compacts";
+  "def:flatness" -> "lem:flatness-energy-integrable";
+  "def:unit-uniform" -> "lem:uniform-ball-boundary";
+  "lem:continuous-ball-profile-boundary" -> "lem:uniform-ball-boundary";
 }

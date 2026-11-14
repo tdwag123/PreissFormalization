@@ -1,6 +1,7 @@
 module
 
 public import Preiss.Geometry.Projections
+public import Mathlib.LinearAlgebra.Dimension.Constructions
 public import Mathlib.Analysis.InnerProductSpace.Adjoint
 public import Mathlib.Analysis.InnerProductSpace.Spectrum
 public import Mathlib.LinearAlgebra.Trace
@@ -14,6 +15,11 @@ open scoped NNReal ENNReal
 noncomputable section
 namespace Preiss
 variable {m n : ℕ}
+
+theorem nonempty_plane_of_le (hmn : m ≤ n) : Nonempty (Plane m n) := by
+  have hh : m ≤ Module.finrank ℝ (Euclidean n) := by simpa [Euclidean] using hmn
+  obtain ⟨f, hf⟩ := exists_linearIndependent_of_le_finrank hh
+  exact ⟨⟨Submodule.span ℝ (Set.range f), by simpa using finrank_span_eq_card hf⟩⟩
 
 def rankProjectionSet (m n : ℕ) : Set (Euclidean n →L[ℝ] Euclidean n) :=
   {P | P.adjoint = P ∧ P.comp P = P ∧ Module.finrank ℝ (LinearMap.range P.toLinearMap) = m}

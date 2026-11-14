@@ -30,6 +30,27 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.BallBoundary",
+      "file": "Preiss/Analysis/BallBoundary.lean",
+      "purpose": "Reusable Analysis.BallBoundary interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metric",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metric",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:continuous-ball-profile-boundary"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.BilinearTrace",
       "file": "Preiss/Analysis/BilinearTrace.lean",
       "current_source_imports": [
@@ -1014,6 +1035,7 @@
       "current_source_imports": [
         "Mathlib.Analysis.InnerProductSpace.Adjoint",
         "Mathlib.Analysis.InnerProductSpace.Spectrum",
+        "Mathlib.LinearAlgebra.Dimension.Constructions",
         "Mathlib.LinearAlgebra.Trace",
         "Mathlib.Topology.Algebra.Module.FiniteDimension",
         "Mathlib.Topology.MetricSpace.Bounded",
@@ -1026,6 +1048,7 @@
       "mathlib_imports": [
         "Mathlib.Analysis.InnerProductSpace.Adjoint",
         "Mathlib.Analysis.InnerProductSpace.Spectrum",
+        "Mathlib.LinearAlgebra.Dimension.Constructions",
         "Mathlib.LinearAlgebra.Trace",
         "Mathlib.Topology.Algebra.Module.FiniteDimension",
         "Mathlib.Topology.MetricSpace.Bounded"
@@ -1035,7 +1058,8 @@
         "Preiss.Geometry.Planes"
       ],
       "nodes": [
-        "lem:grassmannian"
+        "lem:grassmannian",
+        "lem:plane-exists"
       ],
       "source_exists": true,
       "scope": "core",
@@ -2557,6 +2581,30 @@
       "purpose": "Canonical Theorem.PartB interfaces."
     },
     {
+      "module": "Preiss.Uniform.BallBoundary",
+      "file": "Preiss/Uniform/BallBoundary.lean",
+      "purpose": "Reusable Uniform.BallBoundary interfaces.",
+      "current_source_imports": [
+        "Preiss.Analysis.BallBoundary",
+        "Preiss.Uniform.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.BallBoundary",
+        "Preiss.Uniform.Defs"
+      ],
+      "nodes": [
+        "lem:uniform-ball-boundary"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.BallBoundary",
+        "Preiss.Uniform.Defs"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.BlowdownCompactness",
       "file": "Preiss/Uniform/BlowdownCompactness.lean",
       "current_source_imports": [
@@ -2705,6 +2753,7 @@
         "Preiss.Analysis.SpectralOptimization",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.Planes",
+        "Preiss.Uniform.BallBoundary",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.ConicalMoments",
         "Preiss.Uniform.Defs",
@@ -2718,6 +2767,7 @@
       "proof_imports": [
         "Preiss.Analysis.SpectralOptimization",
         "Preiss.Geometry.Planes",
+        "Preiss.Uniform.BallBoundary",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.ConicalMoments",
         "Preiss.Uniform.Defs",
@@ -3126,11 +3176,13 @@
       "file": "Preiss/Uniform/FlatnessBasic.lean",
       "purpose": "Reusable Uniform.FlatnessBasic interfaces.",
       "current_source_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
         "Mathlib.Topology.Algebra.Module.FiniteDimension",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Uniform.Flatness"
       ],
       "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
         "Mathlib.Topology.Algebra.Module.FiniteDimension"
       ],
       "gmt_imports": [],
@@ -3140,7 +3192,8 @@
       ],
       "nodes": [
         "lem:flatness-basic-nonneg",
-        "lem:flatness-basic-zero"
+        "lem:flatness-basic-zero",
+        "lem:flatness-energy-integrable"
       ],
       "source_exists": true,
       "local_imports": [
@@ -3154,9 +3207,11 @@
       "file": "Preiss/Uniform/FlatnessContinuity.lean",
       "current_source_imports": [
         "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.Topology.UrysohnsLemma",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Uniform.Flatness",
-        "Preiss.Uniform.FlatnessBasic"
+        "Preiss.Uniform.FlatnessBasic",
+        "Preiss.Uniform.FlatnessMinimum"
       ],
       "local_imports": [
         "Preiss.Analysis.Vague.CompactTests",
@@ -3164,9 +3219,12 @@
         "Preiss.Geometry.PlaneTopology",
         "Preiss.Geometry.Planes",
         "Preiss.Uniform.Flatness",
-        "Preiss.Uniform.FlatnessBasic"
+        "Preiss.Uniform.FlatnessBasic",
+        "Preiss.Uniform.FlatnessMinimum"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Topology.UrysohnsLemma"
+      ],
       "gmt_imports": [
         "FormalizingGMT.WeakConvergence.Basic"
       ],
@@ -3176,7 +3234,8 @@
         "Preiss.Geometry.PlaneTopology",
         "Preiss.Geometry.Planes",
         "Preiss.Uniform.Flatness",
-        "Preiss.Uniform.FlatnessBasic"
+        "Preiss.Uniform.FlatnessBasic",
+        "Preiss.Uniform.FlatnessMinimum"
       ],
       "nodes": [
         "lem:flatness-minimum",
@@ -3187,6 +3246,36 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Uniform.FlatnessContinuity interfaces."
+    },
+    {
+      "module": "Preiss.Uniform.FlatnessMinimum",
+      "file": "Preiss/Uniform/FlatnessMinimum.lean",
+      "purpose": "Reusable Uniform.FlatnessMinimum interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Tactic.FunProp",
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Uniform.Flatness"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Tactic.FunProp"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Uniform.Flatness"
+      ],
+      "nodes": [
+        "lem:projection-energy-continuity",
+        "lem:flatness-minimizer-finite-compacts"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Uniform.Flatness"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Uniform.FlatPseudotangent",
@@ -3799,6 +3888,7 @@
   ],
   "topological_order": [
     "Preiss.Analysis.AnnulusIntegrability",
+    "Preiss.Analysis.BallBoundary",
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Analysis.GaussianBallPower",
     "Preiss.Geometry.Euclidean",
@@ -3862,6 +3952,7 @@
     "Preiss.Tangent.Restriction",
     "Preiss.Tangent.SupportApproximation",
     "Preiss.Tangent.ScalingOrbit",
+    "Preiss.Uniform.BallBoundary",
     "Preiss.Uniform.GMTAdapters",
     "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.Scaling",
@@ -3870,8 +3961,8 @@
     "Preiss.Uniform.MomentCovariance",
     "Preiss.Density.FinitePieces",
     "Preiss.Rectifiability.ProjectionEstimate",
+    "Preiss.Uniform.FlatnessMinimum",
     "Preiss.Rectifiability.WeakApproximation.Restriction",
-    "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Rectifiability.DensityRepresentation",
     "Preiss.Rectifiability.Cones",
     "Preiss.Rectifiability.PurelyUnrectifiable",
@@ -3883,8 +3974,8 @@
     "Preiss.Uniform.Radial",
     "Preiss.Uniform.Compactness",
     "Preiss.Uniform.Transport",
+    "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-    "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.ConeCriterion",
     "Preiss.Rectifiability.GraphCover",
     "Preiss.Rectifiability.Decomposition",
@@ -3893,6 +3984,7 @@
     "Preiss.Uniform.MomentEstimates",
     "Preiss.Uniform.BlowdownCompactness",
     "Preiss.Uniform.Classification",
+    "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
     "Preiss.Rectifiability.GraphArea",
     "Preiss.Tangent.Recentering",
@@ -3927,6 +4019,7 @@
   ],
   "preiss_import_closure": [
     "Preiss.Analysis.AnnulusIntegrability",
+    "Preiss.Analysis.BallBoundary",
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Analysis.GaussianBallPower",
     "Preiss.Analysis.GaussianGrowth",
@@ -4008,6 +4101,7 @@
     "Preiss.Theorem.FirstCrossing",
     "Preiss.Theorem.PartA",
     "Preiss.Theorem.PartB",
+    "Preiss.Uniform.BallBoundary",
     "Preiss.Uniform.BlowdownCompactness",
     "Preiss.Uniform.BlowdownMoments",
     "Preiss.Uniform.Classification",
@@ -4027,6 +4121,7 @@
     "Preiss.Uniform.Flatness",
     "Preiss.Uniform.FlatnessBasic",
     "Preiss.Uniform.FlatnessContinuity",
+    "Preiss.Uniform.FlatnessMinimum",
     "Preiss.Uniform.GMTAdapters",
     "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.MomentCoefficients",
