@@ -21,7 +21,7 @@ theorem integrable_flatnessEnergy_integrand (φ : C_c(Euclidean n, ℝ))
     (μ : Measure (Euclidean n)) [IsFiniteMeasureOnCompacts μ] (V : Plane m n) :
     Integrable (fun z => φ z * (infDist z (V.1 : Set (Euclidean n))) ^ 2) μ := by
   have hc : Continuous (fun z => φ z * (infDist z (V.1 : Set (Euclidean n))) ^ 2) :=
-    φ.continuous.mul (continuous_infDist_pt.pow 2)
+    φ.continuous.mul ((continuous_infDist_pt (V.1 : Set (Euclidean n))).pow 2)
   exact hc.integrable_of_hasCompactSupport φ.hasCompactSupport.mul_right
 
 theorem flatnessEnergy_nonneg (φ : C_c(Euclidean n, ℝ))
