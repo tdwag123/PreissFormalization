@@ -430,7 +430,7 @@ require conicality or eigenvalue assumptions.
 \begin{lemma}[Homogeneity and parity of conical moments]
 \label{lem:conical-moments}
 \lean{Preiss.conical_gaussianMoment_homogeneous, Preiss.conical_gaussianMoment_odd}
-\uses{def:conical, def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-covariance, lem:moment-support-polynomial, lem:taylor-two}
+\uses{lem:conical-moment-scaling, lem:scaled-moment-limits, lem:taylor-two}
 
 
 
@@ -475,7 +475,7 @@ polynomial moment of $D^m_{0,r}\nu$ as $r\to\infty$.
 \begin{lemma}[Positive covariance form, trace and support identity]
 \label{lem:conical-covariance}
 \lean{Preiss.conical_covariance_trace_support}
-\uses{def:conical, def:moments, def:unit-uniform, lem:conical-moments, lem:radial}
+\uses{lem:even-moment-positivity, lem:moment-second-total-trace, lem:conical-support-covariance}
 
 
 
@@ -2792,7 +2792,7 @@ statement is stronger and safer than merely pointwise convergence on the support
 \begin{lemma}[Vanishing total second Taylor trace]
 \label{lem:moment-second-total-trace}
 \lean{Preiss.trace_gaussianMomentForm_two, Preiss.trace_secondMomentCoefficient_eq_zero}
-\uses{def:bilinear-trace, def:moment-coefficients, def:moments, def:unit-uniform, lem:bilinear-trace-basis, lem:radial, lem:taylor-two}
+\uses{lem:moment-trace-operator, lem:gaussian-radial-second-moment, lem:asymptotic-taylor-vanishing, def:moment-coefficients}
 
 
 
@@ -3231,7 +3231,7 @@ factor preserves the set of limits at infinity, so S02--S03 imply conicality.
 \begin{lemma}[Elementary eigenvalue rigidity from one nearby support point]
 \label{lem:conical-eigenvalue-rigidity}
 \lean{Preiss.conical_covariance_eq_projection_of_near_eigenvector}
-\uses{def:conical, def:plane, lem:conical-covariance, lem:spectral-minimizing-plane}
+\uses{lem:quadratic-near-basis-rigidity}
 
 
 
@@ -5614,4 +5614,66 @@ If locally finite Euclidean measures satisfy $\nu\ll\mu$ and $\mu$ has positive 
 \uses{thm:matching}
 
 For locally finite Euclidean $\mu$ and finite $\nu\ll\mu$, their full tangent cones agree at $\nu$-almost every point. Apply the pinned FormalizingGMT density-matching theorem to the real Radon--Nikodym derivative.
+\end{lemma}
+
+\begin{lemma}[Orthogonal representatives and normal-coordinate identities]
+\label{lem:normal-coordinate-identities}
+\lean{Preiss.exists_orthogonal_representative, Preiss.normal_coordinates_of_quadratic_identity}
+
+A continuous linear functional vanishing on a closed subspace has a representing vector in its orthogonal complement. If $2\langle b,x\rangle+\lVert P_Vx\rVert^2=\lVert x\rVert^2$ with $b\perp V$, then $\lVert x-P_Vx\rVert^2=2\langle b,x\rangle$, $\lVert x-P_Vx-b\rVert=\lVert b\rVert$, and $\lVert x-P_Vx\rVert\leq2\lVert b\rVert$.
+\end{lemma}
+
+\begin{lemma}[Even diagonal Gaussian moments are nonnegative]
+\label{lem:even-moment-positivity}
+\lean{Preiss.gaussianMomentForm_even_nonneg}
+\uses{def:moments, lem:moment-form-evaluation}
+
+Every even diagonal Gaussian moment is nonnegative, for any measure and real Gaussian parameter. The statement also covers the nonintegrable case in the Bochner integral definition.
+\end{lemma}
+
+\begin{lemma}[Exact moment homogeneity for conical measures]
+\label{lem:conical-moment-scaling}
+\lean{Preiss.gaussianMomentForm_homogeneous_of_isConical}
+\uses{def:conical, lem:moment-covariance}
+
+For every conical measure, its degree-$k$ Gaussian multilinear moment at positive parameter $s$ equals $s^{k/2}$ times its moment at parameter one. No uniformity assumption is required.
+\end{lemma}
+
+\begin{lemma}[Conical covariance equals squared norm on the support]
+\label{lem:conical-support-covariance}
+\lean{Preiss.conical_covariance_eq_norm_sq_on_support}
+\uses{lem:conical-moment-scaling, lem:scaled-moment-limits, lem:taylor-two, lem:moment-support-polynomial}
+
+For a positive-dimensional unit-uniform conical measure, its second Gaussian moment at parameter one equals squared norm at every support point.
+\end{lemma}
+
+\begin{lemma}[The second-moment trace as a bounded linear functional]
+\label{lem:moment-trace-operator}
+\lean{Preiss.momentTraceCLM, Preiss.momentTraceCLM_apply, Preiss.momentTraceCLM_momentKernel}
+\uses{lem:bilinear-trace-basis, def:bilinear-trace, def:moments}
+
+The finite sum of diagonal evaluations defines a continuous linear functional on second moment forms. It equals the associated bilinear trace and maps the moment kernel at $z$ to $\lVert z\rVert^2$.
+\end{lemma}
+
+\begin{lemma}[Radial second Gaussian moment of a unit-uniform measure]
+\label{lem:gaussian-radial-second-moment}
+\lean{Preiss.integral_norm_sq_gaussian_unitUniform}
+\uses{lem:moment-norm-bound, lem:gaussian-parameter-derivative}
+
+For a positive-dimensional unit-uniform measure and $s>0$, the integral of $\lVert z\rVert^2e^{-s\lVert z\rVert^2}$ is $m/(2s)$ times its Gaussian mass. Differentiate the explicit Gaussian mass formula under the integral.
+\end{lemma}
+
+\begin{lemma}[Finite ordered trace bounds and extremizers]
+\label{lem:ordered-trace-bounds}
+\lean{Preiss.ordered_nonnegative_trace_cutoff_bounds, Preiss.ordered_nonnegative_trace_eq_initial_indicator, Preiss.antitone_weighted_sum_le_initial_sum}
+
+An antitone nonnegative tuple of total $m$ has its $m$-th entry at most one; equality forces the indicator of its first $m$ entries. For any antitone real tuple and weights in $[0,1]$ summing to $m$, the weighted sum is at most the sum of its first $m$ entries.
+\end{lemma}
+
+\begin{lemma}[Quadratic rigidity near a critical basis vector]
+\label{lem:quadratic-near-basis-rigidity}
+\lean{Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector}
+\uses{lem:ordered-trace-bounds}
+
+In a real inner-product space with a finite orthonormal basis, an ordered nonnegative spectrum of total $m$ is the rank-$m$ indicator spectrum if its quadratic identity holds at a point within distance $\delta<1/m$ of the $m$-th basis vector.
 \end{lemma}

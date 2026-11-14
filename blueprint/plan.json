@@ -1410,12 +1410,8 @@
       "hypotheses_tex": "",
       "proof_tex": "Conicality gives $b_{k,s}=s^{k/2}b_{k,1}$. Comparing with M07 makes odd forms\nzero and gives $b_{2j,s}=s^j b_{2j}^{(j)}/j!$.\nThe support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.",
       "deps": [
-        "def:conical",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:moment-support-polynomial",
+        "lem:conical-moment-scaling",
+        "lem:scaled-moment-limits",
         "lem:taylor-two"
       ],
       "lean_names": [
@@ -1429,7 +1425,7 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/ConicalMoments.lean"
       ]
@@ -1473,11 +1469,9 @@
       "hypotheses_tex": "",
       "proof_tex": "The symmetric form $B=b_{2,1}$ is positive semidefinite,\n$\\operatorname{tr}B=m$, and $B(x,x)=|x|^2$ on the support.\nThe trace calculation is the radial Gaussian second moment. This statement\ndoes not require spectral choices.",
       "deps": [
-        "def:conical",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:conical-moments",
-        "lem:radial"
+        "lem:conical-support-covariance",
+        "lem:even-moment-positivity",
+        "lem:moment-second-total-trace"
       ],
       "lean_names": [
         "Preiss.conical_covariance_trace_support"
@@ -1489,7 +1483,7 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/ConicalMoments.lean"
       ]
@@ -4062,13 +4056,10 @@
       "hypotheses_tex": "",
       "proof_tex": "The exact radial identity $\\operatorname{tr}b_{2,s}=ms$ and M07 imply\n$\\operatorname{tr}b_2^{(2)}=0$.\nR03 and the first-moment expansion give\n$\\operatorname{tr}(b_2^{(2)}|V^\\perp)=8|b|^2\n=2\\|b_1^{(1)}\\|^2$.\nThese are separate, comparatively short lemmas.",
       "deps": [
-        "def:bilinear-trace",
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:radial",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-trace-operator"
       ],
       "lean_names": [
         "Preiss.trace_gaussianMomentForm_two",
@@ -4587,10 +4578,7 @@
       "hypotheses_tex": "",
       "proof_tex": "Under G02, assume the top-$m$ eigenspace has a support point within distance\n$\\delta$ of its $m$th unit eigenvector, where $0<\\delta<1/m$.\nIf $\\alpha_m<1$, the trace gives\n$\\alpha_i-1\\leq(m-1)(1-\\alpha_m)$ for $i<m$ and\n$\\alpha_i\\leq\\alpha_m$ for $i\\geq m$.\nThe support identity then gives\n$0\\leq(1-\\alpha_m)((m-1)^2\\delta^2-(1-\\delta)^2)<0$.\nThus $\\alpha_m\\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one\nand the rest zero. Hence support is contained in $V$ and $\\nu=\\sigma_V$.\nG03--G06 give the conical gap for all positive $m$ without the flawed\ntwo-dimensional shortcut in the original printed proof.",
       "deps": [
-        "def:conical",
-        "def:plane",
-        "lem:conical-covariance",
-        "lem:spectral-minimizing-plane"
+        "lem:quadratic-near-basis-rigidity"
       ],
       "lean_names": [
         "Preiss.conical_covariance_eq_projection_of_near_eigenvector"
@@ -8800,6 +8788,151 @@
         "Preiss/Tangent/Restriction.lean"
       ],
       "proposed_file": "Preiss/Tangent/Restriction.lean"
+    },
+    {
+      "id": "lem:normal-coordinate-identities",
+      "kind": "lemma",
+      "title": "Orthogonal representatives and normal-coordinate identities",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_orthogonal_representative",
+        "Preiss.normal_coordinates_of_quadratic_identity"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Geometry/NormalCoordinates.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/NormalCoordinates.lean"
+    },
+    {
+      "id": "lem:even-moment-positivity",
+      "kind": "lemma",
+      "title": "Even diagonal Gaussian moments are nonnegative",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_even_nonneg"
+      ],
+      "deps": [
+        "def:moments",
+        "lem:moment-form-evaluation"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "lem:conical-moment-scaling",
+      "kind": "lemma",
+      "title": "Exact moment homogeneity for conical measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_homogeneous_of_isConical"
+      ],
+      "deps": [
+        "def:conical",
+        "lem:moment-covariance"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/ConicalMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalMoments.lean"
+    },
+    {
+      "id": "lem:conical-support-covariance",
+      "kind": "lemma",
+      "title": "Conical covariance equals squared norm on the support",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.conical_covariance_eq_norm_sq_on_support"
+      ],
+      "deps": [
+        "lem:conical-moment-scaling",
+        "lem:moment-support-polynomial",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/ConicalMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalMoments.lean"
+    },
+    {
+      "id": "lem:moment-trace-operator",
+      "kind": "lemma",
+      "title": "The second-moment trace as a bounded linear functional",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.momentTraceCLM",
+        "Preiss.momentTraceCLM_apply",
+        "Preiss.momentTraceCLM_momentKernel"
+      ],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments",
+        "lem:bilinear-trace-basis"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentTrace.lean"
+    },
+    {
+      "id": "lem:gaussian-radial-second-moment",
+      "kind": "lemma",
+      "title": "Radial second Gaussian moment of a unit-uniform measure",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_norm_sq_gaussian_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-parameter-derivative",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentTrace.lean"
+    },
+    {
+      "id": "lem:ordered-trace-bounds",
+      "kind": "lemma",
+      "title": "Finite ordered trace bounds and extremizers",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.antitone_weighted_sum_le_initial_sum",
+        "Preiss.ordered_nonnegative_trace_cutoff_bounds",
+        "Preiss.ordered_nonnegative_trace_eq_initial_indicator"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/OrderedSums.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/OrderedSums.lean"
+    },
+    {
+      "id": "lem:quadratic-near-basis-rigidity",
+      "kind": "lemma",
+      "title": "Quadratic rigidity near a critical basis vector",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector"
+      ],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/QuadraticSpectralRigidity.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/QuadraticSpectralRigidity.lean"
     }
   ],
   "preiss_core": [
@@ -8907,9 +9040,7 @@
     "lem:complex-mgf-moment-determination",
     "lem:cone-graph",
     "lem:cone-projection-direction",
-    "lem:conical-covariance",
     "lem:conical-eigenvalue-rigidity",
-    "lem:conical-moments",
     "lem:continuous-ball-profile-boundary",
     "lem:countable-carrier",
     "lem:countable-coordinate-metric",
@@ -8988,6 +9119,7 @@
     "lem:gaussian-power-envelope",
     "lem:gaussian-projection-integrability",
     "lem:gaussian-quadratic-trace-bound",
+    "lem:gaussian-radial-second-moment",
     "lem:gaussian-tail-series-bound",
     "lem:gaussian-translation-series",
     "lem:gaussian-uniform-tails",
@@ -9034,12 +9166,14 @@
     "lem:moment-operator-growth",
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
+    "lem:moment-trace-operator",
     "lem:moving-set-measure-bounds",
     "lem:multilinear-symmetrization",
     "lem:nested-compact-approximation",
     "lem:nested-orthogonal-layers",
     "lem:nonnegative-integral-cover-bound",
     "lem:odd-coefficients-plane-zero",
+    "lem:ordered-trace-bounds",
     "lem:orthonormal-span-projection",
     "lem:packing-base-point",
     "lem:packing-contradiction",
@@ -9065,6 +9199,7 @@
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
     "lem:quadratic-exponential-even-derivatives",
+    "lem:quadratic-near-basis-rigidity",
     "lem:quantitative-upper-density-bound",
     "lem:radial",
     "lem:radius-power-density",

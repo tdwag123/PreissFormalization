@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "4ff272c8bb66b17867fa5f759e5691a9d0ac0813",
+  "source_revision": "f18a90fda64fe44e92de430a0b79aa95b7a98f06",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -759,6 +759,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.SymmetricMomentForm": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
     "Preiss.TwoSidedApproximation": {
       "project": "local",
       "kind": "def",
@@ -884,15 +896,14 @@
     "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.ae_exists_flat_tangent": {
       "project": "local",
@@ -930,6 +941,30 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_hasPositiveFiniteDensitiesAt_of_absolutelyContinuous": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/AbsoluteContinuous.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.ae_isTangentMeasure_iff_of_absolutelyContinuous": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Restriction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.ae_recenter_dimensionalTangent": {
       "project": "local",
@@ -1461,15 +1496,14 @@
     "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.countablyRectifiable_of_countable": {
       "project": "local",
@@ -1859,15 +1893,14 @@
     "Preiss.dist_support_lt_of_small_gaussian_plane_energy": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/SupportProximity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.dividedFlagMap": {
       "project": "local",
@@ -2282,18 +2315,29 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.exists_gaussianMoment_finite_jets": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentTaylorJets.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_gaussianMoment_taylor_coefficients": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentExpansion.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_goodBallSet_mem_of_closedBall_upper_bound": {
       "project": "local",
@@ -3031,6 +3075,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.flatOn_map_neg": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneSymmetry.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.flatOn_support": {
       "project": "local",
       "kind": "theorem",
@@ -3059,15 +3115,14 @@
     "Preiss.flat_gaussianMoment_odd": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatMoments.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.flat_of_flat_at_infinity": {
       "project": "local",
@@ -3348,6 +3403,18 @@
       "kernel_status": "proved"
     },
     "Preiss.gaussianMomentForm_dilate": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
@@ -3948,6 +4015,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.integrable_gaussian_planeEnergy_of_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianPlaneEnergy.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integrable_gaussian_polynomialFeature": {
       "project": "local",
       "kind": "theorem",
@@ -4375,15 +4454,14 @@
     "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.isRectifiableMeasure_of_countable_restrict": {
       "project": "local",
@@ -4810,15 +4888,26 @@
     "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.measure_projection_eq_zero_of_uniformLower_and_weakApproximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape": {
       "project": "local",
@@ -5934,11 +6023,35 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/WeightedProjectionSupport.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.symmetricContinuousMultilinearSubmodule": {
       "project": "local",
       "kind": "def",
       "source_status": "definition",
       "path": "Preiss/Analysis/MultilinearSymmetrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.symmetricGaussianMomentForm": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentForms.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6488,6 +6601,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.unitFlat_map_neg": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneSymmetry.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

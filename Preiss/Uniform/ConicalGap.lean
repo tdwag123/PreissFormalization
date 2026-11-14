@@ -1,5 +1,6 @@
 module
 public import Preiss.Uniform.Defs
+public import Preiss.Analysis.QuadraticSpectralRigidity
 public import Preiss.Geometry.FlatMeasure
 public import Mathlib.MeasureTheory.Integral.Bochner.Basic
 
@@ -18,7 +19,9 @@ theorem conical_covariance_eq_projection_of_near_eigenvector
     (i : Fin n) (hi : i.val + 1 = m) (δ : ℝ) (hδ : 0 < δ) (hδm : δ < 1 / (m : ℝ))
     (hnear : ∃ x ∈ S, dist x (e i) < δ) :
     ∀ j, α j = if j.val < m then 1 else 0 := by
-  sorry
+  obtain ⟨x, hx, hnear⟩ := hnear
+  exact ordered_quadratic_identity_rigid_of_near_basis_vector hm e α horder hα htrace
+    i hi δ hδ hδm x (hS x hx) hnear
 
 theorem conical_flatness_gap (hm : 0 < m) (hmn : m ≤ n) :
     ∃ ε : ℝ, 0 < ε ∧ ∀ (ν : Measure (Euclidean n)), IsUnitUniform m ν →

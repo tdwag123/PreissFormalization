@@ -2875,6 +2875,143 @@
       ],
       "used_by": [],
       "verification": "Proof supplied; full actual-import CI pending. Density inheritance independently passed local kernel audit."
+    },
+    {
+      "id": "lem:normal-coordinate-identities",
+      "kind": "lemma",
+      "title": "Orthogonal representatives and normal-coordinate identities",
+      "lean_names": [
+        "Preiss.exists_orthogonal_representative",
+        "Preiss.normal_coordinates_of_quadratic_identity"
+      ],
+      "file": "Preiss/Geometry/NormalCoordinates.lean",
+      "statement_tex": "A continuous linear functional vanishing on a closed subspace has a representing vector in its orthogonal complement. If $2\\langle b,x\\rangle+\\lVert P_Vx\\rVert^2=\\lVert x\\rVert^2$ with $b\\perp V$, then $\\lVert x-P_Vx\\rVert^2=2\\langle b,x\\rangle$, $\\lVert x-P_Vx-b\\rVert=\\lVert b\\rVert$, and $\\lVert x-P_Vx\\rVert\\leq2\\lVert b\\rVert$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:even-moment-positivity",
+      "kind": "lemma",
+      "title": "Even diagonal Gaussian moments are nonnegative",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_even_nonneg"
+      ],
+      "file": "Preiss/Uniform/MomentForms.lean",
+      "statement_tex": "Every even diagonal Gaussian moment is nonnegative, for any measure and real Gaussian parameter. The statement also covers the nonintegrable case in the Bochner integral definition.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:moments",
+        "lem:moment-form-evaluation"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-moment-scaling",
+      "kind": "lemma",
+      "title": "Exact moment homogeneity for conical measures",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_homogeneous_of_isConical"
+      ],
+      "file": "Preiss/Uniform/ConicalMoments.lean",
+      "statement_tex": "For every conical measure, its degree-$k$ Gaussian multilinear moment at positive parameter $s$ equals $s^{k/2}$ times its moment at parameter one. No uniformity assumption is required.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:conical",
+        "lem:moment-covariance"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-support-covariance",
+      "kind": "lemma",
+      "title": "Conical covariance equals squared norm on the support",
+      "lean_names": [
+        "Preiss.conical_covariance_eq_norm_sq_on_support"
+      ],
+      "file": "Preiss/Uniform/ConicalMoments.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform conical measure, its second Gaussian moment at parameter one equals squared norm at every support point.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:conical-moment-scaling",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two",
+        "lem:moment-support-polynomial"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:moment-trace-operator",
+      "kind": "lemma",
+      "title": "The second-moment trace as a bounded linear functional",
+      "lean_names": [
+        "Preiss.momentTraceCLM",
+        "Preiss.momentTraceCLM_apply",
+        "Preiss.momentTraceCLM_momentKernel"
+      ],
+      "file": "Preiss/Uniform/MomentTrace.lean",
+      "statement_tex": "The finite sum of diagonal evaluations defines a continuous linear functional on second moment forms. It equals the associated bilinear trace and maps the moment kernel at $z$ to $\\lVert z\\rVert^2$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:bilinear-trace-basis",
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-radial-second-moment",
+      "kind": "lemma",
+      "title": "Radial second Gaussian moment of a unit-uniform measure",
+      "lean_names": [
+        "Preiss.integral_norm_sq_gaussian_unitUniform"
+      ],
+      "file": "Preiss/Uniform/MomentTrace.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform measure and $s>0$, the integral of $\\lVert z\\rVert^2e^{-s\\lVert z\\rVert^2}$ is $m/(2s)$ times its Gaussian mass. Differentiate the explicit Gaussian mass formula under the integral.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:gaussian-parameter-derivative"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:ordered-trace-bounds",
+      "kind": "lemma",
+      "title": "Finite ordered trace bounds and extremizers",
+      "lean_names": [
+        "Preiss.ordered_nonnegative_trace_cutoff_bounds",
+        "Preiss.ordered_nonnegative_trace_eq_initial_indicator",
+        "Preiss.antitone_weighted_sum_le_initial_sum"
+      ],
+      "file": "Preiss/Analysis/OrderedSums.lean",
+      "statement_tex": "An antitone nonnegative tuple of total $m$ has its $m$-th entry at most one; equality forces the indicator of its first $m$ entries. For any antitone real tuple and weights in $[0,1]$ summing to $m$, the weighted sum is at most the sum of its first $m$ entries.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:quadratic-near-basis-rigidity",
+      "kind": "lemma",
+      "title": "Quadratic rigidity near a critical basis vector",
+      "lean_names": [
+        "Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector"
+      ],
+      "file": "Preiss/Analysis/QuadraticSpectralRigidity.lean",
+      "statement_tex": "In a real inner-product space with a finite orthonormal basis, an ordered nonnegative spectrum of total $m$ is the rank-$m$ indicator spectrum if its quadratic identity holds at a point within distance $\\delta<1/m$ of the $m$-th basis vector.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

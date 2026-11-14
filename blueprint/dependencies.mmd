@@ -395,6 +395,14 @@ flowchart LR
   lem_gaussian_plane_energy_integrable["Gaussian plane energy is integrable for unit-uniform measures"]
   lem_absolute_continuity_density_bounds["Density bounds inherited under absolute continuity"]
   lem_absolute_continuity_tangent_cones["Tangent cones agree under finite absolute continuity"]
+  lem_normal_coordinate_identities["Orthogonal representatives and normal-coordinate identities"]
+  lem_even_moment_positivity["Even diagonal Gaussian moments are nonnegative"]
+  lem_conical_moment_scaling["Exact moment homogeneity for conical measures"]
+  lem_conical_support_covariance["Conical covariance equals squared norm on the support"]
+  lem_moment_trace_operator["The second-moment trace as a bounded linear functional"]
+  lem_gaussian_radial_second_moment["Radial second Gaussian moment of a unit-uniform measure"]
+  lem_ordered_trace_bounds["Finite ordered trace bounds and extremizers"]
+  lem_quadratic_near_basis_rigidity["Quadratic rigidity near a critical basis vector"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -537,12 +545,8 @@ flowchart LR
   lem_unit_flat_support_regularity --> lem_small_energy_no_holes
   lem_vague_support_approximation --> lem_small_energy_no_holes
   lem_weighted_energy_limit_support --> lem_small_energy_no_holes
-  def_conical --> lem_conical_moments
-  def_moment_coefficients --> lem_conical_moments
-  def_moments --> lem_conical_moments
-  def_unit_uniform --> lem_conical_moments
-  lem_moment_covariance --> lem_conical_moments
-  lem_moment_support_polynomial --> lem_conical_moments
+  lem_conical_moment_scaling --> lem_conical_moments
+  lem_scaled_moment_limits --> lem_conical_moments
   lem_taylor_two --> lem_conical_moments
   def_dimensional_blowup --> lem_blowdown_moment_limits
   def_moment_coefficients --> lem_blowdown_moment_limits
@@ -551,11 +555,9 @@ flowchart LR
   lem_moment_covariance --> lem_blowdown_moment_limits
   lem_radial --> lem_blowdown_moment_limits
   lem_scaled_moment_limits --> lem_blowdown_moment_limits
-  def_conical --> lem_conical_covariance
-  def_moments --> lem_conical_covariance
-  def_unit_uniform --> lem_conical_covariance
-  lem_conical_moments --> lem_conical_covariance
-  lem_radial --> lem_conical_covariance
+  lem_conical_support_covariance --> lem_conical_covariance
+  lem_even_moment_positivity --> lem_conical_covariance
+  lem_moment_second_total_trace --> lem_conical_covariance
   def_lipschitz_graph --> lem_graph_parametrization
   def_cone --> lem_cone_graph
   lem_domain_extension --> lem_cone_graph
@@ -860,13 +862,10 @@ flowchart LR
   def_moment_coefficients --> lem_moment_coefficient_vanishing
   lem_asymptotic_taylor_vanishing --> lem_moment_coefficient_vanishing
   lem_moment_operator_growth --> lem_moment_coefficient_vanishing
-  def_bilinear_trace --> lem_moment_second_total_trace
   def_moment_coefficients --> lem_moment_second_total_trace
-  def_moments --> lem_moment_second_total_trace
-  def_unit_uniform --> lem_moment_second_total_trace
-  lem_bilinear_trace_basis --> lem_moment_second_total_trace
-  lem_radial --> lem_moment_second_total_trace
-  lem_taylor_two --> lem_moment_second_total_trace
+  lem_asymptotic_taylor_vanishing --> lem_moment_second_total_trace
+  lem_gaussian_radial_second_moment --> lem_moment_second_total_trace
+  lem_moment_trace_operator --> lem_moment_second_total_trace
   def_moment_coefficients --> lem_moment_support_polynomial
   lem_asymptotic_taylor_vanishing --> lem_moment_support_polynomial
   lem_moment_coefficient_vanishing --> lem_moment_support_polynomial
@@ -959,10 +958,7 @@ flowchart LR
   lem_moment_determination --> thm_unique_infinity
   lem_vague_countable_metric --> thm_unique_infinity
   lem_vague_gaussian_polynomials --> thm_unique_infinity
-  def_conical --> lem_conical_eigenvalue_rigidity
-  def_plane --> lem_conical_eigenvalue_rigidity
-  lem_conical_covariance --> lem_conical_eigenvalue_rigidity
-  lem_spectral_minimizing_plane --> lem_conical_eigenvalue_rigidity
+  lem_quadratic_near_basis_rigidity --> lem_conical_eigenvalue_rigidity
   def_conical --> cor_conical
   def_tangent_at_infinity --> cor_conical
   def_unit_uniform --> cor_conical
@@ -1509,3 +1505,17 @@ flowchart LR
   def_positive_density --> lem_absolute_continuity_density_bounds
   mathlib_besicovitch_differentiation --> lem_absolute_continuity_density_bounds
   thm_matching --> lem_absolute_continuity_tangent_cones
+  def_moments --> lem_even_moment_positivity
+  lem_moment_form_evaluation --> lem_even_moment_positivity
+  def_conical --> lem_conical_moment_scaling
+  lem_moment_covariance --> lem_conical_moment_scaling
+  lem_conical_moment_scaling --> lem_conical_support_covariance
+  lem_moment_support_polynomial --> lem_conical_support_covariance
+  lem_scaled_moment_limits --> lem_conical_support_covariance
+  lem_taylor_two --> lem_conical_support_covariance
+  def_bilinear_trace --> lem_moment_trace_operator
+  def_moments --> lem_moment_trace_operator
+  lem_bilinear_trace_basis --> lem_moment_trace_operator
+  lem_gaussian_parameter_derivative --> lem_gaussian_radial_second_moment
+  lem_moment_norm_bound --> lem_gaussian_radial_second_moment
+  lem_ordered_trace_bounds --> lem_quadratic_near_basis_rigidity

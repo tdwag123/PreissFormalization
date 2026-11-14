@@ -1424,19 +1424,15 @@
       "id": "lem:conical-moments",
       "title": "Homogeneity and parity of conical moments",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.conical_gaussianMoment_homogeneous",
         "Preiss.conical_gaussianMoment_odd"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:moment-support-polynomial",
+        "lem:conical-moment-scaling",
+        "lem:scaled-moment-limits",
         "lem:taylor-two"
       ],
       "proof_dependencies": [],
@@ -1469,23 +1465,19 @@
       "id": "lem:conical-covariance",
       "title": "Positive covariance form, trace and support identity",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.conical_covariance_trace_support"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:conical-moments",
-        "lem:radial"
+        "lem:conical-support-covariance",
+        "lem:even-moment-positivity",
+        "lem:moment-second-total-trace"
       ],
       "proof_dependencies": [],
       "expanded_line": 1571,
-      "unfinished_dependencies": [
-        "lem:conical-moments"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:graph-parametrization",
@@ -3310,20 +3302,17 @@
       "id": "lem:moment-second-total-trace",
       "title": "Vanishing total second Taylor trace",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.trace_gaussianMomentForm_two",
         "Preiss.trace_secondMomentCoefficient_eq_zero"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:bilinear-trace",
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:radial",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-trace-operator"
       ],
       "proof_dependencies": [],
       "expanded_line": 3888,
@@ -3674,23 +3663,17 @@
       "id": "lem:conical-eigenvalue-rigidity",
       "title": "Elementary eigenvalue rigidity from one nearby support point",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.conical_covariance_eq_projection_of_near_eigenvector"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:plane",
-        "lem:conical-covariance",
-        "lem:spectral-minimizing-plane"
+        "lem:quadratic-near-basis-rigidity"
       ],
       "proof_dependencies": [],
       "expanded_line": 4327,
-      "unfinished_dependencies": [
-        "lem:conical-covariance",
-        "lem:spectral-minimizing-plane"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "cor:conical",
@@ -3738,7 +3721,6 @@
       "proof_dependencies": [],
       "expanded_line": 4378,
       "unfinished_dependencies": [
-        "lem:conical-eigenvalue-rigidity",
         "lem:spectral-minimizing-plane"
       ]
     },
@@ -4291,7 +4273,6 @@
       "proof_dependencies": [],
       "expanded_line": 4950,
       "unfinished_dependencies": [
-        "lem:moment-second-total-trace",
         "lem:rigidity-forms-exist",
         "lem:rigidity-normal-vector-exists",
         "lem:trace-rigidity",
@@ -7437,6 +7418,143 @@
       "proof_dependencies": [],
       "expanded_line": 6707,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:normal-coordinate-identities",
+      "title": "Orthogonal representatives and normal-coordinate identities",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_orthogonal_representative",
+        "Preiss.normal_coordinates_of_quadratic_identity"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6715,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:even-moment-positivity",
+      "title": "Even diagonal Gaussian moments are nonnegative",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_even_nonneg"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:moments",
+        "lem:moment-form-evaluation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6722,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-moment-scaling",
+      "title": "Exact moment homogeneity for conical measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_homogeneous_of_isConical"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:conical",
+        "lem:moment-covariance"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6730,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-support-covariance",
+      "title": "Conical covariance equals squared norm on the support",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.conical_covariance_eq_norm_sq_on_support"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:conical-moment-scaling",
+        "lem:moment-support-polynomial",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6738,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:moment-trace-operator",
+      "title": "The second-moment trace as a bounded linear functional",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.momentTraceCLM",
+        "Preiss.momentTraceCLM_apply",
+        "Preiss.momentTraceCLM_momentKernel"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:bilinear-trace",
+        "def:moments",
+        "lem:bilinear-trace-basis"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6746,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-radial-second-moment",
+      "title": "Radial second Gaussian moment of a unit-uniform measure",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integral_norm_sq_gaussian_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-parameter-derivative",
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6754,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:ordered-trace-bounds",
+      "title": "Finite ordered trace bounds and extremizers",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.antitone_weighted_sum_le_initial_sum",
+        "Preiss.ordered_nonnegative_trace_cutoff_bounds",
+        "Preiss.ordered_nonnegative_trace_eq_initial_indicator"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6762,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:quadratic-near-basis-rigidity",
+      "title": "Quadratic rigidity near a critical basis vector",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:ordered-trace-bounds"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6769,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -7504,6 +7622,8 @@
     "lem:fivefold-image-covering",
     "lem:analytic-finite-jets",
     "def:symmetric-multilinear",
+    "lem:normal-coordinate-identities",
+    "lem:ordered-trace-bounds",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -7583,6 +7703,7 @@
     "lem:dense-compact-tests-exist",
     "lem:proper-map-regularity",
     "lem:multilinear-symmetrization",
+    "lem:quadratic-near-basis-rigidity",
     "gmt:goodsets",
     "lem:upper-density-localization",
     "lem:radius-power-density",
@@ -7640,6 +7761,7 @@
     "lem:hull-support-approximation",
     "lem:dimensional-tangent-origin-ball-law",
     "def:rigidity-normal-vector",
+    "lem:even-moment-positivity",
     "def:symmetric-moment-form",
     "lem:reflection-odd-gaussian-moments",
     "lem:dimensional-tangent-metric-separation",
@@ -7652,10 +7774,12 @@
     "lem:gaussian-feature-integrability",
     "lem:kernel-flag-layer-grading",
     "lem:feature-moment-vanishing",
+    "lem:moment-trace-operator",
     "lem:feature-multilinear-block",
     "lem:gaussian-ball-power-parameter",
     "lem:real-gaussian-even-moments",
     "def:vague-metrization-from-tests",
+    "lem:conical-eigenvalue-rigidity",
     "gmt:uniform-density-adapter",
     "lem:density-bounds-good-set",
     "gmt:hausdorff-density-lower",
@@ -7710,6 +7834,7 @@
     "lem:dimensional-tangent-operations",
     "lem:dimensional-moving-centers",
     "lem:weighted-energy-limit-support",
+    "lem:conical-moment-scaling",
     "lem:plane-scaling",
     "gmt:uniform-tangents",
     "lem:finite-piece-transfer",
@@ -7732,6 +7857,7 @@
     "lem:gaussian-translation-series",
     "lem:moment-operator-growth",
     "lem:gaussian-plane-energy-integrable",
+    "lem:gaussian-radial-second-moment",
     "lem:gaussian-quadratic-trace-bound",
     "lem:vague-diagonal",
     "lem:uniform-near-support-compactness",
@@ -7755,6 +7881,7 @@
     "lem:divided-operator-positive-inverse",
     "lem:taylor-one",
     "lem:moment-coefficient-vanishing",
+    "lem:moment-second-total-trace",
     "lem:gaussian-bilinear-contraction",
     "lem:tangent-closed",
     "lem:dimensional-tangent-closed",
@@ -7808,26 +7935,25 @@
     "lem:taylor-two",
     "lem:rigidity-forms-exist",
     "thm:flat-pseudotangent",
+    "thm:gap",
     "thm:mm-measure",
     "lem:conical-moments",
-    "lem:moment-second-total-trace",
     "lem:rigidity-mixed-gaussian-limit",
     "lem:moment-normal-trace",
     "lem:rigidity-cubic-vanishing",
+    "lem:conical-support-covariance",
     "lem:flat-tangent-from-uniform-recentering",
+    "lem:flatness-gap-cutoff",
     "thm:rectifiable-iff-flat",
-    "lem:conical-covariance",
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-fourth-support-identity",
+    "lem:conical-covariance",
     "thm:part-a",
-    "lem:conical-eigenvalue-rigidity",
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
-    "thm:gap",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-omega-reproducing",
-    "lem:flatness-gap-cutoff",
     "lem:rigidity-integral-quadratic-bound",
     "lem:trace-rigidity",
     "thm:infinity-rigidity",

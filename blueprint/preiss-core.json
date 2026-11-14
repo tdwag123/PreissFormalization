@@ -1245,29 +1245,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:conical-moments",
-      "title": "Homogeneity and parity of conical moments",
-      "kind": "lemma",
-      "status": "unproved_statement",
-      "lean": [
-        "Preiss.conical_gaussianMoment_homogeneous",
-        "Preiss.conical_gaussianMoment_odd"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:conical",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:moment-support-polynomial",
-        "lem:taylor-two"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 1526,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:blowdown-moment-limits",
       "title": "All Gaussian polynomial moments of blow-downs have limits",
       "kind": "lemma",
@@ -1288,28 +1265,6 @@
       "proof_dependencies": [],
       "expanded_line": 1548,
       "unfinished_dependencies": []
-    },
-    {
-      "id": "lem:conical-covariance",
-      "title": "Positive covariance form, trace and support identity",
-      "kind": "lemma",
-      "status": "unproved_statement",
-      "lean": [
-        "Preiss.conical_covariance_trace_support"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:conical",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:conical-moments",
-        "lem:radial"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 1571,
-      "unfinished_dependencies": [
-        "lem:conical-moments"
-      ]
     },
     {
       "id": "lem:graph-parametrization",
@@ -3019,20 +2974,17 @@
       "id": "lem:moment-second-total-trace",
       "title": "Vanishing total second Taylor trace",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.trace_gaussianMomentForm_two",
         "Preiss.trace_secondMomentCoefficient_eq_zero"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:bilinear-trace",
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:radial",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-trace-operator"
       ],
       "proof_dependencies": [],
       "expanded_line": 3888,
@@ -3362,23 +3314,17 @@
       "id": "lem:conical-eigenvalue-rigidity",
       "title": "Elementary eigenvalue rigidity from one nearby support point",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.conical_covariance_eq_projection_of_near_eigenvector"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:plane",
-        "lem:conical-covariance",
-        "lem:spectral-minimizing-plane"
+        "lem:quadratic-near-basis-rigidity"
       ],
       "proof_dependencies": [],
       "expanded_line": 4327,
-      "unfinished_dependencies": [
-        "lem:conical-covariance",
-        "lem:spectral-minimizing-plane"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "cor:conical",
@@ -3426,7 +3372,6 @@
       "proof_dependencies": [],
       "expanded_line": 4378,
       "unfinished_dependencies": [
-        "lem:conical-eigenvalue-rigidity",
         "lem:spectral-minimizing-plane"
       ]
     },
@@ -3979,7 +3924,6 @@
       "proof_dependencies": [],
       "expanded_line": 4950,
       "unfinished_dependencies": [
-        "lem:moment-second-total-trace",
         "lem:rigidity-forms-exist",
         "lem:rigidity-normal-vector-exists",
         "lem:trace-rigidity",
@@ -6771,6 +6715,75 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6707,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:moment-trace-operator",
+      "title": "The second-moment trace as a bounded linear functional",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.momentTraceCLM",
+        "Preiss.momentTraceCLM_apply",
+        "Preiss.momentTraceCLM_momentKernel"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:bilinear-trace",
+        "def:moments",
+        "lem:bilinear-trace-basis"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6746,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-radial-second-moment",
+      "title": "Radial second Gaussian moment of a unit-uniform measure",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integral_norm_sq_gaussian_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-parameter-derivative",
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6754,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:ordered-trace-bounds",
+      "title": "Finite ordered trace bounds and extremizers",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.antitone_weighted_sum_le_initial_sum",
+        "Preiss.ordered_nonnegative_trace_cutoff_bounds",
+        "Preiss.ordered_nonnegative_trace_eq_initial_indicator"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6762,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:quadratic-near-basis-rigidity",
+      "title": "Quadratic rigidity near a critical basis vector",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:ordered-trace-bounds"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6769,
       "unfinished_dependencies": []
     }
   ]

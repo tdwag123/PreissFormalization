@@ -1,0 +1,23 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:moment-second-total-trace": [
+      "lem:moment-trace-operator",
+      "lem:gaussian-radial-second-moment",
+      "lem:asymptotic-taylor-vanishing",
+      "def:moment-coefficients"
+    ],
+    "lem:conical-moments": [
+      "lem:conical-moment-scaling",
+      "lem:scaled-moment-limits",
+      "lem:taylor-two"
+    ],
+    "lem:conical-covariance": [
+      "lem:even-moment-positivity",
+      "lem:moment-second-total-trace",
+      "lem:conical-support-covariance"
+    ],
+    "lem:conical-eigenvalue-rigidity": [
+      "lem:quadratic-near-basis-rigidity"
+    ]
+  }
+}

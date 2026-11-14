@@ -35,7 +35,7 @@ theorem exists_blowdown_gaussianMoment_limit
         tendsto_inv_sq_atTop_nhdsGT_zero).congr' ?_⟩
     filter_upwards [eventually_gt_atTop (0 : ℝ)] with r hr
     rw [gaussianMomentForm_dilate (m := m) μ (2*j) 1 r hr,one_div]
-    simp only [inv_pow,inv_inv,pow_mul]
+    simp only [Function.comp_apply,inv_pow,inv_inv,pow_mul]
   · refine ⟨0,((gaussianMoment_scaled_odd_limit μ hm hμ B hB k ho).comp
       tendsto_inv_sq_atTop_nhdsGT_zero).congr' ?_⟩
     filter_upwards [eventually_gt_atTop (0 : ℝ)] with r hr
@@ -46,7 +46,7 @@ theorem exists_blowdown_gaussianMoment_limit
         _ = r^((-2 : ℝ)*(-(k : ℝ)/2)) := (Real.rpow_mul hr.le _ _).symm
         _ = r^(k : ℝ) := by congr 1; ring
         _ = _ := Real.rpow_natCast _ _
-    rw [hp]
+    simp only [Function.comp_apply, hp]
 
 theorem gaussian_integral_product_eq_moment
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
