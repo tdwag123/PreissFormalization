@@ -1296,8 +1296,7 @@
       "kind": "lemma",
       "status": "unproved_statement",
       "lean": [
-        "Preiss.flat_gaussianMoment_diagonal",
-        "Preiss.flat_gaussianMoment_odd"
+        "Preiss.flat_gaussianMoment_diagonal"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -1403,19 +1402,19 @@
       "id": "lem:small-energy-no-holes",
       "title": "Small Gaussian distance energy forces plane support proximity",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.dist_support_lt_of_small_gaussian_plane_energy"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:plane",
-        "def:unit-uniform",
-        "lem:grassmannian",
+        "lem:gaussian-plane-energy-integrable",
+        "lem:plane-projection-subsequence",
         "lem:plane-supported-uniform-flat",
         "lem:uniform-compactness",
-        "lem:vague-gaussian-polynomials",
-        "lem:vague-support-approximation"
+        "lem:unit-flat-support-regularity",
+        "lem:vague-support-approximation",
+        "lem:weighted-energy-limit-support"
       ],
       "proof_dependencies": [],
       "expanded_line": 1494,
@@ -1442,9 +1441,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 1526,
-      "unfinished_dependencies": [
-        "lem:taylor-two"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:blowdown-moment-limits",
@@ -2471,17 +2468,14 @@
       "id": "lem:finite-piece-transfer",
       "title": "Transfer density bounds and flat tangents to finite pieces",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "gmt:finite-restriction",
-        "gmt:restriction-tangents",
-        "lem:finite-pieces",
-        "mathlib:besicovitch-differentiation",
-        "thm:matching"
+        "lem:absolute-continuity-density-bounds",
+        "lem:absolute-continuity-tangent-cones"
       ],
       "proof_dependencies": [],
       "expanded_line": 2795,
@@ -2558,17 +2552,15 @@
       "id": "lem:pure-wla-null-projection",
       "title": "Pure weakly approximable sets have every-plane null projection",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "lem:projected-tube-slab-bound",
-        "lem:pure-cone-escape",
-        "lem:tube-support-upgrade",
-        "lem:uniform-compact-selection",
-        "mathlib:besicovitch-cover"
+        "lem:closed-weak-approximation-good-set",
+        "lem:fixed-lower-density-projection-null",
+        "lem:weak-approximation-good-exhaustion"
       ],
       "proof_dependencies": [],
       "expanded_line": 2888,
@@ -2632,28 +2624,28 @@
       "id": "thm:mm-set",
       "title": "Marstrand-Mattila set criterion",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
+        "lem:carrier-closure",
         "lem:decomposition",
+        "lem:packing-base-point",
         "lem:packing-contradiction",
         "lem:pure-wla-null-projection",
         "lem:weak-approximation-restrict-ae"
       ],
       "proof_dependencies": [],
       "expanded_line": 2987,
-      "unfinished_dependencies": [
-        "lem:pure-wla-null-projection"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "thm:mm-measure",
       "title": "Marstrand-Mattila measure criterion",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents"
       ],
@@ -2661,15 +2653,13 @@
       "statement_dependencies": [
         "lem:carrier-calculus",
         "lem:finite-piece-transfer",
+        "lem:finite-pieces",
         "lem:flat-to-approximation",
         "thm:mm-set"
       ],
       "proof_dependencies": [],
       "expanded_line": 3008,
-      "unfinished_dependencies": [
-        "lem:finite-piece-transfer",
-        "thm:mm-set"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:gaussian-polynomial-integrable",
@@ -3282,7 +3272,7 @@
       "id": "lem:taylor-two",
       "title": "Coherent operator-norm moment Taylor coefficients",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_gaussianMoment_taylor_coefficients",
         "Preiss.gaussianMomentCoefficient_unique"
@@ -3290,14 +3280,9 @@
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
         "lem:asymptotic-taylor-vanishing",
-        "lem:feature-moment-vanishing",
-        "lem:feature-norm-functionals",
-        "lem:graded-analytic-projection",
-        "lem:moment-feature-remainder",
-        "lem:moment-norm-bound"
+        "lem:coherent-finite-jets",
+        "lem:finite-moment-taylor-jets"
       ],
       "proof_dependencies": [],
       "expanded_line": 3828,
@@ -3342,9 +3327,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 3888,
-      "unfinished_dependencies": [
-        "lem:taylor-two"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:moment-support-polynomial",
@@ -3756,7 +3739,6 @@
       "expanded_line": 4378,
       "unfinished_dependencies": [
         "lem:conical-eigenvalue-rigidity",
-        "lem:small-energy-no-holes",
         "lem:spectral-minimizing-plane"
       ]
     },
@@ -3922,8 +3904,7 @@
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:flat-infinity-moments",
-        "lem:taylor-two"
+        "lem:flat-infinity-moments"
       ]
     },
     {
@@ -3950,7 +3931,6 @@
       "expanded_line": 4574,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "lem:taylor-two",
         "lem:uniform-cylinder-identity"
       ]
     },
@@ -4005,7 +3985,6 @@
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:odd-coefficients-plane-zero",
-        "lem:taylor-two",
         "lem:uniform-cylinder-identity"
       ]
     },
@@ -4507,7 +4486,6 @@
       "unfinished_dependencies": [
         "lem:excess-dimension",
         "lem:uniform-adapter",
-        "thm:mm-measure",
         "thm:part-a",
         "thm:part-b"
       ]
@@ -4755,8 +4733,7 @@
       "proof_dependencies": [],
       "expanded_line": 5443,
       "unfinished_dependencies": [
-        "cor:rectifiable-tangent-plane",
-        "thm:mm-measure"
+        "cor:rectifiable-tangent-plane"
       ]
     },
     {
@@ -7285,6 +7262,181 @@
       "proof_dependencies": [],
       "expanded_line": 6627,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "def:symmetric-moment-form",
+      "title": "Gaussian moments as elements of the symmetric-form submodule",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.SymmetricMomentForm",
+        "Preiss.symmetricGaussianMomentForm"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:moments",
+        "def:symmetric-multilinear",
+        "lem:moment-form-symmetry"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6635,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:finite-moment-taylor-jets",
+      "title": "Finite Gaussian moment jets in the symmetric-form space",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_gaussianMoment_finite_jets"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:symmetric-feature-recovery",
+        "def:symmetric-moment-form",
+        "lem:analytic-finite-jets",
+        "lem:asymptotic-taylor-vanishing",
+        "lem:feature-moment-analytic-approximation",
+        "lem:feature-moment-exact-recovery"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6643,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-measure-reflection",
+      "title": "Reflection invariance of flat measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flatOn_map_neg",
+        "Preiss.unitFlat_map_neg"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:plane-hausdorff"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6651,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:reflection-odd-gaussian-moments",
+      "title": "Odd Gaussian moments of reflection-invariant measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:moments",
+        "lem:moment-kernel-calculus"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6659,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-gaussian-odd-moments",
+      "title": "Odd Gaussian moments of flat measures vanish",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flat_gaussianMoment_odd"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:flat-measure-reflection",
+        "lem:reflection-odd-gaussian-moments"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6667,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:fixed-lower-density-projection-null",
+      "title": "Projection nullness with fixed lower ball mass",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.measure_projection_eq_zero_of_uniformLower_and_weakApproximation"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:compact-uniform-tubes",
+        "lem:pure-cone-escape",
+        "lem:uniform-tube-projection-cover"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6675,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:weighted-energy-limit-support",
+      "title": "Vanishing weighted projection energy controls the vague-limit support",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:vague-projection-energy"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6683,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-plane-energy-integrable",
+      "title": "Gaussian plane energy is integrable for unit-uniform measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_gaussian_planeEnergy_of_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6691,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:absolute-continuity-density-bounds",
+      "title": "Density bounds inherited under absolute continuity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.ae_hasPositiveFiniteDensitiesAt_of_absolutelyContinuous"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:positive-density",
+        "mathlib:besicovitch-differentiation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6699,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:absolute-continuity-tangent-cones",
+      "title": "Tangent cones agree under finite absolute continuity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.ae_isTangentMeasure_iff_of_absolutelyContinuous"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "thm:matching"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6707,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -7434,6 +7586,7 @@
     "gmt:goodsets",
     "lem:upper-density-localization",
     "lem:radius-power-density",
+    "lem:absolute-continuity-density-bounds",
     "lem:density-bridge",
     "gmt:content-density",
     "gmt:hausdorff-density-upper",
@@ -7467,6 +7620,7 @@
     "lem:lipschitz-null-image",
     "lem:graph-affine-area",
     "lem:flat-measure-regularity",
+    "lem:flat-measure-reflection",
     "lem:flat-positive-scalar",
     "def:first-crossing-data",
     "lem:flatness-basic-nonneg",
@@ -7486,6 +7640,8 @@
     "lem:hull-support-approximation",
     "lem:dimensional-tangent-origin-ball-law",
     "def:rigidity-normal-vector",
+    "def:symmetric-moment-form",
+    "lem:reflection-odd-gaussian-moments",
     "lem:dimensional-tangent-metric-separation",
     "lem:recenter-nonzero",
     "lem:weak-approximation-scale-transfer",
@@ -7515,6 +7671,7 @@
     "gmt:normalized-tangent",
     "gmt:mattila-14-7-4",
     "lem:tangent-existence",
+    "lem:absolute-continuity-tangent-cones",
     "gmt:mattila-14-7-1",
     "lem:lower-ball-hausdorff-bound",
     "lem:absolute-continuity",
@@ -7537,6 +7694,7 @@
     "lem:zero-dimension",
     "lem:homogeneous-energy-radial",
     "def:rigidity-omega",
+    "lem:flat-gaussian-odd-moments",
     "lem:gaussian-uniform-tails",
     "lem:gaussian-parameter-derivative",
     "lem:moment-determination",
@@ -7551,8 +7709,10 @@
     "lem:uniform-compactness",
     "lem:dimensional-tangent-operations",
     "lem:dimensional-moving-centers",
+    "lem:weighted-energy-limit-support",
     "lem:plane-scaling",
     "gmt:uniform-tangents",
+    "lem:finite-piece-transfer",
     "thm:uniform-upstream",
     "lem:lower-ball-restrict-comparison",
     "lem:pure-basic",
@@ -7571,6 +7731,7 @@
     "lem:feature-moment-exact-recovery",
     "lem:gaussian-translation-series",
     "lem:moment-operator-growth",
+    "lem:gaussian-plane-energy-integrable",
     "lem:gaussian-quadratic-trace-bound",
     "lem:vague-diagonal",
     "lem:uniform-near-support-compactness",
@@ -7606,7 +7767,7 @@
     "lem:hyperplane-tangent-lineage",
     "lem:excess-dimension",
     "lem:finite-pieces",
-    "lem:pure-wla-null-projection",
+    "lem:fixed-lower-density-projection-null",
     "lem:projection-hole-cover",
     "lem:flatness-radius-continuous",
     "lem:graded-analytic-projection",
@@ -7619,11 +7780,10 @@
     "lem:tangent-ray",
     "lem:dimensional-tangent-compactness",
     "gmt:uniform-full-dimension",
-    "lem:finite-piece-transfer",
+    "lem:pure-wla-null-projection",
     "lem:discarded-cylinder-sum",
     "lem:column-packing",
     "lem:analytic-projection-approximation",
-    "lem:taylor-two",
     "lem:blowdown-moment-limits",
     "lem:flat-infinity-moments",
     "lem:dimensional-tangent-ball-constant",
@@ -7631,42 +7791,44 @@
     "lem:uniform-full-dimension-unique",
     "lem:two-sided-packing-core",
     "lem:feature-moment-analytic-approximation",
-    "lem:conical-moments",
-    "lem:moment-second-total-trace",
     "thm:unique-infinity",
     "lem:odd-coefficients-plane-zero",
     "lem:uniform-cylinder-identity",
-    "lem:rigidity-mixed-gaussian-limit",
     "lem:density-normalization",
     "lem:halfspace-tangent-witness",
     "lem:plane-supported-uniform-flat",
     "lem:packing-contradiction",
-    "lem:conical-covariance",
+    "lem:finite-moment-taylor-jets",
     "cor:conical",
     "lem:rigidity-normal-vector-exists",
-    "lem:moment-normal-trace",
-    "lem:rigidity-cubic-vanishing",
-    "lem:rigidity-contracted-limit-zero",
     "lem:uniform-reduction",
     "lem:small-energy-no-holes",
     "lem:flat-infinity-bounded-holes",
     "thm:mm-set",
-    "lem:conical-eigenvalue-rigidity",
+    "lem:taylor-two",
     "lem:rigidity-forms-exist",
-    "lem:rigidity-fourth-support-identity",
-    "lem:rigidity-omega-trace-zero",
     "thm:flat-pseudotangent",
     "thm:mm-measure",
-    "thm:gap",
-    "lem:rigidity-pointwise-quadratic-bound",
-    "lem:rigidity-rescaled-error",
-    "lem:rigidity-gaussian-trace",
-    "lem:rigidity-omega-reproducing",
+    "lem:conical-moments",
+    "lem:moment-second-total-trace",
+    "lem:rigidity-mixed-gaussian-limit",
+    "lem:moment-normal-trace",
+    "lem:rigidity-cubic-vanishing",
     "lem:flat-tangent-from-uniform-recentering",
     "thm:rectifiable-iff-flat",
+    "lem:conical-covariance",
+    "lem:rigidity-contracted-limit-zero",
+    "lem:rigidity-fourth-support-identity",
+    "thm:part-a",
+    "lem:conical-eigenvalue-rigidity",
+    "lem:rigidity-omega-trace-zero",
+    "lem:rigidity-pointwise-quadratic-bound",
+    "lem:rigidity-rescaled-error",
+    "thm:gap",
+    "lem:rigidity-gaussian-trace",
+    "lem:rigidity-omega-reproducing",
     "lem:flatness-gap-cutoff",
     "lem:rigidity-integral-quadratic-bound",
-    "thm:part-a",
     "lem:trace-rigidity",
     "thm:infinity-rigidity",
     "lem:first-crossing",

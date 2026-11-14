@@ -1,0 +1,43 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:taylor-two": [
+      "def:moment-coefficients",
+      "lem:finite-moment-taylor-jets",
+      "lem:coherent-finite-jets",
+      "lem:asymptotic-taylor-vanishing"
+    ],
+    "lem:pure-wla-null-projection": [
+      "lem:fixed-lower-density-projection-null",
+      "lem:closed-weak-approximation-good-set",
+      "lem:weak-approximation-good-exhaustion"
+    ],
+    "lem:small-energy-no-holes": [
+      "lem:weighted-energy-limit-support",
+      "lem:gaussian-plane-energy-integrable",
+      "lem:uniform-compactness",
+      "lem:plane-projection-subsequence",
+      "lem:plane-supported-uniform-flat",
+      "lem:unit-flat-support-regularity",
+      "lem:vague-support-approximation"
+    ],
+    "lem:finite-piece-transfer": [
+      "lem:absolute-continuity-density-bounds",
+      "lem:absolute-continuity-tangent-cones"
+    ],
+    "thm:mm-set": [
+      "lem:decomposition",
+      "lem:weak-approximation-restrict-ae",
+      "lem:packing-contradiction",
+      "lem:pure-wla-null-projection",
+      "lem:packing-base-point",
+      "lem:carrier-closure"
+    ],
+    "thm:mm-measure": [
+      "lem:finite-pieces",
+      "lem:carrier-calculus",
+      "lem:finite-piece-transfer",
+      "lem:flat-to-approximation",
+      "thm:mm-set"
+    ]
+  }
+}

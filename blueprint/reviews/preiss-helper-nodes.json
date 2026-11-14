@@ -2700,6 +2700,181 @@
       ],
       "used_by": [],
       "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "def:symmetric-moment-form",
+      "kind": "definition",
+      "title": "Gaussian moments as elements of the symmetric-form submodule",
+      "lean_names": [
+        "Preiss.SymmetricMomentForm",
+        "Preiss.symmetricGaussianMomentForm"
+      ],
+      "file": "Preiss/Uniform/MomentForms.lean",
+      "statement_tex": "The symmetric moment space is the concrete submodule of permutation-invariant continuous multilinear forms. Gaussian moment forms lie in it by the proved permutation identity.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-multilinear",
+        "def:moments",
+        "lem:moment-form-symmetry"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:finite-moment-taylor-jets",
+      "kind": "lemma",
+      "title": "Finite Gaussian moment jets in the symmetric-form space",
+      "lean_names": [
+        "Preiss.exists_gaussianMoment_finite_jets"
+      ],
+      "file": "Preiss/Uniform/MomentTaylorJets.lean",
+      "statement_tex": "For every positive moment degree and positive truncation order $q$, a unit-uniform measure of positive dimension admits symmetric multilinear coefficients giving $o(s^j)$ remainders simultaneously for every $1\\leq j\\leq q$. Recovery from sufficiently many polynomial features preserves symmetry and operator estimates.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-moment-form",
+        "lem:feature-moment-analytic-approximation",
+        "def:symmetric-feature-recovery",
+        "lem:feature-moment-exact-recovery",
+        "lem:analytic-finite-jets",
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:flat-measure-reflection",
+      "kind": "lemma",
+      "title": "Reflection invariance of flat measures",
+      "lean_names": [
+        "Preiss.flatOn_map_neg",
+        "Preiss.unitFlat_map_neg"
+      ],
+      "file": "Preiss/Geometry/PlaneSymmetry.lean",
+      "statement_tex": "Every scalar flat measure and every normalized plane measure is invariant under reflection $z\\mapsto-z$, including dimension zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:reflection-odd-gaussian-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of reflection-invariant measures",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg"
+      ],
+      "file": "Preiss/Uniform/MomentCovariance.lean",
+      "statement_tex": "Every odd Gaussian multilinear moment of a reflection-invariant measure vanishes. No integrability, uniformity, or positivity assumption on the Gaussian parameter is required.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:moments",
+        "lem:moment-kernel-calculus"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:flat-gaussian-odd-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of flat measures vanish",
+      "lean_names": [
+        "Preiss.flat_gaussianMoment_odd"
+      ],
+      "file": "Preiss/Uniform/FlatMoments.lean",
+      "statement_tex": "All odd Gaussian multilinear moments of a normalized plane measure vanish, including for zero-dimensional planes.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flat-measure-reflection",
+        "lem:reflection-odd-gaussian-moments"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:fixed-lower-density-projection-null",
+      "kind": "lemma",
+      "title": "Projection nullness with fixed lower ball mass",
+      "lean_names": [
+        "Preiss.measure_projection_eq_zero_of_uniformLower_and_weakApproximation"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "statement_tex": "A measurable purely unrectifiable subset of a finite Hausdorff-measure carrier, with a uniform positive lower ball-mass bound and weak linear approximation almost everywhere, has zero projection measure onto every plane of the same dimension.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:compact-uniform-tubes",
+        "lem:uniform-tube-projection-cover",
+        "lem:pure-cone-escape"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:weighted-energy-limit-support",
+      "kind": "lemma",
+      "title": "Vanishing weighted projection energy controls the vague-limit support",
+      "lean_names": [
+        "Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero"
+      ],
+      "file": "Preiss/Analysis/Vague/WeightedProjectionSupport.lean",
+      "statement_tex": "Let regular Euclidean measures $\\mu_i$ converge vaguely to $\\nu$, and continuous linear maps $P_i$ converge to $Q$. For a strictly positive continuous weight $w$, suppose $w(z)\\lVert z-P_i z\\rVert^2$ is integrable for each $\\mu_i$ and its integral tends to zero. Then the support of $\\nu$ lies in $\\{z:Qz=z\\}$. No global integrability assumption on $\\nu$ is required.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:vague-projection-energy"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:gaussian-plane-energy-integrable",
+      "kind": "lemma",
+      "title": "Gaussian plane energy is integrable for unit-uniform measures",
+      "lean_names": [
+        "Preiss.integrable_gaussian_planeEnergy_of_unitUniform"
+      ],
+      "file": "Preiss/Uniform/GaussianPlaneEnergy.lean",
+      "statement_tex": "For every unit-uniform measure $\\mu$ and $m$-plane $V$, the function $e^{-\\lVert z\\rVert^2}\\operatorname{dist}(z,V)^2$ is $\\mu$-integrable. This includes $m=0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:absolute-continuity-density-bounds",
+      "kind": "lemma",
+      "title": "Density bounds inherited under absolute continuity",
+      "lean_names": [
+        "Preiss.ae_hasPositiveFiniteDensitiesAt_of_absolutelyContinuous"
+      ],
+      "file": "Preiss/Density/AbsoluteContinuous.lean",
+      "statement_tex": "If locally finite Euclidean measures satisfy $\\nu\\ll\\mu$ and $\\mu$ has positive finite lower and upper $m$-densities almost everywhere, then $\\nu$ has the same density-bound property at $\\nu$-almost every point. The proof uses positive finite Radon--Nikodym derivatives and differentiation along closed balls.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:positive-density",
+        "mathlib:besicovitch-differentiation"
+      ],
+      "used_by": [],
+      "verification": "Proof supplied; full actual-import CI pending. Density inheritance independently passed local kernel audit."
+    },
+    {
+      "id": "lem:absolute-continuity-tangent-cones",
+      "kind": "lemma",
+      "title": "Tangent cones agree under finite absolute continuity",
+      "lean_names": [
+        "Preiss.ae_isTangentMeasure_iff_of_absolutelyContinuous"
+      ],
+      "file": "Preiss/Tangent/Restriction.lean",
+      "statement_tex": "For locally finite Euclidean $\\mu$ and finite $\\nu\\ll\\mu$, their full tangent cones agree at $\\nu$-almost every point. Apply the pinned FormalizingGMT density-matching theorem to the real Radon--Nikodym derivative.",
+      "definition_dependencies": [],
+      "deps": [
+        "thm:matching"
+      ],
+      "used_by": [],
+      "verification": "Proof supplied; full actual-import CI pending. Density inheritance independently passed local kernel audit."
     }
   ],
   "definition_edge_additions": {

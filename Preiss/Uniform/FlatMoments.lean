@@ -1,7 +1,8 @@
 module
 public import Preiss.Uniform.MomentForms
 public import Preiss.Geometry.Projections
-public import Preiss.Geometry.PlaneMeasure
+public import Preiss.Geometry.PlaneSymmetry
+public import Preiss.Uniform.MomentCovariance
 
 @[expose] public section
 namespace Preiss
@@ -15,6 +16,6 @@ theorem flat_gaussianMoment_diagonal (V : Plane m n) (j : ℕ) (s : ℝ) (hs : 0
 
 theorem flat_gaussianMoment_odd (V : Plane m n) (k : ℕ) (hk : Odd k)
     (s : ℝ) (hs : 0 < s) : gaussianMomentForm (unitFlat V) k s = 0 := by
-  sorry
+  exact gaussianMomentForm_eq_zero_of_odd_of_map_neg (unitFlat V) (unitFlat_map_neg V) k hk s
 
 end Preiss

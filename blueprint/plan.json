@@ -381,7 +381,7 @@
         "gmt:blowup-regular"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": []
     },
     {
@@ -771,7 +771,7 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": []
     },
     {
@@ -1240,8 +1240,7 @@
         "mathlib:standard-gaussian"
       ],
       "lean_names": [
-        "Preiss.flat_gaussianMoment_diagonal",
-        "Preiss.flat_gaussianMoment_odd"
+        "Preiss.flat_gaussianMoment_diagonal"
       ],
       "proposed_lean_name": "Preiss.flat_gaussianMoment_diagonal",
       "proposed_file": "Preiss/Uniform/FlatMoments.lean",
@@ -1380,13 +1379,13 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $\\delta>0$ there exists $\\eta>0$ such that if $\\nu\\in\\mathcal U_m$\nand $V$ is an $m$-plane with Gaussian distance energy at most $\\eta$, every\n$x\\in V\\cap\\overline B(0,1)$ has distance less than $\\delta$ to the support.\nOtherwise rotate planes to one fixed plane, take a convergent subsequence of\nmeasures and alleged holes, and use S04--S05. Vanishing energy puts the limit's\nsupport in the plane; the plane-supported uniform classification identifies it\nwith $\\sigma_V$, contradicting the persistent hole. This lemma does not\nrequire conicality or eigenvalue assumptions.",
       "deps": [
-        "def:plane",
-        "def:unit-uniform",
-        "lem:grassmannian",
+        "lem:gaussian-plane-energy-integrable",
+        "lem:plane-projection-subsequence",
         "lem:plane-supported-uniform-flat",
         "lem:uniform-compactness",
-        "lem:vague-gaussian-polynomials",
-        "lem:vague-support-approximation"
+        "lem:unit-flat-support-regularity",
+        "lem:vague-support-approximation",
+        "lem:weighted-energy-limit-support"
       ],
       "lean_names": [
         "Preiss.dist_support_lt_of_small_gaussian_plane_energy"
@@ -2839,11 +2838,8 @@
       "hypotheses_tex": "The pieces are Borel, finite in \\(\\mathcal H^m\\), and their restrictions are comparable with positive finite constants. Assume the density and flat-tangent hypotheses for locally finite \\(\\mu\\).",
       "proof_tex": "",
       "deps": [
-        "gmt:finite-restriction",
-        "gmt:restriction-tangents",
-        "lem:finite-pieces",
-        "mathlib:besicovitch-differentiation",
-        "thm:matching"
+        "lem:absolute-continuity-density-bounds",
+        "lem:absolute-continuity-tangent-cones"
       ],
       "lean_names": [
         "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff"
@@ -2962,11 +2958,9 @@
       "hypotheses_tex": "The Borel set \\(E\\) is purely \\(m\\)-unrectifiable, has finite \\(\\mathcal H^m\\)-measure, and is weakly linearly approximable almost everywhere; \\(0<m\\leq n\\).",
       "proof_tex": "",
       "deps": [
-        "lem:projected-tube-slab-bound",
-        "lem:pure-cone-escape",
-        "lem:tube-support-upgrade",
-        "lem:uniform-compact-selection",
-        "mathlib:besicovitch-cover"
+        "lem:closed-weak-approximation-good-set",
+        "lem:fixed-lower-density-projection-null",
+        "lem:weak-approximation-good-exhaustion"
       ],
       "lean_names": [
         "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation"
@@ -3072,7 +3066,9 @@
       "hypotheses_tex": "Assume \\(0<m\\leq n\\). The zero-measure case is included and is immediate.",
       "proof_tex": "",
       "deps": [
+        "lem:carrier-closure",
         "lem:decomposition",
+        "lem:packing-base-point",
         "lem:packing-contradiction",
         "lem:pure-wla-null-projection",
         "lem:weak-approximation-restrict-ae"
@@ -3102,6 +3098,7 @@
       "deps": [
         "lem:carrier-calculus",
         "lem:finite-piece-transfer",
+        "lem:finite-pieces",
         "lem:flat-to-approximation",
         "thm:mm-set"
       ],
@@ -4010,14 +4007,9 @@
       "proof_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
       "deps": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
         "lem:asymptotic-taylor-vanishing",
-        "lem:feature-moment-vanishing",
-        "lem:feature-norm-functionals",
-        "lem:graded-analytic-projection",
-        "lem:moment-feature-remainder",
-        "lem:moment-norm-bound"
+        "lem:coherent-finite-jets",
+        "lem:finite-moment-taylor-jets"
       ],
       "lean_names": [
         "Preiss.exists_gaussianMoment_taylor_coefficients",
@@ -5918,7 +5910,7 @@
       "file": "Preiss/Uniform/MomentForms.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MomentForms.lean"
       ],
@@ -8334,7 +8326,7 @@
         "Preiss.measure_image_le_mul_of_ball_image_bounds"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/CoveringImage.lean"
       ],
@@ -8369,7 +8361,7 @@
         "Preiss.exists_taylor_jets_of_analyticAt_zero"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/AnalyticJets.lean"
       ],
@@ -8387,7 +8379,7 @@
       "deps": [
         "lem:graded-analytic-projection"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/AnalyticProjectionApproximation.lean"
       ],
@@ -8424,7 +8416,7 @@
         "def:cone",
         "lem:projection-distance"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Geometry/Cylinders.lean"
       ],
@@ -8443,7 +8435,7 @@
         "lem:fivefold-image-covering",
         "lem:projected-tube-slab-bound"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean"
       ],
@@ -8460,7 +8452,7 @@
       "deps": [
         "lem:asymptotic-taylor-vanishing"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/AsymptoticCoefficients.lean"
       ],
@@ -8480,7 +8472,7 @@
         "lem:feature-norm-functionals",
         "lem:moment-feature-remainder"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MomentFeatures.lean"
       ],
@@ -8498,7 +8490,7 @@
         "lem:tube-support-upgrade",
         "lem:uniform-compact-selection"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Rectifiability/WeakApproximation/UniformTubes.lean"
       ],
@@ -8535,7 +8527,7 @@
         "Preiss.symmetrizeContinuousMultilinearMap"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/MultilinearSymmetrization.lean"
       ],
@@ -8555,7 +8547,7 @@
       "deps": [
         "def:symmetric-multilinear"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/MultilinearSymmetrization.lean"
       ],
@@ -8577,7 +8569,7 @@
         "def:polynomial-feature",
         "lem:polynomial-feature-identities"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/PolynomialFeatures.lean"
       ],
@@ -8598,7 +8590,7 @@
         "lem:feature-multilinear-block",
         "lem:multilinear-symmetrization"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/PolynomialFeatures.lean"
       ],
@@ -8618,11 +8610,196 @@
         "lem:gaussian-feature-integrability",
         "lem:moment-form-symmetry"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MomentFeatures.lean"
       ],
       "proposed_file": "Preiss/Uniform/MomentFeatures.lean"
+    },
+    {
+      "id": "def:symmetric-moment-form",
+      "kind": "definition",
+      "title": "Gaussian moments as elements of the symmetric-form submodule",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.SymmetricMomentForm",
+        "Preiss.symmetricGaussianMomentForm"
+      ],
+      "deps": [
+        "def:moments",
+        "def:symmetric-multilinear",
+        "lem:moment-form-symmetry"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "lem:finite-moment-taylor-jets",
+      "kind": "lemma",
+      "title": "Finite Gaussian moment jets in the symmetric-form space",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_gaussianMoment_finite_jets"
+      ],
+      "deps": [
+        "def:symmetric-feature-recovery",
+        "def:symmetric-moment-form",
+        "lem:analytic-finite-jets",
+        "lem:asymptotic-taylor-vanishing",
+        "lem:feature-moment-analytic-approximation",
+        "lem:feature-moment-exact-recovery"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentTaylorJets.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentTaylorJets.lean"
+    },
+    {
+      "id": "lem:flat-measure-reflection",
+      "kind": "lemma",
+      "title": "Reflection invariance of flat measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatOn_map_neg",
+        "Preiss.unitFlat_map_neg"
+      ],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Geometry/PlaneSymmetry.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneSymmetry.lean"
+    },
+    {
+      "id": "lem:reflection-odd-gaussian-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of reflection-invariant measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg"
+      ],
+      "deps": [
+        "def:moments",
+        "lem:moment-kernel-calculus"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/MomentCovariance.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentCovariance.lean"
+    },
+    {
+      "id": "lem:flat-gaussian-odd-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of flat measures vanish",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flat_gaussianMoment_odd"
+      ],
+      "deps": [
+        "lem:flat-measure-reflection",
+        "lem:reflection-odd-gaussian-moments"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/FlatMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMoments.lean"
+    },
+    {
+      "id": "lem:fixed-lower-density-projection-null",
+      "kind": "lemma",
+      "title": "Projection nullness with fixed lower ball mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_projection_eq_zero_of_uniformLower_and_weakApproximation"
+      ],
+      "deps": [
+        "lem:compact-uniform-tubes",
+        "lem:pure-cone-escape",
+        "lem:uniform-tube-projection-cover"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean"
+    },
+    {
+      "id": "lem:weighted-energy-limit-support",
+      "kind": "lemma",
+      "title": "Vanishing weighted projection energy controls the vague-limit support",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero"
+      ],
+      "deps": [
+        "lem:vague-projection-energy"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/WeightedProjectionSupport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/WeightedProjectionSupport.lean"
+    },
+    {
+      "id": "lem:gaussian-plane-energy-integrable",
+      "kind": "lemma",
+      "title": "Gaussian plane energy is integrable for unit-uniform measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_planeEnergy_of_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:absolute-continuity-density-bounds",
+      "kind": "lemma",
+      "title": "Density bounds inherited under absolute continuity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ae_hasPositiveFiniteDensitiesAt_of_absolutelyContinuous"
+      ],
+      "deps": [
+        "def:positive-density",
+        "mathlib:besicovitch-differentiation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/AbsoluteContinuous.lean"
+      ],
+      "proposed_file": "Preiss/Density/AbsoluteContinuous.lean"
+    },
+    {
+      "id": "lem:absolute-continuity-tangent-cones",
+      "kind": "lemma",
+      "title": "Tangent cones agree under finite absolute continuity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ae_isTangentMeasure_iff_of_absolutelyContinuous"
+      ],
+      "deps": [
+        "thm:matching"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Restriction.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Restriction.lean"
     }
   ],
   "preiss_core": [
@@ -8655,6 +8832,9 @@
     "def:rigidity-adjusted-form",
     "def:rigidity-normal-vector",
     "def:rigidity-omega",
+    "def:symmetric-feature-recovery",
+    "def:symmetric-moment-form",
+    "def:symmetric-multilinear",
     "def:tangent-api",
     "def:tangent-at-infinity",
     "def:two-sided-approximation",
@@ -8689,7 +8869,6 @@
     "gmt:origin-support",
     "gmt:portmanteau",
     "gmt:quadratic-support-tangent",
-    "gmt:restriction-tangents",
     "gmt:support-not-full",
     "gmt:tangent-open-null",
     "gmt:transfer-ball-bounds",
@@ -8703,6 +8882,10 @@
     "gmt:uniform-tangents",
     "gmt:vague",
     "gmt:zero-barycenter-hyperplane",
+    "lem:absolute-continuity-density-bounds",
+    "lem:absolute-continuity-tangent-cones",
+    "lem:analytic-finite-jets",
+    "lem:analytic-projection-approximation",
     "lem:annulus-integrability",
     "lem:asymptotic-taylor-vanishing",
     "lem:ball-upper-hausdorff-bound",
@@ -8715,12 +8898,15 @@
     "lem:closed-map-support",
     "lem:closed-upper-ball-bound-sets",
     "lem:closed-weak-approximation-good-set",
+    "lem:coherent-finite-jets",
     "lem:column-mass-contradiction",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
     "lem:compact-two-sided-general",
+    "lem:compact-uniform-tubes",
     "lem:complex-mgf-moment-determination",
     "lem:cone-graph",
+    "lem:cone-projection-direction",
     "lem:conical-covariance",
     "lem:conical-eigenvalue-rigidity",
     "lem:conical-moments",
@@ -8758,14 +8944,20 @@
     "lem:empty-cylinder-direction",
     "lem:excess-dimension",
     "lem:exponential-tail-integral",
+    "lem:feature-moment-analytic-approximation",
+    "lem:feature-moment-exact-recovery",
     "lem:feature-moment-vanishing",
+    "lem:feature-multilinear-block",
     "lem:feature-norm-functionals",
     "lem:finite-dimensional-operator-bigO",
+    "lem:finite-moment-taylor-jets",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
     "lem:first-crossing",
     "lem:first-crossing-flat-infinity",
     "lem:first-crossing-ratio",
+    "lem:fivefold-image-covering",
+    "lem:fixed-lower-density-projection-null",
     "lem:flat-gaussian-even-moments",
     "lem:flat-infinity-bounded-holes",
     "lem:flat-infinity-moments",
@@ -8791,6 +8983,7 @@
     "lem:gaussian-ball-power-parameter",
     "lem:gaussian-feature-integrability",
     "lem:gaussian-parameter-derivative",
+    "lem:gaussian-plane-energy-integrable",
     "lem:gaussian-polynomial-integrable",
     "lem:gaussian-power-envelope",
     "lem:gaussian-projection-integrability",
@@ -8834,6 +9027,7 @@
     "lem:moment-feature-annihilation",
     "lem:moment-feature-remainder",
     "lem:moment-form-evaluation",
+    "lem:moment-form-symmetry",
     "lem:moment-kernel-calculus",
     "lem:moment-norm-bound",
     "lem:moment-normal-trace",
@@ -8841,6 +9035,7 @@
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
     "lem:moving-set-measure-bounds",
+    "lem:multilinear-symmetrization",
     "lem:nested-compact-approximation",
     "lem:nested-orthogonal-layers",
     "lem:nonnegative-integral-cover-bound",
@@ -8915,6 +9110,7 @@
     "lem:uniform-near-support-compactness",
     "lem:uniform-reduction",
     "lem:uniform-scaling",
+    "lem:uniform-tube-projection-cover",
     "lem:uniform-vague-closed",
     "lem:unit-flat-support-regularity",
     "lem:unit-flat-unit-uniform",
@@ -8942,12 +9138,12 @@
     "lem:weak-approximation-lower-density",
     "lem:weak-approximation-restrict-ae",
     "lem:weak-approximation-scale-transfer",
+    "lem:weighted-energy-limit-support",
     "lem:weighted-grading-positive-complement",
     "lem:zero-density-atoms",
     "lem:zero-dimension",
     "lem:zero-hausdorff-ac",
     "lem:zero-measure",
-    "mathlib:besicovitch-cover",
     "mathlib:besicovitch-differentiation",
     "mathlib:hausdorff-mass-bound",
     "mathlib:measurable-hull",
@@ -8999,9 +9195,10 @@
     "gmt:hausdorff-density-upper",
     "gmt:hausdorff-regular",
     "gmt:portmanteau",
-    "gmt:restriction-tangents",
     "gmt:scaled-discarded-mass",
     "gmt:vague",
+    "lem:absolute-continuity-density-bounds",
+    "lem:absolute-continuity-tangent-cones",
     "lem:ball-upper-hausdorff-bound",
     "lem:blowup-composition",
     "lem:borel-carrier",
@@ -9013,7 +9210,9 @@
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
     "lem:compact-two-sided-general",
+    "lem:compact-uniform-tubes",
     "lem:cone-graph",
+    "lem:cone-projection-direction",
     "lem:decomposition",
     "lem:density-bounds-good-set",
     "lem:density-measure-comparison",
@@ -9028,6 +9227,8 @@
     "lem:empty-cylinder-direction",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
+    "lem:fivefold-image-covering",
+    "lem:fixed-lower-density-projection-null",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
     "lem:flat-measure-regularity",
@@ -9074,6 +9275,7 @@
     "lem:tube-support-upgrade",
     "lem:two-sided-packing-core",
     "lem:uniform-compact-selection",
+    "lem:uniform-tube-projection-cover",
     "lem:vague-compact-null-mass",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
@@ -9086,7 +9288,6 @@
     "lem:weak-approximation-lower-density",
     "lem:weak-approximation-restrict-ae",
     "lem:weak-approximation-scale-transfer",
-    "mathlib:besicovitch-cover",
     "mathlib:besicovitch-differentiation",
     "mathlib:derivative-partitions",
     "mathlib:hausdorff-mass-bound",

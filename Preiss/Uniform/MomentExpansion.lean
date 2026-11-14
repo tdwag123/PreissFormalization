@@ -1,6 +1,7 @@
 module
 
 public import Preiss.Uniform.MomentCoefficients
+public import Preiss.Uniform.MomentTaylorJets
 public import Preiss.Uniform.MomentAsymptotics
 public import Preiss.Analysis.AsymptoticCoefficients
 public import Preiss.Uniform.Defs
@@ -24,7 +25,46 @@ variable {n m : ℕ}
 theorem exists_gaussianMoment_taylor_coefficients (μ : Measure (Euclidean n))
     (hm : 0 < m) (hμ : IsUnitUniform m μ) :
     ∃ B : MomentCoefficientFamily n, IsMomentExpansion μ B := by
-  sorry
+  classical
+  have hex (d : ℕ) := exists_coherent_taylor_coefficients_of_finite_jets
+    (symmetricGaussianMomentForm μ (d+1))
+    (exists_gaussianMoment_finite_jets μ hm hμ d)
+  choose A hA using hex
+  let B : MomentCoefficientFamily n := fun k j => match k with
+    | 0 => 0
+    | d+1 => (j.factorial : ℝ) • (A d j : MomentForm n (d+1))
+  refine ⟨B,?_,?_⟩
+  · intro k j σ u
+    cases k with
+    | zero => simp [B]
+    | succ d =>
+      change ((j.factorial : ℝ) • (A d j : MomentForm n (d+1))) (u ∘ σ) =
+        ((j.factorial : ℝ) • (A d j : MomentForm n (d+1))) u
+      simp only [ContinuousMultilinearMap.smul_apply]
+      rw [(A d j).property σ u]
+  · intro k hk q hq
+    obtain ⟨d,rfl⟩ := Nat.exists_eq_succ_of_ne_zero hk.ne'
+    let S := symmetricContinuousMultilinearSubmodule
+      (ι := Fin (d+1)) (E := Euclidean n) (F := ℝ)
+    have h := (ContinuousLinearMap.isBigO_comp (𝕜₂ := ℝ) (𝕜₃ := ℝ)
+      (F := SymmetricMomentForm n (d+1)) (G := MomentForm n (d+1)) S.subtypeL
+      (fun s => symmetricGaussianMomentForm μ (d+1) s -
+        ∑ i ∈ Finset.range q,s^(i+1) • A d (i+1)) (𝓝[>] (0 : ℝ))).trans_isLittleO (hA d q hq)
+    have hplain : IsLittleO (𝓝[>] (0 : ℝ))
+        (fun s => gaussianMomentForm μ (d+1) s -
+          ∑ i ∈ Finset.range q,s^(i+1) • (A d (i+1) : MomentForm n (d+1)))
+        (fun s : ℝ => s^q) := by
+      simpa only [map_sub,map_sum,map_smul,Submodule.subtypeL_apply,
+        symmetricGaussianMomentForm] using h
+    have hpoly (s : ℝ) : momentTaylorPolynomial B (d+1) q s =
+        ∑ i ∈ Finset.range q,s^(i+1) • (A d (i+1) : MomentForm n (d+1)) := by
+      unfold momentTaylorPolynomial
+      apply Finset.sum_congr rfl
+      intro i _
+      change (s^(i+1)/((i+1).factorial : ℝ)) •
+        (((i+1).factorial : ℝ) • (A d (i+1) : MomentForm n (d+1))) = _
+      rw [smul_smul,div_mul_cancel₀ _ (Nat.cast_ne_zero.mpr (Nat.factorial_ne_zero _))]
+    simpa only [hpoly] using hplain
 
 theorem gaussianMomentCoefficient_unique (μ : Measure (Euclidean n))
     (B C : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B)

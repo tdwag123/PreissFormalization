@@ -1,6 +1,7 @@
 module
 
 public import Preiss.Uniform.Moments
+public import Preiss.Analysis.MultilinearSymmetrization
 public import Mathlib.Analysis.InnerProductSpace.LinearMap
 public import Mathlib.Analysis.Normed.Module.Multilinear.Basic
 public import Mathlib.Analysis.Normed.Module.Multilinear.Curry
@@ -104,5 +105,13 @@ theorem gaussianMomentForm_permute (μ : Measure (Euclidean n)) (k : ℕ) (s : �
     rw [Equiv.prod_comp σ (fun i => inner ℝ z (u i))]
   · simp only [gaussianMomentForm, integral_undef hint, smul_zero,
       ContinuousMultilinearMap.zero_apply]
+
+noncomputable abbrev SymmetricMomentForm (n k : ℕ) :=
+  symmetricContinuousMultilinearSubmodule (ι := Fin k) (E := Euclidean n) (F := ℝ)
+
+noncomputable def symmetricGaussianMomentForm (μ : Measure (Euclidean n)) (k : ℕ)
+    (s : ℝ) : SymmetricMomentForm n k :=
+  ⟨gaussianMomentForm μ k s,gaussianMomentForm_permute μ k s⟩
+
 
 end Preiss

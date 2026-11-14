@@ -1424,6 +1424,58 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.Vague.WeightedProjectionSupport",
+      "file": "Preiss/Analysis/Vague/WeightedProjectionSupport.lean",
+      "purpose": "Reusable Analysis.Vague.WeightedProjectionSupport interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.Topology.UrysohnsLemma",
+        "Preiss.Analysis.Vague.ProjectionEnergy"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.Topology.UrysohnsLemma"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.Vague.ProjectionEnergy"
+      ],
+      "nodes": [
+        "lem:weighted-energy-limit-support"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.Vague.ProjectionEnergy"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Density.AbsoluteContinuous",
+      "file": "Preiss/Density/AbsoluteContinuous.lean",
+      "purpose": "Reusable Density.AbsoluteContinuous interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym",
+        "Preiss.Density.Defs"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Density.Defs"
+      ],
+      "nodes": [
+        "lem:absolute-continuity-density-bounds"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Density.Defs"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Density.Adapters",
       "file": "Preiss/Density/Adapters.lean",
       "current_source_imports": [
@@ -2101,6 +2153,27 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Geometry.PlaneSymmetry",
+      "file": "Preiss/Geometry/PlaneSymmetry.lean",
+      "purpose": "Reusable Geometry.PlaneSymmetry interfaces.",
+      "current_source_imports": [
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "nodes": [
+        "lem:flat-measure-reflection"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Geometry.PlaneTopology",
       "file": "Preiss/Geometry/PlaneTopology.lean",
       "current_source_imports": [
@@ -2729,25 +2802,29 @@
       "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
       "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
       "current_source_imports": [
+        "Preiss.Density.AbsoluteContinuous",
         "Preiss.Density.FinitePieces",
         "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
-        "Preiss.Tangent.DensityTransfer",
-        "Preiss.Tangent.FlatApproximation"
+        "Preiss.Tangent.FlatApproximation",
+        "Preiss.Tangent.Restriction"
       ],
       "local_imports": [
+        "Preiss.Density.AbsoluteContinuous",
         "Preiss.Density.FinitePieces",
         "Preiss.Rectifiability.Basic",
         "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
-        "Preiss.Tangent.DensityTransfer",
-        "Preiss.Tangent.FlatApproximation"
+        "Preiss.Tangent.FlatApproximation",
+        "Preiss.Tangent.Restriction"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Density.AbsoluteContinuous",
         "Preiss.Density.FinitePieces",
         "Preiss.Rectifiability.Basic",
         "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
-        "Preiss.Tangent.FlatApproximation"
+        "Preiss.Tangent.FlatApproximation",
+        "Preiss.Tangent.Restriction"
       ],
       "nodes": [
         "lem:finite-piece-transfer",
@@ -2888,14 +2965,17 @@
         "Mathlib.Tactic.Linarith",
         "Mathlib.Tactic.Positivity",
         "Preiss.Rectifiability.Cones",
+        "Preiss.Rectifiability.MarstrandMattila.ProjectionCovering",
         "Preiss.Rectifiability.ProjectionEstimate",
         "Preiss.Rectifiability.PurelyUnrectifiable",
-        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+        "Preiss.Rectifiability.WeakApproximation.UniformTubes"
       ],
       "local_imports": [
         "Preiss.Rectifiability.Cones",
+        "Preiss.Rectifiability.MarstrandMattila.ProjectionCovering",
         "Preiss.Rectifiability.ProjectionEstimate",
         "Preiss.Rectifiability.PurelyUnrectifiable",
+        "Preiss.Rectifiability.WeakApproximation.UniformTubes",
         "Preiss.Rectifiability.WeakApproximation.Uniformization"
       ],
       "mathlib_imports": [
@@ -2907,13 +2987,15 @@
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Rectifiability.Cones",
-        "Preiss.Rectifiability.ProjectionEstimate",
+        "Preiss.Rectifiability.MarstrandMattila.ProjectionCovering",
         "Preiss.Rectifiability.PurelyUnrectifiable",
+        "Preiss.Rectifiability.WeakApproximation.UniformTubes",
         "Preiss.Rectifiability.WeakApproximation.Uniformization"
       ],
       "nodes": [
         "lem:pure-cone-escape",
-        "lem:pure-wla-null-projection"
+        "lem:pure-wla-null-projection",
+        "lem:fixed-lower-density-projection-null"
       ],
       "source_exists": true,
       "scope": "core",
@@ -2930,6 +3012,7 @@
         "Preiss.Rectifiability.MarstrandMattila.ProjectionNull"
       ],
       "local_imports": [
+        "Preiss.Rectifiability.Basic",
         "Preiss.Rectifiability.Decomposition",
         "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
@@ -2939,6 +3022,7 @@
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Rectifiability.Basic",
         "Preiss.Rectifiability.Decomposition",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
         "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
@@ -3648,7 +3732,7 @@
         "lem:normalized-density-transfer"
       ],
       "source_exists": true,
-      "scope": "core",
+      "scope": "companion",
       "purpose": "Canonical Tangent.DensityTransfer interfaces."
     },
     {
@@ -3995,17 +4079,22 @@
       "file": "Preiss/Tangent/Restriction.lean",
       "current_source_imports": [
         "FormalizingGMT.TangentMeasures.MatchingTangents",
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym",
         "Preiss.Tangent.Defs"
       ],
       "local_imports": [
         "Preiss.Tangent.Defs"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym"
+      ],
       "gmt_imports": [
         "FormalizingGMT.TangentMeasures.MatchingTangents"
       ],
       "proof_imports": [],
-      "nodes": [],
+      "nodes": [
+        "lem:absolute-continuity-tangent-cones"
+      ],
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Tangent.Restriction interfaces."
@@ -4825,24 +4914,29 @@
       "module": "Preiss.Uniform.FlatMoments",
       "file": "Preiss/Uniform/FlatMoments.lean",
       "current_source_imports": [
-        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneSymmetry",
         "Preiss.Geometry.Projections",
+        "Preiss.Uniform.MomentCovariance",
         "Preiss.Uniform.MomentForms"
       ],
       "local_imports": [
-        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneSymmetry",
         "Preiss.Geometry.Planes",
         "Preiss.Geometry.Projections",
+        "Preiss.Uniform.MomentCovariance",
         "Preiss.Uniform.MomentForms"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Geometry.PlaneSymmetry",
         "Preiss.Geometry.Planes",
+        "Preiss.Uniform.MomentCovariance",
         "Preiss.Uniform.MomentForms"
       ],
       "nodes": [
-        "lem:flat-gaussian-even-moments"
+        "lem:flat-gaussian-even-moments",
+        "lem:flat-gaussian-odd-moments"
       ],
       "source_exists": true,
       "scope": "core",
@@ -5083,6 +5177,34 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Uniform.GaussianPlaneEnergy",
+      "file": "Preiss/Uniform/GaussianPlaneEnergy.lean",
+      "purpose": "Reusable Uniform.GaussianPlaneEnergy interfaces.",
+      "current_source_imports": [
+        "Mathlib.Topology.MetricSpace.HausdorffDistance",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "nodes": [
+        "lem:gaussian-plane-energy-integrable"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Geometry.Planes",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.GMTAdapters",
       "file": "Preiss/Uniform/GMTAdapters.lean",
       "current_source_imports": [
@@ -5192,6 +5314,7 @@
       "module": "Preiss.Uniform.MomentCovariance",
       "file": "Preiss/Uniform/MomentCovariance.lean",
       "current_source_imports": [
+        "Mathlib.Tactic.Linarith",
         "Preiss.Tangent.Blowup",
         "Preiss.Uniform.MomentForms"
       ],
@@ -5201,7 +5324,9 @@
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentForms"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Tactic.Linarith"
+      ],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Tangent.Algebra",
@@ -5210,7 +5335,8 @@
         "Preiss.Uniform.MomentForms"
       ],
       "nodes": [
-        "lem:moment-covariance"
+        "lem:moment-covariance",
+        "lem:reflection-odd-gaussian-moments"
       ],
       "source_exists": true,
       "scope": "core",
@@ -5269,18 +5395,16 @@
         "Preiss.Analysis.AsymptoticCoefficients",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentAsymptotics",
-        "Preiss.Uniform.MomentCoefficients"
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentTaylorJets"
       ],
       "local_imports": [
         "Preiss.Analysis.AsymptoticCoefficients",
-        "Preiss.Analysis.GradedProjection",
-        "Preiss.Analysis.PolynomialFeatures",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentAsymptotics",
         "Preiss.Uniform.MomentCoefficients",
         "Preiss.Uniform.MomentEstimates",
-        "Preiss.Uniform.MomentFeatures",
-        "Preiss.Uniform.MomentForms"
+        "Preiss.Uniform.MomentTaylorJets"
       ],
       "mathlib_imports": [
         "Mathlib.Analysis.Asymptotics.Arith",
@@ -5290,14 +5414,10 @@
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.AsymptoticCoefficients",
-        "Preiss.Analysis.GradedProjection",
-        "Preiss.Analysis.PolynomialFeatures",
-        "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentAsymptotics",
         "Preiss.Uniform.MomentCoefficients",
         "Preiss.Uniform.MomentEstimates",
-        "Preiss.Uniform.MomentFeatures",
-        "Preiss.Uniform.MomentForms"
+        "Preiss.Uniform.MomentTaylorJets"
       ],
       "nodes": [
         "lem:taylor-two",
@@ -5372,9 +5492,11 @@
         "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
         "Mathlib.MeasureTheory.Integral.Bochner.Basic",
         "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+        "Preiss.Analysis.MultilinearSymmetrization",
         "Preiss.Uniform.Moments"
       ],
       "local_imports": [
+        "Preiss.Analysis.MultilinearSymmetrization",
         "Preiss.Uniform.Moments"
       ],
       "mathlib_imports": [
@@ -5385,12 +5507,15 @@
         "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap"
       ],
       "gmt_imports": [],
-      "proof_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.MultilinearSymmetrization"
+      ],
       "nodes": [
         "def:moments",
         "lem:moment-form-evaluation",
         "lem:moment-form-symmetry",
-        "lem:moment-kernel-calculus"
+        "lem:moment-kernel-calculus",
+        "def:symmetric-moment-form"
       ],
       "source_exists": true,
       "scope": "core",
@@ -5417,6 +5542,37 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Uniform.Moments interfaces."
+    },
+    {
+      "module": "Preiss.Uniform.MomentTaylorJets",
+      "file": "Preiss/Uniform/MomentTaylorJets.lean",
+      "purpose": "Reusable Uniform.MomentTaylorJets interfaces.",
+      "current_source_imports": [
+        "Preiss.Analysis.AnalyticJets",
+        "Preiss.Analysis.AsymptoticCoefficients",
+        "Preiss.Uniform.MomentFeatures"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.AnalyticJets",
+        "Preiss.Analysis.AsymptoticCoefficients",
+        "Preiss.Analysis.PolynomialFeatures",
+        "Preiss.Uniform.MomentFeatures",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "nodes": [
+        "lem:finite-moment-taylor-jets"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.AnalyticJets",
+        "Preiss.Analysis.AsymptoticCoefficients",
+        "Preiss.Analysis.PolynomialFeatures",
+        "Preiss.Uniform.MomentFeatures",
+        "Preiss.Uniform.MomentForms"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Uniform.MomentTrace",
@@ -5534,33 +5690,35 @@
       "module": "Preiss.Uniform.SupportProximity",
       "file": "Preiss/Uniform/SupportProximity.lean",
       "current_source_imports": [
-        "Mathlib.Analysis.SpecialFunctions.Exp",
-        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
-        "Preiss.Geometry.Planes",
-        "Preiss.Uniform.Defs"
-      ],
-      "local_imports": [
-        "Preiss.Analysis.GaussianVague",
+        "Mathlib.Tactic.FunProp",
         "Preiss.Analysis.Vague.Support",
+        "Preiss.Analysis.Vague.WeightedProjectionSupport",
         "Preiss.Geometry.PlaneTopology",
-        "Preiss.Geometry.Planes",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.Compactness",
-        "Preiss.Uniform.Defs"
+        "Preiss.Uniform.GaussianPlaneEnergy"
+      ],
+      "local_imports": [
+        "Preiss.Analysis.Vague.Support",
+        "Preiss.Analysis.Vague.WeightedProjectionSupport",
+        "Preiss.Geometry.PlaneTopology",
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.GaussianPlaneEnergy"
       ],
       "mathlib_imports": [
-        "Mathlib.Analysis.SpecialFunctions.Exp",
-        "Mathlib.MeasureTheory.Integral.Bochner.Basic"
+        "Mathlib.Tactic.FunProp"
       ],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Analysis.GaussianVague",
         "Preiss.Analysis.Vague.Support",
+        "Preiss.Analysis.Vague.WeightedProjectionSupport",
         "Preiss.Geometry.PlaneTopology",
-        "Preiss.Geometry.Planes",
+        "Preiss.Geometry.UnitFlat",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.Compactness",
-        "Preiss.Uniform.Defs"
+        "Preiss.Uniform.GaussianPlaneEnergy"
       ],
       "nodes": [
         "lem:small-energy-no-holes"
@@ -5828,6 +5986,7 @@
     "Preiss.Analysis.GaussianWeight",
     "Preiss.Analysis.Vague.ProjectionEnergy",
     "Preiss.Analysis.GaussianVague",
+    "Preiss.Density.AbsoluteContinuous",
     "Preiss.Density.Adapters",
     "Preiss.Density.RadiusPower",
     "Preiss.Density.UpperBounds",
@@ -5853,9 +6012,11 @@
     "Preiss.Analysis.GaussianFeatures",
     "Preiss.Analysis.Vague.SecondCountable",
     "Preiss.Analysis.GaussianMomentDetermination",
+    "Preiss.Analysis.Vague.WeightedProjectionSupport",
     "Preiss.Density.HausdorffComparison",
     "Preiss.Geometry.FlatScalar",
     "Preiss.Geometry.PlaneRegularity",
+    "Preiss.Geometry.PlaneSymmetry",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Geometry.Cones",
     "Preiss.Geometry.PlaneDistance",
@@ -5877,7 +6038,6 @@
     "Preiss.Uniform.GMTAdapters",
     "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.Scaling",
-    "Preiss.Uniform.FlatMoments",
     "Preiss.Uniform.MomentCoefficients",
     "Preiss.Uniform.MomentCovariance",
     "Preiss.Analysis.GradedProjection",
@@ -5899,6 +6059,7 @@
     "Preiss.Uniform.Compactness",
     "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.Transport",
+    "Preiss.Uniform.FlatMoments",
     "Preiss.Analysis.AnalyticProjectionApproximation",
     "Preiss.Uniform.FlatMeasure",
     "Preiss.Rectifiability.ProjectionEstimate",
@@ -5922,45 +6083,48 @@
     "Preiss.Tangent.Blowdown",
     "Preiss.Tangent.FlatApproximation",
     "Preiss.Uniform.TangentNormalization",
+    "Preiss.Uniform.GaussianPlaneEnergy",
     "Preiss.Uniform.MomentAsymptotics",
     "Preiss.Uniform.MomentFeatures",
-    "Preiss.Uniform.SupportProximity",
     "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
     "Preiss.Rectifiability.GraphBlowup",
     "Preiss.Uniform.DimensionReduction",
-    "Preiss.Uniform.MomentExpansion",
-    "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+    "Preiss.Uniform.SupportProximity",
+    "Preiss.Uniform.MomentTaylorJets",
     "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
     "Preiss.Rectifiability.WeakApproximation.UniformTubes",
     "Preiss.Rectifiability.TangentNecessity",
     "Preiss.Uniform.FlatPseudotangent",
+    "Preiss.Uniform.MomentExpansion",
+    "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
+    "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+    "Preiss.Tangent.FlatFromUniform",
     "Preiss.Uniform.BlowdownMoments",
     "Preiss.Uniform.ConicalMoments",
     "Preiss.Uniform.FlatAtInfinity.Basic",
     "Preiss.Uniform.MomentTrace",
-    "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
-    "Preiss.Tangent.FlatFromUniform",
+    "Preiss.Rectifiability.MarstrandMattila.Packing",
+    "Preiss.Theorem.PartA",
     "Preiss.Uniform.TangentAtInfinity",
     "Preiss.Uniform.ConicalGap",
     "Preiss.Uniform.FlatAtInfinity.TraceData",
-    "Preiss.Rectifiability.MarstrandMattila.Packing",
-    "Preiss.Theorem.PartA",
+    "Preiss.Rectifiability.MarstrandMattila.PackingCore",
     "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
     "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-    "Preiss.Rectifiability.MarstrandMattila.PackingCore",
-    "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
     "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
-    "Preiss.Uniform.TraceRigidity",
+    "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
     "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
-    "Preiss.Uniform.FlatAtInfinity.Rigidity",
+    "Preiss.Uniform.TraceRigidity",
     "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
-    "Preiss.Theorem.FirstCrossing",
+    "Preiss.Uniform.FlatAtInfinity.Rigidity",
     "Preiss.Rectifiability.TangentCharacterization",
+    "Preiss.Theorem.FirstCrossing",
     "Preiss.Theorem.PartB",
     "Preiss.Main"
   ],
   "preiss_import_closure": [
+    "Preiss.Analysis.AnalyticJets",
     "Preiss.Analysis.AnalyticProjectionApproximation",
     "Preiss.Analysis.AnnulusIntegrability",
     "Preiss.Analysis.AsymptoticCoefficients",
@@ -5969,6 +6133,7 @@
     "Preiss.Analysis.CompactExhaustion",
     "Preiss.Analysis.CountableCoordinateMetric",
     "Preiss.Analysis.CountableCoordinateTopology",
+    "Preiss.Analysis.CoveringImage",
     "Preiss.Analysis.DenseCompactTests",
     "Preiss.Analysis.FiniteDimensionalBigO",
     "Preiss.Analysis.GaussianBallPower",
@@ -6013,6 +6178,8 @@
     "Preiss.Analysis.Vague.SecondCountable",
     "Preiss.Analysis.Vague.Support",
     "Preiss.Analysis.Vague.UniformTails",
+    "Preiss.Analysis.Vague.WeightedProjectionSupport",
+    "Preiss.Density.AbsoluteContinuous",
     "Preiss.Density.Adapters",
     "Preiss.Density.Atoms",
     "Preiss.Density.Defs",
@@ -6039,6 +6206,7 @@
     "Preiss.Geometry.PlaneMeasure",
     "Preiss.Geometry.PlaneRegularity",
     "Preiss.Geometry.PlaneSlab",
+    "Preiss.Geometry.PlaneSymmetry",
     "Preiss.Geometry.PlaneTopology",
     "Preiss.Geometry.Planes",
     "Preiss.Geometry.Projections",
@@ -6059,6 +6227,7 @@
     "Preiss.Rectifiability.MarstrandMattila.Packing",
     "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
     "Preiss.Rectifiability.MarstrandMattila.PackingCore",
+    "Preiss.Rectifiability.MarstrandMattila.ProjectionCovering",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
     "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
     "Preiss.Rectifiability.ProjectionEstimate",
@@ -6069,6 +6238,7 @@
     "Preiss.Rectifiability.WeakApproximation.Density",
     "Preiss.Rectifiability.WeakApproximation.Restriction",
     "Preiss.Rectifiability.WeakApproximation.TwoSided",
+    "Preiss.Rectifiability.WeakApproximation.UniformTubes",
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
     "Preiss.Rectifiability.Zero",
     "Preiss.Tangent.Algebra",
@@ -6081,7 +6251,6 @@
     "Preiss.Tangent.Continuity",
     "Preiss.Tangent.Defs",
     "Preiss.Tangent.DensityBallLaw",
-    "Preiss.Tangent.DensityTransfer",
     "Preiss.Tangent.Existence",
     "Preiss.Tangent.Extraction",
     "Preiss.Tangent.FlatApproximation",
@@ -6122,6 +6291,7 @@
     "Preiss.Uniform.FlatnessVague",
     "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.GMTAdapters",
+    "Preiss.Uniform.GaussianPlaneEnergy",
     "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.MomentAsymptotics",
     "Preiss.Uniform.MomentCoefficients",
@@ -6130,6 +6300,7 @@
     "Preiss.Uniform.MomentExpansion",
     "Preiss.Uniform.MomentFeatures",
     "Preiss.Uniform.MomentForms",
+    "Preiss.Uniform.MomentTaylorJets",
     "Preiss.Uniform.MomentTrace",
     "Preiss.Uniform.Moments",
     "Preiss.Uniform.Radial",
@@ -6147,6 +6318,7 @@
     "Preiss.Rectifiability.GraphBlowup",
     "Preiss.Rectifiability.GraphCover",
     "Preiss.Rectifiability.TangentCharacterization",
-    "Preiss.Rectifiability.TangentNecessity"
+    "Preiss.Rectifiability.TangentNecessity",
+    "Preiss.Tangent.DensityTransfer"
   ]
 }
