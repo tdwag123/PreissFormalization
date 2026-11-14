@@ -60,7 +60,9 @@ theorem vagueMetric_finite_cover_of_compact {n : ℕ} (M : VagueMetrization n)
   obtain ⟨F, hFK, hF, hcover⟩ := hK.finite_cover_balls hε
   refine ⟨F, hF, hFK, ?_⟩
   intro μ hμ
-  simpa only [Set.mem_iUnion, Metric.mem_ball] using hcover hμ
+  obtain ⟨ν, hν⟩ := Set.mem_iUnion.mp (hcover hμ)
+  obtain ⟨hνF, hball⟩ := Set.mem_iUnion.mp hν
+  exact ⟨ν, hνF, hball⟩
 
 /-- A single eventual condition can encode any finite collection of stagewise constraints. -/
 theorem vague_diagonal_selection {n : ℕ}

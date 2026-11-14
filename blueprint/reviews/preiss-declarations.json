@@ -454,7 +454,7 @@
       ],
       "status": "source interface written",
       "files": [
-        "Preiss/Analysis/GaussianGrowth.lean"
+        "Preiss/Analysis/GaussianVague.lean"
       ],
       "planned_file": "Preiss/Analysis/GaussianGrowth.lean"
     },
@@ -510,11 +510,15 @@
     "lem:moment-norm-bound": {
       "lean_names": [
         "Preiss.integrable_gaussianMomentKernel",
-        "Preiss.norm_gaussianMomentForm_le"
+        "Preiss.norm_gaussianMomentForm_le",
+        "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
+        "Preiss.integrable_gaussianMomentKernel_of_integrable_norm"
       ],
       "planned_lean_names": [
         "Preiss.integrable_gaussianMomentKernel",
-        "Preiss.norm_gaussianMomentForm_le"
+        "Preiss.norm_gaussianMomentForm_le",
+        "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
+        "Preiss.integrable_gaussianMomentKernel_of_integrable_norm"
       ],
       "status": "source interface written",
       "files": [
@@ -632,11 +636,13 @@
     "lem:taylor-two": {
       "lean_names": [
         "Preiss.exists_gaussianMoment_taylor_coefficients",
-        "Preiss.gaussianMomentCoefficient_unique"
+        "Preiss.gaussianMomentCoefficient_unique",
+        "Preiss.eq_zero_of_isLittleO_pow_smul"
       ],
       "planned_lean_names": [
         "Preiss.exists_gaussianMoment_taylor_coefficients",
-        "Preiss.gaussianMomentCoefficient_unique"
+        "Preiss.gaussianMomentCoefficient_unique",
+        "Preiss.eq_zero_of_isLittleO_pow_smul"
       ],
       "status": "source interface written",
       "files": [
@@ -1394,6 +1400,17 @@
         "Preiss/Uniform/MomentForms.lean"
       ]
     },
+    "lem:moment-kernel-calculus": {
+      "lean_names": [
+        "Preiss.continuous_momentKernel",
+        "Preiss.momentKernel_smul",
+        "Preiss.norm_momentKernel_le"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ]
+    },
     "def:polynomial-growth-bound": {
       "lean_names": [
         "Preiss.HasPolynomialGrowthBound"
@@ -1490,9 +1507,20 @@
       "Preiss.gaussianMomentForm_permute",
       "Preiss.bilinearTrace_eq_sum_diagonal"
     ],
-    "drafts_awaiting_ci": [
+    "linux_ci_a34b830_modules_passed": [
       "Preiss.polynomialFeature_inner",
-      "Preiss.gaussian_integral_bilinear_eq_trace"
+      "Preiss.gaussianMomentForm_smul",
+      "Preiss.eq_zero_of_isLittleO_pow_smul",
+      "Preiss.gaussianMomentCoefficient_unique"
+    ],
+    "drafts_awaiting_ci": [
+      "Preiss.gaussian_integral_bilinear_eq_trace",
+      "Preiss.continuous_momentKernel",
+      "Preiss.momentKernel_smul",
+      "Preiss.norm_momentKernel_le",
+      "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
+      "Preiss.integrable_gaussianMomentKernel_of_integrable_norm",
+      "Preiss.integrable_gaussianMomentKernel"
     ]
   }
 }

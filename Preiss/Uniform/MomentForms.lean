@@ -42,6 +42,23 @@ theorem momentKernel_apply (k : ℕ) (z : Euclidean n) (u : Fin k → Euclidean 
     momentKernel k z u = ∏ i, inner ℝ z (u i) := by
   rfl
 
+@[fun_prop]
+theorem continuous_momentKernel (k : ℕ) : Continuous (momentKernel (n := n) k) := by
+  let g : ContinuousMultilinearMap ℝ
+      (fun _ : Fin k => Euclidean n →L[ℝ] ℝ) (MomentForm n k) :=
+    (ContinuousMultilinearMap.mkPiAlgebra ℝ (Fin k) ℝ).compContinuousLinearMapLRight
+  exact g.continuous.comp (continuous_pi fun _ => (innerSL ℝ).continuous)
+
+theorem momentKernel_smul (k : ℕ) (z : Euclidean n) (a : ℝ) :
+    momentKernel k (a • z) = (a ^ k) • momentKernel k z := by
+  ext u
+  simp [momentKernel_apply, inner_smul_left, Finset.prod_mul_distrib]
+
+theorem norm_momentKernel_le (k : ℕ) (z : Euclidean n) :
+    ‖momentKernel k z‖ ≤ ‖z‖ ^ k := by
+  simpa [momentKernel] using ContinuousMultilinearMap.norm_compContinuousLinearMap_le
+    (ContinuousMultilinearMap.mkPiAlgebra ℝ (Fin k) ℝ) (fun _ => innerSL ℝ z)
+
 noncomputable def gaussianMass (μ : Measure (Euclidean n)) (s : ℝ) : ℝ :=
   ∫ z, Real.exp (-s * ‖z‖ ^ 2) ∂μ
 

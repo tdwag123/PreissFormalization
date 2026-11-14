@@ -113,5 +113,16 @@
       "Preiss.Uniform.FlatAtInfinity.Rigidity",
       "Preiss.Uniform.TangentAtInfinity"
     ]
+  },
+  "first_proof_batch": {
+    "commit": "a34b830",
+    "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43582932841",
+    "status": "failed",
+    "failed_modules": [
+      "Preiss.Analysis.GaussianQuadraticForms",
+      "Preiss.Analysis.Vague.Metrization",
+      "Preiss.Tangent.Algebra"
+    ],
+    "note": "Other compiled modules include graph rectifiability, density adapters, tangent existence, excess-dimension endpoint, coefficient uniqueness, and scalar covariance. Repairs awaiting the next full build and axiom audit."
   }
 }

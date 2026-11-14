@@ -1,5 +1,7 @@
-import Preiss.Analysis.GaussianGrowth
+module
+public import Preiss.Analysis.GaussianGrowth
 
+@[expose] public section
 open MeasureTheory
 namespace Preiss
 variable {n : ℕ}

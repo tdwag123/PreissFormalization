@@ -1,9 +1,11 @@
-import Preiss.Geometry.Euclidean
-import FormalizingGMT.WeakConvergence.Basic
-import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
-import Mathlib.MeasureTheory.Integral.DominatedConvergence
-import Mathlib.Algebra.MvPolynomial.Eval
+module
+public import Preiss.Geometry.Euclidean
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
+public import Mathlib.MeasureTheory.Integral.DominatedConvergence
+public import Mathlib.MeasureTheory.Measure.Regular
+public import Mathlib.Algebra.MvPolynomial.Eval
 
+@[expose] public section
 open MeasureTheory Metric Set Filter
 open scoped Topology
 namespace Preiss
@@ -24,18 +26,6 @@ theorem gaussian_polynomial_uniform_tail (C p : ℝ) (d : ℕ) (s : ℝ) (hs : 0
     ∃ R₀ > 0, ∀ (μ : Measure (Euclidean n)), μ.Regular →
       HasPolynomialGrowthBound μ C p → ∀ R ≥ R₀,
       (∫ z in (closedBall 0 R)ᶜ, ‖z‖ ^ d * Real.exp (-s * ‖z‖ ^ 2) ∂μ) < ε := by
-  sorry
-
-theorem vague_integral_polynomial_mul_gaussian
-    (μ : ℕ → Measure (Euclidean n)) (ν : Measure (Euclidean n))
-    (hμ : ∀ i, (μ i).Regular) (hν : ν.Regular)
-    (hlim : Measure.WeaklyConverges μ ν) (C p : ℝ)
-    (hgrowth : ∀ i, HasPolynomialGrowthBound (μ i) C p)
-    (hνgrowth : HasPolynomialGrowthBound ν C p)
-    (P : MvPolynomial (Fin n) ℝ) (s : ℝ) (hs : 0 < s) :
-    Tendsto (fun i => ∫ z, MvPolynomial.eval (fun j => z j) P *
-      Real.exp (-s * ‖z‖ ^ 2) ∂μ i) atTop
-      (𝓝 (∫ z, MvPolynomial.eval (fun j => z j) P * Real.exp (-s * ‖z‖ ^ 2) ∂ν)) := by
   sorry
 
 theorem hasDerivAt_integral_polynomial_mul_gaussian

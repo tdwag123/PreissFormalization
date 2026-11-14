@@ -26,8 +26,17 @@ theorem unitFlat_closedBall (V : Plane m n) (x : Euclidean n) (hx : x ∈ V.1)
 
 theorem map_hausdorffMeasure_subtype_eq_restrict (V : Plane m n) :
     (Measure.hausdorffMeasure (m : ℝ) : Measure V.1).map
-      (fun v : V.1 ↦ (v : Euclidean n)) = ((Measure.hausdorffMeasure (m : ℝ))).restrict (V.1 : Set (Euclidean n)) := by
-  sorry
+      (fun v : V.1 ↦ (v : Euclidean n)) =
+      (Measure.hausdorffMeasure (m : ℝ)).restrict (V.1 : Set (Euclidean n)) := by
+  have hi : Isometry (fun v : V.1 ↦ (v : Euclidean n)) := isometry_subtype_coe
+  have hr : Set.range (fun v : V.1 ↦ (v : Euclidean n)) = (V.1 : Set (Euclidean n)) := by
+    ext x
+    constructor
+    · rintro ⟨v, rfl⟩
+      exact v.property
+    · intro hx
+      exact ⟨⟨x, hx⟩, rfl⟩
+  simpa only [hr] using hi.map_hausdorffMeasure (Or.inl (Nat.cast_nonneg m))
 
 theorem planeMeasure_ball_and_sphere (V : Plane m n) (hm : 0 < m) :
     ∃ b : ℝ, 0 < b ∧ ∀ x : Euclidean n, x ∈ V.1 → ∀ r : ℝ, 0 < r →

@@ -92,6 +92,9 @@ flowchart LR
   def_positive_density["Positive finite density"]
   lem_density_measure_comparison["Measure comparisons on density strata"]
   lem_zero_dimension["Dimension zero"]
+  lem_countable_carrier["Countable carriers"]
+  lem_zero_hausdorff_ac["Absolute continuity with respect to zero-dimensional Hausdorff measure"]
+  lem_zero_density_atoms["Zero-dimensional density equals atomic mass"]
   lem_density_bridge["Normalization bridges"]
   lem_absolute_continuity["Finite upper density implies Hausdorff absolute continuity"]
   lem_finite_pieces["Finite Hausdorff pieces with comparable measures"]
@@ -243,6 +246,7 @@ flowchart LR
   lem_uniform_constant_one["Centered unit normalization"]
   lem_uniform_scaling["Scaling uniform measures and their ball constants"]
   lem_density_limit_values["Values of existing dimensional densities"]
+  lem_moment_kernel_calculus["Continuity, homogeneity, and norm bounds for moment kernels"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -421,6 +425,12 @@ flowchart LR
   gmt_vitali --> lem_density_measure_comparison
   def_positive_density --> lem_zero_dimension
   def_rectifiable --> lem_zero_dimension
+  lem_countable_carrier --> lem_zero_dimension
+  lem_zero_density_atoms --> lem_zero_dimension
+  lem_zero_hausdorff_ac --> lem_zero_dimension
+  def_parametrized_coverage --> lem_countable_carrier
+  def_rectifiable --> lem_countable_carrier
+  def_density_api --> lem_zero_density_atoms
   def_positive_density --> lem_density_bridge
   gmt_density_bounds --> lem_density_bridge
   gmt_density_exists_set --> lem_density_bridge
@@ -618,6 +628,7 @@ flowchart LR
   def_moments --> lem_moment_norm_bound
   def_unit_uniform --> lem_moment_norm_bound
   lem_moment_form_evaluation --> lem_moment_norm_bound
+  lem_moment_kernel_calculus --> lem_moment_norm_bound
   lem_radial --> lem_moment_norm_bound
   def_conical --> lem_homogeneous_energy_radial
   def_plane --> lem_homogeneous_energy_radial
@@ -1047,3 +1058,4 @@ flowchart LR
   lem_blowup_composition --> lem_uniform_scaling
   lem_uniform_constant_one --> lem_uniform_scaling
   def_density_api --> lem_density_limit_values
+  def_moments --> lem_moment_kernel_calculus

@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-14T09:55:52.187725+00:00",
+  "updated_at": "2026-11-14T10:06:27.386902+00:00",
   "stage": "Proof development after the complete canonical statement build passed.",
   "graph": {
-    "nodes": 244,
-    "edges": 804,
+    "nodes": 248,
+    "edges": 812,
     "acyclic": true,
     "status_counts": {
       "formalized_upstream": 56,
-      "definition": 27,
-      "proof_candidate": 17,
-      "unproved_statement": 140,
-      "depends_on_unproved": 4
+      "definition": 24,
+      "proof_candidate": 22,
+      "unproved_statement": 141,
+      "depends_on_unproved": 5
     }
   },
   "source_validation": {
@@ -31,8 +31,8 @@
     "current_proof_changes": "Undergoing separate CI verification."
   },
   "render_validation": {
-    "status": "static_checks_passed",
-    "scope": "Generated LeanBlueprint HTML contains all 244 graph modals and all 377 source links. Rooted and module SVGs generated. Local renderer emitted Windows imager warnings; Linux Pages CI is the publication check. No browser visual verification claimed."
+    "status": "pending_linux_ci",
+    "scope": "Updated LeanBlueprint sources and declaration index; Pages CI renders and checks every graph modal and link."
   },
   "publication": {
     "repository": "https://github.com/tdwag123/PreissFormalization",

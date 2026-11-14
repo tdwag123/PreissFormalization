@@ -1,6 +1,7 @@
 module
 public import Preiss.Analysis.BilinearTrace
 public import Mathlib.Probability.Distributions.Gaussian.Multivariate
+public import Mathlib.Probability.Distributions.Gaussian.Fernique
 
 @[expose] public section
 open MeasureTheory ProbabilityTheory
@@ -27,7 +28,8 @@ theorem gaussian_integral_bilinear_eq_trace (A : E →L[ℝ] E →L[ℝ] ℝ) :
   have hLp : MemLp (id : E → E) 2 (stdGaussian E) := IsGaussian.memLp_two_id
   have hcov (u v : E) :
       (∫ z, inner ℝ u z * inner ℝ v z ∂stdGaussian E) = inner ℝ u v := by
-    simpa [covarianceBilin_stdGaussian] using (covarianceBilin_apply hLp u v).symm
+    simpa [covarianceBilin_stdGaussian, innerSL_apply_apply] using
+      (covarianceBilin_apply hLp u v).symm
   have hdecomp (x : E) :
       A x x = ∑ i, inner ℝ (e i) x * inner ℝ (T (e i)) x := by
     calc

@@ -333,7 +333,7 @@ This canonical definition implies the graph-test version used in the source.
 
 \begin{lemma}[Attainment, positivity and unit-ball comparison]
 \label{lem:flatness-minimum}
-\lean{Preiss.exists_plane_ball_energy_le_of_flatness_le, Preiss.flatness_eq_zero_of_isFlat, Preiss.flatness_exists_minimizer, Preiss.flatness_nonneg}
+\lean{Preiss.flatness_exists_minimizer, Preiss.flatness_nonneg, Preiss.flatness_eq_zero_of_isFlat, Preiss.exists_plane_ball_energy_le_of_flatness_le}
 \uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests}
 
 
@@ -777,7 +777,7 @@ Split upper and lower comparison declarations; constants may be nonoptimal but m
 \begin{lemma}[Dimension zero]
 \label{lem:zero-dimension}
 \lean{Preiss.preiss_zero}
-\uses{def:positive-density, def:rectifiable}
+\uses{def:positive-density, def:rectifiable, lem:countable-carrier, lem:zero-hausdorff-ac, lem:zero-density-atoms}
 
 
 
@@ -795,6 +795,38 @@ Continuity from above of the finite measure on a bounded ball identifies
 the small-ball limit with $\mu\{x\}$. The measure is carried by its atoms;
 local finiteness and a countable compact exhaustion make these countable.
 Zero-dimensional Hausdorff measure has no nonempty null sets.
+\end{proof}
+
+\begin{lemma}[Countable carriers]
+\label{lem:countable-carrier}
+\lean{Preiss.countablyCoveredByLipschitzPieces_of_countable, Preiss.countablyRectifiable_of_countable}
+\uses{def:parametrized-coverage, def:rectifiable}
+Every countable subset of a metric space is covered by countably many constant
+Lipschitz parametrizations, in every natural dimension. It is therefore countably
+rectifiable. The empty set is included.
+\end{lemma}
+\begin{proof}
+Associate to each point the constant map on the whole Euclidean domain.
+\end{proof}
+
+\begin{lemma}[Absolute continuity with respect to zero-dimensional Hausdorff measure]
+\label{lem:zero-hausdorff-ac}
+\lean{Preiss.absolutelyContinuous_hausdorffMeasure_zero}
+Every Borel measure on a metric space is absolutely continuous with respect to
+$\mathcal H^0$, since a nonempty set has $\mathcal H^0$-measure at least one.
+\end{lemma}
+
+\begin{lemma}[Zero-dimensional density equals atomic mass]
+\label{lem:zero-density-atoms}
+\lean{Preiss.tendsto_densityRatio_zero, Preiss.lowerDensity_zero_eq_singleton}
+\uses{def:density-api}
+For a locally finite measure on a proper metric space, the zero-dimensional
+density ratio at $x$ converges to $\mu\{x\}$ as the radius tends to zero from above.
+In particular the lower zero-dimensional density equals this atomic mass.
+\end{lemma}
+\begin{proof}
+Closed balls decrease to the singleton, and one such ball has finite measure.
+Apply continuity from above.
 \end{proof}
 
 \begin{lemma}[Normalization bridges]
@@ -969,7 +1001,7 @@ The limit is a tangent measure in GMT's arbitrary-scalar convention.
 
 \begin{lemma}[Composition, scalar and isometric covariance of blow-ups]
 \label{lem:blowup-composition}
-\lean{Preiss.dimensionalBlowup_comp, Preiss.dimensionalBlowup_map_linearIsometry, Preiss.dimensionalBlowup_smul}
+\lean{Preiss.dimensionalBlowup_comp, Preiss.dimensionalBlowup_smul, Preiss.dimensionalBlowup_map_linearIsometry}
 \uses{def:dimensional-blowup, gmt:blowup, gmt:blowup-regular}
 
 
@@ -1036,7 +1068,7 @@ nearest points in $D$ with error $r_i/i$; no closedness of $D$ is needed.
 
 \begin{lemma}[Joint continuity of translated dilations]
 \label{lem:vague-moving-blowups}
-\lean{Preiss.vague_dimensionalBlowup_moving, Preiss.vague_smul_map_sub_div}
+\lean{Preiss.vague_smul_map_sub_div, Preiss.vague_dimensionalBlowup_moving}
 \uses{def:dimensional-blowup, gmt:blowup-regular, lem:vague-moving-tests}
 
 
@@ -1156,7 +1188,7 @@ for every \(\eta>0\), some \(\lambda,r_0>0\) work at every \(0<r<r_0\) for both 
 
 \begin{lemma}[Plane and scaling API]
 \label{lem:plane-scaling}
-\lean{Preiss.isFlat_dimensionalBlowup, Preiss.isFlat_map_linearIsometry, Preiss.isFlat_of_dimensionalBlowup_zero}
+\lean{Preiss.isFlat_dimensionalBlowup, Preiss.isFlat_of_dimensionalBlowup_zero, Preiss.isFlat_map_linearIsometry}
 \uses{def:dimensional-blowup, def:flat, lem:blowup-composition, lem:plane-hausdorff}
 
 
@@ -1212,7 +1244,7 @@ implements closure without assuming a topology on all raw measures.
 
 \begin{lemma}[Transitivity of the support-centered scaling orbit closure]
 \label{lem:pseudotangent-transitive}
-\lean{Preiss.IsUniformPseudotangent, Preiss.uniformPseudotangent_isUnitUniform, Preiss.uniformPseudotangent_map_linearIsometry, Preiss.uniformPseudotangent_trans}
+\lean{Preiss.IsUniformPseudotangent, Preiss.uniformPseudotangent_isUnitUniform, Preiss.uniformPseudotangent_trans, Preiss.uniformPseudotangent_map_linearIsometry}
 \uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation}
 
 
@@ -1937,7 +1969,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Analytic extension of weighted complementary projections]
 \label{lem:graded-analytic-projection}
-\lean{Preiss.IsOrthogonalGrading, Preiss.analyticAt_weightedProjection_zero, Preiss.weightedComplement, Preiss.weightedGrading}
+\lean{Preiss.IsOrthogonalGrading, Preiss.weightedGrading, Preiss.weightedComplement, Preiss.analyticAt_weightedProjection_zero}
 
 
 This is a measure-independent linear algebra theorem. Let the finite-dimensional
@@ -2007,7 +2039,7 @@ value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
 
 \begin{definition}[Finite Euclidean polynomial feature map]
 \label{def:polynomial-feature}
-\lean{Preiss.PolynomialFeatureIndex, Preiss.PolynomialFeatureSpace, Preiss.polynomialFeature, Preiss.polynomialFeatureBlock, Preiss.polynomialFeatureProjection}
+\lean{Preiss.PolynomialFeatureIndex, Preiss.PolynomialFeatureSpace, Preiss.polynomialFeature, Preiss.polynomialFeatureBlock, Preiss.polynomialFeatureProjection, Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeatureProjection_inner}
 
 
 For $1\leq k\leq N$, index a Euclidean block by all $\iota:\operatorname{Fin}k\to\operatorname{Fin}n$ and set $\Phi_k(x)_\iota=\sqrt{2^k/k!}\prod_j x_{\iota(j)}$. The block pairing is $\langle\Phi_k(x),\Phi_k(y)\rangle=(2^k/k!)\langle x,y\rangle^k$. The direct sum has orthogonal coordinate projections $P_k$.
@@ -2141,7 +2173,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Countable compact-test metric for locally bounded families]
 \label{lem:vague-countable-metric}
-\lean{Preiss.RegularEuclideanMeasure, Preiss.VagueMetrization, Preiss.exists_vagueMetrization, Preiss.vagueMetric_finite_cover_of_compact, Preiss.vagueMetric_separates, Preiss.vagueMetric_tendsto_iff, Preiss.vagueTestDistance}
+\lean{Preiss.RegularEuclideanMeasure, Preiss.vagueTestDistance, Preiss.VagueMetrization, Preiss.exists_vagueMetrization, Preiss.vagueMetric_tendsto_iff, Preiss.vagueMetric_separates, Preiss.vagueMetric_finite_cover_of_compact}
 \uses{gmt:vague}
 
 
@@ -2230,7 +2262,7 @@ Justify limits by Gaussian quartic domination and Fubini.
 
 \begin{definition}[Bilinear trace and restriction]
 \label{def:bilinear-trace}
-\lean{Preiss.bilinearTrace, Preiss.restrictBilinear}
+\lean{Preiss.bilinearTrace, Preiss.restrictBilinear, Preiss.momentBilinear}
 
 
 For a continuous bilinear form on a finite-dimensional real inner product space, take the trace of its Riesz-represented linear map. Restriction to a subspace and conversion of a two-linear moment form to a bilinear form are concrete data operations.
@@ -2452,7 +2484,7 @@ realizes $\langle u^{\otimes k},v^{\otimes k}\rangle=\langle u,v\rangle^k$.
 
 \begin{definition}[Continuous symmetric Gaussian moment forms]
 \label{def:moments}
-\lean{Preiss.MomentForm, Preiss.gaussianMass, Preiss.gaussianMoment, Preiss.gaussianMomentForm, Preiss.gaussianMomentForm_permute, Preiss.momentBilinear, Preiss.momentKernel}
+\lean{Preiss.MomentForm, Preiss.gaussianMass, Preiss.gaussianMoment, Preiss.gaussianMomentForm, Preiss.momentKernel}
 
 
 
@@ -2465,7 +2497,7 @@ For $s>0$, define the continuous symmetric $k$-linear form $b_{k,s}(u_1,\ldots,u
 
 \begin{lemma}[Feature moment functional and weighted annihilator]
 \label{lem:moment-feature-annihilation}
-\lean{Preiss.featureMoment, Preiss.featureMoment_apply_feature, Preiss.featureMoment_vanishes_weightedComplement, Preiss.supportFeatureSpan}
+\lean{Preiss.supportFeatureSpan, Preiss.featureMoment, Preiss.featureMoment_apply_feature, Preiss.featureMoment_vanishes_weightedComplement}
 \uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:polynomial-feature-identities}
 
 
@@ -2498,7 +2530,7 @@ realizes $\langle u^{\otimes k},v^{\otimes k}\rangle=\langle u,v\rangle^k$.
 
 \begin{definition}[Gaussian moment coefficient families]
 \label{def:moment-coefficients}
-\lean{Preiss.IsMomentExpansion, Preiss.MomentCoefficientFamily, Preiss.momentTaylorPolynomial}
+\lean{Preiss.MomentCoefficientFamily, Preiss.momentTaylorPolynomial, Preiss.IsMomentExpansion}
 \uses{def:moments}
 
 
@@ -2519,7 +2551,7 @@ unproved existence theorem inside this definition.
 
 \begin{lemma}[Evaluation of Gaussian moment forms]
 \label{lem:moment-form-evaluation}
-\lean{Preiss.gaussianMomentForm_apply, Preiss.momentBilinear_apply, Preiss.momentKernel_apply}
+\lean{Preiss.momentKernel_apply, Preiss.gaussianMomentForm_apply, Preiss.momentBilinear_apply}
 \uses{def:moments}
 
 
@@ -2559,7 +2591,7 @@ Gaussian consequences are new adapters.
 
 \begin{lemma}[Moment covariance, scalar invariance and dilation]
 \label{lem:moment-covariance}
-\lean{Preiss.gaussianMomentForm_dilate, Preiss.gaussianMomentForm_map_linearIsometry, Preiss.gaussianMomentForm_smul}
+\lean{Preiss.gaussianMomentForm_dilate, Preiss.gaussianMomentForm_smul, Preiss.gaussianMomentForm_map_linearIsometry}
 \uses{def:dimensional-blowup, def:moments, def:unit-uniform, lem:blowup-composition, lem:moment-form-evaluation}
 
 
@@ -2595,8 +2627,8 @@ coefficient assertions below start at $k=1$.
 
 \begin{lemma}[Uniform operator norm bounds for Gaussian moments]
 \label{lem:moment-norm-bound}
-\lean{Preiss.integrable_gaussianMomentKernel, Preiss.norm_gaussianMomentForm_le}
-\uses{def:moments, def:unit-uniform, lem:moment-form-evaluation, lem:radial}
+\lean{Preiss.integrable_gaussianMomentKernel, Preiss.norm_gaussianMomentForm_le, Preiss.IsUnitUniform.hasPolynomialGrowthBound, Preiss.integrable_gaussianMomentKernel_of_integrable_norm}
+\uses{def:moments, def:unit-uniform, lem:moment-form-evaluation, lem:radial, lem:moment-kernel-calculus}
 
 
 
@@ -2846,7 +2878,7 @@ statement is stronger and safer than merely pointwise convergence on the support
 
 \begin{lemma}[Odd and even leading moment limits]
 \label{lem:scaled-moment-limits}
-\lean{Preiss.gaussianMoment_scaled_even_limit, Preiss.gaussianMoment_scaled_odd_limit}
+\lean{Preiss.gaussianMoment_scaled_odd_limit, Preiss.gaussianMoment_scaled_even_limit}
 \uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-coefficient-vanishing, lem:taylor-two}
 
 
@@ -2930,7 +2962,7 @@ support. This is needed in the bounded-hole argument R05 below.
 \begin{lemma}[Hyperplane transport with an explicit isometry]
 \label{lem:hyperplane-transport-map}
 \uses{def:uniform-constant}
-\lean{Preiss.isUnitUniform_map_linearIsometry, Preiss.uniformWithConstant_map_linearIsometry, Preiss.uniformWithConstant_transport, Preiss.uniform_hyperplane_transport}
+\lean{Preiss.uniform_hyperplane_transport, Preiss.uniformWithConstant_transport, Preiss.uniformWithConstant_map_linearIsometry, Preiss.isUnitUniform_map_linearIsometry}
 \uses{def:dimensional-blowup, def:plane, gmt:hyperplane-transport, lem:blowup-composition}
 
 
@@ -3191,7 +3223,7 @@ dimension theorem, or classification of all uniform measures.
 
 \begin{lemma}[Classification of plane-supported uniform measures]
 \label{lem:plane-supported-uniform-flat}
-\lean{Preiss.uniformWithConstant_eq_flat_of_support_subset_plane, Preiss.unitUniform_eq_flat_of_support_subset_plane}
+\lean{Preiss.unitUniform_eq_flat_of_support_subset_plane, Preiss.uniformWithConstant_eq_flat_of_support_subset_plane}
 \uses{def:flat, def:plane, def:unit-uniform, gmt:uniform-full-dimension, lem:hyperplane-transport-map, lem:plane-scaling}
 
 
@@ -3233,7 +3265,7 @@ dimension theorem, or classification of all uniform measures.
 
 \begin{theorem}[Uniqueness and full convergence of the blow-down]
 \label{thm:unique-infinity}
-\lean{Preiss.blowdown_sequence_converges, Preiss.unique_tangent_at_infinity}
+\lean{Preiss.unique_tangent_at_infinity, Preiss.blowdown_sequence_converges}
 \uses{def:tangent-at-infinity, def:unit-uniform, lem:blowdown-moment-limits, lem:infinity-compactness, lem:moment-determination, lem:vague-countable-metric, lem:vague-gaussian-polynomials}
 
 
@@ -3338,7 +3370,7 @@ two-dimensional shortcut in the original printed proof.
 
 \begin{definition}[Normal first-moment vector]
 \label{def:rigidity-normal-vector}
-\lean{Preiss.IsFirstMomentNormalVector}
+\lean{Preiss.IsFirstMomentNormalVector, Preiss.exists_firstMomentNormalVector}
 \uses{def:moment-coefficients, def:plane}
 
 
@@ -3353,7 +3385,7 @@ For $\nu\in\mathcal U_m$ with blow-down $\sigma_V$, there is a unique $b\in V^\p
 
 \begin{definition}[Normal valued bilinear map from the third coefficient]
 \label{def:rigidity-omega}
-\lean{Preiss.IsRigidityOmega, Preiss.RigidityOmega}
+\lean{Preiss.RigidityOmega, Preiss.IsRigidityOmega, Preiss.exists_rigidityOmega_and_adjustedForm}
 \uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector}
 
 
@@ -3369,7 +3401,7 @@ Define the continuous symmetric bilinear map $\omega:V\times V\to V^\perp$ by $\
 
 \begin{definition}[Adjusted symmetric quadratic form on the limiting plane]
 \label{def:rigidity-adjusted-form}
-\lean{Preiss.IsRigidityAdjustedForm, Preiss.RigidityAdjustedForm}
+\lean{Preiss.RigidityAdjustedForm, Preiss.IsRigidityAdjustedForm, Preiss.exists_rigidityOmega_and_adjustedForm}
 \uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega}
 
 
@@ -3725,7 +3757,7 @@ the inequality.
 
 \begin{lemma}[Vanishing lower order Gaussian error]
 \label{lem:rigidity-rescaled-error}
-\lean{Preiss.adjustedForm_gaussian_error_tendsto_zero, Preiss.rigidityError, Preiss.rigidityError_le_linear_growth}
+\lean{Preiss.rigidityError, Preiss.rigidityError_le_linear_growth, Preiss.adjustedForm_gaussian_error_tendsto_zero}
 \uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity}
 
 
@@ -4490,3 +4522,16 @@ Dimensional blow-ups preserve a specified uniform ball constant. Centering at a 
 \uses{def:density-api}
 For an outer measure on a pseudo extended metric space and any real dimension parameter, convergence of the dimensional density ratio identifies its density value with the limit. Whenever the density exists, its value equals both the lower and upper densities.
 \end{lemma}
+
+\begin{lemma}[Continuity, homogeneity, and norm bounds for moment kernels]
+\label{lem:moment-kernel-calculus}
+\lean{Preiss.continuous_momentKernel, Preiss.momentKernel_smul, Preiss.norm_momentKernel_le}
+\uses{def:moments}
+The degree-$k$ multilinear moment kernel depends continuously on its vector argument,
+is homogeneous of degree $k$ under real scalar multiplication, and has operator norm
+at most the $k$th power of the vector norm. These assertions include degree zero.
+\end{lemma}
+\begin{proof}
+Use the continuous multilinear product of the inner-product functionals, together
+with their operator-norm bound.
+\end{proof}

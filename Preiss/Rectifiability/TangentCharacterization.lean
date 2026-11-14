@@ -12,6 +12,19 @@ theorem rectifiable_iff_density_bounds_and_flat_tangents
     (hm : 0 < m) (hmn : m ≤ n) (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] :
     IsRectifiableMeasure m μ ↔
       (∀ᵐ x ∂μ, HasPositiveFiniteDensitiesAt m μ x) ∧
-      (∀ᵐ x ∂μ, ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν) := by sorry
+      (∀ᵐ x ∂μ, ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν) := by
+  constructor
+  · intro hrect
+    have h := rectifiable_has_density_and_tangent_plane hm hmn μ hrect
+    constructor
+    · filter_upwards [h] with x hx
+      exact hx.1.densities
+    · filter_upwards [h] with x hx
+      obtain ⟨V, hV⟩ := hx.2
+      intro ν hν
+      obtain ⟨c, hc, hctop, heq⟩ := (hV ν).mp hν
+      exact ⟨V, c, hc, hctop, heq⟩
+  · rintro ⟨hd, ht⟩
+    exact isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents hm hmn μ hd ht
 
 end Preiss

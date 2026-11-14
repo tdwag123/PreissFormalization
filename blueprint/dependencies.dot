@@ -63,7 +63,7 @@ digraph Preiss {
   "lem:domain-extension" [label="Euclidean extension of Lipschitz parametrizations", fillcolor="#dce5ee"];
   "def:unit-uniform" [label="Unit uniform measures", fillcolor="#d9eaf7"];
   "def:lipschitz-graph" [label="Lipschitz graphs", fillcolor="#d9eaf7"];
-  "lem:grassmannian" [label="Compact projection model of fixed-dimensional planes", fillcolor="#fff0bf"];
+  "lem:grassmannian" [label="Compact projection model of fixed-dimensional planes", fillcolor="#dce5ee"];
   "def:cone" [label="Cones about affine planes", fillcolor="#d9eaf7"];
   "lem:plane-hausdorff" [label="Hausdorff measure on planes", fillcolor="#fff0bf"];
   "lem:empty-cylinder-direction" [label="A plane avoiding an inner cylinder has a small projected direction", fillcolor="#fff0bf"];
@@ -93,7 +93,10 @@ digraph Preiss {
   "lem:decomposition" [label="Rectifiable/pure decomposition", fillcolor="#fff0bf"];
   "def:positive-density" [label="Positive finite density", fillcolor="#dce5ee"];
   "lem:density-measure-comparison" [label="Measure comparisons on density strata", fillcolor="#fff0bf"];
-  "lem:zero-dimension" [label="Dimension zero", fillcolor="#fff0bf"];
+  "lem:zero-dimension" [label="Dimension zero", fillcolor="#dce5ee"];
+  "lem:countable-carrier" [label="Countable carriers", fillcolor="#dce5ee"];
+  "lem:zero-hausdorff-ac" [label="Absolute continuity with respect to zero-dimensional Hausdorff measure", fillcolor="#dce5ee"];
+  "lem:zero-density-atoms" [label="Zero-dimensional density equals atomic mass", fillcolor="#dce5ee"];
   "lem:density-bridge" [label="Normalization bridges", fillcolor="#fff0bf"];
   "lem:absolute-continuity" [label="Finite upper density implies Hausdorff absolute continuity", fillcolor="#fff0bf"];
   "lem:finite-pieces" [label="Finite Hausdorff pieces with comparable measures", fillcolor="#fff0bf"];
@@ -143,7 +146,7 @@ digraph Preiss {
   "lem:gaussian-polynomial-integrable" [label="Gaussian polynomial integrability under polynomial growth", fillcolor="#fff0bf"];
   "lem:graded-analytic-projection" [label="Analytic extension of weighted complementary projections", fillcolor="#fff0bf"];
   "lem:greatest-crossing" [label="Greatest crossing with an interval bound", fillcolor="#fff0bf"];
-  "def:polynomial-feature" [label="Finite Euclidean polynomial feature map", fillcolor="#d9eaf7"];
+  "def:polynomial-feature" [label="Finite Euclidean polynomial feature map", fillcolor="#fff0bf"];
   "lem:spectral-minimizing-plane" [label="Top eigenspaces minimize normal covariance trace", fillcolor="#fff0bf"];
   "lem:moment-determination" [label="Gaussian weighted polynomials determine growing measures", fillcolor="#fff0bf"];
   "lem:gaussian-uniform-tails" [label="Uniform Gaussian polynomial tails", fillcolor="#fff0bf"];
@@ -160,7 +163,7 @@ digraph Preiss {
   "lem:vague-gaussian-polynomials" [label="Vague convergence of Gaussian polynomial integrals", fillcolor="#fff0bf"];
   "lem:gaussian-quadratic-trace-bound" [label="Gaussian quadratic form second moment and trace bound", fillcolor="#fff0bf"];
   "lem:moment-feature-remainder" [label="Operator norm remainder from finitely many support features", fillcolor="#fff0bf"];
-  "def:moments" [label="Continuous symmetric Gaussian moment forms", fillcolor="#dce5ee"];
+  "def:moments" [label="Continuous symmetric Gaussian moment forms", fillcolor="#d9eaf7"];
   "lem:moment-feature-annihilation" [label="Feature moment functional and weighted annihilator", fillcolor="#fff0bf"];
   "def:moment-coefficients" [label="Gaussian moment coefficient families", fillcolor="#d9eaf7"];
   "lem:moment-form-evaluation" [label="Evaluation of Gaussian moment forms", fillcolor="#dce5ee"];
@@ -192,9 +195,9 @@ digraph Preiss {
   "lem:conical-eigenvalue-rigidity" [label="Elementary eigenvalue rigidity from one nearby support point", fillcolor="#fff0bf"];
   "cor:conical" [label="The unique blow-down is conical", fillcolor="#fff0bf"];
   "thm:gap" [label="Uniform conical flatness gap", fillcolor="#fff0bf"];
-  "def:rigidity-normal-vector" [label="Normal first-moment vector", fillcolor="#d9eaf7"];
-  "def:rigidity-omega" [label="Normal valued bilinear map from the third coefficient", fillcolor="#d9eaf7"];
-  "def:rigidity-adjusted-form" [label="Adjusted symmetric quadratic form on the limiting plane", fillcolor="#d9eaf7"];
+  "def:rigidity-normal-vector" [label="Normal first-moment vector", fillcolor="#fff0bf"];
+  "def:rigidity-omega" [label="Normal valued bilinear map from the third coefficient", fillcolor="#fff0bf"];
+  "def:rigidity-adjusted-form" [label="Adjusted symmetric quadratic form on the limiting plane", fillcolor="#fff0bf"];
   "lem:flat-infinity-moments" [label="Even Taylor coefficients from a flat blow-down", fillcolor="#fff0bf"];
   "lem:odd-coefficients-plane-zero" [label="Odd top coefficients vanish on the flat limiting plane", fillcolor="#fff0bf"];
   "lem:uniform-cylinder-identity" [label="Cylinder identity and bounded normal coordinates", fillcolor="#fff0bf"];
@@ -230,7 +233,7 @@ digraph Preiss {
   "lem:representation" [label="Density representation on a sigma-finite carrier", fillcolor="#fff0bf"];
   "thm:rectifiable-blowup" [label="Rectifiable measures have a single normalized flat limit", fillcolor="#fff0bf"];
   "cor:rectifiable-tangent-plane" [label="Rectifiable density and common tangent plane", fillcolor="#fff0bf"];
-  "thm:rectifiable-iff-flat" [label="Full tangent characterization", fillcolor="#fff0bf"];
+  "thm:rectifiable-iff-flat" [label="Full tangent characterization", fillcolor="#ffe0b2"];
   "lem:moment-form-symmetry" [label="Permutation symmetry of Gaussian moment forms", fillcolor="#dce5ee"];
   "def:polynomial-growth-bound" [label="A common polynomial growth bound", fillcolor="#d9eaf7"];
   "def:flatness-cutoff" [label="An admissible flatness cutoff", fillcolor="#d9eaf7"];
@@ -245,6 +248,7 @@ digraph Preiss {
   "lem:uniform-constant-one" [label="Centered unit normalization", fillcolor="#fff0bf"];
   "lem:uniform-scaling" [label="Scaling uniform measures and their ball constants", fillcolor="#fff0bf"];
   "lem:density-limit-values" [label="Values of existing dimensional densities", fillcolor="#dce5ee"];
+  "lem:moment-kernel-calculus" [label="Continuity, homogeneity, and norm bounds for moment kernels", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -423,6 +427,12 @@ digraph Preiss {
   "gmt:vitali" -> "lem:density-measure-comparison";
   "def:positive-density" -> "lem:zero-dimension";
   "def:rectifiable" -> "lem:zero-dimension";
+  "lem:countable-carrier" -> "lem:zero-dimension";
+  "lem:zero-density-atoms" -> "lem:zero-dimension";
+  "lem:zero-hausdorff-ac" -> "lem:zero-dimension";
+  "def:parametrized-coverage" -> "lem:countable-carrier";
+  "def:rectifiable" -> "lem:countable-carrier";
+  "def:density-api" -> "lem:zero-density-atoms";
   "def:positive-density" -> "lem:density-bridge";
   "gmt:density-bounds" -> "lem:density-bridge";
   "gmt:density-exists-set" -> "lem:density-bridge";
@@ -620,6 +630,7 @@ digraph Preiss {
   "def:moments" -> "lem:moment-norm-bound";
   "def:unit-uniform" -> "lem:moment-norm-bound";
   "lem:moment-form-evaluation" -> "lem:moment-norm-bound";
+  "lem:moment-kernel-calculus" -> "lem:moment-norm-bound";
   "lem:radial" -> "lem:moment-norm-bound";
   "def:conical" -> "lem:homogeneous-energy-radial";
   "def:plane" -> "lem:homogeneous-energy-radial";
@@ -1049,4 +1060,5 @@ digraph Preiss {
   "lem:blowup-composition" -> "lem:uniform-scaling";
   "lem:uniform-constant-one" -> "lem:uniform-scaling";
   "def:density-api" -> "lem:density-limit-values";
+  "def:moments" -> "lem:moment-kernel-calculus";
 }

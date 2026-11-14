@@ -27,14 +27,17 @@ theorem dimensionalBlowup_comp (μ : Measure (Euclidean n)) (a b : Euclidean n)
     rw [mul_pow, ENNReal.ofReal_mul (pow_nonneg hr.le m),
       ENNReal.mul_inv (Or.inr ENNReal.ofReal_ne_top) (Or.inl ENNReal.ofReal_ne_top)]
     exact mul_comm _ _
-  simp only [dimensionalBlowup, Measure.map_smul, smul_smul]
-  rw [Measure.map_map hsmap hrmap, hcomp, hcoeff]
+  unfold dimensionalBlowup
+  rw [Measure.map_smul _ hsmap.aemeasurable, Measure.map_map hsmap hrmap,
+    smul_smul, hcomp, hcoeff]
 
 theorem dimensionalBlowup_smul (μ : Measure (Euclidean n)) (a : Euclidean n)
     (r : ℝ) (hr : 0 < r) (c : ℝ≥0∞) :
     dimensionalBlowup m (c • μ) a r = c • dimensionalBlowup m μ a r := by
+  have hmap : Measurable (fun y : Euclidean n => r⁻¹ • (y - a)) :=
+    ((continuous_id.sub continuous_const).const_smul r⁻¹).measurable
   unfold dimensionalBlowup
-  rw [Measure.map_smul, smul_comm]
+  rw [Measure.map_smul _ hmap.aemeasurable, smul_comm]
 
 theorem dimensionalBlowup_map_linearIsometry {k : ℕ}
     (L : Euclidean n →ₗᵢ[ℝ] Euclidean k) (μ : Measure (Euclidean n))
@@ -48,8 +51,9 @@ theorem dimensionalBlowup_map_linearIsometry {k : ℕ}
       L ∘ (fun y : Euclidean n => r⁻¹ • (y - a)) := by
     funext y
     simp only [Function.comp_apply, map_smul, map_sub]
-  simp only [dimensionalBlowup, Measure.map_smul]
-  rw [Measure.map_map hk L.continuous.measurable,
+  unfold dimensionalBlowup
+  rw [Measure.map_smul _ L.continuous.measurable.aemeasurable,
+    Measure.map_map hk L.continuous.measurable,
     Measure.map_map L.continuous.measurable hn, hcomp]
 
 end Preiss
