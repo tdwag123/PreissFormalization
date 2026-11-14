@@ -5,6 +5,7 @@ public import Preiss.Geometry.PlaneMeasure
 
 @[expose] public section
 open MeasureTheory
+open scoped ENNReal
 namespace Preiss
 variable {m n : ℕ}
 

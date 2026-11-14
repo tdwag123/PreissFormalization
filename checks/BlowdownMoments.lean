@@ -15,7 +15,7 @@ variable {n m : ℕ}
 theorem tendsto_inv_sq_atTop_nhdsGT_zero :
     Tendsto (fun r : ℝ => (r^2)⁻¹) atTop (𝓝[>] (0 : ℝ)) := by
   have hpow : Tendsto (fun r : ℝ => r^2) atTop atTop := by
-    simpa only [Real.rpow_two] using Real.tendsto_rpow_atTop (show (0 : ℝ) < 2 by norm_num)
+    simpa only [Real.rpow_two] using tendsto_rpow_atTop (show (0 : ℝ) < 2 by norm_num)
   apply tendsto_nhdsWithin_iff.mpr
   refine ⟨tendsto_inv_atTop_zero.comp hpow,?_⟩
   filter_upwards [eventually_gt_atTop (0 : ℝ)] with r hr
@@ -27,7 +27,7 @@ theorem exists_blowdown_gaussianMoment_limit
     ∃ L : MomentForm n k, Tendsto
       (fun r : ℝ => gaussianMomentForm (dimensionalBlowup m μ 0 r) k 1) atTop (𝓝 L) := by
   obtain ⟨B,hB⟩ := exists_gaussianMoment_taylor_coefficients μ hm hμ
-  rcases even_or_odd k with he | ho
+  rcases Nat.even_or_odd k with he | ho
   · obtain ⟨j,rfl⟩ := even_iff_exists_two_mul.mp he
     have hj : 0 < j := by omega
     refine ⟨((j.factorial : ℝ)⁻¹) • B (2*j) j,

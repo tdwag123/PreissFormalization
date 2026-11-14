@@ -39,8 +39,10 @@ theorem integral_norm_sq_gaussian_unitUniform (μ : Measure (Euclidean n))
   have hg := IsUnitUniform.hasPolynomialGrowthBound μ hμ
   have hd : HasDerivAt (gaussianMass μ)
       (-(∫ z, ‖z‖ ^ 2 * Real.exp (-s * ‖z‖ ^ 2) ∂μ)) s := by
-    simpa only [MvPolynomial.eval_one, mul_one, one_mul, gaussianMass] using
-      hasDerivAt_integral_polynomial_gaussian_of_ball_bound μ 1 (m : ℝ) hg.1 hg.2.2 1 s hs
+    have h := hasDerivAt_integral_polynomial_gaussian_of_ball_bound μ 1 (m : ℝ)
+      hg.1 hg.2.2 (1 : MvPolynomial (Fin n) ℝ) s hs
+    simp only [map_one, mul_one, one_mul] at h
+    exact h
   have hp := (Real.hasDerivAt_rpow_const (p := -((m : ℝ) / 2))
     (Or.inl hs.ne')).const_mul (Real.Gamma ((m : ℝ) / 2 + 1))
   have heq : gaussianMass μ =ᶠ[𝓝 s]
@@ -73,9 +75,53 @@ theorem trace_gaussianMomentForm_two_checked (μ : Measure (Euclidean n))
   field_simp [hmass.ne', hs.ne']
   <;> ring
 
+theorem trace_secondMomentCoefficient_eq_zero_checked
+    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
+    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B) :
+    bilinearTrace (momentBilinear (B 2 2)) = 0 := by
+  have herror (q : ℕ) (hq : 0 < q) : IsLittleO (𝓝[>] (0 : ℝ))
+      (fun s => momentTraceCLM n (gaussianMomentForm μ 2 s - momentTaylorPolynomial B 2 q s))
+      (fun s : ℝ => s ^ q) :=
+    (ContinuousLinearMap.isBigO_comp (𝕜₂ := ℝ) (𝕜₃ := ℝ)
+      (F := MomentForm n 2) (G := ℝ) (momentTraceCLM n)
+      (fun s => gaussianMomentForm μ 2 s - momentTaylorPolynomial B 2 q s)
+      (𝓝[>] (0 : ℝ))).trans_isLittleO (hB.2 2 (by decide) q hq)
+  have hfirst : momentTraceCLM n (B 2 1) = (m : ℝ) := by
+    have hsmall : IsLittleO (𝓝[>] (0 : ℝ))
+        (fun s : ℝ => s ^ 1 • ((m : ℝ) - momentTraceCLM n (B 2 1)))
+        (fun s : ℝ => s ^ 1) := by
+      apply (herror 1 (by decide)).congr' ?_ (Filter.EventuallyEq.refl _ _)
+      filter_upwards [self_mem_nhdsWithin] with s hs
+      rw [map_sub, momentTraceCLM_apply (gaussianMomentForm μ 2 s),
+        trace_gaussianMomentForm_two_checked μ hm hμ s hs]
+      simp only [momentTaylorPolynomial, Finset.sum_range_succ, Finset.sum_range_zero,
+        zero_add, map_add, map_smul, map_zero, smul_eq_mul]
+      norm_num
+      <;> ring
+    have hz := eq_zero_of_isLittleO_pow_smul 1
+      ((m : ℝ) - momentTraceCLM n (B 2 1)) hsmall
+    linarith
+  have hsecond : IsLittleO (𝓝[>] (0 : ℝ))
+      (fun s : ℝ => s ^ 2 • (-(1 / 2 : ℝ) * momentTraceCLM n (B 2 2)))
+      (fun s : ℝ => s ^ 2) := by
+    apply (herror 2 (by decide)).congr' ?_ (Filter.EventuallyEq.refl _ _)
+    filter_upwards [self_mem_nhdsWithin] with s hs
+    rw [map_sub, momentTraceCLM_apply (gaussianMomentForm μ 2 s),
+      trace_gaussianMomentForm_two_checked μ hm hμ s hs]
+    simp only [momentTaylorPolynomial, Finset.sum_range_succ, Finset.sum_range_zero,
+      zero_add, map_add, map_smul, map_zero, smul_eq_mul]
+    norm_num
+    rw [hfirst]
+    ring
+  have hz := eq_zero_of_isLittleO_pow_smul 2
+    (-(1 / 2 : ℝ) * momentTraceCLM n (B 2 2)) hsecond
+  rw [← momentTraceCLM_apply]
+  linarith
+
 end Preiss
 #print axioms Preiss.momentTraceCLM
 #print axioms Preiss.momentTraceCLM_apply
 #print axioms Preiss.momentTraceCLM_momentKernel
 #print axioms Preiss.integral_norm_sq_gaussian_unitUniform
 #print axioms Preiss.trace_gaussianMomentForm_two_checked
+#print axioms Preiss.trace_secondMomentCoefficient_eq_zero_checked

@@ -86,7 +86,7 @@ theorem ae_exists_outside_cone_of_purelyUnrectifiable
   · exact Or.inl (le_of_not_gt hbr)
 
 
-/-- Null projections on a purely unrectifiable piece with a fixed lower ball bound.
+/- Null projections on a purely unrectifiable piece with a fixed lower ball bound.
 Compact tube approximation is applied at arbitrarily small apertures while preserving
 the lower bound. The discarded sets are controlled by Lipschitz projection. -/
 set_option maxHeartbeats 1500000 in

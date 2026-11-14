@@ -26,7 +26,8 @@ theorem gaussianMomentForm_even_nonneg (μ : Measure (Euclidean n))
       · exact div_nonneg (hk.pow_nonneg _) (Nat.cast_nonneg _)
       · exact inv_nonneg.mpr (integral_nonneg (fun z => (Real.exp_pos _).le))
     · exact integral_nonneg (fun z => mul_nonneg (hk.pow_nonneg _) (Real.exp_pos _).le)
-  · simp [gaussianMomentForm,integral_undef hint]
+  · rw [gaussianMomentForm, integral_undef hint, smul_zero]
+    exact le_rfl
 end Preiss
 
 namespace Preiss
@@ -74,7 +75,7 @@ theorem conical_covariance_eq_norm_sq_on_support (μ : Measure (Euclidean n))
     gaussianMomentForm μ 2 1 (fun _ => x) = ‖x‖^2 := by
   obtain ⟨B,hB⟩ := exists_gaussianMoment_taylor_coefficients μ hm hμ
   have hb1 : B 1 1 = 0 := by
-    have h := (hB.2 1 (by decide) 1 (by decide)).neg
+    have h := (hB.2 1 (by decide) 1 (by decide)).neg_left
     apply eq_zero_of_isLittleO_pow_smul 1
     apply h.congr' _ (Filter.EventuallyEq.refl _ _)
     filter_upwards [self_mem_nhdsWithin] with s hs
