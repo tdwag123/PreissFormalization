@@ -4032,7 +4032,7 @@
       "lean_names": [
         "Preiss.rigidityError_le_linear_growth"
       ],
-      "file": "Preiss/Uniform/TraceRigidity.lean",
+      "file": "Preiss/Uniform/RigidityErrorBounds.lean",
       "statement_tex": "On the support of the unit-uniform measure, the rigidity error is bounded in absolute value by $C(1+\\lVert z\\rVert)$ for some nonnegative constant $C$.",
       "definition_dependencies": [],
       "deps": [
@@ -4041,7 +4041,7 @@
         "lem:uniform-cylinder-identity"
       ],
       "used_by": [],
-      "verification": "Original endpoint is unfinished; its candidate awaits a complete kernel check."
+      "verification": "Exact original-signature body passed independent kernel audit; canonical integration CI pending."
     },
     {
       "id": "lem:rigidity-error-remainder",
@@ -4128,6 +4128,110 @@
         "lem:flatness-radius-continuous",
         "lem:greatest-crossing",
         "lem:dimensional-compactness"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-rigidity-integral-bounds",
+      "kind": "lemma",
+      "title": "Gaussian quadratic bounds from a mean-square identity",
+      "lean_names": [
+        "Preiss.gaussian_quadratic_bounds_of_mean_square_identity"
+      ],
+      "file": "Preiss/Analysis/GaussianRigidityBounds.lean",
+      "statement_tex": "If $A(v,v)^2\\le q\\lVert\\omega(v,v)\\rVert^2$ and the Gaussian mean square of $\\omega$ equals $-8$ times the mean of $A$, then the Gaussian square of $A$ is at most $-8q$ times its mean, and that mean is at least $-8dq/(d+2)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-square-upper-trace-lower",
+        "lem:gaussian-bilinear-norm-integrable"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:normalized-gaussian-derivative",
+      "kind": "lemma",
+      "title": "Derivatives of normalized Gaussian expectations",
+      "lean_names": [
+        "Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform",
+        "Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform"
+      ],
+      "file": "Preiss/Uniform/GaussianQuotient.lean",
+      "statement_tex": "The derivative of a normalized polynomial Gaussian expectation is $m/(2s)$ times that expectation minus its normalized squared-norm-weighted expectation. The centered linear polynomial is a specialization.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-parameter-derivative",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-exists",
+      "kind": "lemma",
+      "title": "Existence of the centered full Gaussian contraction limit",
+      "lean_names": [
+        "Preiss.exists_normalized_norm_sq_centered_gaussian_limit"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "Summing the centered mixed limits over an ambient orthonormal basis gives a finite limit for the normalized centered squared-norm Gaussian contraction.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:mixed-centered-gaussian-limit"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-zero",
+      "kind": "lemma",
+      "title": "Vanishing of the centered full Gaussian contraction",
+      "lean_names": [
+        "Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "When the first moment coefficient represents the center, the normalized centered squared-norm Gaussian contraction tends to zero. This follows by differentiating the normalized centered mean and applying the scaled derivative limit lemma.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-exists",
+        "lem:centered-gaussian-mean-limit",
+        "lem:normalized-gaussian-derivative",
+        "lem:scale-derivative-limit"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bounded-tube-projected-contraction",
+      "kind": "lemma",
+      "title": "Vanishing projected contraction for a bounded tube",
+      "lean_names": [
+        "Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "For a uniform support in a bounded tube around a subspace, the corresponding projected squared-norm Gaussian contraction tends to zero against every normal vector satisfying the centered first-coefficient identity.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-zero",
+        "lem:scale-normalized-bounded-integral"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:projected-mixed-gaussian-sum",
+      "kind": "lemma",
+      "title": "Projected Gaussian contraction as a finite basis sum",
+      "lean_names": [
+        "Preiss.sum_mixed_gaussian_eq_projected"
+      ],
+      "file": "Preiss/Uniform/ProjectedMixedGaussian.lean",
+      "statement_tex": "The projected squared-norm centered Gaussian contraction is the sum of its directional mixed contractions over an orthonormal basis of the plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound"
       ],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."

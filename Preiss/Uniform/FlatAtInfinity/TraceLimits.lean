@@ -25,6 +25,8 @@ theorem contracted_gaussian_limit_eq_zero (w : V.1ᗮ) :
       ∫ z, Real.exp (-s * ‖z‖ ^ 2) * ‖proj V z‖ ^ 2 *
         inner ℝ (z - (b : Euclidean n)) (w : Euclidean n) ∂μ)
       (nhdsWithin 0 (Ioi 0)) (𝓝 0) := by
-  sorry
+  exact contracted_gaussian_limit_eq_zero_of_bounded_tube μ hm hμ B hB V.1 b w (hb w)
+    (2*‖b‖) (by positivity) (fun z hz =>
+      (support_normal_sq_eq_inner μ hm hμ B hB V hV b hb z hz).2.2)
 
 end Preiss

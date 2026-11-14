@@ -51,4 +51,3 @@ theorem sum_mixed_gaussian_eq_projected
 
 
 end Preiss
-#print axioms Preiss.sum_mixed_gaussian_eq_projected

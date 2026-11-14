@@ -3897,21 +3897,13 @@
       "id": "lem:rigidity-contracted-limit-zero",
       "title": "Vanishing contracted Gaussian limit",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.contracted_gaussian_limit_eq_zero"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-parameter-derivative",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-mixed-gaussian-limit",
+        "lem:bounded-tube-projected-contraction",
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
@@ -3961,15 +3953,13 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4732,
-      "unfinished_dependencies": [
-        "lem:rigidity-contracted-limit-zero"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-pointwise-quadratic-bound",
       "title": "Pointwise square bound for the adjusted form",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.adjustedForm_sq_le_norm_omega_sq"
       ],
@@ -3980,15 +3970,13 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4757,
-      "unfinished_dependencies": [
-        "lem:rigidity-error-linear-growth"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-rescaled-error",
       "title": "Vanishing lower order Gaussian error",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.adjustedForm_gaussian_error_tendsto_zero"
       ],
@@ -3999,9 +3987,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4796,
-      "unfinished_dependencies": [
-        "lem:rigidity-error-linear-growth"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-gaussian-trace",
@@ -4081,9 +4067,7 @@
       "proof_dependencies": [],
       "expanded_line": 4880,
       "unfinished_dependencies": [
-        "lem:rigidity-omega-reproducing",
-        "lem:rigidity-pointwise-quadratic-bound",
-        "lem:rigidity-rescaled-error"
+        "lem:rigidity-omega-reproducing"
       ]
     },
     {
@@ -8389,13 +8373,14 @@
       "id": "lem:rigidity-error-linear-growth",
       "title": "Linear growth of the rigidity error",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.rigidityError_le_linear_growth"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:rigidity-error",
+        "lem:bilinear-diagonal-difference",
+        "lem:rigidity-error-remainder",
         "lem:rigidity-fourth-support-identity",
         "lem:uniform-cylinder-identity"
       ],
@@ -8490,6 +8475,110 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 7293,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-rigidity-integral-bounds",
+      "title": "Gaussian quadratic bounds from a mean-square identity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_quadratic_bounds_of_mean_square_identity"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-square-upper-trace-lower"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7301,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:normalized-gaussian-derivative",
+      "title": "Derivatives of normalized Gaussian expectations",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform",
+        "Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-parameter-derivative",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7309,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-exists",
+      "title": "Existence of the centered full Gaussian contraction limit",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_normalized_norm_sq_centered_gaussian_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:mixed-centered-gaussian-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7317,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-zero",
+      "title": "Vanishing of the centered full Gaussian contraction",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:centered-gaussian-full-contraction-exists",
+        "lem:centered-gaussian-mean-limit",
+        "lem:normalized-gaussian-derivative",
+        "lem:scale-derivative-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7325,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:bounded-tube-projected-contraction",
+      "title": "Vanishing projected contraction for a bounded tube",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:centered-gaussian-full-contraction-zero",
+        "lem:scale-normalized-bounded-integral"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7333,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:projected-mixed-gaussian-sum",
+      "title": "Projected Gaussian contraction as a finite basis sum",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.sum_mixed_gaussian_eq_projected"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7341,
       "unfinished_dependencies": []
     }
   ],
@@ -8838,6 +8927,7 @@
     "lem:gaussian-radial-second-moment",
     "lem:gaussian-product-moment-conversion",
     "lem:uniform-normalized-gaussian-norm",
+    "lem:projected-mixed-gaussian-sum",
     "lem:gaussian-quadratic-trace-bound",
     "lem:vague-diagonal",
     "lem:uniform-near-support-compactness",
@@ -8866,6 +8956,7 @@
     "lem:taylor-one",
     "lem:moment-coefficient-vanishing",
     "lem:moment-second-total-trace",
+    "lem:normalized-gaussian-derivative",
     "lem:moment-product-growth",
     "lem:uniform-gaussian-linear-growth-limit",
     "lem:gaussian-bilinear-contraction",
@@ -8895,6 +8986,7 @@
     "lem:bounded-tube-cubic-vanishing",
     "lem:rigidity-error-limit-from-growth",
     "lem:gaussian-vector-trace-contractions",
+    "lem:gaussian-rigidity-integral-bounds",
     "lem:tangent-blowdown",
     "lem:dimensional-tangent-bounded-orbit",
     "lem:flat-to-approximation",
@@ -8909,17 +9001,20 @@
     "lem:analytic-projection-approximation",
     "lem:blowdown-even-moment-limit",
     "lem:rigidity-mixed-gaussian-limit",
+    "lem:centered-gaussian-full-contraction-exists",
     "lem:gaussian-mean-zero-correction",
     "lem:dimensional-tangent-ball-constant",
     "cor:rectifiable-tangent-plane",
     "lem:uniform-full-dimension-unique",
     "lem:two-sided-packing-core",
     "lem:feature-moment-analytic-approximation",
+    "lem:centered-gaussian-full-contraction-zero",
     "lem:density-normalization",
     "lem:halfspace-tangent-witness",
     "lem:plane-supported-uniform-flat",
     "lem:packing-contradiction",
     "lem:finite-moment-taylor-jets",
+    "lem:bounded-tube-projected-contraction",
     "lem:uniform-reduction",
     "lem:small-energy-no-holes",
     "thm:mm-set",

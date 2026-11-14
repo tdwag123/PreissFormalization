@@ -50,7 +50,7 @@ theorem gaussian_bilinear_contraction_of_weighted_moment_limits
   simp_rw [hQ] at hquad
   have hL : (∑ ij : ι × ι, a ij * L ij) = bilinearTrace A / 2 := by
     rw [bilinearTrace_eq_sum_diagonal A e]
-    simp [a, L, Fintype.sum_prod_type, e.inner_eq_ite, Finset.sum_div, ite_div, mul_ite]
+    simp [a, L, Fintype.sum_prod_type, e.inner_eq_ite, Finset.sum_div, ite_div, mul_ite, div_eq_mul_inv, Finset.sum_mul]
   rw [hL] at hquad
   let T (ij : ι × ι) (x : X) := Q ij x * inner ℝ (ω (e ij.1) (e ij.2)) (q x)
   let N (ij : ι × ι) := ‖ω (e ij.1) (e ij.2)‖^2 / 8

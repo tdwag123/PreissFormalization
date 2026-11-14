@@ -7,6 +7,9 @@ import Preiss.Density.Scalar
 import Preiss.Density.RadiusPower
 import Mathlib.Tactic
 
+/-! Assembly check only: the flat-at-infinity rigidity theorem is an explicit hypothesis.
+These conditional declarations do not certify the original Part B endpoint. -/
+
 open MeasureTheory Filter Set
 open scoped Topology CompactlySupported ENNReal
 namespace Preiss
@@ -64,10 +67,10 @@ theorem all_dimensionalTangents_flat_of_one_of_rigidity
   have hμ : μ.Regular := inferInstance
   have hratio := first_crossing_ratio_tendsto_atTop hmn φ hφ ε hε.1 μ hμ x
     α ξ hαflat hξ r σ hcross
-  have h∞ := (first_crossing_limit_flat_at_infinity hm hmn φ hφ ε hε μ hμ x
+  have hInfinityFlat := (first_crossing_limit_flat_at_infinity hm hmn φ hφ ε hε μ hμ x
     α ξ hξ r σ hcross hratio).2
   obtain ⟨ψ, hψu, hψ⟩ := exists_unitUniform_tangentAtInfinity ξ hξ
-  have hflat := rigidity ξ ψ hm hξ hψ (h∞ ψ hψ)
+  have hflat := rigidity ξ ψ hm hξ hψ (hInfinityFlat ψ hψ)
   have hz := flatness_eq_zero_of_isFlat φ hφ ξ hflat
   have hvalue : flatness m φ ξ = ε := hcross.2.2.2.2.1
   exact hε.1.ne' (hz.symm.trans hvalue).symm

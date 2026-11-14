@@ -3489,21 +3489,13 @@
       "id": "lem:rigidity-contracted-limit-zero",
       "title": "Vanishing contracted Gaussian limit",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.contracted_gaussian_limit_eq_zero"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-parameter-derivative",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-mixed-gaussian-limit",
+        "lem:bounded-tube-projected-contraction",
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
@@ -3553,15 +3545,13 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4732,
-      "unfinished_dependencies": [
-        "lem:rigidity-contracted-limit-zero"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-pointwise-quadratic-bound",
       "title": "Pointwise square bound for the adjusted form",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.adjustedForm_sq_le_norm_omega_sq"
       ],
@@ -3572,15 +3562,13 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4757,
-      "unfinished_dependencies": [
-        "lem:rigidity-error-linear-growth"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-rescaled-error",
       "title": "Vanishing lower order Gaussian error",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.adjustedForm_gaussian_error_tendsto_zero"
       ],
@@ -3591,9 +3579,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4796,
-      "unfinished_dependencies": [
-        "lem:rigidity-error-linear-growth"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-gaussian-trace",
@@ -3673,9 +3659,7 @@
       "proof_dependencies": [],
       "expanded_line": 4880,
       "unfinished_dependencies": [
-        "lem:rigidity-omega-reproducing",
-        "lem:rigidity-pointwise-quadratic-bound",
-        "lem:rigidity-rescaled-error"
+        "lem:rigidity-omega-reproducing"
       ]
     },
     {
@@ -7229,6 +7213,34 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:scale-normalized-bounded-integral",
+      "title": "Vanishing of scaled normalized bounded integrals",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_scale_normalized_integral_of_ae_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7096,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:scale-derivative-limit",
+      "title": "A convergent function has no nonzero scaled derivative limit",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.scale_derivative_limit_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7103,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:rigidity-forms-from-symmetry",
       "title": "Rigidity forms from symmetric coefficient tensors",
       "kind": "lemma",
@@ -7288,6 +7300,20 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:bilinear-diagonal-difference",
+      "title": "Difference of bilinear diagonal values",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.norm_bilinear_diagonal_sub_le"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7154,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:low-order-moment-limits",
       "title": "First and second scaled moment limits",
       "kind": "lemma",
@@ -7323,6 +7349,22 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:centered-gaussian-mean-limit",
+      "title": "Centered Gaussian mean from its first coefficient",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.normalized_centered_gaussian_limit_of_first_coefficient"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:low-order-moment-limits"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7237,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "def:rigidity-error",
       "title": "The quadratic rigidity error",
       "kind": "definition",
@@ -7343,18 +7385,37 @@
       "id": "lem:rigidity-error-linear-growth",
       "title": "Linear growth of the rigidity error",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.rigidityError_le_linear_growth"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:rigidity-error",
+        "lem:bilinear-diagonal-difference",
+        "lem:rigidity-error-remainder",
         "lem:rigidity-fourth-support-identity",
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
       "expanded_line": 7253,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-error-remainder",
+      "title": "Coefficient remainder identity for the rigidity error",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.rigidityError_eq_coefficient_remainder"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-error",
+        "def:rigidity-omega"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7261,
       "unfinished_dependencies": []
     },
     {
@@ -7392,6 +7453,77 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 7277,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:normalized-gaussian-derivative",
+      "title": "Derivatives of normalized Gaussian expectations",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform",
+        "Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-parameter-derivative",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7309,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-exists",
+      "title": "Existence of the centered full Gaussian contraction limit",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_normalized_norm_sq_centered_gaussian_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:mixed-centered-gaussian-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7317,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-zero",
+      "title": "Vanishing of the centered full Gaussian contraction",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:centered-gaussian-full-contraction-exists",
+        "lem:centered-gaussian-mean-limit",
+        "lem:normalized-gaussian-derivative",
+        "lem:scale-derivative-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7325,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:bounded-tube-projected-contraction",
+      "title": "Vanishing projected contraction for a bounded tube",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:centered-gaussian-full-contraction-zero",
+        "lem:scale-normalized-bounded-integral"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7333,
       "unfinished_dependencies": []
     }
   ]

@@ -3570,7 +3570,7 @@ without first establishing these vanishings.
 \begin{lemma}[Vanishing contracted Gaussian limit]
 \label{lem:rigidity-contracted-limit-zero}
 \lean{Preiss.contracted_gaussian_limit_eq_zero}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-parameter-derivative, lem:gaussian-polynomial-integrable, lem:rigidity-mixed-gaussian-limit, lem:uniform-cylinder-identity}
+\uses{lem:bounded-tube-projected-contraction, lem:uniform-cylinder-identity}
 
 
 
@@ -6157,7 +6157,7 @@ The error is $A(Pz,Pz)+\langle\omega(Pz,Pz),z-Pz-b\rangle$, where $P$ is the ort
 \begin{lemma}[Linear growth of the rigidity error]
 \label{lem:rigidity-error-linear-growth}
 \lean{Preiss.rigidityError_le_linear_growth}
-\uses{def:rigidity-error, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity}
+\uses{lem:rigidity-error-remainder, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity, lem:bilinear-diagonal-difference}
 
 On the support of the unit-uniform measure, the rigidity error is bounded in absolute value by $C(1+\lVert z\rVert)$ for some nonnegative constant $C$.
 \end{lemma}
@@ -6200,4 +6200,52 @@ Adding a fixed scalar component of a vector-valued bilinear form with zero Gauss
 \uses{lem:flatness-radius-continuous, lem:greatest-crossing, lem:dimensional-compactness}
 
 A flat dimensional tangent and a dimensional tangent whose flatness exceeds the threshold produce the full first-crossing scale data, including every intermediate-scale bound.
+\end{lemma}
+
+\begin{lemma}[Gaussian quadratic bounds from a mean-square identity]
+\label{lem:gaussian-rigidity-integral-bounds}
+\lean{Preiss.gaussian_quadratic_bounds_of_mean_square_identity}
+\uses{lem:gaussian-square-upper-trace-lower, lem:gaussian-bilinear-norm-integrable}
+
+If $A(v,v)^2\le q\lVert\omega(v,v)\rVert^2$ and the Gaussian mean square of $\omega$ equals $-8$ times the mean of $A$, then the Gaussian square of $A$ is at most $-8q$ times its mean, and that mean is at least $-8dq/(d+2)$.
+\end{lemma}
+
+\begin{lemma}[Derivatives of normalized Gaussian expectations]
+\label{lem:normalized-gaussian-derivative}
+\lean{Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform, Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform}
+\uses{lem:gaussian-parameter-derivative, lem:gaussian-radial-second-moment, lem:moment-norm-bound}
+
+The derivative of a normalized polynomial Gaussian expectation is $m/(2s)$ times that expectation minus its normalized squared-norm-weighted expectation. The centered linear polynomial is a specialization.
+\end{lemma}
+
+\begin{lemma}[Existence of the centered full Gaussian contraction limit]
+\label{lem:centered-gaussian-full-contraction-exists}
+\lean{Preiss.exists_normalized_norm_sq_centered_gaussian_limit}
+\uses{lem:mixed-centered-gaussian-limit}
+
+Summing the centered mixed limits over an ambient orthonormal basis gives a finite limit for the normalized centered squared-norm Gaussian contraction.
+\end{lemma}
+
+\begin{lemma}[Vanishing of the centered full Gaussian contraction]
+\label{lem:centered-gaussian-full-contraction-zero}
+\lean{Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero}
+\uses{lem:centered-gaussian-full-contraction-exists, lem:centered-gaussian-mean-limit, lem:normalized-gaussian-derivative, lem:scale-derivative-limit}
+
+When the first moment coefficient represents the center, the normalized centered squared-norm Gaussian contraction tends to zero. This follows by differentiating the normalized centered mean and applying the scaled derivative limit lemma.
+\end{lemma}
+
+\begin{lemma}[Vanishing projected contraction for a bounded tube]
+\label{lem:bounded-tube-projected-contraction}
+\lean{Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube}
+\uses{lem:centered-gaussian-full-contraction-zero, lem:scale-normalized-bounded-integral}
+
+For a uniform support in a bounded tube around a subspace, the corresponding projected squared-norm Gaussian contraction tends to zero against every normal vector satisfying the centered first-coefficient identity.
+\end{lemma}
+
+\begin{lemma}[Projected Gaussian contraction as a finite basis sum]
+\label{lem:projected-mixed-gaussian-sum}
+\lean{Preiss.sum_mixed_gaussian_eq_projected}
+\uses{lem:moment-norm-bound}
+
+The projected squared-norm centered Gaussian contraction is the sum of its directional mixed contractions over an orthonormal basis of the plane.
 \end{lemma}

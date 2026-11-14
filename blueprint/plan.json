@@ -4935,15 +4935,7 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v,w\\in\\mathbb R^n$, prove\n\\[\n \\lim_{s\\downarrow0}\\frac{8s}{I(s)}\\int e^{-s|z|^2}\n \\langle z,v\\rangle^2\\langle z-b,w\\rangle\\,d\\nu\n =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\\langle b,w\\rangle.\n\\]\nFor $v\\in V,w\\in V^\\perp$ this is $\\langle\\omega(v,v),w\\rangle$.\nFurther prove\n\\[\n \\lim_{s\\downarrow0}\\frac{s}{I(s)}\\int e^{-s|z|^2}\n |Pz|^2\\langle z-b,w\\rangle\\,d\\nu=0.\n\\]\nTo justify the latter, the analogous $|z|^2$ expression has a limit by the\nfirst formula and a finite orthonormal-basis sum. Differentiating the Gaussian\nfirst moment and applying the appropriate one-sided l'Hopital argument\nidentifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.\nRecord differentiability and domination hypotheses before using l'Hopital.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-parameter-derivative",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-mixed-gaussian-limit",
+        "lem:bounded-tube-projected-contraction",
         "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
@@ -9576,7 +9568,7 @@
         "Preiss.tendsto_scale_normalized_integral_of_ae_bound"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/NormalizedIntegral.lean"
       ],
@@ -9591,7 +9583,7 @@
         "Preiss.scale_derivative_limit_eq_zero"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/ScaleDerivative.lean"
       ],
@@ -9702,7 +9694,7 @@
         "Preiss.norm_bilinear_diagonal_sub_le"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/BilinearDiagonalDifference.lean"
       ],
@@ -9893,7 +9885,7 @@
       "deps": [
         "lem:low-order-moment-limits"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/CenteredGaussianLimits.lean"
       ],
@@ -9926,15 +9918,16 @@
         "Preiss.rigidityError_le_linear_growth"
       ],
       "deps": [
-        "def:rigidity-error",
+        "lem:bilinear-diagonal-difference",
+        "lem:rigidity-error-remainder",
         "lem:rigidity-fourth-support-identity",
         "lem:uniform-cylinder-identity"
       ],
       "role": "Preiss proof",
       "source_files": [
-        "Preiss/Uniform/TraceRigidity.lean"
+        "Preiss/Uniform/RigidityErrorBounds.lean"
       ],
-      "proposed_file": "Preiss/Uniform/TraceRigidity.lean"
+      "proposed_file": "Preiss/Uniform/RigidityErrorBounds.lean"
     },
     {
       "id": "lem:rigidity-error-remainder",
@@ -9949,7 +9942,7 @@
         "def:rigidity-error",
         "def:rigidity-omega"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/RigidityErrorBounds.lean"
       ],
@@ -10029,6 +10022,116 @@
         "Preiss/Theorem/FirstCrossing.lean"
       ],
       "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    {
+      "id": "lem:gaussian-rigidity-integral-bounds",
+      "kind": "lemma",
+      "title": "Gaussian quadratic bounds from a mean-square identity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_quadratic_bounds_of_mean_square_identity"
+      ],
+      "deps": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-square-upper-trace-lower"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianRigidityBounds.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianRigidityBounds.lean"
+    },
+    {
+      "id": "lem:normalized-gaussian-derivative",
+      "kind": "lemma",
+      "title": "Derivatives of normalized Gaussian expectations",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform",
+        "Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-parameter-derivative",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianQuotient.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianQuotient.lean"
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-exists",
+      "kind": "lemma",
+      "title": "Existence of the centered full Gaussian contraction limit",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_normalized_norm_sq_centered_gaussian_limit"
+      ],
+      "deps": [
+        "lem:mixed-centered-gaussian-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-zero",
+      "kind": "lemma",
+      "title": "Vanishing of the centered full Gaussian contraction",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero"
+      ],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-exists",
+        "lem:centered-gaussian-mean-limit",
+        "lem:normalized-gaussian-derivative",
+        "lem:scale-derivative-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:bounded-tube-projected-contraction",
+      "kind": "lemma",
+      "title": "Vanishing projected contraction for a bounded tube",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube"
+      ],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-zero",
+        "lem:scale-normalized-bounded-integral"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:projected-mixed-gaussian-sum",
+      "kind": "lemma",
+      "title": "Projected Gaussian contraction as a finite basis sum",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.sum_mixed_gaussian_eq_projected"
+      ],
+      "deps": [
+        "lem:moment-norm-bound"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/ProjectedMixedGaussian.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ProjectedMixedGaussian.lean"
     }
   ],
   "preiss_core": [
@@ -10119,6 +10222,7 @@
     "lem:annulus-integrability",
     "lem:asymptotic-taylor-vanishing",
     "lem:ball-upper-hausdorff-bound",
+    "lem:bilinear-diagonal-difference",
     "lem:bilinear-trace-basis",
     "lem:blowdown-even-moment-limit",
     "lem:blowdown-form-limits",
@@ -10126,8 +10230,12 @@
     "lem:blowdown-product-limits",
     "lem:blowup-composition",
     "lem:bounded-tube-cubic-vanishing",
+    "lem:bounded-tube-projected-contraction",
     "lem:carrier-calculus",
     "lem:carrier-closure",
+    "lem:centered-gaussian-full-contraction-exists",
+    "lem:centered-gaussian-full-contraction-zero",
+    "lem:centered-gaussian-mean-limit",
     "lem:closed-map-outer-regularity",
     "lem:closed-map-support",
     "lem:closed-upper-ball-bound-sets",
@@ -10298,6 +10406,7 @@
     "lem:nested-orthogonal-layers",
     "lem:nonnegative-integral-cover-bound",
     "lem:normal-coordinate-identities",
+    "lem:normalized-gaussian-derivative",
     "lem:odd-coefficients-plane-zero",
     "lem:ordered-bilinear-spectrum",
     "lem:ordered-trace-bounds",
@@ -10341,6 +10450,7 @@
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-error-limit-from-growth",
     "lem:rigidity-error-linear-growth",
+    "lem:rigidity-error-remainder",
     "lem:rigidity-forms-exist",
     "lem:rigidity-forms-from-symmetry",
     "lem:rigidity-fourth-support-identity",
@@ -10354,6 +10464,8 @@
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
     "lem:scalar-gaussian-series-remainder",
+    "lem:scale-derivative-limit",
+    "lem:scale-normalized-bounded-integral",
     "lem:scaled-moment-limits",
     "lem:sequential-uniform-scale",
     "lem:small-energy-no-holes",

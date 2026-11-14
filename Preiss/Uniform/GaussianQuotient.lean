@@ -1,8 +1,13 @@
-import Preiss.Uniform.MomentTrace
-import Mathlib.Analysis.Calculus.Deriv.Inv
+module
+public import Preiss.Uniform.MomentTrace
+public import Mathlib.Analysis.Calculus.Deriv.Inv
 import Mathlib.Tactic
-open MeasureTheory
-open scoped BigOperators
+
+/-! # Derivatives of normalized polynomial Gaussian integrals -/
+
+@[expose] public section
+open MeasureTheory Filter Set Asymptotics
+open scoped Topology BigOperators
 namespace Preiss
 variable {m n : ℕ}
 
@@ -53,6 +58,4 @@ theorem hasDerivAt_normalized_centered_gaussian_unitUniform
     simp [P]
   simpa only [heval] using hasDerivAt_normalized_polynomial_gaussian_unitUniform μ hm hμ P s hs
 
-#print axioms hasDerivAt_normalized_polynomial_gaussian_unitUniform
-#print axioms hasDerivAt_normalized_centered_gaussian_unitUniform
 end Preiss

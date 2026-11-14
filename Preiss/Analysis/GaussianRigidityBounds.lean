@@ -1,6 +1,8 @@
-import Preiss.Analysis.GaussianBilinearNorm
-import Preiss.Analysis.GaussianQuadraticLowerBound
-import Mathlib.Tactic
+module
+public import Preiss.Analysis.GaussianBilinearNorm
+public import Preiss.Analysis.GaussianQuadraticLowerBound
+public import Mathlib.Tactic
+@[expose] public section
 open MeasureTheory ProbabilityTheory
 namespace Preiss
 theorem gaussian_quadratic_bounds_of_mean_square_identity
@@ -25,4 +27,3 @@ theorem gaussian_quadratic_bounds_of_mean_square_identity
       -8*q*(∫ v, A v v ∂stdGaussian E) := by nlinarith [h]
   exact ⟨hupper, gaussian_bilinear_integral_lower_bound_of_square_upper A hA hd q hq hupper⟩
 end Preiss
-#print axioms Preiss.gaussian_quadratic_bounds_of_mean_square_identity

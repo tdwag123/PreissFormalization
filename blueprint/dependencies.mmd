@@ -471,6 +471,12 @@ flowchart LR
   lem_rigidity_error_limit_from_growth["Gaussian error limit from linear growth"]
   lem_gaussian_mean_zero_correction["Gaussian traces are unchanged by a zero-mean correction"]
   lem_first_crossing_from_large_flatness["First-crossing sequences from a large-flatness tangent"]
+  lem_gaussian_rigidity_integral_bounds["Gaussian quadratic bounds from a mean-square identity"]
+  lem_normalized_gaussian_derivative["Derivatives of normalized Gaussian expectations"]
+  lem_centered_gaussian_full_contraction_exists["Existence of the centered full Gaussian contraction limit"]
+  lem_centered_gaussian_full_contraction_zero["Vanishing of the centered full Gaussian contraction"]
+  lem_bounded_tube_projected_contraction["Vanishing projected contraction for a bounded tube"]
+  lem_projected_mixed_gaussian_sum["Projected Gaussian contraction as a finite basis sum"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -1064,15 +1070,7 @@ flowchart LR
   lem_odd_coefficients_plane_zero --> lem_rigidity_cubic_vanishing
   lem_symmetric_cubic_binomial --> lem_rigidity_cubic_vanishing
   lem_uniform_cylinder_identity --> lem_rigidity_cubic_vanishing
-  def_moment_coefficients --> lem_rigidity_contracted_limit_zero
-  def_plane --> lem_rigidity_contracted_limit_zero
-  def_rigidity_normal_vector --> lem_rigidity_contracted_limit_zero
-  def_rigidity_omega --> lem_rigidity_contracted_limit_zero
-  def_tangent_at_infinity --> lem_rigidity_contracted_limit_zero
-  def_unit_uniform --> lem_rigidity_contracted_limit_zero
-  lem_gaussian_parameter_derivative --> lem_rigidity_contracted_limit_zero
-  lem_gaussian_polynomial_integrable --> lem_rigidity_contracted_limit_zero
-  lem_rigidity_mixed_gaussian_limit --> lem_rigidity_contracted_limit_zero
+  lem_bounded_tube_projected_contraction --> lem_rigidity_contracted_limit_zero
   lem_uniform_cylinder_identity --> lem_rigidity_contracted_limit_zero
   lem_bounded_tube_cubic_vanishing --> lem_rigidity_fourth_support_identity
   lem_flat_infinity_moments --> lem_rigidity_fourth_support_identity
@@ -1578,7 +1576,8 @@ flowchart LR
   lem_low_order_moment_limits --> lem_centered_gaussian_mean_limit
   def_rigidity_adjusted_form --> def_rigidity_error
   def_rigidity_omega --> def_rigidity_error
-  def_rigidity_error --> lem_rigidity_error_linear_growth
+  lem_bilinear_diagonal_difference --> lem_rigidity_error_linear_growth
+  lem_rigidity_error_remainder --> lem_rigidity_error_linear_growth
   lem_rigidity_fourth_support_identity --> lem_rigidity_error_linear_growth
   lem_uniform_cylinder_identity --> lem_rigidity_error_linear_growth
   def_rigidity_adjusted_form --> lem_rigidity_error_remainder
@@ -1594,3 +1593,16 @@ flowchart LR
   lem_dimensional_compactness --> lem_first_crossing_from_large_flatness
   lem_flatness_radius_continuous --> lem_first_crossing_from_large_flatness
   lem_greatest_crossing --> lem_first_crossing_from_large_flatness
+  lem_gaussian_bilinear_norm_integrable --> lem_gaussian_rigidity_integral_bounds
+  lem_gaussian_square_upper_trace_lower --> lem_gaussian_rigidity_integral_bounds
+  lem_gaussian_parameter_derivative --> lem_normalized_gaussian_derivative
+  lem_gaussian_radial_second_moment --> lem_normalized_gaussian_derivative
+  lem_moment_norm_bound --> lem_normalized_gaussian_derivative
+  lem_mixed_centered_gaussian_limit --> lem_centered_gaussian_full_contraction_exists
+  lem_centered_gaussian_full_contraction_exists --> lem_centered_gaussian_full_contraction_zero
+  lem_centered_gaussian_mean_limit --> lem_centered_gaussian_full_contraction_zero
+  lem_normalized_gaussian_derivative --> lem_centered_gaussian_full_contraction_zero
+  lem_scale_derivative_limit --> lem_centered_gaussian_full_contraction_zero
+  lem_centered_gaussian_full_contraction_zero --> lem_bounded_tube_projected_contraction
+  lem_scale_normalized_bounded_integral --> lem_bounded_tube_projected_contraction
+  lem_moment_norm_bound --> lem_projected_mixed_gaussian_sum

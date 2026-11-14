@@ -55,7 +55,7 @@ theorem gaussian_bilinear_contraction_of_weighted_moment_limits
   simp_rw [hQ] at hquad
   have hL : (∑ ij : ι × ι, a ij * L ij) = bilinearTrace A / 2 := by
     rw [bilinearTrace_eq_sum_diagonal A e]
-    simp [a, L, Fintype.sum_prod_type, e.inner_eq_ite, Finset.sum_div, ite_div, mul_ite]
+    simp [a, L, Fintype.sum_prod_type, e.inner_eq_ite, Finset.sum_div, ite_div, mul_ite, div_eq_mul_inv, Finset.sum_mul]
   rw [hL] at hquad
   let T (ij : ι × ι) (x : X) := Q ij x * inner ℝ (ω (e ij.1) (e ij.2)) (q x)
   let N (ij : ι × ι) := ‖ω (e ij.1) (e ij.2)‖^2 / 8
@@ -107,7 +107,10 @@ theorem integrable_gaussian_inner_sq_centered_unitUniform
     simpa [Function.comp_def, ContinuousMultilinearMap.smul_apply, momentKernel_apply,
       Fin.prod_univ_three, pow_two, mul_assoc] using h
   have h₂ := integrable_gaussian_inner_sq_unitUniform μ hm hμ s hs u
-  simpa only [Pi.sub_apply, inner_sub_left, mul_sub] using h₃.sub (h₂.mul_const (inner ℝ b w))
+  have hsub : Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 * inner ℝ z w -
+      Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 * inner ℝ b w) μ :=
+    h₃.sub (h₂.mul_const (inner ℝ b w))
+  simpa only [inner_sub_left, mul_sub] using hsub
 
 theorem normalized_gaussian_inner_sq_limit
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
@@ -154,7 +157,7 @@ theorem normalized_gaussian_inner_mul_limit_on_plane
       rw [hvect]
       have he := evenMomentCoefficient_eq_projection_norm μ hm hμ B hB V hV 1 zero_lt_one a
       have hv : proj V (a : Euclidean n) = a := by
-        exact Submodule.starProjection_eq_self.mpr a.property
+        exact Submodule.starProjection_eq_self_iff.mpr a.property
       simpa only [show 2*1=2 by rfl, hv, Submodule.norm_coe] using he
     simpa only [he] using normalized_gaussian_inner_sq_limit μ hm hμ B hB a
   have hints : ∀ᶠ s in 𝓝[>] (0 : ℝ),
@@ -204,7 +207,7 @@ theorem normalized_gaussian_mixed_limit_rigidityOmega
         ext i
         fin_cases i <;> rfl
       rw [hvect]
-      have hv : proj V (a : Euclidean n) = a := Submodule.starProjection_eq_self.mpr a.property
+      have hv : proj V (a : Euclidean n) = a := Submodule.starProjection_eq_self_iff.mpr a.property
       simpa only [show 2*1=2 by rfl, hv, Submodule.norm_coe, real_inner_self_eq_norm_sq] using
         evenMomentCoefficient_eq_projection_norm μ hm hμ B hB V hV 1 zero_lt_one a
     have homega := hω.2 a a w

@@ -1,0 +1,14 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:rigidity-contracted-limit-zero": [
+      "lem:bounded-tube-projected-contraction",
+      "lem:uniform-cylinder-identity"
+    ],
+    "lem:rigidity-error-linear-growth": [
+      "lem:rigidity-error-remainder",
+      "lem:rigidity-fourth-support-identity",
+      "lem:uniform-cylinder-identity",
+      "lem:bilinear-diagonal-difference"
+    ]
+  }
+}
