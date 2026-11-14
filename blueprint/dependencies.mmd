@@ -1,0 +1,351 @@
+flowchart LR
+  def_density_api["GMT: dimensional densities"]
+  gmt_density_order["GMT: lower versus upper density"]
+  gmt_density_limit["GMT: equal densities give a limit"]
+  gmt_density_bounds["GMT: eventual small-ball bounds"]
+  gmt_vitali["GMT: fine Vitali covering variant"]
+  gmt_finite_restriction["GMT: finite restrictions are regular"]
+  gmt_hausdorff_content["GMT: Hausdorff content"]
+  gmt_content_comparison["GMT: content comparison and stabilization"]
+  gmt_hausdorff_regular["GMT: finite Hausdorff restrictions"]
+  gmt_content_density["GMT: positive upper content density inside"]
+  gmt_hausdorff_density_lower["GMT: positive upper Hausdorff density inside"]
+  gmt_hausdorff_density_upper["GMT: upper Hausdorff density at most one"]
+  gmt_hausdorff_density_outside["GMT: zero upper density outside"]
+  gmt_vague["GMT: vague convergence"]
+  gmt_blowup["GMT: blow-up map"]
+  gmt_blowup_balls["GMT: measurable blow-ups and ball identities"]
+  gmt_blowup_regular["GMT: regularity of scaled blow-ups"]
+  def_tangent_api["GMT: tangent measures"]
+  gmt_portmanteau["GMT: compact/open portmanteau"]
+  gmt_continuity_sets["GMT: convergence on bounded continuity sets"]
+  thm_compactness["GMT: compact mass bounds give a subsequence"]
+  gmt_doubling_bounds["GMT: density bounds imply support and doubling"]
+  gmt_origin_support["GMT: origin lies in tangent support"]
+  gmt_normalized_tangent["GMT: mass-normalized tangent sequence"]
+  thm_doubling["GMT: tangent existence under doubling"]
+  gmt_restriction_tangents["GMT: restriction preserves tangents"]
+  thm_matching["GMT: density change preserves tangents"]
+  gmt_goodsets["GMT: closed good sets for density bounds"]
+  gmt_density_points["GMT: one null set of bad density points"]
+  gmt_transfer_ball_bounds["GMT: transfer bounds at a density point"]
+  gmt_mattila_14_7_1["GMT: tangent bounds from density ratio"]
+  gmt_mattila_14_7_4["GMT: uniform support bounds and all tangents"]
+  def_uniform_api["GMT: uniform measures"]
+  gmt_density_exists_set["GMT: positive finite existing density set"]
+  gmt_uniform_density_adapter["GMT: existing density gives ratio one and bounds"]
+  thm_uniform_upstream["GMT: all tangents are uniform"]
+  gmt_uniform_tangents["GMT: tangents of uniform measures"]
+  gmt_uniform_halfspace["GMT: uniform measure in a half-space"]
+  gmt_uniform_radial["GMT: bounded radial integrals agree"]
+  gmt_uniform_hyperplane["GMT: half-space to hyperplane"]
+  gmt_hyperplane_transport["GMT: transport from a hyperplane"]
+  gmt_uniform_lower_dim["GMT: lower-dimensional uniform measure"]
+  gmt_uniform_full_dimension["GMT: full-dimensional uniform measures are flat"]
+  def_coverage["Countable Lipschitz coverage"]
+  def_rectifiable["Rectifiable sets and measures"]
+  lem_carrier_calculus["Carrier calculus"]
+  lem_graphs["Lipschitz images versus graphs"]
+  lem_representation["Density representation"]
+  def_positive_density["Positive finite density"]
+  lem_density_bridge["Normalization bridges"]
+  def_flat["Planes, flat measures, and dimensional scaling"]
+  lem_plane_scaling["Plane and scaling API"]
+  lem_tangent_ray["Comparison of tangent conventions"]
+  lem_absolute_continuity["Absolute continuity from upper density"]
+  lem_finite_pieces["Finite Hausdorff pieces"]
+  lem_cone_graph["Cone-to-graph lemma"]
+  lem_cone_criterion["Approximate cone criterion"]
+  def_weak_approximation["Weak linear approximation"]
+  lem_decomposition["Rectifiable/purely unrectifiable decomposition"]
+  thm_mm_set["Marstrand--Mattila set criterion"]
+  lem_flat_to_approximation["All flat tangents give weak approximation on pieces"]
+  thm_mm_measure["Marstrand--Mattila measure criterion"]
+  lem_uniform_adapter["Density-to-tangent adapters"]
+  lem_tangent_closed["Closedness of the tangent cone away from zero"]
+  lem_recenter["Recentering tangents almost everywhere"]
+  lem_uniform_reduction["Uniform dimension reduction with blow-up witnesses"]
+  thm_flat_pseudotangent["Flat pseudotangent of a uniform measure"]
+  thm_part_a["Part A"]
+  lem_infinity_compactness["Blow-down compactness and stability"]
+  def_moments["Gaussian moments"]
+  lem_radial["Radial integrals and Gaussian tails"]
+  lem_taylor_one["First Taylor expansion"]
+  lem_taylor_two["Moment coefficient expansion"]
+  lem_moment_determination["Gaussian moment determination"]
+  thm_unique_infinity["Unique tangent at infinity"]
+  cor_conical["Conicality at infinity"]
+  lem_conical_moments["Conical moment identities"]
+  thm_gap["Gap for conical uniform measures"]
+  lem_flat_infinity_moments["Moments under flatness at infinity"]
+  lem_trace_rigidity["Trace rigidity"]
+  thm_infinity_rigidity["Flatness at infinity implies flatness"]
+  lem_grassmannian["Compact space of planes"]
+  def_flatness["Continuous flatness functional"]
+  lem_flatness_continuous["Continuity of flatness"]
+  lem_first_crossing["First-crossing scales"]
+  thm_part_b["Part B: one flat tangent forces all tangents flat"]
+  lem_zero_dimension["Dimension zero"]
+  lem_excess_dimension["Dimensions above the ambient dimension"]
+  thm_preiss["Preiss"]
+  def_density_api --> gmt_density_order
+  def_density_api --> gmt_density_limit
+  def_density_api --> gmt_density_bounds
+  gmt_hausdorff_content --> gmt_content_comparison
+  gmt_finite_restriction --> gmt_hausdorff_regular
+  gmt_hausdorff_content --> gmt_hausdorff_regular
+  def_density_api --> gmt_content_density
+  gmt_content_comparison --> gmt_content_density
+  gmt_hausdorff_content --> gmt_content_density
+  def_density_api --> gmt_hausdorff_density_lower
+  gmt_content_comparison --> gmt_hausdorff_density_lower
+  gmt_content_density --> gmt_hausdorff_density_lower
+  def_density_api --> gmt_hausdorff_density_upper
+  gmt_hausdorff_regular --> gmt_hausdorff_density_upper
+  def_density_api --> gmt_hausdorff_density_outside
+  gmt_hausdorff_regular --> gmt_hausdorff_density_outside
+  gmt_blowup --> gmt_blowup_balls
+  gmt_blowup --> gmt_blowup_regular
+  gmt_blowup --> def_tangent_api
+  gmt_vague --> def_tangent_api
+  gmt_vague --> gmt_portmanteau
+  gmt_portmanteau --> gmt_continuity_sets
+  gmt_vague --> gmt_continuity_sets
+  gmt_vague --> thm_compactness
+  def_density_api --> gmt_doubling_bounds
+  def_tangent_api --> gmt_origin_support
+  gmt_blowup_balls --> gmt_origin_support
+  gmt_portmanteau --> gmt_origin_support
+  def_tangent_api --> gmt_normalized_tangent
+  gmt_continuity_sets --> gmt_normalized_tangent
+  gmt_origin_support --> gmt_normalized_tangent
+  def_tangent_api --> thm_doubling
+  gmt_blowup_balls --> thm_doubling
+  gmt_blowup_regular --> thm_doubling
+  gmt_portmanteau --> thm_doubling
+  thm_compactness --> thm_doubling
+  def_tangent_api --> gmt_restriction_tangents
+  gmt_blowup_regular --> gmt_restriction_tangents
+  def_tangent_api --> thm_matching
+  gmt_blowup_regular --> thm_matching
+  def_density_api --> gmt_goodsets
+  gmt_density_bounds --> gmt_goodsets
+  def_tangent_api --> gmt_transfer_ball_bounds
+  gmt_blowup_balls --> gmt_transfer_ball_bounds
+  gmt_blowup_regular --> gmt_transfer_ball_bounds
+  gmt_portmanteau --> gmt_transfer_ball_bounds
+  def_density_api --> gmt_mattila_14_7_1
+  def_tangent_api --> gmt_mattila_14_7_1
+  gmt_density_points --> gmt_mattila_14_7_1
+  gmt_goodsets --> gmt_mattila_14_7_1
+  gmt_transfer_ball_bounds --> gmt_mattila_14_7_1
+  def_tangent_api --> gmt_mattila_14_7_4
+  gmt_blowup_balls --> gmt_mattila_14_7_4
+  gmt_portmanteau --> gmt_mattila_14_7_4
+  thm_doubling --> gmt_mattila_14_7_4
+  def_density_api --> gmt_density_exists_set
+  gmt_density_bounds --> gmt_uniform_density_adapter
+  gmt_density_exists_set --> gmt_uniform_density_adapter
+  gmt_goodsets --> gmt_uniform_density_adapter
+  def_tangent_api --> thm_uniform_upstream
+  def_uniform_api --> thm_uniform_upstream
+  gmt_density_exists_set --> thm_uniform_upstream
+  gmt_doubling_bounds --> thm_uniform_upstream
+  gmt_mattila_14_7_1 --> thm_uniform_upstream
+  gmt_origin_support --> thm_uniform_upstream
+  gmt_uniform_density_adapter --> thm_uniform_upstream
+  def_tangent_api --> gmt_uniform_tangents
+  def_uniform_api --> gmt_uniform_tangents
+  gmt_mattila_14_7_4 --> gmt_uniform_tangents
+  gmt_origin_support --> gmt_uniform_tangents
+  def_uniform_api --> gmt_uniform_halfspace
+  gmt_portmanteau --> gmt_uniform_halfspace
+  gmt_uniform_tangents --> gmt_uniform_halfspace
+  def_uniform_api --> gmt_uniform_radial
+  def_uniform_api --> gmt_uniform_hyperplane
+  gmt_uniform_radial --> gmt_uniform_hyperplane
+  gmt_uniform_tangents --> gmt_uniform_hyperplane
+  def_uniform_api --> gmt_hyperplane_transport
+  def_uniform_api --> gmt_uniform_lower_dim
+  gmt_hyperplane_transport --> gmt_uniform_lower_dim
+  gmt_uniform_halfspace --> gmt_uniform_lower_dim
+  gmt_uniform_hyperplane --> gmt_uniform_lower_dim
+  def_uniform_api --> gmt_uniform_full_dimension
+  gmt_uniform_lower_dim --> gmt_uniform_full_dimension
+  def_coverage --> def_rectifiable
+  def_coverage --> lem_carrier_calculus
+  def_rectifiable --> lem_carrier_calculus
+  def_rectifiable --> lem_graphs
+  def_rectifiable --> lem_representation
+  lem_carrier_calculus --> lem_representation
+  def_density_api --> def_positive_density
+  def_positive_density --> lem_density_bridge
+  gmt_density_bounds --> lem_density_bridge
+  gmt_density_exists_set --> lem_density_bridge
+  gmt_density_limit --> lem_density_bridge
+  def_tangent_api --> def_flat
+  def_uniform_api --> def_flat
+  def_flat --> lem_plane_scaling
+  gmt_blowup_balls --> lem_plane_scaling
+  gmt_blowup_regular --> lem_plane_scaling
+  def_flat --> lem_tangent_ray
+  def_positive_density --> lem_tangent_ray
+  gmt_continuity_sets --> lem_tangent_ray
+  gmt_normalized_tangent --> lem_tangent_ray
+  lem_density_bridge --> lem_tangent_ray
+  lem_plane_scaling --> lem_tangent_ray
+  thm_compactness --> lem_tangent_ray
+  def_density_api --> lem_absolute_continuity
+  gmt_vitali --> lem_absolute_continuity
+  def_positive_density --> lem_finite_pieces
+  gmt_finite_restriction --> lem_finite_pieces
+  gmt_goodsets --> lem_finite_pieces
+  gmt_hausdorff_regular --> lem_finite_pieces
+  gmt_vitali --> lem_finite_pieces
+  lem_absolute_continuity --> lem_finite_pieces
+  def_coverage --> lem_cone_graph
+  def_rectifiable --> lem_cone_criterion
+  gmt_hausdorff_density_outside --> lem_cone_criterion
+  gmt_hausdorff_density_upper --> lem_cone_criterion
+  gmt_vitali --> lem_cone_criterion
+  lem_cone_graph --> lem_cone_criterion
+  def_flat --> def_weak_approximation
+  def_rectifiable --> lem_decomposition
+  lem_carrier_calculus --> lem_decomposition
+  def_rectifiable --> thm_mm_set
+  def_weak_approximation --> thm_mm_set
+  gmt_hausdorff_density_lower --> thm_mm_set
+  gmt_hausdorff_density_outside --> thm_mm_set
+  gmt_hausdorff_density_upper --> thm_mm_set
+  lem_cone_criterion --> thm_mm_set
+  lem_decomposition --> thm_mm_set
+  def_flat --> lem_flat_to_approximation
+  def_weak_approximation --> lem_flat_to_approximation
+  gmt_hausdorff_regular --> lem_flat_to_approximation
+  gmt_restriction_tangents --> lem_flat_to_approximation
+  lem_finite_pieces --> lem_flat_to_approximation
+  lem_plane_scaling --> lem_flat_to_approximation
+  thm_compactness --> lem_flat_to_approximation
+  thm_doubling --> lem_flat_to_approximation
+  thm_matching --> lem_flat_to_approximation
+  def_flat --> thm_mm_measure
+  def_positive_density --> thm_mm_measure
+  def_rectifiable --> thm_mm_measure
+  lem_absolute_continuity --> thm_mm_measure
+  lem_carrier_calculus --> thm_mm_measure
+  lem_finite_pieces --> thm_mm_measure
+  lem_flat_to_approximation --> thm_mm_measure
+  thm_mm_set --> thm_mm_measure
+  def_positive_density --> lem_uniform_adapter
+  def_tangent_api --> lem_uniform_adapter
+  def_uniform_api --> lem_uniform_adapter
+  gmt_doubling_bounds --> lem_uniform_adapter
+  gmt_uniform_density_adapter --> lem_uniform_adapter
+  lem_density_bridge --> lem_uniform_adapter
+  thm_doubling --> lem_uniform_adapter
+  thm_uniform_upstream --> lem_uniform_adapter
+  def_tangent_api --> lem_tangent_closed
+  thm_compactness --> lem_tangent_closed
+  def_flat --> lem_recenter
+  def_positive_density --> lem_recenter
+  gmt_density_points --> lem_recenter
+  gmt_goodsets --> lem_recenter
+  gmt_restriction_tangents --> lem_recenter
+  lem_plane_scaling --> lem_recenter
+  lem_tangent_closed --> lem_recenter
+  lem_tangent_ray --> lem_recenter
+  thm_matching --> lem_recenter
+  def_flat --> lem_uniform_reduction
+  def_uniform_api --> lem_uniform_reduction
+  gmt_hyperplane_transport --> lem_uniform_reduction
+  gmt_uniform_halfspace --> lem_uniform_reduction
+  gmt_uniform_hyperplane --> lem_uniform_reduction
+  gmt_uniform_lower_dim --> lem_uniform_reduction
+  lem_plane_scaling --> lem_uniform_reduction
+  thm_compactness --> lem_uniform_reduction
+  def_flat --> thm_flat_pseudotangent
+  def_uniform_api --> thm_flat_pseudotangent
+  gmt_uniform_full_dimension --> thm_flat_pseudotangent
+  lem_plane_scaling --> thm_flat_pseudotangent
+  lem_uniform_reduction --> thm_flat_pseudotangent
+  def_flat --> thm_part_a
+  def_positive_density --> thm_part_a
+  lem_recenter --> thm_part_a
+  lem_tangent_closed --> thm_part_a
+  lem_uniform_adapter --> thm_part_a
+  thm_flat_pseudotangent --> thm_part_a
+  def_flat --> lem_infinity_compactness
+  gmt_blowup_balls --> lem_infinity_compactness
+  gmt_portmanteau --> lem_infinity_compactness
+  lem_plane_scaling --> lem_infinity_compactness
+  thm_compactness --> lem_infinity_compactness
+  def_moments --> lem_radial
+  def_uniform_api --> lem_radial
+  gmt_uniform_radial --> lem_radial
+  def_moments --> lem_taylor_one
+  lem_radial --> lem_taylor_one
+  def_moments --> lem_taylor_two
+  lem_taylor_one --> lem_taylor_two
+  def_moments --> lem_moment_determination
+  lem_radial --> lem_moment_determination
+  def_flat --> thm_unique_infinity
+  lem_infinity_compactness --> thm_unique_infinity
+  lem_moment_determination --> thm_unique_infinity
+  lem_radial --> thm_unique_infinity
+  lem_taylor_two --> thm_unique_infinity
+  def_flat --> cor_conical
+  lem_plane_scaling --> cor_conical
+  thm_unique_infinity --> cor_conical
+  def_flat --> lem_conical_moments
+  def_moments --> lem_conical_moments
+  lem_radial --> lem_conical_moments
+  lem_taylor_two --> lem_conical_moments
+  def_flat --> thm_gap
+  lem_conical_moments --> thm_gap
+  lem_infinity_compactness --> thm_gap
+  lem_plane_scaling --> thm_gap
+  def_flat --> lem_flat_infinity_moments
+  def_moments --> lem_flat_infinity_moments
+  lem_plane_scaling --> lem_flat_infinity_moments
+  lem_radial --> lem_flat_infinity_moments
+  lem_taylor_two --> lem_flat_infinity_moments
+  thm_unique_infinity --> lem_flat_infinity_moments
+  def_moments --> lem_trace_rigidity
+  lem_flat_infinity_moments --> lem_trace_rigidity
+  lem_radial --> lem_trace_rigidity
+  def_flat --> thm_infinity_rigidity
+  lem_flat_infinity_moments --> thm_infinity_rigidity
+  lem_plane_scaling --> thm_infinity_rigidity
+  lem_trace_rigidity --> thm_infinity_rigidity
+  def_flat --> lem_grassmannian
+  def_flat --> def_flatness
+  def_flatness --> lem_flatness_continuous
+  lem_grassmannian --> lem_flatness_continuous
+  thm_compactness --> lem_flatness_continuous
+  def_flatness --> lem_first_crossing
+  def_positive_density --> lem_first_crossing
+  lem_flatness_continuous --> lem_first_crossing
+  lem_plane_scaling --> lem_first_crossing
+  lem_tangent_closed --> lem_first_crossing
+  lem_tangent_ray --> lem_first_crossing
+  thm_compactness --> lem_first_crossing
+  thm_unique_infinity --> lem_first_crossing
+  cor_conical --> thm_part_b
+  def_flat --> thm_part_b
+  def_positive_density --> thm_part_b
+  lem_first_crossing --> thm_part_b
+  thm_gap --> thm_part_b
+  thm_infinity_rigidity --> thm_part_b
+  def_positive_density --> lem_zero_dimension
+  def_rectifiable --> lem_zero_dimension
+  def_positive_density --> lem_excess_dimension
+  def_rectifiable --> lem_excess_dimension
+  lem_absolute_continuity --> lem_excess_dimension
+  def_positive_density --> thm_preiss
+  def_rectifiable --> thm_preiss
+  lem_excess_dimension --> thm_preiss
+  lem_uniform_adapter --> thm_preiss
+  lem_zero_dimension --> thm_preiss
+  thm_mm_measure --> thm_preiss
+  thm_part_a --> thm_preiss
+  thm_part_b --> thm_preiss

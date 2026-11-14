@@ -1,0 +1,13 @@
+.lake/
+tmp/
+blueprint/web/
+blueprint/print/
+__pycache__/
+*.olean
+*.ilean
+blueprint/src/web/
+blueprint/src/*.paux
+blueprint/src/*.log
+blueprint/src/*.aux
+blueprint/src/*.toc
+blueprint/render.log

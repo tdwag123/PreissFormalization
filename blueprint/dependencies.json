@@ -1,0 +1,1557 @@
+{
+  "sources": [
+    "blueprint/src/content.tex",
+    "blueprint/src/upstream.tex"
+  ],
+  "meaning": "Intended dependencies, not a certified proof graph",
+  "nodes": [
+    {
+      "id": "def:density-api",
+      "title": "GMT: dimensional densities",
+      "kind": "definition",
+      "status": "formalized_upstream",
+      "lean": [
+        "HasDensity",
+        "dimensional_density_ratio",
+        "dimensional_lower_density",
+        "dimensional_upper_density"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 53
+    },
+    {
+      "id": "gmt:density-order",
+      "title": "GMT: lower versus upper density",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "lower_le_upper_density"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 60
+    },
+    {
+      "id": "gmt:density-limit",
+      "title": "GMT: equal densities give a limit",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "density_exists_of_lower_eq_upper"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 72
+    },
+    {
+      "id": "gmt:density-bounds",
+      "title": "GMT: eventual small-ball bounds",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "dimensional_density_ratio_closedBall",
+        "eventually_gt_of_lower_density_gt",
+        "eventually_lt_of_upper_density_lt"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 84
+    },
+    {
+      "id": "gmt:vitali",
+      "title": "GMT: fine Vitali covering variant",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "vitali_variant_classical"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 96
+    },
+    {
+      "id": "gmt:finite-restriction",
+      "title": "GMT: finite restrictions are regular",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "BorelRegularOuterMeasure.restrict_isRadon"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 107
+    },
+    {
+      "id": "gmt:hausdorff-content",
+      "title": "GMT: Hausdorff content",
+      "kind": "definition",
+      "status": "formalized_upstream",
+      "lean": [
+        "hausdorffContent",
+        "hausdorffContentInfty"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 118
+    },
+    {
+      "id": "gmt:content-comparison",
+      "title": "GMT: content comparison and stabilization",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "hausdorffContentInfty_le_hausdorffContent",
+        "hausdorffContent_eq_hausdorffContentInfty_of_ediam_le",
+        "hausdorffContent_le_hausdorffMeasure"
+      ],
+      "statement_dependencies": [
+        "gmt:hausdorff-content"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 125
+    },
+    {
+      "id": "gmt:hausdorff-regular",
+      "title": "GMT: finite Hausdorff restrictions",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "HausdorffRestrict.toRadonOuterMeasure"
+      ],
+      "statement_dependencies": [
+        "gmt:hausdorff-content"
+      ],
+      "proof_dependencies": [
+        "gmt:finite-restriction"
+      ],
+      "expanded_line": 137
+    },
+    {
+      "id": "gmt:content-density",
+      "title": "GMT: positive upper content density inside",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "hausdorffContentInfty_upperDensity_ge_ae_mem"
+      ],
+      "statement_dependencies": [
+        "def:density-api",
+        "gmt:hausdorff-content"
+      ],
+      "proof_dependencies": [
+        "gmt:content-comparison"
+      ],
+      "expanded_line": 150
+    },
+    {
+      "id": "gmt:hausdorff-density-lower",
+      "title": "GMT: positive upper Hausdorff density inside",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "hausdorffMeasure_upperDensity_ge_ae_mem"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [
+        "gmt:content-comparison",
+        "gmt:content-density"
+      ],
+      "expanded_line": 163
+    },
+    {
+      "id": "gmt:hausdorff-density-upper",
+      "title": "GMT: upper Hausdorff density at most one",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "hausdorffMeasure_upperDensity_le_one_ae_mem"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [
+        "gmt:hausdorff-regular"
+      ],
+      "expanded_line": 176
+    },
+    {
+      "id": "gmt:hausdorff-density-outside",
+      "title": "GMT: zero upper density outside",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "hausdorffMeasure_upperDensity_eq_zero_ae_notMem"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [
+        "gmt:hausdorff-regular"
+      ],
+      "expanded_line": 189
+    },
+    {
+      "id": "gmt:vague",
+      "title": "GMT: vague convergence",
+      "kind": "definition",
+      "status": "formalized_upstream",
+      "lean": [
+        "MeasureTheory.Measure.WeaklyConverges"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 202
+    },
+    {
+      "id": "gmt:blowup",
+      "title": "GMT: blow-up map",
+      "kind": "definition",
+      "status": "formalized_upstream",
+      "lean": [
+        "blowUpMap"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 209
+    },
+    {
+      "id": "gmt:blowup-balls",
+      "title": "GMT: measurable blow-ups and ball identities",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "map_blowUp_apply_ball",
+        "map_blowUp_apply_closedBall",
+        "measurable_blowUpMap"
+      ],
+      "statement_dependencies": [
+        "gmt:blowup"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 216
+    },
+    {
+      "id": "gmt:blowup-regular",
+      "title": "GMT: regularity of scaled blow-ups",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "regular_map_blowUp",
+        "regular_smul_map_blowUp"
+      ],
+      "statement_dependencies": [
+        "gmt:blowup"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 228
+    },
+    {
+      "id": "def:tangent-api",
+      "title": "GMT: tangent measures",
+      "kind": "definition",
+      "status": "formalized_upstream",
+      "lean": [
+        "IsTangentMeasure"
+      ],
+      "statement_dependencies": [
+        "gmt:blowup",
+        "gmt:vague"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 240
+    },
+    {
+      "id": "gmt:portmanteau",
+      "title": "GMT: compact/open portmanteau",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "MeasureTheory.Measure.weaklyConverges_iff_compactOpenBounds"
+      ],
+      "statement_dependencies": [
+        "gmt:vague"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 248
+    },
+    {
+      "id": "gmt:continuity-sets",
+      "title": "GMT: convergence on bounded continuity sets",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "MeasureTheory.Measure.weaklyConverges_iff_boundedContinuitySets"
+      ],
+      "statement_dependencies": [
+        "gmt:vague"
+      ],
+      "proof_dependencies": [
+        "gmt:portmanteau"
+      ],
+      "expanded_line": 260
+    },
+    {
+      "id": "thm:compactness",
+      "title": "GMT: compact mass bounds give a subsequence",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "MeasureTheory.exists_vaguelyConvergent_subseq_of_compact_bounded"
+      ],
+      "statement_dependencies": [
+        "gmt:vague"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 273
+    },
+    {
+      "id": "gmt:doubling-bounds",
+      "title": "GMT: density bounds imply support and doubling",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "limsup_ball_ratio_lt_top_of_ball_bounds_at",
+        "mem_support_of_ball_lower_bound"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 285
+    },
+    {
+      "id": "gmt:origin-support",
+      "title": "GMT: origin lies in tangent support",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "zero_mem_support_of_isTangentMeasure"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-balls",
+        "gmt:portmanteau"
+      ],
+      "expanded_line": 297
+    },
+    {
+      "id": "gmt:normalized-tangent",
+      "title": "GMT: mass-normalized tangent sequence",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "exists_normalized_blowUp_weaklyConverges_of_isTangentMeasure"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:continuity-sets",
+        "gmt:origin-support"
+      ],
+      "expanded_line": 310
+    },
+    {
+      "id": "thm:doubling",
+      "title": "GMT: tangent existence under doubling",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "exists_subseq_blowUp_weaklyConverges_tangentMeasure"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-balls",
+        "gmt:blowup-regular",
+        "gmt:portmanteau",
+        "thm:compactness"
+      ],
+      "expanded_line": 323
+    },
+    {
+      "id": "gmt:restriction-tangents",
+      "title": "GMT: restriction preserves tangents",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "isTangentMeasure_restrict_iff"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-regular"
+      ],
+      "expanded_line": 336
+    },
+    {
+      "id": "thm:matching",
+      "title": "GMT: density change preserves tangents",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "isTangentMeasure_iff_ae_of_density"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-regular"
+      ],
+      "expanded_line": 349
+    },
+    {
+      "id": "gmt:goodsets",
+      "title": "GMT: closed good sets for density bounds",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "RatioOfDensities",
+        "exists_goodSet_mem",
+        "goodSet",
+        "isClosed_goodSet",
+        "positiveFiniteDensitySet"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [
+        "gmt:density-bounds"
+      ],
+      "expanded_line": 362
+    },
+    {
+      "id": "gmt:density-points",
+      "title": "GMT: one null set of bad density points",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "exists_null_of_not_density_point"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 375
+    },
+    {
+      "id": "gmt:transfer-ball-bounds",
+      "title": "GMT: transfer bounds at a density point",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "tangent_ball_bounds_of_density_point"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-balls",
+        "gmt:blowup-regular",
+        "gmt:portmanteau"
+      ],
+      "expanded_line": 386
+    },
+    {
+      "id": "gmt:mattila-14-7-1",
+      "title": "GMT: tangent bounds from density ratio",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "mattila_14_7_1"
+      ],
+      "statement_dependencies": [
+        "def:density-api",
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:density-points",
+        "gmt:goodsets",
+        "gmt:transfer-ball-bounds"
+      ],
+      "expanded_line": 399
+    },
+    {
+      "id": "gmt:mattila-14-7-4",
+      "title": "GMT: uniform support bounds and all tangents",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "mattila_14_7_4"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-balls",
+        "gmt:portmanteau",
+        "thm:doubling"
+      ],
+      "expanded_line": 412
+    },
+    {
+      "id": "def:uniform-api",
+      "title": "GMT: uniform measures",
+      "kind": "definition",
+      "status": "formalized_upstream",
+      "lean": [
+        "IsSUniform"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 425
+    },
+    {
+      "id": "gmt:density-exists-set",
+      "title": "GMT: positive finite existing density set",
+      "kind": "definition",
+      "status": "formalized_upstream",
+      "lean": [
+        "positiveFiniteDensityExistsSet"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 432
+    },
+    {
+      "id": "gmt:uniform-density-adapter",
+      "title": "GMT: existing density gives ratio one and bounds",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "SUniformAux.ball_bounds_of_mem",
+        "SUniformAux.mem_positiveFiniteDensitySet"
+      ],
+      "statement_dependencies": [
+        "gmt:density-exists-set",
+        "gmt:goodsets"
+      ],
+      "proof_dependencies": [
+        "gmt:density-bounds"
+      ],
+      "expanded_line": 440
+    },
+    {
+      "id": "thm:uniform-upstream",
+      "title": "GMT: all tangents are uniform",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "mattila_14_9"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api",
+        "def:uniform-api",
+        "gmt:density-exists-set"
+      ],
+      "proof_dependencies": [
+        "gmt:doubling-bounds",
+        "gmt:mattila-14-7-1",
+        "gmt:origin-support",
+        "gmt:uniform-density-adapter"
+      ],
+      "expanded_line": 453
+    },
+    {
+      "id": "gmt:uniform-tangents",
+      "title": "GMT: tangents of uniform measures",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "SUniformAux.exists_isTangentMeasure",
+        "SUniformAux.isSUniform_of_isTangentMeasure"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api",
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:mattila-14-7-4",
+        "gmt:origin-support"
+      ],
+      "expanded_line": 466
+    },
+    {
+      "id": "gmt:uniform-halfspace",
+      "title": "GMT: uniform measure in a half-space",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "SUniformAux.exists_halfSpace"
+      ],
+      "statement_dependencies": [
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:portmanteau",
+        "gmt:uniform-tangents"
+      ],
+      "expanded_line": 479
+    },
+    {
+      "id": "gmt:uniform-radial",
+      "title": "GMT: bounded radial integrals agree",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "SUniformAux.measure_closedBall_eq_of_mem_support",
+        "SUniformAux.setIntegral_comp_dist_eq"
+      ],
+      "statement_dependencies": [
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 492
+    },
+    {
+      "id": "gmt:uniform-hyperplane",
+      "title": "GMT: half-space to hyperplane",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "SUniformAux.exists_hyperplane"
+      ],
+      "statement_dependencies": [
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:uniform-radial",
+        "gmt:uniform-tangents"
+      ],
+      "expanded_line": 504
+    },
+    {
+      "id": "gmt:hyperplane-transport",
+      "title": "GMT: transport from a hyperplane",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "SUniformAux.exists_isSUniform_of_hyperplane"
+      ],
+      "statement_dependencies": [
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 517
+    },
+    {
+      "id": "gmt:uniform-lower-dim",
+      "title": "GMT: lower-dimensional uniform measure",
+      "kind": "lemma",
+      "status": "formalized_upstream",
+      "lean": [
+        "SUniformAux.exists_lower_dim"
+      ],
+      "statement_dependencies": [
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:hyperplane-transport",
+        "gmt:uniform-halfspace",
+        "gmt:uniform-hyperplane"
+      ],
+      "expanded_line": 529
+    },
+    {
+      "id": "gmt:uniform-full-dimension",
+      "title": "GMT: full-dimensional uniform measures are flat",
+      "kind": "theorem",
+      "status": "formalized_upstream",
+      "lean": [
+        "mattila_14_11"
+      ],
+      "statement_dependencies": [
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:uniform-lower-dim"
+      ],
+      "expanded_line": 542
+    },
+    {
+      "id": "def:coverage",
+      "title": "Countable Lipschitz coverage",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.CountablyLipschitzCovered"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 576
+    },
+    {
+      "id": "def:rectifiable",
+      "title": "Rectifiable sets and measures",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.CountablyRectifiable",
+        "Preiss.IsRectifiableMeasure"
+      ],
+      "statement_dependencies": [
+        "def:coverage"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 584
+    },
+    {
+      "id": "lem:carrier-calculus",
+      "title": "Carrier calculus",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:coverage",
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 595
+    },
+    {
+      "id": "lem:graphs",
+      "title": "Lipschitz images versus graphs",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 608
+    },
+    {
+      "id": "lem:representation",
+      "title": "Density representation",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.rectifiable_iff_density_representation"
+      ],
+      "statement_dependencies": [
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [
+        "lem:carrier-calculus"
+      ],
+      "expanded_line": 625
+    },
+    {
+      "id": "def:positive-density",
+      "title": "Positive finite density",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.HasPositiveFiniteDensitiesAt",
+        "Preiss.HasPositiveFiniteDensityAt"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 642
+    },
+    {
+      "id": "lem:density-bridge",
+      "title": "Normalization bridges",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.density_iff_openBall_limit",
+        "PreissBlueprint.density_iff_upstream"
+      ],
+      "statement_dependencies": [
+        "def:positive-density"
+      ],
+      "proof_dependencies": [
+        "gmt:density-bounds",
+        "gmt:density-exists-set",
+        "gmt:density-limit"
+      ],
+      "expanded_line": 651
+    },
+    {
+      "id": "def:flat",
+      "title": "Planes, flat measures, and dimensional scaling",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.IsConical",
+        "Preiss.IsDimensionalTangent",
+        "Preiss.IsFlat",
+        "Preiss.IsTangentAtInfinity",
+        "Preiss.IsUnitUniform",
+        "Preiss.Plane",
+        "Preiss.dimensionalBlowup"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api",
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 669
+    },
+    {
+      "id": "lem:plane-scaling",
+      "title": "Plane and scaling API",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-balls",
+        "gmt:blowup-regular"
+      ],
+      "expanded_line": 683
+    },
+    {
+      "id": "lem:tangent-ray",
+      "title": "Comparison of tangent conventions",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.tangent_iff_dimensional_ray"
+      ],
+      "statement_dependencies": [
+        "def:flat",
+        "def:positive-density"
+      ],
+      "proof_dependencies": [
+        "gmt:continuity-sets",
+        "gmt:normalized-tangent",
+        "lem:density-bridge",
+        "lem:plane-scaling",
+        "thm:compactness"
+      ],
+      "expanded_line": 698
+    },
+    {
+      "id": "lem:absolute-continuity",
+      "title": "Absolute continuity from upper density",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.absolutelyContinuous_hausdorff_of_upper_density_finite"
+      ],
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [
+        "gmt:vitali"
+      ],
+      "expanded_line": 715
+    },
+    {
+      "id": "lem:finite-pieces",
+      "title": "Finite Hausdorff pieces",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:positive-density"
+      ],
+      "proof_dependencies": [
+        "gmt:finite-restriction",
+        "gmt:goodsets",
+        "gmt:hausdorff-regular",
+        "gmt:vitali",
+        "lem:absolute-continuity"
+      ],
+      "expanded_line": 728
+    },
+    {
+      "id": "lem:cone-graph",
+      "title": "Cone-to-graph lemma",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:coverage"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 743
+    },
+    {
+      "id": "lem:cone-criterion",
+      "title": "Approximate cone criterion",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [
+        "gmt:hausdorff-density-outside",
+        "gmt:hausdorff-density-upper",
+        "gmt:vitali",
+        "lem:cone-graph"
+      ],
+      "expanded_line": 755
+    },
+    {
+      "id": "def:weak-approximation",
+      "title": "Weak linear approximation",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.WeaklyLinearlyApproximableAt"
+      ],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 768
+    },
+    {
+      "id": "lem:decomposition",
+      "title": "Rectifiable/purely unrectifiable decomposition",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [
+        "lem:carrier-calculus"
+      ],
+      "expanded_line": 780
+    },
+    {
+      "id": "thm:mm-set",
+      "title": "Marstrand--Mattila set criterion",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.rectifiable_of_weak_approximation"
+      ],
+      "statement_dependencies": [
+        "def:rectifiable",
+        "def:weak-approximation"
+      ],
+      "proof_dependencies": [
+        "gmt:hausdorff-density-lower",
+        "gmt:hausdorff-density-outside",
+        "gmt:hausdorff-density-upper",
+        "lem:cone-criterion",
+        "lem:decomposition"
+      ],
+      "expanded_line": 794
+    },
+    {
+      "id": "lem:flat-to-approximation",
+      "title": "All flat tangents give weak approximation on pieces",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flat",
+        "def:weak-approximation"
+      ],
+      "proof_dependencies": [
+        "gmt:hausdorff-regular",
+        "gmt:restriction-tangents",
+        "lem:finite-pieces",
+        "lem:plane-scaling",
+        "thm:compactness",
+        "thm:doubling",
+        "thm:matching"
+      ],
+      "expanded_line": 809
+    },
+    {
+      "id": "thm:mm-measure",
+      "title": "Marstrand--Mattila measure criterion",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.rectifiable_of_all_tangents_flat"
+      ],
+      "statement_dependencies": [
+        "def:flat",
+        "def:positive-density",
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [
+        "lem:absolute-continuity",
+        "lem:carrier-calculus",
+        "lem:finite-pieces",
+        "lem:flat-to-approximation",
+        "thm:mm-set"
+      ],
+      "expanded_line": 823
+    },
+    {
+      "id": "lem:uniform-adapter",
+      "title": "Density-to-tangent adapters",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.ae_tangent_uniform",
+        "PreissBlueprint.tangent_exists"
+      ],
+      "statement_dependencies": [
+        "def:positive-density",
+        "def:tangent-api",
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:doubling-bounds",
+        "gmt:uniform-density-adapter",
+        "lem:density-bridge",
+        "thm:doubling",
+        "thm:uniform-upstream"
+      ],
+      "expanded_line": 838
+    },
+    {
+      "id": "lem:tangent-closed",
+      "title": "Closedness of the tangent cone away from zero",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.tangent_closed"
+      ],
+      "statement_dependencies": [
+        "def:tangent-api"
+      ],
+      "proof_dependencies": [
+        "thm:compactness"
+      ],
+      "expanded_line": 852
+    },
+    {
+      "id": "lem:recenter",
+      "title": "Recentering tangents almost everywhere",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.ae_recenter_tangent"
+      ],
+      "statement_dependencies": [
+        "def:flat",
+        "def:positive-density"
+      ],
+      "proof_dependencies": [
+        "gmt:density-points",
+        "gmt:goodsets",
+        "gmt:restriction-tangents",
+        "lem:plane-scaling",
+        "lem:tangent-closed",
+        "lem:tangent-ray",
+        "thm:matching"
+      ],
+      "expanded_line": 867
+    },
+    {
+      "id": "lem:uniform-reduction",
+      "title": "Uniform dimension reduction with blow-up witnesses",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flat",
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:hyperplane-transport",
+        "gmt:uniform-halfspace",
+        "gmt:uniform-hyperplane",
+        "gmt:uniform-lower-dim",
+        "lem:plane-scaling",
+        "thm:compactness"
+      ],
+      "expanded_line": 883
+    },
+    {
+      "id": "thm:flat-pseudotangent",
+      "title": "Flat pseudotangent of a uniform measure",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.uniform_has_flat_pseudotangent"
+      ],
+      "statement_dependencies": [
+        "def:flat",
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:uniform-full-dimension",
+        "lem:plane-scaling",
+        "lem:uniform-reduction"
+      ],
+      "expanded_line": 900
+    },
+    {
+      "id": "thm:part-a",
+      "title": "Part A",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.ae_exists_flat_tangent"
+      ],
+      "statement_dependencies": [
+        "def:flat",
+        "def:positive-density"
+      ],
+      "proof_dependencies": [
+        "lem:recenter",
+        "lem:tangent-closed",
+        "lem:uniform-adapter",
+        "thm:flat-pseudotangent"
+      ],
+      "expanded_line": 915
+    },
+    {
+      "id": "lem:infinity-compactness",
+      "title": "Blow-down compactness and stability",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [
+        "gmt:blowup-balls",
+        "gmt:portmanteau",
+        "lem:plane-scaling",
+        "thm:compactness"
+      ],
+      "expanded_line": 935
+    },
+    {
+      "id": "def:moments",
+      "title": "Gaussian moments",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.gaussianMoment"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 950
+    },
+    {
+      "id": "lem:radial",
+      "title": "Radial integrals and Gaussian tails",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:moments",
+        "def:uniform-api"
+      ],
+      "proof_dependencies": [
+        "gmt:uniform-radial"
+      ],
+      "expanded_line": 962
+    },
+    {
+      "id": "lem:taylor-one",
+      "title": "First Taylor expansion",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:moments"
+      ],
+      "proof_dependencies": [
+        "lem:radial"
+      ],
+      "expanded_line": 980
+    },
+    {
+      "id": "lem:taylor-two",
+      "title": "Moment coefficient expansion",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:moments"
+      ],
+      "proof_dependencies": [
+        "lem:taylor-one"
+      ],
+      "expanded_line": 995
+    },
+    {
+      "id": "lem:moment-determination",
+      "title": "Gaussian moment determination",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:moments"
+      ],
+      "proof_dependencies": [
+        "lem:radial"
+      ],
+      "expanded_line": 1013
+    },
+    {
+      "id": "thm:unique-infinity",
+      "title": "Unique tangent at infinity",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.unique_tangent_at_infinity"
+      ],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [
+        "lem:infinity-compactness",
+        "lem:moment-determination",
+        "lem:radial",
+        "lem:taylor-two"
+      ],
+      "expanded_line": 1026
+    },
+    {
+      "id": "cor:conical",
+      "title": "Conicality at infinity",
+      "kind": "corollary",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.tangent_at_infinity_conical"
+      ],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [
+        "lem:plane-scaling",
+        "thm:unique-infinity"
+      ],
+      "expanded_line": 1041
+    },
+    {
+      "id": "lem:conical-moments",
+      "title": "Conical moment identities",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flat",
+        "def:moments"
+      ],
+      "proof_dependencies": [
+        "lem:radial",
+        "lem:taylor-two"
+      ],
+      "expanded_line": 1054
+    },
+    {
+      "id": "thm:gap",
+      "title": "Gap for conical uniform measures",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.conical_flatness_gap"
+      ],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [
+        "lem:conical-moments",
+        "lem:infinity-compactness",
+        "lem:plane-scaling"
+      ],
+      "expanded_line": 1068
+    },
+    {
+      "id": "lem:flat-infinity-moments",
+      "title": "Moments under flatness at infinity",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flat",
+        "def:moments"
+      ],
+      "proof_dependencies": [
+        "lem:plane-scaling",
+        "lem:radial",
+        "lem:taylor-two",
+        "thm:unique-infinity"
+      ],
+      "expanded_line": 1083
+    },
+    {
+      "id": "lem:trace-rigidity",
+      "title": "Trace rigidity",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:moments"
+      ],
+      "proof_dependencies": [
+        "lem:flat-infinity-moments",
+        "lem:radial"
+      ],
+      "expanded_line": 1098
+    },
+    {
+      "id": "thm:infinity-rigidity",
+      "title": "Flatness at infinity implies flatness",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.flat_of_flat_at_infinity"
+      ],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [
+        "lem:flat-infinity-moments",
+        "lem:plane-scaling",
+        "lem:trace-rigidity"
+      ],
+      "expanded_line": 1114
+    },
+    {
+      "id": "lem:grassmannian",
+      "title": "Compact space of planes",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 1129
+    },
+    {
+      "id": "def:flatness",
+      "title": "Continuous flatness functional",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.flatness",
+        "Preiss.flatnessEnergy"
+      ],
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 1142
+    },
+    {
+      "id": "lem:flatness-continuous",
+      "title": "Continuity of flatness",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.flatness_continuous"
+      ],
+      "statement_dependencies": [
+        "def:flatness"
+      ],
+      "proof_dependencies": [
+        "lem:grassmannian",
+        "thm:compactness"
+      ],
+      "expanded_line": 1152
+    },
+    {
+      "id": "lem:first-crossing",
+      "title": "First-crossing scales",
+      "kind": "lemma",
+      "status": "mathematical_plan",
+      "lean": [],
+      "statement_dependencies": [
+        "def:flatness",
+        "def:positive-density"
+      ],
+      "proof_dependencies": [
+        "lem:flatness-continuous",
+        "lem:plane-scaling",
+        "lem:tangent-closed",
+        "lem:tangent-ray",
+        "thm:compactness",
+        "thm:unique-infinity"
+      ],
+      "expanded_line": 1165
+    },
+    {
+      "id": "thm:part-b",
+      "title": "Part B: one flat tangent forces all tangents flat",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.all_tangents_flat_of_one"
+      ],
+      "statement_dependencies": [
+        "def:flat",
+        "def:positive-density"
+      ],
+      "proof_dependencies": [
+        "cor:conical",
+        "lem:first-crossing",
+        "thm:gap",
+        "thm:infinity-rigidity"
+      ],
+      "expanded_line": 1183
+    },
+    {
+      "id": "lem:zero-dimension",
+      "title": "Dimension zero",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.preiss_zero"
+      ],
+      "statement_dependencies": [
+        "def:positive-density",
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 1200
+    },
+    {
+      "id": "lem:excess-dimension",
+      "title": "Dimensions above the ambient dimension",
+      "kind": "lemma",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.measure_zero_of_dimension_gt",
+        "PreissBlueprint.zero_isRectifiableMeasure"
+      ],
+      "statement_dependencies": [
+        "def:positive-density",
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [
+        "lem:absolute-continuity"
+      ],
+      "expanded_line": 1213
+    },
+    {
+      "id": "thm:preiss",
+      "title": "Preiss",
+      "kind": "theorem",
+      "status": "draft_statement",
+      "lean": [
+        "PreissBlueprint.preiss"
+      ],
+      "statement_dependencies": [
+        "def:positive-density",
+        "def:rectifiable"
+      ],
+      "proof_dependencies": [
+        "lem:excess-dimension",
+        "lem:uniform-adapter",
+        "lem:zero-dimension",
+        "thm:mm-measure",
+        "thm:part-a",
+        "thm:part-b"
+      ],
+      "expanded_line": 1226
+    }
+  ],
+  "topological_order": [
+    "def:density-api",
+    "gmt:vitali",
+    "gmt:finite-restriction",
+    "gmt:hausdorff-content",
+    "gmt:vague",
+    "gmt:blowup",
+    "gmt:density-points",
+    "def:uniform-api",
+    "def:coverage",
+    "def:moments",
+    "gmt:density-order",
+    "gmt:density-limit",
+    "gmt:density-bounds",
+    "gmt:doubling-bounds",
+    "gmt:density-exists-set",
+    "def:positive-density",
+    "lem:absolute-continuity",
+    "gmt:content-comparison",
+    "gmt:hausdorff-regular",
+    "gmt:portmanteau",
+    "thm:compactness",
+    "gmt:blowup-balls",
+    "gmt:blowup-regular",
+    "def:tangent-api",
+    "gmt:uniform-radial",
+    "gmt:hyperplane-transport",
+    "def:rectifiable",
+    "lem:cone-graph",
+    "gmt:goodsets",
+    "lem:density-bridge",
+    "gmt:content-density",
+    "gmt:hausdorff-density-upper",
+    "gmt:hausdorff-density-outside",
+    "gmt:continuity-sets",
+    "gmt:origin-support",
+    "thm:doubling",
+    "gmt:restriction-tangents",
+    "thm:matching",
+    "gmt:transfer-ball-bounds",
+    "def:flat",
+    "lem:tangent-closed",
+    "lem:radial",
+    "lem:carrier-calculus",
+    "lem:graphs",
+    "lem:zero-dimension",
+    "lem:excess-dimension",
+    "gmt:uniform-density-adapter",
+    "lem:finite-pieces",
+    "gmt:hausdorff-density-lower",
+    "lem:cone-criterion",
+    "gmt:normalized-tangent",
+    "gmt:mattila-14-7-4",
+    "gmt:mattila-14-7-1",
+    "lem:plane-scaling",
+    "def:weak-approximation",
+    "lem:grassmannian",
+    "def:flatness",
+    "lem:taylor-one",
+    "lem:moment-determination",
+    "lem:representation",
+    "lem:decomposition",
+    "gmt:uniform-tangents",
+    "thm:uniform-upstream",
+    "lem:tangent-ray",
+    "lem:infinity-compactness",
+    "lem:flat-to-approximation",
+    "lem:flatness-continuous",
+    "lem:taylor-two",
+    "thm:mm-set",
+    "gmt:uniform-halfspace",
+    "gmt:uniform-hyperplane",
+    "lem:uniform-adapter",
+    "lem:recenter",
+    "thm:unique-infinity",
+    "lem:conical-moments",
+    "thm:mm-measure",
+    "gmt:uniform-lower-dim",
+    "cor:conical",
+    "lem:flat-infinity-moments",
+    "lem:first-crossing",
+    "thm:gap",
+    "gmt:uniform-full-dimension",
+    "lem:uniform-reduction",
+    "lem:trace-rigidity",
+    "thm:flat-pseudotangent",
+    "thm:infinity-rigidity",
+    "thm:part-a",
+    "thm:part-b",
+    "thm:preiss"
+  ]
+}

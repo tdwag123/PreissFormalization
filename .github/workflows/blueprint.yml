@@ -1,0 +1,56 @@
+name: Build and publish LeanBlueprint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blueprint-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz libgraphviz-dev
+          python -m pip install -r blueprint/requirements.txt
+      - name: Validate dependencies and declaration links
+        run: |
+          python scripts/check_blueprint.py
+          python scripts/declaration_links.py
+      - name: Render LeanBlueprint
+        run: leanblueprint web
+      - name: Add declaration viewer and verify HTML
+        run: |
+          python scripts/declaration_links.py --site
+          python scripts/check_render.py
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: blueprint/web
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/deploy-pages@v5
+        id: deployment

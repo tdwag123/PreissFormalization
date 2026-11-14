@@ -1,0 +1,512 @@
+% Existing FormalizingGMT declarations at the pinned revision.
+% The declarations and proof bodies are formalized upstream. No claim is made
+% that the full downstream project has been rebuilt on this workstation.
+\section{Existing FormalizingGMT results in the graph}
+Green statement/proof markers in this section mean that the corresponding
+definitions and proof bodies already exist in the pinned FormalizingGMT source.
+They do not mean that the new Preiss adapters are proved, or that this workstation
+has completed a fresh build of every imported module. The edges expose the
+mathematical dependencies relevant here, not an exhaustive kernel proof-term graph.
+Each node's Lean link opens a declaration/source viewer with its exact source location.
+
+\begin{definition}[GMT: dimensional densities]
+\label{def:density-api}
+\lean{dimensional_density_ratio,dimensional_lower_density,dimensional_upper_density,HasDensity}
+\leanok
+For an outer measure, the density ratio is $\mu(\overline B(x,r))/(2r)^s$; lower and upper density use $r\downarrow0$. Density existence is convergence in $[0,\infty]$.
+\end{definition}
+
+\begin{lemma}[GMT: lower versus upper density]
+\label{gmt:density-order}
+\lean{lower_le_upper_density}
+\leanok
+\uses{def:density-api}
+For every exponent and point, $\Theta_*^s(\mu,x)\leq\Theta^{*s}(\mu,x)$.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: equal densities give a limit]
+\label{gmt:density-limit}
+\lean{density_exists_of_lower_eq_upper}
+\leanok
+\uses{def:density-api}
+Equality of lower and upper density implies \texttt{HasDensity}. Positivity and finiteness remain separate hypotheses.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: eventual small-ball bounds]
+\label{gmt:density-bounds}
+\lean{eventually_gt_of_lower_density_gt,eventually_lt_of_upper_density_lt,dimensional_density_ratio_closedBall}
+\leanok
+\uses{def:density-api}
+Strict bounds below the lower density or above the upper density become eventual bounds for all sufficiently small positive radii. For nonnegative radii, the extended-ball expression agrees with the ordinary closed-ball ratio.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: fine Vitali covering variant]
+\label{gmt:vitali}
+\lean{vitali_variant_classical}
+\leanok
+In a second-countable metric space, a fine centred family of positive-radius balls with bounded radii has a countable disjoint subfamily. After removing any finite subfamily of the original family, the remaining set is covered by the fivefold enlargements of the selected balls not removed.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: finite restrictions are regular]
+\label{gmt:finite-restriction}
+\lean{BorelRegularOuterMeasure.restrict_isRadon}
+\leanok
+On a locally compact, Hausdorff, second-countable Borel space, $\mu E<\infty$ implies that $\mu|E$ is regular. The source does not require $E$ to be Borel.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{definition}[GMT: Hausdorff content]
+\label{gmt:hausdorff-content}
+\lean{hausdorffContent,hausdorffContentInfty}
+\leanok
+Hausdorff content is the infimum of countable covering diameter sums, with or without a diameter cutoff. For positive exponents, empty cover elements have zero contribution; the cutoff version uses an explicit nonempty guard.
+\end{definition}
+
+\begin{lemma}[GMT: content comparison and stabilization]
+\label{gmt:content-comparison}
+\lean{hausdorffContentInfty_le_hausdorffContent,hausdorffContent_le_hausdorffMeasure,hausdorffContent_eq_hausdorffContentInfty_of_ediam_le}
+\leanok
+\uses{gmt:hausdorff-content}
+Unrestricted content is bounded above by cutoff content, which is bounded above by Hausdorff measure. For positive exponent and a positive cutoff at least the diameter of a set, cutoff content equals unrestricted content.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: finite Hausdorff restrictions]
+\label{gmt:hausdorff-regular}
+\lean{HausdorffRestrict.toRadonOuterMeasure}
+\leanok
+\uses{gmt:hausdorff-content}
+On a locally compact, second-countable Hausdorff metric space, restriction of $\mathcal H^s$ to a set of finite $\mathcal H^s$ measure is regular; use the source's Caratheodory-measurability and $s\geq0$ interface.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:finite-restriction}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: positive upper content density inside]
+\label{gmt:content-density}
+\lean{hausdorffContentInfty_upperDensity_ge_ae_mem}
+\leanok
+\uses{def:density-api,gmt:hausdorff-content}
+For $s\geq0$ and $\mathcal H^s(E)<\infty$ in a metric space, the upper diameter-normalized density of restricted Hausdorff content is at least $2^{-s}$ at $\mathcal H^s$-almost every point of $E$.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:content-comparison}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: positive upper Hausdorff density inside]
+\label{gmt:hausdorff-density-lower}
+\lean{hausdorffMeasure_upperDensity_ge_ae_mem}
+\leanok
+\uses{def:density-api}
+For $s\geq0$ and $\mathcal H^s(E)<\infty$, $\Theta^{*s}(\mathcal H^s|E,x)\geq2^{-s}$ at $\mathcal H^s$-almost every $x\in E$. This is a lower bound on the UPPER density, not on the lower density.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:content-density,gmt:content-comparison}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: upper Hausdorff density at most one]
+\label{gmt:hausdorff-density-upper}
+\lean{hausdorffMeasure_upperDensity_le_one_ae_mem}
+\leanok
+\uses{def:density-api}
+If $E$ is Caratheodory measurable with finite $\mathcal H^s$ measure, $s\geq0$, and the metric space is locally compact and second countable, then $\Theta^{*s}(\mathcal H^s|E,x)\leq1$ for $\mathcal H^s$-almost every $x\in E$.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:hausdorff-regular}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: zero upper density outside]
+\label{gmt:hausdorff-density-outside}
+\lean{hausdorffMeasure_upperDensity_eq_zero_ae_notMem}
+\leanok
+\uses{def:density-api}
+Under the same local compactness, second countability, measurability and finite-measure hypotheses, the upper $s$-density of $\mathcal H^s|E$ is zero for $\mathcal H^s$-almost every $x\notin E$.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:hausdorff-regular}
+Import the existing declaration.
+\end{proof}
+
+\begin{definition}[GMT: vague convergence]
+\label{gmt:vague}
+\lean{MeasureTheory.Measure.WeaklyConverges}
+\leanok
+Convergence of a sequence of measures is tested against every real continuous compactly supported function. This does not require finite total mass.
+\end{definition}
+
+\begin{definition}[GMT: blow-up map]
+\label{gmt:blowup}
+\lean{blowUpMap}
+\leanok
+The blow-up map on Euclidean space is $T_{a,r}(z)=r^{-1}(z-a)$. Geometric use assumes $r>0$.
+\end{definition}
+
+\begin{lemma}[GMT: measurable blow-ups and ball identities]
+\label{gmt:blowup-balls}
+\lean{measurable_blowUpMap,map_blowUp_apply_ball,map_blowUp_apply_closedBall}
+\leanok
+\uses{gmt:blowup}
+Blow-ups are measurable. For $r>0$, the pushforward mass of $B(0,\rho)$ or $\overline B(0,\rho)$ equals the original mass at centre $a$ and radius $r\rho$.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: regularity of scaled blow-ups]
+\label{gmt:blowup-regular}
+\lean{regular_map_blowUp,regular_smul_map_blowUp}
+\leanok
+\uses{gmt:blowup}
+For $r\ne0$, blow-up pushforwards preserve regularity; multiplying by a finite extended nonnegative scalar preserves it too.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{definition}[GMT: tangent measures]
+\label{def:tangent-api}
+\lean{IsTangentMeasure}
+\leanok
+\uses{gmt:vague,gmt:blowup}
+A tangent is a nonzero regular measure obtained as a vague limit of $c_i(T_{a,r_i})_\#\mu$ with $r_i>0$, $r_i\to0$, and $0<c_i<\infty$. The scalar sequence is arbitrary.
+\end{definition}
+
+\begin{theorem}[GMT: compact/open portmanteau]
+\label{gmt:portmanteau}
+\lean{MeasureTheory.Measure.weaklyConverges_iff_compactOpenBounds}
+\leanok
+\uses{gmt:vague}
+For regular Euclidean measures, vague convergence is equivalent to the upper bounds on compact sets and lower bounds on open sets.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: convergence on bounded continuity sets]
+\label{gmt:continuity-sets}
+\lean{MeasureTheory.Measure.weaklyConverges_iff_boundedContinuitySets}
+\leanok
+\uses{gmt:vague}
+For regular Euclidean measures, vague convergence is equivalent to convergence of masses on bounded measurable sets whose boundary has zero limit mass.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:portmanteau}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: compact mass bounds give a subsequence]
+\label{thm:compactness}
+\lean{MeasureTheory.exists_vaguelyConvergent_subseq_of_compact_bounded}
+\leanok
+\uses{gmt:vague}
+Uniform mass bounds on every compact set give a strictly indexed subsequence converging vaguely to a regular measure. Nonzeroness of the limit must be proved separately.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: density bounds imply support and doubling]
+\label{gmt:doubling-bounds}
+\lean{mem_support_of_ball_lower_bound,limsup_ball_ratio_lt_top_of_ball_bounds_at}
+\leanok
+\uses{def:density-api}
+At a point with positive lower and finite upper power bounds on sufficiently small closed balls, the point belongs to the support and its upper small-scale open-ball doubling ratio is finite.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: origin lies in tangent support]
+\label{gmt:origin-support}
+\lean{zero_mem_support_of_isTangentMeasure}
+\leanok
+\uses{def:tangent-api}
+For a regular measure at a support point with finite upper doubling ratio, every tangent has zero in its support.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:portmanteau,gmt:blowup-balls}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: mass-normalized tangent sequence]
+\label{gmt:normalized-tangent}
+\lean{exists_normalized_blowUp_weaklyConverges_of_isTangentMeasure}
+\leanok
+\uses{def:tangent-api}
+Under the same support and doubling assumptions, each tangent is the vague limit of a fixed positive finite multiple of the ball-mass-normalized blow-ups along strictly decreasing radii.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:origin-support,gmt:continuity-sets}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: tangent existence under doubling]
+\label{thm:doubling}
+\lean{exists_subseq_blowUp_weaklyConverges_tangentMeasure}
+\leanok
+\uses{def:tangent-api}
+At a support point of a regular measure with finite upper doubling ratio, every positive sequence of radii tending to zero has a subsequence of ball-mass-normalized blow-ups converging to a nonzero tangent (Mattila 14.3).
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{thm:compactness,gmt:blowup-balls,gmt:blowup-regular,gmt:portmanteau}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: restriction preserves tangents]
+\label{gmt:restriction-tangents}
+\lean{isTangentMeasure_restrict_iff}
+\leanok
+\uses{def:tangent-api}
+For Borel $B$, regular $\mu$ and $\mu|B$, and a support point $a$ with $\mu(B(a,r)\setminus B)/\mu(B(a,r))\to0$, restriction to $B$ preserves the tangent set at $a$ (Mattila 14.5).
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:blowup-regular}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: density change preserves tangents]
+\label{thm:matching}
+\lean{isTangentMeasure_iff_ae_of_density}
+\leanok
+\uses{def:tangent-api}
+If regular measures satisfy $\lambda(A)=\int_A\varphi\,d\mu$ on Borel sets for a nonnegative real locally integrable $\varphi$, their tangent sets coincide at $\lambda$-almost every point (Mattila 14.6).
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:blowup-regular}
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: closed good sets for density bounds]
+\label{gmt:goodsets}
+\lean{positiveFiniteDensitySet,RatioOfDensities,goodSet,isClosed_goodSet,exists_goodSet_mem}
+\leanok
+\uses{def:density-api}
+Positive finite density-bound points admit a countable stratification by closed good sets with uniform small-radius power bounds. The rational bounds may approximate the lower/upper density ratio.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:density-bounds}
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: one null set of bad density points]
+\label{gmt:density-points}
+\lean{exists_null_of_not_density_point}
+\leanok
+For a Borel set $B$ and regular Euclidean $\mu$, one null exceptional set can be removed so that every remaining $a\in B$ satisfies, for each $\gamma>0$, $\mu(\overline B(a,r)\setminus B)\leq\gamma\mu(\overline B(a,r))$ eventually as $r\downarrow0$.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: transfer bounds at a density point]
+\label{gmt:transfer-ball-bounds}
+\lean{tangent_ball_bounds_of_density_point}
+\leanok
+\uses{def:tangent-api}
+Uniform small-ball bounds $td\,r^s\leq\mu(\overline B(y,r))\leq d\,r^s$ on a set transfer at its density points to bounds $tc\,r^s\leq\nu(\overline B(z,r))\leq c\,r^s$ at all support centres and all positive radii of every tangent; $c$ is positive and finite.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:portmanteau,gmt:blowup-balls,gmt:blowup-regular}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: tangent bounds from density ratio]
+\label{gmt:mattila-14-7-1}
+\lean{mattila_14_7_1}
+\leanok
+\uses{def:tangent-api,def:density-api}
+Outside one $\mu$-null set, every tangent at a positive finite density-bound point has support-centred power bounds with ratio $\Theta_*^s/\Theta^{*s}$ (Mattila 14.7(1)).
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:goodsets,gmt:density-points,gmt:transfer-ball-bounds}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: uniform support bounds and all tangents]
+\label{gmt:mattila-14-7-4}
+\lean{mattila_14_7_4}
+\leanok
+\uses{def:tangent-api}
+If one pair of positive power bounds holds at every support point below one fixed radius, then at every support point tangents exist and all of them satisfy the corresponding global support-centred power bounds (Mattila 14.7(4)).
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{thm:doubling,gmt:portmanteau,gmt:blowup-balls}
+Import the existing declaration.
+\end{proof}
+
+\begin{definition}[GMT: uniform measures]
+\label{def:uniform-api}
+\lean{IsSUniform}
+\leanok
+A nonzero regular measure is $s$-uniform when $s>0$ and $\nu(\overline B(y,r))=cr^s$ for one $c>0$, all $y\in\spt\nu$ and all $r>0$.
+\end{definition}
+
+\begin{definition}[GMT: positive finite existing density set]
+\label{gmt:density-exists-set}
+\lean{positiveFiniteDensityExistsSet}
+\leanok
+\uses{def:density-api}
+This set is defined using \texttt{HasDensity} together with a positive finite value of the density. It requires an adapter from our liminf/limsup formulation.
+\end{definition}
+
+\begin{lemma}[GMT: existing density gives ratio one and bounds]
+\label{gmt:uniform-density-adapter}
+\lean{SUniformAux.mem_positiveFiniteDensitySet,SUniformAux.ball_bounds_of_mem}
+\leanok
+\uses{gmt:density-exists-set,gmt:goodsets}
+Membership in the positive-finite-existing-density set implies membership in the two-sided density-bound set with ratio one. Such points have positive lower and finite upper small-ball power bounds.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:density-bounds}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: all tangents are uniform]
+\label{thm:uniform-upstream}
+\lean{mattila_14_9}
+\leanok
+\uses{def:uniform-api,def:tangent-api,gmt:density-exists-set}
+For $s>0$ and regular $\mu$, outside one null set every tangent at every positive finite existing-density point is $s$-uniform and has the origin in its support (Mattila 14.9).
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:mattila-14-7-1,gmt:uniform-density-adapter,gmt:doubling-bounds,gmt:origin-support}
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: tangents of uniform measures]
+\label{gmt:uniform-tangents}
+\lean{SUniformAux.exists_isTangentMeasure,SUniformAux.isSUniform_of_isTangentMeasure}
+\leanok
+\uses{def:uniform-api,def:tangent-api}
+At every support point of an $s$-uniform measure tangents exist, and every such tangent is $s$-uniform with zero in its support.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:mattila-14-7-4,gmt:origin-support}
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: uniform measure in a half-space]
+\label{gmt:uniform-halfspace}
+\lean{SUniformAux.exists_halfSpace}
+\leanok
+\uses{def:uniform-api}
+A uniform measure whose support is not the whole ambient space produces a uniform measure supported in a half-space and containing zero in its support. The proof constructs a tangent, but the exported conclusion does not retain that tangent witness.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:uniform-tangents,gmt:portmanteau}
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: bounded radial integrals agree]
+\label{gmt:uniform-radial}
+\lean{SUniformAux.measure_closedBall_eq_of_mem_support,SUniformAux.setIntegral_comp_dist_eq}
+\leanok
+\uses{def:uniform-api}
+For an $s$-uniform measure, same-radius balls centred on the support have equal mass. The integrals of any continuous radial function over those closed balls agree. Passing to global nonnegative Borel radial tests and identifying the Euclidean radial distribution still need adapters.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: half-space to hyperplane]
+\label{gmt:uniform-hyperplane}
+\lean{SUniformAux.exists_hyperplane}
+\leanok
+\uses{def:uniform-api}
+An $s$-uniform measure containing zero in its support and supported in a half-space produces an $s$-uniform measure supported in a hyperplane. The result does not export the lineage of the blow-ups used in its proof.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:uniform-tangents,gmt:uniform-radial}
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: transport from a hyperplane]
+\label{gmt:hyperplane-transport}
+\lean{SUniformAux.exists_isSUniform_of_hyperplane}
+\leanok
+\uses{def:uniform-api}
+An $s$-uniform measure on $\R^{n+1}$ supported in a linear hyperplane yields an $s$-uniform measure on $\R^n$. The proof uses a linear isometry of the hyperplane; the existential interface does not expose it.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+Import the existing declaration.
+\end{proof}
+
+\begin{lemma}[GMT: lower-dimensional uniform measure]
+\label{gmt:uniform-lower-dim}
+\lean{SUniformAux.exists_lower_dim}
+\leanok
+\uses{def:uniform-api}
+A uniform measure on $\R^{n+1}$ whose support is not the whole space yields a uniform measure with the same exponent on $\R^n$. This is not yet the moving-centre pseudotangent theorem needed for Part A.
+\end{lemma}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:uniform-halfspace,gmt:uniform-hyperplane,gmt:hyperplane-transport}
+Import the existing declaration.
+\end{proof}
+
+\begin{theorem}[GMT: full-dimensional uniform measures are flat]
+\label{gmt:uniform-full-dimension}
+\lean{mattila_14_11}
+\leanok
+\uses{def:uniform-api}
+An $n$-uniform measure on $\R^n$ is a positive finite scalar multiple of Lebesgue measure (Mattila 14.11). The source definition of uniformity implies $n>0$.
+\end{theorem}
+\begin{proof}[Formalized in FormalizingGMT]
+\leanok
+\uses{gmt:uniform-lower-dim}
+Import the existing declaration.
+\end{proof}

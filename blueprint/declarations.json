@@ -1,0 +1,810 @@
+{
+  "Preiss.HasPositiveFiniteDensityAt": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Density/Defs.lean",
+    "line": 12,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Density/Defs.lean#L12",
+    "signature": "def HasPositiveFiniteDensityAt (m : ℕ) (μ : Measure X) (x : X) : Prop"
+  },
+  "Preiss.HasPositiveFiniteDensitiesAt": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Density/Defs.lean",
+    "line": 19,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Density/Defs.lean#L19",
+    "signature": "def HasPositiveFiniteDensitiesAt (m : ℕ) (μ : Measure X) (x : X) : Prop"
+  },
+  "Preiss.WeaklyLinearlyApproximableAt": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Rectifiability/Approximation.lean",
+    "line": 11,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Rectifiability/Approximation.lean#L11",
+    "signature": "def WeaklyLinearlyApproximableAt (m : ℕ) (s : Set (Euclidean n))\n    (x : Euclidean n) : Prop"
+  },
+  "Preiss.CountablyLipschitzCovered": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Rectifiability/Defs.lean",
+    "line": 17,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Rectifiability/Defs.lean#L17",
+    "signature": "def CountablyLipschitzCovered (m : ℕ) (s : Set X) : Prop"
+  },
+  "Preiss.CountablyRectifiable": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Rectifiability/Defs.lean",
+    "line": 24,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Rectifiability/Defs.lean#L24",
+    "signature": "def CountablyRectifiable (m : ℕ) (s : Set X) : Prop"
+  },
+  "Preiss.IsRectifiableMeasure": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Rectifiability/Defs.lean",
+    "line": 31,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Rectifiability/Defs.lean#L31",
+    "signature": "def IsRectifiableMeasure (m : ℕ) (μ : Measure X) : Prop"
+  },
+  "Preiss.Plane": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Tangent/Defs.lean",
+    "line": 13,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Tangent/Defs.lean#L13",
+    "signature": "abbrev Plane (m n : ℕ)"
+  },
+  "Preiss.IsFlat": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Tangent/Defs.lean",
+    "line": 16,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Tangent/Defs.lean#L16",
+    "signature": "def IsFlat (m : ℕ) (ν : Measure (Euclidean n)) : Prop"
+  },
+  "Preiss.dimensionalBlowup": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Tangent/Defs.lean",
+    "line": 22,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Tangent/Defs.lean#L22",
+    "signature": "noncomputable def dimensionalBlowup (m : ℕ) (μ : Measure (Euclidean n))\n    (x : Euclidean n) (r : ℝ) : Measure (Euclidean n)"
+  },
+  "Preiss.IsDimensionalTangent": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Tangent/Defs.lean",
+    "line": 26,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Tangent/Defs.lean#L26",
+    "signature": "def IsDimensionalTangent (m : ℕ) (μ ν : Measure (Euclidean n))\n    (x : Euclidean n) : Prop"
+  },
+  "Preiss.IsTangentAtInfinity": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Tangent/Defs.lean",
+    "line": 32,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Tangent/Defs.lean#L32",
+    "signature": "def IsTangentAtInfinity (m : ℕ) (μ ν : Measure (Euclidean n)) : Prop"
+  },
+  "Preiss.IsUnitUniform": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Tangent/Defs.lean",
+    "line": 40,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Tangent/Defs.lean#L40",
+    "signature": "def IsUnitUniform (m : ℕ) (ν : Measure (Euclidean n)) : Prop"
+  },
+  "Preiss.IsConical": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Tangent/Defs.lean",
+    "line": 43,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Tangent/Defs.lean#L43",
+    "signature": "def IsConical (m : ℕ) (ν : Measure (Euclidean n)) : Prop"
+  },
+  "Preiss.flatnessEnergy": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/Flatness.lean",
+    "line": 8,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/Flatness.lean#L8",
+    "signature": "noncomputable def flatnessEnergy {m : ℕ} (φ : C_c(Euclidean n, ℝ))\n    (ν : Measure (Euclidean n)) (V : Plane m n) : ℝ"
+  },
+  "Preiss.flatness": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/Flatness.lean",
+    "line": 13,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/Flatness.lean#L13",
+    "signature": "noncomputable def flatness (m : ℕ) (φ : C_c(Euclidean n, ℝ))\n    (ν : Measure (Euclidean n)) : ℝ"
+  },
+  "Preiss.gaussianMoment": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/Moments.lean",
+    "line": 13,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/Moments.lean#L13",
+    "signature": "noncomputable def gaussianMoment (μ : Measure (Euclidean n)) (k : ℕ)\n    (s : ℝ) (u : Fin k → Euclidean n) : ℝ"
+  },
+  "PreissBlueprint.density_iff_upstream": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 17,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L17",
+    "signature": "theorem density_iff_upstream (μ : Measure (Euclidean n)) (x : Euclidean n) :\n    HasPositiveFiniteDensityAt m μ x ↔\n      x ∈ positiveFiniteDensityExistsSet (m : ℝ) μ"
+  },
+  "PreissBlueprint.density_iff_openBall_limit": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 22,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L22",
+    "signature": "theorem density_iff_openBall_limit (μ : Measure (Euclidean n)) (x : Euclidean n) :\n    HasPositiveFiniteDensityAt m μ x ↔\n      ∃ θ : ℝ≥0∞, 0 < θ ∧ θ < ∞ ∧\n        Tendsto (fun r : ℝ ↦ μ (ball x r) / ENNReal.ofReal (r ^ m))\n          (𝓝[>] 0) (𝓝 θ)"
+  },
+  "PreissBlueprint.ae_tangent_uniform": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 29,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L29",
+    "signature": "theorem ae_tangent_uniform (hm : 0 < m) (μ : Measure (Euclidean n))\n    [IsLocallyFiniteMeasure μ] (h : ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt m μ x) :\n    ∀ᵐ x ∂μ, ∀ ν, IsTangentMeasure μ ν x →\n      IsSUniform (m : ℝ) ν ∧ (0 : Euclidean n) ∈ ν.support"
+  },
+  "PreissBlueprint.tangent_exists": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 35,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L35",
+    "signature": "theorem tangent_exists (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (x : Euclidean n) (h : HasPositiveFiniteDensitiesAt m μ x) :\n    ∃ ν, IsTangentMeasure μ ν x"
+  },
+  "PreissBlueprint.tangent_iff_dimensional_ray": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 42,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L42",
+    "signature": "theorem tangent_iff_dimensional_ray (μ ν : Measure (Euclidean n))\n    [IsLocallyFiniteMeasure μ] (x : Euclidean n)\n    (h : HasPositiveFiniteDensityAt m μ x) :\n    IsTangentMeasure μ ν x ↔ ∃ ξ : Measure (Euclidean n),\n      IsDimensionalTangent m μ ξ x ∧\n        ∃ c : ℝ≥0∞, 0 < c ∧ c < ∞ ∧ ν = c • ξ"
+  },
+  "PreissBlueprint.tangent_closed": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 50,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L50",
+    "signature": "theorem tangent_closed (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (x : Euclidean n) (ν : ℕ → Measure (Euclidean n)) (ξ : Measure (Euclidean n))\n    (hν : ∀ j, IsTangentMeasure μ (ν j) x) (hξ : ξ.Regular) (hne : ξ ≠ 0)\n    (hc : Measure.WeaklyConverges ν ξ) : IsTangentMeasure μ ξ x"
+  },
+  "PreissBlueprint.ae_recenter_tangent": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 57,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L57",
+    "signature": "theorem ae_recenter_tangent (hm : 0 < m) (μ : Measure (Euclidean n))\n    [IsLocallyFiniteMeasure μ] (h : ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt m μ x) :\n    ∀ᵐ x ∂μ, ∀ ν, IsTangentMeasure μ ν x →\n      ∀ y ∈ ν.support, ∀ r : ℝ, 0 < r →\n        IsTangentMeasure μ (dimensionalBlowup m ν y r) x"
+  },
+  "PreissBlueprint.uniform_has_flat_pseudotangent": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 66,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L66",
+    "signature": "theorem uniform_has_flat_pseudotangent (hm : 0 < m) (hmn : m ≤ n)\n    (ν : Measure (Euclidean n)) (hν : IsSUniform (m : ℝ) ν) :\n    ∃ ξ : Measure (Euclidean n), IsFlat m ξ ∧\n      ∃ (y : ℕ → Euclidean n) (r : ℕ → ℝ),\n        (∀ j, y j ∈ ν.support) ∧ (∀ j, 0 < r j ∧ r j ≤ 1) ∧\n          Measure.WeaklyConverges (fun j ↦ dimensionalBlowup m ν (y j) (r j)) ξ"
+  },
+  "PreissBlueprint.ae_exists_flat_tangent": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 74,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L74",
+    "signature": "theorem ae_exists_flat_tangent (hm : 0 < m) (hmn : m ≤ n)\n    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (h : ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt m μ x) :\n    ∀ᵐ x ∂μ, ∃ ν, IsTangentMeasure μ ν x ∧ IsFlat m ν"
+  },
+  "PreissBlueprint.unique_tangent_at_infinity": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 80,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L80",
+    "signature": "theorem unique_tangent_at_infinity (hm : 0 < m) (hmn : m ≤ n)\n    (ν : Measure (Euclidean n)) (hν : IsUnitUniform m ν) :\n    ∃ ξ : Measure (Euclidean n), IsUnitUniform m ξ ∧\n      ∀ ζ, IsTangentAtInfinity m ν ζ ↔ ζ = ξ"
+  },
+  "PreissBlueprint.tangent_at_infinity_conical": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 86,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L86",
+    "signature": "theorem tangent_at_infinity_conical (hm : 0 < m) (hmn : m ≤ n)\n    (ν ξ : Measure (Euclidean n)) (hν : IsUnitUniform m ν)\n    (hξ : IsTangentAtInfinity m ν ξ) : IsConical m ξ"
+  },
+  "PreissBlueprint.conical_flatness_gap": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 93,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L93",
+    "signature": "theorem conical_flatness_gap (hm : 0 < m) (hmn : m ≤ n) :\n    ∃ ε : ℝ, 0 < ε ∧ ∀ ξ : Measure (Euclidean n),\n      IsUnitUniform m ξ → IsConical m ξ →\n      (∃ V : Plane m n,\n        (∫ z in ball (0 : Euclidean n) 1,\n          (infDist z (V.1 : Set (Euclidean n))) ^ 2 ∂ξ) ≤ ε) → IsFlat m ξ"
+  },
+  "PreissBlueprint.flat_of_flat_at_infinity": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 101,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L101",
+    "signature": "theorem flat_of_flat_at_infinity (hm : 0 < m) (hmn : m ≤ n)\n    (ν ξ : Measure (Euclidean n)) (hν : IsUnitUniform m ν)\n    (hξ : IsTangentAtInfinity m ν ξ) (hf : IsFlat m ξ) : IsFlat m ν"
+  },
+  "PreissBlueprint.flatness_continuous": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 106,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L106",
+    "signature": "theorem flatness_continuous (hmn : m ≤ n) (φ : C_c(Euclidean n, ℝ))\n    (hφ : ∀ z, 0 ≤ φ z) (ν : ℕ → Measure (Euclidean n))\n    (ξ : Measure (Euclidean n)) (hν : ∀ j, (ν j).Regular) (hξ : ξ.Regular)\n    (hc : Measure.WeaklyConverges ν ξ) :\n    Tendsto (fun j ↦ flatness m φ (ν j)) atTop (𝓝 (flatness m φ ξ))"
+  },
+  "PreissBlueprint.all_tangents_flat_of_one": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 115,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L115",
+    "signature": "theorem all_tangents_flat_of_one (hm : 0 < m) (hmn : m ≤ n)\n    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)\n    (hd : HasPositiveFiniteDensityAt m μ x)\n    (hu : ∀ ν, IsTangentMeasure μ ν x → IsSUniform (m : ℝ) ν)\n    (hf : ∃ ν, IsTangentMeasure μ ν x ∧ IsFlat m ν) :\n    ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν"
+  },
+  "PreissBlueprint.absolutelyContinuous_hausdorff_of_upper_density_finite": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 123,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L123",
+    "signature": "theorem absolutelyContinuous_hausdorff_of_upper_density_finite\n    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (h : ∀ᵐ x ∂μ, dimensional_upper_density μ.toOuterMeasure (m : ℝ) x < ∞) :\n    μ ≪ Measure.hausdorffMeasure (m : ℝ)"
+  },
+  "PreissBlueprint.rectifiable_of_weak_approximation": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 129,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L129",
+    "signature": "theorem rectifiable_of_weak_approximation (hm : 0 < m) (hmn : m ≤ n)\n    (s : Set (Euclidean n)) (hs : MeasurableSet s)\n    (hfin : (Measure.hausdorffMeasure (m : ℝ) : Measure (Euclidean n)) s < ∞)\n    (h : ∀ᵐ x ∂(Measure.hausdorffMeasure (m : ℝ)).restrict s,\n      WeaklyLinearlyApproximableAt m s x) : CountablyRectifiable m s"
+  },
+  "PreissBlueprint.rectifiable_of_all_tangents_flat": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 136,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L136",
+    "signature": "theorem rectifiable_of_all_tangents_flat (hm : 0 < m) (hmn : m ≤ n)\n    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (hd : ∀ᵐ x ∂μ, HasPositiveFiniteDensitiesAt m μ x)\n    (hf : ∀ᵐ x ∂μ, ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν) :\n    IsRectifiableMeasure m μ"
+  },
+  "PreissBlueprint.rectifiable_iff_density_representation": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 145,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L145",
+    "signature": "theorem rectifiable_iff_density_representation (μ : Measure (Euclidean n))\n    [IsLocallyFiniteMeasure μ] :\n    IsRectifiableMeasure m μ ↔ ∃ s : Set (Euclidean n),\n      MeasurableSet s ∧ CountablyRectifiable m s ∧\n      SigmaFinite ((Measure.hausdorffMeasure (m : ℝ) : Measure (Euclidean n)).restrict s) ∧\n      ∃ f : Euclidean n → ℝ≥0∞, Measurable f ∧\n        μ = ((Measure.hausdorffMeasure (m : ℝ)).restrict s).withDensity f"
+  },
+  "PreissBlueprint.preiss_zero": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 154,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L154",
+    "signature": "theorem preiss_zero (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (h : ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt 0 μ x) : IsRectifiableMeasure 0 μ"
+  },
+  "PreissBlueprint.measure_zero_of_dimension_gt": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 158,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L158",
+    "signature": "theorem measure_zero_of_dimension_gt (hmn : n < m)\n    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (h : ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt m μ x) : μ = 0"
+  },
+  "PreissBlueprint.zero_isRectifiableMeasure": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 163,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L163",
+    "signature": "theorem zero_isRectifiableMeasure : IsRectifiableMeasure m (0 : Measure (Euclidean n))"
+  },
+  "PreissBlueprint.preiss": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "PreissBlueprint/Statements.lean",
+    "line": 168,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/PreissBlueprint/Statements.lean#L168",
+    "signature": "theorem preiss (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]\n    (h : ∀ᵐ x ∂μ, HasPositiveFiniteDensityAt m μ x) : IsRectifiableMeasure m μ"
+  },
+  "vitali_variant_classical": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Covering/VariantVitali.lean",
+    "line": 59,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Covering/VariantVitali.lean#L59",
+    "signature": "theorem vitali_variant_classical\n    {X : Set α} [SecondCountableTopology α]\n    (t : Set ι) (c : ι → α) (r : ι → ℝ)\n    (hf : ∀ x ∈ X, ∀ ε > (0 : ℝ), ∃ a ∈ t, r a ≤ ε ∧ c a = x)\n    (hrad : ∃ R, ∀ a ∈ t, r a ≤ R)\n    (hpos : ∀ a ∈ t, 0 < r a) :\n    ∃ u ⊆ t,\n      u.Countable ∧\n      u.PairwiseDisjoint (fun a => Metric.closedBall (c a) (r a)) ∧\n      ∀ w : Finset ι, (w : Set ι) ⊆ t →\n        X \\ (⋃ a ∈ w, Metric.closedBall (c a) (r a)) ⊆\n          ⋃ b ∈ (u \\ (w : Set ι)), Metric.closedBall (c b) (5 * r b)"
+  },
+  "dimensional_density_ratio": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 37,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L37",
+    "signature": "noncomputable def dimensional_density_ratio\n    (μ : OuterMeasure X) (s : ℝ) (x : X) (r : ℝ) : ℝ≥0∞"
+  },
+  "dimensional_upper_density": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 43,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L43",
+    "signature": "noncomputable def dimensional_upper_density\n    (μ : OuterMeasure X) (s : ℝ) (x : X) : ℝ≥0∞"
+  },
+  "dimensional_lower_density": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 49,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L49",
+    "signature": "noncomputable def dimensional_lower_density\n    (μ : OuterMeasure X) (s : ℝ) (x : X) : ℝ≥0∞"
+  },
+  "HasDensity": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 54,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L54",
+    "signature": "class HasDensity (μ : OuterMeasure X) (s : ℝ) (x : X) : Prop"
+  },
+  "lower_le_upper_density": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 69,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L69",
+    "signature": "lemma lower_le_upper_density (s : ℝ) (x : X) :\n    dimensional_lower_density μ s x ≤ dimensional_upper_density μ s x"
+  },
+  "density_exists_of_lower_eq_upper": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 91,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L91",
+    "signature": "lemma density_exists_of_lower_eq_upper (s : ℝ) (x : X)\n    (h : dimensional_lower_density μ s x = dimensional_upper_density μ s x) :\n    HasDensity μ s x"
+  },
+  "eventually_gt_of_lower_density_gt": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 110,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L110",
+    "signature": "lemma eventually_gt_of_lower_density_gt (s : ℝ) (x : X) (α : ℝ≥0∞)\n    (h : α < dimensional_lower_density μ s x) :\n    ∀ᶠ r in 𝓝[>] (0 : ℝ), α < dimensional_density_ratio μ s x r"
+  },
+  "eventually_lt_of_upper_density_lt": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 117,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L117",
+    "signature": "lemma eventually_lt_of_upper_density_lt (s : ℝ) (x : X) (α : ℝ≥0∞)\n    (h : dimensional_upper_density μ s x < α) :\n    ∀ᶠ r in 𝓝[>] (0 : ℝ), dimensional_density_ratio μ s x r < α"
+  },
+  "dimensional_density_ratio_closedBall": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/Basic.lean",
+    "line": 144,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean#L144",
+    "signature": "lemma dimensional_density_ratio_closedBall (ν : OuterMeasure Y) (s : ℝ) (x : Y) {r : ℝ}\n    (hr : 0 ≤ r) :\n    dimensional_density_ratio ν s x r\n      = ν (Metric.closedBall x r) / ENNReal.ofReal ((2 * r) ^ s)"
+  },
+  "hausdorffContentInfty_upperDensity_ge_ae_mem": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/HausdorffUpperDensityInside.lean",
+    "line": 47,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/HausdorffUpperDensityInside.lean#L47",
+    "signature": "theorem hausdorffContentInfty_upperDensity_ge_ae_mem {s : ℝ} (hs : 0 ≤ s)\n    (E : Set X) (hE : μH[s] E ≠ ⊤) :\n    μH[s] {x ∈ E | dimensional_upper_density\n        (OuterMeasure.restrict E (hausdorffContentInftyOuter s)) s x\n        < ENNReal.ofReal (1 / 2 ^ s)} = 0"
+  },
+  "hausdorffMeasure_upperDensity_ge_ae_mem": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/HausdorffUpperDensityInside.lean",
+    "line": 82,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/HausdorffUpperDensityInside.lean#L82",
+    "signature": "theorem hausdorffMeasure_upperDensity_ge_ae_mem {s : ℝ} (hs : 0 ≤ s)\n    (E : Set X) (hE : μH[s] E ≠ ⊤) :\n    μH[s] {x ∈ E | dimensional_upper_density ((μH[s]).restrict E).toOuterMeasure s x\n        < ENNReal.ofReal (1 / 2 ^ s)} = 0"
+  },
+  "hausdorffMeasure_upperDensity_le_one_ae_mem": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/HausdorffUpperDensityInside.lean",
+    "line": 117,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/HausdorffUpperDensityInside.lean#L117",
+    "signature": "theorem hausdorffMeasure_upperDensity_le_one_ae_mem {s : ℝ} (hs : 0 ≤ s) (E : Set X)\n    (hEmeas : MeasurableSet[(OuterMeasure.mkMetric (X"
+  },
+  "hausdorffMeasure_upperDensity_eq_zero_ae_notMem": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/Densities/HausdorffUpperDensityOutside.lean",
+    "line": 41,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/HausdorffUpperDensityOutside.lean#L41",
+    "signature": "theorem hausdorffMeasure_upperDensity_eq_zero_ae_notMem\n    {s : ℝ} (hs : 0 ≤ s) {E : Set X}\n    (hE_meas : MeasurableSet[(Hs_outer (X"
+  },
+  "IsSUniform": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 34,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L34",
+    "signature": "def IsSUniform (s : ℝ) (ν : Measure (EuclideanSpace ℝ (Fin n))) : Prop"
+  },
+  "positiveFiniteDensityExistsSet": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 40,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L40",
+    "signature": "def positiveFiniteDensityExistsSet (s : ℝ) (μ : Measure (EuclideanSpace ℝ (Fin n))) :\n    Set (EuclideanSpace ℝ (Fin n))"
+  },
+  "SUniformAux.isSUniform_of_isTangentMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 94,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L94",
+    "signature": "lemma isSUniform_of_isTangentMeasure {s : ℝ} {ν lam : Measure (EuclideanSpace ℝ (Fin n))}\n    (hν : IsSUniform s ν) {a : EuclideanSpace ℝ (Fin n)} (ha : a ∈ ν.support)\n    (htan : IsTangentMeasure ν lam a) :\n    IsSUniform s lam ∧ (0 : EuclideanSpace ℝ (Fin n)) ∈ lam.support"
+  },
+  "SUniformAux.exists_isTangentMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 118,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L118",
+    "signature": "lemma exists_isTangentMeasure {s : ℝ} {ν : Measure (EuclideanSpace ℝ (Fin n))}\n    (hν : IsSUniform s ν) {a : EuclideanSpace ℝ (Fin n)} (ha : a ∈ ν.support) :\n    ∃ lam, IsTangentMeasure ν lam a"
+  },
+  "SUniformAux.exists_halfSpace": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 211,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L211",
+    "signature": "lemma exists_halfSpace {s : ℝ} {ν : Measure (EuclideanSpace ℝ (Fin n))} (hν : IsSUniform s ν)\n    (hspt : ν.support ≠ univ) :\n    ∃ (e : EuclideanSpace ℝ (Fin n)) (lam : Measure (EuclideanSpace ℝ (Fin n))),\n      e ≠ 0 ∧ IsSUniform s lam ∧ (0 : EuclideanSpace ℝ (Fin n)) ∈ lam.support ∧\n      lam.support ⊆ {x | 0 ≤ inner ℝ x e}"
+  },
+  "SUniformAux.measure_closedBall_eq_of_mem_support": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 317,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L317",
+    "signature": "lemma measure_closedBall_eq_of_mem_support {s : ℝ} {ν : Measure (EuclideanSpace ℝ (Fin n))}\n    (hν : IsSUniform s ν) {x y : EuclideanSpace ℝ (Fin n)} (hx : x ∈ ν.support)\n    (hy : y ∈ ν.support) (t : ℝ) : ν (closedBall x t) = ν (closedBall y t)"
+  },
+  "SUniformAux.setIntegral_comp_dist_eq": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 331,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L331",
+    "signature": "lemma setIntegral_comp_dist_eq {s : ℝ} {ν : Measure (EuclideanSpace ℝ (Fin n))}\n    (hν : IsSUniform s ν) {x y : EuclideanSpace ℝ (Fin n)} (hx : x ∈ ν.support)\n    (hy : y ∈ ν.support) (r : ℝ) {g : ℝ → ℝ} (hg : Continuous g) :\n    ∫ z in closedBall y r, g (dist z y) ∂ν = ∫ z in closedBall x r, g (dist z x) ∂ν"
+  },
+  "SUniformAux.exists_hyperplane": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 587,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L587",
+    "signature": "lemma exists_hyperplane {s : ℝ} {ν : Measure (EuclideanSpace ℝ (Fin n))} (hν : IsSUniform s ν)\n    (h0 : (0 : EuclideanSpace ℝ (Fin n)) ∈ ν.support) {e : EuclideanSpace ℝ (Fin n)}\n    (he : e ≠ 0) (hH : ν.support ⊆ {x | 0 ≤ inner ℝ x e}) :\n    ∃ (w : EuclideanSpace ℝ (Fin n)) (lam : Measure (EuclideanSpace ℝ (Fin n))),\n      w ≠ 0 ∧ IsSUniform s lam ∧ lam.support ⊆ {x | inner ℝ x w = 0}"
+  },
+  "SUniformAux.exists_isSUniform_of_hyperplane": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 609,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L609",
+    "signature": "lemma exists_isSUniform_of_hyperplane {s : ℝ} {ν : Measure (EuclideanSpace ℝ (Fin (n + 1)))}\n    (hν : IsSUniform s ν) {w : EuclideanSpace ℝ (Fin (n + 1))} (hw : w ≠ 0)\n    (hV : ν.support ⊆ {x | inner ℝ x w = 0}) :\n    ∃ ν' : Measure (EuclideanSpace ℝ (Fin n)), IsSUniform s ν'"
+  },
+  "SUniformAux.exists_lower_dim": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 694,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L694",
+    "signature": "lemma exists_lower_dim {s : ℝ} {ν : Measure (EuclideanSpace ℝ (Fin (n + 1)))}\n    (hν : IsSUniform s ν) (hspt : ν.support ≠ univ) :\n    ∃ ν' : Measure (EuclideanSpace ℝ (Fin n)), IsSUniform s ν'"
+  },
+  "SUniformAux.mem_positiveFiniteDensitySet": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 759,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L759",
+    "signature": "lemma mem_positiveFiniteDensitySet {s : ℝ} {μ : Measure (EuclideanSpace ℝ (Fin n))}\n    {a : EuclideanSpace ℝ (Fin n)} (ha : a ∈ positiveFiniteDensityExistsSet s μ) :\n    a ∈ positiveFiniteDensitySet s μ ∧ RatioOfDensities s μ a = 1"
+  },
+  "SUniformAux.ball_bounds_of_mem": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 775,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L775",
+    "signature": "lemma ball_bounds_of_mem {s : ℝ} {μ : Measure (EuclideanSpace ℝ (Fin n))}\n    {a : EuclideanSpace ℝ (Fin n)} (ha : a ∈ positiveFiniteDensitySet s μ) :\n    ∃ p q r₀ : ℝ, 0 < p ∧ 0 < q ∧ 0 < r₀ ∧\n      (∀ ρ : ℝ, 0 < ρ → ρ < r₀ → μ (closedBall a ρ) ≤ ENNReal.ofReal (q * ρ ^ s)) ∧\n      (∀ ρ : ℝ, 0 < ρ → ρ < r₀ → ENNReal.ofReal (p * ρ ^ s) ≤ μ (closedBall a ρ))"
+  },
+  "mattila_14_9": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 820,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L820",
+    "signature": "theorem mattila_14_9 {s : ℝ} (hs : 0 < s) (μ : Measure (EuclideanSpace ℝ (Fin n)))\n    (hμ : μ.Regular) :\n    ∃ E : Set (EuclideanSpace ℝ (Fin n)), μ E = 0 ∧\n      ∀ a ∈ positiveFiniteDensityExistsSet s μ \\ E, ∀ ν, IsTangentMeasure μ ν a →\n        IsSUniform s ν ∧ (0 : EuclideanSpace ℝ (Fin n)) ∈ ν.support"
+  },
+  "mattila_14_11": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/MarstrandTheorem.lean",
+    "line": 870,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean#L870",
+    "signature": "theorem mattila_14_11 (ν : Measure (EuclideanSpace ℝ (Fin n))) (hν : IsSUniform (n : ℝ) ν) :\n    ∃ K : ℝ≥0∞, 0 < K ∧ K ≠ ∞ ∧ ν = K • volume"
+  },
+  "hausdorffContent": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/RadonMeasures/HausdorffMeasure.lean",
+    "line": 25,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/HausdorffMeasure.lean#L25",
+    "signature": "noncomputable def hausdorffContent\n    {X : Type*} [EMetricSpace X] (s : ℝ) (δ : ENNReal) (E : Set X) : ENNReal"
+  },
+  "hausdorffContentInfty": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/RadonMeasures/HausdorffMeasure.lean",
+    "line": 32,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/HausdorffMeasure.lean#L32",
+    "signature": "noncomputable def hausdorffContentInfty\n    {X : Type*} [EMetricSpace X] (s : ℝ) (E : Set X) : ENNReal"
+  },
+  "HausdorffRestrict.toRadonOuterMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/RadonMeasures/HausdorffMeasure.lean",
+    "line": 76,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/HausdorffMeasure.lean#L76",
+    "signature": "theorem HausdorffRestrict.toRadonOuterMeasure [SecondCountableTopology X]\n    (s : ℝ) (_hs : 0 ≤ s) (E : Set X)\n    (_hE_meas : MeasurableSet[(OuterMeasure.mkMetric (X"
+  },
+  "hausdorffContentInfty_le_hausdorffContent": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/RadonMeasures/HausdorffMeasure.lean",
+    "line": 108,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/HausdorffMeasure.lean#L108",
+    "signature": "lemma hausdorffContentInfty_le_hausdorffContent {X : Type*} [EMetricSpace X]\n    (s : ℝ) (δ : ENNReal) (E : Set X) :\n    hausdorffContentInfty s E ≤ hausdorffContent s δ E"
+  },
+  "hausdorffContent_eq_hausdorffContentInfty_of_ediam_le": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/RadonMeasures/HausdorffMeasure.lean",
+    "line": 143,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/HausdorffMeasure.lean#L143",
+    "signature": "theorem hausdorffContent_eq_hausdorffContentInfty_of_ediam_le {X : Type*} [EMetricSpace X]\n    {s : ℝ} (hs : 0 ≤ s) {δ : ENNReal} (_hδ : 0 < δ) {E : Set X} (hE : Metric.ediam E ≤ δ) :\n    hausdorffContent s δ E = hausdorffContentInfty s E"
+  },
+  "hausdorffContent_le_hausdorffMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/RadonMeasures/HausdorffMeasure.lean",
+    "line": 157,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/HausdorffMeasure.lean#L157",
+    "signature": "lemma hausdorffContent_le_hausdorffMeasure {X : Type*} [EMetricSpace X]\n    [MeasurableSpace X] [BorelSpace X]\n    {s : ℝ} {δ : ENNReal} (hδ : 0 < δ) (E : Set X) :\n    hausdorffContent s δ E ≤ MeasureTheory.Measure.hausdorffMeasure s E"
+  },
+  "BorelRegularOuterMeasure.restrict_isRadon": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/RadonMeasures/RestrictionFiniteMeasure.lean",
+    "line": 32,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/RestrictionFiniteMeasure.lean#L32",
+    "signature": "theorem BorelRegularOuterMeasure.restrict_isRadon\n    [LocallyCompactSpace X] [T2Space X] [SecondCountableTopology X]\n    (E : Set X) (hE_fin : μ E < ⊤) :\n    (μ.restrict E).Regular"
+  },
+  "blowUpMap": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+    "line": 32,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean#L32",
+    "signature": "def blowUpMap {n : ℕ}\n    (a : EuclideanSpace ℝ (Fin n))\n    (r : ℝ)\n    (x : EuclideanSpace ℝ (Fin n)) :\n    EuclideanSpace ℝ (Fin n)"
+  },
+  "measurable_blowUpMap": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+    "line": 43,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean#L43",
+    "signature": "lemma measurable_blowUpMap (a : EuclideanSpace ℝ (Fin n)) (r : ℝ) :\n    Measurable (blowUpMap a r)"
+  },
+  "IsTangentMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+    "line": 50,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean#L50",
+    "signature": "def IsTangentMeasure\n    (μ ν : Measure (EuclideanSpace ℝ (Fin n)))\n    (a : EuclideanSpace ℝ (Fin n)) : Prop"
+  },
+  "regular_map_blowUp": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+    "line": 152,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean#L152",
+    "signature": "lemma regular_map_blowUp {μ : Measure (EuclideanSpace ℝ (Fin n))}\n    (hμ : μ.Regular) (a : EuclideanSpace ℝ (Fin n)) {r : ℝ} (hr : r ≠ 0) :\n    (μ.map (blowUpMap a r)).Regular"
+  },
+  "regular_smul_map_blowUp": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+    "line": 162,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean#L162",
+    "signature": "lemma regular_smul_map_blowUp {μ : Measure (EuclideanSpace ℝ (Fin n))}\n    (hμ : μ.Regular) (a : EuclideanSpace ℝ (Fin n)) {r : ℝ} (hr : r ≠ 0) {c : ℝ≥0∞}\n    (hc : c ≠ ∞) :\n    (c • μ.map (blowUpMap a r)).Regular"
+  },
+  "map_blowUp_apply_ball": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+    "line": 169,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean#L169",
+    "signature": "lemma map_blowUp_apply_ball (μ : Measure (EuclideanSpace ℝ (Fin n)))\n    (a : EuclideanSpace ℝ (Fin n)) {r : ℝ} (hr : 0 < r) (ρ : ℝ) :\n    (μ.map (blowUpMap a r)) (ball 0 ρ) = μ (ball a (r * ρ))"
+  },
+  "map_blowUp_apply_closedBall": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+    "line": 175,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean#L175",
+    "signature": "lemma map_blowUp_apply_closedBall (μ : Measure (EuclideanSpace ℝ (Fin n)))\n    (a : EuclideanSpace ℝ (Fin n)) {r : ℝ} (hr : 0 < r) (ρ : ℝ) :\n    (μ.map (blowUpMap a r)) (closedBall 0 ρ) = μ (closedBall a (r * ρ))"
+  },
+  "mattila_14_7_1": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangents.lean",
+    "line": 34,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangents.lean#L34",
+    "signature": "theorem mattila_14_7_1 {s : ℝ}\n    (μ : Measure (EuclideanSpace ℝ (Fin n))) (hμ : Measure.Regular μ) :\n    ∃ E : Set (EuclideanSpace ℝ (Fin n)), μ E = 0 ∧\n      ∀ a ∈ positiveFiniteDensitySet s μ \\ E, ∀ ν, IsTangentMeasure μ ν a →\n        ∃ c : ℝ≥0∞, 0 < c ∧ c ≠ ∞ ∧\n          ∀ x ∈ Measure.support ν, ∀ r : ℝ, 0 < r →\n            RatioOfDensities s μ a * c * ENNReal.ofReal (r ^ s) ≤\n              ν (closedBall x r) ∧\n              ν (closedBall x r) ≤ c * ENNReal.ofReal (r ^ s)"
+  },
+  "mattila_14_7_4": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangents.lean",
+    "line": 336,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangents.lean#L336",
+    "signature": "theorem mattila_14_7_4 {s d t r₀ : ℝ} (hd : 0 < d) (ht : 0 < t) (hr₀ : 0 < r₀)\n    (μ : Measure (EuclideanSpace ℝ (Fin n))) (hμ : Measure.Regular μ)\n    (hbounds : ∀ y ∈ Measure.support μ, ∀ ρ : ℝ, 0 < ρ → ρ < r₀ →\n      ENNReal.ofReal (t * d * ρ ^ s) ≤ μ (closedBall y ρ) ∧\n        μ (closedBall y ρ) ≤ ENNReal.ofReal (d * ρ ^ s))\n    (a : EuclideanSpace ℝ (Fin n)) (ha : a ∈ Measure.support μ) :\n    (∃ ν, IsTangentMeasure μ ν a) ∧\n      ∀ ν, IsTangentMeasure μ ν a →\n        ∃ c : ℝ≥0∞, 0 < c ∧ c ≠ ∞ ∧\n          ∀ x ∈ Measure.support ν, ∀ ρ : ℝ, 0 < ρ →\n            ENNReal.ofReal t * c * ENNReal.ofReal (ρ ^ s) ≤ ν (closedBall x ρ) ∧\n              ν (closedBall x ρ) ≤ c * ENNReal.ofReal (ρ ^ s)"
+  },
+  "positiveFiniteDensitySet": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+    "line": 45,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean#L45",
+    "signature": "def positiveFiniteDensitySet {n : ℕ} (s : ℝ) (μ : Measure (EuclideanSpace ℝ (Fin n))) :\n    Set (EuclideanSpace ℝ (Fin n))"
+  },
+  "RatioOfDensities": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+    "line": 52,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean#L52",
+    "signature": "noncomputable def RatioOfDensities {n : ℕ} (s : ℝ) (μ : Measure (EuclideanSpace ℝ (Fin n)))\n    (a : EuclideanSpace ℝ (Fin n)) : ℝ≥0∞"
+  },
+  "tangent_ball_bounds_of_density_point": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+    "line": 1081,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean#L1081",
+    "signature": "theorem tangent_ball_bounds_of_density_point {s d t r₀ : ℝ}\n    (hd : 0 < d) (ht : 0 < t) (hr₀ : 0 < r₀)\n    (μ : Measure (EuclideanSpace ℝ (Fin n))) (hμ : Measure.Regular μ)\n    {B : Set (EuclideanSpace ℝ (Fin n))}\n    (hbounds : ∀ y ∈ B, ∀ ρ : ℝ, 0 < ρ → ρ < r₀ →\n      ENNReal.ofReal (t * d * ρ ^ s) ≤ μ (closedBall y ρ) ∧\n        μ (closedBall y ρ) ≤ ENNReal.ofReal (d * ρ ^ s))\n    {a : EuclideanSpace ℝ (Fin n)} (haB : a ∈ B)\n    (hdens : ∀ γ : ℝ≥0∞, 0 < γ →\n      ∀ᶠ ρ in 𝓝[>] (0 : ℝ), μ (closedBall a ρ \\ B) ≤ γ * μ (closedBall a ρ))\n    (ν : Measure (EuclideanSpace ℝ (Fin n))) (htan : IsTangentMeasure μ ν a) :\n    ∃ c : ℝ≥0∞, 0 < c ∧ c ≠ ∞ ∧\n      ∀ x ∈ Measure.support ν, ∀ ρ : ℝ, 0 < ρ →\n        ENNReal.ofReal t * c * ENNReal.ofReal (ρ ^ s) ≤ ν (closedBall x ρ) ∧\n          ν (closedBall x ρ) ≤ c * ENNReal.ofReal (ρ ^ s)"
+  },
+  "goodSet": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean",
+    "line": 27,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean#L27",
+    "signature": "def goodSet (s p q : ℝ) (m : ℕ) (μ : Measure (EuclideanSpace ℝ (Fin n))) :\n    Set (EuclideanSpace ℝ (Fin n))"
+  },
+  "isClosed_goodSet": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean",
+    "line": 52,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean#L52",
+    "signature": "lemma isClosed_goodSet (s p q : ℝ) (m : ℕ)\n    (μ : Measure (EuclideanSpace ℝ (Fin n))) : IsClosed (goodSet s p q m μ)"
+  },
+  "exists_goodSet_mem": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean",
+    "line": 105,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean#L105",
+    "signature": "lemma exists_goodSet_mem {s : ℝ} {μ : Measure (EuclideanSpace ℝ (Fin n))}\n    {a : EuclideanSpace ℝ (Fin n)} (ha : a ∈ positiveFiniteDensitySet s μ)\n    {θ : ℝ} (hθ0 : 0 < θ)\n    (hθ : ENNReal.ofReal θ < RatioOfDensities s μ a) :\n    ∃ (p q : ℚ) (m : ℕ), 0 < (p : ℝ) ∧ 0 < (q : ℝ) ∧ θ * (q : ℝ) ≤ (p : ℝ) ∧\n      dimensional_upper_density μ.toOuterMeasure s a * ENNReal.ofReal ((2 : ℝ) ^ s) <\n        ENNReal.ofReal (q : ℝ) ∧\n      a ∈ goodSet s (p : ℝ) (q : ℝ) m μ"
+  },
+  "exists_null_of_not_density_point": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean",
+    "line": 317,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean#L317",
+    "signature": "lemma exists_null_of_not_density_point (μ : Measure (EuclideanSpace ℝ (Fin n)))\n    (hμ : Measure.Regular μ) {B : Set (EuclideanSpace ℝ (Fin n))} (hB : MeasurableSet B) :\n    ∃ N : Set (EuclideanSpace ℝ (Fin n)), μ N = 0 ∧\n      ∀ a ∈ B \\ N, ∀ γ : ℝ≥0∞, 0 < γ →\n        ∀ᶠ ρ in 𝓝[>] (0 : ℝ), μ (closedBall a ρ \\ B) ≤ γ * μ (closedBall a ρ)"
+  },
+  "mem_support_of_ball_lower_bound": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean",
+    "line": 659,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean#L659",
+    "signature": "lemma mem_support_of_ball_lower_bound {s p r₀ : ℝ} (hp : 0 < p) (hr₀ : 0 < r₀)\n    {μ : Measure (EuclideanSpace ℝ (Fin n))} {a : EuclideanSpace ℝ (Fin n)}\n    (hlower : ∀ ρ : ℝ, 0 < ρ → ρ < r₀ → ENNReal.ofReal (p * ρ ^ s) ≤ μ (closedBall a ρ)) :\n    a ∈ Measure.support μ"
+  },
+  "limsup_ball_ratio_lt_top_of_ball_bounds_at": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean",
+    "line": 678,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean#L678",
+    "signature": "lemma limsup_ball_ratio_lt_top_of_ball_bounds_at {s p q r₀ : ℝ} (hp : 0 < p) (hq : 0 < q)\n    (hr₀ : 0 < r₀) {μ : Measure (EuclideanSpace ℝ (Fin n))}\n    {a : EuclideanSpace ℝ (Fin n)}\n    (hupper : ∀ ρ : ℝ, 0 < ρ → ρ < r₀ → μ (closedBall a ρ) ≤ ENNReal.ofReal (q * ρ ^ s))\n    (hlower : ∀ ρ : ℝ, 0 < ρ → ρ < r₀ → ENNReal.ofReal (p * ρ ^ s) ≤ μ (closedBall a ρ)) :\n    limsup (fun ρ : ℝ ↦ μ (ball a (2 * ρ)) / μ (ball a ρ)) (𝓝[>] (0 : ℝ)) < ∞"
+  },
+  "zero_mem_support_of_isTangentMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Doubling.lean",
+    "line": 184,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Doubling.lean#L184",
+    "signature": "theorem zero_mem_support_of_isTangentMeasure {n : ℕ}\n    (μ ν : Measure (EuclideanSpace ℝ (Fin n))) (hμ : μ.Regular)\n    (a : EuclideanSpace ℝ (Fin n)) (ha : a ∈ μ.support)\n    (hdoub : limsup (fun ρ : ℝ ↦ μ (ball a (2 * ρ)) / μ (ball a ρ)) (𝓝[>] (0 : ℝ)) < ∞)\n    (htan : IsTangentMeasure μ ν a) :\n    (0 : EuclideanSpace ℝ (Fin n)) ∈ ν.support"
+  },
+  "exists_normalized_blowUp_weaklyConverges_of_isTangentMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Doubling.lean",
+    "line": 245,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Doubling.lean#L245",
+    "signature": "theorem exists_normalized_blowUp_weaklyConverges_of_isTangentMeasure {n : ℕ}\n    (μ ν : Measure (EuclideanSpace ℝ (Fin n))) (hμ : μ.Regular)\n    (a : EuclideanSpace ℝ (Fin n)) (ha : a ∈ μ.support)\n    (hdoub : limsup (fun ρ : ℝ ↦ μ (ball a (2 * ρ)) / μ (ball a ρ)) (𝓝[>] (0 : ℝ)) < ∞)\n    (htan : IsTangentMeasure μ ν a) :\n    ∃ (r : ℕ → ℝ) (c : ℝ≥0∞),\n      (∀ i, 0 < r i) ∧ StrictAnti r ∧ Tendsto r atTop (𝓝 0) ∧ 0 < c ∧ c ≠ ∞ ∧\n        Measure.WeaklyConverges\n          (fun i ↦ c • (μ (ball a (r i)))⁻¹ • μ.map (blowUpMap a (r i))) ν"
+  },
+  "exists_subseq_blowUp_weaklyConverges_tangentMeasure": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/Doubling.lean",
+    "line": 326,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Doubling.lean#L326",
+    "signature": "theorem exists_subseq_blowUp_weaklyConverges_tangentMeasure {n : ℕ}\n    (μ : Measure (EuclideanSpace ℝ (Fin n))) (hμ : μ.Regular)\n    (a : EuclideanSpace ℝ (Fin n)) (ha : a ∈ μ.support)\n    (hc : limsup (fun ρ : ℝ ↦ μ (ball a (2 * ρ)) / μ (ball a ρ)) (𝓝[>] (0 : ℝ)) < ∞)\n    (r : ℕ → ℝ) (hr_pos : ∀ i, 0 < r i) (hr : Tendsto r atTop (𝓝 0)) :\n    ∃ (φ : ℕ → ℕ) (ν : Measure (EuclideanSpace ℝ (Fin n))),\n      StrictMono φ ∧ IsTangentMeasure μ ν a ∧\n        Measure.WeaklyConverges\n          (fun j ↦ (μ (ball a (r (φ j))))⁻¹ • μ.map (blowUpMap a (r (φ j)))) ν"
+  },
+  "isTangentMeasure_restrict_iff": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/MatchingTangents.lean",
+    "line": 232,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/MatchingTangents.lean#L232",
+    "signature": "theorem isTangentMeasure_restrict_iff\n    {n : ℕ} (μ : Measure (EuclideanSpace ℝ (Fin n))) (hμ : μ.Regular)\n    (B : Set (EuclideanSpace ℝ (Fin n))) (hB : MeasurableSet B)\n    (hμB : (μ.restrict B).Regular) (a : EuclideanSpace ℝ (Fin n)) (ha : a ∈ μ.support)\n    (hdens : Tendsto (fun r : ℝ ↦ μ (ball a r \\ B) / μ (ball a r))\n      (𝓝[>] (0 : ℝ)) (𝓝 0)) (ν : Measure (EuclideanSpace ℝ (Fin n))) :\n    IsTangentMeasure μ ν a ↔ IsTangentMeasure (μ.restrict B) ν a"
+  },
+  "isTangentMeasure_iff_ae_of_density": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/TangentMeasures/MatchingTangents.lean",
+    "line": 675,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/MatchingTangents.lean#L675",
+    "signature": "theorem isTangentMeasure_iff_ae_of_density\n    {n : ℕ} (μ «λ» : Measure (EuclideanSpace ℝ (Fin n)))\n    (hμ : μ.Regular) («hλ» : «λ».Regular) (φ : EuclideanSpace ℝ (Fin n) → ℝ)\n    (hφ_nonneg : ∀ x, 0 ≤ φ x) (hφ_loc : LocallyIntegrable φ μ)\n    («hλ_eq» : ∀ B : Set (EuclideanSpace ℝ (Fin n)), MeasurableSet B →\n      «λ» B = ENNReal.ofReal (∫ x in B, φ x ∂μ)) :\n    ∀ᵐ a ∂«λ», ∀ ν : Measure (EuclideanSpace ℝ (Fin n)),\n      IsTangentMeasure μ ν a ↔ IsTangentMeasure «λ» ν a"
+  },
+  "MeasureTheory.Measure.WeaklyConverges": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/WeakConvergence/Basic.lean",
+    "line": 42,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/WeakConvergence/Basic.lean#L42",
+    "signature": "def Measure.WeaklyConverges\n    {X : Type*} [TopologicalSpace X] [MeasurableSpace X] [BorelSpace X]\n    (μ : ℕ → Measure X) (ν : Measure X) : Prop"
+  },
+  "MeasureTheory.Measure.weaklyConverges_iff_compactOpenBounds": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/WeakConvergence/Basic.lean",
+    "line": 301,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/WeakConvergence/Basic.lean#L301",
+    "signature": "theorem Measure.weaklyConverges_iff_compactOpenBounds\n    {n : ℕ} (μ : ℕ → Measure (EuclideanSpace ℝ (Fin n)))\n    (ν : Measure (EuclideanSpace ℝ (Fin n)))\n    (hμ : ∀ k, (μ k).Regular) (hν : ν.Regular) :\n    Measure.WeaklyConverges μ ν ↔\n      Measure.WeaklyConvergesByCompactOpenBounds μ ν"
+  },
+  "MeasureTheory.Measure.weaklyConverges_iff_boundedContinuitySets": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/WeakConvergence/Basic.lean",
+    "line": 322,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/WeakConvergence/Basic.lean#L322",
+    "signature": "theorem Measure.weaklyConverges_iff_boundedContinuitySets\n    {n : ℕ} (μ : ℕ → Measure (EuclideanSpace ℝ (Fin n)))\n    (ν : Measure (EuclideanSpace ℝ (Fin n)))\n    (hμ : ∀ k, (μ k).Regular) (hν : ν.Regular) :\n    Measure.WeaklyConverges μ ν ↔\n      Measure.WeaklyConvergesOnBoundedContinuitySets μ ν"
+  },
+  "MeasureTheory.exists_vaguelyConvergent_subseq_of_compact_bounded": {
+    "project": "FormalizingGMT",
+    "revision": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "path": "FormalizingGMT/WeakConvergence/CompactnessCriterion.lean",
+    "line": 491,
+    "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/WeakConvergence/CompactnessCriterion.lean#L491",
+    "signature": "theorem exists_vaguelyConvergent_subseq_of_compact_bounded\n    {n : ℕ} (μ : ℕ → Measure (EuclideanSpace ℝ (Fin n)))\n    (hμ : ∀ K : Set (EuclideanSpace ℝ (Fin n)), IsCompact K →\n      ∃ C : ℝ≥0, ∀ k, μ k K ≤ C) :\n    ∃ (φ : ℕ → ℕ) (ν : Measure (EuclideanSpace ℝ (Fin n))),\n      StrictMono φ ∧ ν.Regular ∧\n        Measure.WeaklyConverges (fun j ↦ μ (φ j)) ν"
+  }
+}

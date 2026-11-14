@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lean declaration source — PreissFormalization</title>
+<style>body{max-width:70rem;margin:3rem auto;padding:0 1.2rem;font:18px/1.6 system-ui;color:#182638}a{color:#1266a0}h1{font-size:1.4rem;overflow-wrap:anywhere}pre{padding:1rem;background:#f2f5f8;overflow:auto;font-size:15px}small{color:#526175}</style>
+<a href="../../dep_graph_document.html">Dependency graph</a> · <a href="https://github.com/tdwag123/PreissFormalization">Repository</a>
+<h1 id="name">Lean declaration source</h1><p id="status"></p><p><a id="source" hidden>Read full source and surrounding hypotheses on GitHub</a></p>
+<pre id="signature"></pre>
+<small>This page shows source syntax, including any explicit arguments. Implicit variables, namespaces, and typeclass assumptions may be declared earlier in the file: follow the source link for full context. This is not generated Lean type documentation or a kernel verification report.</small>
+<script>
+const name = location.hash.startsWith('#doc/') ? decodeURIComponent(location.hash.slice(5)) : new URLSearchParams(location.search).get('pattern');
+document.getElementById('name').textContent = name || 'Lean declaration source';
+fetch('declarations.json').then(r => {if(!r.ok) throw Error('Source index unavailable'); return r.json()}).then(data => {
+ const entry = data[name]; if(!entry) throw Error('No indexed declaration matches this link.');
+ const upstream = entry.project === 'FormalizingGMT';
+ document.getElementById('status').textContent = upstream ? 'Existing FormalizingGMT declaration at revision ' + entry.revision + '. The downstream build remains incomplete.' : name.startsWith('PreissBlueprint.') ? 'Draft interface: this library has unfinished sorry obligations. Preiss is not proved.' : 'Reusable local definition or elementary bridge. See the repository validation record for build status.';
+ const link = document.getElementById('source'); link.href = entry.url; link.hidden = false;
+ document.getElementById('signature').textContent = entry.signature;
+}).catch(e => {document.getElementById('status').textContent = e.message;});
+</script></html>

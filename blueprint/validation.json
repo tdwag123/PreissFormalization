@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-13",
+  "stage": "definitions-and-blueprint",
+  "graph": {
+    "command": "python scripts/check_blueprint.py",
+    "status": "passed",
+    "nodes": 89,
+    "edges": 261,
+    "checks": [
+      "unique labels",
+      "all dependencies resolve",
+      "acyclic",
+      "local declaration names exist",
+      "no sorry/admit/axiom in Preiss",
+      "no draft imports in Preiss",
+      "generated artifacts match canonical LaTeX",
+      "all 101 Lean links have source locations; upstream sources pinned"
+    ],
+    "upstream_nodes": 43,
+    "upstream_declarations": 62
+  },
+  "leanblueprint": {
+    "version": "0.0.20",
+    "command": "plastex -c plastex.cfg web.tex",
+    "working_directory": "blueprint/src",
+    "status": "passed",
+    "renderer_exit_code": 0,
+    "html_static_check": "passed: all 89 graph nodes have statement panels and all 101 Lean links resolve through the source index",
+    "browser_visual_check": "unavailable: browser runtime reported no available browsers",
+    "print_pdf": "not built",
+    "lean_documentation": "Portable source viewer for all 101 linked declarations; full doc-gen not built."
+  },
+  "lean": {
+    "version": "4.34.1",
+    "build_command": "lake build Preiss PreissBlueprint",
+    "status": "incomplete: full build stopped after prolonged dependency loading",
+    "default_library": "Preiss",
+    "default_library_source_placeholders": 0,
+    "draft_library": "PreissBlueprint",
+    "draft_theorems": 23,
+    "draft_sorry_obligations": 22,
+    "warning": "Even a successful draft-library build does not prove Preiss. The final assembly depends on unfinished obligations.",
+    "completed_modules": [
+      "Preiss.Rectifiability.Defs",
+      "FormalizingGMT.RadonMeasures.Basic",
+      "FormalizingGMT.Densities.Basic"
+    ],
+    "observed_module_wall_seconds": [
+      861,
+      865,
+      868
+    ],
+    "declaration_check": "not run: full draft library not built",
+    "remaining_modules": "Not compiler-validated; treat as draft interfaces.",
+    "log": "tmp/lean-build.log (local, ignored by version control)"
+  },
+  "upstream": {
+    "FormalizingGMT": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "textual_audit": "No sorry or explicit axiom found in FormalizingGMT Lean sources. This is not an axiom audit."
+  }
+}

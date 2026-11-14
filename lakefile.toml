@@ -1,0 +1,17 @@
+name = "PreissFormalization"
+version = "0.1.0"
+defaultTargets = ["Preiss"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "FormalizingGMT"
+git = "https://github.com/uw-math-ai/FormalizingGMT.git"
+rev = "c14a8d07b2df61798fc184fd53ff6f72d858ae48"
+
+[[lean_lib]]
+name = "Preiss"
+
+[[lean_lib]]
+name = "PreissBlueprint"

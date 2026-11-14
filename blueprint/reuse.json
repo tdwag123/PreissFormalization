@@ -1,0 +1,215 @@
+{
+  "audited_on": "2026-11-13",
+  "revisions": {
+    "FormalizingGMT": "c14a8d07b2df61798fc184fd53ff6f72d858ae48",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "audit_method": "Read pinned sources and search definitions/theorem declarations. Source-level reuse claims do not certify downstream elaboration or mathematical bridge proofs.",
+  "search_gaps": [
+    "No rectifiability declaration found in pinned Mathlib/MeasureTheory, Mathlib/Analysis, Mathlib/Topology or FormalizingGMT.",
+    "No ready compact metric Euclidean Grassmannian API identified.",
+    "No full area formula or Preiss uniform-measure rigidity package identified."
+  ],
+  "entries": [
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/Densities/Basic.lean",
+      "declarations": [
+        "dimensional_density_ratio",
+        "dimensional_lower_density",
+        "dimensional_upper_density",
+        "HasDensity",
+        "density_exists_of_lower_eq_upper"
+      ],
+      "status": "reuse",
+      "notes": "Closed extended balls, outer-measure input, denominator (2*r)^s; bridge to open balls and natural powers.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/Densities/Basic.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/WeakConvergence/Basic.lean",
+      "declarations": [
+        "MeasureTheory.Measure.WeaklyConverges",
+        "MeasureTheory.Measure.weaklyConverges_iff_compactOpenBounds",
+        "MeasureTheory.Measure.weaklyConverges_iff_boundedContinuitySets"
+      ],
+      "status": "reuse",
+      "notes": "Vague convergence of sequences on Euclidean space, not probability weak convergence.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/WeakConvergence/Basic.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/WeakConvergence/CompactnessCriterion.lean",
+      "declarations": [
+        "MeasureTheory.exists_vaguelyConvergent_subseq_of_compact_bounded"
+      ],
+      "status": "reuse",
+      "notes": "Uniform compact mass bounds; returns a regular limit, not necessarily nonzero.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/WeakConvergence/CompactnessCriterion.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/TangentMeasures/Basic.lean",
+      "declarations": [
+        "blowUpMap",
+        "IsTangentMeasure",
+        "map_blowUp_apply_ball",
+        "map_blowUp_apply_closedBall",
+        "regular_smul_map_blowUp"
+      ],
+      "status": "reuse",
+      "notes": "Arbitrary positive finite scalar sequences. Add a fixed-dimensional normalization bridge, not a competing general tangent definition.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Basic.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/TangentMeasures/Doubling.lean",
+      "declarations": [
+        "exists_subseq_blowUp_weaklyConverges_tangentMeasure",
+        "exists_normalized_blowUp_weaklyConverges_of_isTangentMeasure",
+        "zero_mem_support_of_isTangentMeasure"
+      ],
+      "status": "adapt",
+      "notes": "Derive support membership and finite limsup doubling ratio from density bounds.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/Doubling.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/TangentMeasures/MatchingTangents.lean",
+      "declarations": [
+        "isTangentMeasure_restrict_iff",
+        "isTangentMeasure_iff_ae_of_density"
+      ],
+      "status": "adapt",
+      "notes": "Restriction theorem requires regularity of both measures and a density-one condition. Density theorem uses a nonnegative real locally integrable function, equality on Borel sets, and lambda-a.e. conclusion; bounded pieces make these hypotheses usable.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/MatchingTangents.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/MarstrandTheorem.lean",
+      "declarations": [
+        "IsSUniform",
+        "positiveFiniteDensityExistsSet",
+        "mattila_14_9"
+      ],
+      "status": "reuse",
+      "notes": "The principal shortcut: all tangents are uniform outside one null set. IsSUniform requires s > 0; handle zero dimension separately.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/MarstrandTheorem.lean",
+      "declarations": [
+        "SUniformAux.exists_hyperplane",
+        "SUniformAux.exists_lower_dim",
+        "mattila_14_11"
+      ],
+      "status": "candidate",
+      "notes": "Useful dimension reduction ingredients. Must preserve moving-centre blow-up witnesses and transport between hyperplanes and Euclidean spaces. Do not treat exists_lower_dim alone as a flat-pseudotangent theorem.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/MarstrandTheorem.lean",
+      "declarations": [
+        "mattila_14_10"
+      ],
+      "status": "optional",
+      "notes": "Integer dimension is already assumed in Preiss; reuse only for a later real-exponent corollary.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/MarstrandTheorem.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/RadonMeasures/HausdorffMeasure.lean",
+      "declarations": [
+        "HausdorffRestrict.toRadonOuterMeasure",
+        "hausdorffContent",
+        "hausdorffContentInfty"
+      ],
+      "status": "candidate",
+      "notes": "Regularity of finite Hausdorff restrictions and content estimates may support the rectifiability branch.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/RadonMeasures/HausdorffMeasure.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Measure/Hausdorff.lean",
+      "declarations": [
+        "MeasureTheory.Measure.hausdorffMeasure",
+        "LipschitzWith.hausdorffMeasure_image_le",
+        "LipschitzOnWith.hausdorffMeasure_image_le",
+        "Isometry.map_hausdorffMeasure"
+      ],
+      "status": "reuse",
+      "notes": "Normalization uses diameters. Do not identify Euclidean Hausdorff measure with Euclidean volume using the sup-norm Pi theorem.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Measure/Hausdorff.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Measure/Regular.lean",
+      "declarations": [
+        "MeasureTheory.Measure.Regular.of_sigmaCompactSpace_of_isLocallyFiniteMeasure"
+      ],
+      "status": "reuse",
+      "notes": "Euclidean locally finite Borel measures are Regular; no new Radon structure.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Measure/Regular.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/Analysis/Calculus/Rademacher.lean",
+      "declarations": [
+        "LipschitzWith.ae_differentiableAt"
+      ],
+      "status": "reuse",
+      "notes": "For graph/image equivalence and optional area formula; not a reason to redevelop differentiability.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/Calculus/Rademacher.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/Topology/MetricSpace/Lipschitz.lean",
+      "declarations": [
+        "LipschitzOnWith.extend_real",
+        "LipschitzOnWith.extend_pi"
+      ],
+      "status": "adapt",
+      "notes": "Coordinatewise extension followed by finite-dimensional norm comparison suffices. Do not assume an optimal Euclidean Kirszbraun theorem.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Topology/MetricSpace/Lipschitz.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Covering/Differentiation.lean",
+      "declarations": [
+        "VitaliFamily.ae_tendsto_rnDeriv",
+        "VitaliFamily.ae_tendsto_measure_inter_div",
+        "VitaliFamily.ae_tendsto_average_norm_sub"
+      ],
+      "status": "candidate",
+      "notes": "Audit exact assumptions at call sites; differentiation is needed for carrier restrictions and recentering.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Covering/Differentiation.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/Analysis/SpecialFunctions/Gaussian/GaussianIntegral.lean",
+      "declarations": [],
+      "status": "candidate",
+      "notes": "Gaussian integrals exist. Radial transfer to uniform measures and polynomial Gaussian tail bounds still need work.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/SpecialFunctions/Gaussian/GaussianIntegral.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/RingTheory/Grassmannian.lean",
+      "declarations": [
+        "Module.Grassmannian"
+      ],
+      "status": "not_directly_applicable",
+      "notes": "Algebraic quotient-rank Grassmannian, not the compact metric m-plane space required for flatness minimization.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/RingTheory/Grassmannian.lean"
+    }
+  ],
+  "graph_inventory": {
+    "source": "src/upstream.tex",
+    "nodes": 43,
+    "declarations": 62,
+    "declaration_index": "declarations.json",
+    "note": "The declaration index and upstream graph expand the earlier grouped reuse entries below."
+  }
+}
