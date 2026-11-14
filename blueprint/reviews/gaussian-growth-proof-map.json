@@ -5,7 +5,8 @@
     "lem:nonnegative-integral-cover-bound",
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-annulus-integral",
-    "lem:gaussian-tail-series-bound"
+    "lem:gaussian-tail-series-bound",
+    "lem:polynomial-gaussian-integrability"
   ],
   "existing_node_additional_deps": {
     "lem:gaussian-polynomial-integrable": [
@@ -14,6 +15,9 @@
     ],
     "lem:gaussian-uniform-tails": [
       "lem:gaussian-tail-series-bound"
+    ],
+    "lem:gaussian-parameter-derivative": [
+      "lem:polynomial-gaussian-integrability"
     ]
   },
   "new_imports": {
@@ -24,5 +28,7 @@
   "primary_lean_names": {
     "lem:gaussian-polynomial-integrable": "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
     "lem:gaussian-uniform-tails": "Preiss.gaussian_polynomial_uniform_tail"
-  }
+  },
+  "polynomial_derivative_check": "tmp/GaussianDerivativeCheck.lean exited 0; parameter derivative printed only propext, Classical.choice, Quot.sound. Canonical wrappers await CI.",
+  "positivity_interface_repair": "The original audited integrability node also claimed Gaussian-mass positivity for nonzero measures. integral_gaussian_pos_of_ball_bound now exposes that clause via Mathlib integral_exp_pos; its short proof awaits CI."
 }

@@ -1,0 +1,33 @@
+{
+  "node_id": "lem:homogeneous-ball-scaling",
+  "title": "Weighted ball scaling for conical measures",
+  "lean_name": "Preiss.integral_homogeneous_closedBall",
+  "file": "Preiss/Uniform/Homogeneous.lean",
+  "statement_lean": "theorem integral_homogeneous_closedBall\n    (μ : Measure (Euclidean n)) (hcone : IsConical m μ)\n    (h : Euclidean n → ℝ) (hh : Measurable h) (a : ℝ)\n    (hhom : ∀ r > 0, ∀ z, h (r • z) = r ^ a * h z)\n    (r : ℝ) (hr : 0 < r) :\n    (∫ z in closedBall 0 r, h z ∂μ) =\n      r ^ ((m : ℝ) + a) * ∫ z in closedBall 0 1, h z ∂μ",
+  "statement_tex": "For a conical measure $\\mu$ and a measurable real-valued function $h$ homogeneous of arbitrary real degree $a$, for every $r>0$, $\\int_{\\overline B(0,r)}h\\,d\\mu=r^{m+a}\\int_{\\overline B(0,1)}h\\,d\\mu$. No positivity or integrability assumption is needed for this scaling identity; both sides use the Bochner nonintegrable-value convention.",
+  "definition_dependencies": [
+    "Preiss.IsConical",
+    "Preiss.dimensionalBlowup"
+  ],
+  "mathlib_dependencies": [
+    "MeasureTheory.setIntegral_map",
+    "MeasureTheory.Measure.restrict_smul",
+    "MeasureTheory.integral_smul_measure",
+    "MeasureTheory.integral_const_mul",
+    "Real.rpow_add",
+    "Real.rpow_natCast"
+  ],
+  "used_by": [
+    "lem:homogeneous-energy-radial"
+  ],
+  "status": "Local Lean/kernel check passed with only standard axioms; canonical integration CI pending.",
+  "source": "Direct change of variables in the conical scaling identity; reusable supporting lemma for De Lellis homogeneous radial integration.",
+  "companion_declarations": [
+    {
+      "lean_name": "Preiss.integrableOn_homogeneous_closedBall",
+      "statement_lean": "theorem integrableOn_homogeneous_closedBall\n    (μ : Measure (Euclidean n)) (hcone : IsConical m μ)\n    (h : Euclidean n → ℝ) (hh : Measurable h) (a : ℝ)\n    (hhom : ∀ r > 0, ∀ z, h (r • z) = r ^ a * h z)\n    (hint : IntegrableOn h (closedBall 0 1) μ) (r : ℝ) (hr : 0 < r) :\n    IntegrableOn h (closedBall 0 r) μ",
+      "status": "Local Lean/kernel check passed with only standard axioms; canonical integration CI pending.",
+      "purpose": "Propagate unit-ball integrability to every positive-radius ball; needed to identify the finite weighted radial measure."
+    }
+  ]
+}

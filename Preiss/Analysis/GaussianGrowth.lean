@@ -7,6 +7,9 @@ public import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
 public import Mathlib.MeasureTheory.Integral.DominatedConvergence
 public import Mathlib.MeasureTheory.Measure.Regular
 public import Mathlib.Algebra.MvPolynomial.Eval
+public import Mathlib.Topology.Algebra.MvPolynomial
+public import Mathlib.Analysis.Calculus.ParametricIntegral
+public import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 
 @[expose] public section
 open MeasureTheory Metric Set Filter
@@ -196,6 +199,106 @@ theorem gaussian_polynomial_uniform_tail (C p : ℝ) (d : ℕ) (s : ℝ) (hs : 0
     intro μ hμ hgrowth
     exact (hC hgrowth.1).elim
 
+theorem integrable_norm_pow_mul_polynomial_mul_gaussian {n : ℕ}
+    (μ : Measure (Euclidean n)) (C p : ℝ) (hC : 0 ≤ C)
+    (hgrowth : ∀ R > 0, μ (closedBall 0 R) ≤ ENNReal.ofReal (C * (1 + R) ^ p))
+    (P : MvPolynomial (Fin n) ℝ) (d : ℕ) (s : ℝ) (hs : 0 < s) :
+    Integrable (fun z => ‖z‖ ^ d * MvPolynomial.eval (fun j => z j) P *
+      Real.exp (-s * ‖z‖ ^ 2)) μ := by
+  revert d
+  induction P using MvPolynomial.induction_on with
+  | C a =>
+      intro d
+      convert (integrable_norm_pow_mul_gaussian_of_ball_bound μ C p hC hgrowth d s hs).mul_const a using 1
+      ext z
+      simp only [MvPolynomial.eval_C]
+      ring
+  | add P Q hP hQ =>
+      intro d
+      convert (hP d).add (hQ d) using 1
+      ext z
+      simp only [MvPolynomial.eval_add, Pi.add_apply]
+      ring
+  | mul_X P i hP =>
+      intro d
+      simp only [MvPolynomial.eval_mul, MvPolynomial.eval_X]
+      apply (hP (d + 1)).norm.mono'
+      · have hcont : Continuous (fun z : Euclidean n => MvPolynomial.eval (fun j => z j) P) :=
+          P.continuous_eval.comp (by fun_prop)
+        have hfull : Continuous (fun z : Euclidean n =>
+            ‖z‖ ^ d * (MvPolynomial.eval (fun j => z j) P * z i) *
+              Real.exp (-s * ‖z‖ ^ 2)) := by fun_prop
+        exact hfull.aestronglyMeasurable
+      · filter_upwards [] with z
+        simp only [norm_mul, norm_pow, norm_norm, Real.norm_of_nonneg (Real.exp_pos _).le]
+        calc
+          _ = (‖z‖ ^ d * ‖MvPolynomial.eval (fun j => z j) P‖ *
+              Real.exp (-s * ‖z‖ ^ 2)) * ‖z i‖ := by ring
+          _ ≤ (‖z‖ ^ d * ‖MvPolynomial.eval (fun j => z j) P‖ *
+              Real.exp (-s * ‖z‖ ^ 2)) * ‖z‖ :=
+            mul_le_mul_of_nonneg_left (PiLp.norm_apply_le z i) (by positivity)
+          _ = _ := by rw [pow_succ]; ring
+
+
+theorem hasDerivAt_integral_polynomial_gaussian_of_ball_bound {n : ℕ}
+    (μ : Measure (Euclidean n)) (C p : ℝ) (hC : 0 ≤ C)
+    (hgrowth : ∀ R > 0, μ (closedBall 0 R) ≤ ENNReal.ofReal (C * (1 + R) ^ p))
+    (P : MvPolynomial (Fin n) ℝ) (s : ℝ) (hs : 0 < s) :
+    HasDerivAt (fun t : ℝ => ∫ z, MvPolynomial.eval (fun j => z j) P *
+      Real.exp (-t * ‖z‖ ^ 2) ∂μ)
+      (-(∫ z, ‖z‖ ^ 2 * MvPolynomial.eval (fun j => z j) P *
+        Real.exp (-s * ‖z‖ ^ 2) ∂μ)) s := by
+  let F : ℝ → Euclidean n → ℝ := fun t z =>
+    MvPolynomial.eval (fun j => z j) P * Real.exp (-t * ‖z‖ ^ 2)
+  let F' : ℝ → Euclidean n → ℝ := fun t z =>
+    -(‖z‖ ^ 2 * MvPolynomial.eval (fun j => z j) P * Real.exp (-t * ‖z‖ ^ 2))
+  have hPeval : Continuous (fun z : Euclidean n => MvPolynomial.eval (fun j => z j) P) :=
+    P.continuous_eval.comp (by fun_prop)
+  have hcont (t : ℝ) : Continuous (F t) := by dsimp [F]; fun_prop
+  have hcont' (t : ℝ) : Continuous (F' t) := by dsimp [F']; fun_prop
+  have hint : Integrable (F s) μ := by
+    simpa only [pow_zero, one_mul, F] using
+      integrable_norm_pow_mul_polynomial_mul_gaussian μ C p hC hgrowth P 0 s hs
+  have hboundint : Integrable (fun z : Euclidean n =>
+      ‖‖z‖ ^ 2 * MvPolynomial.eval (fun j => z j) P * Real.exp (-(s / 2) * ‖z‖ ^ 2)‖) μ :=
+    (integrable_norm_pow_mul_polynomial_mul_gaussian μ C p hC hgrowth P 2 (s / 2)
+      (half_pos hs)).norm
+  have hbound : ∀ᵐ z ∂μ, ∀ t ∈ Ioi (s / 2), ‖F' t z‖ ≤
+      ‖‖z‖ ^ 2 * MvPolynomial.eval (fun j => z j) P * Real.exp (-(s / 2) * ‖z‖ ^ 2)‖ := by
+    filter_upwards [] with z
+    intro t ht
+    simp only [F', norm_neg, norm_mul, norm_pow, norm_norm, Real.norm_of_nonneg (Real.exp_pos _).le]
+    apply mul_le_mul_of_nonneg_left _ (by positivity)
+    apply Real.exp_le_exp.mpr
+    have hsq := sq_nonneg ‖z‖
+    change s / 2 < t at ht
+    nlinarith
+  have hdiff : ∀ᵐ z ∂μ, ∀ t ∈ Ioi (s / 2), HasDerivAt (F · z) (F' t z) t := by
+    filter_upwards [] with z
+    intro t ht
+    dsimp [F, F']
+    have hExp := (((hasDerivAt_id t).neg.mul_const (‖z‖ ^ 2)).exp).const_mul
+      (MvPolynomial.eval (fun j => z j) P)
+    simp only [Pi.neg_apply, id_eq] at hExp
+    convert hExp using 1 <;> ring
+  have H := hasDerivAt_integral_of_dominated_loc_of_deriv_le
+    (F := F) (F' := F') (s := Ioi (s / 2)) (x₀ := s)
+    (isOpen_Ioi.mem_nhds (by change s / 2 < s; linarith))
+    (Filter.Eventually.of_forall fun t => (hcont t).aestronglyMeasurable)
+    hint (hcont' s).aestronglyMeasurable hbound hboundint hdiff
+  simpa only [F, F', integral_neg] using H.2
+
+
+theorem integral_gaussian_pos_of_ball_bound {n : ℕ}
+    (μ : Measure (Euclidean n)) (hμne : μ ≠ 0) (C p : ℝ) (hC : 0 ≤ C)
+    (hgrowth : ∀ R > 0, μ (closedBall 0 R) ≤ ENNReal.ofReal (C * (1 + R) ^ p))
+    (s : ℝ) (hs : 0 < s) :
+    0 < ∫ z, Real.exp (-s * ‖z‖ ^ 2) ∂μ := by
+  letI : NeZero μ := ⟨hμne⟩
+  apply integral_exp_pos
+  simpa only [pow_zero, one_mul] using
+    integrable_norm_pow_mul_gaussian_of_ball_bound μ C p hC hgrowth 0 s hs
+
 theorem hasDerivAt_integral_polynomial_mul_gaussian
     (μ : Measure (Euclidean n)) (hμ : μ.Regular) (C p : ℝ)
     (hgrowth : HasPolynomialGrowthBound μ C p)
@@ -204,6 +307,6 @@ theorem hasDerivAt_integral_polynomial_mul_gaussian
       Real.exp (-t * ‖z‖ ^ 2) ∂μ)
       (-(∫ z, ‖z‖ ^ 2 * MvPolynomial.eval (fun j => z j) P *
         Real.exp (-s * ‖z‖ ^ 2) ∂μ)) s := by
-  sorry
+  exact hasDerivAt_integral_polynomial_gaussian_of_ball_bound μ C p hgrowth.1 hgrowth.2.2 P s hs
 
 end Preiss

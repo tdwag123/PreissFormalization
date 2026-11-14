@@ -60,11 +60,14 @@
       "file": "Preiss/Analysis/GaussianGrowth.lean",
       "current_source_imports": [
         "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.Analysis.Calculus.ParametricIntegral",
+        "Mathlib.Analysis.SpecialFunctions.ExpDeriv",
         "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
         "Mathlib.Analysis.SpecialFunctions.Pow.Real",
         "Mathlib.Analysis.SpecificLimits.Normed",
         "Mathlib.MeasureTheory.Integral.DominatedConvergence",
         "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Algebra.MvPolynomial",
         "Preiss.Analysis.AnnulusIntegrability",
         "Preiss.Geometry.Euclidean"
       ],
@@ -74,11 +77,14 @@
       ],
       "mathlib_imports": [
         "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.Analysis.Calculus.ParametricIntegral",
+        "Mathlib.Analysis.SpecialFunctions.ExpDeriv",
         "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
         "Mathlib.Analysis.SpecialFunctions.Pow.Real",
         "Mathlib.Analysis.SpecificLimits.Normed",
         "Mathlib.MeasureTheory.Integral.DominatedConvergence",
-        "Mathlib.MeasureTheory.Measure.Regular"
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Algebra.MvPolynomial"
       ],
       "gmt_imports": [],
       "proof_imports": [
@@ -91,7 +97,8 @@
         "def:polynomial-growth-bound",
         "lem:gaussian-annulus-majorant",
         "lem:gaussian-annulus-integral",
-        "lem:gaussian-tail-series-bound"
+        "lem:gaussian-tail-series-bound",
+        "lem:polynomial-gaussian-integrability"
       ],
       "source_exists": true,
       "scope": "core",
@@ -242,6 +249,42 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.HausdorffLowerBound",
+      "file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "purpose": "Reusable Analysis.HausdorffLowerBound interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Covering.Vitali",
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Covering.Vitali",
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:lower-ball-small-cover",
+        "lem:lower-ball-open-comparison",
+        "lem:lower-ball-hausdorff-bound",
+        "lem:lower-ball-restrict-comparison"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.MeasureHull",
       "file": "Preiss/Analysis/MeasureHull.lean",
       "current_source_imports": [
@@ -259,6 +302,27 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Analysis.MeasureHull interfaces."
+    },
+    {
+      "module": "Preiss.Analysis.MeasureSupport",
+      "file": "Preiss/Analysis/MeasureSupport.lean",
+      "purpose": "Reusable Analysis.MeasureSupport interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Measure.Map",
+        "Mathlib.MeasureTheory.Measure.Support"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Map",
+        "Mathlib.MeasureTheory.Measure.Support"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:measure-support-transport"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
     },
     {
       "module": "Preiss.Analysis.PolynomialFeatures",
@@ -588,10 +652,12 @@
         "Mathlib.MeasureTheory.Measure.Hausdorff",
         "Mathlib.MeasureTheory.Measure.Regular",
         "Preiss.Analysis.HausdorffComparison",
+        "Preiss.Analysis.HausdorffLowerBound",
         "Preiss.Geometry.Euclidean"
       ],
       "local_imports": [
         "Preiss.Analysis.HausdorffComparison",
+        "Preiss.Analysis.HausdorffLowerBound",
         "Preiss.Geometry.Euclidean"
       ],
       "mathlib_imports": [
@@ -601,7 +667,8 @@
       ],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Analysis.HausdorffComparison"
+        "Preiss.Analysis.HausdorffComparison",
+        "Preiss.Analysis.HausdorffLowerBound"
       ],
       "nodes": [
         "lem:density-measure-comparison"
@@ -1424,6 +1491,8 @@
       "current_source_imports": [
         "Mathlib.MeasureTheory.Covering.Besicovitch",
         "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity",
         "Preiss.Rectifiability.Cones",
         "Preiss.Rectifiability.ProjectionEstimate",
         "Preiss.Rectifiability.PurelyUnrectifiable",
@@ -1437,7 +1506,9 @@
       ],
       "mathlib_imports": [
         "Mathlib.MeasureTheory.Covering.Besicovitch",
-        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace"
+        "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity"
       ],
       "gmt_imports": [],
       "proof_imports": [
@@ -1803,6 +1874,33 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Tangent.Blowup interfaces."
+    },
+    {
+      "module": "Preiss.Tangent.BlowupSupport",
+      "file": "Preiss/Tangent/BlowupSupport.lean",
+      "purpose": "Reusable Tangent.BlowupSupport interfaces.",
+      "current_source_imports": [
+        "Mathlib.Topology.Algebra.ConstMulAction",
+        "Preiss.Analysis.MeasureSupport",
+        "Preiss.Tangent.Blowup"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.Algebra.ConstMulAction"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.MeasureSupport",
+        "Preiss.Tangent.Blowup"
+      ],
+      "nodes": [
+        "lem:dimensional-blowup-support"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.MeasureSupport",
+        "Preiss.Tangent.Blowup"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Tangent.Compactness",
@@ -2776,6 +2874,7 @@
         "Preiss.Uniform.FlatAtInfinity.TraceData"
       ],
       "local_imports": [
+        "Preiss.Analysis.BilinearTrace",
         "Preiss.Analysis.GaussianQuadraticForms",
         "Preiss.Geometry.Planes",
         "Preiss.Tangent.Defs",
@@ -2789,6 +2888,7 @@
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.BilinearTrace",
         "Preiss.Analysis.GaussianQuadraticForms",
         "Preiss.Geometry.Planes",
         "Preiss.Tangent.Defs",
@@ -2994,6 +3094,34 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Uniform.GMTAdapters interfaces."
+    },
+    {
+      "module": "Preiss.Uniform.Homogeneous",
+      "file": "Preiss/Uniform/Homogeneous.lean",
+      "purpose": "Reusable Uniform.Homogeneous interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Preiss.Uniform.Defs"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Tangent.Blowup",
+        "Preiss.Uniform.Defs"
+      ],
+      "nodes": [
+        "lem:homogeneous-ball-scaling"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Tangent.Blowup",
+        "Preiss.Uniform.Defs"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Uniform.MomentCoefficients",
@@ -3247,6 +3375,7 @@
       "file": "Preiss/Uniform/Radial.lean",
       "current_source_imports": [
         "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Order",
         "Mathlib.MeasureTheory.Integral.Bochner.Basic",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Uniform.Defs"
@@ -3255,17 +3384,20 @@
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Planes",
         "Preiss.Uniform.Defs",
-        "Preiss.Uniform.GMTAdapters"
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.Homogeneous"
       ],
       "mathlib_imports": [
         "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Order",
         "Mathlib.MeasureTheory.Integral.Bochner.Basic"
       ],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Geometry.Planes",
         "Preiss.Uniform.Defs",
-        "Preiss.Uniform.GMTAdapters"
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.Homogeneous"
       ],
       "nodes": [
         "lem:radial",
@@ -3279,19 +3411,27 @@
       "module": "Preiss.Uniform.Scaling",
       "file": "Preiss/Uniform/Scaling.lean",
       "current_source_imports": [
+        "Mathlib.Tactic.Abel",
+        "Mathlib.Tactic.Ring",
         "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.BlowupSupport",
         "Preiss.Uniform.Defs"
       ],
       "local_imports": [
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup",
+        "Preiss.Tangent.BlowupSupport",
         "Preiss.Uniform.Defs"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Tactic.Abel",
+        "Mathlib.Tactic.Ring"
+      ],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup",
+        "Preiss.Tangent.BlowupSupport",
         "Preiss.Uniform.Defs"
       ],
       "nodes": [
@@ -3505,7 +3645,9 @@
     "Preiss.Analysis.GradedProjection",
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
+    "Preiss.Analysis.HausdorffLowerBound",
     "Preiss.Analysis.MeasureHull",
+    "Preiss.Analysis.MeasureSupport",
     "Preiss.Density.Limits",
     "Preiss.Density.Atoms",
     "Preiss.Analysis.GaussianQuadraticForms",
@@ -3536,6 +3678,7 @@
     "Preiss.Rectifiability.Countable",
     "Preiss.Rectifiability.Zero",
     "Preiss.Tangent.Algebra",
+    "Preiss.Tangent.BlowupSupport",
     "Preiss.Tangent.Continuity",
     "Preiss.Tangent.Defs",
     "Preiss.Uniform.Defs",
@@ -3556,6 +3699,7 @@
     "Preiss.Tangent.SupportApproximation",
     "Preiss.Tangent.ScalingOrbit",
     "Preiss.Uniform.GMTAdapters",
+    "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.Scaling",
     "Preiss.Uniform.FlatMoments",
     "Preiss.Uniform.MomentCoefficients",
@@ -3627,7 +3771,9 @@
     "Preiss.Analysis.GradedProjection",
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
+    "Preiss.Analysis.HausdorffLowerBound",
     "Preiss.Analysis.MeasureHull",
+    "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.PolynomialFeatures",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Analysis.Vague.CompactTests",
@@ -3677,6 +3823,7 @@
     "Preiss.Tangent.Algebra",
     "Preiss.Tangent.Blowdown",
     "Preiss.Tangent.Blowup",
+    "Preiss.Tangent.BlowupSupport",
     "Preiss.Tangent.Compactness",
     "Preiss.Tangent.Continuity",
     "Preiss.Tangent.Defs",
@@ -3712,6 +3859,7 @@
     "Preiss.Uniform.Flatness",
     "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Uniform.GMTAdapters",
+    "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.MomentCoefficients",
     "Preiss.Uniform.MomentCovariance",
     "Preiss.Uniform.MomentEstimates",

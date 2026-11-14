@@ -254,6 +254,140 @@
         "Preiss.gaussian_tail_le_annulus_sum"
       ],
       "file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    {
+      "id": "lem:polynomial-gaussian-integrability",
+      "title": "Integrability of all polynomial Gaussian weights",
+      "kind": "lemma",
+      "statement_tex": "For a measure mu on Euclidean n with mu(closedBall(0,R))<=ofReal(C(1+R)^p) at every R>0, where C>=0 and p is real, every multivariate real polynomial P, natural d, and s>0 satisfy Bochner integrability of norm(z)^d P(z) exp(-s norm(z)^2). The proof inducts on P using closure under constants, addition, and multiplication by a coordinate; norm(z_i)<=norm(z) supplies the inductive domination.",
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "definition_dependencies": [],
+      "lean_names": [
+        "Preiss.integrable_norm_pow_mul_polynomial_mul_gaussian"
+      ],
+      "file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    {
+      "id": "lem:homogeneous-ball-scaling",
+      "title": "Weighted ball scaling for conical measures",
+      "kind": "lemma",
+      "statement_tex": "For a conical measure $\\mu$ and a measurable real-valued function $h$ homogeneous of arbitrary real degree $a$, for every $r>0$, $\\int_{\\overline B(0,r)}h\\,d\\mu=r^{m+a}\\int_{\\overline B(0,1)}h\\,d\\mu$. No positivity or integrability assumption is needed for this scaling identity; both sides use the Bochner nonintegrable-value convention. Under the same scaling hypotheses, integrability of h on the unit closed ball implies integrability on every positive-radius closed ball.",
+      "definition_dependencies": [
+        "def:conical",
+        "def:dimensional-blowup"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.integral_homogeneous_closedBall",
+        "Preiss.integrableOn_homogeneous_closedBall"
+      ],
+      "file": "Preiss/Uniform/Homogeneous.lean",
+      "source": "Direct change of variables in the conical scaling identity; reusable supporting lemma for De Lellis homogeneous radial integration.",
+      "used_by": [
+        "lem:homogeneous-energy-radial"
+      ]
+    },
+    {
+      "id": "lem:lower-ball-small-cover",
+      "title": "Small covers from a lower ball bound",
+      "kind": "lemma",
+      "statement_tex": "Let $X$ be a separable metric Borel space, $A\\subseteq U$ with $U$ open, and $a,R>0$. Assume $a r^m\\leq\\mu(B(x,r))$ for all $x\\in A$ and $0<r<R$. For every $\\varepsilon>0$, there is a countable cover of $A$ by fivefold enlargements of disjoint balls in $U$, each enlarged ball having diameter at most $\\varepsilon$, and total diameter-to-the-$m$ cost at most $(10^m/a)\\mu(U)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "mathlib:vitali-enlargement"
+      ],
+      "lean_names": [
+        "Preiss.exists_small_cover_of_ball_lower_bound"
+      ],
+      "file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "source": "Vitali fivefold covering and outer regularity; locally kernel-checked."
+    },
+    {
+      "id": "lem:lower-ball-open-comparison",
+      "title": "Lower ball bounds control Hausdorff measure in open supersets",
+      "kind": "lemma",
+      "statement_tex": "Under the lower ball bound above, $\\mathcal H^m(A)\\leq (10^m/a)\\mu(U)$ for every open superset $U$ of $A$. No measurability of $A$ or regularity of $\\mu$ is needed.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:lower-ball-small-cover"
+      ],
+      "lean_names": [
+        "Preiss.hausdorff_le_open_mass_of_ball_lower_bound"
+      ],
+      "file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "source": "Vitali fivefold covering and outer regularity; locally kernel-checked."
+    },
+    {
+      "id": "lem:lower-ball-hausdorff-bound",
+      "title": "Hausdorff comparison by outer regularity",
+      "kind": "lemma",
+      "statement_tex": "If $\\mu$ is outer regular and the same uniform lower ball bound holds at every point of an arbitrary set $A$, then $\\mathcal H^m(A)\\leq (10^m/a)\\mu(A)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:lower-ball-open-comparison"
+      ],
+      "lean_names": [
+        "Preiss.hausdorff_le_measure_of_uniform_ball_lower_bound"
+      ],
+      "file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "source": "Vitali fivefold covering and outer regularity; locally kernel-checked."
+    },
+    {
+      "id": "lem:lower-ball-restrict-comparison",
+      "title": "Restricted lower ball comparison",
+      "kind": "lemma",
+      "statement_tex": "For a Borel stratum $S$ and an outer regular measure satisfying the uniform lower ball bound at every point of $S$, $\\mathcal H^m\\!\\restriction S\\leq (10^m/a)\\mu\\!\\restriction S$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:lower-ball-hausdorff-bound"
+      ],
+      "lean_names": [
+        "Preiss.hausdorff_restrict_le_measure_of_uniform_ball_lower_bound"
+      ],
+      "file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "source": "Vitali fivefold covering and outer regularity; locally kernel-checked."
+    },
+    {
+      "id": "lem:measure-support-transport",
+      "title": "Support under homeomorphisms and nonzero scalar multiplication",
+      "kind": "lemma",
+      "statement_tex": "For a homeomorphism $e:X\\to Y$ of Borel topological spaces and any measure $\\mu$ on $X$, $\\operatorname{spt}(e_\\#\\mu)=e(\\operatorname{spt}\\mu)$. For a measure on any topological measurable space and any $c\\in[0,\\infty]$ with $c\\ne0$, $\\operatorname{spt}(c\\mu)=\\operatorname{spt}\\mu$. Neither assertion requires regularity or local finiteness.",
+      "hypotheses_tex": "The source and target Borel structures agree with their topologies for the homeomorphism assertion. The scalar assertion needs only topological and measurable structures and $c\\ne0$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.measure_support_map_homeomorph",
+        "Preiss.measure_support_smul"
+      ],
+      "file": "Preiss/Analysis/MeasureSupport.lean",
+      "source": "Direct transport of the open-neighborhood characterization of support.",
+      "used_by": [
+        "lem:dimensional-blowup-support"
+      ]
+    },
+    {
+      "id": "lem:dimensional-blowup-support",
+      "title": "Support and regularity of dimensional blow-ups",
+      "kind": "lemma",
+      "statement_tex": "For every $m,n\\in\\mathbb N$, measure $\\mu$ on $\\mathbb R^n$, point $a$, and radius $r>0$, the dimensional blow-up $\\mu_{a,r}=r^{-m}(T_{a,r})_\\#\\mu$ has support $T_{a,r}(\\operatorname{spt}\\mu)$, where $T_{a,r}(y)=(y-a)/r$. If $\\mu$ is regular, then $\\mu_{a,r}$ is regular.",
+      "hypotheses_tex": "The radius is strictly positive. Regularity of $\\mu$ is required only for the regularity conclusion; the support identity holds for every measure.",
+      "definition_dependencies": [
+        "def:dimensional-blowup"
+      ],
+      "deps": [
+        "lem:measure-support-transport"
+      ],
+      "lean_names": [
+        "Preiss.dimensionalBlowup_support",
+        "Preiss.regular_dimensionalBlowup"
+      ],
+      "file": "Preiss/Tangent/BlowupSupport.lean",
+      "source": "Homeomorphic affine transport, nonzero finite scalar normalization, and mathlib regularity under maps and scalar multiplication.",
+      "used_by": [
+        "lem:uniform-scaling"
+      ]
     }
   ],
   "definition_edge_additions": {

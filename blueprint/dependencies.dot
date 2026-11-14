@@ -94,7 +94,7 @@ digraph Preiss {
   "lem:carrier-calculus" [label="Carrier API aggregation", fillcolor="#dce5ee"];
   "lem:decomposition" [label="Rectifiable/pure decomposition", fillcolor="#dce5ee"];
   "def:positive-density" [label="Positive finite density", fillcolor="#dce5ee"];
-  "lem:density-measure-comparison" [label="Measure comparisons on density strata", fillcolor="#fff0bf"];
+  "lem:density-measure-comparison" [label="Measure comparisons on density strata", fillcolor="#dce5ee"];
   "lem:zero-dimension" [label="Dimension zero", fillcolor="#dce5ee"];
   "lem:countable-carrier" [label="Countable carriers", fillcolor="#dce5ee"];
   "lem:zero-hausdorff-ac" [label="Absolute continuity with respect to zero-dimensional Hausdorff measure", fillcolor="#dce5ee"];
@@ -137,7 +137,7 @@ digraph Preiss {
   "lem:packing-base-point" [label="Base point with upper mass and small discarded mass", fillcolor="#fff0bf"];
   "lem:finite-piece-transfer" [label="Transfer density bounds and flat tangents to finite pieces", fillcolor="#fff0bf"];
   "lem:nested-compact-approximation" [label="Nested compact two-sided approximation", fillcolor="#fff0bf"];
-  "lem:pure-cone-escape" [label="Pure sets have arbitrarily close points outside fixed cones", fillcolor="#fff0bf"];
+  "lem:pure-cone-escape" [label="Pure sets have arbitrarily close points outside fixed cones", fillcolor="#dce5ee"];
   "lem:projection-hole-cover" [label="Disjoint projection-hole disks with large radius sum", fillcolor="#fff0bf"];
   "lem:pure-wla-null-projection" [label="Pure weakly approximable sets have every-plane null projection", fillcolor="#fff0bf"];
   "lem:discarded-cylinder-sum" [label="Cylinders meeting the compact core have small radius sum", fillcolor="#fff0bf"];
@@ -152,7 +152,7 @@ digraph Preiss {
   "lem:spectral-minimizing-plane" [label="Top eigenspaces minimize normal covariance trace", fillcolor="#fff0bf"];
   "lem:moment-determination" [label="Gaussian weighted polynomials determine growing measures", fillcolor="#fff0bf"];
   "lem:gaussian-uniform-tails" [label="Uniform Gaussian polynomial tails", fillcolor="#dce5ee"];
-  "lem:gaussian-parameter-derivative" [label="Differentiation of Gaussian polynomial integrals", fillcolor="#fff0bf"];
+  "lem:gaussian-parameter-derivative" [label="Differentiation of Gaussian polynomial integrals", fillcolor="#dce5ee"];
   "lem:vague-countable-metric" [label="Countable compact-test metric for locally bounded families", fillcolor="#fff0bf"];
   "lem:measurable-hull-holes" [label="Measurable hulls preserve disjoint holes", fillcolor="#dce5ee"];
   "lem:gaussian-wick-fourth" [label="Wick fourth moment of linear Gaussian tests", fillcolor="#fff0bf"];
@@ -169,7 +169,7 @@ digraph Preiss {
   "lem:moment-feature-annihilation" [label="Feature moment functional and weighted annihilator", fillcolor="#fff0bf"];
   "def:moment-coefficients" [label="Gaussian moment coefficient families", fillcolor="#d9eaf7"];
   "lem:moment-form-evaluation" [label="Evaluation of Gaussian moment forms", fillcolor="#dce5ee"];
-  "lem:radial" [label="Radial pushforward distribution and integrals", fillcolor="#fff0bf"];
+  "lem:radial" [label="Radial pushforward distribution and integrals", fillcolor="#dce5ee"];
   "lem:moment-covariance" [label="Moment covariance, scalar invariance and dilation", fillcolor="#fff0bf"];
   "lem:moment-norm-bound" [label="Uniform operator norm bounds for Gaussian moments", fillcolor="#fff0bf"];
   "lem:homogeneous-energy-radial" [label="Comparison of homogeneous ball and Gaussian energies", fillcolor="#fff0bf"];
@@ -247,8 +247,8 @@ digraph Preiss {
   "lem:rigidity-forms-exist" [label="Existence of the rigidity bilinear forms", fillcolor="#fff0bf"];
   "lem:polynomial-feature-identities" [label="Inner products and grading of polynomial features", fillcolor="#fff0bf"];
   "def:uniform-constant" [label="Uniform measures with a specified ball constant", fillcolor="#d9eaf7"];
-  "lem:uniform-constant-one" [label="Centered unit normalization", fillcolor="#fff0bf"];
-  "lem:uniform-scaling" [label="Scaling uniform measures and their ball constants", fillcolor="#fff0bf"];
+  "lem:uniform-constant-one" [label="Centered unit normalization", fillcolor="#dce5ee"];
+  "lem:uniform-scaling" [label="Scaling uniform measures and their ball constants", fillcolor="#dce5ee"];
   "lem:density-limit-values" [label="Values of existing dimensional densities", fillcolor="#dce5ee"];
   "lem:moment-kernel-calculus" [label="Continuity, homogeneity, and norm bounds for moment kernels", fillcolor="#dce5ee"];
   "lem:diameter-hausdorff-bound" [label="Hausdorff comparison from diameter bounds", fillcolor="#dce5ee"];
@@ -259,6 +259,14 @@ digraph Preiss {
   "lem:gaussian-annulus-majorant" [label="A summable common Gaussian annulus majorant", fillcolor="#dce5ee"];
   "lem:gaussian-annulus-integral" [label="Gaussian integrals on unit annuli", fillcolor="#dce5ee"];
   "lem:gaussian-tail-series-bound" [label="A common series controls every Gaussian tail", fillcolor="#dce5ee"];
+  "lem:polynomial-gaussian-integrability" [label="Integrability of all polynomial Gaussian weights", fillcolor="#dce5ee"];
+  "lem:homogeneous-ball-scaling" [label="Weighted ball scaling for conical measures", fillcolor="#dce5ee"];
+  "lem:lower-ball-small-cover" [label="Small covers from a lower ball bound", fillcolor="#dce5ee"];
+  "lem:lower-ball-open-comparison" [label="Lower ball bounds control Hausdorff measure in open supersets", fillcolor="#dce5ee"];
+  "lem:lower-ball-hausdorff-bound" [label="Hausdorff comparison by outer regularity", fillcolor="#dce5ee"];
+  "lem:lower-ball-restrict-comparison" [label="Restricted lower ball comparison", fillcolor="#dce5ee"];
+  "lem:measure-support-transport" [label="Support under homeomorphisms and nonzero scalar multiplication", fillcolor="#dce5ee"];
+  "lem:dimensional-blowup-support" [label="Support and regularity of dimensional blow-ups", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -371,10 +379,12 @@ digraph Preiss {
   "def:rectifiable" -> "def:purely-unrectifiable";
   "def:flat" -> "lem:flatness-minimum";
   "def:flatness" -> "lem:flatness-minimum";
+  "def:flatness-cutoff" -> "lem:flatness-minimum";
   "def:plane" -> "lem:flatness-minimum";
   "lem:grassmannian" -> "lem:flatness-minimum";
   "lem:vague-moving-tests" -> "lem:flatness-minimum";
   "def:flatness" -> "lem:flatness-continuous";
+  "def:flatness-cutoff" -> "lem:flatness-continuous";
   "lem:flatness-minimum" -> "lem:flatness-continuous";
   "lem:grassmannian" -> "lem:flatness-continuous";
   "lem:vague-moving-tests" -> "lem:flatness-continuous";
@@ -435,6 +445,7 @@ digraph Preiss {
   "lem:pure-basic" -> "lem:decomposition";
   "def:density-api" -> "def:positive-density";
   "lem:ball-upper-hausdorff-bound" -> "lem:density-measure-comparison";
+  "lem:lower-ball-restrict-comparison" -> "lem:density-measure-comparison";
   "mathlib:vitali-enlargement" -> "lem:density-measure-comparison";
   "def:positive-density" -> "lem:zero-dimension";
   "def:rectifiable" -> "lem:zero-dimension";
@@ -527,6 +538,7 @@ digraph Preiss {
   "lem:dimensional-tangent-dilation" -> "lem:tangent-blowdown";
   "def:dimensional-blowup" -> "lem:flatness-radius-continuous";
   "def:flatness" -> "lem:flatness-radius-continuous";
+  "def:flatness-cutoff" -> "lem:flatness-radius-continuous";
   "lem:flatness-continuous" -> "lem:flatness-radius-continuous";
   "lem:vague-moving-blowups" -> "lem:flatness-radius-continuous";
   "def:dimensional-tangent" -> "lem:recenter";
@@ -599,12 +611,14 @@ digraph Preiss {
   "lem:annulus-integrability" -> "lem:gaussian-polynomial-integrable";
   "lem:gaussian-annulus-majorant" -> "lem:gaussian-polynomial-integrable";
   "def:plane" -> "lem:spectral-minimizing-plane";
+  "def:polynomial-growth-bound" -> "lem:moment-determination";
   "lem:gaussian-polynomial-integrable" -> "lem:moment-determination";
   "def:polynomial-growth-bound" -> "lem:gaussian-uniform-tails";
   "lem:gaussian-polynomial-integrable" -> "lem:gaussian-uniform-tails";
   "lem:gaussian-tail-series-bound" -> "lem:gaussian-uniform-tails";
   "def:polynomial-growth-bound" -> "lem:gaussian-parameter-derivative";
   "lem:gaussian-polynomial-integrable" -> "lem:gaussian-parameter-derivative";
+  "lem:polynomial-gaussian-integrability" -> "lem:gaussian-parameter-derivative";
   "gmt:vague" -> "lem:vague-countable-metric";
   "mathlib:measurable-hull" -> "lem:measurable-hull-holes";
   "mathlib:standard-gaussian" -> "lem:gaussian-wick-fourth";
@@ -649,6 +663,7 @@ digraph Preiss {
   "lem:radial" -> "lem:moment-norm-bound";
   "def:conical" -> "lem:homogeneous-energy-radial";
   "def:plane" -> "lem:homogeneous-energy-radial";
+  "lem:homogeneous-ball-scaling" -> "lem:homogeneous-energy-radial";
   "lem:radial" -> "lem:homogeneous-energy-radial";
   "def:moments" -> "lem:gaussian-translation-series";
   "def:unit-uniform" -> "lem:gaussian-translation-series";
@@ -890,6 +905,7 @@ digraph Preiss {
   "lem:gaussian-polynomial-integrable" -> "lem:rigidity-rescaled-error";
   "lem:rigidity-fourth-support-identity" -> "lem:rigidity-rescaled-error";
   "lem:uniform-cylinder-identity" -> "lem:rigidity-rescaled-error";
+  "def:bilinear-trace" -> "lem:rigidity-gaussian-trace";
   "def:moment-coefficients" -> "lem:rigidity-gaussian-trace";
   "def:plane" -> "lem:rigidity-gaussian-trace";
   "def:rigidity-adjusted-form" -> "lem:rigidity-gaussian-trace";
@@ -955,6 +971,7 @@ digraph Preiss {
   "def:first-crossing-data" -> "lem:first-crossing";
   "def:flat" -> "lem:first-crossing";
   "def:flatness" -> "lem:first-crossing";
+  "def:flatness-cutoff" -> "lem:first-crossing";
   "def:flatness-gap" -> "lem:first-crossing";
   "def:positive-density" -> "lem:first-crossing";
   "def:tangent-at-infinity" -> "lem:first-crossing";
@@ -973,6 +990,7 @@ digraph Preiss {
   "def:first-crossing-data" -> "lem:first-crossing-ratio";
   "def:flat" -> "lem:first-crossing-ratio";
   "def:flatness" -> "lem:first-crossing-ratio";
+  "def:flatness-cutoff" -> "lem:first-crossing-ratio";
   "def:positive-density" -> "lem:first-crossing-ratio";
   "def:unit-uniform" -> "lem:first-crossing-ratio";
   "lem:blowup-composition" -> "lem:first-crossing-ratio";
@@ -984,6 +1002,7 @@ digraph Preiss {
   "def:first-crossing-data" -> "lem:first-crossing-flat-infinity";
   "def:flat" -> "lem:first-crossing-flat-infinity";
   "def:flatness" -> "lem:first-crossing-flat-infinity";
+  "def:flatness-cutoff" -> "lem:first-crossing-flat-infinity";
   "def:flatness-gap" -> "lem:first-crossing-flat-infinity";
   "def:positive-density" -> "lem:first-crossing-flat-infinity";
   "def:tangent-at-infinity" -> "lem:first-crossing-flat-infinity";
@@ -1073,6 +1092,7 @@ digraph Preiss {
   "def:dimensional-blowup" -> "lem:uniform-scaling";
   "def:uniform-constant" -> "lem:uniform-scaling";
   "lem:blowup-composition" -> "lem:uniform-scaling";
+  "lem:dimensional-blowup-support" -> "lem:uniform-scaling";
   "lem:uniform-constant-one" -> "lem:uniform-scaling";
   "def:density-api" -> "lem:density-limit-values";
   "def:moments" -> "lem:moment-kernel-calculus";
@@ -1084,4 +1104,13 @@ digraph Preiss {
   "lem:gaussian-annulus-majorant" -> "lem:gaussian-tail-series-bound";
   "lem:gaussian-polynomial-integrable" -> "lem:gaussian-tail-series-bound";
   "lem:nonnegative-integral-cover-bound" -> "lem:gaussian-tail-series-bound";
+  "lem:gaussian-polynomial-integrable" -> "lem:polynomial-gaussian-integrability";
+  "def:conical" -> "lem:homogeneous-ball-scaling";
+  "def:dimensional-blowup" -> "lem:homogeneous-ball-scaling";
+  "mathlib:vitali-enlargement" -> "lem:lower-ball-small-cover";
+  "lem:lower-ball-small-cover" -> "lem:lower-ball-open-comparison";
+  "lem:lower-ball-open-comparison" -> "lem:lower-ball-hausdorff-bound";
+  "lem:lower-ball-hausdorff-bound" -> "lem:lower-ball-restrict-comparison";
+  "def:dimensional-blowup" -> "lem:dimensional-blowup-support";
+  "lem:measure-support-transport" -> "lem:dimensional-blowup-support";
 }

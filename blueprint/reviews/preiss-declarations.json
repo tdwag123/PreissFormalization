@@ -422,11 +422,13 @@
     "lem:gaussian-polynomial-integrable": {
       "lean_names": [
         "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
-        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound"
+        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound",
+        "Preiss.integral_gaussian_pos_of_ball_bound"
       ],
       "planned_lean_names": [
         "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
-        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound"
+        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound",
+        "Preiss.integral_gaussian_pos_of_ball_bound"
       ],
       "status": "source interface written",
       "files": [
@@ -464,10 +466,12 @@
     },
     "lem:gaussian-parameter-derivative": {
       "lean_names": [
-        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian"
+        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian",
+        "Preiss.hasDerivAt_integral_polynomial_gaussian_of_ball_bound"
       ],
       "planned_lean_names": [
-        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian"
+        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian",
+        "Preiss.hasDerivAt_integral_polynomial_gaussian_of_ball_bound"
       ],
       "status": "source interface written",
       "files": [
@@ -1373,6 +1377,25 @@
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
       ]
     },
+    "lem:homogeneous-ball-scaling": {
+      "lean_names": [
+        "Preiss.integral_homogeneous_closedBall",
+        "Preiss.integrableOn_homogeneous_closedBall"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Uniform/Homogeneous.lean"
+      ]
+    },
+    "lem:polynomial-gaussian-integrability": {
+      "lean_names": [
+        "Preiss.integrable_norm_pow_mul_polynomial_mul_gaussian"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ]
+    },
     "lem:annulus-integrability": {
       "lean_names": [
         "Preiss.integrable_of_summable_annulus_bounds"
@@ -1545,6 +1568,89 @@
       "files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ]
+    },
+    "lem:lower-ball-small-cover": {
+      "lean_names": [
+        "Preiss.exists_small_cover_of_ball_lower_bound"
+      ],
+      "files": [
+        "Preiss/Analysis/HausdorffLowerBound.lean"
+      ],
+      "planned_file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "status": "local Lean/kernel check passed; canonical integration pending"
+    },
+    "lem:lower-ball-open-comparison": {
+      "lean_names": [
+        "Preiss.hausdorff_le_open_mass_of_ball_lower_bound"
+      ],
+      "files": [
+        "Preiss/Analysis/HausdorffLowerBound.lean"
+      ],
+      "planned_file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "status": "local Lean/kernel check passed; canonical integration pending"
+    },
+    "lem:lower-ball-hausdorff-bound": {
+      "lean_names": [
+        "Preiss.hausdorff_le_measure_of_uniform_ball_lower_bound"
+      ],
+      "files": [
+        "Preiss/Analysis/HausdorffLowerBound.lean"
+      ],
+      "planned_file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "status": "local Lean/kernel check passed; canonical integration pending"
+    },
+    "lem:lower-ball-restrict-comparison": {
+      "lean_names": [
+        "Preiss.hausdorff_restrict_le_measure_of_uniform_ball_lower_bound"
+      ],
+      "files": [
+        "Preiss/Analysis/HausdorffLowerBound.lean"
+      ],
+      "planned_file": "Preiss/Analysis/HausdorffLowerBound.lean",
+      "status": "local Lean/kernel check passed; canonical integration pending"
+    },
+    "lem:measure-support-transport": {
+      "lean_names": [
+        "Preiss.measure_support_map_homeomorph",
+        "Preiss.measure_support_smul"
+      ],
+      "planned_lean_names": [
+        "Preiss.measure_support_map_homeomorph",
+        "Preiss.measure_support_smul"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Analysis/MeasureSupport.lean"
+      ],
+      "planned_file": "Preiss/Analysis/MeasureSupport.lean",
+      "verification": "Local Lean/kernel scratch check passed with only standard axioms; full integration CI is separate."
+    },
+    "lem:dimensional-blowup-support": {
+      "lean_names": [
+        "Preiss.dimensionalBlowup_support",
+        "Preiss.regular_dimensionalBlowup"
+      ],
+      "planned_lean_names": [
+        "Preiss.dimensionalBlowup_support",
+        "Preiss.regular_dimensionalBlowup"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Tangent/BlowupSupport.lean"
+      ],
+      "planned_file": "Preiss/Tangent/BlowupSupport.lean",
+      "verification": "Local Lean/kernel scratch check passed with only standard axioms; full integration CI is separate."
+    },
+    "thm:rectifiable-iff-flat": {
+      "lean_names": [
+        "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
+        "Preiss.rectifiable_iff_density_and_tangent_plane"
+      ],
+      "files": [
+        "Preiss/Rectifiability/TangentCharacterization.lean"
+      ],
+      "planned_file": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "status": "Assembly proofs; necessity and sufficiency dependencies still unfinished."
     }
   },
   "pending": [],

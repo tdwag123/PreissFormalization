@@ -1,12 +1,12 @@
 {
-  "status": "All source interfaces written; no local compile after host memory exhaustion.",
+  "status": "Full project elaboration and compiled kernel axiom audit passed at 759c384. Current source statuses below are not certification of later edits. Newly added cone-escape, WLA lower-bound, uniform-scaling, and support proofs passed a separate local Lean/kernel check with only standard axioms; full integration CI remains separate.",
   "labels": {
     "lem:uniform-vague-closed": {
       "lean_name": "Preiss.isUnitUniform_of_vague",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.isUnitUniform_of_vague"
       ],
@@ -15,8 +15,8 @@
           "lean_name": "Preiss.isUnitUniform_of_vague",
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -24,8 +24,8 @@
       "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.exists_vague_subsequence_unitUniform"
       ],
@@ -34,8 +34,8 @@
           "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -43,8 +43,8 @@
       "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero"
       ],
@@ -53,8 +53,8 @@
           "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -62,8 +62,8 @@
       "lean_name": "Preiss.unitUniform_totallyBounded",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.unitUniform_totallyBounded"
       ],
@@ -72,8 +72,8 @@
           "lean_name": "Preiss.unitUniform_totallyBounded",
           "file": "Preiss/Uniform/Compactness.lean",
           "module": "Preiss.Uniform.Compactness",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -81,8 +81,8 @@
       "lean_name": "Preiss.dimensionalTangent_ball_constant",
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.dimensionalTangent_ball_constant"
       ],
@@ -91,8 +91,8 @@
           "lean_name": "Preiss.dimensionalTangent_ball_constant",
           "file": "Preiss/Uniform/TangentNormalization.lean",
           "module": "Preiss.Uniform.TangentNormalization",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -100,8 +100,8 @@
       "lean_name": "Preiss.density_normalization_unitUniform",
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.density_normalization_unitUniform"
       ],
@@ -110,8 +110,8 @@
           "lean_name": "Preiss.density_normalization_unitUniform",
           "file": "Preiss/Uniform/TangentNormalization.lean",
           "module": "Preiss.Uniform.TangentNormalization",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -119,8 +119,8 @@
       "lean_name": "Preiss.uniform_hyperplane_transport",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.uniform_hyperplane_transport",
         "Preiss.uniformWithConstant_transport",
@@ -132,29 +132,29 @@
           "lean_name": "Preiss.uniform_hyperplane_transport",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.uniformWithConstant_transport",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.uniformWithConstant_map_linearIsometry",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.isUnitUniform_map_linearIsometry",
           "file": "Preiss/Uniform/Transport.lean",
           "module": "Preiss.Uniform.Transport",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -162,8 +162,8 @@
       "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
       "file": "Preiss/Uniform/Classification.lean",
       "module": "Preiss.Uniform.Classification",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.unitUniform_eq_flat_of_support_subset_plane",
         "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane"
@@ -173,15 +173,15 @@
           "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
           "file": "Preiss/Uniform/Classification.lean",
           "module": "Preiss.Uniform.Classification",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
           "file": "Preiss/Uniform/Classification.lean",
           "module": "Preiss.Uniform.Classification",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -189,8 +189,8 @@
       "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.exists_halfSpace_dimensionalTangent"
       ],
@@ -199,8 +199,8 @@
           "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
           "file": "Preiss/Uniform/DimensionReduction.lean",
           "module": "Preiss.Uniform.DimensionReduction",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -208,8 +208,8 @@
       "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.exists_hyperplane_eq_or_dimensionalTangent"
       ],
@@ -218,8 +218,8 @@
           "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
           "file": "Preiss/Uniform/DimensionReduction.lean",
           "module": "Preiss.Uniform.DimensionReduction",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -227,8 +227,8 @@
       "lean_name": "Preiss.uniform_dimension_reduction",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.uniform_dimension_reduction"
       ],
@@ -237,8 +237,8 @@
           "lean_name": "Preiss.uniform_dimension_reduction",
           "file": "Preiss/Uniform/DimensionReduction.lean",
           "module": "Preiss.Uniform.DimensionReduction",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -246,8 +246,8 @@
       "lean_name": "Preiss.uniform_has_flat_pseudotangent",
       "file": "Preiss/Uniform/FlatPseudotangent.lean",
       "module": "Preiss.Uniform.FlatPseudotangent",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.uniform_has_flat_pseudotangent"
       ],
@@ -256,8 +256,8 @@
           "lean_name": "Preiss.uniform_has_flat_pseudotangent",
           "file": "Preiss/Uniform/FlatPseudotangent.lean",
           "module": "Preiss.Uniform.FlatPseudotangent",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     },
@@ -265,8 +265,8 @@
       "lean_name": "Preiss.exists_tangentAtInfinity",
       "file": "Preiss/Uniform/BlowdownCompactness.lean",
       "module": "Preiss.Uniform.BlowdownCompactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending",
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks.",
       "lean_names": [
         "Preiss.exists_tangentAtInfinity"
       ],
@@ -275,8 +275,8 @@
           "lean_name": "Preiss.exists_tangentAtInfinity",
           "file": "Preiss/Uniform/BlowdownCompactness.lean",
           "module": "Preiss.Uniform.BlowdownCompactness",
-          "status": "sorry_placeholder",
-          "verification": "source reviewed; compilation pending"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ]
     }
@@ -288,14 +288,14 @@
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
         "status": "definition",
-        "verification": "source reviewed; compilation pending"
+        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
       },
       {
         "lean_name": "Preiss.isUnitUniform_iff_constant_one",
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
-        "status": "sorry_placeholder",
-        "verification": "source reviewed; compilation pending"
+        "status": "proof_candidate",
+        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
       }
     ],
     "lem:blowup-composition": [
@@ -303,24 +303,25 @@
         "lean_name": "Preiss.uniformWithConstant_dimensionalBlowup",
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
-        "status": "sorry_placeholder",
-        "verification": "source reviewed; compilation pending"
+        "status": "proof_candidate",
+        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
       },
       {
         "lean_name": "Preiss.isUnitUniform_dimensionalBlowup",
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
-        "status": "sorry_placeholder",
-        "verification": "source reviewed; compilation pending"
+        "status": "proof_candidate",
+        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
       },
       {
         "lean_name": "Preiss.uniformWithConstant_smul",
         "file": "Preiss/Uniform/Scaling.lean",
         "module": "Preiss.Uniform.Scaling",
-        "status": "sorry_placeholder",
-        "verification": "source reviewed; compilation pending"
+        "status": "proof_candidate",
+        "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
       }
-    ]
+    ],
+    "lem:uniform-transport": []
   },
   "declarations": {
     "IsUniformWithConstant": {
@@ -328,154 +329,182 @@
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
       "status": "definition",
-      "verification": "source reviewed; compilation pending"
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isUnitUniform_iff_constant_one": {
       "lean_name": "Preiss.isUnitUniform_iff_constant_one",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniformWithConstant_dimensionalBlowup": {
       "lean_name": "Preiss.uniformWithConstant_dimensionalBlowup",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isUnitUniform_dimensionalBlowup": {
       "lean_name": "Preiss.isUnitUniform_dimensionalBlowup",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniformWithConstant_smul": {
       "lean_name": "Preiss.uniformWithConstant_smul",
       "file": "Preiss/Uniform/Scaling.lean",
       "module": "Preiss.Uniform.Scaling",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isUnitUniform_of_vague": {
       "lean_name": "Preiss.isUnitUniform_of_vague",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_vague_subsequence_unitUniform": {
       "lean_name": "Preiss.exists_vague_subsequence_unitUniform",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_vague_subsequence_uniform_of_dist_support_tendsto_zero": {
       "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "unitUniform_totallyBounded": {
       "lean_name": "Preiss.unitUniform_totallyBounded",
       "file": "Preiss/Uniform/Compactness.lean",
       "module": "Preiss.Uniform.Compactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "dimensionalTangent_ball_constant": {
       "lean_name": "Preiss.dimensionalTangent_ball_constant",
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "density_normalization_unitUniform": {
       "lean_name": "Preiss.density_normalization_unitUniform",
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "module": "Preiss.Uniform.TangentNormalization",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniform_hyperplane_transport": {
       "lean_name": "Preiss.uniform_hyperplane_transport",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniformWithConstant_transport": {
       "lean_name": "Preiss.uniformWithConstant_transport",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "unitUniform_eq_flat_of_support_subset_plane": {
       "lean_name": "Preiss.unitUniform_eq_flat_of_support_subset_plane",
       "file": "Preiss/Uniform/Classification.lean",
       "module": "Preiss.Uniform.Classification",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniformWithConstant_eq_flat_of_support_subset_plane": {
       "lean_name": "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
       "file": "Preiss/Uniform/Classification.lean",
       "module": "Preiss.Uniform.Classification",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_halfSpace_dimensionalTangent": {
       "lean_name": "Preiss.exists_halfSpace_dimensionalTangent",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_hyperplane_eq_or_dimensionalTangent": {
       "lean_name": "Preiss.exists_hyperplane_eq_or_dimensionalTangent",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniform_dimension_reduction": {
       "lean_name": "Preiss.uniform_dimension_reduction",
       "file": "Preiss/Uniform/DimensionReduction.lean",
       "module": "Preiss.Uniform.DimensionReduction",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniform_has_flat_pseudotangent": {
       "lean_name": "Preiss.uniform_has_flat_pseudotangent",
       "file": "Preiss/Uniform/FlatPseudotangent.lean",
       "module": "Preiss.Uniform.FlatPseudotangent",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_tangentAtInfinity": {
       "lean_name": "Preiss.exists_tangentAtInfinity",
       "file": "Preiss/Uniform/BlowdownCompactness.lean",
       "module": "Preiss.Uniform.BlowdownCompactness",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "uniformWithConstant_map_linearIsometry": {
       "lean_name": "Preiss.uniformWithConstant_map_linearIsometry",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isUnitUniform_map_linearIsometry": {
       "lean_name": "Preiss.isUnitUniform_map_linearIsometry",
       "file": "Preiss/Uniform/Transport.lean",
       "module": "Preiss.Uniform.Transport",
-      "status": "sorry_placeholder",
-      "verification": "source reviewed; compilation pending"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+    },
+    "measure_support_map_homeomorph": {
+      "lean_name": "Preiss.measure_support_map_homeomorph",
+      "file": "Preiss/Analysis/MeasureSupport.lean",
+      "module": "Preiss.Analysis.MeasureSupport",
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+    },
+    "measure_support_smul": {
+      "lean_name": "Preiss.measure_support_smul",
+      "file": "Preiss/Analysis/MeasureSupport.lean",
+      "module": "Preiss.Analysis.MeasureSupport",
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+    },
+    "dimensionalBlowup_support": {
+      "lean_name": "Preiss.dimensionalBlowup_support",
+      "file": "Preiss/Tangent/BlowupSupport.lean",
+      "module": "Preiss.Tangent.BlowupSupport",
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
+    },
+    "regular_dimensionalBlowup": {
+      "lean_name": "Preiss.regular_dimensionalBlowup",
+      "file": "Preiss/Tangent/BlowupSupport.lean",
+      "module": "Preiss.Tangent.BlowupSupport",
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     }
   },
   "modules": [
@@ -484,7 +513,10 @@
       "file": "Preiss/Uniform/Scaling.lean",
       "imports": [
         "Preiss.Uniform.Defs",
-        "Preiss.Tangent.Algebra"
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.BlowupSupport",
+        "Mathlib.Tactic.Abel",
+        "Mathlib.Tactic.Ring"
       ],
       "modern_module": true
     },
@@ -556,6 +588,25 @@
         "Preiss.Tangent.Defs"
       ],
       "modern_module": false
+    },
+    {
+      "module": "Preiss.Analysis.MeasureSupport",
+      "file": "Preiss/Analysis/MeasureSupport.lean",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.MeasureTheory.Measure.Map"
+      ],
+      "modern_module": true
+    },
+    {
+      "module": "Preiss.Tangent.BlowupSupport",
+      "file": "Preiss/Tangent/BlowupSupport.lean",
+      "imports": [
+        "Preiss.Tangent.Blowup",
+        "Preiss.Analysis.MeasureSupport",
+        "Mathlib.Topology.Algebra.ConstMulAction"
+      ],
+      "modern_module": true
     }
   ],
   "mathematical_notes": [

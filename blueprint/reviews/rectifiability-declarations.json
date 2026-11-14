@@ -1,5 +1,5 @@
 {
-  "status": "Full project statement elaboration and compiled kernel axiom audit passed at ce7e39d. Status fields below reflect current source, not certification of later edits; proof candidates require their own local or Linux CI checks. Local scratch checks for the newly added finite-dimensional extension and cone-to-graph proofs passed with only standard Lean axioms.",
+  "status": "Full project elaboration and compiled kernel axiom audit passed at 759c384. Current source statuses below are not certification of later edits. Newly added cone-escape, WLA lower-bound, uniform-scaling, and support proofs passed a separate local Lean/kernel check with only standard axioms; full integration CI remains separate.",
   "labels": {
     "def:cone": {
       "lean_name": "Preiss.cone",
@@ -15,16 +15,18 @@
           "lean_name": "Preiss.cone",
           "file": "Preiss/Geometry/Cones.lean",
           "module": "Preiss.Geometry.Cones",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.closedTube",
           "file": "Preiss/Geometry/Cones.lean",
           "module": "Preiss.Geometry.Cones",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:graph-parametrization": {
       "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
@@ -40,16 +42,18 @@
           "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.graphMap",
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:plane-hausdorff": {
       "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
@@ -68,34 +72,39 @@
           "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.flatOn",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.unitFlat",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.unitFlat_closedBall",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.planeMeasure_ball_and_sphere",
           "file": "Preiss/Geometry/PlaneMeasure.lean",
           "module": "Preiss.Geometry.PlaneMeasure",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:graph-borel-finite": {
       "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
@@ -110,10 +119,11 @@
           "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:graph-rectifiable": {
       "lean_name": "Preiss.countablyRectifiable_subset_graph",
@@ -128,10 +138,11 @@
           "lean_name": "Preiss.countablyRectifiable_subset_graph",
           "file": "Preiss/Rectifiability/Graphs.lean",
           "module": "Preiss.Rectifiability.Graphs",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:domain-extension": {
       "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
@@ -147,16 +158,18 @@
           "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
           "file": "Preiss/Geometry/LipschitzExtension.lean",
           "module": "Preiss.Geometry.LipschitzExtension",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.exists_lipschitz_extension_finiteDimensional",
           "file": "Preiss/Geometry/LipschitzExtension.lean",
           "module": "Preiss.Geometry.LipschitzExtension",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:carrier-closure": {
       "lean_name": "Preiss.countablyRectifiable_iUnion",
@@ -176,37 +189,42 @@
           "file": "Preiss/Rectifiability/Basic.lean",
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
-          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.countablyRectifiable_mono",
           "file": "Preiss/Rectifiability/Basic.lean",
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
-          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.countablyRectifiable_image",
           "file": "Preiss/Rectifiability/Basic.lean",
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
-          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.countablyRectifiable_of_sdiff_null",
           "file": "Preiss/Rectifiability/Basic.lean",
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
-          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.countablyRectifiable_union",
           "file": "Preiss/Rectifiability/Basic.lean",
           "module": "Preiss.Rectifiability.Basic",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:borel-carrier": {
       "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
@@ -221,10 +239,11 @@
           "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
           "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
           "module": "Preiss.Rectifiability.EuclideanCarrier",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:carrier-calculus": {
       "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
@@ -240,10 +259,11 @@
           "file": "Preiss/Rectifiability/Basic.lean",
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
-          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+          "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:cone-graph": {
       "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
@@ -258,10 +278,11 @@
           "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
           "file": "Preiss/Rectifiability/Cones.lean",
           "module": "Preiss.Rectifiability.Cones",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "def:purely-unrectifiable": {
       "lean_name": "Preiss.PurelyUnrectifiable",
@@ -276,10 +297,11 @@
           "lean_name": "Preiss.PurelyUnrectifiable",
           "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
           "module": "Preiss.Rectifiability.PurelyUnrectifiable",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:pure-basic": {
       "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
@@ -295,16 +317,18 @@
           "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
           "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
           "module": "Preiss.Rectifiability.PurelyUnrectifiable",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.purelyUnrectifiable_mono",
           "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
           "module": "Preiss.Rectifiability.PurelyUnrectifiable",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:decomposition": {
       "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
@@ -320,16 +344,18 @@
           "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
           "file": "Preiss/Rectifiability/Decomposition.lean",
           "module": "Preiss.Rectifiability.Decomposition",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.rectifiable_pure_partition_unique",
           "file": "Preiss/Rectifiability/Decomposition.lean",
           "module": "Preiss.Rectifiability.Decomposition",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:density-measure-comparison": {
       "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
@@ -346,22 +372,25 @@
           "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
           "file": "Preiss/Density/PowerComparison.lean",
           "module": "Preiss.Density.PowerComparison",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.UpperPowerBoundAt",
           "file": "Preiss/Density/PowerComparison.lean",
           "module": "Preiss.Density.PowerComparison",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
           "file": "Preiss/Density/PowerComparison.lean",
           "module": "Preiss.Density.PowerComparison",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:absolute-continuity": {
       "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
@@ -376,10 +405,11 @@
           "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
           "file": "Preiss/Density/HausdorffComparison.lean",
           "module": "Preiss.Density.HausdorffComparison",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:finite-pieces": {
       "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
@@ -394,10 +424,11 @@
           "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
           "file": "Preiss/Density/FinitePieces.lean",
           "module": "Preiss.Density.FinitePieces",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:representation": {
       "lean_name": "Preiss.rectifiable_iff_density_representation",
@@ -412,10 +443,11 @@
           "lean_name": "Preiss.rectifiable_iff_density_representation",
           "file": "Preiss/Rectifiability/DensityRepresentation.lean",
           "module": "Preiss.Rectifiability.DensityRepresentation",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:finite-piece-transfer": {
       "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
@@ -430,10 +462,11 @@
           "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
           "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:dimensional-compactness": {
       "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
@@ -448,10 +481,11 @@
           "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
           "file": "Preiss/Tangent/Compactness.lean",
           "module": "Preiss.Tangent.Compactness",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:flat-limit-tube": {
       "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
@@ -466,10 +500,11 @@
           "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
           "file": "Preiss/Tangent/FlatApproximation.lean",
           "module": "Preiss.Tangent.FlatApproximation",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:flat-limit-moving-balls": {
       "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
@@ -484,10 +519,11 @@
           "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
           "file": "Preiss/Tangent/FlatApproximation.lean",
           "module": "Preiss.Tangent.FlatApproximation",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:flat-to-approximation": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
@@ -502,10 +538,11 @@
           "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
           "file": "Preiss/Tangent/FlatApproximation.lean",
           "module": "Preiss.Tangent.FlatApproximation",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:weak-approximation-lower-density": {
       "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
@@ -521,16 +558,18 @@
           "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.lower_power_bound_of_weakApproximation",
           "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Basic",
-          "status": "unproved_statement"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:weak-approximation-deletion": {
       "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
@@ -546,16 +585,18 @@
           "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
           "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.negligibleDeletionAt",
           "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:weak-approximation-restrict-ae": {
       "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
@@ -570,10 +611,11 @@
           "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "def:weak-approximation-good-set": {
       "lean_name": "Preiss.weakApproximationGoodSet",
@@ -588,10 +630,11 @@
           "lean_name": "Preiss.weakApproximationGoodSet",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:closed-weak-approximation-good-set": {
       "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
@@ -606,10 +649,11 @@
           "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:weak-approximation-good-exhaustion": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
@@ -624,10 +668,11 @@
           "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:uniform-compact-selection": {
       "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
@@ -642,10 +687,11 @@
           "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:tube-support-upgrade": {
       "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
@@ -660,16 +706,17 @@
           "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:pure-cone-escape": {
       "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
       "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable"
       ],
@@ -678,10 +725,11 @@
           "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
           "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
-          "status": "unproved_statement"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:projected-tube-slab-bound": {
       "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
@@ -696,10 +744,11 @@
           "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
           "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
           "module": "Preiss.Rectifiability.ProjectionEstimate",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:pure-wla-null-projection": {
       "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
@@ -714,10 +763,11 @@
           "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
           "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:nested-compact-approximation": {
       "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
@@ -733,16 +783,18 @@
           "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.TwoSidedApproximation",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:packing-base-point": {
       "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
@@ -758,16 +810,18 @@
           "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:projection-hole-cover": {
       "lean_name": "Preiss.exists_projection_hole_disk_family",
@@ -784,22 +838,25 @@
           "lean_name": "Preiss.exists_projection_hole_disk_family",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.HoleFamily",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.projected_distance_le_of_lower_mass",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:discarded-cylinder-sum": {
       "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
@@ -814,10 +871,11 @@
           "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:empty-cylinder-direction": {
       "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
@@ -833,16 +891,18 @@
           "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
           "file": "Preiss/Geometry/Cylinders.lean",
           "module": "Preiss.Geometry.Cylinders",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.cylinder",
           "file": "Preiss/Geometry/Cylinders.lean",
           "module": "Preiss.Geometry.Cylinders",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:column-packing": {
       "lean_name": "Preiss.exists_column_disjoint_balls",
@@ -857,10 +917,11 @@
           "lean_name": "Preiss.exists_column_disjoint_balls",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:packing-contradiction": {
       "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
@@ -876,16 +937,18 @@
           "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.false_of_column_mass_exceeds_upper_bound",
           "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "thm:mm-set": {
       "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
@@ -900,10 +963,11 @@
           "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
           "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "thm:mm-measure": {
       "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
@@ -918,10 +982,11 @@
           "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
           "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:lipschitz-null-image": {
       "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
@@ -936,10 +1001,11 @@
           "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:rank-deficient-image-null": {
       "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
@@ -954,10 +1020,11 @@
           "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:full-rank-graph-pieces": {
       "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
@@ -972,10 +1039,11 @@
           "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:graphs": {
       "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
@@ -990,10 +1058,11 @@
           "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:graph-affine-area": {
       "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
@@ -1009,16 +1078,18 @@
           "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
           "file": "Preiss/Rectifiability/GraphArea.lean",
           "module": "Preiss.Rectifiability.GraphArea",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.linearJacobian",
           "file": "Preiss/Rectifiability/GraphArea.lean",
           "module": "Preiss.Rectifiability.GraphArea",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:graph-area": {
       "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
@@ -1033,10 +1104,11 @@
           "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
           "file": "Preiss/Rectifiability/GraphArea.lean",
           "module": "Preiss.Rectifiability.GraphArea",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:graph-blowup": {
       "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
@@ -1051,10 +1123,11 @@
           "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
           "file": "Preiss/Rectifiability/GraphBlowup.lean",
           "module": "Preiss.Rectifiability.GraphBlowup",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:normalized-density-transfer": {
       "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
@@ -1069,10 +1142,11 @@
           "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
           "file": "Preiss/Tangent/DensityTransfer.lean",
           "module": "Preiss.Tangent.DensityTransfer",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "thm:rectifiable-blowup": {
       "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
@@ -1087,10 +1161,11 @@
           "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
           "file": "Preiss/Rectifiability/TangentNecessity.lean",
           "module": "Preiss.Rectifiability.TangentNecessity",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "cor:rectifiable-tangent-plane": {
       "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
@@ -1105,10 +1180,11 @@
           "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
           "file": "Preiss/Rectifiability/TangentNecessity.lean",
           "module": "Preiss.Rectifiability.TangentNecessity",
-          "status": "unproved_statement"
+          "status": "unproved_statement",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "thm:rectifiable-iff-flat": {
       "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
@@ -1123,10 +1199,11 @@
           "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
           "file": "Preiss/Rectifiability/TangentCharacterization.lean",
           "module": "Preiss.Rectifiability.TangentCharacterization",
-          "status": "depends_on_unproved"
+          "status": "depends_on_unproved",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lem:grassmannian": {
       "lean_name": "Preiss.isCompact_rankProjectionSet",
@@ -1146,40 +1223,46 @@
           "lean_name": "Preiss.isCompact_rankProjectionSet",
           "file": "Preiss/Geometry/PlaneTopology.lean",
           "module": "Preiss.Geometry.PlaneTopology",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.proj",
           "file": "Preiss/Geometry/Projections.lean",
           "module": "Preiss.Geometry.Projections",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.planeProjection",
           "file": "Preiss/Geometry/Projections.lean",
           "module": "Preiss.Geometry.Projections",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.planeProjection_injective",
           "file": "Preiss/Geometry/Projections.lean",
           "module": "Preiss.Geometry.Projections",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.rankProjectionSet",
           "file": "Preiss/Geometry/PlaneTopology.lean",
           "module": "Preiss.Geometry.PlaneTopology",
-          "status": "definition"
+          "status": "definition",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         },
         {
           "lean_name": "Preiss.range_planeProjection",
           "file": "Preiss/Geometry/PlaneTopology.lean",
           "module": "Preiss.Geometry.PlaneTopology",
-          "status": "proof_candidate"
+          "status": "proof_candidate",
+          "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
         }
       ],
-      "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     }
   },
   "declarations": {
@@ -1187,492 +1270,573 @@
       "lean_name": "Preiss.proj",
       "file": "Preiss/Geometry/Projections.lean",
       "module": "Preiss.Geometry.Projections",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "planeProjection": {
       "lean_name": "Preiss.planeProjection",
       "file": "Preiss/Geometry/Projections.lean",
       "module": "Preiss.Geometry.Projections",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "planeProjection_injective": {
       "lean_name": "Preiss.planeProjection_injective",
       "file": "Preiss/Geometry/Projections.lean",
       "module": "Preiss.Geometry.Projections",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "rankProjectionSet": {
       "lean_name": "Preiss.rankProjectionSet",
       "file": "Preiss/Geometry/PlaneTopology.lean",
       "module": "Preiss.Geometry.PlaneTopology",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "range_planeProjection": {
       "lean_name": "Preiss.range_planeProjection",
       "file": "Preiss/Geometry/PlaneTopology.lean",
       "module": "Preiss.Geometry.PlaneTopology",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isCompact_rankProjectionSet": {
       "lean_name": "Preiss.isCompact_rankProjectionSet",
       "file": "Preiss/Geometry/PlaneTopology.lean",
       "module": "Preiss.Geometry.PlaneTopology",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "closedTube": {
       "lean_name": "Preiss.closedTube",
       "file": "Preiss/Geometry/Cones.lean",
       "module": "Preiss.Geometry.Cones",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "cone": {
       "lean_name": "Preiss.cone",
       "file": "Preiss/Geometry/Cones.lean",
       "module": "Preiss.Geometry.Cones",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "cylinder": {
       "lean_name": "Preiss.cylinder",
       "file": "Preiss/Geometry/Cylinders.lean",
       "module": "Preiss.Geometry.Cylinders",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_unit_small_projection_of_avoids_cylinder": {
       "lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
       "file": "Preiss/Geometry/Cylinders.lean",
       "module": "Preiss.Geometry.Cylinders",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "flatOn": {
       "lean_name": "Preiss.flatOn",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "map_hausdorffMeasure_subtype_eq_restrict": {
       "lean_name": "Preiss.map_hausdorffMeasure_subtype_eq_restrict",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "planeMeasure_ball_and_sphere": {
       "lean_name": "Preiss.planeMeasure_ball_and_sphere",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_lipschitz_extension_euclidean": {
       "lean_name": "Preiss.exists_lipschitz_extension_euclidean",
       "file": "Preiss/Geometry/LipschitzExtension.lean",
       "module": "Preiss.Geometry.LipschitzExtension",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "graphMap": {
       "lean_name": "Preiss.graphMap",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "graphMap_lipschitz_antilipschitz": {
       "lean_name": "Preiss.graphMap_lipschitz_antilipschitz",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isClosed_and_measure_closedBall_lt_top": {
       "lean_name": "Preiss.isClosed_and_measure_closedBall_lt_top",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "countablyRectifiable_subset_graph": {
       "lean_name": "Preiss.countablyRectifiable_subset_graph",
       "file": "Preiss/Rectifiability/Graphs.lean",
       "module": "Preiss.Rectifiability.Graphs",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "countablyRectifiable_mono": {
       "lean_name": "Preiss.countablyRectifiable_mono",
       "file": "Preiss/Rectifiability/Basic.lean",
       "module": "Preiss.Rectifiability.Basic",
-      "status": "sorry_placeholder",
-      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+      "status": "proof_candidate",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "countablyRectifiable_iUnion": {
       "lean_name": "Preiss.countablyRectifiable_iUnion",
       "file": "Preiss/Rectifiability/Basic.lean",
       "module": "Preiss.Rectifiability.Basic",
-      "status": "sorry_placeholder",
-      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+      "status": "proof_candidate",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "countablyRectifiable_image": {
       "lean_name": "Preiss.countablyRectifiable_image",
       "file": "Preiss/Rectifiability/Basic.lean",
       "module": "Preiss.Rectifiability.Basic",
-      "status": "sorry_placeholder",
-      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+      "status": "proof_candidate",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "countablyRectifiable_of_sdiff_null": {
       "lean_name": "Preiss.countablyRectifiable_of_sdiff_null",
       "file": "Preiss/Rectifiability/Basic.lean",
       "module": "Preiss.Rectifiability.Basic",
-      "status": "sorry_placeholder",
-      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+      "status": "proof_candidate",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isRectifiableMeasure_of_countable_restrict": {
       "lean_name": "Preiss.isRectifiableMeasure_of_countable_restrict",
       "file": "Preiss/Rectifiability/Basic.lean",
       "module": "Preiss.Rectifiability.Basic",
-      "status": "sorry_placeholder",
-      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+      "status": "proof_candidate",
+      "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed.",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_borel_sigmaFinite_carrier": {
       "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
       "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
       "module": "Preiss.Rectifiability.EuclideanCarrier",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_lipschitzGraph_of_pairwise_mem_cone": {
       "lean_name": "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone",
       "file": "Preiss/Rectifiability/Cones.lean",
       "module": "Preiss.Rectifiability.Cones",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "PurelyUnrectifiable": {
       "lean_name": "Preiss.PurelyUnrectifiable",
       "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
       "module": "Preiss.Rectifiability.PurelyUnrectifiable",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "purelyUnrectifiable_mono": {
       "lean_name": "Preiss.purelyUnrectifiable_mono",
       "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
       "module": "Preiss.Rectifiability.PurelyUnrectifiable",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "purelyUnrectifiable_measure_inter_eq_zero": {
       "lean_name": "Preiss.purelyUnrectifiable_measure_inter_eq_zero",
       "file": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
       "module": "Preiss.Rectifiability.PurelyUnrectifiable",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_rectifiable_purelyUnrectifiable_partition": {
       "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
       "file": "Preiss/Rectifiability/Decomposition.lean",
       "module": "Preiss.Rectifiability.Decomposition",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "rectifiable_pure_partition_unique": {
       "lean_name": "Preiss.rectifiable_pure_partition_unique",
       "file": "Preiss/Rectifiability/Decomposition.lean",
       "module": "Preiss.Rectifiability.Decomposition",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "UpperPowerBoundAt": {
       "lean_name": "Preiss.UpperPowerBoundAt",
       "file": "Preiss/Density/PowerComparison.lean",
       "module": "Preiss.Density.PowerComparison",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "measure_restrict_le_hausdorff_of_ball_bounds": {
       "lean_name": "Preiss.measure_restrict_le_hausdorff_of_ball_bounds",
       "file": "Preiss/Density/PowerComparison.lean",
       "module": "Preiss.Density.PowerComparison",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "hausdorff_restrict_le_measure_of_ball_bounds": {
       "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
       "file": "Preiss/Density/PowerComparison.lean",
       "module": "Preiss.Density.PowerComparison",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "absolutelyContinuous_hausdorff_of_upper_density_finite": {
       "lean_name": "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite",
       "file": "Preiss/Density/HausdorffComparison.lean",
       "module": "Preiss.Density.HausdorffComparison",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_finite_hausdorff_pieces_of_density_bounds": {
       "lean_name": "Preiss.exists_finite_hausdorff_pieces_of_density_bounds",
       "file": "Preiss/Density/FinitePieces.lean",
       "module": "Preiss.Density.FinitePieces",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "rectifiable_iff_density_representation": {
       "lean_name": "Preiss.rectifiable_iff_density_representation",
       "file": "Preiss/Rectifiability/DensityRepresentation.lean",
       "module": "Preiss.Rectifiability.DensityRepresentation",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_dimensional_tangent_subseq_of_density_bounds": {
       "lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
       "file": "Preiss/Tangent/Compactness.lean",
       "module": "Preiss.Tangent.Compactness",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "tendsto_mass_outside_tube_of_flat_limit": {
       "lean_name": "Preiss.tendsto_mass_outside_tube_of_flat_limit",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "module": "Preiss.Tangent.FlatApproximation",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "eventually_ball_mass_lower_bound_of_flat_limit": {
       "lean_name": "Preiss.eventually_ball_mass_lower_bound_of_flat_limit",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "module": "Preiss.Tangent.FlatApproximation",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "weaklyLinearlyApproximableAt_of_all_tangents_flat": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "module": "Preiss.Tangent.FlatApproximation",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lower_power_bound_of_weakApproximation": {
       "lean_name": "Preiss.lower_power_bound_of_weakApproximation",
       "file": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Basic",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "negligibleDeletionAt": {
       "lean_name": "Preiss.negligibleDeletionAt",
       "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "weakApproximation_restrict_of_negligible_sdiff": {
       "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
       "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "weakApproximationGoodSet": {
       "lean_name": "Preiss.weakApproximationGoodSet",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isClosed_weakApproximationGoodSet": {
       "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "weaklyLinearlyApproximableAt_iff_goodSet_exhaustion": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_compact_uniform_weakApproximation_subset": {
       "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "subset_tube_of_lower_mass_and_small_outside_mass": {
       "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "hausdorffMeasure_projected_tube_le": {
       "lean_name": "Preiss.hausdorffMeasure_projected_tube_le",
       "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
       "module": "Preiss.Rectifiability.ProjectionEstimate",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "ae_exists_outside_cone_of_purelyUnrectifiable": {
       "lean_name": "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable",
       "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation": {
       "lean_name": "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "TwoSidedApproximation": {
       "lean_name": "Preiss.TwoSidedApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_nested_compact_twoSided_approximation": {
       "lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "HoleFamily": {
       "lean_name": "Preiss.HoleFamily",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_projection_hole_disk_family": {
       "lean_name": "Preiss.exists_projection_hole_disk_family",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "projected_distance_le_of_lower_mass": {
       "lean_name": "Preiss.projected_distance_le_of_lower_mass",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "tsum_hole_radii_bad_indices_le": {
       "lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_column_disjoint_balls": {
       "lean_name": "Preiss.exists_column_disjoint_balls",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "false_of_column_mass_exceeds_upper_bound": {
       "lean_name": "Preiss.false_of_column_mass_exceeds_upper_bound",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "false_of_null_projections_and_uniform_weakApproximation": {
       "lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.Packing",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "lower_density_pos_of_weakApproximation": {
       "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "ae_weaklyLinearlyApproximableAt_subset": {
       "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_upper_mass_small_sdiff_point": {
       "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "countablyRectifiable_of_ae_weaklyLinearlyApproximableAt": {
       "lean_name": "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt",
       "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "ae_density_bounds_and_flat_tangents_restrict_hausdorff": {
       "lean_name": "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff",
       "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents": {
       "lean_name": "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents",
       "file": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "hausdorffMeasure_image_eq_zero_of_lipschitz_null": {
       "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "hausdorffMeasure_image_rank_lt_eq_zero": {
       "lean_name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "exists_countable_graph_cover_fullRank_locus": {
       "lean_name": "Preiss.exists_countable_graph_cover_fullRank_locus",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "countablyRectifiable_iff_lipschitzGraph_cover": {
       "lean_name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "linearJacobian": {
       "lean_name": "Preiss.linearJacobian",
       "file": "Preiss/Rectifiability/GraphArea.lean",
       "module": "Preiss.Rectifiability.GraphArea",
-      "status": "sorry_placeholder"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "map_jacobian_hausdorff_affine_injection": {
       "lean_name": "Preiss.map_jacobian_hausdorff_affine_injection",
       "file": "Preiss/Rectifiability/GraphArea.lean",
       "module": "Preiss.Rectifiability.GraphArea",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "map_withDensity_jacobian_eq_graph_hausdorff": {
       "lean_name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
       "file": "Preiss/Rectifiability/GraphArea.lean",
       "module": "Preiss.Rectifiability.GraphArea",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "ae_graph_hausdorff_blowup_limit": {
       "lean_name": "Preiss.ae_graph_hausdorff_blowup_limit",
       "file": "Preiss/Rectifiability/GraphBlowup.lean",
       "module": "Preiss.Rectifiability.GraphBlowup",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "tendsto_integral_blowup_sub_density_mul": {
       "lean_name": "Preiss.tendsto_integral_blowup_sub_density_mul",
       "file": "Preiss/Tangent/DensityTransfer.lean",
       "module": "Preiss.Tangent.DensityTransfer",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "rectifiable_has_flat_blowup_limit": {
       "lean_name": "Preiss.rectifiable_has_flat_blowup_limit",
       "file": "Preiss/Rectifiability/TangentNecessity.lean",
       "module": "Preiss.Rectifiability.TangentNecessity",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "rectifiable_has_density_and_tangent_plane": {
       "lean_name": "Preiss.rectifiable_has_density_and_tangent_plane",
       "file": "Preiss/Rectifiability/TangentNecessity.lean",
       "module": "Preiss.Rectifiability.TangentNecessity",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "rectifiable_iff_density_bounds_and_flat_tangents": {
       "lean_name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
       "file": "Preiss/Rectifiability/TangentCharacterization.lean",
       "module": "Preiss.Rectifiability.TangentCharacterization",
-      "status": "sorry_placeholder"
+      "status": "depends_on_unproved",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "unitFlat": {
       "lean_name": "Preiss.unitFlat",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
-      "status": "definition"
+      "status": "definition",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "unitFlat_closedBall": {
       "lean_name": "Preiss.unitFlat_closedBall",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "module": "Preiss.Geometry.PlaneMeasure",
-      "status": "sorry_placeholder"
+      "status": "proof_candidate",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     },
     "ae_upperPowerBoundAt_restrict_hausdorff": {
       "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-      "status": "sorry_placeholder"
+      "status": "unproved_statement",
+      "verification": "Current-source classification; full project checked at 759c384. Later edits require separate integration checks."
     }
   }
 }

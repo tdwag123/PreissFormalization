@@ -10,7 +10,7 @@ namespace Preiss
 variable {m n : ℕ}
 
 theorem absolutelyContinuous_hausdorff_of_upper_density_finite
-    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]
+    (μ : Measure (Euclidean n))
     (h : ∀ᵐ x ∂μ, dimensional_upper_density μ.toOuterMeasure (m : ℝ) x < ∞) :
     μ ≪ (Measure.hausdorffMeasure (m : ℝ)) := by
   let S : ℕ × ℕ → Set (Euclidean n) := fun i => goodBallSet (m : ℝ) ((i.1 : ℝ) + 1) i.2 μ

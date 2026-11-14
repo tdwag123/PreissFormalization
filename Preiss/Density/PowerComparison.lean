@@ -1,6 +1,7 @@
 module
 
 public import Preiss.Geometry.Euclidean
+public import Preiss.Analysis.HausdorffLowerBound
 public import Preiss.Analysis.HausdorffComparison
 public import Mathlib.MeasureTheory.Measure.Hausdorff
 public import Mathlib.MeasureTheory.Covering.Vitali
@@ -32,6 +33,9 @@ theorem hausdorff_restrict_le_measure_of_ball_bounds (m n : ℕ) :
     ∃ C : ℝ, 0 < C ∧ ∀ (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ]
       (S : Set (Euclidean n)) (a R : ℝ), MeasurableSet S → 0 < a → 0 < R →
       (∀ x ∈ S, ∀ r : ℝ, 0 < r → r < R → ENNReal.ofReal (a * r ^ m) ≤ μ (ball x r)) →
-      ((Measure.hausdorffMeasure (m : ℝ))).restrict S ≤ ENNReal.ofReal (C / a) • μ.restrict S := by sorry
+      ((Measure.hausdorffMeasure (m : ℝ))).restrict S ≤ ENNReal.ofReal (C / a) • μ.restrict S := by
+  refine ⟨10 ^ m, by positivity, ?_⟩
+  intro μ _ S a R hS ha hR hball
+  exact hausdorff_restrict_le_measure_of_uniform_ball_lower_bound m μ S hS a R ha hR hball
 
 end Preiss

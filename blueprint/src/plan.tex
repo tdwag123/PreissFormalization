@@ -334,7 +334,7 @@ This canonical definition implies the graph-test version used in the source.
 \begin{lemma}[Attainment, positivity and unit-ball comparison]
 \label{lem:flatness-minimum}
 \lean{Preiss.flatness_exists_minimizer, Preiss.flatness_nonneg, Preiss.flatness_eq_zero_of_isFlat, Preiss.exists_plane_ball_energy_le_of_flatness_le}
-\uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests}
+\uses{def:flat, def:flatness, def:plane, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff}
 
 
 
@@ -359,7 +359,7 @@ implies that some plane has unit-ball energy at most $\varepsilon$.
 \begin{lemma}[Continuity of flatness under vague convergence]
 \label{lem:flatness-continuous}
 \lean{Preiss.flatness_continuous}
-\uses{def:flatness, lem:flatness-minimum, lem:grassmannian, lem:vague-moving-tests}
+\uses{def:flatness, lem:flatness-minimum, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff}
 
 
 
@@ -751,7 +751,7 @@ $0<\Theta_*^m\leq\Theta^{*m}<\infty$.
 \begin{lemma}[Measure comparisons on density strata]
 \label{lem:density-measure-comparison}
 \lean{Preiss.UpperPowerBoundAt, Preiss.hausdorff_restrict_le_measure_of_ball_bounds, Preiss.measure_restrict_le_hausdorff_of_ball_bounds}
-\uses{mathlib:vitali-enlargement, lem:ball-upper-hausdorff-bound}
+\uses{mathlib:vitali-enlargement, lem:ball-upper-hausdorff-bound, lem:lower-ball-restrict-comparison}
 
 
 
@@ -878,7 +878,7 @@ change, but exact constants in uniform-measure lemmas must be transported.
 
 
 
-\(\mu\) is a locally finite Borel measure on \(\mathbb R^n\); \(m\) is a natural dimension.
+\(\mu\) is a Borel measure on \(\mathbb R^n\); \(m\) is a natural dimension.
 If \(\Theta^{*m}(\mu,x)<\infty\) for \(\mu\)-almost every \(x\), then \(\mu\ll\mathcal H^m\).
 \par\emph{Role: Preiss proof.}
 \par Lean declarations: \texttt{Preiss.absolutelyContinuous\_hausdorff\_of\_upper\_density\_finite}.
@@ -1374,7 +1374,7 @@ it needs no almost-everywhere recentering theorem.
 \begin{lemma}[Continuity of the scale function]
 \label{lem:flatness-radius-continuous}
 \lean{Preiss.continuousOn_flatness_dimensionalBlowup}
-\uses{def:dimensional-blowup, def:flatness, lem:flatness-continuous, lem:vague-moving-blowups}
+\uses{def:dimensional-blowup, def:flatness, lem:flatness-continuous, lem:vague-moving-blowups, def:flatness-cutoff}
 
 
 
@@ -1956,7 +1956,7 @@ and every tangent measure is \(m\)-flat, then \(\mu\) is \(m\)-rectifiable.
 
 \begin{lemma}[Gaussian polynomial integrability under polynomial growth]
 \label{lem:gaussian-polynomial-integrable}
-\lean{Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound, Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth}
+\lean{Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound, Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth, Preiss.integral_gaussian_pos_of_ball_bound}
 \uses{def:polynomial-growth-bound, lem:annulus-integrability, lem:gaussian-annulus-majorant}
 
 
@@ -2086,7 +2086,7 @@ energy. This is a reusable finite-dimensional variational spectral lemma.
 \begin{lemma}[Gaussian weighted polynomials determine growing measures]
 \label{lem:moment-determination}
 \lean{Preiss.measure_eq_of_gaussian_polynomial_moments_eq}
-\uses{lem:gaussian-polynomial-integrable}
+\uses{lem:gaussian-polynomial-integrable, def:polynomial-growth-bound}
 
 
 
@@ -2155,8 +2155,8 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Differentiation of Gaussian polynomial integrals]
 \label{lem:gaussian-parameter-derivative}
-\lean{Preiss.hasDerivAt_integral_polynomial_mul_gaussian}
-\uses{def:polynomial-growth-bound, lem:gaussian-polynomial-integrable}
+\lean{Preiss.hasDerivAt_integral_polynomial_mul_gaussian, Preiss.hasDerivAt_integral_polynomial_gaussian_of_ball_bound}
+\uses{def:polynomial-growth-bound, lem:gaussian-polynomial-integrable, lem:polynomial-gaussian-integrability}
 
 
 
@@ -2674,7 +2674,7 @@ the convergent exponential series with its remainder bound.
 \begin{lemma}[Comparison of homogeneous ball and Gaussian energies]
 \label{lem:homogeneous-energy-radial}
 \lean{Preiss.integral_gaussian_mul_homogeneous}
-\uses{def:conical, def:plane, lem:radial}
+\uses{def:conical, def:plane, lem:radial, lem:homogeneous-ball-scaling}
 
 
 
@@ -3796,7 +3796,7 @@ This is equation (9.34); it is a necessary bridge to the global trace bound.
 \begin{lemma}[Tangential trace is the mean adjusted form]
 \label{lem:rigidity-gaussian-trace}
 \lean{Preiss.trace_tangent_eq_integral_adjustedForm}
-\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-omega-trace-zero}
+\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-omega-trace-zero, def:bilinear-trace}
 
 
 
@@ -3982,7 +3982,7 @@ nonzero flat limit. This is \texttt{ae\_exists\_flat\_tangent}.
 \begin{lemma}[First-crossing sequences and their uniform tangent limit]
 \label{lem:first-crossing}
 \lean{Preiss.exists_first_crossing_sequences}
-\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:density-normalization, lem:dimensional-tangent-compactness, lem:flatness-continuous, lem:flatness-minimum, lem:flatness-radius-continuous, lem:greatest-crossing, lem:tangent-blowdown, thm:gap, thm:infinity-rigidity, thm:unique-infinity}
+\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:density-normalization, lem:dimensional-tangent-compactness, lem:flatness-continuous, lem:flatness-minimum, lem:flatness-radius-continuous, lem:greatest-crossing, lem:tangent-blowdown, thm:gap, thm:infinity-rigidity, thm:unique-infinity, def:flatness-cutoff}
 
 
 
@@ -4022,7 +4022,7 @@ value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
 \begin{lemma}[Divergence of the crossing scale ratios]
 \label{lem:first-crossing-ratio}
 \lean{Preiss.first_crossing_ratio_tendsto_atTop}
-\uses{def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:flatness-minimum, lem:vague-moving-blowups}
+\uses{def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:flatness-minimum, lem:vague-moving-blowups, def:flatness-cutoff}
 
 
 
@@ -4046,7 +4046,7 @@ contradicting $F(\xi)=\varepsilon>0$.
 \begin{lemma}[Crossing limit has flat blow-down]
 \label{lem:first-crossing-flat-infinity}
 \lean{Preiss.first_crossing_limit_flat_at_infinity}
-\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:first-crossing-ratio, lem:flatness-continuous, lem:flatness-minimum, lem:vague-moving-blowups, thm:gap, thm:unique-infinity}
+\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:first-crossing-ratio, lem:flatness-continuous, lem:flatness-minimum, lem:vague-moving-blowups, thm:gap, thm:unique-infinity, def:flatness-cutoff}
 
 
 
@@ -4413,7 +4413,7 @@ At \(\mu\)-almost every \(x\), the \(m\)-density exists and is positive and fini
 
 \begin{theorem}[Full tangent characterization]
 \label{thm:rectifiable-iff-flat}
-\lean{Preiss.rectifiable_iff_density_bounds_and_flat_tangents}
+\lean{Preiss.rectifiable_iff_density_bounds_and_flat_tangents, Preiss.rectifiable_iff_density_and_tangent_plane}
 \uses{cor:rectifiable-tangent-plane, thm:mm-measure}
 
 
@@ -4424,6 +4424,15 @@ At \(\mu\)-almost every \(x\), the \(m\)-density exists and is positive and fini
 
 The measure \(\mu\) is locally finite and \(0<m\leq n\). No density-limit existence or common-plane hypothesis is assumed on the right.
 The measure \(\mu\) is \(m\)-rectifiable if and only if positive lower and finite upper \(m\)-density hold almost everywhere and every tangent is \(m\)-flat almost everywhere. On the right, the plane may depend on the individual tangent; rectifiability subsequently supplies a common plane almost everywhere.
+Equivalently, at \(\mu\)-almost every \(x\), the positive finite
+\(m\)-density exists and there is a single \(m\)-dimensional linear plane
+\(V_x\) such that
+\[
+ \operatorname{Tan}(\mu,x)=
+ \{c\,\mathcal H^m\!\restriction V_x:0<c<\infty\}.
+\]
+The second Lean declaration records this common-plane equivalence explicitly;
+its assembly uses the same necessity and sufficiency results.
 \par\emph{Role: Rectifiability characterization.}
 \par Lean declarations: \texttt{Preiss.rectifiable\_iff\_density\_bounds\_and\_flat\_tangents}.
 \end{theorem}
@@ -4520,7 +4529,7 @@ A measure is unit uniform exactly when it is uniform with constant one and its s
 \begin{lemma}[Scaling uniform measures and their ball constants]
 \label{lem:uniform-scaling}
 \lean{Preiss.uniformWithConstant_dimensionalBlowup, Preiss.isUnitUniform_dimensionalBlowup, Preiss.uniformWithConstant_smul}
-\uses{def:uniform-constant, def:dimensional-blowup, lem:uniform-constant-one, lem:blowup-composition}
+\uses{def:uniform-constant, def:dimensional-blowup, lem:uniform-constant-one, lem:blowup-composition, lem:dimensional-blowup-support}
 Dimensional blow-ups preserve a specified uniform ball constant. Centering at a support point preserves unit uniformity. Multiplication by a positive finite scalar multiplies the ball constant by the same scalar.
 \end{lemma}
 
@@ -4629,4 +4638,67 @@ Suppose $C\ge0$ and $\mu(\overline B(0,R))\le C(1+R)^p$ for all $R>0$. For $j,d\
 \lean{Preiss.gaussian_tail_le_annulus_sum}
 \uses{lem:gaussian-polynomial-integrable, lem:nonnegative-integral-cover-bound, lem:gaussian-annulus-majorant, lem:gaussian-annulus-integral}
 Under the polynomial ball bound above, for $N\in\mathbb N$ and $R\ge N$, the integral of $\|z\|^d e^{-s\|z\|^2}$ outside $\overline B(0,R)$ is at most $\sum_{j\ge0}B_{j+N}$. The bound is independent of the measure.
+\end{lemma}
+
+\begin{lemma}[Integrability of all polynomial Gaussian weights]
+\label{lem:polynomial-gaussian-integrability}
+\lean{Preiss.integrable_norm_pow_mul_polynomial_mul_gaussian}
+\uses{lem:gaussian-polynomial-integrable}
+
+For a measure mu on Euclidean n with mu(closedBall(0,R))<=ofReal(C(1+R)^p) at every R>0, where C>=0 and p is real, every multivariate real polynomial P, natural d, and s>0 satisfy Bochner integrability of norm(z)^d P(z) exp(-s norm(z)^2). The proof inducts on P using closure under constants, addition, and multiplication by a coordinate; norm(z_i)<=norm(z) supplies the inductive domination.
+\end{lemma}
+
+\begin{lemma}[Weighted ball scaling for conical measures]
+\label{lem:homogeneous-ball-scaling}
+\lean{Preiss.integral_homogeneous_closedBall, Preiss.integrableOn_homogeneous_closedBall}
+\uses{def:conical, def:dimensional-blowup}
+
+For a conical measure $\mu$ and a measurable real-valued function $h$ homogeneous of arbitrary real degree $a$, for every $r>0$, $\int_{\overline B(0,r)}h\,d\mu=r^{m+a}\int_{\overline B(0,1)}h\,d\mu$. No positivity or integrability assumption is needed for this scaling identity; both sides use the Bochner nonintegrable-value convention. Under the same scaling hypotheses, integrability of h on the unit closed ball implies integrability on every positive-radius closed ball.
+\end{lemma}
+
+\begin{lemma}[Small covers from a lower ball bound]
+\label{lem:lower-ball-small-cover}
+\lean{Preiss.exists_small_cover_of_ball_lower_bound}
+\uses{mathlib:vitali-enlargement}
+
+Let $X$ be a separable metric Borel space, $A\subseteq U$ with $U$ open, and $a,R>0$. Assume $a r^m\leq\mu(B(x,r))$ for all $x\in A$ and $0<r<R$. For every $\varepsilon>0$, there is a countable cover of $A$ by fivefold enlargements of disjoint balls in $U$, each enlarged ball having diameter at most $\varepsilon$, and total diameter-to-the-$m$ cost at most $(10^m/a)\mu(U)$.
+\end{lemma}
+
+\begin{lemma}[Lower ball bounds control Hausdorff measure in open supersets]
+\label{lem:lower-ball-open-comparison}
+\lean{Preiss.hausdorff_le_open_mass_of_ball_lower_bound}
+\uses{lem:lower-ball-small-cover}
+
+Under the lower ball bound above, $\mathcal H^m(A)\leq (10^m/a)\mu(U)$ for every open superset $U$ of $A$. No measurability of $A$ or regularity of $\mu$ is needed.
+\end{lemma}
+
+\begin{lemma}[Hausdorff comparison by outer regularity]
+\label{lem:lower-ball-hausdorff-bound}
+\lean{Preiss.hausdorff_le_measure_of_uniform_ball_lower_bound}
+\uses{lem:lower-ball-open-comparison}
+
+If $\mu$ is outer regular and the same uniform lower ball bound holds at every point of an arbitrary set $A$, then $\mathcal H^m(A)\leq (10^m/a)\mu(A)$.
+\end{lemma}
+
+\begin{lemma}[Restricted lower ball comparison]
+\label{lem:lower-ball-restrict-comparison}
+\lean{Preiss.hausdorff_restrict_le_measure_of_uniform_ball_lower_bound}
+\uses{lem:lower-ball-hausdorff-bound}
+
+For a Borel stratum $S$ and an outer regular measure satisfying the uniform lower ball bound at every point of $S$, $\mathcal H^m\!\restriction S\leq (10^m/a)\mu\!\restriction S$.
+\end{lemma}
+
+\begin{lemma}[Support under homeomorphisms and nonzero scalar multiplication]
+\label{lem:measure-support-transport}
+\lean{Preiss.measure_support_map_homeomorph, Preiss.measure_support_smul}
+
+For a homeomorphism $e:X\to Y$ of Borel topological spaces and any measure $\mu$ on $X$, $\operatorname{spt}(e_\#\mu)=e(\operatorname{spt}\mu)$. For a measure on any topological measurable space and any $c\in[0,\infty]$ with $c\ne0$, $\operatorname{spt}(c\mu)=\operatorname{spt}\mu$. Neither assertion requires regularity or local finiteness.
+\end{lemma}
+
+\begin{lemma}[Support and regularity of dimensional blow-ups]
+\label{lem:dimensional-blowup-support}
+\lean{Preiss.dimensionalBlowup_support, Preiss.regular_dimensionalBlowup}
+\uses{def:dimensional-blowup, lem:measure-support-transport}
+
+For every $m,n\in\mathbb N$, measure $\mu$ on $\mathbb R^n$, point $a$, and radius $r>0$, the dimensional blow-up $\mu_{a,r}=r^{-m}(T_{a,r})_\#\mu$ has support $T_{a,r}(\operatorname{spt}\mu)$, where $T_{a,r}(y)=(y-a)/r$. If $\mu$ is regular, then $\mu_{a,r}$ is regular.
 \end{lemma}

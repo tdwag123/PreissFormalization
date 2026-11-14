@@ -1307,6 +1307,7 @@
       "statement_dependencies": [
         "def:flat",
         "def:flatness",
+        "def:flatness-cutoff",
         "def:plane",
         "lem:grassmannian",
         "lem:vague-moving-tests"
@@ -1326,6 +1327,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:flatness",
+        "def:flatness-cutoff",
         "lem:flatness-minimum",
         "lem:grassmannian",
         "lem:vague-moving-tests"
@@ -1437,7 +1439,6 @@
       "expanded_line": 1512,
       "unfinished_dependencies": [
         "lem:moment-covariance",
-        "lem:radial",
         "lem:scaled-moment-limits"
       ]
     },
@@ -1460,8 +1461,7 @@
       "proof_dependencies": [],
       "expanded_line": 1535,
       "unfinished_dependencies": [
-        "lem:conical-moments",
-        "lem:radial"
+        "lem:conical-moments"
       ]
     },
     {
@@ -1665,7 +1665,7 @@
       "id": "lem:density-measure-comparison",
       "title": "Measure comparisons on density strata",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.UpperPowerBoundAt",
         "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
@@ -1674,6 +1674,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [
         "lem:ball-upper-hausdorff-bound",
+        "lem:lower-ball-restrict-comparison",
         "mathlib:vitali-enlargement"
       ],
       "proof_dependencies": [],
@@ -1804,9 +1805,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 1951,
-      "unfinished_dependencies": [
-        "lem:density-measure-comparison"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:excess-dimension",
@@ -2220,6 +2219,7 @@
       "statement_dependencies": [
         "def:dimensional-blowup",
         "def:flatness",
+        "def:flatness-cutoff",
         "lem:flatness-continuous",
         "lem:vague-moving-blowups"
       ],
@@ -2507,7 +2507,7 @@
       "id": "lem:pure-cone-escape",
       "title": "Pure sets have arbitrarily close points outside fixed cones",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable"
       ],
@@ -2564,7 +2564,6 @@
       "expanded_line": 2870,
       "unfinished_dependencies": [
         "lem:projected-tube-slab-bound",
-        "lem:pure-cone-escape",
         "lem:tube-support-upgrade",
         "lem:uniform-compact-selection"
       ]
@@ -2685,7 +2684,8 @@
       "status": "proof_candidate",
       "lean": [
         "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound",
-        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
+        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
+        "Preiss.integral_gaussian_pos_of_ball_bound"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -2775,6 +2775,7 @@
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
+        "def:polynomial-growth-bound",
         "lem:gaussian-polynomial-integrable"
       ],
       "proof_dependencies": [],
@@ -2804,14 +2805,16 @@
       "id": "lem:gaussian-parameter-derivative",
       "title": "Differentiation of Gaussian polynomial integrals",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
+        "Preiss.hasDerivAt_integral_polynomial_gaussian_of_ball_bound",
         "Preiss.hasDerivAt_integral_polynomial_mul_gaussian"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:polynomial-growth-bound",
-        "lem:gaussian-polynomial-integrable"
+        "lem:gaussian-polynomial-integrable",
+        "lem:polynomial-gaussian-integrability"
       ],
       "proof_dependencies": [],
       "expanded_line": 3216,
@@ -3123,7 +3126,7 @@
       "id": "lem:radial",
       "title": "Radial pushforward distribution and integrals",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.uniform_radial_pushforward"
       ],
@@ -3180,9 +3183,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 3697,
-      "unfinished_dependencies": [
-        "lem:radial"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:homogeneous-energy-radial",
@@ -3196,13 +3197,12 @@
       "statement_dependencies": [
         "def:conical",
         "def:plane",
+        "lem:homogeneous-ball-scaling",
         "lem:radial"
       ],
       "proof_dependencies": [],
       "expanded_line": 3734,
-      "unfinished_dependencies": [
-        "lem:radial"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:gaussian-translation-series",
@@ -3224,8 +3224,7 @@
       "proof_dependencies": [],
       "expanded_line": 3760,
       "unfinished_dependencies": [
-        "lem:moment-norm-bound",
-        "lem:radial"
+        "lem:moment-norm-bound"
       ]
     },
     {
@@ -3322,7 +3321,6 @@
       "proof_dependencies": [],
       "expanded_line": 3893,
       "unfinished_dependencies": [
-        "lem:radial",
         "lem:taylor-two"
       ]
     },
@@ -3417,7 +3415,6 @@
       "proof_dependencies": [],
       "expanded_line": 4002,
       "unfinished_dependencies": [
-        "lem:uniform-constant-one",
         "lem:vague-support-approximation",
         "lem:vague-support-limit"
       ]
@@ -3506,8 +3503,7 @@
       "proof_dependencies": [],
       "expanded_line": 4114,
       "unfinished_dependencies": [
-        "lem:uniform-compactness",
-        "lem:uniform-scaling"
+        "lem:uniform-compactness"
       ]
     },
     {
@@ -4058,7 +4054,6 @@
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:gaussian-parameter-derivative",
         "lem:rigidity-mixed-gaussian-limit",
         "lem:uniform-cylinder-identity"
       ]
@@ -4196,6 +4191,7 @@
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
+        "def:bilinear-trace",
         "def:moment-coefficients",
         "def:plane",
         "def:rigidity-adjusted-form",
@@ -4393,6 +4389,7 @@
         "def:first-crossing-data",
         "def:flat",
         "def:flatness",
+        "def:flatness-cutoff",
         "def:flatness-gap",
         "def:positive-density",
         "def:tangent-at-infinity",
@@ -4438,6 +4435,7 @@
         "def:first-crossing-data",
         "def:flat",
         "def:flatness",
+        "def:flatness-cutoff",
         "def:positive-density",
         "def:unit-uniform",
         "lem:blowup-composition",
@@ -4467,6 +4465,7 @@
         "def:first-crossing-data",
         "def:flat",
         "def:flatness",
+        "def:flatness-cutoff",
         "def:flatness-gap",
         "def:positive-density",
         "def:tangent-at-infinity",
@@ -4788,6 +4787,7 @@
       "kind": "theorem",
       "status": "depends_on_unproved",
       "lean": [
+        "Preiss.rectifiable_iff_density_and_tangent_plane",
         "Preiss.rectifiable_iff_density_bounds_and_flat_tangents"
       ],
       "verification": "source_audit_only",
@@ -4815,7 +4815,7 @@
         "def:moments"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5497,
+      "expanded_line": 5506,
       "unfinished_dependencies": []
     },
     {
@@ -4829,7 +4829,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5504,
+      "expanded_line": 5513,
       "unfinished_dependencies": []
     },
     {
@@ -4843,7 +4843,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5510,
+      "expanded_line": 5519,
       "unfinished_dependencies": []
     },
     {
@@ -4859,7 +4859,7 @@
         "def:flatness-cutoff"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5516,
+      "expanded_line": 5525,
       "unfinished_dependencies": []
     },
     {
@@ -4878,7 +4878,7 @@
         "def:unit-uniform"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5523,
+      "expanded_line": 5532,
       "unfinished_dependencies": []
     },
     {
@@ -4897,7 +4897,7 @@
         "thm:gap"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5530,
+      "expanded_line": 5539,
       "unfinished_dependencies": [
         "lem:flatness-minimum",
         "thm:gap"
@@ -4918,7 +4918,7 @@
         "gmt:vague"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5537,
+      "expanded_line": 5546,
       "unfinished_dependencies": []
     },
     {
@@ -4935,7 +4935,7 @@
         "lem:odd-coefficients-plane-zero"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5544,
+      "expanded_line": 5553,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:odd-coefficients-plane-zero"
@@ -4956,7 +4956,7 @@
         "lem:rigidity-normal-vector-exists"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5551,
+      "expanded_line": 5560,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
         "def:rigidity-omega",
@@ -4978,7 +4978,7 @@
         "def:polynomial-feature"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5558,
+      "expanded_line": 5567,
       "unfinished_dependencies": [
         "def:polynomial-feature"
       ]
@@ -4994,14 +4994,14 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5567,
+      "expanded_line": 5576,
       "unfinished_dependencies": []
     },
     {
       "id": "lem:uniform-constant-one",
       "title": "Centered unit normalization",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.isUnitUniform_iff_constant_one"
       ],
@@ -5011,14 +5011,14 @@
         "def:unit-uniform"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5573,
+      "expanded_line": 5582,
       "unfinished_dependencies": []
     },
     {
       "id": "lem:uniform-scaling",
       "title": "Scaling uniform measures and their ball constants",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.isUnitUniform_dimensionalBlowup",
         "Preiss.uniformWithConstant_dimensionalBlowup",
@@ -5029,13 +5029,12 @@
         "def:dimensional-blowup",
         "def:uniform-constant",
         "lem:blowup-composition",
+        "lem:dimensional-blowup-support",
         "lem:uniform-constant-one"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5580,
-      "unfinished_dependencies": [
-        "lem:uniform-constant-one"
-      ]
+      "expanded_line": 5589,
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:density-limit-values",
@@ -5053,7 +5052,7 @@
         "def:density-api"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5588,
+      "expanded_line": 5597,
       "unfinished_dependencies": []
     },
     {
@@ -5071,7 +5070,7 @@
         "def:moments"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5595,
+      "expanded_line": 5604,
       "unfinished_dependencies": []
     },
     {
@@ -5087,7 +5086,7 @@
         "mathlib:hausdorff-mass-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5610,
+      "expanded_line": 5619,
       "unfinished_dependencies": []
     },
     {
@@ -5103,7 +5102,7 @@
         "lem:diameter-hausdorff-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5623,
+      "expanded_line": 5632,
       "unfinished_dependencies": []
     },
     {
@@ -5122,7 +5121,7 @@
         "gmt:goodballs"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5639,
+      "expanded_line": 5648,
       "unfinished_dependencies": []
     },
     {
@@ -5136,7 +5135,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5657,
+      "expanded_line": 5666,
       "unfinished_dependencies": []
     },
     {
@@ -5150,7 +5149,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5666,
+      "expanded_line": 5675,
       "unfinished_dependencies": []
     },
     {
@@ -5164,7 +5163,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5675,
+      "expanded_line": 5684,
       "unfinished_dependencies": []
     },
     {
@@ -5178,7 +5177,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5681,
+      "expanded_line": 5690,
       "unfinished_dependencies": []
     },
     {
@@ -5197,7 +5196,138 @@
         "lem:nonnegative-integral-cover-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5687,
+      "expanded_line": 5696,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:polynomial-gaussian-integrability",
+      "title": "Integrability of all polynomial Gaussian weights",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_norm_pow_mul_polynomial_mul_gaussian"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5703,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:homogeneous-ball-scaling",
+      "title": "Weighted ball scaling for conical measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrableOn_homogeneous_closedBall",
+        "Preiss.integral_homogeneous_closedBall"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:conical",
+        "def:dimensional-blowup"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5711,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:lower-ball-small-cover",
+      "title": "Small covers from a lower ball bound",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_small_cover_of_ball_lower_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "mathlib:vitali-enlargement"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5719,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:lower-ball-open-comparison",
+      "title": "Lower ball bounds control Hausdorff measure in open supersets",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.hausdorff_le_open_mass_of_ball_lower_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:lower-ball-small-cover"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5727,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:lower-ball-hausdorff-bound",
+      "title": "Hausdorff comparison by outer regularity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.hausdorff_le_measure_of_uniform_ball_lower_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:lower-ball-open-comparison"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5735,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:lower-ball-restrict-comparison",
+      "title": "Restricted lower ball comparison",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.hausdorff_restrict_le_measure_of_uniform_ball_lower_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:lower-ball-hausdorff-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5743,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:measure-support-transport",
+      "title": "Support under homeomorphisms and nonzero scalar multiplication",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.measure_support_map_homeomorph",
+        "Preiss.measure_support_smul"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5751,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:dimensional-blowup-support",
+      "title": "Support and regularity of dimensional blow-ups",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.dimensionalBlowup_support",
+        "Preiss.regular_dimensionalBlowup"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:dimensional-blowup",
+        "lem:measure-support-transport"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5758,
       "unfinished_dependencies": []
     }
   ],
@@ -5224,6 +5354,7 @@
     "def:unit-uniform",
     "def:dimensional-blowup",
     "def:moments",
+    "def:flatness-cutoff",
     "lem:zero-hausdorff-ac",
     "def:polynomial-growth-bound",
     "lem:annulus-integrability",
@@ -5233,9 +5364,9 @@
     "def:polynomial-feature",
     "def:bilinear-trace",
     "def:uniform-constant",
-    "def:flatness-cutoff",
     "lem:nonnegative-integral-cover-bound",
     "lem:gaussian-annulus-integral",
+    "lem:measure-support-transport",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -5260,6 +5391,7 @@
     "gmt:zero-barycenter-hyperplane",
     "gmt:uniform-dimension-bound",
     "lem:measurable-hull-holes",
+    "lem:lower-ball-small-cover",
     "lem:gaussian-wick-fourth",
     "lem:diameter-hausdorff-bound",
     "def:lipschitz-graph",
@@ -5283,11 +5415,12 @@
     "lem:moment-form-evaluation",
     "lem:moment-form-symmetry",
     "lem:moment-kernel-calculus",
+    "lem:flatness-cutoff-exists",
     "lem:gaussian-polynomial-integrable",
     "lem:polynomial-feature-identities",
     "lem:bilinear-trace-basis",
     "lem:uniform-constant-one",
-    "lem:flatness-cutoff-exists",
+    "lem:dimensional-blowup-support",
     "gmt:goodsets",
     "lem:upper-density-localization",
     "lem:density-bridge",
@@ -5309,6 +5442,7 @@
     "gmt:transfer-ball-bounds",
     "gmt:quadratic-support-tangent",
     "gmt:barycenter-quadratic-bound",
+    "lem:lower-ball-open-comparison",
     "lem:ball-upper-hausdorff-bound",
     "lem:graph-parametrization",
     "lem:cone-graph",
@@ -5328,11 +5462,12 @@
     "lem:countable-carrier",
     "lem:radial",
     "def:flatness-gap",
+    "lem:homogeneous-ball-scaling",
     "lem:hull-support-approximation",
     "def:rigidity-normal-vector",
     "lem:moment-determination",
-    "lem:gaussian-parameter-derivative",
     "lem:gaussian-tail-series-bound",
+    "lem:polynomial-gaussian-integrability",
     "lem:moment-feature-annihilation",
     "lem:gaussian-quadratic-trace-bound",
     "gmt:uniform-density-adapter",
@@ -5353,7 +5488,7 @@
     "gmt:mattila-14-7-4",
     "lem:tangent-existence",
     "gmt:mattila-14-7-1",
-    "lem:density-measure-comparison",
+    "lem:lower-ball-hausdorff-bound",
     "lem:absolute-continuity",
     "lem:graph-rectifiable",
     "lem:graph-borel-finite",
@@ -5371,6 +5506,7 @@
     "lem:homogeneous-energy-radial",
     "def:rigidity-omega",
     "lem:gaussian-uniform-tails",
+    "lem:gaussian-parameter-derivative",
     "lem:uniform-compactness",
     "lem:flatness-continuous",
     "lem:dimensional-tangent-dilation",
@@ -5379,7 +5515,7 @@
     "lem:tangent-ray",
     "gmt:uniform-tangents",
     "thm:uniform-upstream",
-    "lem:finite-pieces",
+    "lem:lower-ball-restrict-comparison",
     "lem:pure-basic",
     "lem:graphs",
     "lem:graph-blowup",
@@ -5396,7 +5532,7 @@
     "gmt:uniform-halfspace",
     "gmt:uniform-hyperplane",
     "lem:uniform-adapter",
-    "lem:finite-piece-transfer",
+    "lem:density-measure-comparison",
     "lem:decomposition",
     "lem:pure-cone-escape",
     "lem:projection-hole-cover",
@@ -5408,6 +5544,7 @@
     "lem:hyperplane-tangent-lineage",
     "lem:excess-dimension",
     "lem:recenter",
+    "lem:finite-pieces",
     "lem:pure-wla-null-projection",
     "lem:discarded-cylinder-sum",
     "lem:column-packing",
@@ -5415,6 +5552,7 @@
     "lem:moment-feature-remainder",
     "gmt:uniform-full-dimension",
     "lem:uniform-reduction",
+    "lem:finite-piece-transfer",
     "lem:packing-contradiction",
     "lem:taylor-two",
     "lem:plane-supported-uniform-flat",
