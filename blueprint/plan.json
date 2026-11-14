@@ -10132,6 +10132,84 @@
         "Preiss/Uniform/ProjectedMixedGaussian.lean"
       ],
       "proposed_file": "Preiss/Uniform/ProjectedMixedGaussian.lean"
+    },
+    {
+      "id": "lem:gaussian-weighted-contraction",
+      "kind": "lemma",
+      "title": "Gaussian contraction from weighted moment limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits"
+      ],
+      "deps": [
+        "lem:finite-bilinear-integral-limits",
+        "lem:gaussian-vector-bilinear-wick"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearContraction.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearContraction.lean"
+    },
+    {
+      "id": "lem:gaussian-inner-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian inner-product integrability and limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_sq_centered_unitUniform",
+        "Preiss.integrable_gaussian_inner_sq_unitUniform",
+        "Preiss.normalized_gaussian_inner_sq_limit"
+      ],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-product-growth"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/GaussianInnerProducts.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianInnerProducts.lean"
+    },
+    {
+      "id": "lem:gaussian-cross-product-limits",
+      "kind": "lemma",
+      "title": "Polarized Gaussian moment limits on the limiting plane",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_gaussian_inner_mul_limit_on_plane",
+        "Preiss.normalized_gaussian_mixed_limit_rigidityOmega"
+      ],
+      "deps": [
+        "lem:flat-infinity-moments",
+        "lem:gaussian-inner-product-limits",
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:weighted-integral-polarization"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/RigidityContraction.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityContraction.lean"
+    },
+    {
+      "id": "lem:rigidity-omega-contraction",
+      "kind": "lemma",
+      "title": "Mean-square contraction of the rigidity form",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit"
+      ],
+      "deps": [
+        "def:rigidity-error",
+        "lem:gaussian-cross-product-limits",
+        "lem:gaussian-weighted-contraction"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/RigidityContraction.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityContraction.lean"
     }
   ],
   "preiss_core": [

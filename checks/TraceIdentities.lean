@@ -31,7 +31,8 @@ theorem integral_rigidityOmega_eq_zero_draft
           inner ℝ (z-(b : Euclidean n)) (w : Euclidean n) ∂μ)
         (𝓝[>] (0 : ℝ)) (𝓝 (inner ℝ (ω (e i) (e i)) w)) from by
     rw [hω.2]
-    simpa only [hB21] using mixed_gaussian_limit_eq_omega μ hm hμ B hB V hV b hb (e i) w)
+    simpa only [hB21, Submodule.coe_inner] using
+      mixed_gaussian_limit_eq_omega μ hm hμ B hB V hV b hb (e i) w)
   have hz : Tendsto (fun s => ∑ i, (8*s / gaussianMass μ s) *
       ∫ z, Real.exp (-s*‖z‖^2) * (inner ℝ z (e i : Euclidean n))^2 *
         inner ℝ (z-(b : Euclidean n)) (w : Euclidean n) ∂μ)

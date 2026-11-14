@@ -4235,6 +4235,80 @@
       ],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-weighted-contraction",
+      "kind": "lemma",
+      "title": "Gaussian contraction from weighted moment limits",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearContraction.lean",
+      "statement_tex": "Finite families of second and mixed weighted moment limits, together with a vanishing quadratic error and a zero Gaussian mean, imply that the Gaussian mean square of the bilinear vector form is $-8$ times the mean of the scalar quadratic form.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:finite-bilinear-integral-limits",
+        "lem:gaussian-vector-bilinear-wick"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-inner-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian inner-product integrability and limits",
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_sq_unitUniform",
+        "Preiss.integrable_gaussian_inner_sq_centered_unitUniform",
+        "Preiss.normalized_gaussian_inner_sq_limit"
+      ],
+      "file": "Preiss/Uniform/GaussianInnerProducts.lean",
+      "statement_tex": "Inner-product squares and their centered linear multiples are Gaussian-integrable for a uniform measure. The normalized square integral converges to half of the first quadratic moment coefficient.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-product-growth"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-cross-product-limits",
+      "kind": "lemma",
+      "title": "Polarized Gaussian moment limits on the limiting plane",
+      "lean_names": [
+        "Preiss.normalized_gaussian_inner_mul_limit_on_plane",
+        "Preiss.normalized_gaussian_mixed_limit_rigidityOmega"
+      ],
+      "file": "Preiss/Uniform/RigidityContraction.lean",
+      "statement_tex": "Polarization gives the normalized second and centered mixed Gaussian limits for two arbitrary vectors in the limiting plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:weighted-integral-polarization",
+        "lem:gaussian-inner-product-limits",
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:flat-infinity-moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-omega-contraction",
+      "kind": "lemma",
+      "title": "Mean-square contraction of the rigidity form",
+      "lean_names": [
+        "Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit"
+      ],
+      "file": "Preiss/Uniform/RigidityContraction.lean",
+      "statement_tex": "Under the zero-mean and vanishing-error identities, the Gaussian mean of $\\lVert\\omega(v,v)\\rVert^2$ equals $-8$ times the Gaussian mean of $A(v,v)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-weighted-contraction",
+        "lem:gaussian-cross-product-limits",
+        "def:rigidity-error"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

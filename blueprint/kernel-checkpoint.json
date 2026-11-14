@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "2391fcec7e12463e3f60f1525025a3622fd47cea",
+  "source_revision": "f4957e440301eef2e9586533987de7f135272831",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -894,28 +894,26 @@
     "Preiss.adjustedForm_gaussian_error_tendsto_zero": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TraceRigidity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.adjustedForm_sq_le_norm_omega_sq": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/TraceRigidity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth": {
       "project": "local",
@@ -1486,15 +1484,26 @@
     "Preiss.contracted_gaussian_limit_eq_zero": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.countableCoordinateMap": {
       "project": "local",
@@ -2742,6 +2751,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_normalized_norm_sq_centered_gaussian_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/CenteredGaussianLimits.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4202,6 +4223,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussian_quadratic_bounds_of_mean_square_identity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianRigidityBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussian_rigidityError_limit_of_linear_growth": {
       "project": "local",
       "kind": "theorem",
@@ -4267,6 +4300,30 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianGrowth.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianQuotient.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianQuotient.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6201,6 +6258,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.oddMomentCoefficient_restrict_plane_eq_zero": {
       "project": "local",
       "kind": "theorem",
@@ -6833,15 +6902,14 @@
     "Preiss.rigidityError_le_linear_growth": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
-      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/RigidityErrorBounds.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.scale_derivative_limit_eq_zero": {
       "project": "local",
@@ -7005,6 +7073,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.sum_mixed_gaussian_eq_projected": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/ProjectedMixedGaussian.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

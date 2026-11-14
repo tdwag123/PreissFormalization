@@ -1,144 +1,15 @@
-import Preiss.Analysis.BilinearIntegralLimits
-import Preiss.Analysis.GaussianBilinearNorm
-import Preiss.Uniform.RigidityError
+import Preiss.Analysis.GaussianBilinearContraction
 import Preiss.Analysis.WeightedIntegralPolarization
+import Preiss.Uniform.GaussianInnerProducts
 import Preiss.Uniform.FlatAtInfinity.TraceLimits
-import Preiss.Uniform.MomentCoefficientLimits
+import Preiss.Uniform.RigidityError
 import Mathlib.Tactic
 
+/-! # The mean-square rigidity contraction from proved moment limits -/
 open MeasureTheory Filter ProbabilityTheory
 open scoped Topology BigOperators
 namespace Preiss
 variable {m n : ℕ}
-
-theorem gaussian_bilinear_contraction_of_weighted_moment_limits
-    {X I E F ι κ : Type*} [MeasurableSpace X]
-    [NormedAddCommGroup E] [InnerProductSpace ℝ E] [FiniteDimensional ℝ E]
-    [MeasurableSpace E] [BorelSpace E]
-    [NormedAddCommGroup F] [InnerProductSpace ℝ F] [CompleteSpace F]
-    [Fintype ι] [Fintype κ]
-    (e : OrthonormalBasis ι ℝ E) (f : OrthonormalBasis κ ℝ F)
-    (μ : Measure X) (l : Filter I) [l.NeBot]
-    (weight : I → X → ℝ) (scale : I → ℝ) (p : X → E) (q : X → F)
-    (A : E →L[ℝ] E →L[ℝ] ℝ) (ω : E →L[ℝ] E →L[ℝ] F)
-    (hsymm : ∀ u v, ω u v = ω v u)
-    (hmean : (∫ v, ω v v ∂stdGaussian E) = 0)
-    (hint₂ : ∀ i j, ∀ᶠ t in l,
-      Integrable (fun x => weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x))) μ)
-    (hlim₂ : ∀ i j, Tendsto (fun t => scale t * ∫ x,
-      weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x)) ∂μ)
-      l (𝓝 (inner ℝ (e i) (e j) / 2)))
-    (hint₃ : ∀ i j, ∀ᶠ t in l,
-      Integrable (fun x => weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x) *
-        inner ℝ (ω (e i) (e j)) (q x))) μ)
-    (hlim₃ : ∀ i j, Tendsto (fun t => scale t * ∫ x,
-      weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x) *
-        inner ℝ (ω (e i) (e j)) (q x)) ∂μ) l (𝓝 (‖ω (e i) (e j)‖^2 / 8)))
-    (hzero : Tendsto (fun t => scale t * ∫ x, weight t x *
-      (A (p x) (p x) + inner ℝ (ω (p x) (p x)) (q x)) ∂μ) l (𝓝 0)) :
-    (∫ v, ‖ω v v‖^2 ∂stdGaussian E) = -8 * ∫ v, A v v ∂stdGaussian E := by
-  classical
-  let Q (ij : ι × ι) (x : X) := inner ℝ (e ij.1) (p x) * inner ℝ (e ij.2) (p x)
-  let a (ij : ι × ι) := A (e ij.1) (e ij.2)
-  let L (ij : ι × ι) := inner ℝ (e ij.1) (e ij.2) / 2
-  have hquad := tendsto_weighted_integral_finite_linear_combination μ l weight scale Q a L
-    (fun ij => hint₂ ij.1 ij.2) (fun ij => hlim₂ ij.1 ij.2)
-  have hQ (x : X) : (∑ ij : ι × ι, a ij * Q ij x) = A (p x) (p x) := by
-    dsimp only [a, Q]
-    rw [Fintype.sum_prod_type, bilinear_diagonal_eq_sum_orthonormalBasis e A (p x)]
-    apply Finset.sum_congr rfl
-    intro i _
-    apply Finset.sum_congr rfl
-    intro j _
-    simp only [smul_eq_mul]
-    ring
-  simp_rw [hQ] at hquad
-  have hL : (∑ ij : ι × ι, a ij * L ij) = bilinearTrace A / 2 := by
-    rw [bilinearTrace_eq_sum_diagonal A e]
-    simp [a, L, Fintype.sum_prod_type, e.inner_eq_ite, Finset.sum_div, ite_div, mul_ite, div_eq_mul_inv, Finset.sum_mul]
-  rw [hL] at hquad
-  let T (ij : ι × ι) (x : X) := Q ij x * inner ℝ (ω (e ij.1) (e ij.2)) (q x)
-  let N (ij : ι × ι) := ‖ω (e ij.1) (e ij.2)‖^2 / 8
-  have hmixed := tendsto_weighted_integral_finite_linear_combination μ l weight scale T
-    (fun _ => 1) N (fun ij => hint₃ ij.1 ij.2) (fun ij => hlim₃ ij.1 ij.2)
-  have hT (x : X) : (∑ ij : ι × ι, (1 : ℝ) * T ij x) =
-      inner ℝ (ω (p x) (p x)) (q x) := by
-    dsimp only [T, Q]
-    rw [Fintype.sum_prod_type, bilinear_diagonal_eq_sum_orthonormalBasis e ω (p x)]
-    simp only [one_mul, sum_inner, real_inner_smul_left]
-  simp_rw [hT] at hmixed
-  have hN : (∑ ij : ι × ι, (1 : ℝ) * N ij) =
-      (∑ i, ∑ j, ‖ω (e i) (e j)‖^2) / 8 := by
-    simp only [N, one_mul, Fintype.sum_prod_type, Finset.sum_div]
-  rw [hN] at hmixed
-  have htotal : Tendsto (fun t => scale t * ∫ x, weight t x *
-      (A (p x) (p x) + inner ℝ (ω (p x) (p x)) (q x)) ∂μ)
-      l (𝓝 (bilinearTrace A / 2 + (∑ i, ∑ j, ‖ω (e i) (e j)‖^2) / 8)) := by
-    apply (hquad.2.add hmixed.2).congr'
-    filter_upwards [hquad.1, hmixed.1] with t htA htω
-    have hsum : (fun x => weight t x * (A (p x) (p x) + inner ℝ (ω (p x) (p x)) (q x))) =
-        (fun x => weight t x * A (p x) (p x) + weight t x * inner ℝ (ω (p x) (p x)) (q x)) := by
-      funext x
-      ring
-    rw [hsum, integral_add htA htω]
-    ring
-  have heq := tendsto_nhds_unique hzero htotal
-  rw [gaussian_integral_norm_sq_bilinear_of_mean_zero e f ω hsymm hmean,
-    gaussian_integral_bilinear_eq_trace]
-  nlinarith
-
-
-theorem integrable_gaussian_inner_sq_unitUniform
-    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
-    (s : ℝ) (hs : 0 < s) (u : Euclidean n) :
-    Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2) μ := by
-  have h := (ContinuousMultilinearMap.apply ℝ (fun _ : Fin 2 => Euclidean n) ℝ
-    ![u,u]).integrable_comp (integrable_gaussianMomentKernel μ hm hμ 2 s hs)
-  simpa [Function.comp_def, ContinuousMultilinearMap.smul_apply, momentKernel_apply,
-    Fin.prod_univ_two, pow_two, mul_assoc] using h
-
-theorem integrable_gaussian_inner_sq_centered_unitUniform
-    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
-    (s : ℝ) (hs : 0 < s) (b u w : Euclidean n) :
-    Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 * inner ℝ (z-b) w) μ := by
-  have h := (ContinuousMultilinearMap.apply ℝ (fun _ : Fin 3 => Euclidean n) ℝ
-    ![u,u,w]).integrable_comp (integrable_gaussianMomentKernel μ hm hμ 3 s hs)
-  have h₃ : Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 * inner ℝ z w) μ := by
-    simpa [Function.comp_def, ContinuousMultilinearMap.smul_apply, momentKernel_apply,
-      Fin.prod_univ_three, pow_two, mul_assoc] using h
-  have h₂ := integrable_gaussian_inner_sq_unitUniform μ hm hμ s hs u
-  have hsub : Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 * inner ℝ z w -
-      Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 * inner ℝ b w) μ :=
-    h₃.sub (h₂.mul_const (inner ℝ b w))
-  simpa only [inner_sub_left, mul_sub] using hsub
-
-theorem normalized_gaussian_inner_sq_limit
-    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
-    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B) (u : Euclidean n) :
-    Tendsto (fun s => (s / gaussianMass μ s) *
-      ∫ z, Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 ∂μ)
-      (𝓝[>] (0 : ℝ)) (𝓝 (B 2 1 ![u,u] / 2)) := by
-  have ht := (gaussianMoment_first_scaled_limit μ B hB 2 (by decide) ![u,u]).div_const 2
-  apply ht.congr'
-  filter_upwards [self_mem_nhdsWithin] with s hs
-  have hs' : 0 < s := hs
-  rw [gaussianMomentForm_apply μ 2 s (integrable_gaussianMomentKernel μ hm hμ 2 s hs')]
-  simp only [gaussianMoment, Fin.prod_univ_two, Matrix.cons_val_zero,
-    Matrix.cons_val_one, Matrix.head_cons]
-  have hi : (∫ z, (inner ℝ z u * inner ℝ z u) * Real.exp (-s*‖z‖^2) ∂μ) =
-      ∫ z, Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 ∂μ := by
-    congr 1
-    funext z
-    ring
-  rw [hi]
-  norm_num
-  have hmass : gaussianMass μ s ≠ 0 := by
-    rw [gaussianMass_unitUniform μ hm hμ s hs']
-    exact (mul_pos (Real.Gamma_pos_of_pos (by positivity)) (Real.rpow_pos_of_pos hs' _)).ne'
-  unfold gaussianMass at hmass ⊢
-  simp only [neg_mul] at hmass ⊢
-  field_simp [hmass, hs'.ne']
-  <;> ring
 
 theorem normalized_gaussian_inner_mul_limit_on_plane
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
@@ -292,11 +163,3 @@ theorem rigidityOmega_contraction_of_mean_zero_and_error_limit
     simpa only [heq] using herror
 
 end Preiss
-#print axioms Preiss.integrable_gaussian_inner_sq_unitUniform
-#print axioms Preiss.integrable_gaussian_inner_sq_centered_unitUniform
-#print axioms Preiss.normalized_gaussian_inner_sq_limit
-#print axioms Preiss.normalized_gaussian_inner_mul_limit_on_plane
-#print axioms Preiss.normalized_gaussian_mixed_limit_rigidityOmega
-
-#print axioms Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits
-#print axioms Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit

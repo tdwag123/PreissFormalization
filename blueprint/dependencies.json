@@ -8580,6 +8580,80 @@
       "proof_dependencies": [],
       "expanded_line": 7341,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-weighted-contraction",
+      "title": "Gaussian contraction from weighted moment limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:finite-bilinear-integral-limits",
+        "lem:gaussian-vector-bilinear-wick"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7349,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-inner-product-limits",
+      "title": "Gaussian inner-product integrability and limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_gaussian_inner_sq_centered_unitUniform",
+        "Preiss.integrable_gaussian_inner_sq_unitUniform",
+        "Preiss.normalized_gaussian_inner_sq_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:low-order-moment-limits",
+        "lem:moment-product-growth"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7357,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-cross-product-limits",
+      "title": "Polarized Gaussian moment limits on the limiting plane",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.normalized_gaussian_inner_mul_limit_on_plane",
+        "Preiss.normalized_gaussian_mixed_limit_rigidityOmega"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:flat-infinity-moments",
+        "lem:gaussian-inner-product-limits",
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:weighted-integral-polarization"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7365,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-omega-contraction",
+      "title": "Mean-square contraction of the rigidity form",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-error",
+        "lem:gaussian-cross-product-limits",
+        "lem:gaussian-weighted-contraction"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7373,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -8984,9 +9058,11 @@
     "lem:scaled-moment-limits",
     "lem:mixed-centered-gaussian-limit",
     "lem:bounded-tube-cubic-vanishing",
+    "lem:gaussian-inner-product-limits",
     "lem:rigidity-error-limit-from-growth",
     "lem:gaussian-vector-trace-contractions",
     "lem:gaussian-rigidity-integral-bounds",
+    "lem:gaussian-weighted-contraction",
     "lem:tangent-blowdown",
     "lem:dimensional-tangent-bounded-orbit",
     "lem:flat-to-approximation",
@@ -9041,6 +9117,7 @@
     "cor:conical",
     "lem:odd-coefficients-plane-zero",
     "lem:uniform-cylinder-identity",
+    "lem:gaussian-cross-product-limits",
     "lem:first-crossing-flat-infinity",
     "lem:rigidity-normal-vector-exists",
     "lem:moment-normal-trace",
@@ -9048,6 +9125,7 @@
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-fourth-support-identity",
     "lem:rigidity-pointwise-from-growth",
+    "lem:rigidity-omega-contraction",
     "lem:flat-infinity-bounded-holes",
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-error-linear-growth",

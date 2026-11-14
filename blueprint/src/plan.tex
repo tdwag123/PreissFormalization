@@ -6249,3 +6249,35 @@ For a uniform support in a bounded tube around a subspace, the corresponding pro
 
 The projected squared-norm centered Gaussian contraction is the sum of its directional mixed contractions over an orthonormal basis of the plane.
 \end{lemma}
+
+\begin{lemma}[Gaussian contraction from weighted moment limits]
+\label{lem:gaussian-weighted-contraction}
+\lean{Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits}
+\uses{lem:finite-bilinear-integral-limits, lem:gaussian-vector-bilinear-wick}
+
+Finite families of second and mixed weighted moment limits, together with a vanishing quadratic error and a zero Gaussian mean, imply that the Gaussian mean square of the bilinear vector form is $-8$ times the mean of the scalar quadratic form.
+\end{lemma}
+
+\begin{lemma}[Gaussian inner-product integrability and limits]
+\label{lem:gaussian-inner-product-limits}
+\lean{Preiss.integrable_gaussian_inner_sq_unitUniform, Preiss.integrable_gaussian_inner_sq_centered_unitUniform, Preiss.normalized_gaussian_inner_sq_limit}
+\uses{lem:low-order-moment-limits, lem:moment-product-growth}
+
+Inner-product squares and their centered linear multiples are Gaussian-integrable for a uniform measure. The normalized square integral converges to half of the first quadratic moment coefficient.
+\end{lemma}
+
+\begin{lemma}[Polarized Gaussian moment limits on the limiting plane]
+\label{lem:gaussian-cross-product-limits}
+\lean{Preiss.normalized_gaussian_inner_mul_limit_on_plane, Preiss.normalized_gaussian_mixed_limit_rigidityOmega}
+\uses{lem:weighted-integral-polarization, lem:gaussian-inner-product-limits, lem:rigidity-mixed-gaussian-limit, lem:flat-infinity-moments}
+
+Polarization gives the normalized second and centered mixed Gaussian limits for two arbitrary vectors in the limiting plane.
+\end{lemma}
+
+\begin{lemma}[Mean-square contraction of the rigidity form]
+\label{lem:rigidity-omega-contraction}
+\lean{Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit}
+\uses{lem:gaussian-weighted-contraction, lem:gaussian-cross-product-limits, def:rigidity-error}
+
+Under the zero-mean and vanishing-error identities, the Gaussian mean of $\lVert\omega(v,v)\rVert^2$ equals $-8$ times the Gaussian mean of $A(v,v)$.
+\end{lemma}

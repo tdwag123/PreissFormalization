@@ -1,7 +1,11 @@
-import Preiss.Analysis.BilinearIntegralLimits
-import Preiss.Analysis.GaussianBilinearNorm
-import Mathlib.Tactic
+module
+public import Preiss.Analysis.BilinearIntegralLimits
+public import Preiss.Analysis.GaussianBilinearNorm
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.Ring
 
+/-! # Gaussian contraction from finite families of weighted moment limits -/
+@[expose] public section
 open MeasureTheory Filter ProbabilityTheory
 open scoped Topology BigOperators
 namespace Preiss
@@ -83,5 +87,3 @@ theorem gaussian_bilinear_contraction_of_weighted_moment_limits
   nlinarith
 
 end Preiss
-
-#print axioms Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits

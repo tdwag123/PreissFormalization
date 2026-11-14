@@ -479,6 +479,10 @@ digraph Preiss {
   "lem:centered-gaussian-full-contraction-zero" [label="Vanishing of the centered full Gaussian contraction", fillcolor="#dce5ee"];
   "lem:bounded-tube-projected-contraction" [label="Vanishing projected contraction for a bounded tube", fillcolor="#dce5ee"];
   "lem:projected-mixed-gaussian-sum" [label="Projected Gaussian contraction as a finite basis sum", fillcolor="#dce5ee"];
+  "lem:gaussian-weighted-contraction" [label="Gaussian contraction from weighted moment limits", fillcolor="#dce5ee"];
+  "lem:gaussian-inner-product-limits" [label="Gaussian inner-product integrability and limits", fillcolor="#dce5ee"];
+  "lem:gaussian-cross-product-limits" [label="Polarized Gaussian moment limits on the limiting plane", fillcolor="#dce5ee"];
+  "lem:rigidity-omega-contraction" [label="Mean-square contraction of the rigidity form", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -1608,4 +1612,15 @@ digraph Preiss {
   "lem:centered-gaussian-full-contraction-zero" -> "lem:bounded-tube-projected-contraction";
   "lem:scale-normalized-bounded-integral" -> "lem:bounded-tube-projected-contraction";
   "lem:moment-norm-bound" -> "lem:projected-mixed-gaussian-sum";
+  "lem:finite-bilinear-integral-limits" -> "lem:gaussian-weighted-contraction";
+  "lem:gaussian-vector-bilinear-wick" -> "lem:gaussian-weighted-contraction";
+  "lem:low-order-moment-limits" -> "lem:gaussian-inner-product-limits";
+  "lem:moment-product-growth" -> "lem:gaussian-inner-product-limits";
+  "lem:flat-infinity-moments" -> "lem:gaussian-cross-product-limits";
+  "lem:gaussian-inner-product-limits" -> "lem:gaussian-cross-product-limits";
+  "lem:rigidity-mixed-gaussian-limit" -> "lem:gaussian-cross-product-limits";
+  "lem:weighted-integral-polarization" -> "lem:gaussian-cross-product-limits";
+  "def:rigidity-error" -> "lem:rigidity-omega-contraction";
+  "lem:gaussian-cross-product-limits" -> "lem:rigidity-omega-contraction";
+  "lem:gaussian-weighted-contraction" -> "lem:rigidity-omega-contraction";
 }

@@ -477,6 +477,10 @@ flowchart LR
   lem_centered_gaussian_full_contraction_zero["Vanishing of the centered full Gaussian contraction"]
   lem_bounded_tube_projected_contraction["Vanishing projected contraction for a bounded tube"]
   lem_projected_mixed_gaussian_sum["Projected Gaussian contraction as a finite basis sum"]
+  lem_gaussian_weighted_contraction["Gaussian contraction from weighted moment limits"]
+  lem_gaussian_inner_product_limits["Gaussian inner-product integrability and limits"]
+  lem_gaussian_cross_product_limits["Polarized Gaussian moment limits on the limiting plane"]
+  lem_rigidity_omega_contraction["Mean-square contraction of the rigidity form"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -1606,3 +1610,14 @@ flowchart LR
   lem_centered_gaussian_full_contraction_zero --> lem_bounded_tube_projected_contraction
   lem_scale_normalized_bounded_integral --> lem_bounded_tube_projected_contraction
   lem_moment_norm_bound --> lem_projected_mixed_gaussian_sum
+  lem_finite_bilinear_integral_limits --> lem_gaussian_weighted_contraction
+  lem_gaussian_vector_bilinear_wick --> lem_gaussian_weighted_contraction
+  lem_low_order_moment_limits --> lem_gaussian_inner_product_limits
+  lem_moment_product_growth --> lem_gaussian_inner_product_limits
+  lem_flat_infinity_moments --> lem_gaussian_cross_product_limits
+  lem_gaussian_inner_product_limits --> lem_gaussian_cross_product_limits
+  lem_rigidity_mixed_gaussian_limit --> lem_gaussian_cross_product_limits
+  lem_weighted_integral_polarization --> lem_gaussian_cross_product_limits
+  def_rigidity_error --> lem_rigidity_omega_contraction
+  lem_gaussian_cross_product_limits --> lem_rigidity_omega_contraction
+  lem_gaussian_weighted_contraction --> lem_rigidity_omega_contraction

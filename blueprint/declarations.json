@@ -491,6 +491,18 @@
     "unfinished_dependencies": [],
     "verification": "Source index only; consult the Lean CI kernel-status artifact."
   },
+  "Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Analysis/GaussianBilinearContraction.lean",
+    "line": 13,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Analysis/GaussianBilinearContraction.lean#L13",
+    "signature": "theorem gaussian_bilinear_contraction_of_weighted_moment_limits\n    {X I E F ι κ : Type*} [MeasurableSpace X]\n    [NormedAddCommGroup E] [InnerProductSpace ℝ E] [FiniteDimensional ℝ E]\n    [MeasurableSpace E] [BorelSpace E]\n    [NormedAddCommGroup F] [InnerProductSpace ℝ F] [CompleteSpace F]\n    [Fintype ι] [Fintype κ]\n    (e : OrthonormalBasis ι ℝ E) (f : OrthonormalBasis κ ℝ F)\n    (μ : Measure X) (l : Filter I) [l.NeBot]\n    (weight : I → X → ℝ) (scale : I → ℝ) (p : X → E) (q : X → F)\n    (A : E →L[ℝ] E →L[ℝ] ℝ) (ω : E →L[ℝ] E →L[ℝ] F)\n    (hsymm : ∀ u v, ω u v = ω v u)\n    (hmean : (∫ v, ω v v ∂stdGaussian E) = 0)\n    (hint₂ : ∀ i j, ∀ᶠ t in l,\n      Integrable (fun x => weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x))) μ)\n    (hlim₂ : ∀ i j, Tendsto (fun t => scale t * ∫ x,\n      weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x)) ∂μ)\n      l (𝓝 (inner ℝ (e i) (e j) / 2)))\n    (hint₃ : ∀ i j, ∀ᶠ t in l,\n      Integrable (fun x => weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x) *\n        inner ℝ (ω (e i) (e j)) (q x))) μ)\n    (hlim₃ : ∀ i j, Tendsto (fun t => scale t * ∫ x,\n      weight t x * (inner ℝ (e i) (p x) * inner ℝ (e j) (p x) *\n        inner ℝ (ω (e i) (e j)) (q x)) ∂μ) l (𝓝 (‖ω (e i) (e j)‖^2 / 8)))\n    (hzero : Tendsto (fun t => scale t * ∫ x, weight t x *\n      (A (p x) (p x) + inner ℝ (ω (p x) (p x)) (q x)) ∂μ) l (𝓝 0)) :\n    (∫ v, ‖ω v v‖^2 ∂stdGaussian E) = -8 * ∫ v, A v v ∂stdGaussian E",
+    "kind": "theorem",
+    "source_status": "proof_candidate",
+    "unfinished_dependencies": [],
+    "verification": "Source index only; consult the Lean CI kernel-status artifact."
+  },
   "Preiss.integrable_gaussian_norm_sq_bilinear": {
     "project": "PreissFormalization",
     "revision": "main",
@@ -6810,6 +6822,42 @@
     "unfinished_dependencies": [],
     "verification": "Source index only; consult the Lean CI kernel-status artifact."
   },
+  "Preiss.integrable_gaussian_inner_sq_unitUniform": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/GaussianInnerProducts.lean",
+    "line": 14,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/GaussianInnerProducts.lean#L14",
+    "signature": "theorem integrable_gaussian_inner_sq_unitUniform\n    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)\n    (s : ℝ) (hs : 0 < s) (u : Euclidean n) :\n    Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2) μ",
+    "kind": "theorem",
+    "source_status": "proof_candidate",
+    "unfinished_dependencies": [],
+    "verification": "Source index only; consult the Lean CI kernel-status artifact."
+  },
+  "Preiss.integrable_gaussian_inner_sq_centered_unitUniform": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/GaussianInnerProducts.lean",
+    "line": 23,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/GaussianInnerProducts.lean#L23",
+    "signature": "theorem integrable_gaussian_inner_sq_centered_unitUniform\n    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)\n    (s : ℝ) (hs : 0 < s) (b u w : Euclidean n) :\n    Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 * inner ℝ (z-b) w) μ",
+    "kind": "theorem",
+    "source_status": "proof_candidate",
+    "unfinished_dependencies": [],
+    "verification": "Source index only; consult the Lean CI kernel-status artifact."
+  },
+  "Preiss.normalized_gaussian_inner_sq_limit": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/GaussianInnerProducts.lean",
+    "line": 38,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/GaussianInnerProducts.lean#L38",
+    "signature": "theorem normalized_gaussian_inner_sq_limit\n    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)\n    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B) (u : Euclidean n) :\n    Tendsto (fun s => (s / gaussianMass μ s) *\n      ∫ z, Real.exp (-s*‖z‖^2) * (inner ℝ z u)^2 ∂μ)\n      (𝓝[>] (0 : ℝ)) (𝓝 (B 2 1 ![u,u] / 2))",
+    "kind": "theorem",
+    "source_status": "proof_candidate",
+    "unfinished_dependencies": [],
+    "verification": "Source index only; consult the Lean CI kernel-status artifact."
+  },
   "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth": {
     "project": "PreissFormalization",
     "revision": "main",
@@ -7741,6 +7789,42 @@
     "line": 71,
     "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/Radial.lean#L71",
     "signature": "theorem integral_gaussian_mul_homogeneous\n    (μ : Measure (Euclidean n)) (hμ : μ.Regular) (hcone : IsConical m μ)\n    (h : Euclidean n → ℝ) (hh : Measurable h) (hnonneg : ∀ z, 0 ≤ h z)\n    (a : ℝ) (ha : 0 < (m : ℝ) + a)\n    (hhom : ∀ r > 0, ∀ z, h (r • z) = r ^ a * h z)\n    (hint : IntegrableOn h (closedBall 0 1) μ) :\n    Integrable (fun z => Real.exp (-‖z‖ ^ 2) * h z) μ ∧\n    (∫ z, Real.exp (-‖z‖ ^ 2) * h z ∂μ) =\n      Real.Gamma (((m : ℝ) + a) / 2 + 1) * ∫ z in closedBall 0 1, h z ∂μ",
+    "kind": "theorem",
+    "source_status": "proof_candidate",
+    "unfinished_dependencies": [],
+    "verification": "Source index only; consult the Lean CI kernel-status artifact."
+  },
+  "Preiss.normalized_gaussian_inner_mul_limit_on_plane": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/RigidityContraction.lean",
+    "line": 14,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/RigidityContraction.lean#L14",
+    "signature": "theorem normalized_gaussian_inner_mul_limit_on_plane\n    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)\n    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B)\n    (V : Plane m n) (hV : IsTangentAtInfinity m μ (unitFlat V)) (u v : V.1) :\n    Tendsto (fun s => (s / gaussianMass μ s) *\n      ∫ z, Real.exp (-s*‖z‖^2) * inner ℝ z (u : Euclidean n) * inner ℝ z (v : Euclidean n) ∂μ)\n      (𝓝[>] (0 : ℝ)) (𝓝 (inner ℝ u v / 2))",
+    "kind": "theorem",
+    "source_status": "proof_candidate",
+    "unfinished_dependencies": [],
+    "verification": "Source index only; consult the Lean CI kernel-status artifact."
+  },
+  "Preiss.normalized_gaussian_mixed_limit_rigidityOmega": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/RigidityContraction.lean",
+    "line": 55,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/RigidityContraction.lean#L55",
+    "signature": "theorem normalized_gaussian_mixed_limit_rigidityOmega\n    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)\n    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B)\n    (V : Plane m n) (hV : IsTangentAtInfinity m μ (unitFlat V))\n    (b : V.1ᗮ) (hb : IsFirstMomentNormalVector B V b)\n    (ω : RigidityOmega V) (hω : IsRigidityOmega B V b ω) (u v : V.1) (w : V.1ᗮ) :\n    Tendsto (fun s => (s / gaussianMass μ s) *\n      ∫ z, Real.exp (-s*‖z‖^2) * inner ℝ z (u : Euclidean n) * inner ℝ z (v : Euclidean n) *\n        inner ℝ (z-(b : Euclidean n)) (w : Euclidean n) ∂μ)\n      (𝓝[>] (0 : ℝ)) (𝓝 (inner ℝ (ω u v) w / 8))",
+    "kind": "theorem",
+    "source_status": "proof_candidate",
+    "unfinished_dependencies": [],
+    "verification": "Source index only; consult the Lean CI kernel-status artifact."
+  },
+  "Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit": {
+    "project": "PreissFormalization",
+    "revision": "main",
+    "path": "Preiss/Uniform/RigidityContraction.lean",
+    "line": 96,
+    "url": "https://github.com/tdwag123/PreissFormalization/blob/main/Preiss/Uniform/RigidityContraction.lean#L96",
+    "signature": "theorem rigidityOmega_contraction_of_mean_zero_and_error_limit\n    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)\n    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B)\n    (V : Plane m n) (hV : IsTangentAtInfinity m μ (unitFlat V))\n    (b : V.1ᗮ) (hb : IsFirstMomentNormalVector B V b)\n    (ω : RigidityOmega V) (hω : IsRigidityOmega B V b ω)\n    (A : RigidityAdjustedForm V)\n    (hmean : (∫ v : V.1, ω v v ∂stdGaussian V.1) = 0)\n    (herror : Tendsto (fun s : ℝ => (s / gaussianMass μ s) *\n      ∫ z, Real.exp (-s*‖z‖^2) * rigidityError V b ω A z ∂μ)\n      (𝓝[>] (0 : ℝ)) (𝓝 0)) :\n    (∫ v : V.1, ‖ω v v‖^2 ∂stdGaussian V.1) =\n      -8 * ∫ v : V.1, A v v ∂stdGaussian V.1",
     "kind": "theorem",
     "source_status": "proof_candidate",
     "unfinished_dependencies": [],

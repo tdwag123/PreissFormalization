@@ -425,6 +425,35 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.GaussianBilinearContraction",
+      "file": "Preiss/Analysis/GaussianBilinearContraction.lean",
+      "purpose": "Reusable Analysis.GaussianBilinearContraction interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Ring",
+        "Preiss.Analysis.BilinearIntegralLimits",
+        "Preiss.Analysis.GaussianBilinearNorm"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Ring"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.BilinearIntegralLimits",
+        "Preiss.Analysis.GaussianBilinearNorm"
+      ],
+      "nodes": [
+        "lem:gaussian-weighted-contraction"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.BilinearIntegralLimits",
+        "Preiss.Analysis.GaussianBilinearNorm"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.GaussianBilinearNorm",
       "file": "Preiss/Analysis/GaussianBilinearNorm.lean",
       "purpose": "Reusable Analysis.GaussianBilinearNorm interfaces.",
@@ -6126,6 +6155,36 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Uniform.GaussianInnerProducts",
+      "file": "Preiss/Uniform/GaussianInnerProducts.lean",
+      "purpose": "Reusable Uniform.GaussianInnerProducts interfaces.",
+      "current_source_imports": [
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Tactic",
+        "Preiss.Uniform.MomentCoefficientLimits",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Uniform.MixedMomentBounds",
+        "Preiss.Uniform.MomentCoefficientLimits"
+      ],
+      "nodes": [
+        "lem:gaussian-inner-product-limits"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Uniform.MixedMomentBounds",
+        "Preiss.Uniform.MomentCoefficientLimits",
+        "Preiss.Uniform.MomentEstimates"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.GaussianLinearGrowth",
       "file": "Preiss/Uniform/GaussianLinearGrowth.lean",
       "purpose": "Reusable Uniform.GaussianLinearGrowth interfaces.",
@@ -6839,6 +6898,45 @@
       "purpose": "Canonical Uniform.Radial interfaces."
     },
     {
+      "module": "Preiss.Uniform.RigidityContraction",
+      "file": "Preiss/Uniform/RigidityContraction.lean",
+      "purpose": "Reusable Uniform.RigidityContraction interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Preiss.Analysis.GaussianBilinearContraction",
+        "Preiss.Analysis.WeightedIntegralPolarization",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+        "Preiss.Uniform.GaussianInnerProducts",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.GaussianBilinearContraction",
+        "Preiss.Analysis.WeightedIntegralPolarization",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+        "Preiss.Uniform.GaussianInnerProducts",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "nodes": [
+        "lem:gaussian-cross-product-limits",
+        "lem:rigidity-omega-contraction"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.GaussianBilinearContraction",
+        "Preiss.Analysis.WeightedIntegralPolarization",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+        "Preiss.Uniform.GaussianInnerProducts",
+        "Preiss.Uniform.RigidityError"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.RigidityError",
       "file": "Preiss/Uniform/RigidityError.lean",
       "purpose": "Reusable Uniform.RigidityError interfaces.",
@@ -7451,6 +7549,7 @@
     "Preiss.Uniform.MomentCovariance",
     "Preiss.Uniform.SubspaceMomentTrace",
     "Preiss.Analysis.GradedProjection",
+    "Preiss.Analysis.GaussianBilinearContraction",
     "Preiss.Analysis.GaussianRigidityBounds",
     "Preiss.Density.FinitePieces",
     "Preiss.Geometry.UnitFlat",
@@ -7521,6 +7620,7 @@
     "Preiss.Rectifiability.WeakApproximation.UniformTubes",
     "Preiss.Rectifiability.TangentNecessity",
     "Preiss.Uniform.FlatPseudotangent",
+    "Preiss.Uniform.GaussianInnerProducts",
     "Preiss.Uniform.MomentExpansion",
     "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
@@ -7545,6 +7645,7 @@
     "Preiss.Uniform.RigidityError",
     "Preiss.Rectifiability.TangentCharacterization",
     "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+    "Preiss.Uniform.RigidityContraction",
     "Preiss.Uniform.RigidityErrorBounds",
     "Preiss.Uniform.RigidityErrorLimit",
     "Preiss.Uniform.RigidityPointwise",
