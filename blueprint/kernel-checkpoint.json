@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "2c6b7886d879de47733b845cfd45fd3ef933b7cd",
+  "source_revision": "9572cf7f99115ae21cf7b5ba11357f5b37a13d34",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -384,6 +384,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Tangent/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.IsDimensionalTangent.isUniformPseudotangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/ScalingOrbit.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -993,18 +1005,53 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.analyticAt_dividedFlagMap": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.analyticAt_dividedFlagOperator": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.analyticAt_dividedGradingMap": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedDivision.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.analyticAt_weightedProjection_zero": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GradedProjection.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.ballPowerUpperBoundSet": {
       "project": "local",
@@ -1811,6 +1858,42 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.dividedFlagMap": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.dividedFlagOperator": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.dividedFlagOperator_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.dividedGradingConstant": {
       "project": "local",
       "kind": "def",
@@ -1835,11 +1918,47 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.dividedGradingMap": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedDivision.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.dividedGradingMap_row": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedDivision.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.dividedGradingMap_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedDivision.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.eq_zero_of_isLittleO_pow_smul": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
-      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "path": "Preiss/Analysis/AsymptoticCoefficients.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -1877,6 +1996,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/Vague/CompactMass.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_analyticApproximation_of_weightedComplement": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/AnalyticProjectionApproximation.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -2156,15 +2287,14 @@
     "Preiss.exists_halfSpace_dimensionalTangent": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/DimensionReduction.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_holeFamily_of_compact": {
       "project": "local",
@@ -2181,15 +2311,14 @@
     "Preiss.exists_hyperplane_eq_or_dimensionalTangent": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/DimensionReduction.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_linearIsometry_range_plane": {
       "project": "local",
@@ -2347,6 +2476,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_positive_taylor_jets_of_analyticAt_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/AnalyticJets.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_projection_hole_disk_family": {
       "project": "local",
       "kind": "theorem",
@@ -2432,6 +2573,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_taylor_jets_of_analyticAt_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/AnalyticJets.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_tendsto_planeProjection_subseq": {
       "project": "local",
       "kind": "theorem",
@@ -2481,6 +2634,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_unitUniform_dimensionalTangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/TangentExistence.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_unit_small_projection_of_avoids_cylinder": {
       "project": "local",
       "kind": "theorem",
@@ -2494,6 +2659,18 @@
       "kernel_status": "proved"
     },
     "Preiss.exists_unit_small_projection_of_empty_inner_cylinder": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/Cylinders.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_unit_small_projection_of_near_plane": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
@@ -2736,6 +2913,18 @@
       "kernel_status": "proved"
     },
     "Preiss.flagProjectionLayer_isOrthogonalGrading": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.flagProjectionLayer_projectedGradingPiece_eq_zero": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
@@ -2991,6 +3180,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.functional_comp_projection_eq_self": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/AnalyticProjectionApproximation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussianMass": {
       "project": "local",
       "kind": "def",
@@ -3030,15 +3231,14 @@
     "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentExpansion.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.gaussianMomentCoefficient_unique": {
       "project": "local",
@@ -3124,31 +3324,41 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussianMoment_isBigO_rpow": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentAsymptotics.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussianMoment_scaled_even_limit": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentExpansion.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.gaussianMoment_scaled_odd_limit": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentExpansion.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.gaussianMoment_taylor_remainder": {
       "project": "local",
@@ -3379,18 +3589,29 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.hausdorffMeasure_plane_slab_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneSlab.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.hausdorffMeasure_projected_tube_le": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/ProjectionEstimate.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.hausdorff_le_measure_of_uniform_ball_lower_bound": {
       "project": "local",
@@ -4044,6 +4265,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.isLittleO_rpow_nhdsGT_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents": {
       "project": "local",
       "kind": "theorem",
@@ -4146,6 +4379,30 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isUnit_dividedFlagOperator_pos": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isUnit_dividedFlagOperator_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4419,6 +4676,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.measure_image_le_mul_of_ball_image_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/CoveringImage.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.measure_le_of_pointwise_eventually_mem": {
       "project": "local",
       "kind": "theorem",
@@ -4455,6 +4724,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.measure_restrict_le_hausdorff_of_ball_bounds": {
       "project": "local",
@@ -4841,6 +5122,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.norm_projection_lt_of_outside_cone": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/Cylinders.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.oddMomentCoefficient_restrict_plane_eq_zero": {
       "project": "local",
       "kind": "theorem",
@@ -5071,6 +5364,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.projectedGradingPiece": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
     "Preiss.projected_distance_le_of_affine_plane_lower_mass": {
       "project": "local",
       "kind": "theorem",
@@ -5088,6 +5393,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.projected_tube_subset_slab": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/ProjectionEstimate.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -5524,6 +5841,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.taylorCoefficient_eq_zero_of_lt_growth": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.tendsto_densityRatio_zero": {
       "project": "local",
       "kind": "theorem",
@@ -5834,15 +6163,14 @@
     "Preiss.uniform_dimension_reduction": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/DimensionReduction.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.uniform_has_flat_pseudotangent": {
       "project": "local",
@@ -6254,6 +6582,30 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.weightedGrading_comp_dividedFlagMap": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.weightedGrading_comp_dividedGradingMap": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GradedDivision.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.weightedGrading_injective": {
       "project": "local",
       "kind": "theorem",
@@ -6435,6 +6787,16 @@
       "kernel_status": "upstream_checked"
     },
     "SUniformAux.measure_closedBall_eq_of_mem_support": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.measure_open_eq_zero_of_isTangentMeasure": {
       "project": "upstream",
       "kind": "upstream",
       "axioms": [

@@ -1299,7 +1299,6 @@
       "proof_dependencies": [],
       "expanded_line": 1526,
       "unfinished_dependencies": [
-        "lem:moment-support-polynomial",
         "lem:taylor-two"
       ]
     },
@@ -3092,24 +3091,20 @@
       "id": "lem:moment-support-polynomial",
       "title": "Polynomial support identities for Taylor coefficients",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
+        "lem:asymptotic-taylor-vanishing",
         "lem:moment-coefficient-vanishing",
-        "lem:taylor-one",
-        "lem:taylor-two"
+        "lem:taylor-one"
       ],
       "proof_dependencies": [],
       "expanded_line": 3913,
-      "unfinished_dependencies": [
-        "lem:taylor-two"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:scaled-moment-limits",
@@ -3368,9 +3363,10 @@
       "id": "thm:flat-pseudotangent",
       "title": "Flat pseudotangent of a uniform measure",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
-        "Preiss.uniform_has_flat_pseudotangent"
+        "Preiss.uniform_has_flat_pseudotangent",
+        "Preiss.unitUniform_exists_flat_uniformPseudotangent"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -3378,7 +3374,9 @@
         "def:unit-uniform",
         "lem:plane-supported-uniform-flat",
         "lem:pseudotangent-transitive",
-        "lem:uniform-reduction"
+        "lem:uniform-reduction",
+        "lem:unit-flat-support-regularity",
+        "lem:unit-flat-unit-uniform"
       ],
       "proof_dependencies": [],
       "expanded_line": 4286,
@@ -3592,8 +3590,7 @@
       "proof_dependencies": [],
       "expanded_line": 4481,
       "unfinished_dependencies": [
-        "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial"
+        "lem:flat-infinity-moments"
       ]
     },
     {
@@ -3618,8 +3615,7 @@
       "expanded_line": 4512,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial"
+        "lem:flat-infinity-moments"
       ]
     },
     {
@@ -3787,7 +3783,6 @@
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial",
         "lem:rigidity-cubic-vanishing"
       ]
     },
@@ -4048,27 +4043,25 @@
       "id": "thm:part-a",
       "title": "Existence of a flat tangent almost everywhere",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "depends_on_unproved",
       "lean": [
         "Preiss.ae_exists_flat_tangent"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:flat",
-        "def:positive-density",
-        "lem:dimensional-tangent-closed",
+        "lem:dimensional-tangent-ball-constant",
         "lem:dimensional-tangent-compactness",
+        "lem:flat-positive-scalar",
+        "lem:flat-tangent-from-uniform-recentering",
+        "lem:radius-power-density",
         "lem:recenter",
-        "lem:tangent-existence",
-        "lem:tangent-ray",
         "lem:uniform-adapter",
-        "thm:flat-pseudotangent"
+        "lem:unit-flat-support-regularity"
       ],
       "proof_dependencies": [],
       "expanded_line": 4986,
       "unfinished_dependencies": [
-        "lem:uniform-adapter",
-        "thm:flat-pseudotangent"
+        "lem:uniform-adapter"
       ]
     },
     {
@@ -6131,11 +6124,14 @@
       "status": "proof_candidate",
       "lean": [
         "Preiss.flatOn_support",
+        "Preiss.isFlat_unitFlat",
         "Preiss.regular_unitFlat",
+        "Preiss.unitFlat_ne_zero",
         "Preiss.unitFlat_support"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
+        "def:flat",
         "lem:flat-measure-regularity",
         "lem:measure-support-transport",
         "lem:plane-hausdorff"
@@ -6441,6 +6437,26 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6540,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-tangent-from-uniform-recentering",
+      "title": "A flat dimensional tangent from uniformity and simultaneous recentering",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_flat_dimensionalTangent_of_uniform_recenter"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:blowup-composition",
+        "lem:dimensional-tangent-closed",
+        "lem:uniform-scaling",
+        "lem:unit-flat-support-regularity",
+        "thm:flat-pseudotangent"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6588,
       "unfinished_dependencies": []
     }
   ]

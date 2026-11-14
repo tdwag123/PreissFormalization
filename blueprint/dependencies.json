@@ -1443,7 +1443,6 @@
       "proof_dependencies": [],
       "expanded_line": 1526,
       "unfinished_dependencies": [
-        "lem:moment-support-polynomial",
         "lem:taylor-two"
       ]
     },
@@ -3351,24 +3350,20 @@
       "id": "lem:moment-support-polynomial",
       "title": "Polynomial support identities for Taylor coefficients",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
+        "lem:asymptotic-taylor-vanishing",
         "lem:moment-coefficient-vanishing",
-        "lem:taylor-one",
-        "lem:taylor-two"
+        "lem:taylor-one"
       ],
       "proof_dependencies": [],
       "expanded_line": 3913,
-      "unfinished_dependencies": [
-        "lem:taylor-two"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:scaled-moment-limits",
@@ -3648,9 +3643,10 @@
       "id": "thm:flat-pseudotangent",
       "title": "Flat pseudotangent of a uniform measure",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
-        "Preiss.uniform_has_flat_pseudotangent"
+        "Preiss.uniform_has_flat_pseudotangent",
+        "Preiss.unitUniform_exists_flat_uniformPseudotangent"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -3658,7 +3654,9 @@
         "def:unit-uniform",
         "lem:plane-supported-uniform-flat",
         "lem:pseudotangent-transitive",
-        "lem:uniform-reduction"
+        "lem:uniform-reduction",
+        "lem:unit-flat-support-regularity",
+        "lem:unit-flat-unit-uniform"
       ],
       "proof_dependencies": [],
       "expanded_line": 4286,
@@ -3872,8 +3870,7 @@
       "proof_dependencies": [],
       "expanded_line": 4481,
       "unfinished_dependencies": [
-        "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial"
+        "lem:flat-infinity-moments"
       ]
     },
     {
@@ -3898,8 +3895,7 @@
       "expanded_line": 4512,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial"
+        "lem:flat-infinity-moments"
       ]
     },
     {
@@ -4067,7 +4063,6 @@
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial",
         "lem:rigidity-cubic-vanishing"
       ]
     },
@@ -4328,27 +4323,25 @@
       "id": "thm:part-a",
       "title": "Existence of a flat tangent almost everywhere",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "depends_on_unproved",
       "lean": [
         "Preiss.ae_exists_flat_tangent"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:flat",
-        "def:positive-density",
-        "lem:dimensional-tangent-closed",
+        "lem:dimensional-tangent-ball-constant",
         "lem:dimensional-tangent-compactness",
+        "lem:flat-positive-scalar",
+        "lem:flat-tangent-from-uniform-recentering",
+        "lem:radius-power-density",
         "lem:recenter",
-        "lem:tangent-existence",
-        "lem:tangent-ray",
         "lem:uniform-adapter",
-        "thm:flat-pseudotangent"
+        "lem:unit-flat-support-regularity"
       ],
       "proof_dependencies": [],
       "expanded_line": 4986,
       "unfinished_dependencies": [
-        "lem:uniform-adapter",
-        "thm:flat-pseudotangent"
+        "lem:uniform-adapter"
       ]
     },
     {
@@ -6730,11 +6723,14 @@
       "status": "proof_candidate",
       "lean": [
         "Preiss.flatOn_support",
+        "Preiss.isFlat_unitFlat",
         "Preiss.regular_unitFlat",
+        "Preiss.unitFlat_ne_zero",
         "Preiss.unitFlat_support"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
+        "def:flat",
         "lem:flat-measure-regularity",
         "lem:measure-support-transport",
         "lem:plane-hausdorff"
@@ -7123,6 +7119,172 @@
       "proof_dependencies": [],
       "expanded_line": 6556,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:coherent-finite-jets",
+      "title": "Coherent Taylor coefficients from compatible finite jets",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_coherent_taylor_coefficients_of_finite_jets"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6564,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:feature-moment-analytic-approximation",
+      "title": "Analytic approximation of the complete feature moment functional",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_featureMoment_analytic_approximation"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:analytic-projection-approximation",
+        "lem:feature-moment-vanishing",
+        "lem:feature-norm-functionals",
+        "lem:moment-feature-remainder"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6572,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:compact-uniform-tubes",
+      "title": "Compact tube uniformization preserving a fixed lower density bound",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_compact_uniform_tubes_subset"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:tube-support-upgrade",
+        "lem:uniform-compact-selection"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6580,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-tangent-from-uniform-recentering",
+      "title": "A flat dimensional tangent from uniformity and simultaneous recentering",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_flat_dimensionalTangent_of_uniform_recenter"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:blowup-composition",
+        "lem:dimensional-tangent-closed",
+        "lem:uniform-scaling",
+        "lem:unit-flat-support-regularity",
+        "thm:flat-pseudotangent"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6588,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "def:symmetric-multilinear",
+      "title": "Symmetric multilinear forms and permutation averaging",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.symmetricContinuousMultilinearSubmodule",
+        "Preiss.symmetrizeContinuousMultilinearMap"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6596,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:multilinear-symmetrization",
+      "title": "Symmetrization identities",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.comp_symmetrizeContinuousMultilinearMap",
+        "Preiss.symmetrizeContinuousMultilinearMap_apply_perm",
+        "Preiss.symmetrizeContinuousMultilinearMap_diagonal",
+        "Preiss.symmetrizeContinuousMultilinearMap_eq_self"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:symmetric-multilinear"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6603,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:feature-multilinear-block",
+      "title": "Multilinear coordinate tensors for polynomial feature blocks",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.inner_polynomialFeature_multilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock_apply",
+        "Preiss.polynomialFeatureMultilinearBlock_mem",
+        "Preiss.weightedGrading_polynomialFeatureMultilinearBlock"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:polynomial-feature",
+        "lem:polynomial-feature-identities"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6611,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "def:symmetric-feature-recovery",
+      "title": "Bounded recovery of symmetric forms from feature functionals",
+      "kind": "definition",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.polynomialFeatureMomentRecovery",
+        "Preiss.polynomialFeatureMomentRecovery_symmetric",
+        "Preiss.symmetricPolynomialFeatureMomentRecovery",
+        "Preiss.symmetricPolynomialFeatureMultilinearBlock"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:feature-multilinear-block",
+        "lem:multilinear-symmetrization"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6619,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:feature-moment-exact-recovery",
+      "title": "Exact Gaussian moment recovery from polynomial features",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.featureMoment_comp_multilinearBlock_of_growth",
+        "Preiss.polynomialFeatureMomentRecovery_featureMoment_of_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:symmetric-feature-recovery",
+        "lem:gaussian-feature-integrability",
+        "lem:moment-form-symmetry"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6627,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -7189,6 +7351,7 @@
     "lem:nested-orthogonal-layers",
     "lem:fivefold-image-covering",
     "lem:analytic-finite-jets",
+    "def:symmetric-multilinear",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -7258,6 +7421,7 @@
     "def:feature-moment",
     "lem:countable-coordinate-second-countability",
     "lem:bilinear-trace-basis",
+    "lem:coherent-finite-jets",
     "lem:uniform-constant-one",
     "lem:polynomial-feature-identities",
     "lem:gaussian-ball-power",
@@ -7266,6 +7430,7 @@
     "lem:vague-determining-tests",
     "lem:dense-compact-tests-exist",
     "lem:proper-map-regularity",
+    "lem:multilinear-symmetrization",
     "gmt:goodsets",
     "lem:upper-density-localization",
     "lem:radius-power-density",
@@ -7331,6 +7496,7 @@
     "lem:gaussian-feature-integrability",
     "lem:kernel-flag-layer-grading",
     "lem:feature-moment-vanishing",
+    "lem:feature-multilinear-block",
     "lem:gaussian-ball-power-parameter",
     "lem:real-gaussian-even-moments",
     "def:vague-metrization-from-tests",
@@ -7377,6 +7543,7 @@
     "lem:integrated-gaussian-exponential-series",
     "lem:moment-feature-annihilation",
     "lem:divided-grading-constant-injective",
+    "def:symmetric-feature-recovery",
     "lem:moment-norm-bound",
     "lem:gaussian-wick-fourth",
     "lem:vague-countable-metric",
@@ -7401,6 +7568,7 @@
     "def:rigidity-adjusted-form",
     "lem:polynomial-gaussian-norm-tails",
     "lem:kernel-flag-divided-operators",
+    "lem:feature-moment-exact-recovery",
     "lem:gaussian-translation-series",
     "lem:moment-operator-growth",
     "lem:gaussian-quadratic-trace-bound",
@@ -7418,6 +7586,7 @@
     "lem:density-measure-comparison",
     "lem:decomposition",
     "lem:pure-cone-escape",
+    "lem:compact-uniform-tubes",
     "lem:nested-compact-approximation",
     "lem:flatness-continuous",
     "thm:rectifiable-blowup",
@@ -7442,6 +7611,7 @@
     "lem:flatness-radius-continuous",
     "lem:graded-analytic-projection",
     "lem:moment-feature-remainder",
+    "lem:moment-support-polynomial",
     "lem:scaled-moment-limits",
     "lem:tangent-blowdown",
     "lem:dimensional-tangent-bounded-orbit",
@@ -7460,42 +7630,43 @@
     "cor:rectifiable-tangent-plane",
     "lem:uniform-full-dimension-unique",
     "lem:two-sided-packing-core",
+    "lem:feature-moment-analytic-approximation",
+    "lem:conical-moments",
     "lem:moment-second-total-trace",
-    "lem:moment-support-polynomial",
     "thm:unique-infinity",
+    "lem:odd-coefficients-plane-zero",
+    "lem:uniform-cylinder-identity",
     "lem:rigidity-mixed-gaussian-limit",
     "lem:density-normalization",
     "lem:halfspace-tangent-witness",
     "lem:plane-supported-uniform-flat",
     "lem:packing-contradiction",
-    "lem:conical-moments",
-    "lem:odd-coefficients-plane-zero",
-    "lem:uniform-cylinder-identity",
-    "cor:conical",
-    "lem:uniform-reduction",
-    "lem:small-energy-no-holes",
-    "thm:mm-set",
     "lem:conical-covariance",
+    "cor:conical",
     "lem:rigidity-normal-vector-exists",
     "lem:moment-normal-trace",
-    "lem:flat-infinity-bounded-holes",
     "lem:rigidity-cubic-vanishing",
     "lem:rigidity-contracted-limit-zero",
-    "thm:flat-pseudotangent",
-    "thm:mm-measure",
+    "lem:uniform-reduction",
+    "lem:small-energy-no-holes",
+    "lem:flat-infinity-bounded-holes",
+    "thm:mm-set",
     "lem:conical-eigenvalue-rigidity",
     "lem:rigidity-forms-exist",
     "lem:rigidity-fourth-support-identity",
     "lem:rigidity-omega-trace-zero",
-    "thm:part-a",
-    "thm:rectifiable-iff-flat",
+    "thm:flat-pseudotangent",
+    "thm:mm-measure",
     "thm:gap",
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-omega-reproducing",
+    "lem:flat-tangent-from-uniform-recentering",
+    "thm:rectifiable-iff-flat",
     "lem:flatness-gap-cutoff",
     "lem:rigidity-integral-quadratic-bound",
+    "thm:part-a",
     "lem:trace-rigidity",
     "thm:infinity-rigidity",
     "lem:first-crossing",

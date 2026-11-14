@@ -1,0 +1,30 @@
+{
+  "existing_node_additional_deps": {
+    "lem:unit-flat-support-regularity": [
+      "def:flat"
+    ],
+    "thm:flat-pseudotangent": [
+      "lem:unit-flat-support-regularity",
+      "lem:unit-flat-unit-uniform",
+      "lem:plane-supported-uniform-flat"
+    ]
+  },
+  "existing_node_replacement_deps": {
+    "lem:moment-support-polynomial": [
+      "def:moment-coefficients",
+      "lem:moment-coefficient-vanishing",
+      "lem:taylor-one",
+      "lem:asymptotic-taylor-vanishing"
+    ],
+    "thm:part-a": [
+      "lem:uniform-adapter",
+      "lem:recenter",
+      "lem:radius-power-density",
+      "lem:dimensional-tangent-compactness",
+      "lem:dimensional-tangent-ball-constant",
+      "lem:flat-tangent-from-uniform-recentering",
+      "lem:unit-flat-support-regularity",
+      "lem:flat-positive-scalar"
+    ]
+  }
+}

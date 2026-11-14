@@ -95,7 +95,8 @@
       "gmt_imports": [],
       "proof_imports": [],
       "nodes": [
-        "lem:asymptotic-taylor-vanishing"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:coherent-finite-jets"
       ],
       "source_exists": true,
       "local_imports": [],
@@ -894,6 +895,28 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.MultilinearSymmetrization",
+      "file": "Preiss/Analysis/MultilinearSymmetrization.lean",
+      "purpose": "Reusable Analysis.MultilinearSymmetrization interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Normed.Module.Multilinear.Basic",
+        "Mathlib.Data.Fintype.Perm"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Normed.Module.Multilinear.Basic",
+        "Mathlib.Data.Fintype.Perm"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "def:symmetric-multilinear",
+        "lem:multilinear-symmetrization"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.NestedProjections",
       "file": "Preiss/Analysis/NestedProjections.lean",
       "purpose": "Reusable Analysis.NestedProjections interfaces.",
@@ -942,11 +965,13 @@
         "Mathlib.Algebra.BigOperators.Ring.Finset",
         "Mathlib.Analysis.SpecialFunctions.Sqrt",
         "Preiss.Analysis.Grading",
+        "Preiss.Analysis.MultilinearSymmetrization",
         "Preiss.Analysis.OrthonormalProjection",
         "Preiss.Geometry.Euclidean"
       ],
       "local_imports": [
         "Preiss.Analysis.Grading",
+        "Preiss.Analysis.MultilinearSymmetrization",
         "Preiss.Analysis.OrthonormalProjection",
         "Preiss.Geometry.Euclidean"
       ],
@@ -957,12 +982,15 @@
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.Grading",
+        "Preiss.Analysis.MultilinearSymmetrization",
         "Preiss.Analysis.OrthonormalProjection"
       ],
       "nodes": [
         "def:polynomial-feature",
         "lem:polynomial-feature-identities",
-        "lem:feature-norm-functionals"
+        "lem:feature-norm-functionals",
+        "lem:feature-multilinear-block",
+        "def:symmetric-feature-recovery"
       ],
       "source_exists": true,
       "scope": "core",
@@ -2174,12 +2202,14 @@
       "purpose": "Reusable Geometry.UnitFlat interfaces.",
       "current_source_imports": [
         "Preiss.Analysis.MeasureSupport",
+        "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneRegularity"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.MeasureSupport",
+        "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.PlaneRegularity"
       ],
@@ -2189,6 +2219,7 @@
       "source_exists": true,
       "local_imports": [
         "Preiss.Analysis.MeasureSupport",
+        "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.PlaneRegularity"
       ],
@@ -3266,6 +3297,30 @@
       "purpose": "Canonical Rectifiability.WeakApproximation.Uniformization interfaces."
     },
     {
+      "module": "Preiss.Rectifiability.WeakApproximation.UniformTubes",
+      "file": "Preiss/Rectifiability/WeakApproximation/UniformTubes.lean",
+      "purpose": "Reusable Rectifiability.WeakApproximation.UniformTubes interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "nodes": [
+        "lem:compact-uniform-tubes"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Rectifiability.Zero",
       "file": "Preiss/Rectifiability/Zero.lean",
       "current_source_imports": [
@@ -3703,6 +3758,37 @@
       "purpose": "Canonical Tangent.FlatApproximation interfaces."
     },
     {
+      "module": "Preiss.Tangent.FlatFromUniform",
+      "file": "Preiss/Tangent/FlatFromUniform.lean",
+      "purpose": "Reusable Tangent.FlatFromUniform interfaces.",
+      "current_source_imports": [
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Uniform.FlatPseudotangent"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Uniform.FlatPseudotangent",
+        "Preiss.Uniform.Scaling"
+      ],
+      "nodes": [
+        "lem:flat-tangent-from-uniform-recentering"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Uniform.FlatPseudotangent",
+        "Preiss.Uniform.Scaling"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Tangent.Flatness",
       "file": "Preiss/Tangent/Flatness.lean",
       "current_source_imports": [
@@ -4078,33 +4164,34 @@
       "module": "Preiss.Theorem.PartA",
       "file": "Preiss/Theorem/PartA.lean",
       "current_source_imports": [
-        "FormalizingGMT.TangentMeasures.Basic",
-        "Preiss.Density.Defs",
-        "Preiss.Geometry.FlatMeasure"
+        "Preiss.Density.RadiusPower",
+        "Preiss.Geometry.FlatScalar",
+        "Preiss.Tangent.FlatFromUniform",
+        "Preiss.Tangent.Recentering",
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.TangentNormalization"
       ],
       "local_imports": [
-        "Preiss.Density.Defs",
-        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Density.RadiusPower",
+        "Preiss.Geometry.FlatScalar",
+        "Preiss.Geometry.UnitFlat",
         "Preiss.Tangent.Compactness",
-        "Preiss.Tangent.Existence",
-        "Preiss.Tangent.Normalization",
+        "Preiss.Tangent.FlatFromUniform",
         "Preiss.Tangent.Recentering",
-        "Preiss.Uniform.FlatPseudotangent",
-        "Preiss.Uniform.GMTAdapters"
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.TangentNormalization"
       ],
       "mathlib_imports": [],
-      "gmt_imports": [
-        "FormalizingGMT.TangentMeasures.Basic"
-      ],
+      "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Density.Defs",
-        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Density.RadiusPower",
+        "Preiss.Geometry.FlatScalar",
+        "Preiss.Geometry.UnitFlat",
         "Preiss.Tangent.Compactness",
-        "Preiss.Tangent.Existence",
-        "Preiss.Tangent.Normalization",
+        "Preiss.Tangent.FlatFromUniform",
         "Preiss.Tangent.Recentering",
-        "Preiss.Uniform.FlatPseudotangent",
-        "Preiss.Uniform.GMTAdapters"
+        "Preiss.Uniform.GMTAdapters",
+        "Preiss.Uniform.TangentNormalization"
       ],
       "nodes": [
         "thm:part-a"
@@ -4941,19 +5028,23 @@
       ],
       "local_imports": [
         "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.UnitFlat",
         "Preiss.Tangent.ScalingOrbit",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.Defs",
-        "Preiss.Uniform.DimensionReduction"
+        "Preiss.Uniform.DimensionReduction",
+        "Preiss.Uniform.FlatMeasure"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.UnitFlat",
         "Preiss.Tangent.ScalingOrbit",
         "Preiss.Uniform.Classification",
         "Preiss.Uniform.Defs",
-        "Preiss.Uniform.DimensionReduction"
+        "Preiss.Uniform.DimensionReduction",
+        "Preiss.Uniform.FlatMeasure"
       ],
       "nodes": [
         "thm:flat-pseudotangent"
@@ -5172,6 +5263,7 @@
       "module": "Preiss.Uniform.MomentExpansion",
       "file": "Preiss/Uniform/MomentExpansion.lean",
       "current_source_imports": [
+        "Mathlib.Analysis.Asymptotics.Arith",
         "Mathlib.Analysis.Asymptotics.Lemmas",
         "Mathlib.Tactic.Abel",
         "Preiss.Analysis.AsymptoticCoefficients",
@@ -5191,6 +5283,7 @@
         "Preiss.Uniform.MomentForms"
       ],
       "mathlib_imports": [
+        "Mathlib.Analysis.Asymptotics.Arith",
         "Mathlib.Analysis.Asymptotics.Lemmas",
         "Mathlib.Tactic.Abel"
       ],
@@ -5221,6 +5314,7 @@
       "file": "Preiss/Uniform/MomentFeatures.lean",
       "current_source_imports": [
         "Mathlib.Analysis.Asymptotics.Defs",
+        "Preiss.Analysis.AnalyticProjectionApproximation",
         "Preiss.Analysis.FiniteDimensionalBigO",
         "Preiss.Analysis.GaussianFeatures",
         "Preiss.Analysis.LinearMapIntegral",
@@ -5230,6 +5324,7 @@
         "Preiss.Uniform.MomentForms"
       ],
       "local_imports": [
+        "Preiss.Analysis.AnalyticProjectionApproximation",
         "Preiss.Analysis.FiniteDimensionalBigO",
         "Preiss.Analysis.GaussianFeatures",
         "Preiss.Analysis.GaussianGrowth",
@@ -5245,6 +5340,7 @@
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.AnalyticProjectionApproximation",
         "Preiss.Analysis.FiniteDimensionalBigO",
         "Preiss.Analysis.GaussianFeatures",
         "Preiss.Analysis.GaussianGrowth",
@@ -5259,7 +5355,9 @@
         "lem:moment-feature-remainder",
         "lem:moment-feature-annihilation",
         "def:feature-moment",
-        "lem:feature-moment-vanishing"
+        "lem:feature-moment-vanishing",
+        "lem:feature-moment-analytic-approximation",
+        "lem:feature-moment-exact-recovery"
       ],
       "source_exists": true,
       "scope": "core",
@@ -5692,6 +5790,7 @@
     "Preiss.Analysis.MeasureHull",
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.MovingSets",
+    "Preiss.Analysis.MultilinearSymmetrization",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PowerSeriesRemainder",
     "Preiss.Analysis.ProperMeasureTransport",
@@ -5833,6 +5932,7 @@
     "Preiss.Uniform.MomentExpansion",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
     "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
+    "Preiss.Rectifiability.WeakApproximation.UniformTubes",
     "Preiss.Rectifiability.TangentNecessity",
     "Preiss.Uniform.FlatPseudotangent",
     "Preiss.Uniform.BlowdownMoments",
@@ -5840,11 +5940,12 @@
     "Preiss.Uniform.FlatAtInfinity.Basic",
     "Preiss.Uniform.MomentTrace",
     "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
-    "Preiss.Theorem.PartA",
+    "Preiss.Tangent.FlatFromUniform",
     "Preiss.Uniform.TangentAtInfinity",
     "Preiss.Uniform.ConicalGap",
     "Preiss.Uniform.FlatAtInfinity.TraceData",
     "Preiss.Rectifiability.MarstrandMattila.Packing",
+    "Preiss.Theorem.PartA",
     "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
     "Preiss.Uniform.FlatAtInfinity.TraceLimits",
     "Preiss.Rectifiability.MarstrandMattila.PackingCore",
@@ -5860,6 +5961,7 @@
     "Preiss.Main"
   ],
   "preiss_import_closure": [
+    "Preiss.Analysis.AnalyticProjectionApproximation",
     "Preiss.Analysis.AnnulusIntegrability",
     "Preiss.Analysis.AsymptoticCoefficients",
     "Preiss.Analysis.BallBoundary",
@@ -5891,6 +5993,7 @@
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.MomentDetermination",
     "Preiss.Analysis.MovingSets",
+    "Preiss.Analysis.MultilinearSymmetrization",
     "Preiss.Analysis.NestedProjections",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PolynomialFeatures",
@@ -5982,6 +6085,7 @@
     "Preiss.Tangent.Existence",
     "Preiss.Tangent.Extraction",
     "Preiss.Tangent.FlatApproximation",
+    "Preiss.Tangent.FlatFromUniform",
     "Preiss.Tangent.Flatness",
     "Preiss.Tangent.MetricApproximation",
     "Preiss.Tangent.MovingCenters",

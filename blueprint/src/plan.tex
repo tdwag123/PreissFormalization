@@ -2817,7 +2817,7 @@ These are separate, comparatively short lemmas.
 \begin{lemma}[Polynomial support identities for Taylor coefficients]
 \label{lem:moment-support-polynomial}
 \lean{Preiss.sum_gaussianMomentCoefficient_eq_norm_pow}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-coefficient-vanishing, lem:taylor-one, lem:taylor-two}
+\uses{def:moment-coefficients, lem:moment-coefficient-vanishing, lem:taylor-one, lem:asymptotic-taylor-vanishing}
 
 
 
@@ -3189,8 +3189,8 @@ dimension theorem, or classification of all uniform measures.
 
 \begin{theorem}[Flat pseudotangent of a uniform measure]
 \label{thm:flat-pseudotangent}
-\lean{Preiss.uniform_has_flat_pseudotangent}
-\uses{def:flat, def:unit-uniform, lem:plane-supported-uniform-flat, lem:pseudotangent-transitive, lem:uniform-reduction}
+\lean{Preiss.uniform_has_flat_pseudotangent, Preiss.unitUniform_exists_flat_uniformPseudotangent}
+\uses{def:flat, def:unit-uniform, lem:plane-supported-uniform-flat, lem:pseudotangent-transitive, lem:uniform-reduction, lem:unit-flat-support-regularity, lem:unit-flat-unit-uniform}
 
 
 For $0<m\leq n$ and an $m$-uniform measure $\nu$, there are an $m$-plane $V$, support centres $a_i$, and radii $0<r_i\leq1$ such that $D^m_{a_i,r_i}\nu\rightharpoonup\sigma_V$, where $\sigma_V$ is the unit-ball normalized flat measure on $V$. The centres may move; no assertion that $r_i\to0$ is made.
@@ -3890,7 +3890,7 @@ inside the current single trace-rigidity node.
 \begin{theorem}[Existence of a flat tangent almost everywhere]
 \label{thm:part-a}
 \lean{Preiss.ae_exists_flat_tangent}
-\uses{def:flat, def:positive-density, lem:dimensional-tangent-closed, lem:dimensional-tangent-compactness, lem:recenter, lem:tangent-existence, lem:tangent-ray, lem:uniform-adapter, thm:flat-pseudotangent}
+\uses{lem:uniform-adapter, lem:recenter, lem:radius-power-density, lem:dimensional-tangent-compactness, lem:dimensional-tangent-ball-constant, lem:flat-tangent-from-uniform-recentering, lem:unit-flat-support-regularity, lem:flat-positive-scalar}
 
 
 
@@ -5295,8 +5295,8 @@ Every $m$-dimensional plane in $\mathbb R^n$ is the range of a linear isometric 
 
 \begin{lemma}[Support and regularity of normalized flat measures]
 \label{lem:unit-flat-support-regularity}
-\lean{Preiss.flatOn_support, Preiss.regular_unitFlat, Preiss.unitFlat_support}
-\uses{lem:flat-measure-regularity, lem:measure-support-transport, lem:plane-hausdorff}
+\lean{Preiss.flatOn_support, Preiss.regular_unitFlat, Preiss.unitFlat_support, Preiss.isFlat_unitFlat, Preiss.unitFlat_ne_zero}
+\uses{lem:flat-measure-regularity, lem:measure-support-transport, lem:plane-hausdorff, def:flat}
 
 A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.
 \end{lemma}
@@ -5463,4 +5463,75 @@ A nonzero displacement close to a plane and with small projection onto another p
 \uses{lem:fivefold-image-covering, lem:projected-tube-slab-bound, lem:cone-projection-direction}
 
 If $D\subseteq C$ has uniform lower ball mass $\delta r^m$, the carrier $C$ lies in sufficiently thin approximating tubes around points of $D$, and every such point admits arbitrarily small cone-escaping displacements, then $\mathcal H^m(P_VD)\le (K\varepsilon/\delta)\mu(X)$. The fivefold-cover estimate uses the tube information at a larger scale, preserving the entire image mass.
+\end{lemma}
+
+\begin{lemma}[Coherent Taylor coefficients from compatible finite jets]
+\label{lem:coherent-finite-jets}
+\lean{Preiss.exists_coherent_taylor_coefficients_of_finite_jets}
+\uses{lem:asymptotic-taylor-vanishing}
+
+Let $f$ take values in a real normed space. Suppose every positive order $q$ admits coefficients giving $o(s^j)$ remainders for all $1\leq j\leq q$, as $s\downarrow0$. Then one coefficient sequence gives these remainders simultaneously at every positive order. Uniqueness of the first differing coefficient yields compatibility.
+\end{lemma}
+
+\begin{lemma}[Analytic approximation of the complete feature moment functional]
+\label{lem:feature-moment-analytic-approximation}
+\lean{Preiss.exists_featureMoment_analytic_approximation}
+\uses{lem:analytic-projection-approximation, lem:feature-norm-functionals, lem:moment-feature-remainder, lem:feature-moment-vanishing}
+
+For every unit-uniform measure of positive dimension and every positive integer $q$, the degree-$2q$ feature moment functional admits an analytic approximation vanishing at zero, with operator error $O(s^{q+1/2})$ as $s\downarrow0$.
+\end{lemma}
+
+\begin{lemma}[Compact tube uniformization preserving a fixed lower density bound]
+\label{lem:compact-uniform-tubes}
+\lean{Preiss.exists_compact_uniform_tubes_subset}
+\uses{lem:uniform-compact-selection, lem:tube-support-upgrade}
+
+For a finite regular measure, a measurable carrier with a fixed positive lower ball-mass bound and weak linear approximation almost everywhere contains a compact subset losing arbitrarily little measure, with uniform small-scale tube containment at any prescribed positive aperture at most one.
+\end{lemma}
+
+\begin{lemma}[A flat dimensional tangent from uniformity and simultaneous recentering]
+\label{lem:flat-tangent-from-uniform-recentering}
+\lean{Preiss.exists_flat_dimensionalTangent_of_uniform_recenter}
+\uses{thm:flat-pseudotangent, lem:uniform-scaling, lem:blowup-composition, lem:dimensional-tangent-closed, lem:unit-flat-support-regularity}
+
+For $0<m\leq n$, suppose a $q$-uniform measure has zero in its support and every support-centered dimensional rescaling is a dimensional tangent of a locally finite measure $\mu$ at $x$. There is an $m$-plane $V$ such that $q$ times the normalized plane measure on $V$ is a dimensional tangent of $\mu$ at $x$. The coefficient $q$ is retained throughout the limiting argument.
+\end{lemma}
+
+\begin{definition}[Symmetric multilinear forms and permutation averaging]
+\label{def:symmetric-multilinear}
+\lean{Preiss.symmetricContinuousMultilinearSubmodule, Preiss.symmetrizeContinuousMultilinearMap}
+
+Symmetric continuous multilinear maps form a concrete real submodule. Symmetrization is the average over all permutations of the finite index set.
+\end{definition}
+
+\begin{lemma}[Symmetrization identities]
+\label{lem:multilinear-symmetrization}
+\lean{Preiss.symmetrizeContinuousMultilinearMap_apply_perm, Preiss.symmetrizeContinuousMultilinearMap_eq_self, Preiss.symmetrizeContinuousMultilinearMap_diagonal, Preiss.comp_symmetrizeContinuousMultilinearMap}
+\uses{def:symmetric-multilinear}
+
+Permutation averaging produces a symmetric map, fixes every symmetric map, preserves diagonal evaluation, and commutes with continuous linear maps on the target.
+\end{lemma}
+
+\begin{lemma}[Multilinear coordinate tensors for polynomial feature blocks]
+\label{lem:feature-multilinear-block}
+\lean{Preiss.polynomialFeatureMultilinearBlock, Preiss.polynomialFeatureMultilinearBlock_apply, Preiss.inner_polynomialFeature_multilinearBlock, Preiss.polynomialFeatureMultilinearBlock_mem, Preiss.weightedGrading_polynomialFeatureMultilinearBlock}
+\uses{def:polynomial-feature, lem:polynomial-feature-identities}
+
+The degree-$k$ coordinate tensor takes values in its polynomial feature block. Its inner product with a feature vector is the normalized product of $k$ inner products, and weighted grading multiplies it by $s^k$.
+\end{lemma}
+
+\begin{definition}[Bounded recovery of symmetric forms from feature functionals]
+\label{def:symmetric-feature-recovery}
+\lean{Preiss.symmetricPolynomialFeatureMultilinearBlock, Preiss.polynomialFeatureMomentRecovery, Preiss.polynomialFeatureMomentRecovery_symmetric, Preiss.symmetricPolynomialFeatureMomentRecovery}
+\uses{lem:feature-multilinear-block, lem:multilinear-symmetrization}
+
+Composition with the symmetrized coordinate tensor is a bounded linear map from feature functionals to symmetric multilinear forms. Its range is corestricted to the concrete symmetric submodule.
+\end{definition}
+
+\begin{lemma}[Exact Gaussian moment recovery from polynomial features]
+\label{lem:feature-moment-exact-recovery}
+\lean{Preiss.featureMoment_comp_multilinearBlock_of_growth, Preiss.polynomialFeatureMomentRecovery_featureMoment_of_growth}
+\uses{def:symmetric-feature-recovery, lem:gaussian-feature-integrability, lem:moment-form-symmetry}
+
+For a measure with polynomial ball growth and positive Gaussian parameter, applying the degree-$k$ recovery map to its feature moment functional recovers its Gaussian multilinear moment exactly.
 \end{lemma}

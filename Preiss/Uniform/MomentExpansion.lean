@@ -5,6 +5,7 @@ public import Preiss.Uniform.MomentAsymptotics
 public import Preiss.Analysis.AsymptoticCoefficients
 public import Preiss.Uniform.Defs
 public import Mathlib.Analysis.Asymptotics.Lemmas
+public import Mathlib.Analysis.Asymptotics.Arith
 public import Mathlib.Tactic.Abel
 
 /-! # Taylor coefficients of uniform-measure moments
@@ -92,7 +93,84 @@ theorem sum_gaussianMomentCoefficient_eq_norm_pow
     (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B)
     (q : ℕ) (hq : 0 < q) (x : Euclidean n) (hx : x ∈ μ.support) :
     (∑ k ∈ Finset.range (2 * q), B (k + 1) q (fun _ => x)) = ‖x‖ ^ (2 * q) := by
-  sorry
+  revert hq
+  induction q using Nat.strong_induction_on with
+  | h q ih =>
+    intro hq
+    obtain ⟨p, rfl⟩ := Nat.exists_eq_succ_of_ne_zero hq.ne'
+    let S (s : ℝ) := ∑ k ∈ Finset.range (2 * (p + 1)), gaussianMomentForm μ (k + 1) s (fun _ => x)
+    let U (s : ℝ) := ∑ k ∈ Finset.range (2 * (p + 1)), momentTaylorPolynomial B (k + 1) (p + 1) s (fun _ => x)
+    let T (s : ℝ) := ∑ j ∈ Finset.range (p + 1), s ^ (j + 1) * ‖x‖ ^ (2 * (j + 1)) / ((j + 1).factorial : ℝ)
+    let c (j : ℕ) := ∑ k ∈ Finset.range (2 * (p + 1)), B (k + 1) j (fun _ => x)
+    have hSU : IsLittleO (𝓝[>] (0 : ℝ)) (fun s => S s - U s) (fun s : ℝ => s ^ (p + 1)) := by
+      have hterm (k : ℕ) : IsLittleO (𝓝[>] (0 : ℝ))
+          (fun s => gaussianMomentForm μ (k + 1) s (fun _ => x) -
+            momentTaylorPolynomial B (k + 1) (p + 1) s (fun _ => x))
+          (fun s : ℝ => s ^ (p + 1)) := by
+        let ev := ContinuousMultilinearMap.apply ℝ (fun _ : Fin (k + 1) => Euclidean n) ℝ (fun _ => x)
+        have h := (ev.isBigO_comp
+          (fun s => gaussianMomentForm μ (k + 1) s - momentTaylorPolynomial B (k + 1) (p + 1) s)
+          (𝓝[>] (0 : ℝ))).trans_isLittleO (hB.2 (k + 1) (Nat.succ_pos _) (p + 1) (Nat.succ_pos _))
+        simpa only [ev, ContinuousMultilinearMap.apply_apply, ContinuousMultilinearMap.sub_apply] using h
+      have hsum := IsLittleO.sum (s := Finset.range (2 * (p + 1))) (fun k _ => hterm k)
+      convert hsum using 1
+      funext s
+      simp only [Finset.sum_apply, Finset.sum_sub_distrib, S, U]
+    obtain ⟨C, hC, hbound⟩ := gaussianMoment_taylor_remainder (n := n) hm (p + 1) (Nat.succ_pos _)
+    have hSTO : IsBigO (𝓝[>] (0 : ℝ)) (fun s => S s - T s)
+        (fun s : ℝ => s ^ (((p + 1 : ℕ) : ℝ) + 1 / 2)) := by
+      apply IsBigO.of_bound (C * (‖x‖ ^ 2) ^ (((p + 1 : ℕ) : ℝ) + 1 / 2))
+      filter_upwards [self_mem_nhdsWithin] with s hs
+      calc
+        ‖S s - T s‖ ≤ C * (s * ‖x‖ ^ 2) ^ (((p + 1 : ℕ) : ℝ) + 1 / 2) :=
+          hbound μ hμ x hx s hs
+        _ = _ := by
+          rw [Real.mul_rpow (le_of_lt (show 0 < s from hs)) (sq_nonneg _),
+            Real.norm_of_nonneg (Real.rpow_nonneg (le_of_lt (show 0 < s from hs)) _)]
+          ring
+    have hST : IsLittleO (𝓝[>] (0 : ℝ)) (fun s => S s - T s) (fun s : ℝ => s ^ (p + 1)) := by
+      simpa only [Real.rpow_natCast] using
+        hSTO.trans_isLittleO (isLittleO_rpow_nhdsGT_zero (b := ((p + 1 : ℕ) : ℝ)) (by linarith))
+    have hUT : IsLittleO (𝓝[>] (0 : ℝ)) (fun s => U s - T s) (fun s : ℝ => s ^ (p + 1)) := by
+      convert hST.sub hSU using 1
+      funext s
+      ring
+    have hc (j : ℕ) (hj : 0 < j) (hjp : j < p + 1) : c j = ‖x‖ ^ (2 * j) := by
+      have hsum : (∑ k ∈ Finset.range (2 * j), B (k + 1) j (fun _ => x)) = c j := by
+        apply Finset.sum_subset (Finset.range_mono (by omega))
+        intro k hk hkj
+        have hklarge : 2 * j ≤ k := Nat.le_of_not_gt (fun h => hkj (Finset.mem_range.mpr h))
+        rw [gaussianMomentCoefficient_eq_zero_of_two_mul_lt μ hm hμ B hB (k + 1) j hj (by omega)]
+        simp
+      rw [← hsum]
+      exact ih j hjp hj
+    have hU (s : ℝ) : U s = ∑ j ∈ Finset.range (p + 1),
+        (s ^ (j + 1) / ((j + 1).factorial : ℝ)) * c (j + 1) := by
+      dsimp only [U, momentTaylorPolynomial, c]
+      simp only [ContinuousMultilinearMap.sum_apply, ContinuousMultilinearMap.smul_apply, smul_eq_mul]
+      rw [Finset.sum_comm]
+      apply Finset.sum_congr rfl
+      intro j _
+      rw [Finset.mul_sum]
+    have hpoly (s : ℝ) : U s - T s = (s ^ (p + 1)) •
+        ((((p + 1).factorial : ℝ)⁻¹) * (c (p + 1) - ‖x‖ ^ (2 * (p + 1)))) := by
+      rw [hU]
+      dsimp only [T]
+      rw [← Finset.sum_sub_distrib, Finset.sum_range_succ]
+      have hz : (∑ j ∈ Finset.range p,
+          ((s ^ (j + 1) / ((j + 1).factorial : ℝ)) * c (j + 1) -
+            s ^ (j + 1) * ‖x‖ ^ (2 * (j + 1)) / ((j + 1).factorial : ℝ))) = 0 := by
+        apply Finset.sum_eq_zero
+        intro j hj
+        rw [hc (j + 1) (Nat.succ_pos _) (Nat.succ_lt_succ (Finset.mem_range.mp hj))]
+        ring
+      rw [hz, zero_add, smul_eq_mul]
+      ring
+    have hz : (((p + 1).factorial : ℝ)⁻¹) * (c (p + 1) - ‖x‖ ^ (2 * (p + 1))) = 0 := by
+      apply eq_zero_of_isLittleO_pow_smul (p + 1)
+      simpa only [hpoly] using hUT
+    exact sub_eq_zero.mp ((mul_eq_zero.mp hz).resolve_left
+      (inv_ne_zero (Nat.cast_ne_zero.mpr (Nat.factorial_ne_zero _))))
 
 theorem gaussianMoment_scaled_odd_limit
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)

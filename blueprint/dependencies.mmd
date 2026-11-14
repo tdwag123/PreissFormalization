@@ -376,6 +376,15 @@ flowchart LR
   lem_dimensional_tangent_bounded_orbit["Dimensional tangents lie in the bounded-radius scaling orbit closure"]
   lem_cone_projection_direction["Small projected directions from plane proximity and cone escape"]
   lem_uniform_tube_projection_cover["Quantitative projection bounds from uniform tubes and cone escape"]
+  lem_coherent_finite_jets["Coherent Taylor coefficients from compatible finite jets"]
+  lem_feature_moment_analytic_approximation["Analytic approximation of the complete feature moment functional"]
+  lem_compact_uniform_tubes["Compact tube uniformization preserving a fixed lower density bound"]
+  lem_flat_tangent_from_uniform_recentering["A flat dimensional tangent from uniformity and simultaneous recentering"]
+  def_symmetric_multilinear["Symmetric multilinear forms and permutation averaging"]
+  lem_multilinear_symmetrization["Symmetrization identities"]
+  lem_feature_multilinear_block["Multilinear coordinate tensors for polynomial feature blocks"]
+  def_symmetric_feature_recovery["Bounded recovery of symmetric forms from feature functionals"]
+  lem_feature_moment_exact_recovery["Exact Gaussian moment recovery from polynomial features"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -856,11 +865,9 @@ flowchart LR
   lem_radial --> lem_moment_second_total_trace
   lem_taylor_two --> lem_moment_second_total_trace
   def_moment_coefficients --> lem_moment_support_polynomial
-  def_moments --> lem_moment_support_polynomial
-  def_unit_uniform --> lem_moment_support_polynomial
+  lem_asymptotic_taylor_vanishing --> lem_moment_support_polynomial
   lem_moment_coefficient_vanishing --> lem_moment_support_polynomial
   lem_taylor_one --> lem_moment_support_polynomial
-  lem_taylor_two --> lem_moment_support_polynomial
   def_moment_coefficients --> lem_scaled_moment_limits
   lem_asymptotic_taylor_vanishing --> lem_scaled_moment_limits
   lem_moment_coefficient_vanishing --> lem_scaled_moment_limits
@@ -940,6 +947,8 @@ flowchart LR
   lem_plane_supported_uniform_flat --> thm_flat_pseudotangent
   lem_pseudotangent_transitive --> thm_flat_pseudotangent
   lem_uniform_reduction --> thm_flat_pseudotangent
+  lem_unit_flat_support_regularity --> thm_flat_pseudotangent
+  lem_unit_flat_unit_uniform --> thm_flat_pseudotangent
   def_tangent_at_infinity --> thm_unique_infinity
   def_unit_uniform --> thm_unique_infinity
   lem_blowdown_moment_limits --> thm_unique_infinity
@@ -1130,15 +1139,14 @@ flowchart LR
   lem_rigidity_normal_vector_exists --> thm_infinity_rigidity
   lem_trace_rigidity --> thm_infinity_rigidity
   lem_uniform_cylinder_identity --> thm_infinity_rigidity
-  def_flat --> thm_part_a
-  def_positive_density --> thm_part_a
-  lem_dimensional_tangent_closed --> thm_part_a
+  lem_dimensional_tangent_ball_constant --> thm_part_a
   lem_dimensional_tangent_compactness --> thm_part_a
+  lem_flat_positive_scalar --> thm_part_a
+  lem_flat_tangent_from_uniform_recentering --> thm_part_a
+  lem_radius_power_density --> thm_part_a
   lem_recenter --> thm_part_a
-  lem_tangent_existence --> thm_part_a
-  lem_tangent_ray --> thm_part_a
   lem_uniform_adapter --> thm_part_a
-  thm_flat_pseudotangent --> thm_part_a
+  lem_unit_flat_support_regularity --> thm_part_a
   cor_conical --> lem_first_crossing
   def_dimensional_tangent --> lem_first_crossing
   def_first_crossing_data --> lem_first_crossing
@@ -1415,6 +1423,7 @@ flowchart LR
   lem_gaussian_wick_fourth --> lem_gaussian_bilinear_contraction
   def_orthogonal_grading --> lem_weighted_grading_positive_complement
   def_plane --> lem_plane_isometric_parametrization
+  def_flat --> lem_unit_flat_support_regularity
   lem_flat_measure_regularity --> lem_unit_flat_support_regularity
   lem_measure_support_transport --> lem_unit_flat_support_regularity
   lem_plane_hausdorff --> lem_unit_flat_support_regularity
@@ -1454,3 +1463,23 @@ flowchart LR
   lem_cone_projection_direction --> lem_uniform_tube_projection_cover
   lem_fivefold_image_covering --> lem_uniform_tube_projection_cover
   lem_projected_tube_slab_bound --> lem_uniform_tube_projection_cover
+  lem_asymptotic_taylor_vanishing --> lem_coherent_finite_jets
+  lem_analytic_projection_approximation --> lem_feature_moment_analytic_approximation
+  lem_feature_moment_vanishing --> lem_feature_moment_analytic_approximation
+  lem_feature_norm_functionals --> lem_feature_moment_analytic_approximation
+  lem_moment_feature_remainder --> lem_feature_moment_analytic_approximation
+  lem_tube_support_upgrade --> lem_compact_uniform_tubes
+  lem_uniform_compact_selection --> lem_compact_uniform_tubes
+  lem_blowup_composition --> lem_flat_tangent_from_uniform_recentering
+  lem_dimensional_tangent_closed --> lem_flat_tangent_from_uniform_recentering
+  lem_uniform_scaling --> lem_flat_tangent_from_uniform_recentering
+  lem_unit_flat_support_regularity --> lem_flat_tangent_from_uniform_recentering
+  thm_flat_pseudotangent --> lem_flat_tangent_from_uniform_recentering
+  def_symmetric_multilinear --> lem_multilinear_symmetrization
+  def_polynomial_feature --> lem_feature_multilinear_block
+  lem_polynomial_feature_identities --> lem_feature_multilinear_block
+  lem_feature_multilinear_block --> def_symmetric_feature_recovery
+  lem_multilinear_symmetrization --> def_symmetric_feature_recovery
+  def_symmetric_feature_recovery --> lem_feature_moment_exact_recovery
+  lem_gaussian_feature_integrability --> lem_feature_moment_exact_recovery
+  lem_moment_form_symmetry --> lem_feature_moment_exact_recovery

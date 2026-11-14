@@ -2137,7 +2137,9 @@
       "lean_names": [
         "Preiss.flatOn_support",
         "Preiss.regular_unitFlat",
-        "Preiss.unitFlat_support"
+        "Preiss.unitFlat_support",
+        "Preiss.isFlat_unitFlat",
+        "Preiss.unitFlat_ne_zero"
       ],
       "file": "Preiss/Geometry/UnitFlat.lean",
       "statement_tex": "A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.",
@@ -2529,6 +2531,172 @@
         "lem:fivefold-image-covering",
         "lem:projected-tube-slab-bound",
         "lem:cone-projection-direction"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:coherent-finite-jets",
+      "kind": "lemma",
+      "title": "Coherent Taylor coefficients from compatible finite jets",
+      "lean_names": [
+        "Preiss.exists_coherent_taylor_coefficients_of_finite_jets"
+      ],
+      "file": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "statement_tex": "Let $f$ take values in a real normed space. Suppose every positive order $q$ admits coefficients giving $o(s^j)$ remainders for all $1\\leq j\\leq q$, as $s\\downarrow0$. Then one coefficient sequence gives these remainders simultaneously at every positive order. Uniqueness of the first differing coefficient yields compatibility.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:feature-moment-analytic-approximation",
+      "kind": "lemma",
+      "title": "Analytic approximation of the complete feature moment functional",
+      "lean_names": [
+        "Preiss.exists_featureMoment_analytic_approximation"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "statement_tex": "For every unit-uniform measure of positive dimension and every positive integer $q$, the degree-$2q$ feature moment functional admits an analytic approximation vanishing at zero, with operator error $O(s^{q+1/2})$ as $s\\downarrow0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:analytic-projection-approximation",
+        "lem:feature-norm-functionals",
+        "lem:moment-feature-remainder",
+        "lem:feature-moment-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:compact-uniform-tubes",
+      "kind": "lemma",
+      "title": "Compact tube uniformization preserving a fixed lower density bound",
+      "lean_names": [
+        "Preiss.exists_compact_uniform_tubes_subset"
+      ],
+      "file": "Preiss/Rectifiability/WeakApproximation/UniformTubes.lean",
+      "statement_tex": "For a finite regular measure, a measurable carrier with a fixed positive lower ball-mass bound and weak linear approximation almost everywhere contains a compact subset losing arbitrarily little measure, with uniform small-scale tube containment at any prescribed positive aperture at most one.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:uniform-compact-selection",
+        "lem:tube-support-upgrade"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:flat-tangent-from-uniform-recentering",
+      "kind": "lemma",
+      "title": "A flat dimensional tangent from uniformity and simultaneous recentering",
+      "lean_names": [
+        "Preiss.exists_flat_dimensionalTangent_of_uniform_recenter"
+      ],
+      "file": "Preiss/Tangent/FlatFromUniform.lean",
+      "statement_tex": "For $0<m\\leq n$, suppose a $q$-uniform measure has zero in its support and every support-centered dimensional rescaling is a dimensional tangent of a locally finite measure $\\mu$ at $x$. There is an $m$-plane $V$ such that $q$ times the normalized plane measure on $V$ is a dimensional tangent of $\\mu$ at $x$. The coefficient $q$ is retained throughout the limiting argument.",
+      "definition_dependencies": [],
+      "deps": [
+        "thm:flat-pseudotangent",
+        "lem:uniform-scaling",
+        "lem:blowup-composition",
+        "lem:dimensional-tangent-closed",
+        "lem:unit-flat-support-regularity"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "def:symmetric-multilinear",
+      "kind": "definition",
+      "title": "Symmetric multilinear forms and permutation averaging",
+      "lean_names": [
+        "Preiss.symmetricContinuousMultilinearSubmodule",
+        "Preiss.symmetrizeContinuousMultilinearMap"
+      ],
+      "file": "Preiss/Analysis/MultilinearSymmetrization.lean",
+      "statement_tex": "Symmetric continuous multilinear maps form a concrete real submodule. Symmetrization is the average over all permutations of the finite index set.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:multilinear-symmetrization",
+      "kind": "lemma",
+      "title": "Symmetrization identities",
+      "lean_names": [
+        "Preiss.symmetrizeContinuousMultilinearMap_apply_perm",
+        "Preiss.symmetrizeContinuousMultilinearMap_eq_self",
+        "Preiss.symmetrizeContinuousMultilinearMap_diagonal",
+        "Preiss.comp_symmetrizeContinuousMultilinearMap"
+      ],
+      "file": "Preiss/Analysis/MultilinearSymmetrization.lean",
+      "statement_tex": "Permutation averaging produces a symmetric map, fixes every symmetric map, preserves diagonal evaluation, and commutes with continuous linear maps on the target.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-multilinear"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:feature-multilinear-block",
+      "kind": "lemma",
+      "title": "Multilinear coordinate tensors for polynomial feature blocks",
+      "lean_names": [
+        "Preiss.polynomialFeatureMultilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock_apply",
+        "Preiss.inner_polynomialFeature_multilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock_mem",
+        "Preiss.weightedGrading_polynomialFeatureMultilinearBlock"
+      ],
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "statement_tex": "The degree-$k$ coordinate tensor takes values in its polynomial feature block. Its inner product with a feature vector is the normalized product of $k$ inner products, and weighted grading multiplies it by $s^k$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:polynomial-feature",
+        "lem:polynomial-feature-identities"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "def:symmetric-feature-recovery",
+      "kind": "definition",
+      "title": "Bounded recovery of symmetric forms from feature functionals",
+      "lean_names": [
+        "Preiss.symmetricPolynomialFeatureMultilinearBlock",
+        "Preiss.polynomialFeatureMomentRecovery",
+        "Preiss.polynomialFeatureMomentRecovery_symmetric",
+        "Preiss.symmetricPolynomialFeatureMomentRecovery"
+      ],
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "statement_tex": "Composition with the symmetrized coordinate tensor is a bounded linear map from feature functionals to symmetric multilinear forms. Its range is corestricted to the concrete symmetric submodule.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:feature-multilinear-block",
+        "lem:multilinear-symmetrization"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:feature-moment-exact-recovery",
+      "kind": "lemma",
+      "title": "Exact Gaussian moment recovery from polynomial features",
+      "lean_names": [
+        "Preiss.featureMoment_comp_multilinearBlock_of_growth",
+        "Preiss.polynomialFeatureMomentRecovery_featureMoment_of_growth"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "statement_tex": "For a measure with polynomial ball growth and positive Gaussian parameter, applying the degree-$k$ recovery map to its feature moment functional recovers its Gaussian multilinear moment exactly.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-feature-recovery",
+        "lem:gaussian-feature-integrability",
+        "lem:moment-form-symmetry"
       ],
       "used_by": [],
       "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."

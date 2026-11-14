@@ -328,7 +328,8 @@
     },
     "thm:flat-pseudotangent": {
       "lean_names": [
-        "Preiss.uniform_has_flat_pseudotangent"
+        "Preiss.uniform_has_flat_pseudotangent",
+        "Preiss.unitUniform_exists_flat_uniformPseudotangent"
       ],
       "planned_lean_names": [
         "Preiss.uniform_has_flat_pseudotangent"

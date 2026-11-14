@@ -61,4 +61,48 @@ theorem taylorCoefficient_eq_zero_of_lt_growth {F : Type*} [NormedAddCommGroup F
     rw [hpoly]
     abel
 
+variable {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F]
+
+theorem exists_coherent_taylor_coefficients_of_finite_jets (f : ℝ → F)
+    (h : ∀ q : ℕ, 0 < q → ∃ A : ℕ → F, ∀ j : ℕ, 0 < j → j ≤ q →
+      IsLittleO (𝓝[>] (0 : ℝ))
+        (fun s => f s - ∑ i ∈ Finset.range j, s ^ (i + 1) • A (i + 1))
+        (fun s : ℝ => s ^ j)) :
+    ∃ A : ℕ → F, ∀ q : ℕ, 0 < q →
+      IsLittleO (𝓝[>] (0 : ℝ))
+        (fun s => f s - ∑ i ∈ Finset.range q, s ^ (i + 1) • A (i + 1))
+        (fun s : ℝ => s ^ q) := by
+  classical
+  choose A hA using fun q : ℕ => h (q + 1) (Nat.succ_pos _)
+  have agree : ∀ j : ℕ, 0 < j → ∀ p q : ℕ, j ≤ p + 1 → j ≤ q + 1 → A p j = A q j := by
+    intro j
+    induction j using Nat.strong_induction_on with
+    | h j ih =>
+      intro hj p q hjp hjq
+      obtain ⟨k, rfl⟩ := Nat.exists_eq_succ_of_ne_zero hj.ne'
+      have hprev (s : ℝ) : (∑ i ∈ Finset.range k, s ^ (i + 1) • A p (i + 1)) =
+          ∑ i ∈ Finset.range k, s ^ (i + 1) • A q (i + 1) := by
+        apply Finset.sum_congr rfl
+        intro i hi
+        have hik : i + 1 < k + 1 := Nat.succ_lt_succ (Finset.mem_range.mp hi)
+        rw [ih (i + 1) hik (Nat.succ_pos _) p q (by omega) (by omega)]
+      have hdiff := (hA q (k + 1) (Nat.succ_pos _) hjq).sub
+        (hA p (k + 1) (Nat.succ_pos _) hjp)
+      have hz : A p (k + 1) - A q (k + 1) = 0 := by
+        apply eq_zero_of_isLittleO_pow_smul (k + 1)
+        convert hdiff using 1
+        funext s
+        rw [Finset.sum_range_succ, Finset.sum_range_succ, hprev, smul_sub]
+        abel
+      exact sub_eq_zero.mp hz
+  refine ⟨fun j => A j j, ?_⟩
+  intro q hq
+  have heq (s : ℝ) : (∑ i ∈ Finset.range q, s ^ (i + 1) • A (i + 1) (i + 1)) =
+      ∑ i ∈ Finset.range q, s ^ (i + 1) • A q (i + 1) := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    rw [agree (i + 1) (Nat.succ_pos _) (i + 1) q (by omega) (by have := Finset.mem_range.mp hi; omega)]
+  simpa only [heq] using hA q q hq (Nat.le_succ q)
+
+
 end Preiss
