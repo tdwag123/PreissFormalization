@@ -26,12 +26,12 @@ theorem hasDerivAt_normalized_polynomial_gaussian_unitUniform
       hg.1 hg.2.2 (1 : MvPolynomial (Fin n) ℝ) s hs
     simp only [map_one, mul_one, one_mul] at h
     rw [integral_norm_sq_gaussian_unitUniform μ hm hμ s hs] at h
-    simpa only [neg_mul] using h
+    simpa only [gaussianMass, neg_mul] using h
   have hmass : gaussianMass μ s ≠ 0 := by
     rw [gaussianMass_unitUniform μ hm hμ s hs]
     exact (mul_pos (Real.Gamma_pos_of_pos (by positivity)) (Real.rpow_pos_of_pos hs _)).ne'
   convert! hN.div hI hmass using 1
-  field_simp [hmass]
+  field_simp [hmass, hs.ne']
   <;> ring
 
 theorem hasDerivAt_normalized_centered_gaussian_unitUniform

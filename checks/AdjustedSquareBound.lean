@@ -33,7 +33,7 @@ theorem adjustedForm_sq_le_of_rigidityError_linear_growth
   let u := fun i => V.1.orthogonalProjectionOnto (y i)
   let q := fun i => r i • y i - proj V (r i • y i) - (b : Euclidean n)
   have hu : Tendsto u atTop (𝓝 v) := by
-    simpa only [Submodule.orthogonalProjectionOnto_mem_subspace_eq_self] using
+    simpa only [u, Function.comp_def, Submodule.orthogonalProjectionOnto_mem_subspace_eq_self] using
       (V.1.orthogonalProjectionOnto.continuous.tendsto (v : Euclidean n)).comp hy
   have hq : ∀ᶠ i in atTop, ‖q i‖ ≤ ‖b‖ := by
     filter_upwards [hrescale] with i hi

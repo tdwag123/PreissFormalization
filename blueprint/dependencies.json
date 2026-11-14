@@ -3827,20 +3827,13 @@
       "id": "lem:rigidity-mixed-gaussian-limit",
       "title": "Mixed Gaussian moment limit defining omega",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.mixed_gaussian_limit_eq_omega"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-moments",
-        "lem:taylor-two"
+        "lem:mixed-centered-gaussian-limit"
       ],
       "proof_dependencies": [],
       "expanded_line": 4537,
@@ -3885,20 +3878,17 @@
       "id": "lem:rigidity-cubic-vanishing",
       "title": "Vanishing normal mixed cubic coefficients",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.thirdMomentCoefficient_normal_vanishes"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
+        "lem:bounded-tube-cubic-vanishing",
+        "lem:flat-infinity-moments",
+        "lem:moment-support-polynomial",
         "lem:odd-coefficients-plane-zero",
-        "lem:taylor-two",
+        "lem:symmetric-cubic-binomial",
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
@@ -3928,34 +3918,28 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4666,
-      "unfinished_dependencies": [
-        "lem:rigidity-mixed-gaussian-limit"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-fourth-support-identity",
       "title": "Fourth degree support identity",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.fourth_order_support_identity"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:bounded-tube-cubic-vanishing",
         "lem:flat-infinity-moments",
         "lem:moment-support-polynomial",
-        "lem:rigidity-cubic-vanishing"
+        "lem:odd-coefficients-plane-zero",
+        "lem:symmetric-cubic-binomial",
+        "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
       "expanded_line": 4703,
-      "unfinished_dependencies": [
-        "lem:rigidity-cubic-vanishing"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-omega-trace-zero",
@@ -3980,8 +3964,7 @@
       "proof_dependencies": [],
       "expanded_line": 4732,
       "unfinished_dependencies": [
-        "lem:rigidity-contracted-limit-zero",
-        "lem:rigidity-mixed-gaussian-limit"
+        "lem:rigidity-contracted-limit-zero"
       ]
     },
     {
@@ -4007,9 +3990,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4757,
-      "unfinished_dependencies": [
-        "lem:rigidity-fourth-support-identity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-rescaled-error",
@@ -4036,9 +4017,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4796,
-      "unfinished_dependencies": [
-        "lem:rigidity-fourth-support-identity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-gaussian-trace",
@@ -4118,7 +4097,6 @@
       "proof_dependencies": [],
       "expanded_line": 4880,
       "unfinished_dependencies": [
-        "lem:rigidity-mixed-gaussian-limit",
         "lem:rigidity-omega-reproducing",
         "lem:rigidity-pointwise-quadratic-bound",
         "lem:rigidity-rescaled-error"
@@ -4248,65 +4226,37 @@
       "id": "lem:first-crossing-ratio",
       "title": "Divergence of the crossing scale ratios",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.first_crossing_ratio_tendsto_atTop"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:positive-density",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:flatness-minimum",
+        "lem:plane-scaling",
+        "lem:vague-limit-unique",
         "lem:vague-moving-blowups"
       ],
       "proof_dependencies": [],
       "expanded_line": 5051,
-      "unfinished_dependencies": [
-        "lem:first-crossing"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:first-crossing-flat-infinity",
       "title": "Crossing limit has flat blow-down",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.first_crossing_limit_flat_at_infinity"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "cor:conical",
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:flatness-gap",
-        "def:positive-density",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:first-crossing-ratio",
         "lem:flatness-continuous",
-        "lem:flatness-minimum",
-        "lem:vague-moving-blowups",
-        "thm:gap",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-existence"
       ],
       "proof_dependencies": [],
       "expanded_line": 5075,
-      "unfinished_dependencies": [
-        "lem:first-crossing",
-        "lem:first-crossing-ratio"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "thm:part-b",
@@ -4334,8 +4284,6 @@
       "expanded_line": 5101,
       "unfinished_dependencies": [
         "lem:first-crossing",
-        "lem:first-crossing-flat-infinity",
-        "lem:flatness-gap-cutoff",
         "thm:infinity-rigidity"
       ]
     },
@@ -4697,14 +4645,12 @@
       "id": "lem:flatness-gap-cutoff",
       "title": "Transfer the conical gap to cutoff flatness",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_flatnessGap"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:flatness-cutoff",
-        "def:flatness-gap",
         "lem:flatness-minimum",
         "thm:gap"
       ],
@@ -8181,6 +8127,262 @@
       "proof_dependencies": [],
       "expanded_line": 7117,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-linear-growth-integral",
+      "title": "Gaussian integrals of functions with linear growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_integral_bound_of_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7124,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:uniform-gaussian-linear-growth-limit",
+      "title": "Vanishing of scaled Gaussian linear-growth averages",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-linear-growth-integral",
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7131,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:quadratic-square-upper-lower",
+      "title": "Scalar lower bound from a quadratic inequality",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.quadratic_lower_bound_of_square_upper"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7139,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-square-upper-trace-lower",
+      "title": "Gaussian trace lower bound from a squared-form upper bound",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-quadratic-trace-bound",
+        "lem:quadratic-square-upper-lower"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7146,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:bilinear-diagonal-difference",
+      "title": "Difference of bilinear diagonal values",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.norm_bilinear_diagonal_sub_le"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7154,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vague-limit-unique",
+      "title": "Uniqueness of regular vague limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.vague_limit_unique"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7161,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-tangent-normalization",
+      "title": "Flatness transfers between tangent normalizations",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.all_dimensionalTangents_flat_of_smul",
+        "Preiss.all_tangents_flat_of_dimensionalTangents",
+        "Preiss.exists_flat_dimensionalTangent_of_flat_tangent"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:tangent-ray-density-bounds"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7168,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:density-positive-scalar",
+      "title": "Positive finite density under scalar multiplication",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.HasPositiveFiniteDensityAt.smul"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:positive-density"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7176,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-bilinear-norm-integrable",
+      "title": "Integrability of squared norms of Gaussian bilinear diagonals",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_gaussian_norm_sq_bilinear"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7184,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-vector-bilinear-wick",
+      "title": "Vector-valued Gaussian fourth moment with zero mean",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7191,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-vector-trace-contractions",
+      "title": "Gaussian means and contractions of vector bilinear forms",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_integral_bilinear_eq_basis_sum",
+        "Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero",
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-bilinear-contraction",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7199,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:weighted-integral-polarization",
+      "title": "Polarization of weighted integral limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_weighted_mul_of_squares",
+        "Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits",
+        "Preiss.tendsto_weighted_integral_mul_of_square_limits"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7207,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:finite-bilinear-integral-limits",
+      "title": "Finite-basis bilinear expansion and integral limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.bilinear_diagonal_eq_sum_orthonormalBasis",
+        "Preiss.tendsto_weighted_integral_finite_linear_combination"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7214,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:low-order-moment-limits",
+      "title": "First and second scaled moment limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMoment_first_scaled_limit",
+        "Preiss.gaussianMoment_second_scaled_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:moment-coefficients",
+        "lem:leading-coefficient-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7221,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:mixed-centered-gaussian-limit",
+      "title": "Centered mixed Gaussian limit from Taylor coefficients",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.mixed_gaussian_limit_of_moment_expansion"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:low-order-moment-limits",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7229,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:centered-gaussian-mean-limit",
+      "title": "Centered Gaussian mean from its first coefficient",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.normalized_centered_gaussian_limit_of_first_coefficient"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:low-order-moment-limits"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7237,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -8235,6 +8437,8 @@
     "lem:leading-homogeneous-term",
     "lem:symmetric-multilinear-diagonal-injective",
     "lem:normal-coordinate-identities",
+    "lem:symmetric-cubic-binomial",
+    "lem:vague-limit-unique",
     "lem:rigidity-forms-from-symmetry",
     "lem:orthonormal-span-projection",
     "lem:nonnegative-integral-cover-bound",
@@ -8258,11 +8462,16 @@
     "lem:orthonormal-plane-distance",
     "lem:unit-uniform-nonzero",
     "lem:gaussian-norm-half-mass",
-    "lem:symmetric-cubic-binomial",
     "lem:leading-coefficient-limit",
     "lem:scale-normalized-bounded-integral",
     "lem:scale-derivative-limit",
     "lem:quadratic-bound-bounded-offsets",
+    "lem:gaussian-linear-growth-integral",
+    "lem:quadratic-square-upper-lower",
+    "lem:bilinear-diagonal-difference",
+    "lem:gaussian-bilinear-norm-integrable",
+    "lem:weighted-integral-polarization",
+    "lem:finite-bilinear-integral-limits",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -8354,6 +8563,7 @@
     "lem:upper-density-localization",
     "lem:radius-power-density",
     "lem:absolute-continuity-density-bounds",
+    "lem:density-positive-scalar",
     "lem:density-bridge",
     "gmt:content-density",
     "gmt:hausdorff-density-upper",
@@ -8421,6 +8631,7 @@
     "def:rigidity-normal-vector",
     "lem:rigidity-forms-exist",
     "lem:moment-taylor-linear-image",
+    "lem:low-order-moment-limits",
     "lem:even-moment-positivity",
     "lem:flat-moment-projection",
     "def:symmetric-moment-form",
@@ -8479,6 +8690,7 @@
     "lem:divided-grading-constant-injective",
     "def:rigidity-omega",
     "lem:first-moment-normal-from-vanishing",
+    "lem:centered-gaussian-mean-limit",
     "lem:flat-gaussian-odd-moments",
     "lem:cylinder-second-coefficient-trace",
     "def:symmetric-feature-recovery",
@@ -8529,6 +8741,7 @@
     "lem:dimensional-tangent-dilation",
     "lem:dimensional-extraction-ball-bounds",
     "lem:recenter-separated-set-null",
+    "lem:first-crossing-ratio",
     "gmt:uniform-halfspace",
     "gmt:uniform-hyperplane",
     "lem:uniform-adapter",
@@ -8545,7 +8758,10 @@
     "lem:moment-coefficient-vanishing",
     "lem:moment-second-total-trace",
     "lem:moment-product-growth",
+    "lem:uniform-gaussian-linear-growth-limit",
     "lem:gaussian-bilinear-contraction",
+    "lem:gaussian-square-upper-trace-lower",
+    "lem:gaussian-vector-bilinear-wick",
     "lem:tangent-closed",
     "lem:dimensional-tangent-closed",
     "lem:pseudotangent-transitive",
@@ -8565,11 +8781,14 @@
     "lem:moment-feature-remainder",
     "lem:moment-support-polynomial",
     "lem:scaled-moment-limits",
+    "lem:mixed-centered-gaussian-limit",
     "lem:bounded-tube-cubic-vanishing",
+    "lem:gaussian-vector-trace-contractions",
     "lem:tangent-blowdown",
     "lem:dimensional-tangent-bounded-orbit",
     "lem:flat-to-approximation",
     "lem:tangent-ray",
+    "lem:flat-tangent-normalization",
     "lem:dimensional-tangent-compactness",
     "gmt:uniform-full-dimension",
     "lem:pure-wla-null-projection",
@@ -8577,6 +8796,7 @@
     "lem:column-packing",
     "lem:analytic-projection-approximation",
     "lem:blowdown-even-moment-limit",
+    "lem:rigidity-mixed-gaussian-limit",
     "lem:dimensional-tangent-ball-constant",
     "cor:rectifiable-tangent-plane",
     "lem:uniform-full-dimension-unique",
@@ -8613,24 +8833,22 @@
     "cor:conical",
     "lem:odd-coefficients-plane-zero",
     "lem:uniform-cylinder-identity",
-    "lem:rigidity-mixed-gaussian-limit",
+    "lem:first-crossing-flat-infinity",
     "lem:rigidity-normal-vector-exists",
     "lem:moment-normal-trace",
     "lem:rigidity-cubic-vanishing",
     "lem:rigidity-contracted-limit-zero",
-    "lem:flat-infinity-bounded-holes",
     "lem:rigidity-fourth-support-identity",
+    "lem:flat-infinity-bounded-holes",
     "lem:rigidity-omega-trace-zero",
-    "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
+    "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-omega-reproducing",
     "lem:rigidity-integral-quadratic-bound",
     "lem:trace-rigidity",
     "thm:infinity-rigidity",
     "lem:first-crossing",
-    "lem:first-crossing-ratio",
-    "lem:first-crossing-flat-infinity",
     "thm:part-b",
     "thm:preiss"
   ]

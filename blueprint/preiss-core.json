@@ -3458,20 +3458,13 @@
       "id": "lem:rigidity-mixed-gaussian-limit",
       "title": "Mixed Gaussian moment limit defining omega",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.mixed_gaussian_limit_eq_omega"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-moments",
-        "lem:taylor-two"
+        "lem:mixed-centered-gaussian-limit"
       ],
       "proof_dependencies": [],
       "expanded_line": 4537,
@@ -3513,30 +3506,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:rigidity-cubic-vanishing",
-      "title": "Vanishing normal mixed cubic coefficients",
-      "kind": "lemma",
-      "status": "unproved_statement",
-      "lean": [
-        "Preiss.thirdMomentCoefficient_normal_vanishes"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
-        "lem:odd-coefficients-plane-zero",
-        "lem:taylor-two",
-        "lem:uniform-cylinder-identity"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 4637,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:rigidity-contracted-limit-zero",
       "title": "Vanishing contracted Gaussian limit",
       "kind": "lemma",
@@ -3559,34 +3528,28 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4666,
-      "unfinished_dependencies": [
-        "lem:rigidity-mixed-gaussian-limit"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-fourth-support-identity",
       "title": "Fourth degree support identity",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.fourth_order_support_identity"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:bounded-tube-cubic-vanishing",
         "lem:flat-infinity-moments",
         "lem:moment-support-polynomial",
-        "lem:rigidity-cubic-vanishing"
+        "lem:odd-coefficients-plane-zero",
+        "lem:symmetric-cubic-binomial",
+        "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
       "expanded_line": 4703,
-      "unfinished_dependencies": [
-        "lem:rigidity-cubic-vanishing"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-omega-trace-zero",
@@ -3611,8 +3574,7 @@
       "proof_dependencies": [],
       "expanded_line": 4732,
       "unfinished_dependencies": [
-        "lem:rigidity-contracted-limit-zero",
-        "lem:rigidity-mixed-gaussian-limit"
+        "lem:rigidity-contracted-limit-zero"
       ]
     },
     {
@@ -3638,9 +3600,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4757,
-      "unfinished_dependencies": [
-        "lem:rigidity-fourth-support-identity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-rescaled-error",
@@ -3667,9 +3627,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4796,
-      "unfinished_dependencies": [
-        "lem:rigidity-fourth-support-identity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-gaussian-trace",
@@ -3749,7 +3707,6 @@
       "proof_dependencies": [],
       "expanded_line": 4880,
       "unfinished_dependencies": [
-        "lem:rigidity-mixed-gaussian-limit",
         "lem:rigidity-omega-reproducing",
         "lem:rigidity-pointwise-quadratic-bound",
         "lem:rigidity-rescaled-error"
@@ -3876,68 +3833,22 @@
       ]
     },
     {
-      "id": "lem:first-crossing-ratio",
-      "title": "Divergence of the crossing scale ratios",
-      "kind": "lemma",
-      "status": "unproved_statement",
-      "lean": [
-        "Preiss.first_crossing_ratio_tendsto_atTop"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:positive-density",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:flatness-minimum",
-        "lem:vague-moving-blowups"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 5051,
-      "unfinished_dependencies": [
-        "lem:first-crossing"
-      ]
-    },
-    {
       "id": "lem:first-crossing-flat-infinity",
       "title": "Crossing limit has flat blow-down",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.first_crossing_limit_flat_at_infinity"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "cor:conical",
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:flatness-gap",
-        "def:positive-density",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:first-crossing-ratio",
         "lem:flatness-continuous",
-        "lem:flatness-minimum",
-        "lem:vague-moving-blowups",
-        "thm:gap",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-existence"
       ],
       "proof_dependencies": [],
       "expanded_line": 5075,
-      "unfinished_dependencies": [
-        "lem:first-crossing",
-        "lem:first-crossing-ratio"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "thm:part-b",
@@ -3965,8 +3876,6 @@
       "expanded_line": 5101,
       "unfinished_dependencies": [
         "lem:first-crossing",
-        "lem:first-crossing-flat-infinity",
-        "lem:flatness-gap-cutoff",
         "thm:infinity-rigidity"
       ]
     },
@@ -4082,14 +3991,12 @@
       "id": "lem:flatness-gap-cutoff",
       "title": "Transfer the conical gap to cutoff flatness",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_flatnessGap"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:flatness-cutoff",
-        "def:flatness-gap",
         "lem:flatness-minimum",
         "thm:gap"
       ],
@@ -7159,6 +7066,56 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:gaussian-norm-half-mass",
+      "title": "Gaussian norm moments bounded by half-scale mass",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integral_norm_pow_mul_gaussian_le_halfMass"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6987,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:uniform-normalized-gaussian-norm",
+      "title": "Normalized Gaussian norm bounds for uniform measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMass_half_unitUniform",
+        "Preiss.integral_norm_pow_mul_gaussian_le_unitUniform",
+        "Preiss.normalized_gaussian_norm_pow_le_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-norm-half-mass",
+        "lem:moment-norm-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6994,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:moment-coefficient-growth-images",
+      "title": "Coefficient vanishing from growth of linear images",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth",
+        "Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7002,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:subspace-moment-trace",
       "title": "Continuous trace of moments on a subspace",
       "kind": "lemma",
@@ -7263,6 +7220,67 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:moment-product-growth",
+      "title": "Scalar Gaussian moments from product growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_apply_isBigO_of_product_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7066,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:bounded-tube-cubic-vanishing",
+      "title": "Cubic coefficients with two normal inputs vanish",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:moment-coefficient-growth-images",
+        "lem:moment-product-growth"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7074,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:symmetric-cubic-binomial",
+      "title": "Binomial formula for a symmetric trilinear form",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.symmetricTrilinear_diagonal_add"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7082,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:leading-coefficient-limit",
+      "title": "Leading coefficient from a little-o remainder",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_scaled_of_isLittleO_sub"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7089,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:rigidity-forms-from-symmetry",
       "title": "Rigidity forms from symmetric coefficient tensors",
       "kind": "lemma",
@@ -7274,6 +7292,41 @@
       "statement_dependencies": [],
       "proof_dependencies": [],
       "expanded_line": 7110,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:low-order-moment-limits",
+      "title": "First and second scaled moment limits",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMoment_first_scaled_limit",
+        "Preiss.gaussianMoment_second_scaled_limit"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:moment-coefficients",
+        "lem:leading-coefficient-limit"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7221,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:mixed-centered-gaussian-limit",
+      "title": "Centered mixed Gaussian limit from Taylor coefficients",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.mixed_gaussian_limit_of_moment_expansion"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:low-order-moment-limits",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7229,
       "unfinished_dependencies": []
     }
   ]

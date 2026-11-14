@@ -448,6 +448,22 @@ flowchart LR
   lem_scale_derivative_limit["A convergent function has no nonzero scaled derivative limit"]
   lem_rigidity_forms_from_symmetry["Rigidity forms from symmetric coefficient tensors"]
   lem_quadratic_bound_bounded_offsets["Quadratic bound from bounded offsets"]
+  lem_gaussian_linear_growth_integral["Gaussian integrals of functions with linear growth"]
+  lem_uniform_gaussian_linear_growth_limit["Vanishing of scaled Gaussian linear-growth averages"]
+  lem_quadratic_square_upper_lower["Scalar lower bound from a quadratic inequality"]
+  lem_gaussian_square_upper_trace_lower["Gaussian trace lower bound from a squared-form upper bound"]
+  lem_bilinear_diagonal_difference["Difference of bilinear diagonal values"]
+  lem_vague_limit_unique["Uniqueness of regular vague limits"]
+  lem_flat_tangent_normalization["Flatness transfers between tangent normalizations"]
+  lem_density_positive_scalar["Positive finite density under scalar multiplication"]
+  lem_gaussian_bilinear_norm_integrable["Integrability of squared norms of Gaussian bilinear diagonals"]
+  lem_gaussian_vector_bilinear_wick["Vector-valued Gaussian fourth moment with zero mean"]
+  lem_gaussian_vector_trace_contractions["Gaussian means and contractions of vector bilinear forms"]
+  lem_weighted_integral_polarization["Polarization of weighted integral limits"]
+  lem_finite_bilinear_integral_limits["Finite-basis bilinear expansion and integral limits"]
+  lem_low_order_moment_limits["First and second scaled moment limits"]
+  lem_mixed_centered_gaussian_limit["Centered mixed Gaussian limit from Taylor coefficients"]
+  lem_centered_gaussian_mean_limit["Centered Gaussian mean from its first coefficient"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -1029,27 +1045,17 @@ flowchart LR
   lem_flat_infinity_moments --> lem_uniform_cylinder_identity
   lem_moment_support_polynomial --> lem_uniform_cylinder_identity
   lem_normal_coordinate_identities --> lem_uniform_cylinder_identity
-  def_moment_coefficients --> lem_rigidity_mixed_gaussian_limit
-  def_plane --> lem_rigidity_mixed_gaussian_limit
-  def_rigidity_normal_vector --> lem_rigidity_mixed_gaussian_limit
-  def_rigidity_omega --> lem_rigidity_mixed_gaussian_limit
-  def_tangent_at_infinity --> lem_rigidity_mixed_gaussian_limit
-  def_unit_uniform --> lem_rigidity_mixed_gaussian_limit
-  lem_flat_infinity_moments --> lem_rigidity_mixed_gaussian_limit
-  lem_taylor_two --> lem_rigidity_mixed_gaussian_limit
+  lem_mixed_centered_gaussian_limit --> lem_rigidity_mixed_gaussian_limit
   lem_cylinder_second_coefficient_trace --> lem_moment_normal_trace
   lem_uniform_cylinder_identity --> lem_moment_normal_trace
   lem_bounded_tube_plane_to_support --> lem_flat_infinity_bounded_holes
   lem_rigidity_normal_vector_exists --> lem_flat_infinity_bounded_holes
   lem_uniform_cylinder_identity --> lem_flat_infinity_bounded_holes
-  def_moment_coefficients --> lem_rigidity_cubic_vanishing
-  def_plane --> lem_rigidity_cubic_vanishing
-  def_rigidity_normal_vector --> lem_rigidity_cubic_vanishing
-  def_tangent_at_infinity --> lem_rigidity_cubic_vanishing
-  def_unit_uniform --> lem_rigidity_cubic_vanishing
-  lem_gaussian_polynomial_integrable --> lem_rigidity_cubic_vanishing
+  lem_bounded_tube_cubic_vanishing --> lem_rigidity_cubic_vanishing
+  lem_flat_infinity_moments --> lem_rigidity_cubic_vanishing
+  lem_moment_support_polynomial --> lem_rigidity_cubic_vanishing
   lem_odd_coefficients_plane_zero --> lem_rigidity_cubic_vanishing
-  lem_taylor_two --> lem_rigidity_cubic_vanishing
+  lem_symmetric_cubic_binomial --> lem_rigidity_cubic_vanishing
   lem_uniform_cylinder_identity --> lem_rigidity_cubic_vanishing
   def_moment_coefficients --> lem_rigidity_contracted_limit_zero
   def_plane --> lem_rigidity_contracted_limit_zero
@@ -1061,14 +1067,12 @@ flowchart LR
   lem_gaussian_polynomial_integrable --> lem_rigidity_contracted_limit_zero
   lem_rigidity_mixed_gaussian_limit --> lem_rigidity_contracted_limit_zero
   lem_uniform_cylinder_identity --> lem_rigidity_contracted_limit_zero
-  def_moment_coefficients --> lem_rigidity_fourth_support_identity
-  def_plane --> lem_rigidity_fourth_support_identity
-  def_rigidity_normal_vector --> lem_rigidity_fourth_support_identity
-  def_tangent_at_infinity --> lem_rigidity_fourth_support_identity
-  def_unit_uniform --> lem_rigidity_fourth_support_identity
+  lem_bounded_tube_cubic_vanishing --> lem_rigidity_fourth_support_identity
   lem_flat_infinity_moments --> lem_rigidity_fourth_support_identity
   lem_moment_support_polynomial --> lem_rigidity_fourth_support_identity
-  lem_rigidity_cubic_vanishing --> lem_rigidity_fourth_support_identity
+  lem_odd_coefficients_plane_zero --> lem_rigidity_fourth_support_identity
+  lem_symmetric_cubic_binomial --> lem_rigidity_fourth_support_identity
+  lem_uniform_cylinder_identity --> lem_rigidity_fourth_support_identity
   def_moment_coefficients --> lem_rigidity_omega_trace_zero
   def_plane --> lem_rigidity_omega_trace_zero
   def_rigidity_normal_vector --> lem_rigidity_omega_trace_zero
@@ -1178,35 +1182,12 @@ flowchart LR
   thm_gap --> lem_first_crossing
   thm_infinity_rigidity --> lem_first_crossing
   thm_unique_infinity --> lem_first_crossing
-  def_dimensional_tangent --> lem_first_crossing_ratio
-  def_first_crossing_data --> lem_first_crossing_ratio
-  def_flat --> lem_first_crossing_ratio
-  def_flatness --> lem_first_crossing_ratio
-  def_flatness_cutoff --> lem_first_crossing_ratio
-  def_positive_density --> lem_first_crossing_ratio
-  def_unit_uniform --> lem_first_crossing_ratio
-  lem_blowup_composition --> lem_first_crossing_ratio
-  lem_first_crossing --> lem_first_crossing_ratio
-  lem_flatness_minimum --> lem_first_crossing_ratio
+  lem_plane_scaling --> lem_first_crossing_ratio
+  lem_vague_limit_unique --> lem_first_crossing_ratio
   lem_vague_moving_blowups --> lem_first_crossing_ratio
   cor_conical --> lem_first_crossing_flat_infinity
-  def_dimensional_tangent --> lem_first_crossing_flat_infinity
-  def_first_crossing_data --> lem_first_crossing_flat_infinity
-  def_flat --> lem_first_crossing_flat_infinity
-  def_flatness --> lem_first_crossing_flat_infinity
-  def_flatness_cutoff --> lem_first_crossing_flat_infinity
-  def_flatness_gap --> lem_first_crossing_flat_infinity
-  def_positive_density --> lem_first_crossing_flat_infinity
-  def_tangent_at_infinity --> lem_first_crossing_flat_infinity
-  def_unit_uniform --> lem_first_crossing_flat_infinity
-  lem_blowup_composition --> lem_first_crossing_flat_infinity
-  lem_first_crossing --> lem_first_crossing_flat_infinity
-  lem_first_crossing_ratio --> lem_first_crossing_flat_infinity
   lem_flatness_continuous --> lem_first_crossing_flat_infinity
-  lem_flatness_minimum --> lem_first_crossing_flat_infinity
-  lem_vague_moving_blowups --> lem_first_crossing_flat_infinity
-  thm_gap --> lem_first_crossing_flat_infinity
-  thm_unique_infinity --> lem_first_crossing_flat_infinity
+  lem_unit_uniform_infinity_existence --> lem_first_crossing_flat_infinity
   def_dimensional_tangent --> thm_part_b
   def_flat --> thm_part_b
   def_positive_density --> thm_part_b
@@ -1267,8 +1248,6 @@ flowchart LR
   def_flat --> def_flatness_gap
   def_flatness --> def_flatness_gap
   def_unit_uniform --> def_flatness_gap
-  def_flatness_cutoff --> lem_flatness_gap_cutoff
-  def_flatness_gap --> lem_flatness_gap_cutoff
   lem_flatness_minimum --> lem_flatness_gap_cutoff
   thm_gap --> lem_flatness_gap_cutoff
   def_dimensional_blowup --> def_first_crossing_data
@@ -1591,3 +1570,18 @@ flowchart LR
   lem_uniform_normalized_gaussian_norm --> lem_moment_product_growth
   lem_moment_coefficient_growth_images --> lem_bounded_tube_cubic_vanishing
   lem_moment_product_growth --> lem_bounded_tube_cubic_vanishing
+  lem_gaussian_linear_growth_integral --> lem_uniform_gaussian_linear_growth_limit
+  lem_uniform_normalized_gaussian_norm --> lem_uniform_gaussian_linear_growth_limit
+  lem_gaussian_quadratic_trace_bound --> lem_gaussian_square_upper_trace_lower
+  lem_quadratic_square_upper_lower --> lem_gaussian_square_upper_trace_lower
+  lem_tangent_ray_density_bounds --> lem_flat_tangent_normalization
+  def_positive_density --> lem_density_positive_scalar
+  lem_gaussian_bilinear_norm_integrable --> lem_gaussian_vector_bilinear_wick
+  lem_gaussian_quadratic_trace_bound --> lem_gaussian_vector_bilinear_wick
+  lem_gaussian_bilinear_contraction --> lem_gaussian_vector_trace_contractions
+  lem_gaussian_quadratic_trace_bound --> lem_gaussian_vector_trace_contractions
+  def_moment_coefficients --> lem_low_order_moment_limits
+  lem_leading_coefficient_limit --> lem_low_order_moment_limits
+  lem_low_order_moment_limits --> lem_mixed_centered_gaussian_limit
+  lem_moment_coefficient_vanishing --> lem_mixed_centered_gaussian_limit
+  lem_low_order_moment_limits --> lem_centered_gaussian_mean_limit

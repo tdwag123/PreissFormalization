@@ -3441,7 +3441,7 @@ Also $|Qx-b|=|b|$ there. Keep these identities as named lemmas.
 \begin{lemma}[Mixed Gaussian moment limit defining omega]
 \label{lem:rigidity-mixed-gaussian-limit}
 \lean{Preiss.mixed_gaussian_limit_eq_omega}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:taylor-two}
+\uses{lem:mixed-centered-gaussian-limit}
 
 
 
@@ -3541,7 +3541,7 @@ near-support variant of S05 is essential.
 \begin{lemma}[Vanishing normal mixed cubic coefficients]
 \label{lem:rigidity-cubic-vanishing}
 \lean{Preiss.thirdMomentCoefficient_normal_vanishes}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:odd-coefficients-plane-zero, lem:taylor-two, lem:uniform-cylinder-identity}
+\uses{lem:bounded-tube-cubic-vanishing, lem:uniform-cylinder-identity, lem:odd-coefficients-plane-zero, lem:flat-infinity-moments, lem:symmetric-cubic-binomial, lem:moment-support-polynomial}
 
 
 
@@ -3607,7 +3607,7 @@ Record differentiability and domination hypotheses before using l'Hopital.
 \begin{lemma}[Fourth degree support identity]
 \label{lem:rigidity-fourth-support-identity}
 \lean{Preiss.fourth_order_support_identity}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial, lem:rigidity-cubic-vanishing}
+\uses{lem:bounded-tube-cubic-vanishing, lem:uniform-cylinder-identity, lem:odd-coefficients-plane-zero, lem:flat-infinity-moments, lem:symmetric-cubic-binomial, lem:moment-support-polynomial}
 
 
 
@@ -3955,7 +3955,7 @@ value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
 \begin{lemma}[Divergence of the crossing scale ratios]
 \label{lem:first-crossing-ratio}
 \lean{Preiss.first_crossing_ratio_tendsto_atTop}
-\uses{def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:flatness-minimum, lem:vague-moving-blowups, def:flatness-cutoff}
+\uses{lem:vague-limit-unique, lem:vague-moving-blowups, lem:plane-scaling}
 
 
 
@@ -3979,7 +3979,7 @@ contradicting $F(\xi)=\varepsilon>0$.
 \begin{lemma}[Crossing limit has flat blow-down]
 \label{lem:first-crossing-flat-infinity}
 \lean{Preiss.first_crossing_limit_flat_at_infinity}
-\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:first-crossing-ratio, lem:flatness-continuous, lem:flatness-minimum, lem:vague-moving-blowups, thm:gap, thm:unique-infinity, def:flatness-cutoff}
+\uses{cor:conical, lem:unit-uniform-infinity-existence, lem:flatness-continuous}
 
 
 
@@ -4412,7 +4412,7 @@ A positive number $\varepsilon$ is a cutoff gap threshold if every unit $m$-unif
 \begin{lemma}[Transfer the conical gap to cutoff flatness]
 \label{lem:flatness-gap-cutoff}
 \lean{Preiss.exists_flatnessGap}
-\uses{def:flatness-cutoff, def:flatness-gap, lem:flatness-minimum, thm:gap}
+\uses{thm:gap, lem:flatness-minimum}
 For $0<m\leq n$ and an admissible cutoff, there exists a positive cutoff gap threshold.
 \end{lemma}
 
@@ -6023,4 +6023,125 @@ Symmetric second and third coefficient forms determine the required normal-value
 \lean{Preiss.quadratic_square_bound_of_bounded_offsets}
 
 If $y_i\to v$, $\lVert q_i\rVert\le B$ eventually, and $A(y_i,y_i)+\langle\omega(y_i,y_i),q_i\rangle\to0$, then $A(v,v)^2\le B^2\lVert\omega(v,v)\rVert^2$. The spaces and continuous bilinear maps are arbitrary.
+\end{lemma}
+
+\begin{lemma}[Gaussian integrals of functions with linear growth]
+\label{lem:gaussian-linear-growth-integral}
+\lean{Preiss.gaussian_integral_bound_of_linear_growth}
+
+A measurable function bounded almost everywhere by $C(1+\lVert z\rVert)$ is Gaussian integrable whenever Gaussian mass and first norm moment are integrable, with the corresponding explicit integral bound.
+\end{lemma}
+
+\begin{lemma}[Vanishing of scaled Gaussian linear-growth averages]
+\label{lem:uniform-gaussian-linear-growth-limit}
+\lean{Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth}
+\uses{lem:gaussian-linear-growth-integral, lem:uniform-normalized-gaussian-norm}
+
+For a positive-dimensional unit-uniform measure, the Gaussian integral of a linearly bounded measurable function, multiplied by $s$ and divided by Gaussian mass, tends to zero as $s\downarrow0$.
+\end{lemma}
+
+\begin{lemma}[Scalar lower bound from a quadratic inequality]
+\label{lem:quadratic-square-upper-lower}
+\lean{Preiss.quadratic_lower_bound_of_square_upper}
+
+If $d>0$, $q\ge0$, and $(1+2/d)t^2\le-8qt$, then $t\ge-8dq/(d+2)$.
+\end{lemma}
+
+\begin{lemma}[Gaussian trace lower bound from a squared-form upper bound]
+\label{lem:gaussian-square-upper-trace-lower}
+\lean{Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper}
+\uses{lem:quadratic-square-upper-lower, lem:gaussian-quadratic-trace-bound}
+
+For a symmetric bilinear form on a positive-dimensional real inner-product space, a Gaussian squared-form bound by $-8q$ times its mean forces the mean to be at least $-8dq/(d+2)$.
+\end{lemma}
+
+\begin{lemma}[Difference of bilinear diagonal values]
+\label{lem:bilinear-diagonal-difference}
+\lean{Preiss.norm_bilinear_diagonal_sub_le}
+
+For a continuous bilinear map, $\lVert Q(z,z)-Q(p,p)\rVert\le\lVert Q\rVert\lVert z-p\rVert(\lVert z\rVert+\lVert p\rVert)$.
+\end{lemma}
+
+\begin{lemma}[Uniqueness of regular vague limits]
+\label{lem:vague-limit-unique}
+\lean{Preiss.vague_limit_unique}
+
+Two regular measures that are vague limits of the same sequence agree.
+\end{lemma}
+
+\begin{lemma}[Flatness transfers between tangent normalizations]
+\label{lem:flat-tangent-normalization}
+\lean{Preiss.exists_flat_dimensionalTangent_of_flat_tangent, Preiss.all_tangents_flat_of_dimensionalTangents, Preiss.all_dimensionalTangents_flat_of_smul}
+\uses{lem:tangent-ray-density-bounds}
+
+Under positive finite density bounds, a flat tangent yields a flat dimensional tangent, and flatness of all dimensional tangents yields flatness of all tangents. A common positive finite scalar normalization can be undone.
+\end{lemma}
+
+\begin{lemma}[Positive finite density under scalar multiplication]
+\label{lem:density-positive-scalar}
+\lean{Preiss.HasPositiveFiniteDensityAt.smul}
+\uses{def:positive-density}
+
+Multiplication of a measure by a positive finite scalar preserves positive finite existing dimensional density.
+\end{lemma}
+
+\begin{lemma}[Integrability of squared norms of Gaussian bilinear diagonals]
+\label{lem:gaussian-bilinear-norm-integrable}
+\lean{Preiss.integrable_gaussian_norm_sq_bilinear}
+
+The squared norm of a continuous Hilbert-valued bilinear form evaluated diagonally is integrable under standard Gaussian measure on a finite-dimensional real inner-product space.
+\end{lemma}
+
+\begin{lemma}[Vector-valued Gaussian fourth moment with zero mean]
+\label{lem:gaussian-vector-bilinear-wick}
+\lean{Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero}
+\uses{lem:gaussian-bilinear-norm-integrable, lem:gaussian-quadratic-trace-bound}
+
+For a symmetric Hilbert-valued bilinear form with zero Gaussian mean, its Gaussian squared norm equals twice the sum of squared norms of its matrix entries in an orthonormal basis.
+\end{lemma}
+
+\begin{lemma}[Gaussian means and contractions of vector bilinear forms]
+\label{lem:gaussian-vector-trace-contractions}
+\lean{Preiss.gaussian_integral_bilinear_eq_basis_sum, Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero, Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero}
+\uses{lem:gaussian-bilinear-contraction, lem:gaussian-quadratic-trace-bound}
+
+The Gaussian mean of a vector-valued bilinear diagonal is its basis trace. Zero mean implies zero scalar component means and the corresponding factor-two weighted Gaussian contraction.
+\end{lemma}
+
+\begin{lemma}[Polarization of weighted integral limits]
+\label{lem:weighted-integral-polarization}
+\lean{Preiss.tendsto_weighted_integral_mul_of_square_limits, Preiss.integrable_weighted_mul_of_squares, Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits}
+
+Integrability and convergence of weighted diagonal square integrals imply their cross-product counterparts by polarization. This applies to diagonal limits of Hilbert-valued bilinear forms.
+\end{lemma}
+
+\begin{lemma}[Finite-basis bilinear expansion and integral limits]
+\label{lem:finite-bilinear-integral-limits}
+\lean{Preiss.bilinear_diagonal_eq_sum_orthonormalBasis, Preiss.tendsto_weighted_integral_finite_linear_combination}
+
+A bilinear diagonal expands in a finite orthonormal basis. Eventual integrability and limits of finitely many weighted integrals pass through their fixed linear combinations.
+\end{lemma}
+
+\begin{lemma}[First and second scaled moment limits]
+\label{lem:low-order-moment-limits}
+\lean{Preiss.gaussianMoment_first_scaled_limit, Preiss.gaussianMoment_second_scaled_limit}
+\uses{lem:leading-coefficient-limit, def:moment-coefficients}
+
+For every positive moment degree, division by $s$ yields the first coefficient in the limit. If that coefficient vanishes, division by $s^2$ yields half the second coefficient.
+\end{lemma}
+
+\begin{lemma}[Centered mixed Gaussian limit from Taylor coefficients]
+\label{lem:mixed-centered-gaussian-limit}
+\lean{Preiss.mixed_gaussian_limit_of_moment_expansion}
+\uses{lem:low-order-moment-limits, lem:moment-coefficient-vanishing}
+
+The normalized centered cubic Gaussian integral converges to $3B_3^2(v,v,w)-4B_2^1(v,v)\langle b,w\rangle$.
+\end{lemma}
+
+\begin{lemma}[Centered Gaussian mean from its first coefficient]
+\label{lem:centered-gaussian-mean-limit}
+\lean{Preiss.normalized_centered_gaussian_limit_of_first_coefficient}
+\uses{lem:low-order-moment-limits}
+
+If $B_1^1(w)=2\langle b,w\rangle$, the normalized Gaussian average of $\langle z-b,w\rangle$ tends to zero.
 \end{lemma}

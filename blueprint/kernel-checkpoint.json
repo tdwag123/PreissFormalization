@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "4f82b5f1f3718c6dca7ea0ffaaa301b4da37d323",
+  "source_revision": "b730e970c629a01b0cf1f7a561b2dd15c77a8514",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -2801,15 +2801,26 @@
     "Preiss.exists_rigidityOmega_and_adjustedForm": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_rigidity_forms_of_symmetry": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.exists_secondCountable_vagueMetrization": {
       "project": "local",
@@ -3672,6 +3683,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentForm_apply_isBigO_of_product_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MixedMomentBounds.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6316,6 +6339,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.quadratic_square_bound_of_bounded_offsets": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/QuadraticBoundedOffset.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.range_planeProjection": {
       "project": "local",
       "kind": "theorem",
@@ -6500,6 +6535,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.scale_derivative_limit_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/ScaleDerivative.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.secondMomentCoefficient_trace_lower_bound": {
       "project": "local",
@@ -6790,6 +6837,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.symmetricTrilinear_diagonal_add": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/MultilinearDiagonal.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.symmetrizeContinuousMultilinearMap": {
       "project": "local",
       "kind": "def",
@@ -7031,6 +7090,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.tendsto_scale_normalized_integral_of_ae_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/NormalizedIntegral.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero": {
       "project": "local",
       "kind": "theorem",
@@ -7055,6 +7126,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.tendsto_scaled_of_isLittleO_sub": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/TaylorLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.thirdMomentCoefficient_normal_vanishes": {
       "project": "local",
       "kind": "theorem",
@@ -7067,6 +7150,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MixedMomentBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.trace_gaussianMomentForm_two": {
       "project": "local",
@@ -7108,15 +7203,14 @@
     "Preiss.trace_secondMomentCoefficient_normal_eq": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.trace_tangent_eq_integral_adjustedForm": {
       "project": "local",

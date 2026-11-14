@@ -35,7 +35,3 @@ theorem all_dimensionalTangents_flat_of_smul
   exact (isFlat_smul_iff ν hc hctop).mp (hflat (c • ν) (hν.smul hc hctop))
 
 end Preiss
-
-#print axioms Preiss.exists_flat_dimensionalTangent_of_flat_tangent
-#print axioms Preiss.all_tangents_flat_of_dimensionalTangents
-#print axioms Preiss.all_dimensionalTangents_flat_of_smul

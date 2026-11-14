@@ -34,10 +34,11 @@ theorem sum_mixed_gaussian_eq_projected
     have hi₂ : Integrable (fun z => Real.exp (-s*‖z‖^2) * (inner ℝ z (e i : Euclidean n))^2) μ := by
       simpa [Function.comp_def, ContinuousMultilinearMap.smul_apply, momentKernel_apply,
         Fin.prod_univ_two, pow_two, mul_assoc] using h₂
-    simpa only [inner_sub_left, mul_sub] using hi₃.sub (hi₂.mul_const (inner ℝ b w))
+    simpa only [Pi.sub_apply, inner_sub_left, mul_sub] using hi₃.sub (hi₂.mul_const (inner ℝ b w))
   rw [← Finset.mul_sum, ← integral_finsetSum _ (fun i _ => hint i)]
   have hsq (z : Euclidean n) : (∑ i, (inner ℝ z (e i : Euclidean n))^2) = ‖K.starProjection z‖^2 := by
-    simpa only [K.inner_orthogonalProjectionOnto_eq_of_mem_right] using
+    simpa only [K.inner_orthogonalProjectionOnto_eq_of_mem_right,
+      Submodule.starProjection_apply, Submodule.norm_coe] using
       e.sum_sq_inner_left (K.orthogonalProjectionOnto z)
   have hsum (z : Euclidean n) :
       (∑ i, Real.exp (-s*‖z‖^2) * (inner ℝ z (e i : Euclidean n))^2 * inner ℝ (z-b) w) =

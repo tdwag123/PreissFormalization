@@ -1,5 +1,7 @@
-import Preiss.Analysis.GaussianQuadraticForms
-import Mathlib.Tactic
+module
+public import Preiss.Analysis.GaussianQuadraticForms
+public import Mathlib.Tactic
+@[expose] public section
 open MeasureTheory ProbabilityTheory
 namespace Preiss
 theorem quadratic_lower_bound_of_square_upper
@@ -30,5 +32,3 @@ theorem gaussian_bilinear_integral_lower_bound_of_square_upper
   exact quadratic_lower_bound_of_square_upper _ _ _ (by exact_mod_cast hd) hq
     ((gaussian_integral_bilinear_sq_ge_trace_sq A hsym hd).trans hupper)
 end Preiss
-#print axioms Preiss.quadratic_lower_bound_of_square_upper
-#print axioms Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper

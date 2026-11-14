@@ -1,7 +1,12 @@
-import Mathlib.MeasureTheory.Integral.Bochner.Basic
-import Mathlib.Analysis.InnerProductSpace.PiL2
-import Mathlib.Tactic
+module
 
+public import Mathlib.MeasureTheory.Integral.Bochner.Basic
+public import Mathlib.Analysis.InnerProductSpace.PiL2
+import Mathlib.Tactic.Ring
+
+/-! # Polarization of weighted integral limits -/
+
+@[expose] public section
 open MeasureTheory Filter
 open scoped Topology
 namespace Preiss
@@ -27,7 +32,9 @@ theorem tendsto_weighted_integral_mul_of_square_limits
         weight i x * (f x)^2 * h x) - weight i x * (g x)^2 * h x)) := by
     funext x
     ring
-  rw [hfun, integral_const_mul, integral_sub (hi.1.sub hi.2.1) hi.2.2,
+  have hsub : Integrable (fun x => weight i x * (f x+g x)^2 * h x -
+      weight i x * (f x)^2 * h x) μ := hi.1.sub hi.2.1
+  rw [hfun, integral_const_mul, integral_sub hsub hi.2.2,
     integral_sub hi.1 hi.2.1]
   ring
 
@@ -41,6 +48,7 @@ theorem integrable_weighted_mul_of_squares
   have hh := ((hsum.sub hf).sub hg).const_mul (1/2 : ℝ)
   convert hh using 1
   funext x
+  dsimp only [Pi.sub_apply]
   ring
 
 theorem tendsto_weighted_bilinear_mixed_of_diagonal_limits
@@ -77,7 +85,3 @@ theorem tendsto_weighted_bilinear_mixed_of_diagonal_limits
   ring
 
 end Preiss
-
-#print axioms Preiss.tendsto_weighted_integral_mul_of_square_limits
-#print axioms Preiss.integrable_weighted_mul_of_squares
-#print axioms Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits

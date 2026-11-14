@@ -1,5 +1,4 @@
 import Preiss.Density.Defs
-import Mathlib.Tactic
 
 open MeasureTheory Filter Topology
 open scoped ENNReal
@@ -38,5 +37,3 @@ theorem HasPositiveFiniteDensityAt.smul
     exact ENNReal.mul_lt_top hctop hθfin
 
 end Preiss
-
-#print axioms Preiss.HasPositiveFiniteDensityAt.smul

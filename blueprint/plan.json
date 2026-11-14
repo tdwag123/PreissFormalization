@@ -4827,14 +4827,7 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v,w\\in\\mathbb R^n$, prove\n\\[\n \\lim_{s\\downarrow0}\\frac{8s}{I(s)}\\int e^{-s|z|^2}\n \\langle z,v\\rangle^2\\langle z-b,w\\rangle\\,d\\nu\n =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\\langle b,w\\rangle.\n\\]\nFor $v\\in V,w\\in V^\\perp$ this is $\\langle\\omega(v,v),w\\rangle$.\nFurther prove\n\\[\n \\lim_{s\\downarrow0}\\frac{s}{I(s)}\\int e^{-s|z|^2}\n |Pz|^2\\langle z-b,w\\rangle\\,d\\nu=0.\n\\]\nTo justify the latter, the analogous $|z|^2$ expression has a limit by the\nfirst formula and a finite orthonormal-basis sum. Differentiating the Gaussian\nfirst moment and applying the appropriate one-sided l'Hopital argument\nidentifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.\nRecord differentiability and domination hypotheses before using l'Hopital.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-moments",
-        "lem:taylor-two"
+        "lem:mixed-centered-gaussian-limit"
       ],
       "lean_names": [
         "Preiss.mixed_gaussian_limit_eq_omega"
@@ -4914,14 +4907,11 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v\\in V,w\\in V^\\perp$,\n$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.\nThe first is R02; the others follow by R03's bounded normal coordinates and\nGaussian estimates in the defining limits. Therefore, on the support,\n\\[\n b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)\n =|Qz|^4+2|Pz|^2|Qz|^2.\n\\]\nUse the order-two support identity and R01; do not drop mixed cubic terms\nwithout first establishing these vanishings.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
+        "lem:bounded-tube-cubic-vanishing",
+        "lem:flat-infinity-moments",
+        "lem:moment-support-polynomial",
         "lem:odd-coefficients-plane-zero",
-        "lem:taylor-two",
+        "lem:symmetric-cubic-binomial",
         "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
@@ -4934,7 +4924,7 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
       ]
@@ -4983,14 +4973,12 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v\\in V,w\\in V^\\perp$,\n$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.\nThe first is R02; the others follow by R03's bounded normal coordinates and\nGaussian estimates in the defining limits. Therefore, on the support,\n\\[\n b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)\n =|Qz|^4+2|Pz|^2|Qz|^2.\n\\]\nUse the order-two support identity and R01; do not drop mixed cubic terms\nwithout first establishing these vanishings.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:bounded-tube-cubic-vanishing",
         "lem:flat-infinity-moments",
         "lem:moment-support-polynomial",
-        "lem:rigidity-cubic-vanishing"
+        "lem:odd-coefficients-plane-zero",
+        "lem:symmetric-cubic-binomial",
+        "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
         "Preiss.fourth_order_support_identity"
@@ -5369,16 +5357,8 @@
       "hypotheses_tex": "",
       "proof_tex": "Prove $r_i/\\sigma_i\\to\\infty$. If the ratios have a bounded subsequence,\nextract a further limit $R\\in[1,\\infty)$. S02--S03 give\n$D^m_{0,R}\\xi=\\alpha$. Invert the dilation to conclude $\\xi$ flat,\ncontradicting $F(\\xi)=\\varepsilon>0$.",
       "deps": [
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:positive-density",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:flatness-minimum",
+        "lem:plane-scaling",
+        "lem:vague-limit-unique",
         "lem:vague-moving-blowups"
       ],
       "lean_names": [
@@ -5391,7 +5371,7 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ]
@@ -5405,23 +5385,8 @@
       "proof_tex": "For every fixed $R\\geq1$, eventually $\\sigma_i R\\in[\\sigma_i,r_i]$.\nS02--S03 and C04 give $F(D^m_{0,R}\\xi)\\leq\\varepsilon$.\nLet $R\\to\\infty$. M10 and continuity give $F(\\psi)\\leq\\varepsilon$ for\nthe conical blow-down $\\psi$ of $\\xi$. Apply the conical gap, then rigidity,\nto conclude $\\xi$ flat, the final contradiction.\nKeep the centre $x$ fixed throughout; the printed scale function sometimes\nuses zero where $x$ is intended. Every use of $F$ on a dilated measure must\nretain the factor $R^{-m}$.",
       "deps": [
         "cor:conical",
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:flatness-gap",
-        "def:positive-density",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:first-crossing-ratio",
         "lem:flatness-continuous",
-        "lem:flatness-minimum",
-        "lem:vague-moving-blowups",
-        "thm:gap",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-existence"
       ],
       "lean_names": [
         "Preiss.first_crossing_limit_flat_at_infinity"
@@ -5971,8 +5936,6 @@
         "def:flatness-cutoff"
       ],
       "deps": [
-        "def:flatness-cutoff",
-        "def:flatness-gap",
         "lem:flatness-minimum",
         "thm:gap"
       ],
@@ -9388,7 +9351,7 @@
         "Preiss.integral_norm_pow_mul_gaussian_le_halfMass"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianNormBounds.lean"
       ],
@@ -9408,7 +9371,7 @@
         "lem:gaussian-norm-half-mass",
         "lem:moment-norm-bound"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/GaussianNormBounds.lean"
       ],
@@ -9426,7 +9389,7 @@
       "deps": [
         "lem:asymptotic-taylor-vanishing"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MomentCoefficientEstimates.lean"
       ],
@@ -9570,7 +9533,7 @@
       "deps": [
         "lem:uniform-normalized-gaussian-norm"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MixedMomentBounds.lean"
       ],
@@ -9588,7 +9551,7 @@
         "lem:moment-coefficient-growth-images",
         "lem:moment-product-growth"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MixedMomentBounds.lean"
       ],
@@ -9603,7 +9566,7 @@
         "Preiss.symmetricTrilinear_diagonal_add"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/MultilinearDiagonal.lean"
       ],
@@ -9618,7 +9581,7 @@
         "Preiss.tendsto_scaled_of_isLittleO_sub"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/TaylorLimits.lean"
       ],
@@ -9683,6 +9646,278 @@
         "Preiss/Analysis/QuadraticBoundedOffset.lean"
       ],
       "proposed_file": "Preiss/Analysis/QuadraticBoundedOffset.lean"
+    },
+    {
+      "id": "lem:gaussian-linear-growth-integral",
+      "kind": "lemma",
+      "title": "Gaussian integrals of functions with linear growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_bound_of_linear_growth"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianLinearGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianLinearGrowth.lean"
+    },
+    {
+      "id": "lem:uniform-gaussian-linear-growth-limit",
+      "kind": "lemma",
+      "title": "Vanishing of scaled Gaussian linear-growth averages",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth"
+      ],
+      "deps": [
+        "lem:gaussian-linear-growth-integral",
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/GaussianLinearGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianLinearGrowth.lean"
+    },
+    {
+      "id": "lem:quadratic-square-upper-lower",
+      "kind": "lemma",
+      "title": "Scalar lower bound from a quadratic inequality",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.quadratic_lower_bound_of_square_upper"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+    },
+    {
+      "id": "lem:gaussian-square-upper-trace-lower",
+      "kind": "lemma",
+      "title": "Gaussian trace lower bound from a squared-form upper bound",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper"
+      ],
+      "deps": [
+        "lem:gaussian-quadratic-trace-bound",
+        "lem:quadratic-square-upper-lower"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+    },
+    {
+      "id": "lem:bilinear-diagonal-difference",
+      "kind": "lemma",
+      "title": "Difference of bilinear diagonal values",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.norm_bilinear_diagonal_sub_le"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/BilinearDiagonalDifference.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/BilinearDiagonalDifference.lean"
+    },
+    {
+      "id": "lem:vague-limit-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of regular vague limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vague_limit_unique"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/Vague/Uniqueness.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/Uniqueness.lean"
+    },
+    {
+      "id": "lem:flat-tangent-normalization",
+      "kind": "lemma",
+      "title": "Flatness transfers between tangent normalizations",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.all_dimensionalTangents_flat_of_smul",
+        "Preiss.all_tangents_flat_of_dimensionalTangents",
+        "Preiss.exists_flat_dimensionalTangent_of_flat_tangent"
+      ],
+      "deps": [
+        "lem:tangent-ray-density-bounds"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Tangent/FlatNormalization.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/FlatNormalization.lean"
+    },
+    {
+      "id": "lem:density-positive-scalar",
+      "kind": "lemma",
+      "title": "Positive finite density under scalar multiplication",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.HasPositiveFiniteDensityAt.smul"
+      ],
+      "deps": [
+        "def:positive-density"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Density/Scalar.lean"
+      ],
+      "proposed_file": "Preiss/Density/Scalar.lean"
+    },
+    {
+      "id": "lem:gaussian-bilinear-norm-integrable",
+      "kind": "lemma",
+      "title": "Integrability of squared norms of Gaussian bilinear diagonals",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_norm_sq_bilinear"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearNorm.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearNorm.lean"
+    },
+    {
+      "id": "lem:gaussian-vector-bilinear-wick",
+      "kind": "lemma",
+      "title": "Vector-valued Gaussian fourth moment with zero mean",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero"
+      ],
+      "deps": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearNorm.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearNorm.lean"
+    },
+    {
+      "id": "lem:gaussian-vector-trace-contractions",
+      "kind": "lemma",
+      "title": "Gaussian means and contractions of vector bilinear forms",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_basis_sum",
+        "Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero",
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero"
+      ],
+      "deps": [
+        "lem:gaussian-bilinear-contraction",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+    },
+    {
+      "id": "lem:weighted-integral-polarization",
+      "kind": "lemma",
+      "title": "Polarization of weighted integral limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_weighted_mul_of_squares",
+        "Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits",
+        "Preiss.tendsto_weighted_integral_mul_of_square_limits"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/WeightedIntegralPolarization.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/WeightedIntegralPolarization.lean"
+    },
+    {
+      "id": "lem:finite-bilinear-integral-limits",
+      "kind": "lemma",
+      "title": "Finite-basis bilinear expansion and integral limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.bilinear_diagonal_eq_sum_orthonormalBasis",
+        "Preiss.tendsto_weighted_integral_finite_linear_combination"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/BilinearIntegralLimits.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/BilinearIntegralLimits.lean"
+    },
+    {
+      "id": "lem:low-order-moment-limits",
+      "kind": "lemma",
+      "title": "First and second scaled moment limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMoment_first_scaled_limit",
+        "Preiss.gaussianMoment_second_scaled_limit"
+      ],
+      "deps": [
+        "def:moment-coefficients",
+        "lem:leading-coefficient-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentCoefficientLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentCoefficientLimits.lean"
+    },
+    {
+      "id": "lem:mixed-centered-gaussian-limit",
+      "kind": "lemma",
+      "title": "Centered mixed Gaussian limit from Taylor coefficients",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.mixed_gaussian_limit_of_moment_expansion"
+      ],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:centered-gaussian-mean-limit",
+      "kind": "lemma",
+      "title": "Centered Gaussian mean from its first coefficient",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_centered_gaussian_limit_of_first_coefficient"
+      ],
+      "deps": [
+        "lem:low-order-moment-limits"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
     }
   ],
   "preiss_core": [
@@ -9778,6 +10013,7 @@
     "lem:blowdown-moment-limits",
     "lem:blowdown-product-limits",
     "lem:blowup-composition",
+    "lem:bounded-tube-cubic-vanishing",
     "lem:bounded-tube-plane-to-support",
     "lem:carrier-calculus",
     "lem:carrier-closure",
@@ -9852,7 +10088,6 @@
     "lem:finite-pieces",
     "lem:first-crossing",
     "lem:first-crossing-flat-infinity",
-    "lem:first-crossing-ratio",
     "lem:first-moment-normal-from-vanishing",
     "lem:fivefold-image-covering",
     "lem:fixed-lower-density-projection-null",
@@ -9883,6 +10118,7 @@
     "lem:gaussian-ball-power-parameter",
     "lem:gaussian-bilinear-covariance",
     "lem:gaussian-feature-integrability",
+    "lem:gaussian-norm-half-mass",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-plane-energy-integrable",
     "lem:gaussian-polynomial-integrable",
@@ -9917,7 +10153,9 @@
     "lem:kernel-flag-divided-operators",
     "lem:kernel-flag-layer-grading",
     "lem:kernel-grading-flag",
+    "lem:leading-coefficient-limit",
     "lem:leading-homogeneous-term",
+    "lem:low-order-moment-limits",
     "lem:lower-ball-hausdorff-bound",
     "lem:lower-ball-open-comparison",
     "lem:lower-ball-restrict-comparison",
@@ -9925,6 +10163,8 @@
     "lem:lower-density-from-power",
     "lem:measurable-hull-holes",
     "lem:measure-support-transport",
+    "lem:mixed-centered-gaussian-limit",
+    "lem:moment-coefficient-growth-images",
     "lem:moment-coefficient-vanishing",
     "lem:moment-covariance",
     "lem:moment-determination",
@@ -9936,6 +10176,7 @@
     "lem:moment-norm-bound",
     "lem:moment-normal-trace",
     "lem:moment-operator-growth",
+    "lem:moment-product-growth",
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
     "lem:moment-taylor-linear-image",
@@ -9986,7 +10227,6 @@
     "lem:recenter-separated-set-null",
     "lem:rescaled-distance-selection",
     "lem:rigidity-contracted-limit-zero",
-    "lem:rigidity-cubic-vanishing",
     "lem:rigidity-forms-exist",
     "lem:rigidity-forms-from-symmetry",
     "lem:rigidity-fourth-support-identity",
@@ -10005,6 +10245,7 @@
     "lem:subsequence-limit-criterion",
     "lem:subspace-gaussian-trace-cylinder",
     "lem:subspace-moment-trace",
+    "lem:symmetric-cubic-binomial",
     "lem:symmetric-multilinear-diagonal-injective",
     "lem:tangent-blowdown",
     "lem:tangent-existence",
@@ -10022,6 +10263,7 @@
     "lem:uniform-constant-one",
     "lem:uniform-cylinder-identity",
     "lem:uniform-full-dimension-unique",
+    "lem:uniform-normalized-gaussian-norm",
     "lem:uniform-reduction",
     "lem:uniform-scaling",
     "lem:uniform-tube-projection-cover",

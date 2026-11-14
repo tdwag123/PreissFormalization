@@ -1,6 +1,13 @@
-import Preiss.Analysis.GaussianQuadraticForms
-import Mathlib.Tactic
+module
 
+public import Preiss.Analysis.GaussianQuadraticForms
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.FunProp
+
+/-! # Gaussian square norm of a vector-valued symmetric bilinear form -/
+
+@[expose] public section
 open MeasureTheory ProbabilityTheory
 open scoped BigOperators ENNReal
 namespace Preiss
@@ -63,6 +70,3 @@ theorem gaussian_integral_norm_sq_bilinear_of_mean_zero
   simpa only [hQ] using f.sum_sq_inner_right (A (e i) (e j))
 
 end Preiss
-
-#print axioms Preiss.integrable_gaussian_norm_sq_bilinear
-#print axioms Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero

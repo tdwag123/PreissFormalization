@@ -42,7 +42,7 @@ theorem exists_first_crossing_sequences_of_flatness_gt
     flatness_continuous hmn φ hφ _ _
       (fun i => regular_dimensionalBlowup μ hμ x (htpos i)) hζ.1 htlim
   have hchoose (i : ℕ) : ∃ j, t j < r i ∧ ε < f (t j) :=
-    ((htzero.eventually_lt_const (hrpos i)).and (htf.eventually (gt_mem_nhds hζgt))).exists
+    ((htzero.eventually_lt_const (hrpos i)).and (Filter.Tendsto.eventually_const_lt hζgt htf)).exists
   choose j hjrad hjlarge using hchoose
   have hcross (i : ℕ) : ∃ c ∈ Ioo (t (j i)) (r i), f c = ε ∧
       ∀ u ∈ Icc c (r i), f u ≤ ε :=

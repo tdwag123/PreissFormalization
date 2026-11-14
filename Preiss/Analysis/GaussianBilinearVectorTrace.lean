@@ -1,5 +1,8 @@
-import Preiss.Analysis.GaussianQuadraticForms
-import Mathlib.Tactic
+module
+public import Preiss.Analysis.GaussianQuadraticForms
+public import Mathlib.Tactic
+
+@[expose] public section
 open MeasureTheory ProbabilityTheory
 open scoped BigOperators
 namespace Preiss
@@ -19,7 +22,6 @@ theorem gaussian_integral_bilinear_eq_basis_sum
   change (∫ v, B v v ∂stdGaussian E) = ∑ i, B (e i) (e i)
   rw [gaussian_integral_bilinear_eq_trace, bilinearTrace_eq_sum_diagonal B e]
 
-#print axioms gaussian_integral_bilinear_eq_basis_sum
 
 theorem gaussian_integral_inner_bilinear_eq_zero_of_mean_zero
     {E F : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
@@ -49,6 +51,4 @@ theorem gaussian_integral_inner_sq_mul_bilinear_of_mean_zero
     exact gaussian_integral_inner_bilinear_eq_zero_of_mean_zero A hmean w
   simpa only [hD, hz, mul_zero, zero_add] using gaussian_integral_inner_sq_mul_bilinear D y
 
-#print axioms gaussian_integral_inner_bilinear_eq_zero_of_mean_zero
-#print axioms gaussian_integral_inner_sq_mul_bilinear_of_mean_zero
 end Preiss

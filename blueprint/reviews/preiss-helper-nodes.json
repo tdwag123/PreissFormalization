@@ -3751,6 +3751,262 @@
       "deps": [],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-linear-growth-integral",
+      "kind": "lemma",
+      "title": "Gaussian integrals of functions with linear growth",
+      "lean_names": [
+        "Preiss.gaussian_integral_bound_of_linear_growth"
+      ],
+      "file": "Preiss/Analysis/GaussianLinearGrowth.lean",
+      "statement_tex": "A measurable function bounded almost everywhere by $C(1+\\lVert z\\rVert)$ is Gaussian integrable whenever Gaussian mass and first norm moment are integrable, with the corresponding explicit integral bound.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:uniform-gaussian-linear-growth-limit",
+      "kind": "lemma",
+      "title": "Vanishing of scaled Gaussian linear-growth averages",
+      "lean_names": [
+        "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth"
+      ],
+      "file": "Preiss/Uniform/GaussianLinearGrowth.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform measure, the Gaussian integral of a linearly bounded measurable function, multiplied by $s$ and divided by Gaussian mass, tends to zero as $s\\downarrow0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-linear-growth-integral",
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:quadratic-square-upper-lower",
+      "kind": "lemma",
+      "title": "Scalar lower bound from a quadratic inequality",
+      "lean_names": [
+        "Preiss.quadratic_lower_bound_of_square_upper"
+      ],
+      "file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean",
+      "statement_tex": "If $d>0$, $q\\ge0$, and $(1+2/d)t^2\\le-8qt$, then $t\\ge-8dq/(d+2)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-square-upper-trace-lower",
+      "kind": "lemma",
+      "title": "Gaussian trace lower bound from a squared-form upper bound",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper"
+      ],
+      "file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean",
+      "statement_tex": "For a symmetric bilinear form on a positive-dimensional real inner-product space, a Gaussian squared-form bound by $-8q$ times its mean forces the mean to be at least $-8dq/(d+2)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:quadratic-square-upper-lower",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bilinear-diagonal-difference",
+      "kind": "lemma",
+      "title": "Difference of bilinear diagonal values",
+      "lean_names": [
+        "Preiss.norm_bilinear_diagonal_sub_le"
+      ],
+      "file": "Preiss/Analysis/BilinearDiagonalDifference.lean",
+      "statement_tex": "For a continuous bilinear map, $\\lVert Q(z,z)-Q(p,p)\\rVert\\le\\lVert Q\\rVert\\lVert z-p\\rVert(\\lVert z\\rVert+\\lVert p\\rVert)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:vague-limit-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of regular vague limits",
+      "lean_names": [
+        "Preiss.vague_limit_unique"
+      ],
+      "file": "Preiss/Analysis/Vague/Uniqueness.lean",
+      "statement_tex": "Two regular measures that are vague limits of the same sequence agree.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:flat-tangent-normalization",
+      "kind": "lemma",
+      "title": "Flatness transfers between tangent normalizations",
+      "lean_names": [
+        "Preiss.exists_flat_dimensionalTangent_of_flat_tangent",
+        "Preiss.all_tangents_flat_of_dimensionalTangents",
+        "Preiss.all_dimensionalTangents_flat_of_smul"
+      ],
+      "file": "Preiss/Tangent/FlatNormalization.lean",
+      "statement_tex": "Under positive finite density bounds, a flat tangent yields a flat dimensional tangent, and flatness of all dimensional tangents yields flatness of all tangents. A common positive finite scalar normalization can be undone.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:tangent-ray-density-bounds"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:density-positive-scalar",
+      "kind": "lemma",
+      "title": "Positive finite density under scalar multiplication",
+      "lean_names": [
+        "Preiss.HasPositiveFiniteDensityAt.smul"
+      ],
+      "file": "Preiss/Density/Scalar.lean",
+      "statement_tex": "Multiplication of a measure by a positive finite scalar preserves positive finite existing dimensional density.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:positive-density"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-bilinear-norm-integrable",
+      "kind": "lemma",
+      "title": "Integrability of squared norms of Gaussian bilinear diagonals",
+      "lean_names": [
+        "Preiss.integrable_gaussian_norm_sq_bilinear"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearNorm.lean",
+      "statement_tex": "The squared norm of a continuous Hilbert-valued bilinear form evaluated diagonally is integrable under standard Gaussian measure on a finite-dimensional real inner-product space.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-vector-bilinear-wick",
+      "kind": "lemma",
+      "title": "Vector-valued Gaussian fourth moment with zero mean",
+      "lean_names": [
+        "Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearNorm.lean",
+      "statement_tex": "For a symmetric Hilbert-valued bilinear form with zero Gaussian mean, its Gaussian squared norm equals twice the sum of squared norms of its matrix entries in an orthonormal basis.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-vector-trace-contractions",
+      "kind": "lemma",
+      "title": "Gaussian means and contractions of vector bilinear forms",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_basis_sum",
+        "Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero",
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean",
+      "statement_tex": "The Gaussian mean of a vector-valued bilinear diagonal is its basis trace. Zero mean implies zero scalar component means and the corresponding factor-two weighted Gaussian contraction.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-bilinear-contraction",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:weighted-integral-polarization",
+      "kind": "lemma",
+      "title": "Polarization of weighted integral limits",
+      "lean_names": [
+        "Preiss.tendsto_weighted_integral_mul_of_square_limits",
+        "Preiss.integrable_weighted_mul_of_squares",
+        "Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits"
+      ],
+      "file": "Preiss/Analysis/WeightedIntegralPolarization.lean",
+      "statement_tex": "Integrability and convergence of weighted diagonal square integrals imply their cross-product counterparts by polarization. This applies to diagonal limits of Hilbert-valued bilinear forms.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:finite-bilinear-integral-limits",
+      "kind": "lemma",
+      "title": "Finite-basis bilinear expansion and integral limits",
+      "lean_names": [
+        "Preiss.bilinear_diagonal_eq_sum_orthonormalBasis",
+        "Preiss.tendsto_weighted_integral_finite_linear_combination"
+      ],
+      "file": "Preiss/Analysis/BilinearIntegralLimits.lean",
+      "statement_tex": "A bilinear diagonal expands in a finite orthonormal basis. Eventual integrability and limits of finitely many weighted integrals pass through their fixed linear combinations.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:low-order-moment-limits",
+      "kind": "lemma",
+      "title": "First and second scaled moment limits",
+      "lean_names": [
+        "Preiss.gaussianMoment_first_scaled_limit",
+        "Preiss.gaussianMoment_second_scaled_limit"
+      ],
+      "file": "Preiss/Uniform/MomentCoefficientLimits.lean",
+      "statement_tex": "For every positive moment degree, division by $s$ yields the first coefficient in the limit. If that coefficient vanishes, division by $s^2$ yields half the second coefficient.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:leading-coefficient-limit",
+        "def:moment-coefficients"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:mixed-centered-gaussian-limit",
+      "kind": "lemma",
+      "title": "Centered mixed Gaussian limit from Taylor coefficients",
+      "lean_names": [
+        "Preiss.mixed_gaussian_limit_of_moment_expansion"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "The normalized centered cubic Gaussian integral converges to $3B_3^2(v,v,w)-4B_2^1(v,v)\\langle b,w\\rangle$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:centered-gaussian-mean-limit",
+      "kind": "lemma",
+      "title": "Centered Gaussian mean from its first coefficient",
+      "lean_names": [
+        "Preiss.normalized_centered_gaussian_limit_of_first_coefficient"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "If $B_1^1(w)=2\\langle b,w\\rangle$, the normalized Gaussian average of $\\langle z-b,w\\rangle$ tends to zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:low-order-moment-limits"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {
