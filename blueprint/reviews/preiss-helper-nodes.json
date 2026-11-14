@@ -1967,6 +1967,152 @@
         "lem:moment-feature-remainder"
       ],
       "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:vague-uniform-norm-tails",
+      "kind": "lemma",
+      "title": "Extending vague convergence using uniform integral tails",
+      "lean_names": [
+        "Preiss.norm_integral_sub_cutoff_le",
+        "Preiss.vague_integral_of_uniform_norm_tails"
+      ],
+      "file": "Preiss/Analysis/Vague/UniformTails.lean",
+      "statement_tex": "For a continuous integrable real function $f$, vague convergence implies convergence of its integrals whenever the norm integrals outside suitable compact sets are uniformly small for the sequence and limit measure. A cutoff between zero and one, equal to one on $K$, changes the integral by at most $\\int_{K^c}|f|$.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:vague"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:polynomial-norm-growth",
+      "kind": "lemma",
+      "title": "Polynomial norm growth outside the unit ball",
+      "lean_names": [
+        "Preiss.exists_polynomial_norm_bound_outside_unit_ball"
+      ],
+      "file": "Preiss/Analysis/PolynomialNormBound.lean",
+      "statement_tex": "Every real polynomial on Euclidean space admits constants $C\\ge0$ and $d\\in\\mathbb N$ with $|P(z)|\\le C\\|z\\|^d$ whenever $\\|z\\|\\ge1$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:polynomial-gaussian-norm-tails",
+      "kind": "lemma",
+      "title": "Uniform tails for polynomial Gaussian tests",
+      "lean_names": [
+        "Preiss.polynomial_gaussian_uniform_norm_tail"
+      ],
+      "file": "Preiss/Analysis/GaussianVague.lean",
+      "statement_tex": "For fixed polynomial $P$ and $s>0$, the integral of $|P(z)e^{-s\\|z\\|^2}|$ outside large balls tends to zero uniformly over regular measures with a common polynomial ball-growth bound.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:polynomial-norm-growth",
+        "lem:gaussian-uniform-tails",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-tangent-origin-ball-law",
+      "kind": "lemma",
+      "title": "Centered ball laws from a positive radius-power density",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_ball_mass_tendsto",
+        "Preiss.dimensionalTangent_ball_law_at_zero"
+      ],
+      "file": "Preiss/Tangent/DensityBallLaw.lean",
+      "statement_tex": "If $\\mu(\\overline B(x,r))/r^m\\to q>0$, every dimensional tangent $\\nu$ satisfies $\\nu(\\overline B(0,R))=qR^m$ for $R>0$ and has $0$ in its support. The ball-mass convergence for the blow-ups themselves also holds for $q=0$. Dimension zero is allowed.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-tangent",
+        "gmt:blowup-balls",
+        "gmt:portmanteau"
+      ],
+      "used_by": [
+        "lem:dimensional-tangent-ball-constant"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:flat-positive-scalar",
+      "kind": "lemma",
+      "title": "Flatness under positive finite scalar multiplication",
+      "lean_names": [
+        "Preiss.IsFlat.smul",
+        "Preiss.isFlat_smul_iff"
+      ],
+      "file": "Preiss/Geometry/FlatScalar.lean",
+      "statement_tex": "For $0<c<\\infty$, the measure $c\\nu$ is $m$-flat if and only if $\\nu$ is $m$-flat.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:flat"
+      ],
+      "used_by": [
+        "lem:density-normalization"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:gaussian-bilinear-contraction",
+      "kind": "lemma",
+      "title": "A Gaussian fourth-moment contraction for bilinear forms",
+      "lean_names": [
+        "Preiss.integrable_gaussian_bilinear_diagonal",
+        "Preiss.integrable_gaussian_inner_sq_smul_bilinear",
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear"
+      ],
+      "file": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "statement_tex": "For a continuous real bilinear form $A$ on a finite-dimensional real inner-product space and standard Gaussian $\\gamma$, $\\int\\langle y,v\\rangle^2 A(v,v)\\,d\\gamma=\\|y\\|^2\\operatorname{tr}A+2A(y,y)$. Symmetry of $A$ is unnecessary. The diagonal and weighted-diagonal integrability lemmas allow normed real vector-valued forms.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-wick-fourth",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:column-mass-contradiction",
+      "kind": "lemma",
+      "title": "A lower packing mass exceeding an upper bound is impossible",
+      "lean_names": [
+        "Preiss.false_of_column_mass_exceeds_upper_bound"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "statement_tex": "Disjoint columns of balls with cardinality at least $c_1/\\eta$, lower ball mass $\\delta(\\rho_i/8)^m$, and retained radius sum at least $c_2\\sigma^m$ contradict an upper mass bound $C\\sigma^m$ whenever $C<c_1c_2\\delta/(8^m\\eta)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:packing-contradiction"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:weighted-grading-positive-complement",
+      "kind": "lemma",
+      "title": "Positivity and complementary subspaces for weighted gradings",
+      "lean_names": [
+        "Preiss.weightedGrading_inner_self",
+        "Preiss.weightedGrading_inner_pos",
+        "Preiss.weightedGrading_injective",
+        "Preiss.weightedGrading_inner_left_right",
+        "Preiss.isCompl_weightedComplement"
+      ],
+      "file": "Preiss/Analysis/GradedProjection.lean",
+      "statement_tex": "For an orthogonal grading $(P_i)$ and positive $s$, the weighted operator $A(s)=\\sum_i s^{i+1}P_i$ is self-adjoint and positive definite, with quadratic form $\\sum_i s^{i+1}\\|P_i x\\|^2$. It is injective, and every subspace $V$ is complementary to $A(s)^{-1}(V^\\perp)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "used_by": [
+        "lem:graded-analytic-projection"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
     }
   ],
   "definition_edge_additions": {

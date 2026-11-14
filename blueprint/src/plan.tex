@@ -1765,7 +1765,7 @@ For every fixed \(m\)-plane \(V\) and finite aperture \(\alpha\geq0\), at \(\mat
 
 \begin{lemma}[Disjoint projection-hole disks with large radius sum]
 \label{lem:projection-hole-cover}
-\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass, Preiss.exists_holeFamily_of_compact, Preiss.holeFamily_mass_lower_bound, Preiss.HoleFamily.disjoint_cylinders, Preiss.mem_half_ball_of_tube_and_projected_distance}
+\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass, Preiss.exists_holeFamily_of_compact, Preiss.holeFamily_mass_lower_bound, Preiss.HoleFamily.disjoint_cylinders, Preiss.mem_half_ball_of_tube_and_projected_distance, Preiss.exists_nearest_projected_witness_in_half_ball}
 \uses{lem:nested-compact-approximation, lem:packing-base-point, lem:plane-hausdorff, mathlib:vitali-enlargement}
 
 
@@ -1817,7 +1817,7 @@ Also reuse Besicovitch.exists\_disjoint\_closedBall\_covering\_ae and Lipschitz 
 
 \begin{lemma}[Cylinders meeting the compact core have small radius sum]
 \label{lem:discarded-cylinder-sum}
-\lean{Preiss.tsum_hole_radii_bad_indices_le}
+\lean{Preiss.tsum_hole_radii_bad_indices_le, Preiss.HoleFamily.exists_disjoint_charging_balls, Preiss.tsum_sdiff_ge_of_small_discarded_sum}
 \uses{lem:projection-hole-cover}
 
 
@@ -1864,8 +1864,8 @@ At the local scale \(r_i=\rho_i/(8\eta)\), each surviving cylinder contains at l
 
 \begin{lemma}[Null projections contradict weak approximation and finite upper density]
 \label{lem:packing-contradiction}
-\lean{Preiss.false_of_column_mass_exceeds_upper_bound, Preiss.false_of_null_projections_and_uniform_weakApproximation}
-\uses{lem:column-packing, lem:discarded-cylinder-sum, lem:packing-base-point}
+\lean{Preiss.false_of_null_projections_and_uniform_weakApproximation}
+\uses{lem:column-packing, lem:discarded-cylinder-sum, lem:packing-base-point, lem:column-mass-contradiction}
 
 
 
@@ -1960,7 +1960,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Analytic extension of weighted complementary projections]
 \label{lem:graded-analytic-projection}
-\uses{def:orthogonal-grading}
+\uses{def:orthogonal-grading, lem:weighted-grading-positive-complement}
 \lean{Preiss.analyticAt_weightedProjection_zero}
 
 
@@ -2352,7 +2352,7 @@ The trace of a continuous bilinear form is the sum of its diagonal evaluations o
 \begin{lemma}[Vague convergence of Gaussian polynomial integrals]
 \label{lem:vague-gaussian-polynomials}
 \lean{Preiss.vague_integral_polynomial_mul_gaussian}
-\uses{def:polynomial-growth-bound, lem:gaussian-uniform-tails, lem:vague-moving-tests}
+\uses{def:polynomial-growth-bound, lem:gaussian-uniform-tails, lem:vague-moving-tests, lem:vague-uniform-norm-tails, lem:polynomial-gaussian-norm-tails}
 
 
 
@@ -2986,7 +2986,7 @@ Extract a convergent subsequence of ball constants in $[c,C]$, normalize by thei
 
 \begin{lemma}[Existence of uniform blow-down limits]
 \label{lem:infinity-compactness}
-\uses{lem:uniform-scaling}
+\uses{lem:uniform-scaling, lem:uniform-compactness}
 \lean{Preiss.exists_tangentAtInfinity}
 \uses{def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:uniform-compactness}
 
@@ -3013,7 +3013,7 @@ factor preserves the set of limits at infinity, so S02--S03 imply conicality.
 \begin{lemma}[Common tangent normalization at a density point]
 \label{lem:dimensional-tangent-ball-constant}
 \lean{Preiss.dimensionalTangent_ball_constant}
-\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, gmt:continuity-sets, gmt:normalized-tangent, lem:tangent-ray, thm:doubling}
+\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, gmt:continuity-sets, gmt:normalized-tangent, lem:tangent-ray, thm:doubling, lem:dimensional-tangent-origin-ball-law}
 
 
 
@@ -3041,7 +3041,7 @@ adapter before applying a universal flatness threshold.
 \begin{lemma}[Reduction to unit uniform dimensional tangents]
 \label{lem:density-normalization}
 \lean{Preiss.density_normalization_unitUniform}
-\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:dimensional-tangent-ball-constant}
+\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:dimensional-tangent-ball-constant, lem:flat-positive-scalar, lem:dimensional-tangent-operations, lem:uniform-scaling}
 
 
 
@@ -5221,4 +5221,66 @@ An arbitrary finite-outer-measure set of centers is null if each center has a re
 \lean{Preiss.isBigO_continuousLinearMap_iff_forall_apply, Preiss.isBigO_restrict_span_of_forall_mem}
 
 For a family of continuous linear maps on a finite-dimensional real normed space, an operator-norm big-$O$ bound is equivalent to the bound at each vector. Bounds on a generating set give an operator-norm bound after restriction to its span.
+\end{lemma}
+
+\begin{lemma}[Extending vague convergence using uniform integral tails]
+\label{lem:vague-uniform-norm-tails}
+\lean{Preiss.norm_integral_sub_cutoff_le, Preiss.vague_integral_of_uniform_norm_tails}
+\uses{gmt:vague}
+
+For a continuous integrable real function $f$, vague convergence implies convergence of its integrals whenever the norm integrals outside suitable compact sets are uniformly small for the sequence and limit measure. A cutoff between zero and one, equal to one on $K$, changes the integral by at most $\int_{K^c}|f|$.
+\end{lemma}
+
+\begin{lemma}[Polynomial norm growth outside the unit ball]
+\label{lem:polynomial-norm-growth}
+\lean{Preiss.exists_polynomial_norm_bound_outside_unit_ball}
+
+Every real polynomial on Euclidean space admits constants $C\ge0$ and $d\in\mathbb N$ with $|P(z)|\le C\|z\|^d$ whenever $\|z\|\ge1$.
+\end{lemma}
+
+\begin{lemma}[Uniform tails for polynomial Gaussian tests]
+\label{lem:polynomial-gaussian-norm-tails}
+\lean{Preiss.polynomial_gaussian_uniform_norm_tail}
+\uses{lem:polynomial-norm-growth, lem:gaussian-uniform-tails, lem:polynomial-gaussian-integrability}
+
+For fixed polynomial $P$ and $s>0$, the integral of $|P(z)e^{-s\|z\|^2}|$ outside large balls tends to zero uniformly over regular measures with a common polynomial ball-growth bound.
+\end{lemma}
+
+\begin{lemma}[Centered ball laws from a positive radius-power density]
+\label{lem:dimensional-tangent-origin-ball-law}
+\lean{Preiss.dimensionalBlowup_ball_mass_tendsto, Preiss.dimensionalTangent_ball_law_at_zero}
+\uses{def:dimensional-tangent, gmt:blowup-balls, gmt:portmanteau}
+
+If $\mu(\overline B(x,r))/r^m\to q>0$, every dimensional tangent $\nu$ satisfies $\nu(\overline B(0,R))=qR^m$ for $R>0$ and has $0$ in its support. The ball-mass convergence for the blow-ups themselves also holds for $q=0$. Dimension zero is allowed.
+\end{lemma}
+
+\begin{lemma}[Flatness under positive finite scalar multiplication]
+\label{lem:flat-positive-scalar}
+\lean{Preiss.IsFlat.smul, Preiss.isFlat_smul_iff}
+\uses{def:flat}
+
+For $0<c<\infty$, the measure $c\nu$ is $m$-flat if and only if $\nu$ is $m$-flat.
+\end{lemma}
+
+\begin{lemma}[A Gaussian fourth-moment contraction for bilinear forms]
+\label{lem:gaussian-bilinear-contraction}
+\lean{Preiss.integrable_gaussian_bilinear_diagonal, Preiss.integrable_gaussian_inner_sq_smul_bilinear, Preiss.gaussian_integral_inner_sq_mul_bilinear}
+\uses{lem:gaussian-wick-fourth, lem:gaussian-quadratic-trace-bound}
+
+For a continuous real bilinear form $A$ on a finite-dimensional real inner-product space and standard Gaussian $\gamma$, $\int\langle y,v\rangle^2 A(v,v)\,d\gamma=\|y\|^2\operatorname{tr}A+2A(y,y)$. Symmetry of $A$ is unnecessary. The diagonal and weighted-diagonal integrability lemmas allow normed real vector-valued forms.
+\end{lemma}
+
+\begin{lemma}[A lower packing mass exceeding an upper bound is impossible]
+\label{lem:column-mass-contradiction}
+\lean{Preiss.false_of_column_mass_exceeds_upper_bound}
+
+If nonnegative retained radii have total $m$-power at least $b$, and a measure has mass at least $Ab$ but at most a strictly smaller finite bound, the two estimates contradict one another.
+\end{lemma}
+
+\begin{lemma}[Positivity and complementary subspaces for weighted gradings]
+\label{lem:weighted-grading-positive-complement}
+\lean{Preiss.weightedGrading_inner_self, Preiss.weightedGrading_inner_pos, Preiss.weightedGrading_injective, Preiss.weightedGrading_inner_left_right, Preiss.isCompl_weightedComplement}
+\uses{def:orthogonal-grading}
+
+For an orthogonal grading $(P_i)$ and positive $s$, the weighted operator $A(s)=\sum_i s^{i+1}P_i$ is self-adjoint and positive definite, with quadratic form $\sum_i s^{i+1}\|P_i x\|^2$. It is injective, and every subspace $V$ is complementary to $A(s)^{-1}(V^\perp)$.
 \end{lemma}

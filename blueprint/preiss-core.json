@@ -1259,8 +1259,7 @@
       "proof_dependencies": [],
       "expanded_line": 1481,
       "unfinished_dependencies": [
-        "lem:plane-supported-uniform-flat",
-        "lem:vague-gaussian-polynomials"
+        "lem:plane-supported-uniform-flat"
       ]
     },
     {
@@ -2304,6 +2303,7 @@
         "Preiss.HoleFamily",
         "Preiss.HoleFamily.disjoint_cylinders",
         "Preiss.exists_holeFamily_of_compact",
+        "Preiss.exists_nearest_projected_witness_in_half_ball",
         "Preiss.exists_projection_hole_disk_family",
         "Preiss.holeFamily_mass_lower_bound",
         "Preiss.mem_half_ball_of_tube_and_projected_distance",
@@ -2348,7 +2348,9 @@
       "kind": "lemma",
       "status": "proof_candidate",
       "lean": [
-        "Preiss.tsum_hole_radii_bad_indices_le"
+        "Preiss.HoleFamily.exists_disjoint_charging_balls",
+        "Preiss.tsum_hole_radii_bad_indices_le",
+        "Preiss.tsum_sdiff_ge_of_small_discarded_sum"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -2382,11 +2384,11 @@
       "kind": "lemma",
       "status": "unproved_statement",
       "lean": [
-        "Preiss.false_of_column_mass_exceeds_upper_bound",
         "Preiss.false_of_null_projections_and_uniform_weakApproximation"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
+        "lem:column-mass-contradiction",
         "lem:column-packing",
         "lem:discarded-cylinder-sum",
         "lem:packing-base-point"
@@ -2469,7 +2471,8 @@
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:orthogonal-grading"
+        "def:orthogonal-grading",
+        "lem:weighted-grading-positive-complement"
       ],
       "proof_dependencies": [],
       "expanded_line": 3044,
@@ -2756,7 +2759,7 @@
       "id": "lem:vague-gaussian-polynomials",
       "title": "Vague convergence of Gaussian polynomial integrals",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.vague_integral_polynomial_mul_gaussian"
       ],
@@ -2764,7 +2767,9 @@
       "statement_dependencies": [
         "def:polynomial-growth-bound",
         "lem:gaussian-uniform-tails",
-        "lem:vague-moving-tests"
+        "lem:polynomial-gaussian-norm-tails",
+        "lem:vague-moving-tests",
+        "lem:vague-uniform-norm-tails"
       ],
       "proof_dependencies": [],
       "expanded_line": 3435,
@@ -2796,7 +2801,7 @@
       "id": "lem:moment-feature-remainder",
       "title": "Operator norm remainder from finitely many support features",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.featureMoment_operator_remainder"
       ],
@@ -3047,8 +3052,7 @@
       "proof_dependencies": [],
       "expanded_line": 3815,
       "unfinished_dependencies": [
-        "lem:graded-analytic-projection",
-        "lem:moment-feature-remainder"
+        "lem:graded-analytic-projection"
       ]
     },
     {
@@ -3233,7 +3237,7 @@
       "id": "lem:infinity-compactness",
       "title": "Existence of uniform blow-down limits",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_tangentAtInfinity"
       ],
@@ -3253,7 +3257,7 @@
       "id": "lem:dimensional-tangent-ball-constant",
       "title": "Common tangent normalization at a density point",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.dimensionalTangent_ball_constant"
       ],
@@ -3264,6 +3268,7 @@
         "def:unit-uniform",
         "gmt:continuity-sets",
         "gmt:normalized-tangent",
+        "lem:dimensional-tangent-origin-ball-law",
         "lem:tangent-ray",
         "thm:doubling"
       ],
@@ -3275,7 +3280,7 @@
       "id": "lem:density-normalization",
       "title": "Reduction to unit uniform dimensional tangents",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.density_normalization_unitUniform"
       ],
@@ -3285,13 +3290,14 @@
         "def:positive-density",
         "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:dimensional-tangent-ball-constant"
+        "lem:dimensional-tangent-ball-constant",
+        "lem:dimensional-tangent-operations",
+        "lem:flat-positive-scalar",
+        "lem:uniform-scaling"
       ],
       "proof_dependencies": [],
       "expanded_line": 4124,
-      "unfinished_dependencies": [
-        "lem:dimensional-tangent-ball-constant"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:halfspace-tangent-witness",
@@ -3310,9 +3316,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4153,
-      "unfinished_dependencies": [
-        "lem:dimensional-tangent-ball-constant"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:hyperplane-tangent-lineage",
@@ -3424,9 +3428,7 @@
       "proof_dependencies": [],
       "expanded_line": 4291,
       "unfinished_dependencies": [
-        "lem:blowdown-moment-limits",
-        "lem:infinity-compactness",
-        "lem:vague-gaussian-polynomials"
+        "lem:blowdown-moment-limits"
       ]
     },
     {
@@ -3590,8 +3592,7 @@
       "expanded_line": 4443,
       "unfinished_dependencies": [
         "lem:flat-gaussian-even-moments",
-        "lem:scaled-moment-limits",
-        "lem:vague-gaussian-polynomials"
+        "lem:scaled-moment-limits"
       ]
     },
     {
@@ -4000,8 +4001,7 @@
         "lem:rigidity-mixed-gaussian-limit",
         "lem:rigidity-omega-reproducing",
         "lem:rigidity-pointwise-quadratic-bound",
-        "lem:rigidity-rescaled-error",
-        "lem:vague-gaussian-polynomials"
+        "lem:rigidity-rescaled-error"
       ]
     },
     {
@@ -4132,7 +4132,6 @@
       "expanded_line": 4998,
       "unfinished_dependencies": [
         "cor:conical",
-        "lem:density-normalization",
         "thm:gap",
         "thm:infinity-rigidity",
         "thm:unique-infinity"
@@ -4230,7 +4229,6 @@
       "proof_dependencies": [],
       "expanded_line": 5088,
       "unfinished_dependencies": [
-        "lem:density-normalization",
         "lem:first-crossing",
         "lem:first-crossing-flat-infinity",
         "lem:flatness-gap-cutoff",
@@ -6033,6 +6031,125 @@
       "statement_dependencies": [],
       "proof_dependencies": [],
       "expanded_line": 6302,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vague-uniform-norm-tails",
+      "title": "Extending vague convergence using uniform integral tails",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.norm_integral_sub_cutoff_le",
+        "Preiss.vague_integral_of_uniform_norm_tails"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "gmt:vague"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6309,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:polynomial-norm-growth",
+      "title": "Polynomial norm growth outside the unit ball",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_polynomial_norm_bound_outside_unit_ball"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6317,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:polynomial-gaussian-norm-tails",
+      "title": "Uniform tails for polynomial Gaussian tests",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.polynomial_gaussian_uniform_norm_tail"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-uniform-tails",
+        "lem:polynomial-gaussian-integrability",
+        "lem:polynomial-norm-growth"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6324,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:dimensional-tangent-origin-ball-law",
+      "title": "Centered ball laws from a positive radius-power density",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.dimensionalBlowup_ball_mass_tendsto",
+        "Preiss.dimensionalTangent_ball_law_at_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:dimensional-tangent",
+        "gmt:blowup-balls",
+        "gmt:portmanteau"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6332,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-positive-scalar",
+      "title": "Flatness under positive finite scalar multiplication",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.IsFlat.smul",
+        "Preiss.isFlat_smul_iff"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:flat"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6340,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:column-mass-contradiction",
+      "title": "A lower packing mass exceeding an upper bound is impossible",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.false_of_column_mass_exceeds_upper_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6356,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:weighted-grading-positive-complement",
+      "title": "Positivity and complementary subspaces for weighted gradings",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.isCompl_weightedComplement",
+        "Preiss.weightedGrading_injective",
+        "Preiss.weightedGrading_inner_left_right",
+        "Preiss.weightedGrading_inner_pos",
+        "Preiss.weightedGrading_inner_self"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:orthogonal-grading"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6363,
       "unfinished_dependencies": []
     }
   ]

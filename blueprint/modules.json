@@ -432,7 +432,8 @@
         "Preiss.Analysis.GaussianMoments"
       ],
       "nodes": [
-        "lem:gaussian-quadratic-trace-bound"
+        "lem:gaussian-quadratic-trace-bound",
+        "lem:gaussian-bilinear-contraction"
       ],
       "source_exists": true,
       "scope": "core",
@@ -443,24 +444,28 @@
       "file": "Preiss/Analysis/GaussianVague.lean",
       "purpose": "Reusable Analysis.GaussianVague interfaces.",
       "current_source_imports": [
-        "FormalizingGMT.WeakConvergence.Basic",
-        "Preiss.Analysis.GaussianGrowth"
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.PolynomialNormBound",
+        "Preiss.Analysis.Vague.UniformTails"
       ],
       "mathlib_imports": [],
-      "gmt_imports": [
-        "FormalizingGMT.WeakConvergence.Basic"
-      ],
+      "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.GaussianGrowth",
-        "Preiss.Analysis.Vague.CompactTests"
+        "Preiss.Analysis.PolynomialNormBound",
+        "Preiss.Analysis.Vague.CompactTests",
+        "Preiss.Analysis.Vague.UniformTails"
       ],
       "nodes": [
-        "lem:vague-gaussian-polynomials"
+        "lem:vague-gaussian-polynomials",
+        "lem:polynomial-gaussian-norm-tails"
       ],
       "source_exists": true,
       "local_imports": [
         "Preiss.Analysis.GaussianGrowth",
-        "Preiss.Analysis.Vague.CompactTests"
+        "Preiss.Analysis.PolynomialNormBound",
+        "Preiss.Analysis.Vague.CompactTests",
+        "Preiss.Analysis.Vague.UniformTails"
       ],
       "scope": "core"
     },
@@ -499,20 +504,23 @@
       "file": "Preiss/Analysis/GradedProjection.lean",
       "current_source_imports": [
         "Mathlib.Analysis.Analytic.Basic",
+        "Mathlib.LinearAlgebra.BilinearForm.Orthogonal",
         "Preiss.Analysis.Grading"
       ],
       "local_imports": [
         "Preiss.Analysis.Grading"
       ],
       "mathlib_imports": [
-        "Mathlib.Analysis.Analytic.Basic"
+        "Mathlib.Analysis.Analytic.Basic",
+        "Mathlib.LinearAlgebra.BilinearForm.Orthogonal"
       ],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.Grading"
       ],
       "nodes": [
-        "lem:graded-analytic-projection"
+        "lem:graded-analytic-projection",
+        "lem:weighted-grading-positive-complement"
       ],
       "source_exists": true,
       "scope": "core",
@@ -778,6 +786,30 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Analysis.PolynomialFeatures interfaces."
+    },
+    {
+      "module": "Preiss.Analysis.PolynomialNormBound",
+      "file": "Preiss/Analysis/PolynomialNormBound.lean",
+      "purpose": "Reusable Analysis.PolynomialNormBound interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Mathlib.Topology.Algebra.MvPolynomial",
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic",
+        "Mathlib.Topology.Algebra.MvPolynomial"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:polynomial-norm-growth"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Analysis.PowerSeriesRemainder",
@@ -1154,6 +1186,33 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Analysis.Vague.Support interfaces."
+    },
+    {
+      "module": "Preiss.Analysis.Vague.UniformTails",
+      "file": "Preiss/Analysis/Vague/UniformTails.lean",
+      "purpose": "Reusable Analysis.Vague.UniformTails interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.Tactic",
+        "Mathlib.Topology.UrysohnsLemma",
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic",
+        "Mathlib.Topology.UrysohnsLemma"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_imports": [],
+      "nodes": [
+        "lem:vague-uniform-norm-tails"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Density.Adapters",
@@ -1628,6 +1687,27 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Geometry.FlatMeasure interfaces."
+    },
+    {
+      "module": "Preiss.Geometry.FlatScalar",
+      "file": "Preiss/Geometry/FlatScalar.lean",
+      "purpose": "Reusable Geometry.FlatScalar interfaces.",
+      "current_source_imports": [
+        "Preiss.Geometry.FlatMeasure"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.FlatMeasure"
+      ],
+      "nodes": [
+        "lem:flat-positive-scalar"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.FlatMeasure"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Geometry.LipschitzExtension",
@@ -2418,11 +2498,36 @@
         "lem:projection-hole-cover",
         "lem:discarded-cylinder-sum",
         "lem:column-packing",
-        "lem:packing-contradiction"
+        "lem:column-mass-contradiction"
       ],
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Rectifiability.MarstrandMattila.Packing interfaces."
+    },
+    {
+      "module": "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
+      "file": "Preiss/Rectifiability/MarstrandMattila/PackingContradiction.lean",
+      "purpose": "Reusable Rectifiability.MarstrandMattila.PackingContradiction interfaces.",
+      "current_source_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
+        "Preiss.Rectifiability.MarstrandMattila.Packing"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "Preiss.Rectifiability.MarstrandMattila.Packing"
+      ],
+      "nodes": [
+        "lem:packing-contradiction"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "Preiss.Rectifiability.MarstrandMattila.Packing"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
@@ -2471,14 +2576,14 @@
         "Preiss.Rectifiability.Decomposition",
         "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-        "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
         "Preiss.Rectifiability.MarstrandMattila.ProjectionNull"
       ],
       "local_imports": [
         "Preiss.Rectifiability.Decomposition",
         "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-        "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
         "Preiss.Rectifiability.MarstrandMattila.ProjectionNull"
       ],
       "mathlib_imports": [],
@@ -2486,7 +2591,7 @@
       "proof_imports": [
         "Preiss.Rectifiability.Decomposition",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-        "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
         "Preiss.Rectifiability.MarstrandMattila.ProjectionNull"
       ],
       "nodes": [
@@ -3107,6 +3212,35 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Tangent.Defs interfaces."
+    },
+    {
+      "module": "Preiss.Tangent.DensityBallLaw",
+      "file": "Preiss/Tangent/DensityBallLaw.lean",
+      "purpose": "Reusable Tangent.DensityBallLaw interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.TangentMeasures.Basic",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metric",
+        "Preiss.Tangent.BlowupSupport",
+        "Preiss.Tangent.Defs"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metric"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.Basic"
+      ],
+      "proof_imports": [
+        "Preiss.Tangent.Defs"
+      ],
+      "nodes": [
+        "lem:dimensional-tangent-origin-ball-law"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Tangent.BlowupSupport",
+        "Preiss.Tangent.Defs"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Tangent.DensityTransfer",
@@ -4665,6 +4799,7 @@
       "file": "Preiss/Uniform/MomentFeatures.lean",
       "current_source_imports": [
         "Mathlib.Analysis.Asymptotics.Defs",
+        "Preiss.Analysis.FiniteDimensionalBigO",
         "Preiss.Analysis.GaussianFeatures",
         "Preiss.Analysis.LinearMapIntegral",
         "Preiss.Analysis.PolynomialFeatures",
@@ -4958,15 +5093,18 @@
       "file": "Preiss/Uniform/TangentNormalization.lean",
       "current_source_imports": [
         "FormalizingGMT.MarstrandTheorem",
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Normalization",
+        "Preiss.Geometry.FlatScalar",
+        "Preiss.Tangent.Basic",
+        "Preiss.Tangent.DensityBallLaw",
         "Preiss.Uniform.Scaling"
       ],
       "local_imports": [
         "Preiss.Density.Defs",
-        "Preiss.Geometry.FlatMeasure",
+        "Preiss.Geometry.FlatScalar",
         "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Basic",
         "Preiss.Tangent.Defs",
+        "Preiss.Tangent.DensityBallLaw",
         "Preiss.Tangent.Normalization",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.Scaling"
@@ -4977,10 +5115,14 @@
       ],
       "proof_imports": [
         "Preiss.Density.Defs",
+        "Preiss.Geometry.FlatScalar",
         "Preiss.Tangent.Algebra",
+        "Preiss.Tangent.Basic",
         "Preiss.Tangent.Defs",
+        "Preiss.Tangent.DensityBallLaw",
         "Preiss.Tangent.Normalization",
-        "Preiss.Uniform.Defs"
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.Scaling"
       ],
       "nodes": [
         "lem:dimensional-tangent-ball-constant",
@@ -5112,9 +5254,11 @@
     "Preiss.Analysis.GaussianBallPowerParameter",
     "Preiss.Analysis.GaussianMoments",
     "Preiss.Analysis.GaussianGrowth",
+    "Preiss.Analysis.PolynomialNormBound",
     "Preiss.Analysis.Vague.CompactMass",
     "Preiss.Analysis.Vague.CompactTests",
     "Preiss.Analysis.Vague.Support",
+    "Preiss.Analysis.Vague.UniformTails",
     "Preiss.Density.Defs",
     "Preiss.Geometry.LipschitzExtension",
     "Preiss.Geometry.Planes",
@@ -5128,8 +5272,8 @@
     "Preiss.Analysis.Vague.Metrization",
     "Preiss.Analysis.GaussianQuadraticForms",
     "Preiss.Analysis.GaussianWeight",
-    "Preiss.Analysis.GaussianVague",
     "Preiss.Analysis.Vague.ProjectionEnergy",
+    "Preiss.Analysis.GaussianVague",
     "Preiss.Density.Adapters",
     "Preiss.Density.RadiusPower",
     "Preiss.Density.UpperBounds",
@@ -5153,6 +5297,7 @@
     "Preiss.Analysis.Vague.SecondCountable",
     "Preiss.Analysis.GaussianMomentDetermination",
     "Preiss.Density.HausdorffComparison",
+    "Preiss.Geometry.FlatScalar",
     "Preiss.Geometry.PlaneRegularity",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Geometry.Cones",
@@ -5168,6 +5313,7 @@
     "Preiss.Tangent.FlatScaling",
     "Preiss.Tangent.MovingCenters",
     "Preiss.Tangent.Basic",
+    "Preiss.Tangent.DensityBallLaw",
     "Preiss.Tangent.MetricApproximation",
     "Preiss.Tangent.Restriction",
     "Preiss.Tangent.SupportApproximation",
@@ -5235,12 +5381,13 @@
     "Preiss.Rectifiability.MarstrandMattila.Packing",
     "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
     "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-    "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+    "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
     "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
-    "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+    "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
     "Preiss.Uniform.TraceRigidity",
-    "Preiss.Rectifiability.TangentCharacterization",
+    "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
     "Preiss.Uniform.FlatAtInfinity.Rigidity",
+    "Preiss.Rectifiability.TangentCharacterization",
     "Preiss.Theorem.FirstCrossing",
     "Preiss.Theorem.PartB",
     "Preiss.Main"
@@ -5276,6 +5423,7 @@
     "Preiss.Analysis.MovingSets",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PolynomialFeatures",
+    "Preiss.Analysis.PolynomialNormBound",
     "Preiss.Analysis.PowerSeriesRemainder",
     "Preiss.Analysis.ProperMeasureTransport",
     "Preiss.Analysis.SequentialLimits",
@@ -5290,6 +5438,7 @@
     "Preiss.Analysis.Vague.ScalarLimits",
     "Preiss.Analysis.Vague.SecondCountable",
     "Preiss.Analysis.Vague.Support",
+    "Preiss.Analysis.Vague.UniformTails",
     "Preiss.Density.Adapters",
     "Preiss.Density.Atoms",
     "Preiss.Density.Defs",
@@ -5309,6 +5458,7 @@
     "Preiss.Geometry.Cylinders",
     "Preiss.Geometry.Euclidean",
     "Preiss.Geometry.FlatMeasure",
+    "Preiss.Geometry.FlatScalar",
     "Preiss.Geometry.LipschitzExtension",
     "Preiss.Geometry.PlaneDistance",
     "Preiss.Geometry.PlaneMeasure",
@@ -5330,6 +5480,7 @@
     "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
     "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
     "Preiss.Rectifiability.MarstrandMattila.Packing",
+    "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
     "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
     "Preiss.Rectifiability.ProjectionEstimate",
@@ -5351,6 +5502,7 @@
     "Preiss.Tangent.Compactness",
     "Preiss.Tangent.Continuity",
     "Preiss.Tangent.Defs",
+    "Preiss.Tangent.DensityBallLaw",
     "Preiss.Tangent.DensityTransfer",
     "Preiss.Tangent.Existence",
     "Preiss.Tangent.Extraction",

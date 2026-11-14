@@ -500,11 +500,105 @@ theorem false_of_column_mass_exceeds_upper_bound
     simpa only [mul_assoc] using hh
   exact not_lt_of_ge hmass hstrict
 
-theorem false_of_null_projections_and_uniform_weakApproximation
-    (hm : 0 < m) (hmn : m ≤ n) (E : Set (Euclidean n))
-    (hE : MeasurableSet E) (hpos : 0 < (Measure.hausdorffMeasure (m : ℝ)) E) (hfin : (Measure.hausdorffMeasure (m : ℝ)) E < ∞)
-    (hu : ∀ᵐ x ∂(((Measure.hausdorffMeasure (m : ℝ))).restrict E), UpperPowerBoundAt m (((Measure.hausdorffMeasure (m : ℝ))).restrict E) x)
-    (hw : ∀ᵐ x ∂(((Measure.hausdorffMeasure (m : ℝ))).restrict E), WeaklyLinearlyApproximableAt m E x)
-    (hproj : ∀ V : Plane m n, (Measure.hausdorffMeasure (m : ℝ)) (proj V '' E) = 0) : False := by sorry
 
+
+theorem HoleFamily.exists_disjoint_charging_balls
+    {V : Plane m n} {K : Set (Euclidean n)} {a : Euclidean n} {σ η : ℝ}
+    (d : HoleFamily V K a σ η) (hσ : 0 < σ) (hη : η < 1)
+    (F G : Set (Euclidean n)) (J : Set ℕ) (hJ : J ⊆ d.active)
+    (hbad : ∀ i ∈ J, ∃ q ∈ F ∩ ball a σ,
+      dist (proj V q) (d.center i) < d.radius i / 2)
+    (hGK : ∀ x ∈ G ∩ ball a (2 * σ), proj V x ∈ K) :
+    ∃ q : ℕ → Euclidean n,
+      (∀ i ∈ J, q i ∈ F ∩ ball a σ) ∧
+      J.Pairwise (fun i j ↦ Disjoint (ball (q i) (d.radius i / 2))
+        (ball (q j) (d.radius j / 2))) ∧
+      ∀ i ∈ J, ball (q i) (d.radius i / 2) ⊆ ball a (2 * σ) \ G := by
+  classical
+  have hchoose : ∀ i : ℕ, ∃ q : Euclidean n, i ∈ J →
+      q ∈ F ∩ ball a σ ∧ dist (proj V q) (d.center i) < d.radius i / 2 := by
+    intro i
+    by_cases hi : i ∈ J
+    · obtain ⟨q, hq, hdist⟩ := hbad i hi
+      exact ⟨q, fun _ ↦ ⟨hq, hdist⟩⟩
+    · exact ⟨a, fun hh ↦ False.elim (hi hh)⟩
+  choose q hq using hchoose
+  have hballproj (i : ℕ) (hi : i ∈ J) (x : Euclidean n)
+      (hx : x ∈ ball (q i) (d.radius i / 2)) :
+      dist (proj V x) (d.center i) < d.radius i := by
+    have hcontraction : dist (proj V x) (proj V (q i)) ≤ dist x (q i) := by
+      change dist (V.1.starProjection x) (V.1.starProjection (q i)) ≤ dist x (q i)
+      rw [dist_eq_norm, dist_eq_norm, ← map_sub]
+      exact V.1.norm_starProjection_apply_le _
+    have htri := dist_triangle (proj V x) (proj V (q i)) (d.center i)
+    have hx' : dist x (q i) < d.radius i / 2 := hx
+    linarith [(hq i hi).2]
+  refine ⟨q, fun i hi ↦ (hq i hi).1, ?_, ?_⟩
+  · intro i hi j hj hij
+    apply Set.disjoint_left.mpr
+    intro x hxi hxj
+    have hi' : dist (proj V x) (d.center i) < 4 * d.radius i := by
+      have hh := hballproj i hi x hxi
+      linarith [d.radius_pos i (hJ hi)]
+    have hj' : dist (proj V x) (d.center j) < 4 * d.radius j := by
+      have hh := hballproj j hj x hxj
+      linarith [d.radius_pos j (hJ hj)]
+    exact Set.disjoint_left.mp (d.disjoint_cylinders (hJ hi) (hJ hj) hij) hi' hj'
+  · intro i hi x hx
+    have hrad : d.radius i < σ :=
+      (d.radius_le i (hJ hi)).trans_lt (by nlinarith)
+    have hx2 : x ∈ ball a (2 * σ) := by
+      have htri := dist_triangle x (q i) a
+      have hxq : dist x (q i) < d.radius i / 2 := hx
+      have hqa : dist (q i) a < σ := (hq i hi).1.2
+      show dist x a < 2 * σ
+      linarith
+    refine ⟨hx2, ?_⟩
+    intro hxG
+    have hh : infDist (d.center i) K ≤ dist (d.center i) (proj V x) :=
+      infDist_le_dist_of_mem (hGK x ⟨hxG, hx2⟩)
+    rw [← d.radius_eq i (hJ hi), dist_comm] at hh
+    exact not_lt_of_ge hh (hballproj i hi x hx)
+
+theorem exists_nearest_projected_witness_in_half_ball
+    (V : Plane m n) (G : Set (Euclidean n)) (a p : Euclidean n)
+    {σ β : ℝ} (hG : IsCompact G) (ha : a ∈ G) (hσ : 0 < σ) (hβ : β < 1 / 8)
+    (htube : ∀ z ∈ G ∩ closedBall a (2 * σ),
+      infDist (z - a) (V.1 : Set (Euclidean n)) ≤ β * σ)
+    (hp : p ∈ ball (proj V a) (σ / 4))
+    (hd : infDist p (proj V '' (G ∩ closedBall a (2 * σ))) ≤ β * σ) :
+    ∃ z ∈ G ∩ ball a (σ / 2),
+      dist (proj V z) p = infDist p (proj V '' (G ∩ closedBall a (2 * σ))) := by
+  have hcont : Continuous (proj V) := V.1.starProjection.continuous
+  have hK : IsCompact (proj V '' (G ∩ closedBall a (2 * σ))) :=
+    (hG.inter_right isClosed_closedBall).image hcont
+  have hKn : (proj V '' (G ∩ closedBall a (2 * σ))).Nonempty :=
+    ⟨proj V a, a, ⟨ha, mem_closedBall_self (by positivity)⟩, rfl⟩
+  obtain ⟨q, hq, hdist⟩ := hK.exists_infDist_eq_dist hKn p
+  obtain ⟨z, hz, rfl⟩ := hq
+  have heq : dist (proj V z) p = infDist p (proj V '' (G ∩ closedBall a (2 * σ))) := by
+    rw [dist_comm]
+    exact hdist.symm
+  refine ⟨z, ⟨hz.1, ?_⟩, heq⟩
+  apply mem_half_ball_of_tube_and_projected_distance V a z p hσ hβ (htube z hz) hp
+  rwa [heq]
+
+theorem tsum_sdiff_ge_of_small_discarded_sum {ι : Type*} (f : ι → ℝ≥0∞)
+    (I J : Set ι) (hJI : J ⊆ I) {b : ℝ≥0∞} (hb : b ≠ ∞)
+    (htotal : b + b ≤ ∑' i : I, f i) (hdiscarded : (∑' i : J, f i) ≤ b) :
+    b ≤ ∑' i : ↥(I \ J), f i := by
+  classical
+  have hsplit : (∑' i : J, f i) + ∑' i : ↥(I \ J), f i = ∑' i : I, f i := by
+    rw [tsum_subtype, tsum_subtype, tsum_subtype, ← ENNReal.tsum_add]
+    apply tsum_congr
+    intro i
+    by_cases hj : i ∈ J
+    · simp [hj, hJI hj]
+    · by_cases hi : i ∈ I <;> simp [hi, hj]
+  have hh : b + b ≤ b + ∑' i : ↥(I \ J), f i := by
+    calc
+      b + b ≤ ∑' i : I, f i := htotal
+      _ = (∑' i : J, f i) + ∑' i : ↥(I \ J), f i := hsplit.symm
+      _ ≤ b + ∑' i : ↥(I \ J), f i := add_le_add hdiscarded le_rfl
+  exact (add_le_add_iff_right_of_ne_top hb).mp hh
 end Preiss

@@ -344,6 +344,14 @@ flowchart LR
   lem_recenter_nonzero["Nonvanishing after recentering at a support point"]
   lem_recenter_separated_set_null["Nullity of uniformly separated recentering witnesses"]
   lem_finite_dimensional_operator_bigO["Operator bounds from pointwise bounds in finite dimensions"]
+  lem_vague_uniform_norm_tails["Extending vague convergence using uniform integral tails"]
+  lem_polynomial_norm_growth["Polynomial norm growth outside the unit ball"]
+  lem_polynomial_gaussian_norm_tails["Uniform tails for polynomial Gaussian tests"]
+  lem_dimensional_tangent_origin_ball_law["Centered ball laws from a positive radius-power density"]
+  lem_flat_positive_scalar["Flatness under positive finite scalar multiplication"]
+  lem_gaussian_bilinear_contraction["A Gaussian fourth-moment contraction for bilinear forms"]
+  lem_column_mass_contradiction["A lower packing mass exceeding an upper bound is impossible"]
+  lem_weighted_grading_positive_complement["Positivity and complementary subspaces for weighted gradings"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -693,6 +701,7 @@ flowchart LR
   lem_empty_cylinder_direction --> lem_column_packing
   lem_nested_compact_approximation --> lem_column_packing
   lem_projection_hole_cover --> lem_column_packing
+  lem_column_mass_contradiction --> lem_packing_contradiction
   lem_column_packing --> lem_packing_contradiction
   lem_discarded_cylinder_sum --> lem_packing_contradiction
   lem_packing_base_point --> lem_packing_contradiction
@@ -708,6 +717,7 @@ flowchart LR
   lem_annulus_integrability --> lem_gaussian_polynomial_integrable
   lem_gaussian_annulus_majorant --> lem_gaussian_polynomial_integrable
   def_orthogonal_grading --> lem_graded_analytic_projection
+  lem_weighted_grading_positive_complement --> lem_graded_analytic_projection
   def_plane --> lem_spectral_minimizing_plane
   def_polynomial_growth_bound --> lem_moment_determination
   lem_complex_mgf_moment_determination --> lem_moment_determination
@@ -739,7 +749,9 @@ flowchart LR
   def_bilinear_trace --> lem_bilinear_trace_basis
   def_polynomial_growth_bound --> lem_vague_gaussian_polynomials
   lem_gaussian_uniform_tails --> lem_vague_gaussian_polynomials
+  lem_polynomial_gaussian_norm_tails --> lem_vague_gaussian_polynomials
   lem_vague_moving_tests --> lem_vague_gaussian_polynomials
+  lem_vague_uniform_norm_tails --> lem_vague_gaussian_polynomials
   def_bilinear_trace --> lem_gaussian_quadratic_trace_bound
   lem_bilinear_trace_basis --> lem_gaussian_quadratic_trace_bound
   lem_gaussian_projection_integrability --> lem_gaussian_quadratic_trace_bound
@@ -862,6 +874,7 @@ flowchart LR
   def_unit_uniform --> lem_dimensional_tangent_ball_constant
   gmt_continuity_sets --> lem_dimensional_tangent_ball_constant
   gmt_normalized_tangent --> lem_dimensional_tangent_ball_constant
+  lem_dimensional_tangent_origin_ball_law --> lem_dimensional_tangent_ball_constant
   lem_tangent_ray --> lem_dimensional_tangent_ball_constant
   thm_doubling --> lem_dimensional_tangent_ball_constant
   def_dimensional_tangent --> lem_density_normalization
@@ -869,6 +882,9 @@ flowchart LR
   def_unit_uniform --> lem_density_normalization
   lem_blowup_composition --> lem_density_normalization
   lem_dimensional_tangent_ball_constant --> lem_density_normalization
+  lem_dimensional_tangent_operations --> lem_density_normalization
+  lem_flat_positive_scalar --> lem_density_normalization
+  lem_uniform_scaling --> lem_density_normalization
   gmt_support_not_full --> lem_halfspace_tangent_witness
   gmt_uniform_halfspace --> lem_halfspace_tangent_witness
   gmt_uniform_tangents --> lem_halfspace_tangent_witness
@@ -1357,3 +1373,14 @@ flowchart LR
   lem_dimensional_moving_centers --> lem_recenter_separated_set_null
   lem_hull_support_approximation --> lem_recenter_separated_set_null
   lem_rescaled_distance_selection --> lem_recenter_separated_set_null
+  gmt_vague --> lem_vague_uniform_norm_tails
+  lem_gaussian_uniform_tails --> lem_polynomial_gaussian_norm_tails
+  lem_polynomial_gaussian_integrability --> lem_polynomial_gaussian_norm_tails
+  lem_polynomial_norm_growth --> lem_polynomial_gaussian_norm_tails
+  def_dimensional_tangent --> lem_dimensional_tangent_origin_ball_law
+  gmt_blowup_balls --> lem_dimensional_tangent_origin_ball_law
+  gmt_portmanteau --> lem_dimensional_tangent_origin_ball_law
+  def_flat --> lem_flat_positive_scalar
+  lem_gaussian_quadratic_trace_bound --> lem_gaussian_bilinear_contraction
+  lem_gaussian_wick_fourth --> lem_gaussian_bilinear_contraction
+  def_orthogonal_grading --> lem_weighted_grading_positive_complement

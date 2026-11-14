@@ -165,9 +165,9 @@ digraph Preiss {
   "lem:vague-moving-tests" [label="Vague convergence with uniformly moving compact tests", fillcolor="#dce5ee"];
   "lem:vague-diagonal" [label="Diagonal selection for vague convergence", fillcolor="#dce5ee"];
   "lem:bilinear-trace-basis" [label="Trace as an orthonormal diagonal sum", fillcolor="#dce5ee"];
-  "lem:vague-gaussian-polynomials" [label="Vague convergence of Gaussian polynomial integrals", fillcolor="#fff0bf"];
+  "lem:vague-gaussian-polynomials" [label="Vague convergence of Gaussian polynomial integrals", fillcolor="#dce5ee"];
   "lem:gaussian-quadratic-trace-bound" [label="Gaussian quadratic form second moment and trace bound", fillcolor="#dce5ee"];
-  "lem:moment-feature-remainder" [label="Operator norm remainder from finitely many support features", fillcolor="#fff0bf"];
+  "lem:moment-feature-remainder" [label="Operator norm remainder from finitely many support features", fillcolor="#dce5ee"];
   "def:moments" [label="Continuous symmetric Gaussian moment forms", fillcolor="#d9eaf7"];
   "lem:moment-feature-annihilation" [label="Feature moment functional and weighted annihilator", fillcolor="#dce5ee"];
   "def:moment-coefficients" [label="Gaussian moment coefficient families", fillcolor="#d9eaf7"];
@@ -188,9 +188,9 @@ digraph Preiss {
   "lem:hyperplane-transport-map" [label="Hyperplane transport with an explicit isometry", fillcolor="#dce5ee"];
   "lem:uniform-compactness" [label="Sequential compactness of centered unit uniform measures", fillcolor="#dce5ee"];
   "lem:uniform-finite-metric-covers" [label="Finite metric covers of uniform families", fillcolor="#dce5ee"];
-  "lem:infinity-compactness" [label="Existence of uniform blow-down limits", fillcolor="#fff0bf"];
-  "lem:dimensional-tangent-ball-constant" [label="Common tangent normalization at a density point", fillcolor="#fff0bf"];
-  "lem:density-normalization" [label="Reduction to unit uniform dimensional tangents", fillcolor="#fff0bf"];
+  "lem:infinity-compactness" [label="Existence of uniform blow-down limits", fillcolor="#dce5ee"];
+  "lem:dimensional-tangent-ball-constant" [label="Common tangent normalization at a density point", fillcolor="#dce5ee"];
+  "lem:density-normalization" [label="Reduction to unit uniform dimensional tangents", fillcolor="#dce5ee"];
   "lem:halfspace-tangent-witness" [label="Half-space reduction retaining the tangent witness", fillcolor="#fff0bf"];
   "lem:hyperplane-tangent-lineage" [label="Corrected hyperplane reduction with lineage", fillcolor="#fff0bf"];
   "lem:uniform-reduction" [label="Codimension reduction retaining orbit membership", fillcolor="#fff0bf"];
@@ -346,6 +346,14 @@ digraph Preiss {
   "lem:recenter-nonzero" [label="Nonvanishing after recentering at a support point", fillcolor="#dce5ee"];
   "lem:recenter-separated-set-null" [label="Nullity of uniformly separated recentering witnesses", fillcolor="#dce5ee"];
   "lem:finite-dimensional-operator-bigO" [label="Operator bounds from pointwise bounds in finite dimensions", fillcolor="#dce5ee"];
+  "lem:vague-uniform-norm-tails" [label="Extending vague convergence using uniform integral tails", fillcolor="#dce5ee"];
+  "lem:polynomial-norm-growth" [label="Polynomial norm growth outside the unit ball", fillcolor="#dce5ee"];
+  "lem:polynomial-gaussian-norm-tails" [label="Uniform tails for polynomial Gaussian tests", fillcolor="#dce5ee"];
+  "lem:dimensional-tangent-origin-ball-law" [label="Centered ball laws from a positive radius-power density", fillcolor="#dce5ee"];
+  "lem:flat-positive-scalar" [label="Flatness under positive finite scalar multiplication", fillcolor="#dce5ee"];
+  "lem:gaussian-bilinear-contraction" [label="A Gaussian fourth-moment contraction for bilinear forms", fillcolor="#dce5ee"];
+  "lem:column-mass-contradiction" [label="A lower packing mass exceeding an upper bound is impossible", fillcolor="#dce5ee"];
+  "lem:weighted-grading-positive-complement" [label="Positivity and complementary subspaces for weighted gradings", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -695,6 +703,7 @@ digraph Preiss {
   "lem:empty-cylinder-direction" -> "lem:column-packing";
   "lem:nested-compact-approximation" -> "lem:column-packing";
   "lem:projection-hole-cover" -> "lem:column-packing";
+  "lem:column-mass-contradiction" -> "lem:packing-contradiction";
   "lem:column-packing" -> "lem:packing-contradiction";
   "lem:discarded-cylinder-sum" -> "lem:packing-contradiction";
   "lem:packing-base-point" -> "lem:packing-contradiction";
@@ -710,6 +719,7 @@ digraph Preiss {
   "lem:annulus-integrability" -> "lem:gaussian-polynomial-integrable";
   "lem:gaussian-annulus-majorant" -> "lem:gaussian-polynomial-integrable";
   "def:orthogonal-grading" -> "lem:graded-analytic-projection";
+  "lem:weighted-grading-positive-complement" -> "lem:graded-analytic-projection";
   "def:plane" -> "lem:spectral-minimizing-plane";
   "def:polynomial-growth-bound" -> "lem:moment-determination";
   "lem:complex-mgf-moment-determination" -> "lem:moment-determination";
@@ -741,7 +751,9 @@ digraph Preiss {
   "def:bilinear-trace" -> "lem:bilinear-trace-basis";
   "def:polynomial-growth-bound" -> "lem:vague-gaussian-polynomials";
   "lem:gaussian-uniform-tails" -> "lem:vague-gaussian-polynomials";
+  "lem:polynomial-gaussian-norm-tails" -> "lem:vague-gaussian-polynomials";
   "lem:vague-moving-tests" -> "lem:vague-gaussian-polynomials";
+  "lem:vague-uniform-norm-tails" -> "lem:vague-gaussian-polynomials";
   "def:bilinear-trace" -> "lem:gaussian-quadratic-trace-bound";
   "lem:bilinear-trace-basis" -> "lem:gaussian-quadratic-trace-bound";
   "lem:gaussian-projection-integrability" -> "lem:gaussian-quadratic-trace-bound";
@@ -864,6 +876,7 @@ digraph Preiss {
   "def:unit-uniform" -> "lem:dimensional-tangent-ball-constant";
   "gmt:continuity-sets" -> "lem:dimensional-tangent-ball-constant";
   "gmt:normalized-tangent" -> "lem:dimensional-tangent-ball-constant";
+  "lem:dimensional-tangent-origin-ball-law" -> "lem:dimensional-tangent-ball-constant";
   "lem:tangent-ray" -> "lem:dimensional-tangent-ball-constant";
   "thm:doubling" -> "lem:dimensional-tangent-ball-constant";
   "def:dimensional-tangent" -> "lem:density-normalization";
@@ -871,6 +884,9 @@ digraph Preiss {
   "def:unit-uniform" -> "lem:density-normalization";
   "lem:blowup-composition" -> "lem:density-normalization";
   "lem:dimensional-tangent-ball-constant" -> "lem:density-normalization";
+  "lem:dimensional-tangent-operations" -> "lem:density-normalization";
+  "lem:flat-positive-scalar" -> "lem:density-normalization";
+  "lem:uniform-scaling" -> "lem:density-normalization";
   "gmt:support-not-full" -> "lem:halfspace-tangent-witness";
   "gmt:uniform-halfspace" -> "lem:halfspace-tangent-witness";
   "gmt:uniform-tangents" -> "lem:halfspace-tangent-witness";
@@ -1359,4 +1375,15 @@ digraph Preiss {
   "lem:dimensional-moving-centers" -> "lem:recenter-separated-set-null";
   "lem:hull-support-approximation" -> "lem:recenter-separated-set-null";
   "lem:rescaled-distance-selection" -> "lem:recenter-separated-set-null";
+  "gmt:vague" -> "lem:vague-uniform-norm-tails";
+  "lem:gaussian-uniform-tails" -> "lem:polynomial-gaussian-norm-tails";
+  "lem:polynomial-gaussian-integrability" -> "lem:polynomial-gaussian-norm-tails";
+  "lem:polynomial-norm-growth" -> "lem:polynomial-gaussian-norm-tails";
+  "def:dimensional-tangent" -> "lem:dimensional-tangent-origin-ball-law";
+  "gmt:blowup-balls" -> "lem:dimensional-tangent-origin-ball-law";
+  "gmt:portmanteau" -> "lem:dimensional-tangent-origin-ball-law";
+  "def:flat" -> "lem:flat-positive-scalar";
+  "lem:gaussian-quadratic-trace-bound" -> "lem:gaussian-bilinear-contraction";
+  "lem:gaussian-wick-fourth" -> "lem:gaussian-bilinear-contraction";
+  "def:orthogonal-grading" -> "lem:weighted-grading-positive-complement";
 }

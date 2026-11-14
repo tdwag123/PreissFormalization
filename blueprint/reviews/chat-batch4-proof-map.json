@@ -1,0 +1,17 @@
+{
+  "existing_node_additional_deps": {
+    "lem:vague-gaussian-polynomials": [
+      "lem:vague-uniform-norm-tails",
+      "lem:polynomial-gaussian-norm-tails"
+    ],
+    "lem:density-normalization": [
+      "lem:dimensional-tangent-operations",
+      "lem:uniform-scaling",
+      "lem:dimensional-tangent-ball-constant"
+    ],
+    "lem:infinity-compactness": [
+      "lem:uniform-compactness",
+      "lem:uniform-scaling"
+    ]
+  }
+}

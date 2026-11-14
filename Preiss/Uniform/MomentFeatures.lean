@@ -1,5 +1,6 @@
 module
 public import Preiss.Analysis.PolynomialFeatures
+public import Preiss.Analysis.FiniteDimensionalBigO
 public import Preiss.Analysis.LinearMapIntegral
 public import Preiss.Uniform.MomentForms
 public import Preiss.Uniform.MomentEstimates
@@ -107,13 +108,42 @@ theorem featureMoment_vanishes_weightedComplement
 theorem featureMoment_operator_remainder
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
     (q : ℕ) (hq : 0 < q)
-    (L : Fin q → PolynomialFeatureSpace n (2 * q) →L[ℝ] ℝ)
-    (hL : ∀ j x, L j (polynomialFeature (2 * q) x) = ‖x‖ ^ (2 * (j.val + 1))) :
+    (L : Fin q → PolynomialFeatureSpace n (2*q) →L[ℝ] ℝ)
+    (hL : ∀ j x, L j (polynomialFeature (2*q) x) = ‖x‖^(2*(j.val+1))) :
     Asymptotics.IsBigO (nhdsWithin 0 (Ioi 0))
-      (fun s : ℝ => (featureMoment μ (2 * q) s -
-        ∑ j : Fin q, (s ^ (j.val + 1) / ((j.val + 1).factorial : ℝ)) • L j).comp
-          (supportFeatureSpan μ (2 * q)).subtypeL)
-      (fun s : ℝ => s ^ ((q : ℝ) + 1 / 2)) := by
-  sorry
+      (fun s : ℝ => (featureMoment μ (2*q) s -
+        ∑ j : Fin q,(s^(j.val+1)/((j.val+1).factorial : ℝ)) • L j).comp
+          (supportFeatureSpan μ (2*q)).subtypeL)
+      (fun s : ℝ => s^((q : ℝ)+1/2)) := by
+  let T (s : ℝ) : PolynomialFeatureSpace n (2*q) →L[ℝ] ℝ :=
+    featureMoment μ (2*q) s - ∑ j : Fin q,(s^(j.val+1)/((j.val+1).factorial : ℝ)) • L j
+  change Asymptotics.IsBigO (nhdsWithin 0 (Ioi 0))
+    (fun s => (T s).comp (Submodule.span ℝ (polynomialFeature (2*q) '' μ.support)).subtypeL)
+    (fun s : ℝ => s^((q : ℝ)+1/2))
+  apply isBigO_restrict_span_of_forall_mem
+  rintro v ⟨x,hx,rfl⟩
+  obtain ⟨C,hC,hbound⟩ := gaussianMoment_taylor_remainder (n := n) hm q hq
+  apply Asymptotics.IsBigO.of_bound (C*(‖x‖^2)^((q : ℝ)+1/2))
+  filter_upwards [self_mem_nhdsWithin] with s hs
+  have hpoly : (∑ j : Fin q,(s^(j.val+1)/((j.val+1).factorial : ℝ))*‖x‖^(2*(j.val+1))) =
+      ∑ j ∈ Finset.range q,s^(j+1)*‖x‖^(2*(j+1))/((j+1).factorial : ℝ) := by
+    calc
+      _ = ∑ j : Fin q,s^(j.val+1)*‖x‖^(2*(j.val+1))/((j.val+1).factorial : ℝ) := by
+        apply Finset.sum_congr rfl
+        intro j _
+        ring
+      _ = _ := Fin.sum_univ_eq_sum_range
+        (fun j : ℕ => s^(j+1)*‖x‖^(2*(j+1))/((j+1).factorial : ℝ)) q
+  have heval : T s (polynomialFeature (2*q) x) =
+      (∑ k ∈ Finset.range (2*q),gaussianMomentForm μ (k+1) s (fun _ => x)) -
+        ∑ j ∈ Finset.range q,s^(j+1)*‖x‖^(2*(j+1))/((j+1).factorial : ℝ) := by
+    simp only [T,ContinuousLinearMap.sub_apply,ContinuousLinearMap.sum_apply,
+      ContinuousLinearMap.smul_apply,smul_eq_mul,hL]
+    rw [hpoly,featureMoment_apply_feature μ hm hμ (2*q) s hs]
+  rw [heval]
+  simp only [Real.norm_eq_abs,abs_of_nonneg (Real.rpow_nonneg hs.le _)]
+  have H := hbound μ hμ x hx s hs
+  rw [Real.mul_rpow hs.le (sq_nonneg ‖x‖)] at H
+  exact H.trans_eq (by ring)
 
 end Preiss
