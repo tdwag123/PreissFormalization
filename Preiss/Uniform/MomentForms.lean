@@ -47,7 +47,7 @@ theorem continuous_momentKernel (k : ℕ) : Continuous (momentKernel (n := n) k)
   let g : ContinuousMultilinearMap ℝ
       (fun _ : Fin k => Euclidean n →L[ℝ] ℝ) (MomentForm n k) :=
     (ContinuousMultilinearMap.mkPiAlgebra ℝ (Fin k) ℝ).compContinuousLinearMapLRight
-  exact g.continuous.comp (continuous_pi fun _ => (innerSL ℝ).continuous)
+  exact g.cont.comp (continuous_pi fun _ => (innerSL ℝ).continuous)
 
 theorem momentKernel_smul (k : ℕ) (z : Euclidean n) (a : ℝ) :
     momentKernel k (a • z) = (a ^ k) • momentKernel k z := by

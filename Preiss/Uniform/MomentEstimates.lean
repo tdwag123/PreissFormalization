@@ -24,7 +24,9 @@ theorem integrable_gaussianMomentKernel_of_integrable_norm
     (hint : Integrable (fun z => ‖z‖ ^ k * Real.exp (-s * ‖z‖ ^ 2)) μ) :
     Integrable (fun z => Real.exp (-s * ‖z‖ ^ 2) • momentKernel k z) μ := by
   apply hint.mono'
-  · exact (Continuous.smul (by fun_prop) (continuous_momentKernel k)).aestronglyMeasurable
+  · have hweight : Continuous (fun z : Euclidean n => Real.exp (-s * ‖z‖ ^ 2)) := by
+      fun_prop
+    exact (hweight.smul (continuous_momentKernel k)).aestronglyMeasurable
   · filter_upwards [] with z
     rw [norm_smul, Real.norm_of_nonneg (Real.exp_pos _).le]
     exact (mul_le_mul_of_nonneg_left (norm_momentKernel_le k z)

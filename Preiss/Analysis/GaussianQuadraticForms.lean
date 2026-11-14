@@ -28,8 +28,11 @@ theorem gaussian_integral_bilinear_eq_trace (A : E →L[ℝ] E →L[ℝ] ℝ) :
   have hLp : MemLp (id : E → E) 2 (stdGaussian E) := IsGaussian.memLp_two_id
   have hcov (u v : E) :
       (∫ z, inner ℝ u z * inner ℝ v z ∂stdGaussian E) = inner ℝ u v := by
-    simpa [covarianceBilin_stdGaussian, innerSL_apply_apply] using
-      (covarianceBilin_apply hLp u v).symm
+    calc
+      _ = covarianceBilin (stdGaussian E) u v := by
+        simpa only [id_eq, integral_id_stdGaussian, sub_zero] using
+          (covarianceBilin_apply hLp u v).symm
+      _ = inner ℝ u v := by rw [covarianceBilin_stdGaussian]; rfl
   have hdecomp (x : E) :
       A x x = ∑ i, inner ℝ (e i) x * inner ℝ (T (e i)) x := by
     calc
@@ -50,6 +53,13 @@ theorem gaussian_integral_bilinear_eq_trace (A : E →L[ℝ] E →L[ℝ] ℝ) :
   · intro i _
     exact (hLp.const_inner (e i)).integrable_mul (hLp.const_inner (T (e i)))
 
+theorem gaussian_integral_bilinear_sq {ι : Type*} [Fintype ι]
+    (e : OrthonormalBasis ι ℝ E) (A : E →L[ℝ] E →L[ℝ] ℝ)
+    (hA : ∀ u v, A u v = A v u) :
+    (∫ v, (A v v) ^ 2 ∂stdGaussian E) =
+      (bilinearTrace A) ^ 2 + 2 * ∑ i, ∑ j, (A (e i) (e j)) ^ 2 := by
+  sorry
+
 theorem gaussian_integral_bilinear_sq_ge_trace_sq
     (A : E →L[ℝ] E →L[ℝ] ℝ) (hA : ∀ u v, A u v = A v u)
     (hdim : 0 < Module.finrank ℝ E) :
@@ -57,11 +67,5 @@ theorem gaussian_integral_bilinear_sq_ge_trace_sq
       ∫ v, (A v v) ^ 2 ∂stdGaussian E := by
   sorry
 
-theorem gaussian_integral_bilinear_sq {ι : Type*} [Fintype ι]
-    (e : OrthonormalBasis ι ℝ E) (A : E →L[ℝ] E →L[ℝ] ℝ)
-    (hA : ∀ u v, A u v = A v u) :
-    (∫ v, (A v v) ^ 2 ∂stdGaussian E) =
-      (bilinearTrace A) ^ 2 + 2 * ∑ i, ∑ j, (A (e i) (e j)) ^ 2 := by
-  sorry
 
 end Preiss
