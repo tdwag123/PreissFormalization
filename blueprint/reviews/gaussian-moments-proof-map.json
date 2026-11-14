@@ -1,0 +1,24 @@
+{
+  "local_check": "tmp/GaussianEvenCheck.lean exited zero session28430; even moments, mixed fourth moments, Wick identity, and bilinear-square equality printed only propext, Classical.choice, Quot.sound.",
+  "existing_node_additional_deps": {
+    "lem:gaussian-wick-fourth": [
+      "lem:real-gaussian-even-moments",
+      "lem:gaussian-projection-integrability"
+    ],
+    "lem:gaussian-quadratic-trace-bound": [
+      "lem:gaussian-wick-fourth",
+      "lem:gaussian-projection-integrability"
+    ]
+  },
+  "existing_node_additional_names": {
+    "lem:gaussian-wick-fourth": [
+      "Preiss.gaussian_integral_four_inner"
+    ]
+  },
+  "proof_sketch_tex": "Linear pushforward of the standard Gaussian gives the real Gaussian variance $\\|y\\|^2$. Its even moments follow from derivatives of the MGF. Polarization of the fourth power gives the mixed squared-projection formula; a second polarization gives the full fourth-product Wick identity. Expand a bilinear quadratic form in any orthonormal basis, integrate its squared expansion, and use Wick and Parseval to obtain the trace-square plus twice the sum of coefficient squares. Cauchy--Schwarz then yields the existing dimension-dependent lower bound.",
+  "new_modules": [
+    "Preiss/Analysis/GaussianDerivatives.lean",
+    "Preiss/Analysis/GaussianMoments.lean"
+  ],
+  "canonical_integration": "awaiting current CI"
+}

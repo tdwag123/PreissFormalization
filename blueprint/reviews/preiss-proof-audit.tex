@@ -595,6 +595,15 @@ This is equation (9.34); it is a necessary bridge to the global trace bound.
 For $y,z\in V$,
 $\int\langle y,v\rangle^2\langle z,v\rangle^2\,d\gamma
 =|y|^2|z|^2+2\langle y,z\rangle^2$.
+The implemented Gaussian foundation first differentiates the real Gaussian
+moment generating function $\exp(\sigma^2t^2/2)$ at zero. Leibniz's rule and
+$f'(t)=\sigma^2tf(t)$ give every even moment, including zero variance.
+Linear pushforward identifies each projection of the standard Gaussian with
+this real Gaussian. Polarizing the fourth power gives the displayed mixed
+moment; a second polarization gives the four-projection Wick formula.
+All finite products of projections are integrable by Fernique's norm-moment
+bounds and the inequality
+$\prod_i|\langle u_i,v\rangle|\leq(\prod_i|u_i|)|v|^{\#i}$.
 Combining this with R07 yields, for $w\in V^\perp$,
 \[
  \int\langle y,v\rangle^2\langle\omega(v,v),w\rangle\,d\gamma(v)
@@ -620,7 +629,11 @@ For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,
  2\|A\|_{\mathrm{HS}}^2
  \geq(1+2/m)\left(\int A(v,v)\,d\gamma\right)^2.
 \]
-This is a reusable Gaussian/spectral theorem independent of uniform measures.
+This is a reusable Gaussian theorem independent of uniform measures.
+The implemented proof expands the quadratic form in an arbitrary orthonormal
+basis, integrates its square using the four-projection Wick formula, and
+uses Parseval to identify the coefficient-square sum. Cauchy--Schwarz
+on the diagonal coefficients gives the dimension-dependent lower bound.
 Combining it with R13 gives
 $\int\widehat b(v,v)\,d\gamma\geq-8m|b|^2/(m+2)$.
 R08 and R04 therefore give

@@ -1,6 +1,7 @@
 import Preiss.Uniform.Flatness
 import Preiss.Uniform.FlatnessBasic
 import Preiss.Uniform.FlatnessMinimum
+import Preiss.Uniform.FlatnessVague
 import Preiss.Geometry.FlatMeasure
 import FormalizingGMT.WeakConvergence.Basic
 import Mathlib.Topology.UrysohnsLemma
@@ -70,6 +71,6 @@ theorem flatness_continuous (hmn : m ≤ n) (φ : C_c(Euclidean n, ℝ))
     (ν : Measure (Euclidean n)) (hμ : ∀ i, (μ i).Regular) (hν : ν.Regular)
     (hlim : Measure.WeaklyConverges μ ν) :
     Tendsto (fun i => flatness m φ (μ i)) atTop (𝓝 (flatness m φ ν)) := by
-  sorry
+  exact flatness_tendsto_of_vague hmn φ μ ν hμ hν hlim
 
 end Preiss

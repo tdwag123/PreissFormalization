@@ -718,6 +718,249 @@
         "theorem unitUniform_ball_ae_eq_closedBall {m n : ℕ}\n    {μ : Measure (Euclidean n)} (hμ : IsUnitUniform m μ)\n    {x : Euclidean n} (hx : x ∈ μ.support) {r : ℝ} (hr : 0 < r) :\n    ball x r =ᵐ[μ] closedBall x r"
       ],
       "verification": "Build agent exact-source BallBoundaryCheck passed all four declarations with only standard axioms; module integration awaits CI."
+    },
+    {
+      "id": "lem:iterated-derivative-id-product",
+      "title": "Derivative of a product with the identity at zero",
+      "kind": "lemma",
+      "statement_tex": "For every positive natural $n$ and every real function $f$ that is $C^n$ at zero, $D^n(t\\mapsto t f(t))(0)=nD^{n-1}f(0)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.iteratedDeriv_id_mul_zero"
+      ],
+      "file": "Preiss/Analysis/GaussianDerivatives.lean",
+      "proof_sketch_tex": "In Leibniz's finite sum, only the first derivative of the identity contributes at zero.",
+      "used_by": [
+        "lem:quadratic-exponential-even-derivatives"
+      ],
+      "statements_lean": [
+        "theorem iteratedDeriv_id_mul_zero {n : ℕ} (hn : 0 < n) (f : ℝ → ℝ)\n    (hf : ContDiffAt ℝ n f 0) :\n    iteratedDeriv n (fun t => t * f t) 0 = n * iteratedDeriv (n - 1) f 0"
+      ],
+      "verification": "Exact proof source passed tmp/GaussianEvenCheck.lean with all printed main conclusions depending only on standard axioms; canonical module integration awaits CI."
+    },
+    {
+      "id": "lem:quadratic-exponential-even-derivatives",
+      "title": "All even derivatives of a quadratic exponential",
+      "kind": "lemma",
+      "statement_tex": "For every real $a$ and natural $j$, $D^{2j}(t\\mapsto e^{at^2/2})(0)=\\frac{(2j)!}{2^j j!}a^j$. No sign restriction on $a$ is required.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:iterated-derivative-id-product"
+      ],
+      "lean_names": [
+        "Preiss.iteratedDeriv_exp_quadratic_even"
+      ],
+      "file": "Preiss/Analysis/GaussianDerivatives.lean",
+      "proof_sketch_tex": "The differential equation $f'(t)=atf(t)$ gives the recurrence $D^{2j+2}f(0)=a(2j+1)D^{2j}f(0)$. Induction and the factorial recurrence give the formula.",
+      "used_by": [
+        "lem:real-gaussian-even-moments"
+      ],
+      "statements_lean": [
+        "theorem iteratedDeriv_exp_quadratic_even (a : ℝ) (j : ℕ) :\n    iteratedDeriv (2 * j) (fun t : ℝ => Real.exp (a * t ^ 2 / 2)) 0 =\n      ((2 * j).factorial : ℝ) / (2 ^ j * (j.factorial : ℝ)) * a ^ j"
+      ],
+      "verification": "Exact proof source passed tmp/GaussianEvenCheck.lean with all printed main conclusions depending only on standard axioms; canonical module integration awaits CI."
+    },
+    {
+      "id": "lem:real-gaussian-even-moments",
+      "title": "All even moments of a centered real Gaussian",
+      "kind": "lemma",
+      "statement_tex": "For every nonnegative real variance $v$, including zero, and every natural $j$, $\\int x^{2j}\\,d\\mathcal N(0,v)=\\frac{(2j)!}{2^j j!}v^j$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:quadratic-exponential-even-derivatives"
+      ],
+      "lean_names": [
+        "Preiss.integral_gaussianReal_zero_pow_even"
+      ],
+      "file": "Preiss/Analysis/GaussianMoments.lean",
+      "proof_sketch_tex": "Mathlib identifies the real Gaussian MGF as $e^{vt^2/2}$ and its derivatives at zero as moments. Apply the quadratic-exponential derivative formula.",
+      "used_by": [
+        "lem:gaussian-wick-fourth"
+      ],
+      "statements_lean": [
+        "theorem integral_gaussianReal_zero_pow_even (v : ℝ≥0) (j : ℕ) :\n    (∫ x : ℝ, x ^ (2 * j) ∂gaussianReal 0 v) =\n      ((2 * j).factorial : ℝ) / (2 ^ j * (j.factorial : ℝ)) * (v : ℝ) ^ j"
+      ],
+      "verification": "Exact proof source passed tmp/GaussianEvenCheck.lean with all printed main conclusions depending only on standard axioms; canonical module integration awaits CI."
+    },
+    {
+      "id": "lem:gaussian-projection-integrability",
+      "title": "Integrability of finite products of Gaussian projections",
+      "kind": "lemma",
+      "statement_tex": "For a standard Gaussian on any finite dimensional real inner product space $E$, every natural power of a real linear projection is integrable. For every finite index type $I$ and vectors $(u_i)_{i\\in I}$, the function $x\\mapsto\\prod_i\\langle u_i,x\\rangle$ is integrable, including the empty product. A four-projection companion is also provided.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_pow",
+        "Preiss.integrable_gaussian_inner_prod",
+        "Preiss.integrable_gaussian_four_inner"
+      ],
+      "file": "Preiss/Analysis/GaussianMoments.lean",
+      "proof_sketch_tex": "Fernique's theorem supplies all finite norm moments. The product is bounded in norm by $(\\prod_i\\|u_i\\|)\\|x\\|^{|I|}$; measurability and domination give integrability.",
+      "used_by": [
+        "lem:gaussian-wick-fourth",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "statements_lean": [
+        "theorem integrable_gaussian_inner_pow (y : E) (k : ℕ) :\n    Integrable (fun v => (inner ℝ y v) ^ k) (stdGaussian E)",
+        "theorem integrable_gaussian_inner_prod {ι : Type*} [Fintype ι] (u : ι → E) :\n    Integrable (fun v => ∏ i, inner ℝ (u i) v) (stdGaussian E)",
+        "theorem integrable_gaussian_four_inner (a b c d : E) :\n    Integrable (fun v => inner ℝ a v * inner ℝ b v * inner ℝ c v * inner ℝ d v)\n      (stdGaussian E)"
+      ],
+      "verification": "Exact proof source passed tmp/GaussianEvenCheck.lean with all printed main conclusions depending only on standard axioms; canonical module integration awaits CI."
+    },
+    {
+      "id": "lem:subsequence-limit-criterion",
+      "title": "Detecting convergence by further subsequences",
+      "kind": "lemma",
+      "statement_tex": "A sequence in a pseudometric space converges to $x$ if every strictly increasing subsequence has a further strictly increasing subsequence converging to $x$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.tendsto_of_subsequence_subsequence"
+      ],
+      "file": "Preiss/Analysis/SequentialLimits.lean"
+    },
+    {
+      "id": "lem:vague-projection-energy",
+      "title": "Moving projection energies under vague convergence",
+      "kind": "lemma",
+      "statement_tex": "Let $\\mu_i\\rightharpoonup\\nu$ be regular Euclidean measures, $P_i\\to P$ in operator norm, and $\\varphi$ a compactly supported continuous real function. Then $\\int\\varphi(z)|z-P_i z|^2\\,d\\mu_i\\to\\int\\varphi(z)|z-Pz|^2\\,d\\nu$. Operators need not be projections and the cutoff need not be nonnegative.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:vague-moving-tests"
+      ],
+      "lean_names": [
+        "Preiss.vague_integral_projectionEnergy_moving"
+      ],
+      "file": "Preiss/Analysis/Vague/ProjectionEnergy.lean"
+    },
+    {
+      "id": "lem:flatness-vague-general",
+      "title": "Vague continuity of minimum energy for general cutoffs",
+      "kind": "lemma",
+      "statement_tex": "For $m\\leq n$, every compactly supported continuous real cutoff has vaguely continuous minimum squared-distance energy on regular measures. Extract convergent minimizing projections along every subsequence, use the moving-integral lemma, and compare with a fixed minimizing plane for the limit measure. No nonnegativity or special cutoff normalization is needed.",
+      "definition_dependencies": [
+        "def:flatness"
+      ],
+      "deps": [
+        "lem:subsequence-limit-criterion",
+        "lem:vague-projection-energy",
+        "lem:flatness-minimizer-finite-compacts",
+        "lem:grassmannian"
+      ],
+      "lean_names": [
+        "Preiss.flatness_tendsto_of_vague"
+      ],
+      "file": "Preiss/Uniform/FlatnessVague.lean",
+      "used_by": [
+        "lem:flatness-continuous",
+        "lem:flatness-radius-continuous"
+      ]
+    },
+    {
+      "id": "lem:moving-set-measure-bounds",
+      "title": "Measure bounds from eventual membership in moving sets",
+      "kind": "lemma",
+      "statement_tex": "Let $S_i,T\\subseteq X$ and $c\\in[0,\\infty]$. If eventually $\\mu(S_i)\\le c$ and every $x\\in T$ eventually belongs to $S_i$, then $\\mu(T)\\le c$. If $\\mu$ is finite, each $S_i$ is $\\mu$-null-measurable, eventually $c\\le\\mu(S_i)$, and every $x\\notin T$ is eventually outside $S_i$, then $c\\le\\mu(T)$.",
+      "hypotheses": [
+        "An arbitrary measurable space and measure; the second assertion additionally assumes a finite measure and null-measurable moving sets. No measurability of the target set is required."
+      ],
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.measure_le_of_pointwise_eventually_mem",
+        "Preiss.le_measure_of_pointwise_eventually_notMem"
+      ],
+      "file": "Preiss/Analysis/MovingSets.lean",
+      "used_by": [
+        "lem:closed-weak-approximation-good-set"
+      ]
+    },
+    {
+      "id": "lem:projection-distance",
+      "title": "Distance to a subspace through orthogonal projection",
+      "kind": "lemma",
+      "statement_tex": "In a real or complex inner-product space, let $V$ be a linear subspace admitting an orthogonal projection $P_V$. For every $x$, $\\operatorname{dist}(x,V)=\\lVert x-P_Vx\\rVert$.",
+      "hypotheses": [
+        "A real or complex inner-product space; the subspace admits an orthogonal projection."
+      ],
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.infDist_submodule_eq_norm_sub_starProjection"
+      ],
+      "file": "Preiss/Geometry/Projections.lean",
+      "used_by": [
+        "lem:closed-weak-approximation-good-set"
+      ]
+    },
+    {
+      "id": "lem:plane-projection-subsequence",
+      "title": "Convergent subsequences of fixed-rank plane projections",
+      "kind": "lemma",
+      "statement_tex": "For every sequence of $m$-planes $V_i\\subseteq\\mathbb R^n$, there exist an $m$-plane $V$ and a strictly increasing $\\phi:\\mathbb N\\to\\mathbb N$ such that $P_{V_{\\phi(i)}}\\to P_V$ in operator norm.",
+      "hypotheses": [
+        "A sequence of linear subspaces of the same prescribed finite dimension in Euclidean space."
+      ],
+      "definition_dependencies": [
+        "def:plane"
+      ],
+      "deps": [
+        "lem:grassmannian"
+      ],
+      "lean_names": [
+        "Preiss.exists_tendsto_planeProjection_subseq"
+      ],
+      "file": "Preiss/Geometry/PlaneTopology.lean",
+      "used_by": [
+        "lem:closed-weak-approximation-good-set"
+      ]
+    },
+    {
+      "id": "def:vague-metrization",
+      "kind": "definition",
+      "title": "Countable-test vague metric specification",
+      "lean_names": [
+        "Preiss.RegularEuclideanMeasure",
+        "Preiss.vagueTestDistance",
+        "Preiss.VagueMetrization"
+      ],
+      "statement_tex": "A regular Euclidean measure is a positive Borel measure equipped with regularity. A vague metrization consists of compactly supported continuous tests $f_j$, a metric on these measures whose distance is $\\sum_{j\\geq0}2^{-(j+1)}\\min(1,|\\int f_j\\,d\\mu-\\int f_j\\,d\\nu|)$, cutoff tests majorizing $1$ on each positive-radius closed ball and nonnegative everywhere, and equivalence between metric sequential convergence and vague convergence for every sequence of regular measures.",
+      "hypotheses": [
+        "n : Nat",
+        "The metric and all of its specifications are explicit fields; the definition chooses no data from an existence theorem."
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "status_note": "Definitions contain no placeholders. This is data/specification, not a claim that such data exist.",
+      "file": "Preiss/Analysis/Vague/Metrization.lean",
+      "definition_dependencies": [
+        "gmt:vague"
+      ]
+    },
+    {
+      "id": "lem:vague-metric-properties",
+      "kind": "lemma",
+      "title": "Consequences of a supplied vague metric",
+      "lean_names": [
+        "Preiss.vagueMetric_tendsto_iff",
+        "Preiss.vagueMetric_separates",
+        "Preiss.vagueMetric_finite_cover_of_compact"
+      ],
+      "statement_tex": "For supplied $M:\\mathrm{VagueMetrization}(n)$, metric convergence is equivalent to vague convergence; its countable-test distance separates measures; and every compact family has a finite cover by metric balls of every positive radius, with centers in that family.",
+      "hypotheses": [
+        "M : VagueMetrization n is supplied explicitly.",
+        "The finite-cover conclusion assumes the family is compact in M.metric."
+      ],
+      "deps": [
+        "def:vague-metrization"
+      ],
+      "status_note": "Canonical proofs already kernel-checked; no dependence on exists_vagueMetrization.",
+      "file": "Preiss/Analysis/Vague/Metrization.lean",
+      "definition_dependencies": [
+        "def:vague-metrization"
+      ]
     }
   ],
   "definition_edge_additions": {

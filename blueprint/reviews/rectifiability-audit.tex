@@ -219,6 +219,14 @@ there to choose compact pieces. A measurable hull of an arbitrary good set
 alone would not justify choosing compact subsets of that original set.
 This compact-plane and semicontinuity API is therefore foundational for
 Chapter 5 as well as for the later flatness functional.
+The Lean proof implements this sequentially. Separate generic measure lemmas
+use increasing tail intersections for eventual upper bounds and decreasing
+tail unions for eventual lower bounds. The lower-bound lemma requires a
+finite measure and null-measurable moving sets; the upper-bound lemma needs
+neither. A reusable distance/projection identity and a convergent-subsequence
+lemma for fixed-rank projections supply the geometric step. Thus finiteness
+is retained explicitly at the good-set closedness interface, and no hidden
+measurability assumption is needed.
 
 \item \textbf{Tube concentration to support containment.}
 Suppose every $z\in C$ has $H(E\cap B_s(z))\geq\delta s^m$ for small $s$.

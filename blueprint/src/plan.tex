@@ -359,7 +359,7 @@ implies that some plane has unit-ball energy at most $\varepsilon$.
 \begin{lemma}[Continuity of flatness under vague convergence]
 \label{lem:flatness-continuous}
 \lean{Preiss.flatness_continuous}
-\uses{def:flatness, lem:flatness-minimum, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff}
+\uses{def:flatness, lem:flatness-minimum, lem:grassmannian, lem:vague-moving-tests, def:flatness-cutoff, lem:flatness-vague-general}
 
 
 
@@ -1254,7 +1254,7 @@ implements closure without assuming a topology on all raw measures.
 \begin{lemma}[Transitivity of the support-centered scaling orbit closure]
 \label{lem:pseudotangent-transitive}
 \lean{Preiss.IsUniformPseudotangent, Preiss.uniformPseudotangent_isUnitUniform, Preiss.uniformPseudotangent_trans, Preiss.uniformPseudotangent_map_linearIsometry}
-\uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation}
+\uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation, lem:uniform-vague-closed, lem:uniform-scaling}
 
 
 
@@ -1374,7 +1374,7 @@ it needs no almost-everywhere recentering theorem.
 \begin{lemma}[Continuity of the scale function]
 \label{lem:flatness-radius-continuous}
 \lean{Preiss.continuousOn_flatness_dimensionalBlowup}
-\uses{def:dimensional-blowup, def:flatness, lem:flatness-continuous, lem:vague-moving-blowups, def:flatness-cutoff}
+\uses{def:dimensional-blowup, def:flatness, lem:flatness-continuous, lem:vague-moving-blowups, def:flatness-cutoff, lem:dimensional-blowup-support, lem:flatness-vague-general}
 
 
 
@@ -1489,18 +1489,8 @@ and
 \lean{Preiss.subset_tube_of_lower_mass_and_small_outside_mass}
 \uses{def:plane}
 
-
-
-
-
-
-
-
-The lower bounds hold uniformly at every point of \(C\), and all radii used lie below their common cutoff. Here \(\delta,\eta,r>0\).
-Suppose points \(z\in C\) satisfy \(\nu(B_s(z))\geq\delta s^m\) at small scales. If the mass outside the \(\eta r/2\)-tube about \(a+V\), inside \(B_{2r}(a)\), is less than \(\delta(\eta r/2)^m\), then
-\[
- C\cap B_r(a)\subset\{z:\operatorname{dist}(z,a+V)\leq\eta r\}.
-\]
+The measure $\mu$ and set $C$ are arbitrary. The centre $a\in\mathbb R^n$ need not lie in $C$. No finiteness or measurability hypothesis is required.
+Let $\delta>0$, $0<\eta\leq1$, and $r>0$. If $\mu(B(z,\eta r/2))\geq\delta(\eta r/2)^m$ for every $z\in C$, and the mass in $B(a,2r)$ outside the closed $\eta r/2$ tube about $a+V$ is less than $\delta(\eta r/2)^m$, then $C\cap B(a,r)$ is contained in the closed $\eta r$ tube about $a+V$.
 \par\emph{Role: Preiss proof.}
 \par Lean declarations: \texttt{Preiss.subset\_tube\_of\_lower\_mass\_and\_small\_outside\_mass}.
 \end{lemma}
@@ -1553,7 +1543,7 @@ There is \(C_m>0\) such that, if \(w\in W\) is a unit vector with \(\|P_Vw\|\leq
 \begin{lemma}[Relaxed approximation good sets are closed]
 \label{lem:closed-weak-approximation-good-set}
 \lean{Preiss.isClosed_weakApproximationGoodSet}
-\uses{def:weak-approximation-good-set, lem:grassmannian}
+\uses{def:weak-approximation-good-set, lem:grassmannian, lem:moving-set-measure-bounds, lem:projection-distance, lem:plane-projection-subsequence}
 
 
 
@@ -1629,17 +1619,8 @@ then weak linear approximation of \(E\) at \(x\) implies that of \(F\) at \(x\).
 \lean{Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion}
 \uses{def:weak-approximation, def:weak-approximation-good-set}
 
-
-
-
-
-
-
-
-\(\nu=\mathcal H^m\!\restriction E\) is finite and regular. Use aperture slack to replace non-strict upper inequalities and closed lower balls by the original strict/open clauses.
-Weak linear approximation at \(x\) implies, for every \(\eta>0\), membership in some
-\(G(\nu,m,\eta,1/N,1/N)\), \(N\geq1\).
-Conversely membership with aperture \(\eta/2\) gives the original approximation clauses at aperture \(\eta\).
+No finiteness or regularity of $\mu$ is assumed.
+For any measure $\mu$ on $\mathbb R^n$, weak linear approximation at $x$ is equivalent to: for every $\eta>0$ there exists $N\in\mathbb N$ with $x\in G(\mu,m,\eta,1/(N+1),1/(N+1))$. The reverse implication uses the good-set condition at aperture $\eta/2$ to obtain strict upper error and open lower balls at aperture $\eta$.
 \par\emph{Role: Preiss proof.}
 \par Lean declarations: \texttt{Preiss.weaklyLinearlyApproximableAt\_iff\_goodSet\_exhaustion}.
 \end{lemma}
@@ -2155,35 +2136,33 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 \par Source: De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.
 \end{proof}
 
-\begin{lemma}[Countable compact-test metric for locally bounded families]
-\label{lem:vague-countable-metric}
-\lean{Preiss.RegularEuclideanMeasure, Preiss.vagueTestDistance, Preiss.VagueMetrization, Preiss.exists_vagueMetrization, Preiss.vagueMetric_tendsto_iff, Preiss.vagueMetric_separates, Preiss.vagueMetric_finite_cover_of_compact}
+\begin{definition}[Countable-test vague metric specification]
+\label{def:vague-metrization}
+\lean{Preiss.RegularEuclideanMeasure, Preiss.vagueTestDistance, Preiss.VagueMetrization}
 \uses{gmt:vague}
+A regular Euclidean measure is a positive Borel measure equipped with regularity. A vague metrization consists of compactly supported continuous tests $f_j$, a metric on these measures whose distance is $\sum_{j\geq0}2^{-(j+1)}\min(1,|\int f_j\,d\mu-\int f_j\,d\nu|)$, cutoff tests majorizing $1$ on each positive-radius closed ball and nonnegative everywhere, and equivalence between metric sequential convergence and vague convergence for every sequence of regular measures.
+\end{definition}
 
-
-
-
-
-
-
-Construct or reuse a metric on regular positive locally finite Euclidean
-measures which detects vague convergence on families with common compact mass
-bounds. Include enough cutoff tests to control masses. The necessary outputs are
-sequential convergence equivalence, separation, a diagonal selection lemma,
-and finite covers of a compact family by metric balls. This can live in a
-general vague-convergence module rather than the Preiss theorem file.
-\par\emph{Role: Preiss proof.}
-\par Lean declarations: \texttt{Preiss.RegularEuclideanMeasure, Preiss.VagueMetrization, Preiss.exists\_vagueMetrization, Preiss.vagueMetric\_finite\_cover\_of\_compact, Preiss.vagueMetric\_separates, Preiss.vagueMetric\_tendsto\_iff, Preiss.vagueTestDistance}.
+\begin{lemma}[Existence of a countable-test vague metric]
+\label{lem:vague-countable-metric}
+\lean{Preiss.exists_vagueMetrization}
+\uses{def:vague-metrization}
+For every natural ambient dimension $n$, there exists a countable-test vague metrization with the preceding specification.
 \end{lemma}
-\begin{proof}[Planned proof obligations]
-Construct or reuse a metric on regular positive locally finite Euclidean
-measures which detects vague convergence on families with common compact mass
-bounds. Include enough cutoff tests to control masses. The necessary outputs are
-sequential convergence equivalence, separation, a diagonal selection lemma,
-and finite covers of a compact family by metric balls. This can live in a
-general vague-convergence module rather than the Preiss theorem file.
-\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\begin{proof}[Planned construction]
+Choose countably many uniformly dense tests on compact support strata and add nonnegative cutoff tests controlling every bounded ball. Prove that the weighted truncated distance separates regular measures, satisfies the metric axioms, and detects vague convergence. The cutoff coordinates supply uniform compact mass bounds when passing from dense tests to arbitrary compactly supported continuous tests. This existence proof remains a separate obligation.
 \end{proof}
+
+\begin{lemma}[Consequences of a supplied vague metric]
+\label{lem:vague-metric-properties}
+\lean{Preiss.vagueMetric_tendsto_iff, Preiss.vagueMetric_separates, Preiss.vagueMetric_finite_cover_of_compact}
+\uses{def:vague-metrization}
+For supplied $M:\mathrm{VagueMetrization}(n)$, metric convergence is equivalent to vague convergence; its countable-test distance separates measures; and every compact family has a finite cover by metric balls of every positive radius, with centers in that family.
+\end{lemma}
+\begin{proof}[Proof sketch]
+Use the supplied convergence and distance fields, metric separation, and finite ball covers of compact sets. None of these arguments constructs a metrization.
+\end{proof}
+
 
 \begin{lemma}[Measurable hulls preserve disjoint holes]
 \label{lem:measurable-hull-holes}
@@ -2219,8 +2198,8 @@ This statement requires no measurability of $D$.
 
 \begin{lemma}[Wick fourth moment of linear Gaussian tests]
 \label{lem:gaussian-wick-fourth}
-\lean{Preiss.gaussian_integral_inner_pow_even, Preiss.gaussian_integral_inner_sq_mul_inner_sq}
-\uses{mathlib:standard-gaussian}
+\lean{Preiss.gaussian_integral_inner_pow_even, Preiss.gaussian_integral_inner_sq_mul_inner_sq, Preiss.gaussian_integral_four_inner}
+\uses{mathlib:standard-gaussian, lem:real-gaussian-even-moments, lem:gaussian-projection-integrability}
 
 
 
@@ -2398,7 +2377,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 \begin{lemma}[Gaussian quadratic form second moment and trace bound]
 \label{lem:gaussian-quadratic-trace-bound}
 \lean{Preiss.gaussian_integral_bilinear_eq_trace, Preiss.gaussian_integral_bilinear_sq, Preiss.gaussian_integral_bilinear_sq_ge_trace_sq}
-\uses{def:bilinear-trace, lem:bilinear-trace-basis, lem:gaussian-wick-fourth, mathlib:standard-gaussian}
+\uses{def:bilinear-trace, lem:bilinear-trace-basis, lem:gaussian-wick-fourth, mathlib:standard-gaussian, lem:gaussian-projection-integrability}
 
 
 
@@ -2918,31 +2897,12 @@ support. This is needed in the bounded-hole argument R05 below.
 
 \begin{lemma}[Uniform compactness with centers approaching the support]
 \label{lem:uniform-near-support-compactness}
-\uses{def:uniform-constant, lem:uniform-constant-one}
 \lean{Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero}
-\uses{def:unit-uniform, lem:vague-support-approximation, lem:vague-support-limit, thm:compactness}
-
-
-
-
-
-
-If every $\nu_i$ has support-centered ball law $\nu_i(B(y,r))=r^m$ and $\operatorname{dist}(0,\operatorname{supp}\nu_i)\to0$, then some subsequence converges vaguely to a member of $\mathcal U_m$.
-\par\emph{Role: Preiss proof.}
-\par Lean declarations: \texttt{Preiss.exists\_vague\_subsequence\_uniform\_of\_dist\_support\_tendsto\_zero}.
+\uses{def:uniform-constant, lem:uniform-constant-one, lem:uniform-scaling, lem:uniform-compactness, lem:vague-moving-blowups, lem:blowup-composition}
+Let $\nu_i$ be regular measures with nonempty support and support-centered closed-ball law $\nu_i(\overline B(y,r))=r^m$ for every support center $y$ and $r>0$. If $\operatorname{dist}(0,\operatorname{supp}\nu_i)\to0$, some subsequence converges vaguely to a member of $\mathcal U_m$. This includes $m=0$.
 \end{lemma}
-\begin{proof}[Planned proof obligations]
-
-A vaguely convergent sequence in $\mathcal U_m$ has a limit in $\mathcal U_m$.
-The family is sequentially compact by upstream compact mass bounds.
-First approximate support centres using S04; squeeze open and closed radii to
-recover the exact ball law, rather than assuming spheres of an arbitrary limit
-already have zero mass. The origin's positive ball mass excludes the zero limit.
-Also prove the variant where the measures are uniform with the same constant
-and their supports approach the origin, without requiring the origin in every
-support. This is needed in the bounded-hole argument R05 below.
-\par Corrections and boundary conditions: Needed when blow-up centers are projections onto a plane rather than support points.
-\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\begin{proof}[Proof sketch]
+Choose a nearest support point $y_i$ to the origin; closedness and properness give existence because each support is nonempty. The distance hypothesis implies $y_i\to0$. Recenter each measure by $D^m_{y_i,1}$, whose unit-uniform ball law follows from blow-up transport. Extract a unit-uniform vague limit by centered compactness, then undo translations using moving blow-up continuity and the composition identity. No initial-index truncation or positive-dimensional hypothesis is needed.
 \end{proof}
 
 \begin{lemma}[Hyperplane transport with an explicit isometry]
@@ -3006,26 +2966,19 @@ support. This is needed in the bounded-hole argument R05 below.
 \begin{lemma}[Finite metric covers of uniform families]
 \label{lem:uniform-finite-metric-covers}
 \lean{Preiss.unitUniform_totallyBounded}
-\uses{def:unit-uniform, lem:uniform-compactness, lem:vague-countable-metric, lem:vague-moving-blowups}
+\uses{def:unit-uniform, def:vague-metrization, lem:uniform-compactness, lem:vague-moving-blowups, lem:blowup-composition, lem:uniform-scaling}
 
 
 
 
 
 
-For every $\varepsilon>0$ and $0<c\leq C<\infty$, the centered uniform measures with ball constants in $[c,C]$ admit a finite cover by vague-metric balls of radius $\varepsilon$. This includes the family $\mathcal U_m$ and all its support-centered translates.
+For a supplied vague metrization and every $\varepsilon>0$ and $0<c\leq C<\infty$, the centered uniform measures with ball constants in $[c,C]$ admit a finite cover by vague-metric balls of radius $\varepsilon$. This includes the family $\mathcal U_m$ and all its support-centered translates.
 \par\emph{Role: Preiss proof.}
 \par Lean declarations: \texttt{Preiss.unitUniform\_totallyBounded}.
 \end{lemma}
-\begin{proof}[Planned proof obligations]
-
-Construct or reuse a metric on regular positive locally finite Euclidean
-measures which detects vague convergence on families with common compact mass
-bounds. Include enough cutoff tests to control masses. The necessary outputs are
-sequential convergence equivalence, separation, a diagonal selection lemma,
-and finite covers of a compact family by metric balls. This can live in a
-general vague-convergence module rather than the Preiss theorem file.
-\par Source: De Lellis Chapters 3 and 6; general supporting analysis.
+\begin{proof}[Proof sketch]
+Extract a convergent subsequence of ball constants in $[c,C]$, normalize by their positive reciprocals, and use compactness of unit-uniform measures. Moving scalar convergence recovers convergence of the original measures. The supplied metric's convergence field gives sequential compactness, hence total boundedness. This proof does not use the existence of a metrization.
 \end{proof}
 
 \begin{lemma}[Existence of uniform blow-down limits]
@@ -4803,4 +4756,79 @@ Let $\mu$ be a Borel measure on a pseudometric space, $x$ a point, and $r>0$. Su
 \uses{def:unit-uniform, lem:continuous-ball-profile-boundary}
 
 For every unit $m$-uniform measure $\mu$ on $\mathbb R^n$, support center $x$, and positive radius $r$, $B(x,r)=\overline B(x,r)$ almost everywhere for $\mu$. This includes $m=0$.
+\end{lemma}
+
+\begin{lemma}[Derivative of a product with the identity at zero]
+\label{lem:iterated-derivative-id-product}
+\lean{Preiss.iteratedDeriv_id_mul_zero}
+
+For every positive natural $n$ and every real function $f$ that is $C^n$ at zero, $D^n(t\mapsto t f(t))(0)=nD^{n-1}f(0)$.
+\end{lemma}
+
+\begin{lemma}[All even derivatives of a quadratic exponential]
+\label{lem:quadratic-exponential-even-derivatives}
+\lean{Preiss.iteratedDeriv_exp_quadratic_even}
+\uses{lem:iterated-derivative-id-product}
+
+For every real $a$ and natural $j$, $D^{2j}(t\mapsto e^{at^2/2})(0)=\frac{(2j)!}{2^j j!}a^j$. No sign restriction on $a$ is required.
+\end{lemma}
+
+\begin{lemma}[All even moments of a centered real Gaussian]
+\label{lem:real-gaussian-even-moments}
+\lean{Preiss.integral_gaussianReal_zero_pow_even}
+\uses{lem:quadratic-exponential-even-derivatives}
+
+For every nonnegative real variance $v$, including zero, and every natural $j$, $\int x^{2j}\,d\mathcal N(0,v)=\frac{(2j)!}{2^j j!}v^j$.
+\end{lemma}
+
+\begin{lemma}[Integrability of finite products of Gaussian projections]
+\label{lem:gaussian-projection-integrability}
+\lean{Preiss.integrable_gaussian_inner_pow, Preiss.integrable_gaussian_inner_prod, Preiss.integrable_gaussian_four_inner}
+
+For a standard Gaussian on any finite dimensional real inner product space $E$, every natural power of a real linear projection is integrable. For every finite index type $I$ and vectors $(u_i)_{i\in I}$, the function $x\mapsto\prod_i\langle u_i,x\rangle$ is integrable, including the empty product. A four-projection companion is also provided.
+\end{lemma}
+
+\begin{lemma}[Detecting convergence by further subsequences]
+\label{lem:subsequence-limit-criterion}
+\lean{Preiss.tendsto_of_subsequence_subsequence}
+
+A sequence in a pseudometric space converges to $x$ if every strictly increasing subsequence has a further strictly increasing subsequence converging to $x$.
+\end{lemma}
+
+\begin{lemma}[Moving projection energies under vague convergence]
+\label{lem:vague-projection-energy}
+\lean{Preiss.vague_integral_projectionEnergy_moving}
+\uses{lem:vague-moving-tests}
+
+Let $\mu_i\rightharpoonup\nu$ be regular Euclidean measures, $P_i\to P$ in operator norm, and $\varphi$ a compactly supported continuous real function. Then $\int\varphi(z)|z-P_i z|^2\,d\mu_i\to\int\varphi(z)|z-Pz|^2\,d\nu$. Operators need not be projections and the cutoff need not be nonnegative.
+\end{lemma}
+
+\begin{lemma}[Vague continuity of minimum energy for general cutoffs]
+\label{lem:flatness-vague-general}
+\lean{Preiss.flatness_tendsto_of_vague}
+\uses{def:flatness, lem:subsequence-limit-criterion, lem:vague-projection-energy, lem:flatness-minimizer-finite-compacts, lem:grassmannian}
+
+For $m\leq n$, every compactly supported continuous real cutoff has vaguely continuous minimum squared-distance energy on regular measures. Extract convergent minimizing projections along every subsequence, use the moving-integral lemma, and compare with a fixed minimizing plane for the limit measure. No nonnegativity or special cutoff normalization is needed.
+\end{lemma}
+
+\begin{lemma}[Measure bounds from eventual membership in moving sets]
+\label{lem:moving-set-measure-bounds}
+\lean{Preiss.measure_le_of_pointwise_eventually_mem, Preiss.le_measure_of_pointwise_eventually_notMem}
+
+Let $S_i,T\subseteq X$ and $c\in[0,\infty]$. If eventually $\mu(S_i)\le c$ and every $x\in T$ eventually belongs to $S_i$, then $\mu(T)\le c$. If $\mu$ is finite, each $S_i$ is $\mu$-null-measurable, eventually $c\le\mu(S_i)$, and every $x\notin T$ is eventually outside $S_i$, then $c\le\mu(T)$.
+\end{lemma}
+
+\begin{lemma}[Distance to a subspace through orthogonal projection]
+\label{lem:projection-distance}
+\lean{Preiss.infDist_submodule_eq_norm_sub_starProjection}
+
+In a real or complex inner-product space, let $V$ be a linear subspace admitting an orthogonal projection $P_V$. For every $x$, $\operatorname{dist}(x,V)=\lVert x-P_Vx\rVert$.
+\end{lemma}
+
+\begin{lemma}[Convergent subsequences of fixed-rank plane projections]
+\label{lem:plane-projection-subsequence}
+\lean{Preiss.exists_tendsto_planeProjection_subseq}
+\uses{def:plane, lem:grassmannian}
+
+For every sequence of $m$-planes $V_i\subseteq\mathbb R^n$, there exist an $m$-plane $V$ and a strictly increasing $\phi:\mathbb N\to\mathbb N$ such that $P_{V_{\phi(i)}}\to P_V$ in operator norm.
 \end{lemma}

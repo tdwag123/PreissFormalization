@@ -1299,6 +1299,7 @@
         "def:flatness",
         "def:flatness-cutoff",
         "lem:flatness-minimum",
+        "lem:flatness-vague-general",
         "lem:grassmannian",
         "lem:vague-moving-tests"
       ],
@@ -2333,6 +2334,8 @@
       "deps": [
         "def:dimensional-blowup",
         "lem:blowup-composition",
+        "lem:uniform-scaling",
+        "lem:uniform-vague-closed",
         "lem:vague-diagonal",
         "lem:vague-moving-blowups",
         "lem:vague-support-approximation"
@@ -2448,7 +2451,9 @@
         "def:dimensional-blowup",
         "def:flatness",
         "def:flatness-cutoff",
+        "lem:dimensional-blowup-support",
         "lem:flatness-continuous",
+        "lem:flatness-vague-general",
         "lem:vague-moving-blowups"
       ],
       "lean_names": [
@@ -2606,7 +2611,10 @@
       "proof_tex": "",
       "deps": [
         "def:weak-approximation-good-set",
-        "lem:grassmannian"
+        "lem:grassmannian",
+        "lem:moving-set-measure-bounds",
+        "lem:plane-projection-subsequence",
+        "lem:projection-distance"
       ],
       "lean_names": [
         "Preiss.isClosed_weakApproximationGoodSet"
@@ -3295,6 +3303,25 @@
       ]
     },
     {
+      "id": "def:vague-metrization",
+      "kind": "definition",
+      "title": "Countable-test vague metric specification",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.RegularEuclideanMeasure",
+        "Preiss.VagueMetrization",
+        "Preiss.vagueTestDistance"
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/Metrization.lean"
+    },
+    {
       "id": "lem:vague-countable-metric",
       "kind": "lemma",
       "title": "Countable compact-test metric for locally bounded families",
@@ -3302,16 +3329,10 @@
       "hypotheses_tex": "",
       "proof_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
       "deps": [
-        "gmt:vague"
+        "def:vague-metrization"
       ],
       "lean_names": [
-        "Preiss.RegularEuclideanMeasure",
-        "Preiss.VagueMetrization",
-        "Preiss.exists_vagueMetrization",
-        "Preiss.vagueMetric_finite_cover_of_compact",
-        "Preiss.vagueMetric_separates",
-        "Preiss.vagueMetric_tendsto_iff",
-        "Preiss.vagueTestDistance"
+        "Preiss.exists_vagueMetrization"
       ],
       "proposed_lean_name": "Preiss.vagueMetric_tendsto_iff",
       "proposed_file": "Preiss/Analysis/Vague/Metrization.lean",
@@ -3324,6 +3345,25 @@
       "source_files": [
         "Preiss/Analysis/Vague/Metrization.lean"
       ]
+    },
+    {
+      "id": "lem:vague-metric-properties",
+      "kind": "lemma",
+      "title": "Consequences of a supplied vague metric",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vagueMetric_finite_cover_of_compact",
+        "Preiss.vagueMetric_separates",
+        "Preiss.vagueMetric_tendsto_iff"
+      ],
+      "deps": [
+        "def:vague-metrization"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/Metrization.lean"
     },
     {
       "id": "lem:measurable-hull-holes",
@@ -3360,14 +3400,17 @@
       "hypotheses_tex": "",
       "proof_tex": "For $y,z\\in V$,\n$\\int\\langle y,v\\rangle^2\\langle z,v\\rangle^2\\,d\\gamma\n=|y|^2|z|^2+2\\langle y,z\\rangle^2$.\nCombining this with R07 yields, for $w\\in V^\\perp$,\n\\[\n \\int\\langle y,v\\rangle^2\\langle\\omega(v,v),w\\rangle\\,d\\gamma(v)\n =2\\langle\\omega(y,y),w\\rangle.\n\\]\nJustify limits by Gaussian quartic domination and Fubini.",
       "deps": [
+        "lem:gaussian-projection-integrability",
+        "lem:real-gaussian-even-moments",
         "mathlib:standard-gaussian"
       ],
       "lean_names": [
+        "Preiss.gaussian_integral_four_inner",
         "Preiss.gaussian_integral_inner_pow_even",
         "Preiss.gaussian_integral_inner_sq_mul_inner_sq"
       ],
       "proposed_lean_name": "Preiss.gaussian_integral_inner_sq_mul_inner_sq",
-      "proposed_file": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "proposed_file": "Preiss/Analysis/GaussianMoments.lean",
       "scope": "core",
       "branch": "Uniform measures and tangents",
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
@@ -3375,7 +3418,7 @@
       "note": "",
       "role": "Preiss proof",
       "source_files": [
-        "Preiss/Analysis/GaussianQuadraticForms.lean"
+        "Preiss/Analysis/GaussianMoments.lean"
       ]
     },
     {
@@ -3560,6 +3603,7 @@
       "deps": [
         "def:bilinear-trace",
         "lem:bilinear-trace-basis",
+        "lem:gaussian-projection-integrability",
         "lem:gaussian-wick-fourth",
         "mathlib:standard-gaussian"
       ],
@@ -4091,11 +4135,11 @@
       "proof_tex": "A vaguely convergent sequence in $\\mathcal U_m$ has a limit in $\\mathcal U_m$.\nThe family is sequentially compact by upstream compact mass bounds.\nFirst approximate support centres using S04; squeeze open and closed radii to\nrecover the exact ball law, rather than assuming spheres of an arbitrary limit\nalready have zero mass. The origin's positive ball mass excludes the zero limit.\nAlso prove the variant where the measures are uniform with the same constant\nand their supports approach the origin, without requiring the origin in every\nsupport. This is needed in the bounded-hole argument R05 below.",
       "deps": [
         "def:uniform-constant",
-        "def:unit-uniform",
+        "lem:blowup-composition",
+        "lem:uniform-compactness",
         "lem:uniform-constant-one",
-        "lem:vague-support-approximation",
-        "lem:vague-support-limit",
-        "thm:compactness"
+        "lem:uniform-scaling",
+        "lem:vague-moving-blowups"
       ],
       "lean_names": [
         "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero"
@@ -4182,8 +4226,10 @@
       "proof_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
       "deps": [
         "def:unit-uniform",
+        "def:vague-metrization",
+        "lem:blowup-composition",
         "lem:uniform-compactness",
-        "lem:vague-countable-metric",
+        "lem:uniform-scaling",
         "lem:vague-moving-blowups"
       ],
       "lean_names": [
@@ -6677,6 +6723,174 @@
         "Preiss/Uniform/BallBoundary.lean"
       ],
       "proposed_file": "Preiss/Uniform/BallBoundary.lean"
+    },
+    {
+      "id": "lem:iterated-derivative-id-product",
+      "kind": "lemma",
+      "title": "Derivative of a product with the identity at zero",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.iteratedDeriv_id_mul_zero"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianDerivatives.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianDerivatives.lean"
+    },
+    {
+      "id": "lem:quadratic-exponential-even-derivatives",
+      "kind": "lemma",
+      "title": "All even derivatives of a quadratic exponential",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.iteratedDeriv_exp_quadratic_even"
+      ],
+      "deps": [
+        "lem:iterated-derivative-id-product"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianDerivatives.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianDerivatives.lean"
+    },
+    {
+      "id": "lem:real-gaussian-even-moments",
+      "kind": "lemma",
+      "title": "All even moments of a centered real Gaussian",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_gaussianReal_zero_pow_even"
+      ],
+      "deps": [
+        "lem:quadratic-exponential-even-derivatives"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianMoments.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianMoments.lean"
+    },
+    {
+      "id": "lem:gaussian-projection-integrability",
+      "kind": "lemma",
+      "title": "Integrability of finite products of Gaussian projections",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_four_inner",
+        "Preiss.integrable_gaussian_inner_pow",
+        "Preiss.integrable_gaussian_inner_prod"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianMoments.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianMoments.lean"
+    },
+    {
+      "id": "lem:subsequence-limit-criterion",
+      "kind": "lemma",
+      "title": "Detecting convergence by further subsequences",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_of_subsequence_subsequence"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/SequentialLimits.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/SequentialLimits.lean"
+    },
+    {
+      "id": "lem:vague-projection-energy",
+      "kind": "lemma",
+      "title": "Moving projection energies under vague convergence",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vague_integral_projectionEnergy_moving"
+      ],
+      "deps": [
+        "lem:vague-moving-tests"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/ProjectionEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/ProjectionEnergy.lean"
+    },
+    {
+      "id": "lem:flatness-vague-general",
+      "kind": "lemma",
+      "title": "Vague continuity of minimum energy for general cutoffs",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatness_tendsto_of_vague"
+      ],
+      "deps": [
+        "def:flatness",
+        "lem:flatness-minimizer-finite-compacts",
+        "lem:grassmannian",
+        "lem:subsequence-limit-criterion",
+        "lem:vague-projection-energy"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessVague.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessVague.lean"
+    },
+    {
+      "id": "lem:moving-set-measure-bounds",
+      "kind": "lemma",
+      "title": "Measure bounds from eventual membership in moving sets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.le_measure_of_pointwise_eventually_notMem",
+        "Preiss.measure_le_of_pointwise_eventually_mem"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/MovingSets.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/MovingSets.lean"
+    },
+    {
+      "id": "lem:projection-distance",
+      "kind": "lemma",
+      "title": "Distance to a subspace through orthogonal projection",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.infDist_submodule_eq_norm_sub_starProjection"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/Projections.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/Projections.lean"
+    },
+    {
+      "id": "lem:plane-projection-subsequence",
+      "kind": "lemma",
+      "title": "Convergent subsequences of fixed-rank plane projections",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_tendsto_planeProjection_subseq"
+      ],
+      "deps": [
+        "def:plane",
+        "lem:grassmannian"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneTopology.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneTopology.lean"
     }
   ],
   "preiss_core": [
@@ -6711,6 +6925,7 @@
     "def:uniform-api",
     "def:uniform-constant",
     "def:unit-uniform",
+    "def:vague-metrization",
     "def:weak-approximation",
     "def:weak-approximation-good-set",
     "gmt:barycenter-quadratic-bound",
@@ -6805,11 +7020,13 @@
     "lem:flatness-minimizer-finite-compacts",
     "lem:flatness-minimum",
     "lem:flatness-radius-continuous",
+    "lem:flatness-vague-general",
     "lem:gaussian-annulus-integral",
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-ball-power",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-polynomial-integrable",
+    "lem:gaussian-projection-integrability",
     "lem:gaussian-quadratic-trace-bound",
     "lem:gaussian-tail-series-bound",
     "lem:gaussian-translation-series",
@@ -6829,6 +7046,7 @@
     "lem:hyperplane-tangent-lineage",
     "lem:hyperplane-transport-map",
     "lem:infinity-compactness",
+    "lem:iterated-derivative-id-product",
     "lem:lower-ball-hausdorff-bound",
     "lem:lower-ball-open-comparison",
     "lem:lower-ball-restrict-comparison",
@@ -6847,6 +7065,7 @@
     "lem:moment-normal-trace",
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
+    "lem:moving-set-measure-bounds",
     "lem:nested-compact-approximation",
     "lem:nonnegative-integral-cover-bound",
     "lem:odd-coefficients-plane-zero",
@@ -6854,18 +7073,22 @@
     "lem:packing-contradiction",
     "lem:plane-exists",
     "lem:plane-hausdorff",
+    "lem:plane-projection-subsequence",
     "lem:plane-scaling",
     "lem:plane-supported-uniform-flat",
     "lem:polynomial-feature-identities",
     "lem:polynomial-gaussian-integrability",
     "lem:projected-tube-slab-bound",
+    "lem:projection-distance",
     "lem:projection-energy-continuity",
     "lem:projection-hole-cover",
     "lem:pseudotangent-transitive",
     "lem:pure-basic",
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
+    "lem:quadratic-exponential-even-derivatives",
     "lem:radial",
+    "lem:real-gaussian-even-moments",
     "lem:recenter",
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-cubic-vanishing",
@@ -6882,6 +7105,7 @@
     "lem:scaled-moment-limits",
     "lem:small-energy-no-holes",
     "lem:spectral-minimizing-plane",
+    "lem:subsequence-limit-criterion",
     "lem:tangent-blowdown",
     "lem:tangent-existence",
     "lem:tangent-ray",
@@ -6906,6 +7130,7 @@
     "lem:vague-gaussian-polynomials",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
+    "lem:vague-projection-energy",
     "lem:vague-support-approximation",
     "lem:vague-support-limit",
     "lem:weak-approximation-deletion",
@@ -7014,13 +7239,16 @@
     "lem:lower-ball-small-cover",
     "lem:lower-density-from-power",
     "lem:measure-support-transport",
+    "lem:moving-set-measure-bounds",
     "lem:nested-compact-approximation",
     "lem:normalized-density-transfer",
     "lem:packing-base-point",
     "lem:packing-contradiction",
     "lem:plane-hausdorff",
+    "lem:plane-projection-subsequence",
     "lem:plane-scaling",
     "lem:projected-tube-slab-bound",
+    "lem:projection-distance",
     "lem:projection-hole-cover",
     "lem:pure-basic",
     "lem:pure-cone-escape",

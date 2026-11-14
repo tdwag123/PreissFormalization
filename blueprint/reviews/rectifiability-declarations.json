@@ -640,7 +640,7 @@
       "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.isClosed_weakApproximationGoodSet"
       ],
@@ -649,17 +649,17 @@
           "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement",
-          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+          "status": "proof_candidate",
+          "verification": "Local exact-source Lean check passed with only standard axioms; authoritative integration status is blueprint/kernel-checkpoint.json at its source_revision."
         }
       ],
-      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+      "verification": "Local exact-source Lean check passed with only standard axioms; authoritative integration status is blueprint/kernel-checkpoint.json at its source_revision."
     },
     "lem:weak-approximation-good-exhaustion": {
       "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion"
       ],
@@ -668,7 +668,7 @@
           "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement",
+          "status": "proof_candidate",
           "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
@@ -697,7 +697,7 @@
       "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.subset_tube_of_lower_mass_and_small_outside_mass"
       ],
@@ -706,7 +706,7 @@
           "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement",
+          "status": "proof_candidate",
           "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],

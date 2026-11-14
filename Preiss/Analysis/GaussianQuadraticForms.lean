@@ -1,7 +1,6 @@
 module
 public import Preiss.Analysis.BilinearTrace
-public import Mathlib.Probability.Distributions.Gaussian.Multivariate
-public import Mathlib.Probability.Distributions.Gaussian.Fernique
+public import Preiss.Analysis.GaussianMoments
 public import Mathlib.Algebra.Order.Chebyshev
 
 @[expose] public section
@@ -10,16 +9,6 @@ open scoped BigOperators
 namespace Preiss
 variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
   [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
-
-theorem gaussian_integral_inner_pow_even (y : E) (j : ℕ) :
-    (∫ v, (inner ℝ y v) ^ (2 * j) ∂stdGaussian E) =
-      ((2 * j).factorial : ℝ) / (2 ^ j * (j.factorial : ℝ)) * ‖y‖ ^ (2 * j) := by
-  sorry
-
-theorem gaussian_integral_inner_sq_mul_inner_sq (y z : E) :
-    (∫ v, (inner ℝ y v) ^ 2 * (inner ℝ z v) ^ 2 ∂stdGaussian E) =
-      ‖y‖ ^ 2 * ‖z‖ ^ 2 + 2 * (inner ℝ y z) ^ 2 := by
-  sorry
 
 theorem gaussian_integral_bilinear_eq_trace (A : E →L[ℝ] E →L[ℝ] ℝ) :
     (∫ v, A v v ∂stdGaussian E) = bilinearTrace A := by
@@ -59,7 +48,48 @@ theorem gaussian_integral_bilinear_sq {ι : Type*} [Fintype ι]
     (hA : ∀ u v, A u v = A v u) :
     (∫ v, (A v v) ^ 2 ∂stdGaussian E) =
       (bilinearTrace A) ^ 2 + 2 * ∑ i, ∑ j, (A (e i) (e j)) ^ 2 := by
-  sorry
+  classical
+  let T := InnerProductSpace.continuousLinearMapOfBilin A
+  have hT (u v : E) : inner ℝ (T u) v = A u v :=
+    InnerProductSpace.continuousLinearMapOfBilin_apply A u v
+  have hdecomp (v : E) : A v v = ∑ i, inner ℝ (e i) v * inner ℝ (T (e i)) v := by
+    calc
+      _ = A (∑ i, e.repr v i • e i) v := by rw [e.sum_repr]
+      _ = ∑ i, e.repr v i * A (e i) v := by simp
+      _ = _ := by simp only [OrthonormalBasis.repr_apply_apply, hT]
+  have hsq (v : E) : (A v v)^2 = ∑ i, ∑ j,
+      inner ℝ (e i) v * inner ℝ (T (e i)) v * inner ℝ (e j) v * inner ℝ (T (e j)) v := by
+    rw [hdecomp, pow_two, Finset.sum_mul_sum]
+    apply Finset.sum_congr rfl
+    intro i _
+    apply Finset.sum_congr rfl
+    intro j _
+    ring
+  have hfirst : (∑ i, ∑ j, inner ℝ (e i) (T (e i)) * inner ℝ (e j) (T (e j))) =
+      (bilinearTrace A)^2 := by
+    simp_rw [real_inner_comm (T _) (e _), hT]
+    rw [bilinearTrace_eq_sum_diagonal A e, pow_two, Finset.sum_mul_sum]
+  have hsecond : (∑ i, ∑ j, inner ℝ (e i) (e j) * inner ℝ (T (e i)) (T (e j))) =
+      ∑ i, ∑ j, (A (e i) (e j))^2 := by
+    apply Finset.sum_congr rfl
+    intro i _
+    simp only [orthonormal_iff_ite.mp e.orthonormal, ite_mul, one_mul, zero_mul]
+    rw [Finset.sum_ite_eq, real_inner_self_eq_norm_sq, ← e.sum_sq_inner_left (T (e i))]
+    simp only [Finset.mem_univ, if_true, hT]
+  have hthird : (∑ i, ∑ j, inner ℝ (e i) (T (e j)) * inner ℝ (T (e i)) (e j)) =
+      ∑ i, ∑ j, (A (e i) (e j))^2 := by
+    apply Finset.sum_congr rfl
+    intro i _
+    apply Finset.sum_congr rfl
+    intro j _
+    rw [real_inner_comm (T (e j)) (e i), hT, hT, hA (e j) (e i), pow_two]
+  simp_rw [hsq]
+  rw [integral_finsetSum _ (fun i _ => integrable_finsetSum _
+    (fun j _ => integrable_gaussian_four_inner (e i) (T (e i)) (e j) (T (e j))))]
+  simp_rw [integral_finsetSum _ (fun j _ => integrable_gaussian_four_inner _ _ _ _),
+    gaussian_integral_four_inner, Finset.sum_add_distrib]
+  rw [hfirst, hsecond, hthird]
+  ring
 
 theorem gaussian_integral_bilinear_sq_ge_trace_sq
     (A : E →L[ℝ] E →L[ℝ] ℝ) (hA : ∀ u v, A u v = A v u)

@@ -8,6 +8,8 @@ public import Mathlib.LinearAlgebra.Trace
 public import Mathlib.Topology.Algebra.Module.FiniteDimension
 public import Mathlib.Topology.MetricSpace.Bounded
 
+public import Mathlib.Topology.Sequences
+
 @[expose] public section
 open MeasureTheory Metric Set Filter Topology
 open scoped NNReal ENNReal
@@ -71,5 +73,16 @@ theorem isCompact_rankProjectionSet (m n : ℕ) : IsCompact (rankProjectionSet m
     ‖P‖ = ‖P.range.starProjection‖ := congrArg norm hEq
     _ ≤ 1 := P.range.starProjection_norm_le
   simpa only [mem_closedBall, dist_zero_right] using hn
+
+theorem exists_tendsto_planeProjection_subseq (V : ℕ → Plane m n) :
+    ∃ W : Plane m n, ∃ φ : ℕ → ℕ, StrictMono φ ∧
+      Tendsto (fun i ↦ planeProjection (V (φ i))) atTop (𝓝 (planeProjection W)) := by
+  have hmem (i : ℕ) : planeProjection (V i) ∈ rankProjectionSet m n := by
+    rw [← range_planeProjection]
+    exact mem_range_self (V i)
+  obtain ⟨P, hP, φ, hφ, ht⟩ := (isCompact_rankProjectionSet m n).tendsto_subseq hmem
+  rw [← range_planeProjection] at hP
+  obtain ⟨W, rfl⟩ := hP
+  exact ⟨W, φ, hφ, ht⟩
 
 end Preiss

@@ -113,24 +113,12 @@
     },
     "lem:vague-countable-metric": {
       "lean_names": [
-        "Preiss.RegularEuclideanMeasure",
-        "Preiss.vagueTestDistance",
-        "Preiss.VagueMetrization",
-        "Preiss.exists_vagueMetrization",
-        "Preiss.vagueMetric_tendsto_iff",
-        "Preiss.vagueMetric_separates",
-        "Preiss.vagueMetric_finite_cover_of_compact"
+        "Preiss.exists_vagueMetrization"
       ],
       "planned_lean_names": [
-        "Preiss.RegularEuclideanMeasure",
-        "Preiss.vagueTestDistance",
-        "Preiss.VagueMetrization",
-        "Preiss.exists_vagueMetrization",
-        "Preiss.vagueMetric_tendsto_iff",
-        "Preiss.vagueMetric_separates",
-        "Preiss.vagueMetric_finite_cover_of_compact"
+        "Preiss.exists_vagueMetrization"
       ],
-      "status": "source interface written",
+      "status": "Canonical proof currently unfinished. Keep this obligation separate from statements quantified over a supplied metrization.",
       "files": [
         "Preiss/Analysis/Vague/Metrization.lean"
       ],
@@ -1114,15 +1102,17 @@
     "lem:gaussian-wick-fourth": {
       "lean_names": [
         "Preiss.gaussian_integral_inner_pow_even",
-        "Preiss.gaussian_integral_inner_sq_mul_inner_sq"
+        "Preiss.gaussian_integral_inner_sq_mul_inner_sq",
+        "Preiss.gaussian_integral_four_inner"
       ],
       "planned_lean_names": [
         "Preiss.gaussian_integral_inner_pow_even",
-        "Preiss.gaussian_integral_inner_sq_mul_inner_sq"
+        "Preiss.gaussian_integral_inner_sq_mul_inner_sq",
+        "Preiss.gaussian_integral_four_inner"
       ],
       "status": "source interface written",
       "files": [
-        "Preiss/Analysis/GaussianQuadraticForms.lean"
+        "Preiss/Analysis/GaussianMoments.lean"
       ],
       "planned_file": "Preiss/Analysis/GaussianQuadraticForms.lean"
     },
@@ -1375,6 +1365,76 @@
       "status": "existing upstream",
       "files": [
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      ]
+    },
+    "lem:vague-metric-properties": {
+      "lean_names": [
+        "Preiss.vagueMetric_tendsto_iff",
+        "Preiss.vagueMetric_separates",
+        "Preiss.vagueMetric_finite_cover_of_compact"
+      ],
+      "status": "Canonical proofs already kernel-checked; no dependence on exists_vagueMetrization.",
+      "files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ],
+      "planned_lean_names": [
+        "Preiss.vagueMetric_tendsto_iff",
+        "Preiss.vagueMetric_separates",
+        "Preiss.vagueMetric_finite_cover_of_compact"
+      ]
+    },
+    "def:vague-metrization": {
+      "lean_names": [
+        "Preiss.RegularEuclideanMeasure",
+        "Preiss.vagueTestDistance",
+        "Preiss.VagueMetrization"
+      ],
+      "status": "Definitions contain no placeholders. This is data/specification, not a claim that such data exist.",
+      "files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ],
+      "planned_lean_names": [
+        "Preiss.RegularEuclideanMeasure",
+        "Preiss.vagueTestDistance",
+        "Preiss.VagueMetrization"
+      ]
+    },
+    "lem:gaussian-projection-integrability": {
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_pow",
+        "Preiss.integrable_gaussian_inner_prod",
+        "Preiss.integrable_gaussian_four_inner"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianMoments.lean"
+      ]
+    },
+    "lem:real-gaussian-even-moments": {
+      "lean_names": [
+        "Preiss.integral_gaussianReal_zero_pow_even"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianMoments.lean"
+      ]
+    },
+    "lem:quadratic-exponential-even-derivatives": {
+      "lean_names": [
+        "Preiss.iteratedDeriv_exp_quadratic_even"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianDerivatives.lean"
+      ]
+    },
+    "lem:iterated-derivative-id-product": {
+      "lean_names": [
+        "Preiss.iteratedDeriv_id_mul_zero"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianDerivatives.lean"
       ]
     },
     "lem:uniform-ball-boundary": {
@@ -1808,6 +1868,80 @@
       ],
       "planned_file": "Preiss/Uniform/FlatnessBasic.lean",
       "status": "Canonical integration CI pending; minimizer helpers locally kernel-checked."
+    },
+    "lem:subsequence-limit-criterion": {
+      "lean_names": [
+        "Preiss.tendsto_of_subsequence_subsequence"
+      ],
+      "files": [
+        "Preiss/Analysis/SequentialLimits.lean"
+      ],
+      "planned_file": "Preiss/Analysis/SequentialLimits.lean",
+      "status": "Metric-space scratch passed with only standard axioms; canonical module integration pending."
+    },
+    "lem:vague-projection-energy": {
+      "lean_names": [
+        "Preiss.vague_integral_projectionEnergy_moving"
+      ],
+      "files": [
+        "Preiss/Analysis/Vague/ProjectionEnergy.lean"
+      ],
+      "planned_file": "Preiss/Analysis/Vague/ProjectionEnergy.lean",
+      "status": "Metric-space scratch passed with only standard axioms; canonical module integration pending."
+    },
+    "lem:flatness-vague-general": {
+      "lean_names": [
+        "Preiss.flatness_tendsto_of_vague"
+      ],
+      "files": [
+        "Preiss/Uniform/FlatnessVague.lean"
+      ],
+      "planned_file": "Preiss/Uniform/FlatnessVague.lean",
+      "status": "Metric-space scratch passed with only standard axioms; canonical module integration pending."
+    },
+    "lem:moving-set-measure-bounds": {
+      "lean_names": [
+        "Preiss.measure_le_of_pointwise_eventually_mem",
+        "Preiss.le_measure_of_pointwise_eventually_notMem"
+      ],
+      "planned_lean_names": [
+        "Preiss.measure_le_of_pointwise_eventually_mem",
+        "Preiss.le_measure_of_pointwise_eventually_notMem"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Analysis/MovingSets.lean"
+      ],
+      "planned_file": "Preiss/Analysis/MovingSets.lean",
+      "verification": "Local exact-source Lean check passed with only standard axioms; authoritative integration status is blueprint/kernel-checkpoint.json at its source_revision."
+    },
+    "lem:projection-distance": {
+      "lean_names": [
+        "Preiss.infDist_submodule_eq_norm_sub_starProjection"
+      ],
+      "planned_lean_names": [
+        "Preiss.infDist_submodule_eq_norm_sub_starProjection"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Geometry/Projections.lean"
+      ],
+      "planned_file": "Preiss/Geometry/Projections.lean",
+      "verification": "Local exact-source Lean check passed with only standard axioms; authoritative integration status is blueprint/kernel-checkpoint.json at its source_revision."
+    },
+    "lem:plane-projection-subsequence": {
+      "lean_names": [
+        "Preiss.exists_tendsto_planeProjection_subseq"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_tendsto_planeProjection_subseq"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Geometry/PlaneTopology.lean"
+      ],
+      "planned_file": "Preiss/Geometry/PlaneTopology.lean",
+      "verification": "Local exact-source Lean check passed with only standard axioms; authoritative integration status is blueprint/kernel-checkpoint.json at its source_revision."
     }
   },
   "pending": [],

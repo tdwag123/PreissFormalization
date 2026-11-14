@@ -220,49 +220,48 @@
       "id": "lem:uniform-near-support-compactness",
       "audit_code": "S05c",
       "title": "Uniform compactness with centers approaching the support",
-      "statement_tex": "If every $\\nu_i$ has support-centered ball law $\\nu_i(B(y,r))=r^m$ and $\\operatorname{dist}(0,\\operatorname{supp}\\nu_i)\\to0$, then some subsequence converges vaguely to a member of $\\mathcal U_m$.",
+      "statement_tex": "Let $\\nu_i$ be regular measures with nonempty support and support-centered closed-ball law $\\nu_i(\\overline B(y,r))=r^m$ for every support center $y$ and $r>0$. If $\\operatorname{dist}(0,\\operatorname{supp}\\nu_i)\\to0$, some subsequence converges vaguely to a member of $\\mathcal U_m$. This includes $m=0$.",
       "hypotheses": [
         "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
         "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
         "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
       ],
       "deps": [
-        "lem:vague-support-approximation",
-        "lem:vague-support-limit",
-        "thm:compactness"
+        "lem:uniform-compactness",
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition"
       ],
       "lean_name": "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero",
       "file": "Preiss/MeasureTheory/Uniform/Compactness.lean",
       "core_vs_companion": "core",
       "status": "new",
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
-      "proof_sketch_tex": "A vaguely convergent sequence in $\\mathcal U_m$ has a limit in $\\mathcal U_m$.\nThe family is sequentially compact by upstream compact mass bounds.\nFirst approximate support centres using S04; squeeze open and closed radii to\nrecover the exact ball law, rather than assuming spheres of an arbitrary limit\nalready have zero mass. The origin's positive ball mass excludes the zero limit.\nAlso prove the variant where the measures are uniform with the same constant\nand their supports approach the origin, without requiring the origin in every\nsupport. This is needed in the bounded-hole argument R05 below.",
+      "proof_sketch_tex": "Choose a nearest support point $y_i$ to the origin; closedness and properness give existence because each support is nonempty. The distance hypothesis implies $y_i\\to0$. Recenter each measure by $D^m_{y_i,1}$, whose unit-uniform ball law follows from blow-up transport. Extract a unit-uniform vague limit by centered compactness, then undo translations using moving blow-up continuity and the composition identity. No initial-index truncation or positive-dimensional hypothesis is needed.",
       "repair": [
         "Needed when blow-up centers are projections onto a plane rather than support points."
       ],
-      "interface_status": "proposed; not claimed Lean-compiled"
+      "interface_status": "proposed; not claimed Lean-compiled",
+      "proof_verification": "Exact canonical declaration with exact copied proved dependencies passed tmp/lean-audit/UniformNearOriginCheck.lean, Lean4.34.1, only propext/Classical.choice/Quot.sound. Canonical module integration pending CI."
     },
     {
       "id": "lem:vague-countable-metric",
       "audit_code": "S06a",
-      "title": "Countable compact-test metric for locally bounded families",
-      "statement_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
+      "title": "Existence of a countable-test vague metric",
+      "statement_tex": "For every natural n, VagueMetrization n is inhabited.",
       "hypotheses": [
-        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
-        "All asserted vague limits are regular; moving parameters, support lower bounds, and common compact mass bounds are exactly as quantified in statement_tex.",
-        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+        "n is an arbitrary natural number."
       ],
       "deps": [
-        "gmt:vague"
+        "def:vague-metrization"
       ],
-      "lean_name": "Preiss.vagueMetric_tendsto_iff",
-      "file": "Preiss/MeasureTheory/Vague/Metrization.lean",
+      "lean_name": "Preiss.exists_vagueMetrization",
+      "file": "Preiss/Analysis/Vague/Metrization.lean",
       "core_vs_companion": "core",
       "status": "new",
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
-      "proof_sketch_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
+      "proof_sketch_tex": "Construct a countable determining compact-test family containing nonnegative ball cutoffs; use the weighted test distance and prove its metric and sequential convergence specifications.",
       "repair": [],
-      "interface_status": "proposed; not claimed Lean-compiled"
+      "interface_status": "Source interface compiled; existence proof unfinished."
     },
     {
       "id": "lem:vague-diagonal",
@@ -297,9 +296,10 @@
         "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
       ],
       "deps": [
-        "lem:vague-countable-metric",
         "lem:uniform-compactness",
-        "lem:vague-moving-blowups"
+        "lem:vague-moving-blowups",
+        "def:vague-metrization",
+        "lem:blowup-composition"
       ],
       "lean_name": "Preiss.unitUniform_totallyBounded",
       "file": "Preiss/MeasureTheory/Vague/Metrization.lean",

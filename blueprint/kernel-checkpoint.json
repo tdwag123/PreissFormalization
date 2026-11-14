@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "e5215f742fe5113490098fa3122e22045d3f2129",
+  "source_revision": "9c7441cad8317433f5ae236e9d233d88c6e07ea6",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -867,6 +867,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.ball_ae_eq_closedBall_of_continuous_profile": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BallBoundary.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.bilinearTrace": {
       "project": "local",
       "kind": "def",
@@ -1030,6 +1042,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.continuous_integral_projectionEnergy": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatnessMinimum.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.continuous_momentKernel": {
       "project": "local",
@@ -1608,15 +1632,14 @@
     "Preiss.exists_flatnessCutoff": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatnessContinuity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_flatnessGap": {
       "project": "local",
@@ -1784,15 +1807,14 @@
     "Preiss.exists_plane_ball_energy_le_of_flatness_le": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatnessContinuity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_projection_hole_disk_family": {
       "project": "local",
@@ -2138,6 +2160,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.flatnessEnergy_eq_integral_projection": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatnessMinimum.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.flatnessEnergy_nonneg": {
       "project": "local",
       "kind": "theorem",
@@ -2202,15 +2236,26 @@
     "Preiss.flatness_exists_minimizer": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatnessContinuity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.flatness_exists_minimizer_of_finite_on_compacts": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatnessMinimum.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.flatness_nonneg": {
       "project": "local",
@@ -2692,6 +2737,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.integrable_flatnessEnergy_integrand": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatnessBasic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integrable_gaussianMomentKernel": {
       "project": "local",
       "kind": "theorem",
@@ -2789,6 +2846,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_ball_eq_closedBall_of_continuous_profile": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BallBoundary.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.integral_gaussian_mul_homogeneous": {
       "project": "local",
@@ -3243,6 +3312,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.measure_sphere_eq_zero_of_continuous_profile": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BallBoundary.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.measure_support_map_homeomorph": {
       "project": "local",
       "kind": "theorem",
@@ -3400,6 +3481,18 @@
         "propext"
       ],
       "kernel_status": "definition_checked"
+    },
+    "Preiss.nonempty_plane_of_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneTopology.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.norm_gaussianMomentForm_le": {
       "project": "local",
@@ -4223,6 +4316,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.unitUniform_ball_ae_eq_closedBall": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/BallBoundary.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

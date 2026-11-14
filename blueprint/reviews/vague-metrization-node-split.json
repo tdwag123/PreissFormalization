@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "purpose": "Separate supplied vague-metric data and proved consequences from existence of that data, so theorem/kernel status does not conflate them.",
+  "source_file": "Preiss/Analysis/Vague/Metrization.lean",
+  "nodes": [
+    {
+      "id": "def:vague-metrization",
+      "kind": "definition",
+      "title": "Countable-test vague metric specification",
+      "lean_names": [
+        "Preiss.RegularEuclideanMeasure",
+        "Preiss.vagueTestDistance",
+        "Preiss.VagueMetrization"
+      ],
+      "statement_tex": "A regular Euclidean measure is a positive Borel measure equipped with regularity. A vague metrization consists of compactly supported continuous tests $f_j$, a metric on these measures whose distance is $\\sum_{j\\geq0}2^{-(j+1)}\\min(1,|\\int f_j\\,d\\mu-\\int f_j\\,d\\nu|)$, cutoff tests majorizing $1$ on each positive-radius closed ball and nonnegative everywhere, and equivalence between metric sequential convergence and vague convergence for every sequence of regular measures.",
+      "hypotheses": [
+        "n : Nat",
+        "The metric and all of its specifications are explicit fields; the definition chooses no data from an existence theorem."
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "status_note": "Definitions contain no placeholders. This is data/specification, not a claim that such data exist."
+    },
+    {
+      "id": "lem:vague-countable-metric",
+      "kind": "lemma",
+      "title": "Existence of a countable-test vague metric",
+      "lean_names": [
+        "Preiss.exists_vagueMetrization"
+      ],
+      "statement_lean": "theorem exists_vagueMetrization (n : ℕ) : Nonempty (VagueMetrization n)",
+      "deps": [
+        "def:vague-metrization"
+      ],
+      "status_note": "Canonical proof currently unfinished. Keep this obligation separate from statements quantified over a supplied metrization."
+    },
+    {
+      "id": "lem:vague-metric-properties",
+      "kind": "lemma",
+      "title": "Consequences of a supplied vague metric",
+      "lean_names": [
+        "Preiss.vagueMetric_tendsto_iff",
+        "Preiss.vagueMetric_separates",
+        "Preiss.vagueMetric_finite_cover_of_compact"
+      ],
+      "statement_tex": "For supplied $M:\\mathrm{VagueMetrization}(n)$, metric convergence is equivalent to vague convergence; its countable-test distance separates measures; and every compact family has a finite cover by metric balls of every positive radius, with centers in that family.",
+      "hypotheses": [
+        "M : VagueMetrization n is supplied explicitly.",
+        "The finite-cover conclusion assumes the family is compact in M.metric."
+      ],
+      "deps": [
+        "def:vague-metrization"
+      ],
+      "status_note": "Canonical proofs already kernel-checked; no dependence on exists_vagueMetrization."
+    }
+  ],
+  "dependency_replacements": {
+    "lem:uniform-finite-metric-covers": {
+      "remove": [
+        "lem:vague-countable-metric"
+      ],
+      "add": [
+        "def:vague-metrization",
+        "lem:uniform-compactness",
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition"
+      ],
+      "reason": "unitUniform_totallyBounded receives M as an argument and invokes M.tendsto_iff; normalization/scalar transport uses the scaling declarations currently grouped under blowup-composition."
+    },
+    "lem:vague-diagonal": {
+      "retain": [
+        "lem:vague-countable-metric"
+      ],
+      "reason": "Current canonical signature has no supplied M, so a proof via this metric must first obtain it. A future with-metrization helper can depend only on the data node."
+    }
+  },
+  "implementation_notes": [
+    "Root owns plan/TeX reconciliation.",
+    "The persistent declaration map must assign each listed declaration to exactly the new intended node; move the old seven-name grouping rather than duplicate it.",
+    "Downstream callers using existence to choose M retain the existence dependency; callers universally quantified over M should not inherit it."
+  ]
+}

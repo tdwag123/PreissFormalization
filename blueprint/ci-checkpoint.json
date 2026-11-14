@@ -126,13 +126,13 @@
     "note": "Other compiled modules include graph rectifiability, density adapters, tangent existence, excess-dimension endpoint, coefficient uniqueness, and scalar covariance. Repairs awaiting the next full build and axiom audit."
   },
   "latest_proof_checkpoint": {
-    "commit": "e5215f7",
-    "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43590064260",
+    "commit": "9c7441c",
+    "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43591503607",
     "status": "success",
     "all_local_modules_compiled": true,
     "kernel_axiom_audit": "passed",
-    "axiom_reports": 433,
-    "unfinished_declarations": 139,
+    "axiom_reports": 442,
+    "unfinished_declarations": 136,
     "report": "blueprint/kernel-checkpoint.json",
     "note": "Preiss.preiss remains dependent on sorryAx. Later working edits require separate verification."
   }

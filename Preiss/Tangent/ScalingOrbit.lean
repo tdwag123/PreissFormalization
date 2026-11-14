@@ -1,5 +1,6 @@
 import Preiss.Tangent.Defs
 import Preiss.Uniform.Defs
+import Preiss.Uniform.Compactness
 
 open MeasureTheory Filter
 namespace Preiss
@@ -15,7 +16,9 @@ def IsUniformPseudotangent (m : ℕ) (ν ξ : Measure (Euclidean n)) : Prop :=
 theorem uniformPseudotangent_isUnitUniform (ν ξ : Measure (Euclidean n))
     (hν : IsUnitUniform m ν) (hξ : IsUniformPseudotangent m ν ξ) :
     IsUnitUniform m ξ := by
-  sorry
+  obtain ⟨hreg, a, r, ha, hr, hlim⟩ := hξ
+  exact isUnitUniform_of_vague (fun i => dimensionalBlowup m ν (a i) (r i))
+    (fun i => isUnitUniform_dimensionalBlowup ν hν (a i) (ha i) (hr i).1) ξ hreg hlim
 
 theorem uniformPseudotangent_trans (ν ξ ζ : Measure (Euclidean n))
     (hν : IsUnitUniform m ν) (hξ : IsUniformPseudotangent m ν ξ)

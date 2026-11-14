@@ -1037,20 +1037,23 @@
       "quantifiers": "Fixed positive η,λ,R; all-r intersection is allowed.",
       "dependencies": [
         "def:weak-approximation-good-set",
-        "lem:grassmannian"
+        "lem:grassmannian",
+        "lem:moving-set-measure-bounds",
+        "lem:projection-distance",
+        "lem:plane-projection-subsequence"
       ],
       "proposed_lean_name": "isClosed_weakApproximationGoodSet",
       "proposed_file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "scope": "core",
-      "note": "Prove joint LSC moving-open-set mass and USC closed-ball mass, approximate centres via projections; project closed relation along compact plane witness.",
-      "status": "proposed_interface",
+      "note": "Sequential closedness follows from generic moving-set measure bounds, the infDist/projection identity, and compactness of fixed-rank projections. Finite measure is retained for continuity from above.",
+      "status": "proof_candidate",
       "statement_tex": "The relaxed good set \\(G(\\nu,m,\\eta,\\lambda,R)\\) is closed.\nFor each fixed radius, the relation in \\(x,V\\) is closed; projection along the compact plane space and intersection over radii preserve closedness.",
       "hypotheses_tex": "\\(\\nu\\) is finite and regular; use the compact orthogonal-projection topology on \\(m\\)-planes and fixed positive \\(\\eta,\\lambda,R\\).",
       "actual_lean": {
         "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
         "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
         "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-        "status": "sorry_placeholder",
+        "status": "proof_candidate",
         "lean_names": [
           "Preiss.isClosed_weakApproximationGoodSet"
         ],
@@ -1059,7 +1062,7 @@
             "lean_name": "Preiss.isClosed_weakApproximationGoodSet",
             "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
             "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-            "status": "sorry_placeholder"
+            "status": "proof_candidate"
           }
         ]
       }
@@ -1068,8 +1071,8 @@
       "id": "lem:weak-approximation-good-exhaustion",
       "title": "Aperture slack gives countable good-set exhaustion",
       "statement": "WLA at x implies membership in some G(η,1/N,1/N) for every η>0. Membership at aperture η/2 gives the original two clauses at η, with strict upper error and open lower balls.",
-      "hypotheses": "ν=H^m|E finite regular; positive apertures.",
-      "quantifiers": "For each η>0 choose N∈positive naturals; conversely retain its λ,R.",
+      "hypotheses": "Any measure on Euclidean space; positive requested apertures. No finiteness or regularity hypothesis.",
+      "quantifiers": "For every η>0 there is N∈ℕ, with both lower coefficient and radius cutoff equal to 1/(N+1).",
       "dependencies": [
         "def:weak-approximation",
         "def:weak-approximation-good-set"
@@ -1079,8 +1082,8 @@
       "scope": "core",
       "note": "",
       "status": "proposed_interface",
-      "statement_tex": "Weak linear approximation at \\(x\\) implies, for every \\(\\eta>0\\), membership in some\n\\(G(\\nu,m,\\eta,1/N,1/N)\\), \\(N\\geq1\\).\nConversely membership with aperture \\(\\eta/2\\) gives the original approximation clauses at aperture \\(\\eta\\).",
-      "hypotheses_tex": "\\(\\nu=\\mathcal H^m\\!\\restriction E\\) is finite and regular. Use aperture slack to replace non-strict upper inequalities and closed lower balls by the original strict/open clauses.",
+      "statement_tex": "For any measure $\\mu$ on $\\mathbb R^n$, weak linear approximation at $x$ is equivalent to: for every $\\eta>0$ there exists $N\\in\\mathbb N$ with $x\\in G(\\mu,m,\\eta,1/(N+1),1/(N+1))$. The reverse implication uses the good-set condition at aperture $\\eta/2$ to obtain strict upper error and open lower balls at aperture $\\eta$.",
+      "hypotheses_tex": "No finiteness or regularity of $\\mu$ is assumed.",
       "actual_lean": {
         "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
         "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
@@ -1141,8 +1144,8 @@
       "id": "lem:tube-support-upgrade",
       "title": "Small tube-error mass implies support containment",
       "statement": "Uniform lower mass δ*s^m at points of C plus error <δ*(η*r/2)^m outside the η*r/2 tube in ball a (2*r) implies C∩ball a r lies in the η*r tube.",
-      "hypotheses": "C⊆E; finite or locally finite reference ν; lower bounds at every point of C.",
-      "quantifiers": "∀a∈C and sufficiently small r; V fixed for that scale.",
+      "hypotheses": "Any measure μ; C an arbitrary set; a an arbitrary ambient point; δ>0, 0<η≤1, r>0. Lower ball mass bounds hold at every z∈C at the single radius ηr/2.",
+      "quantifiers": "For every ambient centre a and plane V at the stated scale; a need not belong to C.",
       "dependencies": [
         "def:plane"
       ],
@@ -1151,8 +1154,8 @@
       "scope": "core",
       "note": "",
       "status": "proposed_interface",
-      "statement_tex": "Suppose points \\(z\\in C\\) satisfy \\(\\nu(B_s(z))\\geq\\delta s^m\\) at small scales. If the mass outside the \\(\\eta r/2\\)-tube about \\(a+V\\), inside \\(B_{2r}(a)\\), is less than \\(\\delta(\\eta r/2)^m\\), then\n\\[\n C\\cap B_r(a)\\subset\\{z:\\operatorname{dist}(z,a+V)\\leq\\eta r\\}.\n\\]",
-      "hypotheses_tex": "The lower bounds hold uniformly at every point of \\(C\\), and all radii used lie below their common cutoff. Here \\(\\delta,\\eta,r>0\\).",
+      "statement_tex": "Let $\\delta>0$, $0<\\eta\\leq1$, and $r>0$. If $\\mu(B(z,\\eta r/2))\\geq\\delta(\\eta r/2)^m$ for every $z\\in C$, and the mass in $B(a,2r)$ outside the closed $\\eta r/2$ tube about $a+V$ is less than $\\delta(\\eta r/2)^m$, then $C\\cap B(a,r)$ is contained in the closed $\\eta r$ tube about $a+V$.",
+      "hypotheses_tex": "The measure $\\mu$ and set $C$ are arbitrary. The centre $a\\in\\mathbb R^n$ need not lie in $C$. No finiteness or measurability hypothesis is required.",
       "actual_lean": {
         "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
         "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
