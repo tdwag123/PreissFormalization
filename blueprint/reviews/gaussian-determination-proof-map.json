@@ -1,0 +1,16 @@
+{
+  "local_check": "tmp/GaussianDeterminationCheck.lean exited zero. Generic complex MGF uniqueness and full original measure determinacy printed only propext, Classical.choice, Quot.sound.",
+  "existing_node_additional_deps": {
+    "lem:moment-determination": [
+      "lem:complex-mgf-moment-determination",
+      "lem:gaussian-weight-finite",
+      "lem:gaussian-weight-exponential"
+    ]
+  },
+  "proof_sketch_tex": "Weight the two measures by $e^{-\\|z\\|^2}$. Polynomial growth makes the weighted measures finite. For every vector $w$ and every real $t$, the inequality\n\\[\nt\\langle z,w\\rangle-\\|z\\|^2\\leq |t|^2\\|w\\|^2/2-\\|z\\|^2/2\n\\]\ngives integrability of the exponential of the projection under each weighted measure. The assumed polynomial equalities give equality of all natural moments of every projection. The entire complex moment generating functions have identical derivatives at zero, so analytic uniqueness identifies them. Evaluating at the imaginary unit identifies the characteristic functions of the finite weighted measures. Mathlib's characteristic-function uniqueness theorem identifies these measures, and cancellation of the strictly positive finite Gaussian density identifies the original measures. This avoids expanding a Gaussian at an arbitrary rate without domination.",
+  "new_modules": [
+    "Preiss/Analysis/MomentDetermination.lean",
+    "Preiss/Analysis/GaussianWeight.lean"
+  ],
+  "canonical_integration": "awaiting current CI"
+}

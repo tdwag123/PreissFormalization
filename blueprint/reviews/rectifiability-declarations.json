@@ -1,5 +1,5 @@
 {
-  "status": "Authoritative compiled status: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json (consult its source_revision). Source-status fields classify current source and do not certify later edits. The latest FinitePieces proof draft still requires integration CI.",
+  "status": "Authoritative compiled status: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json (consult its source_revision). Source-status fields classify current source and do not certify edits newer than that checkpoint.",
   "labels": {
     "def:cone": {
       "lean_name": "Preiss.cone",
@@ -386,7 +386,7 @@
           "lean_name": "Preiss.hausdorff_restrict_le_measure_of_ball_bounds",
           "file": "Preiss/Density/PowerComparison.lean",
           "module": "Preiss.Density.PowerComparison",
-          "status": "unproved_statement",
+          "status": "proof_candidate",
           "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
@@ -425,10 +425,10 @@
           "file": "Preiss/Density/FinitePieces.lean",
           "module": "Preiss.Density.FinitePieces",
           "status": "proof_candidate",
-          "verification": "Local check elaborated the complete proof except one obsolete scalar-monotonicity lemma name; replacement is a proof draft pending full CI."
+          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         }
       ],
-      "verification": "Local check elaborated the complete proof except one obsolete scalar-monotonicity lemma name; replacement is a proof draft pending full CI."
+      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
     },
     "lem:representation": {
       "lean_name": "Preiss.rectifiable_iff_density_representation",
@@ -548,7 +548,7 @@
       "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.lower_density_pos_of_weakApproximation",
         "Preiss.lower_power_bound_of_weakApproximation"
@@ -558,7 +558,7 @@
           "lean_name": "Preiss.lower_density_pos_of_weakApproximation",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement",
+          "status": "proof_candidate",
           "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {
@@ -575,7 +575,7 @@
       "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
       "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.weakApproximation_restrict_of_negligible_sdiff",
         "Preiss.negligibleDeletionAt"
@@ -585,7 +585,7 @@
           "lean_name": "Preiss.weakApproximation_restrict_of_negligible_sdiff",
           "file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Restriction",
-          "status": "unproved_statement",
+          "status": "proof_candidate",
           "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
         },
         {

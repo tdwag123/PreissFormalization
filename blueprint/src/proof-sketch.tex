@@ -149,6 +149,12 @@ at infinity, a gap between flat and nonflat conical limits, and rigidity when
 the limit at infinity is flat. They are proved without using rectifiability.
 
 The ball law identifies radial distributions and hence Gaussian integrals.
+For homogeneous nonnegative weights, the implementation uses a reusable
+alternative: write $e^{-|z|^2}$ as the exponential tail integral from
+$|z|^2$ to infinity, apply nonnegative Fubini, and substitute the weighted
+closed-ball power law. Euler's Gamma integral then gives both integrability
+and the exact comparison with the weighted unit closed ball. This argument
+works for a Borel measure on a normed additive commutative group.
 Polynomial growth gives integrable Gaussian-polynomial bounds and tails that
 are uniform over the normalized family. These estimates extend vague
 convergence to the unbounded tests needed for moments. Divide every Gaussian
@@ -169,11 +175,15 @@ The scaling identity for moments now identifies every Gaussian-polynomial
 moment of a limit at infinity. Odd scaled moments vanish; even leading
 coefficients carry the essential factorial from their Taylor expansion.
 Two candidate limits have the same moments and hence are equal. For this
-last step, first extend equality between nearby Gaussian rates by a dominated
-series, then iterate. The algebra of Gaussian-weighted polynomials separates
-points on the one-point compactification; weighted Stone--Weierstrass and
-Gaussian integrability identify compact-test integrals. Ordinary polynomial
-approximation on a compact set alone would not control the tails.
+last step, weight each measure by $e^{-|z|^2}$ to obtain finite measures.
+Completing the square gives exponential moments at every real parameter
+for each linear projection. Equality of polynomial moments identifies all
+derivatives at zero of their entire complex moment generating functions;
+analytic uniqueness identifies these functions. Their values at the
+imaginary unit identify the characteristic functions, hence the weighted
+measures. Cancel the strictly positive Gaussian weight to recover equality
+of the original measures. The exponential-moment estimate supplies the
+tail control needed for this uniqueness argument.
 Compactness promotes subsequential uniqueness to full convergence. Dilation
 invariance then makes the unique limit conical.
 

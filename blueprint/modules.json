@@ -56,6 +56,32 @@
       "purpose": "Canonical Analysis.BilinearTrace interfaces."
     },
     {
+      "module": "Preiss.Analysis.GaussianBallPower",
+      "file": "Preiss/Analysis/GaussianBallPower.lean",
+      "purpose": "Reusable Analysis.GaussianBallPower interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.MeasureTheory.Integral.ExpDecay",
+        "Mathlib.MeasureTheory.Measure.Prod"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.MeasureTheory.Integral.ExpDecay",
+        "Mathlib.MeasureTheory.Measure.Prod"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:gaussian-ball-power",
+        "lem:exponential-tail-integral"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.GaussianGrowth",
       "file": "Preiss/Analysis/GaussianGrowth.lean",
       "current_source_imports": [
@@ -108,15 +134,20 @@
       "module": "Preiss.Analysis.GaussianMomentDetermination",
       "file": "Preiss/Analysis/GaussianMomentDetermination.lean",
       "current_source_imports": [
-        "Preiss.Analysis.GaussianGrowth"
+        "Preiss.Analysis.GaussianWeight",
+        "Preiss.Analysis.MomentDetermination"
       ],
       "local_imports": [
-        "Preiss.Analysis.GaussianGrowth"
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianWeight",
+        "Preiss.Analysis.MomentDetermination"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Analysis.GaussianGrowth"
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianWeight",
+        "Preiss.Analysis.MomentDetermination"
       ],
       "nodes": [
         "lem:moment-determination"
@@ -177,6 +208,33 @@
       "local_imports": [
         "Preiss.Analysis.GaussianGrowth",
         "Preiss.Analysis.Vague.CompactTests"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Analysis.GaussianWeight",
+      "file": "Preiss/Analysis/GaussianWeight.lean",
+      "purpose": "Reusable Analysis.GaussianWeight interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+        "Mathlib.MeasureTheory.Measure.WithDensity",
+        "Preiss.Analysis.GaussianGrowth"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+        "Mathlib.MeasureTheory.Measure.WithDensity"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.GaussianGrowth"
+      ],
+      "nodes": [
+        "lem:gaussian-weight-finite",
+        "lem:gaussian-weight-exponential"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.GaussianGrowth"
       ],
       "scope": "core"
     },
@@ -319,6 +377,29 @@
       "proof_imports": [],
       "nodes": [
         "lem:measure-support-transport"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Analysis.MomentDetermination",
+      "file": "Preiss/Analysis/MomentDetermination.lean",
+      "purpose": "Reusable Analysis.MomentDetermination interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Analytic.Uniqueness",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Defs",
+        "Mathlib.Probability.Moments.ComplexMGF"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Analytic.Uniqueness",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Defs",
+        "Mathlib.Probability.Moments.ComplexMGF"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:complex-mgf-moment-determination"
       ],
       "source_exists": true,
       "local_imports": [],
@@ -646,6 +727,30 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Density.Limits interfaces."
+    },
+    {
+      "module": "Preiss.Density.LowerBounds",
+      "file": "Preiss/Density/LowerBounds.lean",
+      "purpose": "Reusable Density.LowerBounds interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.Densities.Basic",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.Densities.Basic"
+      ],
+      "proof_imports": [],
+      "nodes": [
+        "lem:lower-density-from-power"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
     },
     {
       "module": "Preiss.Density.PowerComparison",
@@ -1389,11 +1494,13 @@
         "FormalizingGMT.Densities.HausdorffUpperDensityInside",
         "FormalizingGMT.Densities.HausdorffUpperDensityOutside",
         "Preiss.Density.Defs",
+        "Preiss.Density.LowerBounds",
         "Preiss.Density.PowerComparison",
         "Preiss.Rectifiability.WeakApproximation.Restriction"
       ],
       "local_imports": [
         "Preiss.Density.Defs",
+        "Preiss.Density.LowerBounds",
         "Preiss.Density.PowerComparison",
         "Preiss.Rectifiability.WeakApproximation.Defs",
         "Preiss.Rectifiability.WeakApproximation.Restriction"
@@ -1404,6 +1511,7 @@
         "FormalizingGMT.Densities.HausdorffUpperDensityOutside"
       ],
       "proof_imports": [
+        "Preiss.Density.LowerBounds",
         "Preiss.Rectifiability.WeakApproximation.Defs",
         "Preiss.Rectifiability.WeakApproximation.Restriction"
       ],
@@ -1724,6 +1832,9 @@
         "Mathlib.MeasureTheory.Covering.Besicovitch",
         "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
         "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring",
         "Preiss.Rectifiability.WeakApproximation.Basic"
       ],
       "local_imports": [
@@ -1733,7 +1844,10 @@
       "mathlib_imports": [
         "Mathlib.MeasureTheory.Covering.Besicovitch",
         "Mathlib.MeasureTheory.Covering.BesicovitchVectorSpace",
-        "Mathlib.MeasureTheory.Measure.Regular"
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
       ],
       "gmt_imports": [],
       "proof_imports": [
@@ -3416,10 +3530,14 @@
         "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
         "Mathlib.MeasureTheory.Constructions.BorelSpace.Order",
         "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+        "Preiss.Analysis.GaussianBallPower",
         "Preiss.Geometry.PlaneMeasure",
-        "Preiss.Uniform.Defs"
+        "Preiss.Uniform.Defs",
+        "Preiss.Uniform.Homogeneous"
       ],
       "local_imports": [
+        "Preiss.Analysis.GaussianBallPower",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Planes",
         "Preiss.Uniform.Defs",
@@ -3429,10 +3547,12 @@
       "mathlib_imports": [
         "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
         "Mathlib.MeasureTheory.Constructions.BorelSpace.Order",
-        "Mathlib.MeasureTheory.Integral.Bochner.Basic"
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap"
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.GaussianBallPower",
         "Preiss.Geometry.Planes",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.GMTAdapters",
@@ -3680,7 +3800,9 @@
   "topological_order": [
     "Preiss.Analysis.AnnulusIntegrability",
     "Preiss.Analysis.BilinearTrace",
+    "Preiss.Analysis.GaussianBallPower",
     "Preiss.Geometry.Euclidean",
+    "Preiss.Analysis.MomentDetermination",
     "Preiss.Analysis.GradedProjection",
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
@@ -3689,6 +3811,7 @@
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Density.Limits",
     "Preiss.Density.Atoms",
+    "Preiss.Density.LowerBounds",
     "Preiss.Analysis.GaussianQuadraticForms",
     "Preiss.Analysis.GaussianGrowth",
     "Preiss.Analysis.Vague.CompactTests",
@@ -3702,7 +3825,7 @@
     "Preiss.Uniform.Moments",
     "Preiss.Analysis.PolynomialFeatures",
     "Preiss.Density.PowerComparison",
-    "Preiss.Analysis.GaussianMomentDetermination",
+    "Preiss.Analysis.GaussianWeight",
     "Preiss.Analysis.GaussianVague",
     "Preiss.Density.Adapters",
     "Preiss.Density.UpperBounds",
@@ -3722,6 +3845,7 @@
     "Preiss.Tangent.Defs",
     "Preiss.Uniform.Defs",
     "Preiss.Uniform.MomentForms",
+    "Preiss.Analysis.GaussianMomentDetermination",
     "Preiss.Density.HausdorffComparison",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Geometry.Cones",
@@ -3804,16 +3928,19 @@
   "preiss_import_closure": [
     "Preiss.Analysis.AnnulusIntegrability",
     "Preiss.Analysis.BilinearTrace",
+    "Preiss.Analysis.GaussianBallPower",
     "Preiss.Analysis.GaussianGrowth",
     "Preiss.Analysis.GaussianMomentDetermination",
     "Preiss.Analysis.GaussianQuadraticForms",
     "Preiss.Analysis.GaussianVague",
+    "Preiss.Analysis.GaussianWeight",
     "Preiss.Analysis.GradedProjection",
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
     "Preiss.Analysis.HausdorffLowerBound",
     "Preiss.Analysis.MeasureHull",
     "Preiss.Analysis.MeasureSupport",
+    "Preiss.Analysis.MomentDetermination",
     "Preiss.Analysis.PolynomialFeatures",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Analysis.Vague.CompactTests",
@@ -3827,6 +3954,7 @@
     "Preiss.Density.FinitePieces",
     "Preiss.Density.HausdorffComparison",
     "Preiss.Density.Limits",
+    "Preiss.Density.LowerBounds",
     "Preiss.Density.PowerComparison",
     "Preiss.Density.UpperBounds",
     "Preiss.Density.ZeroDimension",

@@ -1377,6 +1377,53 @@
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
       ]
     },
+    "lem:complex-mgf-moment-determination": {
+      "lean_names": [
+        "Preiss.complexMGF_eq_of_all_moments_eq"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/MomentDetermination.lean"
+      ]
+    },
+    "lem:gaussian-weight-finite": {
+      "lean_names": [
+        "Preiss.isFiniteMeasure_withDensity_gaussian"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianWeight.lean"
+      ]
+    },
+    "lem:gaussian-weight-exponential": {
+      "lean_names": [
+        "Preiss.integrable_exp_inner_mul_gaussian",
+        "Preiss.integrable_exp_inner_withDensity_gaussian"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianWeight.lean"
+      ]
+    },
+    "lem:exponential-tail-integral": {
+      "lean_names": [
+        "Preiss.lintegral_exp_neg_Ici"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianBallPower.lean"
+      ]
+    },
+    "lem:gaussian-ball-power": {
+      "lean_names": [
+        "Preiss.lintegral_gaussian_of_closedBall_power",
+        "Preiss.integral_gaussian_of_closedBall_power"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianBallPower.lean"
+      ]
+    },
     "lem:measure-support-transport": {
       "lean_names": [
         "Preiss.measure_support_map_homeomorph",
@@ -1686,6 +1733,20 @@
       ],
       "planned_file": "Preiss/Uniform/FlatnessBasic.lean",
       "status": "Proof draft awaiting canonical CI."
+    },
+    "lem:lower-density-from-power": {
+      "lean_names": [
+        "Preiss.lower_density_ge_of_ball_power_lower_bound"
+      ],
+      "planned_lean_names": [
+        "Preiss.lower_density_ge_of_ball_power_lower_bound"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Density/LowerBounds.lean"
+      ],
+      "planned_file": "Preiss/Density/LowerBounds.lean",
+      "verification": "Local Lean/kernel check passed with only standard axioms; full integration CI is separate."
     }
   },
   "pending": [],

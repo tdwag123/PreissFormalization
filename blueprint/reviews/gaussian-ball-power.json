@@ -1,0 +1,40 @@
+{
+  "node_id": "lem:gaussian-ball-power",
+  "title": "Gaussian integral from a centered power ball law",
+  "file": "Preiss/Analysis/GaussianBallPower.lean",
+  "lean_names": [
+    "Preiss.lintegral_exp_neg_Ici",
+    "Preiss.lintegral_gaussian_of_closedBall_power",
+    "Preiss.integral_gaussian_of_closedBall_power"
+  ],
+  "statements": [
+    {
+      "lean_name": "Preiss.lintegral_exp_neg_Ici",
+      "statement_lean": "theorem lintegral_exp_neg_Ici (a : ℝ) :\n    (∫⁻ t in Ici a, ENNReal.ofReal (Real.exp (-t))) = ENNReal.ofReal (Real.exp (-a))"
+    },
+    {
+      "lean_name": "Preiss.lintegral_gaussian_of_closedBall_power",
+      "statement_lean": "theorem lintegral_gaussian_of_closedBall_power\n    (ρ : Measure (E)) [SFinite ρ] (C d : ℝ) (hC : 0 ≤ C) (hd : 0 < d)\n    (hball : ∀ r : ℝ, 0 < r → ρ (closedBall 0 r) = ENNReal.ofReal (C * r ^ d)) :\n    (∫⁻ z, ENNReal.ofReal (Real.exp (-‖z‖ ^ 2)) ∂ρ) =\n      ENNReal.ofReal (Real.Gamma (d / 2 + 1) * C)"
+    },
+    {
+      "lean_name": "Preiss.integral_gaussian_of_closedBall_power",
+      "statement_lean": "theorem integral_gaussian_of_closedBall_power\n    (ρ : Measure (E)) [SFinite ρ] (C d : ℝ) (hC : 0 ≤ C) (hd : 0 < d)\n    (hball : ∀ r : ℝ, 0 < r → ρ (closedBall 0 r) = ENNReal.ofReal (C * r ^ d)) :\n    Integrable (fun z => Real.exp (-‖z‖ ^ 2)) ρ ∧\n      (∫ z, Real.exp (-‖z‖ ^ 2) ∂ρ) = Real.Gamma (d / 2 + 1) * C"
+    }
+  ],
+  "statement_tex": "For an s-finite positive measure $\\rho$ on a normed additive commutative group with its Borel measurable structure, $C\\geq0$, and $d>0$, if $\\rho(\\overline B(0,r))=Cr^d$ for every $r>0$, then $e^{-|z|^2}$ is integrable and its integral is $C\\Gamma(d/2+1)$. This requires only the centered ball law, not uniformity or translation invariance.",
+  "proof_sketch_tex": "Write $e^{-|z|^2}=\\int_{|z|^2}^\\infty e^{-t}\\,dt$. Nonnegative Fubini gives $\\int_0^\\infty e^{-t}\\rho(\\overline B(0,\\sqrt t))\\,dt$. Substitute the ball law and use Euler\\'s Gamma integral. Finiteness of the nonnegative integral gives Bochner integrability.",
+  "definition_dependencies": [],
+  "mathlib_dependencies": [
+    "MeasureTheory.integral_Ioi_of_hasDerivAt_of_tendsto'",
+    "MeasureTheory.lintegral_lintegral_swap",
+    "Real.GammaIntegral_convergent",
+    "Real.Gamma_eq_integral",
+    "MeasureTheory.ofReal_integral_eq_lintegral_ofReal"
+  ],
+  "used_by": [
+    "lem:homogeneous-energy-radial"
+  ],
+  "status": "exact canonical source copied into tmp/lean-audit/GaussianRadialCheck.lean passed Lean4.34.1 with only propext, Classical.choice, Quot.sound; actual module CI pending",
+  "ambient_lean": "{E : Type*} [NormedAddCommGroup E] [MeasurableSpace E] [BorelSpace E]",
+  "scratch_file": "tmp/lean-audit/GaussianRadialCheck.lean"
+}

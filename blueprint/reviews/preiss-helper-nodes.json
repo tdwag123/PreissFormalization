@@ -469,6 +469,134 @@
       "used_by": [
         "lem:flatness-minimum"
       ]
+    },
+    {
+      "id": "lem:gaussian-ball-power",
+      "title": "Gaussian integral from a centered power ball law",
+      "kind": "lemma",
+      "statement_tex": "For an s-finite positive measure $\\rho$ on a normed additive commutative group with its Borel measurable structure, $C\\geq0$, and $d>0$, if $\\rho(\\overline B(0,r))=Cr^d$ for every $r>0$, then $e^{-\\|z\\|^2}$ is integrable and its integral is $C\\Gamma(d/2+1)$. The centered ball law suffices.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:exponential-tail-integral"
+      ],
+      "lean_names": [
+        "Preiss.lintegral_gaussian_of_closedBall_power",
+        "Preiss.integral_gaussian_of_closedBall_power"
+      ],
+      "file": "Preiss/Analysis/GaussianBallPower.lean",
+      "proof_sketch_tex": "Write $e^{-\\|z\\|^2}=\\int_{\\|z\\|^2}^{\\infty}e^{-t}\\,dt$. Nonnegative Fubini gives $\\int_0^\\infty e^{-t}\\rho(\\overline B(0,\\sqrt t))\\,dt$. Substitute the ball law and use the Gamma integral. Finiteness of this nonnegative integral gives Bochner integrability.",
+      "used_by": [
+        "lem:homogeneous-energy-radial"
+      ]
+    },
+    {
+      "id": "lem:exponential-tail-integral",
+      "title": "The nonnegative exponential tail integral",
+      "kind": "lemma",
+      "statement_tex": "For every real a, the Lebesgue lintegral of ofReal(exp(-t)) over Ici(a) equals ofReal(exp(-a)).",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.lintegral_exp_neg_Ici"
+      ],
+      "file": "Preiss/Analysis/GaussianBallPower.lean",
+      "used_by": [
+        "lem:gaussian-ball-power"
+      ]
+    },
+    {
+      "id": "lem:lower-density-from-power",
+      "title": "Lower density from a lower power bound",
+      "kind": "lemma",
+      "statement_tex": "Let $\\mu$ be an outer measure on a pseudometric space, $m\\in\\mathbb N$, $a\\geq0$, and $R>0$. If $\\mu(B(x,r))\\geq a r^m$ for every $0<r<R$, then $\\Theta_*^m(\\mu,x)\\geq a/2^m$. The factor $2^m$ comes from the diameter-normalized definition of density.",
+      "hypotheses_tex": "Only an outer measure, a pseudometric space, $a\\geq0$, and $R>0$ are required. No measurability, local finiteness, or density-limit hypothesis is used.",
+      "definition_dependencies": [
+        "def:density-api"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.lower_density_ge_of_ball_power_lower_bound"
+      ],
+      "file": "Preiss/Density/LowerBounds.lean",
+      "source": "Closed-ball inclusion and an eventual lower bound for the liminf of the density ratios.",
+      "used_by": [
+        "lem:weak-approximation-lower-density"
+      ]
+    },
+    {
+      "id": "lem:complex-mgf-moment-determination",
+      "title": "All exponential moments make power moments determining",
+      "kind": "lemma",
+      "statement_tex": "Let $X$ and $Y$ be real functions on arbitrary measure spaces $(\\Omega,\\mu)$ and $(\\Omega^\\prime,\\nu)$. Suppose $\\exp(tX)$ and $\\exp(tY)$ are integrable for every real $t$. If $\\int X^k\\,d\\mu=\\int Y^k\\,d\\nu$ for every natural $k$, then their complex moment generating functions agree at every complex argument.",
+      "hypotheses": [
+        "Arbitrary measurable source spaces; no probability normalization is assumed.",
+        "Every real exponential parameter is integrable for each function.",
+        "All natural power moments, including order zero, agree."
+      ],
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.complexMGF_eq_of_all_moments_eq"
+      ],
+      "file": "Preiss/Analysis/MomentDetermination.lean",
+      "proof_sketch_tex": "Exponential integrability makes both complex moment generating functions entire. Their iterated derivatives at zero equal the power moments, hence the canonical power series agree. Local power-series uniqueness and analytic continuation give equality everywhere.",
+      "used_by": [
+        "lem:moment-determination"
+      ],
+      "statements_lean": [
+        "theorem complexMGF_eq_of_all_moments_eq\n    {Ω Ω' : Type*} [MeasurableSpace Ω] [MeasurableSpace Ω']\n    (μ : Measure Ω) (ν : Measure Ω') (X : Ω → ℝ) (Y : Ω' → ℝ)\n    (hX : ∀ t : ℝ, Integrable (fun x => Real.exp (t * X x)) μ)\n    (hY : ∀ t : ℝ, Integrable (fun y => Real.exp (t * Y y)) ν)\n    (hmom : ∀ k : ℕ, (∫ x, X x ^ k ∂μ) = ∫ y, Y y ^ k ∂ν) :\n    complexMGF X μ = complexMGF Y ν"
+      ],
+      "verification": "Exact source checked in tmp/GaussianDeterminationCheck.lean; main determinacy and generic MGF theorem printed only standard axioms. Canonical import integration awaits CI."
+    },
+    {
+      "id": "lem:gaussian-weight-finite",
+      "title": "Gaussian weighting gives a finite measure",
+      "kind": "lemma",
+      "statement_tex": "If $\\mu$ on $\\mathbb R^n$ obeys $\\operatorname{HasPolynomialGrowthBound}(\\mu,C,p)$, then the measure $e^{-\\|z\\|^2}\\mu$ is finite.",
+      "definition_dependencies": [
+        "def:polynomial-growth-bound"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_names": [
+        "Preiss.isFiniteMeasure_withDensity_gaussian"
+      ],
+      "file": "Preiss/Analysis/GaussianWeight.lean",
+      "proof_sketch_tex": "Degree-zero Gaussian integrability identifies the total mass of the weighted measure with a finite real integral.",
+      "used_by": [
+        "lem:moment-determination"
+      ],
+      "statements_lean": [
+        "theorem isFiniteMeasure_withDensity_gaussian {n : ℕ}\n    (μ : Measure (Euclidean n)) (C p : ℝ) (hgrowth : HasPolynomialGrowthBound μ C p) :\n    IsFiniteMeasure (μ.withDensity (fun z => ENNReal.ofReal (Real.exp (-‖z‖ ^ 2))))"
+      ],
+      "verification": "Exact source checked in tmp/GaussianDeterminationCheck.lean; main determinacy and generic MGF theorem printed only standard axioms. Canonical import integration awaits CI."
+    },
+    {
+      "id": "lem:gaussian-weight-exponential",
+      "title": "Every projection has all exponential moments after Gaussian weighting",
+      "kind": "lemma",
+      "statement_tex": "If $\\operatorname{HasPolynomialGrowthBound}(\\mu,C,p)$, then for every $w\\in\\mathbb R^n$ and $t\\in\\mathbb R$, the function $e^{-\\|z\\|^2}e^{t\\langle z,w\\rangle}$ is $\\mu$-integrable. Equivalently, $e^{t\\langle z,w\\rangle}$ is integrable for the Gaussian weighted measure.",
+      "definition_dependencies": [
+        "def:polynomial-growth-bound"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_names": [
+        "Preiss.integrable_exp_inner_mul_gaussian",
+        "Preiss.integrable_exp_inner_withDensity_gaussian"
+      ],
+      "file": "Preiss/Analysis/GaussianWeight.lean",
+      "proof_sketch_tex": "Cauchy--Schwarz and a completed square give $t\\langle z,w\\rangle-\\|z\\|^2\\leq |t|^2\\|w\\|^2/2-\\|z\\|^2/2$. The right side supplies an integrable Gaussian majorant with rate $1/2$. The withDensity integrability identity gives the weighted formulation.",
+      "used_by": [
+        "lem:moment-determination"
+      ],
+      "statements_lean": [
+        "theorem integrable_exp_inner_mul_gaussian {n : ℕ}\n    (μ : Measure (Euclidean n)) (C p : ℝ) (hgrowth : HasPolynomialGrowthBound μ C p)\n    (w : Euclidean n) (t : ℝ) :\n    Integrable (fun z => Real.exp (-‖z‖ ^ 2) * Real.exp (t * inner ℝ z w)) μ",
+        "theorem integrable_exp_inner_withDensity_gaussian {n : ℕ}\n    (μ : Measure (Euclidean n)) (C p : ℝ) (hgrowth : HasPolynomialGrowthBound μ C p)\n    (w : Euclidean n) (t : ℝ) :\n    Integrable (fun z => Real.exp (t * inner ℝ z w))\n      (μ.withDensity (fun z => ENNReal.ofReal (Real.exp (-‖z‖ ^ 2))))"
+      ],
+      "verification": "Exact source checked in tmp/GaussianDeterminationCheck.lean; main determinacy and generic MGF theorem printed only standard axioms. Canonical import integration awaits CI."
     }
   ],
   "definition_edge_additions": {

@@ -129,8 +129,8 @@ digraph Preiss {
   "def:weak-approximation" [label="Weak linear approximation", fillcolor="#d9eaf7"];
   "lem:projected-tube-slab-bound" [label="Small projection direction bounds projected tube measure", fillcolor="#fff0bf"];
   "lem:closed-weak-approximation-good-set" [label="Relaxed approximation good sets are closed", fillcolor="#fff0bf"];
-  "lem:weak-approximation-lower-density" [label="Weak approximation gives positive lower density", fillcolor="#fff0bf"];
-  "lem:weak-approximation-deletion" [label="Weak approximation survives negligible deletion", fillcolor="#fff0bf"];
+  "lem:weak-approximation-lower-density" [label="Weak approximation gives positive lower density", fillcolor="#dce5ee"];
+  "lem:weak-approximation-deletion" [label="Weak approximation survives negligible deletion", fillcolor="#dce5ee"];
   "lem:weak-approximation-good-exhaustion" [label="Aperture slack gives countable good-set exhaustion", fillcolor="#fff0bf"];
   "lem:uniform-compact-selection" [label="Compact subsets with uniform approximation and density bounds", fillcolor="#fff0bf"];
   "lem:weak-approximation-restrict-ae" [label="Weak approximation restricts to Borel subsets almost everywhere", fillcolor="#fff0bf"];
@@ -150,7 +150,7 @@ digraph Preiss {
   "lem:greatest-crossing" [label="Greatest crossing with an interval bound", fillcolor="#fff0bf"];
   "def:polynomial-feature" [label="Finite Euclidean polynomial feature map", fillcolor="#fff0bf"];
   "lem:spectral-minimizing-plane" [label="Top eigenspaces minimize normal covariance trace", fillcolor="#fff0bf"];
-  "lem:moment-determination" [label="Gaussian weighted polynomials determine growing measures", fillcolor="#fff0bf"];
+  "lem:moment-determination" [label="Gaussian weighted polynomials determine growing measures", fillcolor="#dce5ee"];
   "lem:gaussian-uniform-tails" [label="Uniform Gaussian polynomial tails", fillcolor="#dce5ee"];
   "lem:gaussian-parameter-derivative" [label="Differentiation of Gaussian polynomial integrals", fillcolor="#dce5ee"];
   "lem:vague-countable-metric" [label="Countable compact-test metric for locally bounded families", fillcolor="#fff0bf"];
@@ -172,7 +172,7 @@ digraph Preiss {
   "lem:radial" [label="Radial pushforward distribution and integrals", fillcolor="#dce5ee"];
   "lem:moment-covariance" [label="Moment covariance, scalar invariance and dilation", fillcolor="#dce5ee"];
   "lem:moment-norm-bound" [label="Uniform operator norm bounds for Gaussian moments", fillcolor="#fff0bf"];
-  "lem:homogeneous-energy-radial" [label="Comparison of homogeneous ball and Gaussian energies", fillcolor="#fff0bf"];
+  "lem:homogeneous-energy-radial" [label="Comparison of homogeneous ball and Gaussian energies", fillcolor="#dce5ee"];
   "lem:gaussian-translation-series" [label="Absolutely convergent Gaussian translation series", fillcolor="#fff0bf"];
   "lem:taylor-one" [label="Quantitative finite moment remainder", fillcolor="#fff0bf"];
   "lem:taylor-two" [label="Coherent operator-norm moment Taylor coefficients", fillcolor="#fff0bf"];
@@ -271,6 +271,12 @@ digraph Preiss {
   "lem:flat-plane-blowup" [label="Exact blow-up invariance of flat plane measures", fillcolor="#dce5ee"];
   "lem:flatness-basic-nonneg" [label="Nonnegativity of distance energy and flatness", fillcolor="#dce5ee"];
   "lem:flatness-basic-zero" [label="Vanishing distance energy on a supporting plane", fillcolor="#dce5ee"];
+  "lem:gaussian-ball-power" [label="Gaussian integral from a centered power ball law", fillcolor="#dce5ee"];
+  "lem:exponential-tail-integral" [label="The nonnegative exponential tail integral", fillcolor="#dce5ee"];
+  "lem:lower-density-from-power" [label="Lower density from a lower power bound", fillcolor="#dce5ee"];
+  "lem:complex-mgf-moment-determination" [label="All exponential moments make power moments determining", fillcolor="#dce5ee"];
+  "lem:gaussian-weight-finite" [label="Gaussian weighting gives a finite measure", fillcolor="#dce5ee"];
+  "lem:gaussian-weight-exponential" [label="Every projection has all exponential moments after Gaussian weighting", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -567,6 +573,7 @@ digraph Preiss {
   "def:weak-approximation-good-set" -> "lem:closed-weak-approximation-good-set";
   "lem:grassmannian" -> "lem:closed-weak-approximation-good-set";
   "def:weak-approximation" -> "lem:weak-approximation-lower-density";
+  "lem:lower-density-from-power" -> "lem:weak-approximation-lower-density";
   "def:weak-approximation" -> "lem:weak-approximation-deletion";
   "def:weak-approximation" -> "lem:weak-approximation-good-exhaustion";
   "def:weak-approximation-good-set" -> "lem:weak-approximation-good-exhaustion";
@@ -621,7 +628,10 @@ digraph Preiss {
   "lem:gaussian-annulus-majorant" -> "lem:gaussian-polynomial-integrable";
   "def:plane" -> "lem:spectral-minimizing-plane";
   "def:polynomial-growth-bound" -> "lem:moment-determination";
+  "lem:complex-mgf-moment-determination" -> "lem:moment-determination";
   "lem:gaussian-polynomial-integrable" -> "lem:moment-determination";
+  "lem:gaussian-weight-exponential" -> "lem:moment-determination";
+  "lem:gaussian-weight-finite" -> "lem:moment-determination";
   "def:polynomial-growth-bound" -> "lem:gaussian-uniform-tails";
   "lem:gaussian-polynomial-integrable" -> "lem:gaussian-uniform-tails";
   "lem:gaussian-tail-series-bound" -> "lem:gaussian-uniform-tails";
@@ -673,6 +683,7 @@ digraph Preiss {
   "lem:radial" -> "lem:moment-norm-bound";
   "def:conical" -> "lem:homogeneous-energy-radial";
   "def:plane" -> "lem:homogeneous-energy-radial";
+  "lem:gaussian-ball-power" -> "lem:homogeneous-energy-radial";
   "lem:homogeneous-ball-scaling" -> "lem:homogeneous-energy-radial";
   "lem:radial" -> "lem:homogeneous-energy-radial";
   "def:moments" -> "lem:gaussian-translation-series";
@@ -1132,4 +1143,10 @@ digraph Preiss {
   "def:flat" -> "lem:flatness-basic-zero";
   "def:flatness" -> "lem:flatness-basic-zero";
   "lem:flatness-basic-nonneg" -> "lem:flatness-basic-zero";
+  "lem:exponential-tail-integral" -> "lem:gaussian-ball-power";
+  "def:density-api" -> "lem:lower-density-from-power";
+  "def:polynomial-growth-bound" -> "lem:gaussian-weight-finite";
+  "lem:gaussian-polynomial-integrable" -> "lem:gaussian-weight-finite";
+  "def:polynomial-growth-bound" -> "lem:gaussian-weight-exponential";
+  "lem:gaussian-polynomial-integrable" -> "lem:gaussian-weight-exponential";
 }

@@ -1,9 +1,12 @@
 module
 public import Preiss.Uniform.Defs
+public import Preiss.Uniform.Homogeneous
+public import Preiss.Analysis.GaussianBallPower
 public import Preiss.Geometry.PlaneMeasure
 public import Mathlib.Analysis.SpecialFunctions.Gamma.Basic
 public import Mathlib.MeasureTheory.Integral.Bochner.Basic
 public import Mathlib.MeasureTheory.Constructions.BorelSpace.Order
+public import Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
 
 @[expose] public section
 open MeasureTheory Metric Set Filter
@@ -74,6 +77,30 @@ theorem integral_gaussian_mul_homogeneous
     Integrable (fun z => Real.exp (-‖z‖ ^ 2) * h z) μ ∧
     (∫ z, Real.exp (-‖z‖ ^ 2) * h z ∂μ) =
       Real.Gamma (((m : ℝ) + a) / 2 + 1) * ∫ z in closedBall 0 1, h z ∂μ := by
-  sorry
+  letI : μ.Regular := hμ
+  let ρ : Measure (Euclidean n) := μ.withDensity (fun z => ENNReal.ofReal (h z))
+  let C : ℝ := ∫ z in closedBall 0 1, h z ∂μ
+  have hC : 0 ≤ C := integral_nonneg hnonneg
+  have hball (r : ℝ) (hr : 0 < r) :
+      ρ (closedBall 0 r) = ENNReal.ofReal (C * r ^ ((m : ℝ) + a)) := by
+    have hint_r := integrableOn_homogeneous_closedBall μ hcone h hh a hhom hint r hr
+    rw [withDensity_apply _ measurableSet_closedBall,
+      ← ofReal_integral_eq_lintegral_ofReal hint_r (ae_of_all _ hnonneg),
+      integral_homogeneous_closedBall μ hcone h hh a hhom r hr]
+    exact congrArg ENNReal.ofReal (mul_comm _ _)
+  obtain ⟨hintρ, hvalρ⟩ := integral_gaussian_of_closedBall_power ρ C ((m : ℝ) + a) hC ha hball
+  have hw : Measurable (fun z => ENNReal.ofReal (h z)) := ENNReal.measurable_ofReal.comp hh
+  have hwfinite : ∀ᵐ z ∂μ, ENNReal.ofReal (h z) < ∞ :=
+    ae_of_all _ (fun _ => ENNReal.ofReal_lt_top)
+  have hprod : (fun z => (ENNReal.ofReal (h z)).toReal • Real.exp (-‖z‖ ^ 2)) =
+      (fun z => Real.exp (-‖z‖ ^ 2) * h z) := by
+    funext z
+    rw [ENNReal.toReal_ofReal (hnonneg z), smul_eq_mul, mul_comm]
+  have hintμ := (integrable_withDensity_iff_integrable_smul' hw hwfinite).mp hintρ
+  rw [hprod] at hintμ
+  have hval := integral_withDensity_eq_integral_toReal_smul hw hwfinite
+    (fun z => Real.exp (-‖z‖ ^ 2))
+  rw [hprod] at hval
+  exact ⟨hintμ, hval.symm.trans hvalρ⟩
 
 end Preiss

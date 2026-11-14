@@ -269,6 +269,12 @@ flowchart LR
   lem_flat_plane_blowup["Exact blow-up invariance of flat plane measures"]
   lem_flatness_basic_nonneg["Nonnegativity of distance energy and flatness"]
   lem_flatness_basic_zero["Vanishing distance energy on a supporting plane"]
+  lem_gaussian_ball_power["Gaussian integral from a centered power ball law"]
+  lem_exponential_tail_integral["The nonnegative exponential tail integral"]
+  lem_lower_density_from_power["Lower density from a lower power bound"]
+  lem_complex_mgf_moment_determination["All exponential moments make power moments determining"]
+  lem_gaussian_weight_finite["Gaussian weighting gives a finite measure"]
+  lem_gaussian_weight_exponential["Every projection has all exponential moments after Gaussian weighting"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -565,6 +571,7 @@ flowchart LR
   def_weak_approximation_good_set --> lem_closed_weak_approximation_good_set
   lem_grassmannian --> lem_closed_weak_approximation_good_set
   def_weak_approximation --> lem_weak_approximation_lower_density
+  lem_lower_density_from_power --> lem_weak_approximation_lower_density
   def_weak_approximation --> lem_weak_approximation_deletion
   def_weak_approximation --> lem_weak_approximation_good_exhaustion
   def_weak_approximation_good_set --> lem_weak_approximation_good_exhaustion
@@ -619,7 +626,10 @@ flowchart LR
   lem_gaussian_annulus_majorant --> lem_gaussian_polynomial_integrable
   def_plane --> lem_spectral_minimizing_plane
   def_polynomial_growth_bound --> lem_moment_determination
+  lem_complex_mgf_moment_determination --> lem_moment_determination
   lem_gaussian_polynomial_integrable --> lem_moment_determination
+  lem_gaussian_weight_exponential --> lem_moment_determination
+  lem_gaussian_weight_finite --> lem_moment_determination
   def_polynomial_growth_bound --> lem_gaussian_uniform_tails
   lem_gaussian_polynomial_integrable --> lem_gaussian_uniform_tails
   lem_gaussian_tail_series_bound --> lem_gaussian_uniform_tails
@@ -671,6 +681,7 @@ flowchart LR
   lem_radial --> lem_moment_norm_bound
   def_conical --> lem_homogeneous_energy_radial
   def_plane --> lem_homogeneous_energy_radial
+  lem_gaussian_ball_power --> lem_homogeneous_energy_radial
   lem_homogeneous_ball_scaling --> lem_homogeneous_energy_radial
   lem_radial --> lem_homogeneous_energy_radial
   def_moments --> lem_gaussian_translation_series
@@ -1130,3 +1141,9 @@ flowchart LR
   def_flat --> lem_flatness_basic_zero
   def_flatness --> lem_flatness_basic_zero
   lem_flatness_basic_nonneg --> lem_flatness_basic_zero
+  lem_exponential_tail_integral --> lem_gaussian_ball_power
+  def_density_api --> lem_lower_density_from_power
+  def_polynomial_growth_bound --> lem_gaussian_weight_finite
+  lem_gaussian_polynomial_integrable --> lem_gaussian_weight_finite
+  def_polynomial_growth_bound --> lem_gaussian_weight_exponential
+  lem_gaussian_polynomial_integrable --> lem_gaussian_weight_exponential

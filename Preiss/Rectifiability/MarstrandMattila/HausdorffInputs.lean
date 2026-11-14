@@ -1,5 +1,6 @@
 import Preiss.Rectifiability.WeakApproximation.Restriction
 import Preiss.Density.Defs
+import Preiss.Density.LowerBounds
 import Preiss.Density.PowerComparison
 import FormalizingGMT.Densities.HausdorffUpperDensityInside
 import FormalizingGMT.Densities.HausdorffUpperDensityOutside
@@ -21,7 +22,10 @@ theorem ae_upperPowerBoundAt_restrict_hausdorff (E : Set (Euclidean n))
 
 theorem lower_density_pos_of_weakApproximation (μ : Measure (Euclidean n)) (x : Euclidean n)
     (h : MeasureWeaklyLinearlyApproximableAt m μ x) :
-    0 < dimensional_lower_density μ.toOuterMeasure (m : ℝ) x := by sorry
+    0 < dimensional_lower_density μ.toOuterMeasure (m : ℝ) x := by
+  obtain ⟨a, R, ha, hR, hball⟩ := lower_power_bound_of_weakApproximation μ x h
+  exact (ENNReal.ofReal_pos.mpr (div_pos ha (by positivity))).trans_le
+    (lower_density_ge_of_ball_power_lower_bound m μ.toOuterMeasure x ha.le hR hball)
 
 theorem ae_weaklyLinearlyApproximableAt_subset {E F : Set (Euclidean n)}
     (hE : MeasurableSet E) (hF : MeasurableSet F) (hFE : F ⊆ E)

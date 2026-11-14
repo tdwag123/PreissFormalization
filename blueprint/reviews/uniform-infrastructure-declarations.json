@@ -1,5 +1,5 @@
 {
-  "status": "Authoritative compiled status: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json (consult its source_revision). Source-status fields classify current source and do not certify later edits. The latest FinitePieces proof draft still requires integration CI.",
+  "status": "Authoritative compiled status: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json (consult its source_revision). Source-status fields classify current source and do not certify edits newer than that checkpoint.",
   "labels": {
     "lem:uniform-vague-closed": {
       "lean_name": "Preiss.isUnitUniform_of_vague",

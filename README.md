@@ -17,9 +17,9 @@ with exact names and links to pinned source. [The reuse inventory](blueprint/reu
 also identifies mathlib tools. The [validation record](blueprint/validation.json)
 distinguishes source checks, statement compilation, and completed proofs.
 
-The [verified proof checkpoint](https://github.com/tdwag123/PreissFormalization/actions/runs/43588142604)
-at `833a65a` built every local module and audited 418 declarations. Its
-[kernel report](blueprint/kernel-checkpoint.json) records 151 declarations still
+The [verified proof checkpoint](https://github.com/tdwag123/PreissFormalization/actions/runs/43589327490)
+at `8a45bb5` built every local module and audited 425 declarations. Its
+[kernel report](blueprint/kernel-checkpoint.json) records 143 declarations still
 depending on `sorryAx`; later working changes require their own verification.
 
 The proof route is:
