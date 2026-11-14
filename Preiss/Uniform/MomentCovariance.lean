@@ -17,7 +17,9 @@ theorem gaussianMomentForm_dilate (μ : Measure (Euclidean n))
 theorem gaussianMomentForm_smul (μ : Measure (Euclidean n))
     (c : ℝ≥0∞) (hc : 0 < c) (hcfin : c ≠ ∞) (k : ℕ) (s : ℝ) :
     gaussianMomentForm (c • μ) k s = gaussianMomentForm μ k s := by
-  sorry
+  have hcr : c.toReal ≠ 0 := ne_of_gt (ENNReal.toReal_pos (ne_of_gt hc) hcfin)
+  simp [gaussianMomentForm, gaussianMass, integral_smul_measure, smul_smul,
+    smul_eq_mul, mul_inv_rev, mul_assoc, hcr]
 
 theorem gaussianMomentForm_map_linearIsometry {d : ℕ}
     (L : Euclidean n →ₗᵢ[ℝ] Euclidean d) (μ : Measure (Euclidean n))

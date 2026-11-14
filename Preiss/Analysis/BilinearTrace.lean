@@ -20,6 +20,14 @@ noncomputable def restrictBilinear (A : E →L[ℝ] E →L[ℝ] ℝ) (V : Submod
 theorem bilinearTrace_eq_sum_diagonal {ι : Type*} [Fintype ι]
     (A : E →L[ℝ] E →L[ℝ] ℝ) (e : OrthonormalBasis ι ℝ E) :
     bilinearTrace A = ∑ i, A (e i) (e i) := by
-  sorry
+  classical
+  rw [bilinearTrace, LinearMap.trace_eq_matrix_trace ℝ e.toBasis]
+  simp only [Matrix.trace, Matrix.diag_apply, LinearMap.toMatrix_apply,
+    OrthonormalBasis.coe_toBasis_repr_apply, OrthonormalBasis.coe_toBasis,
+    OrthonormalBasis.repr_apply_apply]
+  apply Finset.sum_congr rfl
+  intro i _
+  change inner ℝ (e i) (InnerProductSpace.continuousLinearMapOfBilin A (e i)) = _
+  rw [real_inner_comm, InnerProductSpace.continuousLinearMapOfBilin_apply]
 
 end Preiss

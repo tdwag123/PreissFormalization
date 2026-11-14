@@ -655,3 +655,16 @@ product space, proves its behavior under linear isometries, and identifies it wi
 the orthonormal-coordinate product Gaussian. Use this measure on a plane subtype
 instead of defining a second Gaussian distribution.
 \end{definition}
+
+\begin{lemma}[Uniform measures cannot exceed ambient dimension]
+\label{gmt:uniform-dimension-bound}
+\lean{SUniformAux.not_isSUniform_of_lt}
+\leanok
+\uses{def:uniform-api}
+There is no $s$-uniform measure on $\mathbb R^n$ when $n<s$.
+\end{lemma}
+\begin{proof}[Existing upstream proof]
+\leanok
+FormalizingGMT supplies the obstruction directly. Together with tangent existence
+and almost-everywhere uniformity, it proves the excessive-dimension endpoint.
+\end{proof}

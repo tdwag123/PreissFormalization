@@ -1,17 +1,16 @@
 {
-  "updated_at": "2026-11-14T09:13:51.230940+00:00",
-  "stage": "Audited mathematical blueprint and canonical statement interfaces; full elaboration pending; theorem not proved.",
+  "updated_at": "2026-11-14T09:55:52.187725+00:00",
+  "stage": "Proof development after the complete canonical statement build passed.",
   "graph": {
-    "nodes": 229,
-    "edges": 759,
+    "nodes": 244,
+    "edges": 804,
     "acyclic": true,
     "status_counts": {
-      "formalized_upstream": 55,
-      "definition": 17,
-      "unproved_statement": 137,
-      "mathematical_plan": 17,
-      "definition_depends_on_unproved": 2,
-      "depends_on_unproved": 1
+      "formalized_upstream": 56,
+      "definition": 27,
+      "proof_candidate": 17,
+      "unproved_statement": 140,
+      "depends_on_unproved": 4
     }
   },
   "source_validation": {
@@ -22,13 +21,18 @@
   "lean_validation": {
     "full_current_tree_elaborated": false,
     "preiss_proved": false,
-    "local_checks": "Shared geometry/rectifiability/scaling/uniform definitions compiled. Moment form/coefficient/expansion interfaces compiled before subsequent additions. Density.Defs, Tangent.Defs, and dimension endpoints also compiled. No full-current-tree success is claimed.",
-    "limitation": "Concurrent Windows Lean processes exhausted host memory. Compiler batches were stopped; full integration is delegated to the Linux CI workflow.",
-    "ci": "Every local Lean file is an explicit build target. The workflow inspects actual transitive axiom dependencies and rejects placeholder-dependent definitions or nonstandard axioms."
+    "limitation": "Windows local checks use one compiler process at a time; Linux CI verifies the complete library.",
+    "ci": "Every local Lean file is an explicit build target. The workflow inspects actual transitive axiom dependencies and rejects placeholder-dependent definitions or nonstandard axioms.",
+    "statement_milestone": {
+      "commit": "ff0d37b",
+      "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43580472228",
+      "result": "All local modules compiled; kernel axiom audit passed. Definitions have no sorry dependencies; theorem obligations remain."
+    },
+    "current_proof_changes": "Undergoing separate CI verification."
   },
   "render_validation": {
-    "status": "passed",
-    "scope": "Actual LeanBlueprint/plasTeX renderer, all 229 graph modals and all 315 declaration links checked. Rooted graph and module SVGs generated. No browser visual verification claimed."
+    "status": "static_checks_passed",
+    "scope": "Generated LeanBlueprint HTML contains all 244 graph modals and all 377 source links. Rooted and module SVGs generated. Local renderer emitted Windows imager warnings; Linux Pages CI is the publication check. No browser visual verification claimed."
   },
   "publication": {
     "repository": "https://github.com/tdwag123/PreissFormalization",

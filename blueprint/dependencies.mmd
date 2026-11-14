@@ -54,6 +54,7 @@ flowchart LR
   mathlib_vitali_enlargement["mathlib: disjoint selection with enlarged ball covering"]
   mathlib_derivative_partitions["Derivative-controlled closed covers and measurable partitions"]
   mathlib_standard_gaussian["Intrinsic standard Gaussian measure"]
+  gmt_uniform_dimension_bound["Uniform measures cannot exceed ambient dimension"]
   def_plane["Linear planes"]
   def_coverage["Countable Lipschitz coverage"]
   def_parametrized_coverage["Lipschitz pieces and countable partial-domain coverage"]
@@ -228,6 +229,20 @@ flowchart LR
   thm_rectifiable_blowup["Rectifiable measures have a single normalized flat limit"]
   cor_rectifiable_tangent_plane["Rectifiable density and common tangent plane"]
   thm_rectifiable_iff_flat["Full tangent characterization"]
+  lem_moment_form_symmetry["Permutation symmetry of Gaussian moment forms"]
+  def_polynomial_growth_bound["A common polynomial growth bound"]
+  def_flatness_cutoff["An admissible flatness cutoff"]
+  lem_flatness_cutoff_exists["Existence of an admissible cutoff"]
+  def_flatness_gap["A cutoff flatness gap threshold"]
+  lem_flatness_gap_cutoff["Transfer the conical gap to cutoff flatness"]
+  def_first_crossing_data["Quantified crossing scale data"]
+  lem_rigidity_normal_vector_exists["Existence of the normal first-moment vector"]
+  lem_rigidity_forms_exist["Existence of the rigidity bilinear forms"]
+  lem_polynomial_feature_identities["Inner products and grading of polynomial features"]
+  def_uniform_constant["Uniform measures with a specified ball constant"]
+  lem_uniform_constant_one["Centered unit normalization"]
+  lem_uniform_scaling["Scaling uniform measures and their ball constants"]
+  lem_density_limit_values["Values of existing dimensional densities"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -321,6 +336,7 @@ flowchart LR
   gmt_vague --> gmt_compact_test_perturbation
   gmt_blowup_balls --> gmt_scaled_discarded_mass
   gmt_portmanteau --> gmt_scaled_discarded_mass
+  def_uniform_api --> gmt_uniform_dimension_bound
   def_plane --> def_lipschitz_graph
   def_plane --> lem_grassmannian
   def_plane --> def_cone
@@ -397,7 +413,6 @@ flowchart LR
   lem_cone_graph --> lem_cone_criterion
   def_purely_unrectifiable --> lem_pure_basic
   lem_graph_rectifiable --> lem_pure_basic
-  lem_borel_carrier --> lem_carrier_calculus
   lem_carrier_closure --> lem_carrier_calculus
   lem_carrier_closure --> lem_decomposition
   lem_pure_basic --> lem_decomposition
@@ -410,14 +425,16 @@ flowchart LR
   gmt_density_bounds --> lem_density_bridge
   gmt_density_exists_set --> lem_density_bridge
   gmt_density_limit --> lem_density_bridge
+  lem_density_limit_values --> lem_density_bridge
   gmt_density_bounds --> lem_absolute_continuity
   lem_density_measure_comparison --> lem_absolute_continuity
   gmt_density_bounds --> lem_finite_pieces
   gmt_goodsets --> lem_finite_pieces
   lem_density_measure_comparison --> lem_finite_pieces
   def_positive_density --> lem_excess_dimension
-  def_rectifiable --> lem_excess_dimension
-  lem_absolute_continuity --> lem_excess_dimension
+  gmt_uniform_dimension_bound --> lem_excess_dimension
+  lem_tangent_existence --> lem_excess_dimension
+  lem_uniform_adapter --> lem_excess_dimension
   def_dimensional_blowup --> def_dimensional_tangent
   gmt_vague --> def_dimensional_tangent
   def_dimensional_blowup --> def_tangent_at_infinity
@@ -554,15 +571,16 @@ flowchart LR
   lem_finite_piece_transfer --> thm_mm_measure
   lem_flat_to_approximation --> thm_mm_measure
   thm_mm_set --> thm_mm_measure
+  def_polynomial_growth_bound --> lem_gaussian_polynomial_integrable
   def_plane --> lem_spectral_minimizing_plane
   lem_gaussian_polynomial_integrable --> lem_moment_determination
+  def_polynomial_growth_bound --> lem_gaussian_uniform_tails
   lem_gaussian_polynomial_integrable --> lem_gaussian_uniform_tails
+  def_polynomial_growth_bound --> lem_gaussian_parameter_derivative
   lem_gaussian_polynomial_integrable --> lem_gaussian_parameter_derivative
   gmt_vague --> lem_vague_countable_metric
   mathlib_measurable_hull --> lem_measurable_hull_holes
   mathlib_standard_gaussian --> lem_gaussian_wick_fourth
-  def_moments --> def_bilinear_trace
-  def_plane --> def_bilinear_trace
   gmt_portmanteau --> lem_vague_support_approximation
   gmt_portmanteau --> lem_vague_support_limit
   gmt_compact_test_perturbation --> lem_vague_moving_tests
@@ -570,6 +588,7 @@ flowchart LR
   gmt_vague --> lem_vague_moving_tests
   lem_vague_countable_metric --> lem_vague_diagonal
   def_bilinear_trace --> lem_bilinear_trace_basis
+  def_polynomial_growth_bound --> lem_vague_gaussian_polynomials
   lem_gaussian_uniform_tails --> lem_vague_gaussian_polynomials
   lem_vague_moving_tests --> lem_vague_gaussian_polynomials
   def_bilinear_trace --> lem_gaussian_quadratic_trace_bound
@@ -580,10 +599,12 @@ flowchart LR
   def_polynomial_feature --> lem_moment_feature_remainder
   def_unit_uniform --> lem_moment_feature_remainder
   lem_moment_feature_annihilation --> lem_moment_feature_remainder
+  lem_polynomial_feature_identities --> lem_moment_feature_remainder
   lem_taylor_one --> lem_moment_feature_remainder
   def_moments --> lem_moment_feature_annihilation
   def_polynomial_feature --> lem_moment_feature_annihilation
   def_unit_uniform --> lem_moment_feature_annihilation
+  lem_polynomial_feature_identities --> lem_moment_feature_annihilation
   def_moments --> def_moment_coefficients
   def_moments --> lem_moment_form_evaluation
   def_unit_uniform --> lem_radial
@@ -644,12 +665,15 @@ flowchart LR
   gmt_portmanteau --> lem_uniform_vague_closed
   lem_vague_support_approximation --> lem_uniform_vague_closed
   lem_vague_support_limit --> lem_uniform_vague_closed
+  def_uniform_constant --> lem_uniform_near_support_compactness
   def_unit_uniform --> lem_uniform_near_support_compactness
+  lem_uniform_constant_one --> lem_uniform_near_support_compactness
   lem_vague_support_approximation --> lem_uniform_near_support_compactness
   lem_vague_support_limit --> lem_uniform_near_support_compactness
   thm_compactness --> lem_uniform_near_support_compactness
   def_dimensional_blowup --> lem_hyperplane_transport_map
   def_plane --> lem_hyperplane_transport_map
+  def_uniform_constant --> lem_hyperplane_transport_map
   gmt_hyperplane_transport --> lem_hyperplane_transport_map
   lem_blowup_composition --> lem_hyperplane_transport_map
   def_unit_uniform --> lem_uniform_compactness
@@ -663,6 +687,7 @@ flowchart LR
   def_unit_uniform --> lem_infinity_compactness
   lem_blowup_composition --> lem_infinity_compactness
   lem_uniform_compactness --> lem_infinity_compactness
+  lem_uniform_scaling --> lem_infinity_compactness
   def_dimensional_tangent --> lem_dimensional_tangent_ball_constant
   def_positive_density --> lem_dimensional_tangent_ball_constant
   def_unit_uniform --> lem_dimensional_tangent_ball_constant
@@ -884,6 +909,8 @@ flowchart LR
   def_unit_uniform --> thm_infinity_rigidity
   lem_moment_second_total_trace --> thm_infinity_rigidity
   lem_plane_supported_uniform_flat --> thm_infinity_rigidity
+  lem_rigidity_forms_exist --> thm_infinity_rigidity
+  lem_rigidity_normal_vector_exists --> thm_infinity_rigidity
   lem_trace_rigidity --> thm_infinity_rigidity
   lem_uniform_cylinder_identity --> thm_infinity_rigidity
   def_flat --> thm_part_a
@@ -897,8 +924,10 @@ flowchart LR
   thm_flat_pseudotangent --> thm_part_a
   cor_conical --> lem_first_crossing
   def_dimensional_tangent --> lem_first_crossing
+  def_first_crossing_data --> lem_first_crossing
   def_flat --> lem_first_crossing
   def_flatness --> lem_first_crossing
+  def_flatness_gap --> lem_first_crossing
   def_positive_density --> lem_first_crossing
   def_tangent_at_infinity --> lem_first_crossing
   def_unit_uniform --> lem_first_crossing
@@ -913,6 +942,7 @@ flowchart LR
   thm_infinity_rigidity --> lem_first_crossing
   thm_unique_infinity --> lem_first_crossing
   def_dimensional_tangent --> lem_first_crossing_ratio
+  def_first_crossing_data --> lem_first_crossing_ratio
   def_flat --> lem_first_crossing_ratio
   def_flatness --> lem_first_crossing_ratio
   def_positive_density --> lem_first_crossing_ratio
@@ -923,8 +953,10 @@ flowchart LR
   lem_vague_moving_blowups --> lem_first_crossing_ratio
   cor_conical --> lem_first_crossing_flat_infinity
   def_dimensional_tangent --> lem_first_crossing_flat_infinity
+  def_first_crossing_data --> lem_first_crossing_flat_infinity
   def_flat --> lem_first_crossing_flat_infinity
   def_flatness --> lem_first_crossing_flat_infinity
+  def_flatness_gap --> lem_first_crossing_flat_infinity
   def_positive_density --> lem_first_crossing_flat_infinity
   def_tangent_at_infinity --> lem_first_crossing_flat_infinity
   def_unit_uniform --> lem_first_crossing_flat_infinity
@@ -942,6 +974,8 @@ flowchart LR
   lem_density_normalization --> thm_part_b
   lem_first_crossing --> thm_part_b
   lem_first_crossing_flat_infinity --> thm_part_b
+  lem_flatness_cutoff_exists --> thm_part_b
+  lem_flatness_gap_cutoff --> thm_part_b
   lem_tangent_ray --> thm_part_b
   thm_infinity_rigidity --> thm_part_b
   def_positive_density --> thm_preiss
@@ -987,3 +1021,29 @@ flowchart LR
   thm_rectifiable_blowup --> cor_rectifiable_tangent_plane
   cor_rectifiable_tangent_plane --> thm_rectifiable_iff_flat
   thm_mm_measure --> thm_rectifiable_iff_flat
+  def_moments --> lem_moment_form_symmetry
+  def_flatness_cutoff --> lem_flatness_cutoff_exists
+  def_conical --> def_flatness_gap
+  def_flat --> def_flatness_gap
+  def_flatness --> def_flatness_gap
+  def_unit_uniform --> def_flatness_gap
+  def_flatness_cutoff --> lem_flatness_gap_cutoff
+  def_flatness_gap --> lem_flatness_gap_cutoff
+  lem_flatness_minimum --> lem_flatness_gap_cutoff
+  thm_gap --> lem_flatness_gap_cutoff
+  def_dimensional_blowup --> def_first_crossing_data
+  def_flatness --> def_first_crossing_data
+  gmt_vague --> def_first_crossing_data
+  def_rigidity_normal_vector --> lem_rigidity_normal_vector_exists
+  lem_odd_coefficients_plane_zero --> lem_rigidity_normal_vector_exists
+  def_rigidity_adjusted_form --> lem_rigidity_forms_exist
+  def_rigidity_omega --> lem_rigidity_forms_exist
+  lem_rigidity_normal_vector_exists --> lem_rigidity_forms_exist
+  def_polynomial_feature --> lem_polynomial_feature_identities
+  def_uniform_constant --> lem_uniform_constant_one
+  def_unit_uniform --> lem_uniform_constant_one
+  def_dimensional_blowup --> lem_uniform_scaling
+  def_uniform_constant --> lem_uniform_scaling
+  lem_blowup_composition --> lem_uniform_scaling
+  lem_uniform_constant_one --> lem_uniform_scaling
+  def_density_api --> lem_density_limit_values

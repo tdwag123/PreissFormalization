@@ -1,5 +1,5 @@
 {
-  "status": "Checkpoint declaration map, not a proof-completion or elaboration claim. Only MomentForms/MomentCoefficients/MomentExpansion were successfully elaborated before later source additions.",
+  "status": "All statement interfaces passed Linux CI at ff0d37b before proof work. This declaration map does not certify later proof edits; see the proof validation records and current CI.",
   "nodes": {
     "lem:vague-moving-tests": {
       "lean_names": [
@@ -278,7 +278,9 @@
     "lem:hyperplane-transport-map": {
       "lean_names": [
         "Preiss.uniform_hyperplane_transport",
-        "Preiss.uniformWithConstant_transport"
+        "Preiss.uniformWithConstant_transport",
+        "Preiss.uniformWithConstant_map_linearIsometry",
+        "Preiss.isUnitUniform_map_linearIsometry"
       ],
       "planned_lean_names": [
         "Preiss.uniform_hyperplane_transport"
@@ -293,12 +295,14 @@
       "lean_names": [
         "Preiss.IsUniformPseudotangent",
         "Preiss.uniformPseudotangent_isUnitUniform",
-        "Preiss.uniformPseudotangent_trans"
+        "Preiss.uniformPseudotangent_trans",
+        "Preiss.uniformPseudotangent_map_linearIsometry"
       ],
       "planned_lean_names": [
         "Preiss.IsUniformPseudotangent",
         "Preiss.uniformPseudotangent_isUnitUniform",
-        "Preiss.uniformPseudotangent_trans"
+        "Preiss.uniformPseudotangent_trans",
+        "Preiss.uniformPseudotangent_map_linearIsometry"
       ],
       "status": "source interface written",
       "files": [
@@ -1477,5 +1481,18 @@
       ]
     }
   },
-  "pending": []
+  "pending": [],
+  "proof_validation": {
+    "local_direct_lean_exit_zero": [
+      "Preiss.momentBilinear_apply",
+      "Preiss.momentKernel_apply",
+      "Preiss.gaussianMomentForm_apply",
+      "Preiss.gaussianMomentForm_permute",
+      "Preiss.bilinearTrace_eq_sum_diagonal"
+    ],
+    "drafts_awaiting_ci": [
+      "Preiss.polynomialFeature_inner",
+      "Preiss.gaussian_integral_bilinear_eq_trace"
+    ]
+  }
 }

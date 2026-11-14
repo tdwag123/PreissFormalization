@@ -21,7 +21,32 @@ theorem gaussian_integral_inner_sq_mul_inner_sq (y z : E) :
 
 theorem gaussian_integral_bilinear_eq_trace (A : E →L[ℝ] E →L[ℝ] ℝ) :
     (∫ v, A v v ∂stdGaussian E) = bilinearTrace A := by
-  sorry
+  classical
+  let e := stdOrthonormalBasis ℝ E
+  let T := InnerProductSpace.continuousLinearMapOfBilin A
+  have hLp : MemLp (id : E → E) 2 (stdGaussian E) := IsGaussian.memLp_two_id
+  have hcov (u v : E) :
+      (∫ z, inner ℝ u z * inner ℝ v z ∂stdGaussian E) = inner ℝ u v := by
+    simpa [covarianceBilin_stdGaussian] using (covarianceBilin_apply hLp u v).symm
+  have hdecomp (x : E) :
+      A x x = ∑ i, inner ℝ (e i) x * inner ℝ (T (e i)) x := by
+    calc
+      A x x = A (∑ i, e.repr x i • e i) x := by rw [e.sum_repr]
+      _ = ∑ i, e.repr x i * A (e i) x := by simp
+      _ = _ := by
+        dsimp [T]
+        simp only [OrthonormalBasis.repr_apply_apply,
+          InnerProductSpace.continuousLinearMapOfBilin_apply]
+  simp_rw [hdecomp]
+  rw [integral_finsetSum]
+  · rw [bilinearTrace_eq_sum_diagonal A e]
+    apply Finset.sum_congr rfl
+    intro i _
+    rw [hcov]
+    dsimp [T]
+    rw [real_inner_comm, InnerProductSpace.continuousLinearMapOfBilin_apply]
+  · intro i _
+    exact (hLp.const_inner (e i)).integrable_mul (hLp.const_inner (T (e i)))
 
 theorem gaussian_integral_bilinear_sq_ge_trace_sq
     (A : E →L[ℝ] E →L[ℝ] ℝ) (hA : ∀ u v, A u v = A v u)

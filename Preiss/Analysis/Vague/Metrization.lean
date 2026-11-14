@@ -1,5 +1,6 @@
-import Preiss.Analysis.Vague.CompactTests
-import Mathlib.Topology.MetricSpace.Defs
+import Preiss.Geometry.Euclidean
+import FormalizingGMT.WeakConvergence.Basic
+import Mathlib.Topology.MetricSpace.Pseudo.Basic
 
 /-! # A reusable metric presentation of vague convergence
 
@@ -41,19 +42,25 @@ theorem vagueMetric_tendsto_iff {n : ℕ} (M : VagueMetrization n)
     (μ : ℕ → RegularEuclideanMeasure n) (ν : RegularEuclideanMeasure n) :
     letI := M.metric
     Tendsto μ atTop (𝓝 ν) ↔ Measure.WeaklyConverges (fun i => (μ i).val) ν.val := by
-  sorry
+  exact M.tendsto_iff μ ν
 
 theorem vagueMetric_separates {n : ℕ} (M : VagueMetrization n)
     (μ ν : RegularEuclideanMeasure n) :
     vagueTestDistance M.tests μ ν = 0 ↔ μ = ν := by
-  sorry
+  letI := M.metric
+  rw [← M.distance_eq μ ν, dist_eq_zero]
 
 theorem vagueMetric_finite_cover_of_compact {n : ℕ} (M : VagueMetrization n)
     (K : Set (RegularEuclideanMeasure n)) :
     letI := M.metric
     IsCompact K → ∀ ε : ℝ, 0 < ε → ∃ F : Set (RegularEuclideanMeasure n),
       F.Finite ∧ F ⊆ K ∧ ∀ μ ∈ K, ∃ ν ∈ F, dist μ ν < ε := by
-  sorry
+  letI := M.metric
+  intro hK ε hε
+  obtain ⟨F, hFK, hF, hcover⟩ := hK.finite_cover_balls hε
+  refine ⟨F, hF, hFK, ?_⟩
+  intro μ hμ
+  simpa only [Set.mem_iUnion, Metric.mem_ball] using hcover hμ
 
 /-- A single eventual condition can encode any finite collection of stagewise constraints. -/
 theorem vague_diagonal_selection {n : ℕ}

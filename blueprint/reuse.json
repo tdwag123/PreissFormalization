@@ -89,8 +89,9 @@
       "path": "FormalizingGMT/MarstrandTheorem.lean",
       "declarations": [
         "IsSUniform",
-        "positiveFiniteDensityExistsSet",
-        "mattila_14_9"
+        "SUniformAux.not_isSUniform_of_lt",
+        "mattila_14_9",
+        "positiveFiniteDensityExistsSet"
       ],
       "status": "reuse",
       "notes": "The principal shortcut: all tangents are uniform outside one null set. IsSUniform requires s > 0; handle zero dimension separately.",
@@ -262,13 +263,13 @@
     }
   ],
   "graph_inventory": {
-    "nodes": 229,
-    "edges": 759,
-    "gmt_nodes": 49,
-    "linked_declarations": 315,
+    "nodes": 244,
+    "edges": 804,
+    "gmt_nodes": 43,
+    "linked_declarations": 377,
     "declarations_by_project": {
-      "PreissFormalization": 233,
-      "FormalizingGMT": 71,
+      "PreissFormalization": 294,
+      "FormalizingGMT": 72,
       "mathlib": 11
     }
   }

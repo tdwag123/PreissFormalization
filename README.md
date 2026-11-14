@@ -45,8 +45,7 @@ blow-ups have a separate definition: arbitrary-scalar tangents form a positive r
 while a rectifiable measure has a single limit under fixed-dimensional normalization.
 
 Canonical statements live in their topic files under `Preiss/`, with explicit `sorry`
-bodies until proved. Definitions contain no placeholders. `PreissBlueprint/` retains
-the earlier statement laboratory during migration. A source link means that a
+bodies until proved. Definitions contain no placeholders. `PreissBlueprint/` is now a compatibility import of the canonical library. A source link means that a
 statement is written, not that it has compiled or been proved. The full intended DAG
 is not an extraction of completed Lean proof terms.
 

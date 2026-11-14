@@ -18,7 +18,11 @@ def proj (V : Plane m n) (x : Euclidean n) : Euclidean n :=
 def planeProjection (V : Plane m n) : Euclidean n →L[ℝ] Euclidean n :=
   V.1.starProjection
 
-theorem planeProjection_injective : Function.Injective (planeProjection (m := m) (n := n)) := by
-  sorry
+theorem planeProjection_injective :
+    Function.Injective (planeProjection (m := m) (n := n)) := by
+  intro V W h
+  apply Subtype.ext
+  have hr := congrArg (fun P : Euclidean n →L[ℝ] Euclidean n ↦ P.range) h
+  simpa only [planeProjection, Submodule.range_starProjection] using hr
 
 end Preiss

@@ -2,6 +2,7 @@ module
 public import Preiss.Geometry.Euclidean
 public import Preiss.Analysis.GradedProjection
 public import Mathlib.Analysis.SpecialFunctions.Sqrt
+public import Mathlib.Algebra.BigOperators.Ring.Finset
 
 @[expose] public section
 open scoped BigOperators
@@ -29,7 +30,29 @@ theorem polynomialFeature_inner {n N : ℕ} (x y : Euclidean n) :
     inner ℝ (polynomialFeature N x) (polynomialFeature N y) =
       ∑ k : Fin N, ((2 : ℝ) ^ (k.val + 1) / ((k.val + 1).factorial : ℝ)) *
         (inner ℝ x y) ^ (k.val + 1) := by
-  sorry
+  classical
+  change (∑ i : PolynomialFeatureIndex n N,
+      (Real.sqrt ((2 : ℝ) ^ (i.1.val + 1) / ((i.1.val + 1).factorial : ℝ)) *
+        ∏ j, y (i.2 j)) *
+      (Real.sqrt ((2 : ℝ) ^ (i.1.val + 1) / ((i.1.val + 1).factorial : ℝ)) *
+        ∏ j, x (i.2 j))) = _
+  rw [Fintype.sum_sigma]
+  apply Finset.sum_congr rfl
+  intro k _
+  rw [show inner ℝ x y = ∑ i : Fin n, y i * x i from rfl,
+    Fintype.sum_pow, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro ι _
+  rw [Finset.prod_mul_distrib]
+  let c : ℝ := (2 : ℝ) ^ (k.val + 1) / ((k.val + 1).factorial : ℝ)
+  have hc : 0 ≤ c := by
+    dsimp [c]
+    positivity
+  change (Real.sqrt c * ∏ j, y (ι j)) * (Real.sqrt c * ∏ j, x (ι j)) =
+    c * ((∏ j, y (ι j)) * ∏ j, x (ι j))
+  calc
+    _ = (Real.sqrt c * Real.sqrt c) * ((∏ j, y (ι j)) * ∏ j, x (ι j)) := by ring
+    _ = _ := by rw [Real.mul_self_sqrt hc]
 
 theorem polynomialFeatureProjection_isOrthogonalGrading (n N : ℕ) :
     IsOrthogonalGrading (polynomialFeatureProjection (n := n) (N := N)) := by

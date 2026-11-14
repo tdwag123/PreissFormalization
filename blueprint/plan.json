@@ -1,17 +1,22 @@
 {
-  "stage": "Mathematical blueprint and architecture audited; canonical Lean interfaces being elaborated; proofs incomplete.",
+  "stage": "Canonical statement library elaborated and kernel-audited at ff0d37b; proof development underway.",
   "nodes": [
     {
       "id": "def:plane",
       "kind": "definition",
       "title": "Linear planes",
       "lean_names": [
+        "Preiss.Euclidean",
         "Preiss.Plane"
       ],
       "deps": [],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Geometry/Planes.lean"
+      "proposed_file": "Preiss/Geometry/Planes.lean",
+      "source_files": [
+        "Preiss/Geometry/Euclidean.lean",
+        "Preiss/Geometry/Planes.lean"
+      ]
     },
     {
       "id": "def:coverage",
@@ -23,7 +28,10 @@
       "deps": [],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Rectifiability/Defs.lean"
+      "proposed_file": "Preiss/Rectifiability/Defs.lean",
+      "source_files": [
+        "Preiss/Rectifiability/Defs.lean"
+      ]
     },
     {
       "id": "def:parametrized-coverage",
@@ -34,14 +42,18 @@
       "proof_tex": "",
       "deps": [],
       "lean_names": [
+        "Preiss.CountablyCoveredByLipschitzPieces",
         "Preiss.LipschitzPiece",
-        "Preiss.CountablyCoveredByLipschitzPieces"
+        "Preiss.LipschitzPiece.range"
       ],
       "proposed_lean_name": "Preiss.LipschitzPiece, Preiss.CountablyCoveredByLipschitzPieces",
       "proposed_file": "Preiss/Rectifiability/Defs.lean",
       "scope": "core",
       "branch": "Definitions",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Defs.lean"
+      ]
     },
     {
       "id": "lem:domain-extension",
@@ -61,21 +73,25 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Reuse extend_pi through finite-dimensional coordinates; no optimal Kirszbraun bound needed.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/LipschitzExtension.lean"
+      ]
     },
     {
       "id": "def:density-api",
       "kind": "definition",
       "title": "GMT: dimensional densities",
       "lean_names": [
+        "HasDensity",
         "dimensional_density_ratio",
         "dimensional_lower_density",
-        "dimensional_upper_density",
-        "HasDensity"
+        "dimensional_upper_density"
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "def:uniform-api",
@@ -86,7 +102,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:vitali",
@@ -97,27 +114,27 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
-      "id": "lem:gaussian-polynomial-integrable",
-      "kind": "lemma",
-      "title": "Gaussian polynomial integrability under polynomial growth",
-      "statement_tex": "For a regular measure with $\\mu(B(0,R))\\leq C(1+R)^p$ for all $R>0$, $C,p\\geq0$, every $d\\in\\mathbb N$ and $s>0$ satisfy $\\int |z|^d e^{-s|z|^2}\\,d\\mu<\\infty$. If $\\mu\\ne0$, its Gaussian mass is positive.",
-      "hypotheses_tex": "",
-      "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
+      "id": "def:polynomial-growth-bound",
+      "title": "A common polynomial growth bound",
+      "kind": "definition",
+      "statement_tex": "A common polynomial growth bound consists of finite real constants $C,p\\geq0$ such that $\\mu(\\overline B(0,R))\\leq C(1+R)^p$ for every $R>0$.",
+      "definition_dependencies": [],
       "deps": [],
       "lean_names": [
-        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
+        "Preiss.HasPolynomialGrowthBound"
       ],
-      "proposed_lean_name": "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
-      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean",
+      "file": "Preiss/Analysis/GaussianGrowth.lean",
       "scope": "core",
-      "branch": "Uniform measures and tangents",
-      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
-      "repair": [],
-      "note": "",
-      "role": "Preiss proof"
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean"
     },
     {
       "id": "lem:graded-analytic-projection",
@@ -142,7 +159,10 @@
         "Generic finite-dimensional replacement for the source tensor argument; filtration decomposition must include all earlier summands."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjection.lean"
+      ]
     },
     {
       "id": "lem:greatest-crossing",
@@ -164,7 +184,10 @@
         "The ordinary intermediate value theorem alone does not give the full later interval bound."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GreatestCrossing.lean"
+      ]
     },
     {
       "id": "gmt:finite-restriction",
@@ -175,7 +198,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:hausdorff-content",
@@ -187,7 +211,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:vague",
@@ -198,7 +223,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:blowup",
@@ -209,7 +235,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:density-points",
@@ -220,7 +247,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "mathlib:measurable-hull",
@@ -231,7 +259,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "mathlib:besicovitch-cover",
@@ -242,20 +271,22 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "mathlib:besicovitch-differentiation",
       "kind": "lemma",
       "title": "mathlib: differentiation of measures and restrictions",
       "lean_names": [
-        "Besicovitch.ae_tendsto_rnDeriv",
+        "Besicovitch.ae_tendsto_measure_inter_div",
         "Besicovitch.ae_tendsto_measure_inter_div_of_measurableSet",
-        "Besicovitch.ae_tendsto_measure_inter_div"
+        "Besicovitch.ae_tendsto_rnDeriv"
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "mathlib:vitali-enlargement",
@@ -266,7 +297,8 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "def:polynomial-feature",
@@ -281,9 +313,7 @@
         "Preiss.PolynomialFeatureSpace",
         "Preiss.polynomialFeature",
         "Preiss.polynomialFeatureBlock",
-        "Preiss.polynomialFeatureProjection",
-        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeature_inner"
+        "Preiss.polynomialFeatureProjection"
       ],
       "proposed_lean_name": "Preiss.polynomialFeature",
       "proposed_file": "Preiss/Analysis/PolynomialFeatures.lean",
@@ -294,7 +324,10 @@
         "New coordinate model avoids the incorrectly normalized symmetrized basis in the printed proof."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ]
     },
     {
       "id": "def:unit-uniform",
@@ -308,7 +341,10 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Uniform/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Defs.lean"
+      ]
     },
     {
       "id": "def:dimensional-blowup",
@@ -322,7 +358,10 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Tangent/Blowup.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Blowup.lean"
+      ]
     },
     {
       "id": "mathlib:standard-gaussian",
@@ -330,12 +369,13 @@
       "title": "Intrinsic standard Gaussian measure",
       "lean_names": [
         "ProbabilityTheory.stdGaussian",
-        "ProbabilityTheory.stdGaussian_map",
-        "ProbabilityTheory.stdGaussian_eq_map_pi_orthonormalBasis"
+        "ProbabilityTheory.stdGaussian_eq_map_pi_orthonormalBasis",
+        "ProbabilityTheory.stdGaussian_map"
       ],
       "deps": [],
       "branch": "Existing mathlib",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "def:moments",
@@ -348,8 +388,10 @@
       "lean_names": [
         "Preiss.MomentForm",
         "Preiss.gaussianMass",
+        "Preiss.gaussianMoment",
         "Preiss.gaussianMomentForm",
         "Preiss.gaussianMomentForm_permute",
+        "Preiss.momentBilinear",
         "Preiss.momentKernel"
       ],
       "proposed_lean_name": "Preiss.gaussianMomentForm",
@@ -359,7 +401,11 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentForms.lean",
+        "Preiss/Uniform/Moments.lean"
+      ]
     },
     {
       "id": "mathlib:derivative-partitions",
@@ -371,7 +417,45 @@
       ],
       "deps": [],
       "branch": "Existing mathlib",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": []
+    },
+    {
+      "id": "def:bilinear-trace",
+      "kind": "definition",
+      "title": "Bilinear trace and restriction",
+      "statement_tex": "For a continuous bilinear form on a finite-dimensional real inner product space, take the trace of its Riesz-represented linear map. Restriction to a subspace and conversion of a two-linear moment form to a bilinear form are concrete data operations.",
+      "deps": [],
+      "lean_names": [
+        "Preiss.bilinearTrace",
+        "Preiss.restrictBilinear"
+      ],
+      "scope": "core",
+      "branch": "Generic multilinear analysis",
+      "role": "Preiss proof",
+      "proposed_file": "Preiss/Analysis/BilinearTrace.lean",
+      "source_files": [
+        "Preiss/Analysis/BilinearTrace.lean"
+      ]
+    },
+    {
+      "id": "def:flatness-cutoff",
+      "title": "An admissible flatness cutoff",
+      "kind": "definition",
+      "statement_tex": "A cutoff $\\phi\\in C_c(\\mathbb R^n,\\mathbb R)$ is admissible when $0\\leq\\phi\\leq1$, it equals one on the closed unit ball, and its topological support lies in the open ball of radius two.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.IsFlatnessCutoff"
+      ],
+      "file": "Preiss/Uniform/FlatnessContinuity.lean",
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessContinuity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessContinuity.lean"
     },
     {
       "id": "lem:spectral-minimizing-plane",
@@ -383,7 +467,9 @@
       "deps": [
         "def:plane"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.trace_orthogonalComplement_minimized_topEigenspace"
+      ],
       "proposed_lean_name": "Preiss.trace_orthogonalComplement_minimized_topEigenspace",
       "proposed_file": "Preiss/Analysis/SpectralOptimization.lean",
       "scope": "core",
@@ -391,7 +477,10 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/SpectralOptimization.lean"
+      ]
     },
     {
       "id": "def:lipschitz-graph",
@@ -405,7 +494,10 @@
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Rectifiability/GraphDefs.lean"
+      "proposed_file": "Preiss/Rectifiability/GraphDefs.lean",
+      "source_files": [
+        "Preiss/Rectifiability/GraphDefs.lean"
+      ]
     },
     {
       "id": "lem:grassmannian",
@@ -432,7 +524,11 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneTopology.lean",
+        "Preiss/Geometry/Projections.lean"
+      ]
     },
     {
       "id": "def:cone",
@@ -455,7 +551,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/Cones.lean"
+      ]
     },
     {
       "id": "lem:plane-hausdorff",
@@ -481,7 +580,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Split normalization, finiteness, and sphere-null corollaries; do not import tangent or uniform-measure theory.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneMeasure.lean"
+      ]
     },
     {
       "id": "def:weak-approximation-good-set",
@@ -503,7 +605,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Uniformization.lean"
+      ]
     },
     {
       "id": "lem:tube-support-upgrade",
@@ -525,7 +630,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Uniformization.lean"
+      ]
     },
     {
       "id": "lem:empty-cylinder-direction",
@@ -548,7 +656,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/Cylinders.lean"
+      ]
     },
     {
       "id": "def:flat",
@@ -564,7 +675,10 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Geometry/FlatMeasure.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/FlatMeasure.lean"
+      ]
     },
     {
       "id": "def:weak-approximation",
@@ -581,7 +695,10 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Rectifiability/WeakApproximation/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Defs.lean"
+      ]
     },
     {
       "id": "def:flatness",
@@ -604,7 +721,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Flatness.lean"
+      ]
     },
     {
       "id": "def:rectifiable",
@@ -624,22 +744,30 @@
       "proposed_lean_name": "Preiss.CountablyRectifiable, Preiss.IsRectifiableMeasure",
       "proposed_file": "Preiss/Rectifiability/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Defs.lean"
+      ]
     },
     {
       "id": "def:positive-density",
       "kind": "definition",
       "title": "Positive finite density",
       "lean_names": [
+        "Preiss.HasPositiveFiniteDensitiesAt",
         "Preiss.HasPositiveFiniteDensityAt",
-        "Preiss.HasPositiveFiniteDensitiesAt"
+        "Preiss.HasPositiveFiniteDensityAt.densities",
+        "Preiss.HasPositiveFiniteDensityAt.hasDensity"
       ],
       "deps": [
         "def:density-api"
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Density/Defs.lean"
+      "proposed_file": "Preiss/Density/Defs.lean",
+      "source_files": [
+        "Preiss/Density/Defs.lean"
+      ]
     },
     {
       "id": "gmt:density-order",
@@ -652,7 +780,8 @@
         "def:density-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Additional reusable API"
+      "role": "Additional reusable API",
+      "source_files": []
     },
     {
       "id": "gmt:density-limit",
@@ -665,36 +794,39 @@
         "def:density-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:density-bounds",
       "kind": "lemma",
       "title": "GMT: eventual small-ball bounds",
       "lean_names": [
+        "dimensional_density_ratio_closedBall",
         "eventually_gt_of_lower_density_gt",
-        "eventually_lt_of_upper_density_lt",
-        "dimensional_density_ratio_closedBall"
+        "eventually_lt_of_upper_density_lt"
       ],
       "deps": [
         "def:density-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:doubling-bounds",
       "kind": "lemma",
       "title": "GMT: density bounds imply support and doubling",
       "lean_names": [
-        "mem_support_of_ball_lower_bound",
-        "limsup_ball_ratio_lt_top_of_ball_bounds_at"
+        "limsup_ball_ratio_lt_top_of_ball_bounds_at",
+        "mem_support_of_ball_lower_bound"
       ],
       "deps": [
         "def:density-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:density-exists-set",
@@ -707,7 +839,8 @@
         "def:density-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:uniform-radial",
@@ -721,7 +854,8 @@
         "def:uniform-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:hyperplane-transport",
@@ -734,7 +868,8 @@
         "def:uniform-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:support-not-full",
@@ -748,7 +883,8 @@
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": ".lake/packages/FormalizingGMT/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean"
+      "source_files": [],
+      "upstream_source_file": ".lake/packages/FormalizingGMT/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean"
     },
     {
       "id": "gmt:zero-barycenter-hyperplane",
@@ -762,7 +898,8 @@
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      "source_files": [],
+      "upstream_source_file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
     },
     {
       "id": "lem:density-measure-comparison",
@@ -787,77 +924,35 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Split upper and lower comparison declarations; constants may be nonoptimal but must be positive finite.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/PowerComparison.lean"
+      ]
     },
     {
-      "id": "lem:moment-determination",
+      "id": "lem:gaussian-polynomial-integrable",
       "kind": "lemma",
-      "title": "Gaussian weighted polynomials determine growing measures",
-      "statement_tex": "Regular measures with a common polynomial growth bound are equal if their\n$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends\nthe equalities from Gaussian rate $t$ to $t+1/2$ for $t\\geq1$ by dominated\nexponential series, then iterates to all positive integer rates.\nThe algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\\geq1$, extends\ncontinuously to the one-point compactification and separates points.\nStone--Weierstrass approximates $e^{|z|^2}\\varphi$ uniformly for compactly\nsupported $\\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.\nExpanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not\njustified by absolute domination, so that step in the book needs this repair\nor a separate uniqueness theorem with checked exponential-moment hypotheses.",
-      "hypotheses_tex": "",
-      "proof_tex": "Regular measures with a common polynomial growth bound are equal if their\n$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends\nthe equalities from Gaussian rate $t$ to $t+1/2$ for $t\\geq1$ by dominated\nexponential series, then iterates to all positive integer rates.\nThe algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\\geq1$, extends\ncontinuously to the one-point compactification and separates points.\nStone--Weierstrass approximates $e^{|z|^2}\\varphi$ uniformly for compactly\nsupported $\\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.\nExpanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not\njustified by absolute domination, so that step in the book needs this repair\nor a separate uniqueness theorem with checked exponential-moment hypotheses.",
-      "deps": [
-        "lem:gaussian-polynomial-integrable"
-      ],
-      "lean_names": [
-        "Preiss.measure_eq_of_gaussian_polynomial_moments_eq"
-      ],
-      "proposed_lean_name": "Preiss.measure_eq_of_gaussian_polynomial_moments_eq",
-      "proposed_file": "Preiss/Analysis/GaussianMomentDetermination.lean",
-      "scope": "core",
-      "branch": "Uniform measures and tangents",
-      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
-      "repair": [
-        "New weights repair: extend rates by increments of 1/2 with domination, then use weighted Stone-Weierstrass; arbitrary-rate exponential expansion is unjustified."
-      ],
-      "note": "",
-      "role": "Preiss proof"
-    },
-    {
-      "id": "lem:gaussian-uniform-tails",
-      "kind": "lemma",
-      "title": "Uniform Gaussian polynomial tails",
-      "statement_tex": "For fixed $C,p\\geq0$, $d\\in\\mathbb N$, $s>0$, the supremum of $\\int_{|z|>R}|z|^d e^{-s|z|^2}\\,d\\mu$ over all regular measures satisfying $\\mu(B(0,t))\\leq C(1+t)^p$ tends to zero as $R\\to\\infty$.",
+      "title": "Gaussian polynomial integrability under polynomial growth",
+      "statement_tex": "For a regular measure with $\\mu(B(0,R))\\leq C(1+R)^p$ for all $R>0$, $C,p\\geq0$, every $d\\in\\mathbb N$ and $s>0$ satisfy $\\int |z|^d e^{-s|z|^2}\\,d\\mu<\\infty$. If $\\mu\\ne0$, its Gaussian mass is positive.",
       "hypotheses_tex": "",
       "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
       "deps": [
-        "lem:gaussian-polynomial-integrable"
+        "def:polynomial-growth-bound"
       ],
       "lean_names": [
-        "Preiss.gaussian_polynomial_uniform_tail"
+        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
       ],
-      "proposed_lean_name": "Preiss.gaussian_polynomial_uniform_tail",
-      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean",
-      "scope": "core",
-      "branch": "Uniform measures and tangents",
-      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
-      "repair": [
-        "Explicit uniform tail control is required to pass unbounded Gaussian tests through vague limits."
-      ],
-      "note": "",
-      "role": "Preiss proof"
-    },
-    {
-      "id": "lem:gaussian-parameter-derivative",
-      "kind": "lemma",
-      "title": "Differentiation of Gaussian polynomial integrals",
-      "statement_tex": "Under polynomial growth, $s\\mapsto\\int P(z)e^{-s|z|^2}\\,d\\mu$ is differentiable for $s>0$ with derivative $-\\int |z|^2P(z)e^{-s|z|^2}\\,d\\mu$; the identity iterates, with domination uniform on compact positive parameter intervals.",
-      "hypotheses_tex": "",
-      "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
-      "deps": [
-        "lem:gaussian-polynomial-integrable"
-      ],
-      "lean_names": [
-        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian"
-      ],
-      "proposed_lean_name": "Preiss.hasDerivAt_integral_polynomial_mul_gaussian",
+      "proposed_lean_name": "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
       "proposed_file": "Preiss/Analysis/GaussianGrowth.lean",
       "scope": "core",
       "branch": "Uniform measures and tangents",
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ]
     },
     {
       "id": "gmt:content-comparison",
@@ -865,14 +960,15 @@
       "title": "GMT: content comparison and stabilization",
       "lean_names": [
         "hausdorffContentInfty_le_hausdorffContent",
-        "hausdorffContent_le_hausdorffMeasure",
-        "hausdorffContent_eq_hausdorffContentInfty_of_ediam_le"
+        "hausdorffContent_eq_hausdorffContentInfty_of_ediam_le",
+        "hausdorffContent_le_hausdorffMeasure"
       ],
       "deps": [
         "gmt:hausdorff-content"
       ],
       "branch": "Existing interfaces",
-      "role": "Additional reusable API"
+      "role": "Additional reusable API",
+      "source_files": []
     },
     {
       "id": "gmt:hausdorff-regular",
@@ -882,11 +978,12 @@
         "HausdorffRestrict.toRadonOuterMeasure"
       ],
       "deps": [
-        "gmt:hausdorff-content",
-        "gmt:finite-restriction"
+        "gmt:finite-restriction",
+        "gmt:hausdorff-content"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:portmanteau",
@@ -899,7 +996,8 @@
         "gmt:vague"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "thm:compactness",
@@ -912,7 +1010,8 @@
         "gmt:vague"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:compact-test-perturbation",
@@ -926,7 +1025,8 @@
         "gmt:vague"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:vague-countable-metric",
@@ -939,7 +1039,13 @@
         "gmt:vague"
       ],
       "lean_names": [
-        "Preiss.vagueMetric_tendsto_iff"
+        "Preiss.RegularEuclideanMeasure",
+        "Preiss.VagueMetrization",
+        "Preiss.exists_vagueMetrization",
+        "Preiss.vagueMetric_finite_cover_of_compact",
+        "Preiss.vagueMetric_separates",
+        "Preiss.vagueMetric_tendsto_iff",
+        "Preiss.vagueTestDistance"
       ],
       "proposed_lean_name": "Preiss.vagueMetric_tendsto_iff",
       "proposed_file": "Preiss/Analysis/Vague/Metrization.lean",
@@ -948,22 +1054,26 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ]
     },
     {
       "id": "gmt:blowup-balls",
       "kind": "lemma",
       "title": "GMT: measurable blow-ups and ball identities",
       "lean_names": [
-        "measurable_blowUpMap",
         "map_blowUp_apply_ball",
-        "map_blowUp_apply_closedBall"
+        "map_blowUp_apply_closedBall",
+        "measurable_blowUpMap"
       ],
       "deps": [
         "gmt:blowup"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:blowup-regular",
@@ -977,7 +1087,8 @@
         "gmt:blowup"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "def:tangent-api",
@@ -987,11 +1098,12 @@
         "IsTangentMeasure"
       ],
       "deps": [
-        "gmt:vague",
-        "gmt:blowup"
+        "gmt:blowup",
+        "gmt:vague"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:measurable-hull-holes",
@@ -1015,7 +1127,31 @@
         "New proof repair: arbitrary sets of bad centers are not asserted Borel. Use finite-outer-mass localization and Measure.measure_toMeasurable_inter."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/MeasureHull.lean"
+      ]
+    },
+    {
+      "id": "lem:polynomial-feature-identities",
+      "kind": "lemma",
+      "title": "Inner products and grading of polynomial features",
+      "statement_tex": "The coordinate polynomial feature map recovers the weighted powers of $\\langle x,y\\rangle$ through inner products. Its homogeneous coordinate blocks form an orthogonal grading.",
+      "lean_names": [
+        "Preiss.polynomialFeatureProjection_inner",
+        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
+        "Preiss.polynomialFeature_inner"
+      ],
+      "deps": [
+        "def:polynomial-feature"
+      ],
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "proposed_file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "source_files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ]
     },
     {
       "id": "lem:unit-uniform-adapter",
@@ -1032,7 +1168,10 @@
       ],
       "proposed_file": "Preiss/Uniform/GMTAdapters.lean",
       "statement_tex": "For $m>0$, the pure unit-uniform ball law is equivalent to FormalizingGMT's $m$-uniform predicate together with origin support membership and unit closed-ball mass.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GMTAdapters.lean"
+      ]
     },
     {
       "id": "def:dimensional-tangent",
@@ -1049,7 +1188,10 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Tangent/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Defs.lean"
+      ]
     },
     {
       "id": "def:tangent-at-infinity",
@@ -1066,7 +1208,10 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Tangent/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Defs.lean"
+      ]
     },
     {
       "id": "def:conical",
@@ -1082,7 +1227,10 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Uniform/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Defs.lean"
+      ]
     },
     {
       "id": "lem:gaussian-wick-fourth",
@@ -1105,34 +1253,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
-    },
-    {
-      "id": "lem:moment-feature-annihilation",
-      "kind": "lemma",
-      "title": "Feature moment functional and weighted annihilator",
-      "statement_tex": "Let $V=\\operatorname{span}\\Phi(\\operatorname{supp}\\nu)$ and $A(s)=\\sum_{k=1}^{2q}s^kP_k$. The functional $L_s(u)=I(s)^{-1}\\int\\langle A(s)u,\\Phi(z)\\rangle e^{-s|z|^2}\\,d\\nu$ is continuous linear, has $L_s(\\Phi(x))=\\sum_{k=1}^{2q}b_{k,s}(x^k)$, and vanishes on $A(s)^{-1}(V^\\perp)$.",
-      "hypotheses_tex": "",
-      "proof_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
-      "deps": [
-        "def:moments",
-        "def:polynomial-feature",
-        "def:unit-uniform"
-      ],
-      "lean_names": [
-        "Preiss.featureMoment",
-        "Preiss.featureMoment_apply_feature",
-        "Preiss.featureMoment_vanishes_weightedComplement",
-        "Preiss.supportFeatureSpan"
-      ],
-      "proposed_lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
-      "proposed_file": "Preiss/Uniform/MomentFeatures.lean",
-      "scope": "core",
-      "branch": "Uniform measures and tangents",
-      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
-      "repair": [],
-      "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianQuadraticForms.lean"
+      ]
     },
     {
       "id": "lem:flat-gaussian-even-moments",
@@ -1157,7 +1281,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMoments.lean"
+      ]
     },
     {
       "id": "def:moment-coefficients",
@@ -1175,7 +1302,10 @@
       ],
       "proposed_file": "Preiss/Uniform/MomentCoefficients.lean",
       "statement_tex": "A coefficient family assigns a continuous $k$-linear form $B_k^{(j)}$ to each\npair of natural numbers $k,j$. Its Taylor polynomial of order $q$ is\n$\\sum_{j=1}^q s^j B_k^{(j)}/j!$. The expansion predicate requires symmetry\nand an operator-norm remainder $o(s^q)$ as $s\\downarrow0$, for every $k,q>0$.\nExistence, uniqueness in positive degrees, degree vanishings, and support\nidentities are separate theorems. No coefficient is selected from an\nunproved existence theorem inside this definition.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentCoefficients.lean"
+      ]
     },
     {
       "id": "lem:moment-form-evaluation",
@@ -1186,31 +1316,82 @@
         "def:moments"
       ],
       "lean_names": [
-        "Preiss.gaussianMomentForm_apply"
+        "Preiss.gaussianMomentForm_apply",
+        "Preiss.momentBilinear_apply",
+        "Preiss.momentKernel_apply"
       ],
       "scope": "core",
       "branch": "Generic multilinear analysis",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Uniform/MomentForms.lean"
+      "proposed_file": "Preiss/Uniform/MomentForms.lean",
+      "source_files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ]
     },
     {
-      "id": "def:bilinear-trace",
-      "kind": "definition",
-      "title": "Bilinear trace and restriction",
-      "statement_tex": "For a continuous bilinear form on a finite-dimensional real inner product space, take the trace of its Riesz-represented linear map. Restriction to a subspace and conversion of a two-linear moment form to a bilinear form are concrete data operations.",
+      "id": "lem:moment-form-symmetry",
+      "title": "Permutation symmetry of Gaussian moment forms",
+      "kind": "lemma",
+      "statement_tex": "Gaussian moment forms are invariant under every permutation of their arguments. The total Bochner definition is symmetric even when a nonintegrable kernel has integral zero.",
+      "definition_dependencies": [
+        "def:moments"
+      ],
       "deps": [
-        "def:plane",
         "def:moments"
       ],
       "lean_names": [
-        "Preiss.bilinearTrace",
-        "Preiss.momentBilinear",
-        "Preiss.restrictBilinear"
+        "Preiss.gaussianMomentForm_permute"
+      ],
+      "file": "Preiss/Uniform/MomentForms.lean",
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "lem:bilinear-trace-basis",
+      "kind": "lemma",
+      "title": "Trace as an orthonormal diagonal sum",
+      "statement_tex": "The trace of a continuous bilinear form is the sum of its diagonal evaluations on any orthonormal basis.",
+      "deps": [
+        "def:bilinear-trace"
+      ],
+      "lean_names": [
+        "Preiss.bilinearTrace_eq_sum_diagonal"
       ],
       "scope": "core",
       "branch": "Generic multilinear analysis",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Analysis/BilinearTrace.lean"
+      "proposed_file": "Preiss/Analysis/BilinearTrace.lean",
+      "source_files": [
+        "Preiss/Analysis/BilinearTrace.lean"
+      ]
+    },
+    {
+      "id": "lem:flatness-cutoff-exists",
+      "title": "Existence of an admissible cutoff",
+      "kind": "lemma",
+      "statement_tex": "An admissible flatness cutoff exists in every Euclidean dimension.",
+      "definition_dependencies": [
+        "def:flatness-cutoff"
+      ],
+      "deps": [
+        "def:flatness-cutoff"
+      ],
+      "lean_names": [
+        "Preiss.exists_flatnessCutoff"
+      ],
+      "file": "Preiss/Uniform/FlatnessContinuity.lean",
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessContinuity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatnessContinuity.lean"
     },
     {
       "id": "lem:graph-parametrization",
@@ -1233,7 +1414,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Graphs.lean"
+      ]
     },
     {
       "id": "lem:cone-graph",
@@ -1256,7 +1440,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Cones.lean"
+      ]
     },
     {
       "id": "lem:projected-tube-slab-bound",
@@ -1278,7 +1465,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/ProjectionEstimate.lean"
+      ]
     },
     {
       "id": "lem:lipschitz-null-image",
@@ -1300,7 +1490,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/GraphCover.lean"
+      ]
     },
     {
       "id": "lem:graph-affine-area",
@@ -1323,7 +1516,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/GraphArea.lean"
+      ]
     },
     {
       "id": "lem:closed-weak-approximation-good-set",
@@ -1346,7 +1542,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Prove joint LSC moving-open-set mass and USC closed-ball mass, approximate centres via projections; project closed relation along compact plane witness.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Uniformization.lean"
+      ]
     },
     {
       "id": "lem:weak-approximation-lower-density",
@@ -1369,7 +1568,11 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+        "Preiss/Rectifiability/WeakApproximation/Basic.lean"
+      ]
     },
     {
       "id": "lem:weak-approximation-deletion",
@@ -1392,7 +1595,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Restriction.lean"
+      ]
     },
     {
       "id": "lem:weak-approximation-good-exhaustion",
@@ -1415,7 +1621,37 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Uniformization.lean"
+      ]
+    },
+    {
+      "id": "def:first-crossing-data",
+      "title": "Quantified crossing scale data",
+      "kind": "definition",
+      "statement_tex": "Crossing data record positive scales $\\sigma_i\\leq r_i\\to0$, vague limits of the two blow-up sequences, energy exactly $\\varepsilon$ at every $\\sigma_i$ and at its limit, and energy at most $\\varepsilon$ on every interval $[\\sigma_i,r_i]$. Divergence of $r_i/\\sigma_i$ and flatness at infinity are separate conclusions.",
+      "definition_dependencies": [
+        "def:dimensional-blowup",
+        "def:flatness",
+        "gmt:vague"
+      ],
+      "deps": [
+        "def:dimensional-blowup",
+        "def:flatness",
+        "gmt:vague"
+      ],
+      "lean_names": [
+        "Preiss.FirstCrossingData"
+      ],
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
     },
     {
       "id": "lem:carrier-closure",
@@ -1441,7 +1677,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Several elementary declarations in one API, not a single conjunction theorem.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Basic.lean"
+      ]
     },
     {
       "id": "def:purely-unrectifiable",
@@ -1463,7 +1702,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Use this canonical stronger formulation so core decomposition does not need the image-to-graph theorem; source graph-only equivalence is a companion result.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/PurelyUnrectifiable.lean"
+      ]
     },
     {
       "id": "lem:zero-measure",
@@ -1479,7 +1721,10 @@
       ],
       "proposed_file": "Preiss/Rectifiability/Zero.lean",
       "statement_tex": "The zero measure is rectifiable in every natural dimension, on every metric target with its Borel measurable structure.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Zero.lean"
+      ]
     },
     {
       "id": "lem:zero-dimension",
@@ -1494,43 +1739,51 @@
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Density/Dimension.lean"
+      "proposed_file": "Preiss/Density/ZeroDimension.lean",
+      "source_files": [
+        "Preiss/Density/ZeroDimension.lean"
+      ]
     },
     {
       "id": "gmt:goodsets",
       "kind": "lemma",
       "title": "GMT: closed good sets for density bounds",
       "lean_names": [
-        "positiveFiniteDensitySet",
         "RatioOfDensities",
+        "exists_goodSet_mem",
         "goodSet",
         "isClosed_goodSet",
-        "exists_goodSet_mem"
+        "positiveFiniteDensitySet"
       ],
       "deps": [
         "def:density-api",
         "gmt:density-bounds"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:density-bridge",
       "kind": "lemma",
       "title": "Normalization bridges",
       "lean_names": [
-        "Preiss.density_iff_upstream",
-        "Preiss.density_iff_openBall_limit"
+        "Preiss.density_iff_openBall_limit",
+        "Preiss.density_iff_upstream"
       ],
       "deps": [
         "def:positive-density",
         "gmt:density-bounds",
         "gmt:density-exists-set",
-        "gmt:density-limit"
+        "gmt:density-limit",
+        "lem:density-limit-values"
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Density/Adapters.lean"
+      "proposed_file": "Preiss/Density/Adapters.lean",
+      "source_files": [
+        "Preiss/Density/Adapters.lean"
+      ]
     },
     {
       "id": "gmt:barycenter-quadratic-bound",
@@ -1545,7 +1798,8 @@
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      "source_files": [],
+      "upstream_source_file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
     },
     {
       "id": "lem:absolute-continuity",
@@ -1568,7 +1822,91 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/HausdorffComparison.lean"
+      ]
+    },
+    {
+      "id": "lem:moment-determination",
+      "kind": "lemma",
+      "title": "Gaussian weighted polynomials determine growing measures",
+      "statement_tex": "Regular measures with a common polynomial growth bound are equal if their\n$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends\nthe equalities from Gaussian rate $t$ to $t+1/2$ for $t\\geq1$ by dominated\nexponential series, then iterates to all positive integer rates.\nThe algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\\geq1$, extends\ncontinuously to the one-point compactification and separates points.\nStone--Weierstrass approximates $e^{|z|^2}\\varphi$ uniformly for compactly\nsupported $\\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.\nExpanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not\njustified by absolute domination, so that step in the book needs this repair\nor a separate uniqueness theorem with checked exponential-moment hypotheses.",
+      "hypotheses_tex": "",
+      "proof_tex": "Regular measures with a common polynomial growth bound are equal if their\n$e^{-|z|^2}$-weighted polynomial moments agree. One rigorous route extends\nthe equalities from Gaussian rate $t$ to $t+1/2$ for $t\\geq1$ by dominated\nexponential series, then iterates to all positive integer rates.\nThe algebra generated by constants and $e^{-k|z|^2}P(z)$, $k\\geq1$, extends\ncontinuously to the one-point compactification and separates points.\nStone--Weierstrass approximates $e^{|z|^2}\\varphi$ uniformly for compactly\nsupported $\\varphi$; multiply by $e^{-|z|^2}$ and use Gaussian integrability.\nExpanding $e^{-a|z|^2}$ under an integral at arbitrary $a$ in one step is not\njustified by absolute domination, so that step in the book needs this repair\nor a separate uniqueness theorem with checked exponential-moment hypotheses.",
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_names": [
+        "Preiss.measure_eq_of_gaussian_polynomial_moments_eq"
+      ],
+      "proposed_lean_name": "Preiss.measure_eq_of_gaussian_polynomial_moments_eq",
+      "proposed_file": "Preiss/Analysis/GaussianMomentDetermination.lean",
+      "scope": "core",
+      "branch": "Uniform measures and tangents",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "repair": [
+        "New weights repair: extend rates by increments of 1/2 with domination, then use weighted Stone-Weierstrass; arbitrary-rate exponential expansion is unjustified."
+      ],
+      "note": "",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianMomentDetermination.lean"
+      ]
+    },
+    {
+      "id": "lem:gaussian-uniform-tails",
+      "kind": "lemma",
+      "title": "Uniform Gaussian polynomial tails",
+      "statement_tex": "For fixed $C,p\\geq0$, $d\\in\\mathbb N$, $s>0$, the supremum of $\\int_{|z|>R}|z|^d e^{-s|z|^2}\\,d\\mu$ over all regular measures satisfying $\\mu(B(0,t))\\leq C(1+t)^p$ tends to zero as $R\\to\\infty$.",
+      "hypotheses_tex": "",
+      "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
+      "deps": [
+        "def:polynomial-growth-bound",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_names": [
+        "Preiss.gaussian_polynomial_uniform_tail"
+      ],
+      "proposed_lean_name": "Preiss.gaussian_polynomial_uniform_tail",
+      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean",
+      "scope": "core",
+      "branch": "Uniform measures and tangents",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "repair": [
+        "Explicit uniform tail control is required to pass unbounded Gaussian tests through vague limits."
+      ],
+      "note": "",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ]
+    },
+    {
+      "id": "lem:gaussian-parameter-derivative",
+      "kind": "lemma",
+      "title": "Differentiation of Gaussian polynomial integrals",
+      "statement_tex": "Under polynomial growth, $s\\mapsto\\int P(z)e^{-s|z|^2}\\,d\\mu$ is differentiable for $s>0$ with derivative $-\\int |z|^2P(z)e^{-s|z|^2}\\,d\\mu$; the identity iterates, with domination uniform on compact positive parameter intervals.",
+      "hypotheses_tex": "",
+      "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
+      "deps": [
+        "def:polynomial-growth-bound",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_names": [
+        "Preiss.hasDerivAt_integral_polynomial_mul_gaussian"
+      ],
+      "proposed_lean_name": "Preiss.hasDerivAt_integral_polynomial_mul_gaussian",
+      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean",
+      "scope": "core",
+      "branch": "Uniform measures and tangents",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "repair": [],
+      "note": "",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ]
     },
     {
       "id": "gmt:content-density",
@@ -1579,11 +1917,12 @@
       ],
       "deps": [
         "def:density-api",
-        "gmt:hausdorff-content",
-        "gmt:content-comparison"
+        "gmt:content-comparison",
+        "gmt:hausdorff-content"
       ],
       "branch": "Existing interfaces",
-      "role": "Additional reusable API"
+      "role": "Additional reusable API",
+      "source_files": []
     },
     {
       "id": "gmt:hausdorff-density-upper",
@@ -1597,7 +1936,8 @@
         "gmt:hausdorff-regular"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:hausdorff-density-outside",
@@ -1611,7 +1951,8 @@
         "gmt:hausdorff-regular"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:continuity-sets",
@@ -1621,11 +1962,12 @@
         "MeasureTheory.Measure.weaklyConverges_iff_boundedContinuitySets"
       ],
       "deps": [
-        "gmt:vague",
-        "gmt:portmanteau"
+        "gmt:portmanteau",
+        "gmt:vague"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:flat-limit-tube",
@@ -1648,7 +1990,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/FlatApproximation.lean"
+      ]
     },
     {
       "id": "lem:flat-limit-moving-balls",
@@ -1671,7 +2016,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/FlatApproximation.lean"
+      ]
     },
     {
       "id": "lem:vague-support-approximation",
@@ -1693,7 +2041,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Support.lean"
+      ]
     },
     {
       "id": "lem:vague-support-limit",
@@ -1717,7 +2068,10 @@
         "The positive lower ball hypothesis is necessary; bare vague convergence does not preserve support."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Support.lean"
+      ]
     },
     {
       "id": "lem:vague-moving-tests",
@@ -1741,7 +2095,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/CompactTests.lean"
+      ]
     },
     {
       "id": "lem:vague-diagonal",
@@ -1763,23 +2120,27 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ]
     },
     {
       "id": "gmt:scaled-discarded-mass",
       "kind": "lemma",
       "title": "GMT: negligible discarded mass in normalized blow-ups",
       "lean_names": [
-        "tendsto_nhdsGT_zero_of_pos",
         "eventually_smul_measure_closedBall_le",
-        "tendsto_mul_measure_diff_zero"
+        "tendsto_mul_measure_diff_zero",
+        "tendsto_nhdsGT_zero_of_pos"
       ],
       "deps": [
         "gmt:blowup-balls",
         "gmt:portmanteau"
       ],
       "branch": "Existing interfaces",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": []
     },
     {
       "id": "lem:dimensional-compactness",
@@ -1805,7 +2166,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Compactness.lean"
+      ]
     },
     {
       "id": "lem:blowup-composition",
@@ -1831,7 +2195,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Algebra.lean"
+      ]
     },
     {
       "id": "gmt:origin-support",
@@ -1842,11 +2209,12 @@
       ],
       "deps": [
         "def:tangent-api",
-        "gmt:portmanteau",
-        "gmt:blowup-balls"
+        "gmt:blowup-balls",
+        "gmt:portmanteau"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "thm:doubling",
@@ -1857,13 +2225,14 @@
       ],
       "deps": [
         "def:tangent-api",
-        "thm:compactness",
         "gmt:blowup-balls",
         "gmt:blowup-regular",
-        "gmt:portmanteau"
+        "gmt:portmanteau",
+        "thm:compactness"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:restriction-tangents",
@@ -1877,7 +2246,8 @@
         "gmt:blowup-regular"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "thm:matching",
@@ -1891,7 +2261,8 @@
         "gmt:blowup-regular"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:transfer-ball-bounds",
@@ -1902,12 +2273,13 @@
       ],
       "deps": [
         "def:tangent-api",
-        "gmt:portmanteau",
         "gmt:blowup-balls",
-        "gmt:blowup-regular"
+        "gmt:blowup-regular",
+        "gmt:portmanteau"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:quadratic-support-tangent",
@@ -1917,12 +2289,44 @@
         "SUniformAux.support_tangent_subset_of_estimate"
       ],
       "deps": [
-        "def:uniform-api",
-        "def:tangent-api"
+        "def:tangent-api",
+        "def:uniform-api"
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      "source_files": [],
+      "upstream_source_file": ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+    },
+    {
+      "id": "lem:moment-feature-annihilation",
+      "kind": "lemma",
+      "title": "Feature moment functional and weighted annihilator",
+      "statement_tex": "Let $V=\\operatorname{span}\\Phi(\\operatorname{supp}\\nu)$ and $A(s)=\\sum_{k=1}^{2q}s^kP_k$. The functional $L_s(u)=I(s)^{-1}\\int\\langle A(s)u,\\Phi(z)\\rangle e^{-s|z|^2}\\,d\\nu$ is continuous linear, has $L_s(\\Phi(x))=\\sum_{k=1}^{2q}b_{k,s}(x^k)$, and vanishes on $A(s)^{-1}(V^\\perp)$.",
+      "hypotheses_tex": "",
+      "proof_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
+      "deps": [
+        "def:moments",
+        "def:polynomial-feature",
+        "def:unit-uniform",
+        "lem:polynomial-feature-identities"
+      ],
+      "lean_names": [
+        "Preiss.featureMoment",
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_vanishes_weightedComplement",
+        "Preiss.supportFeatureSpan"
+      ],
+      "proposed_lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
+      "proposed_file": "Preiss/Uniform/MomentFeatures.lean",
+      "scope": "core",
+      "branch": "Uniform measures and tangents",
+      "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
+      "repair": [],
+      "note": "",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ]
     },
     {
       "id": "lem:radial",
@@ -1936,7 +2340,9 @@
         "gmt:uniform-radial",
         "lem:unit-uniform-adapter"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.uniform_radial_pushforward"
+      ],
       "proposed_lean_name": "Preiss.uniform_radial_pushforward",
       "proposed_file": "Preiss/Uniform/Radial.lean",
       "scope": "core",
@@ -1946,7 +2352,10 @@
         "State lintegral identity first; signed or Bochner identities require integrability. Merge the two existing consecutive proof blocks under this label."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Radial.lean"
+      ]
     },
     {
       "id": "lem:hull-support-approximation",
@@ -1962,7 +2371,9 @@
         "lem:measurable-hull-holes"
       ],
       "lean_names": [
-        "Preiss.dist_badSet_rescaled_tendsto_zero"
+        "Preiss.IsMeasureDensityOnePoint",
+        "Preiss.dist_badSet_rescaled_tendsto_zero",
+        "Preiss.exists_badSet_points_rescaled_tendsto"
       ],
       "proposed_lean_name": "Preiss.dist_badSet_rescaled_tendsto_zero",
       "proposed_file": "Preiss/Tangent/SupportApproximation.lean",
@@ -1973,7 +2384,39 @@
         "New measurable-hull repair; require density one of the hull and finite upper dimensional density."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/SupportApproximation.lean"
+      ]
+    },
+    {
+      "id": "def:flatness-gap",
+      "title": "A cutoff flatness gap threshold",
+      "kind": "definition",
+      "statement_tex": "A positive number $\\varepsilon$ is a cutoff gap threshold if every unit $m$-uniform conical measure with cutoff flatness at most $\\varepsilon$ is flat.",
+      "definition_dependencies": [
+        "def:unit-uniform",
+        "def:conical",
+        "def:flatness",
+        "def:flat"
+      ],
+      "deps": [
+        "def:conical",
+        "def:flat",
+        "def:flatness",
+        "def:unit-uniform"
+      ],
+      "lean_names": [
+        "Preiss.IsFlatnessGap"
+      ],
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
     },
     {
       "id": "def:rigidity-normal-vector",
@@ -1987,8 +2430,7 @@
         "def:plane"
       ],
       "lean_names": [
-        "Preiss.IsFirstMomentNormalVector",
-        "Preiss.exists_firstMomentNormalVector"
+        "Preiss.IsFirstMomentNormalVector"
       ],
       "proposed_lean_name": "Preiss.rigidityNormalVector",
       "proposed_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
@@ -1997,23 +2439,40 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ]
     },
     {
-      "id": "lem:bilinear-trace-basis",
+      "id": "lem:gaussian-quadratic-trace-bound",
       "kind": "lemma",
-      "title": "Trace as an orthonormal diagonal sum",
-      "statement_tex": "The trace of a continuous bilinear form is the sum of its diagonal evaluations on any orthonormal basis.",
+      "title": "Gaussian quadratic form second moment and trace bound",
+      "statement_tex": "For a symmetric bilinear form $A$ on an $m$-dimensional Euclidean space, $m>0$, $\\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+2\\|A\\|_{HS}^2\\geq(1+2/m)(\\int A(v,v)\\,d\\gamma)^2$.",
+      "hypotheses_tex": "",
+      "proof_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
       "deps": [
-        "def:bilinear-trace"
+        "def:bilinear-trace",
+        "lem:bilinear-trace-basis",
+        "lem:gaussian-wick-fourth",
+        "mathlib:standard-gaussian"
       ],
       "lean_names": [
-        "Preiss.bilinearTrace_eq_sum_diagonal"
+        "Preiss.gaussian_integral_bilinear_eq_trace",
+        "Preiss.gaussian_integral_bilinear_sq",
+        "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq"
       ],
+      "proposed_lean_name": "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq",
+      "proposed_file": "Preiss/Analysis/GaussianQuadraticForms.lean",
       "scope": "core",
-      "branch": "Generic multilinear analysis",
+      "branch": "Uniform measures and tangents",
+      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
+      "repair": [],
+      "note": "",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Analysis/BilinearTrace.lean"
+      "source_files": [
+        "Preiss/Analysis/GaussianQuadraticForms.lean"
+      ]
     },
     {
       "id": "lem:graph-borel-finite",
@@ -2036,7 +2495,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/Graphs.lean"
+      ]
     },
     {
       "id": "lem:graph-rectifiable",
@@ -2059,7 +2521,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Graphs.lean"
+      ]
     },
     {
       "id": "lem:full-rank-graph-pieces",
@@ -2082,7 +2547,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/GraphCover.lean"
+      ]
     },
     {
       "id": "lem:rank-deficient-image-null",
@@ -2104,7 +2572,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "De Lellis Lemma4.11; do not claim the full area formula already exists.",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/GraphCover.lean"
+      ]
     },
     {
       "id": "lem:graph-area",
@@ -2128,7 +2599,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/GraphArea.lean"
+      ]
     },
     {
       "id": "lem:borel-carrier",
@@ -2152,7 +2626,35 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/EuclideanCarrier.lean"
+      ]
+    },
+    {
+      "id": "lem:carrier-calculus",
+      "kind": "lemma",
+      "title": "Carrier API aggregation",
+      "statement_tex": "Hausdorff-null changes of carriers preserve rectifiability of measures absolutely continuous with respect to \\(\\mathcal H^m\\). Countably many rectifiable restrictions whose carriers cover almost all the measure assemble to a rectifiable measure.",
+      "hypotheses_tex": "The measure is absolutely continuous with respect to \\(\\mathcal H^m\\). Restriction carriers are measurable and form a countable family covering the measure up to a null set.",
+      "proof_tex": "",
+      "deps": [
+        "lem:carrier-closure"
+      ],
+      "lean_names": [
+        "Preiss.isRectifiableMeasure_of_countable_restrict"
+      ],
+      "proposed_lean_name": "IsRectifiableMeasure.of_countable_restrict",
+      "proposed_file": "Preiss/Rectifiability/Basic.lean",
+      "scope": "core",
+      "branch": "Rectifiability",
+      "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
+      "repair": [],
+      "note": "Refines existing bundled node; declaration names for the individual elementary facts should be selected during implementation.",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Basic.lean"
+      ]
     },
     {
       "id": "lem:finite-pieces",
@@ -2176,23 +2678,27 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/FinitePieces.lean"
+      ]
     },
     {
       "id": "gmt:uniform-density-adapter",
       "kind": "lemma",
       "title": "GMT: existing density gives ratio one and bounds",
       "lean_names": [
-        "SUniformAux.mem_positiveFiniteDensitySet",
-        "SUniformAux.ball_bounds_of_mem"
+        "SUniformAux.ball_bounds_of_mem",
+        "SUniformAux.mem_positiveFiniteDensitySet"
       ],
       "deps": [
+        "gmt:density-bounds",
         "gmt:density-exists-set",
-        "gmt:goodsets",
-        "gmt:density-bounds"
+        "gmt:goodsets"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:uniform-compact-selection",
@@ -2218,7 +2724,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Uniformization.lean"
+      ]
     },
     {
       "id": "lem:excess-dimension",
@@ -2229,13 +2738,17 @@
       ],
       "deps": [
         "def:positive-density",
-        "def:rectifiable",
-        "lem:absolute-continuity"
+        "gmt:uniform-dimension-bound",
+        "lem:tangent-existence",
+        "lem:uniform-adapter"
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Density/Dimension.lean",
-      "statement_tex": "If $m>n$, the positive finite density hypothesis forces $\\mu=0$."
+      "proposed_file": "Preiss/Density/ExcessDimension.lean",
+      "statement_tex": "If $m>n$, the positive finite density hypothesis forces $\\mu=0$.",
+      "source_files": [
+        "Preiss/Density/ExcessDimension.lean"
+      ]
     },
     {
       "id": "gmt:hausdorff-density-lower",
@@ -2246,11 +2759,12 @@
       ],
       "deps": [
         "def:density-api",
-        "gmt:content-density",
-        "gmt:content-comparison"
+        "gmt:content-comparison",
+        "gmt:content-density"
       ],
       "branch": "Existing interfaces",
-      "role": "Additional reusable API"
+      "role": "Additional reusable API",
+      "source_files": []
     },
     {
       "id": "lem:weak-approximation-restrict-ae",
@@ -2275,7 +2789,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean"
+      ]
     },
     {
       "id": "lem:cone-criterion",
@@ -2293,7 +2810,10 @@
       ],
       "branch": "Existing interfaces",
       "role": "Additional reusable API",
-      "proposed_file": "Preiss/Rectifiability/ConeCriterion.lean"
+      "proposed_file": "Preiss/Rectifiability/ConeCriterion.lean",
+      "source_files": [
+        "Preiss/Rectifiability/ConeCriterion.lean"
+      ]
     },
     {
       "id": "lem:packing-base-point",
@@ -2317,7 +2837,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean"
+      ]
     },
     {
       "id": "lem:uniform-vague-closed",
@@ -2342,7 +2865,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Compactness.lean"
+      ]
     },
     {
       "id": "lem:uniform-near-support-compactness",
@@ -2352,7 +2878,9 @@
       "hypotheses_tex": "",
       "proof_tex": "A vaguely convergent sequence in $\\mathcal U_m$ has a limit in $\\mathcal U_m$.\nThe family is sequentially compact by upstream compact mass bounds.\nFirst approximate support centres using S04; squeeze open and closed radii to\nrecover the exact ball law, rather than assuming spheres of an arbitrary limit\nalready have zero mass. The origin's positive ball mass excludes the zero limit.\nAlso prove the variant where the measures are uniform with the same constant\nand their supports approach the origin, without requiring the origin in every\nsupport. This is needed in the bounded-hole argument R05 below.",
       "deps": [
+        "def:uniform-constant",
         "def:unit-uniform",
+        "lem:uniform-constant-one",
         "lem:vague-support-approximation",
         "lem:vague-support-limit",
         "thm:compactness"
@@ -2369,7 +2897,10 @@
         "Needed when blow-up centers are projections onto a plane rather than support points."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Compactness.lean"
+      ]
     },
     {
       "id": "lem:vague-moving-blowups",
@@ -2396,7 +2927,10 @@
         "Require limiting radius strictly positive; scalars finite and convergent; obtain one common compact set of pulled-back supports."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Continuity.lean"
+      ]
     },
     {
       "id": "lem:vague-gaussian-polynomials",
@@ -2406,6 +2940,7 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
       "deps": [
+        "def:polynomial-growth-bound",
         "lem:gaussian-uniform-tails",
         "lem:vague-moving-tests"
       ],
@@ -2421,7 +2956,10 @@
         "Vague convergence alone is insufficient."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ]
     },
     {
       "id": "lem:flatness-minimum",
@@ -2437,7 +2975,12 @@
         "lem:grassmannian",
         "lem:vague-moving-tests"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.exists_plane_ball_energy_le_of_flatness_le",
+        "Preiss.flatness_eq_zero_of_isFlat",
+        "Preiss.flatness_exists_minimizer",
+        "Preiss.flatness_nonneg"
+      ],
       "proposed_lean_name": "Preiss.flatness_exists_minimizer",
       "proposed_file": "Preiss/Uniform/FlatnessContinuity.lean",
       "scope": "core",
@@ -2445,7 +2988,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessContinuity.lean"
+      ]
     },
     {
       "id": "lem:tangent-closed",
@@ -2468,7 +3014,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Additional reusable API"
+      "role": "Additional reusable API",
+      "source_files": [
+        "Preiss/Tangent/Compactness.lean"
+      ]
     },
     {
       "id": "lem:dimensional-tangent-closed",
@@ -2491,7 +3040,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Compactness.lean"
+      ]
     },
     {
       "id": "lem:normalized-density-transfer",
@@ -2517,7 +3069,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Reuse GMT MatchingTangents norm_integral_cc_le, weaklyConverges_of_tendsto_integral_sub, tendsto_mul_measure_diff_zero. Finite upper density addresses author erratum for Prop3.12.",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Tangent/DensityTransfer.lean"
+      ]
     },
     {
       "id": "lem:flat-to-approximation",
@@ -2542,7 +3097,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/FlatApproximation.lean"
+      ]
     },
     {
       "id": "lem:plane-scaling",
@@ -2562,7 +3120,10 @@
       "branch": "Existing interfaces",
       "role": "Preiss proof",
       "proposed_file": "Preiss/Tangent/FlatScaling.lean",
-      "statement_tex": "Flat measures are regular and nonzero. Dimensional dilation and recentering at a point of their supporting plane preserve flatness; pushforward by a linear isometry gives the corresponding flat measure on the image plane. Unit-uniform scaling and blow-up composition have separate interfaces."
+      "statement_tex": "Flat measures are regular and nonzero. Dimensional dilation and recentering at a point of their supporting plane preserve flatness; pushforward by a linear isometry gives the corresponding flat measure on the image plane. Unit-uniform scaling and blow-up composition have separate interfaces.",
+      "source_files": [
+        "Preiss/Tangent/FlatScaling.lean"
+      ]
     },
     {
       "id": "lem:hyperplane-transport-map",
@@ -2574,10 +3135,13 @@
       "deps": [
         "def:dimensional-blowup",
         "def:plane",
+        "def:uniform-constant",
         "gmt:hyperplane-transport",
         "lem:blowup-composition"
       ],
       "lean_names": [
+        "Preiss.isUnitUniform_map_linearIsometry",
+        "Preiss.uniformWithConstant_map_linearIsometry",
         "Preiss.uniformWithConstant_transport",
         "Preiss.uniform_hyperplane_transport"
       ],
@@ -2588,7 +3152,10 @@
       "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Transport.lean"
+      ]
     },
     {
       "id": "lem:moment-covariance",
@@ -2616,7 +3183,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentCovariance.lean"
+      ]
     },
     {
       "id": "gmt:normalized-tangent",
@@ -2627,11 +3197,12 @@
       ],
       "deps": [
         "def:tangent-api",
-        "gmt:origin-support",
-        "gmt:continuity-sets"
+        "gmt:continuity-sets",
+        "gmt:origin-support"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:mattila-14-7-4",
@@ -2642,12 +3213,13 @@
       ],
       "deps": [
         "def:tangent-api",
-        "thm:doubling",
+        "gmt:blowup-balls",
         "gmt:portmanteau",
-        "gmt:blowup-balls"
+        "thm:doubling"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:tangent-existence",
@@ -2666,7 +3238,10 @@
       ],
       "proposed_file": "Preiss/Tangent/Existence.lean",
       "statement_tex": "At a point with positive lower and finite upper $m$-density, a locally finite measure has a nonzero tangent measure.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Existence.lean"
+      ]
     },
     {
       "id": "gmt:mattila-14-7-1",
@@ -2676,14 +3251,15 @@
         "mattila_14_7_1"
       ],
       "deps": [
-        "def:tangent-api",
         "def:density-api",
-        "gmt:goodsets",
+        "def:tangent-api",
         "gmt:density-points",
+        "gmt:goodsets",
         "gmt:transfer-ball-bounds"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:moment-norm-bound",
@@ -2709,7 +3285,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentEstimates.lean"
+      ]
     },
     {
       "id": "lem:homogeneous-energy-radial",
@@ -2723,7 +3302,9 @@
         "def:plane",
         "lem:radial"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.integral_gaussian_mul_homogeneous"
+      ],
       "proposed_lean_name": "Preiss.integral_gaussian_mul_homogeneous",
       "proposed_file": "Preiss/Uniform/Radial.lean",
       "scope": "core",
@@ -2733,7 +3314,10 @@
         "Explicit bridge between the gap theorem unit-ball energy and the spectral Gaussian energy."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Radial.lean"
+      ]
     },
     {
       "id": "def:rigidity-omega",
@@ -2749,8 +3333,7 @@
       ],
       "lean_names": [
         "Preiss.IsRigidityOmega",
-        "Preiss.RigidityOmega",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityOmega"
       ],
       "proposed_lean_name": "Preiss.rigidityOmega",
       "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
@@ -2759,34 +3342,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
-    },
-    {
-      "id": "lem:gaussian-quadratic-trace-bound",
-      "kind": "lemma",
-      "title": "Gaussian quadratic form second moment and trace bound",
-      "statement_tex": "For a symmetric bilinear form $A$ on an $m$-dimensional Euclidean space, $m>0$, $\\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+2\\|A\\|_{HS}^2\\geq(1+2/m)(\\int A(v,v)\\,d\\gamma)^2$.",
-      "hypotheses_tex": "",
-      "proof_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
-      "deps": [
-        "def:bilinear-trace",
-        "lem:bilinear-trace-basis",
-        "lem:gaussian-wick-fourth",
-        "mathlib:standard-gaussian"
-      ],
-      "lean_names": [
-        "Preiss.gaussian_integral_bilinear_eq_trace",
-        "Preiss.gaussian_integral_bilinear_sq",
-        "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq"
-      ],
-      "proposed_lean_name": "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq",
-      "proposed_file": "Preiss/Analysis/GaussianQuadraticForms.lean",
-      "scope": "core",
-      "branch": "Uniform measures and tangents",
-      "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
-      "repair": [],
-      "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+      ]
     },
     {
       "id": "lem:pure-basic",
@@ -2810,7 +3369,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/PurelyUnrectifiable.lean"
+      ]
     },
     {
       "id": "lem:graphs",
@@ -2836,7 +3398,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/GraphCover.lean"
+      ]
     },
     {
       "id": "lem:graph-blowup",
@@ -2860,30 +3425,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
-    },
-    {
-      "id": "lem:carrier-calculus",
-      "kind": "lemma",
-      "title": "Carrier API aggregation",
-      "statement_tex": "Hausdorff-null changes of carriers preserve rectifiability of measures absolutely continuous with respect to \\(\\mathcal H^m\\). Countably many rectifiable restrictions whose carriers cover almost all the measure assemble to a rectifiable measure.",
-      "hypotheses_tex": "The measure is absolutely continuous with respect to \\(\\mathcal H^m\\). Restriction carriers are measurable and form a countable family covering the measure up to a null set.",
-      "proof_tex": "",
-      "deps": [
-        "lem:borel-carrier",
-        "lem:carrier-closure"
-      ],
-      "lean_names": [
-        "Preiss.isRectifiableMeasure_of_countable_restrict"
-      ],
-      "proposed_lean_name": "IsRectifiableMeasure.of_countable_restrict",
-      "proposed_file": "Preiss/Rectifiability/Basic.lean",
-      "scope": "core",
-      "branch": "Rectifiability",
-      "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
-      "repair": [],
-      "note": "Refines existing bundled node; declaration names for the individual elementary facts should be selected during implementation.",
-      "role": "Preiss proof"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/GraphBlowup.lean"
+      ]
     },
     {
       "id": "lem:representation",
@@ -2905,7 +3450,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/DensityRepresentation.lean"
+      ]
     },
     {
       "id": "lem:finite-piece-transfer",
@@ -2931,7 +3479,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean"
+      ]
     },
     {
       "id": "lem:nested-compact-approximation",
@@ -2957,7 +3508,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Preserve parameter order δ then η then γ then t.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+      ]
     },
     {
       "id": "lem:uniform-compactness",
@@ -2981,7 +3535,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Compactness.lean"
+      ]
     },
     {
       "id": "lem:dimensional-tangent-dilation",
@@ -3006,7 +3563,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Compactness.lean"
+      ]
     },
     {
       "id": "lem:pseudotangent-transitive",
@@ -3023,6 +3583,9 @@
         "lem:vague-support-approximation"
       ],
       "lean_names": [
+        "Preiss.IsUniformPseudotangent",
+        "Preiss.uniformPseudotangent_isUnitUniform",
+        "Preiss.uniformPseudotangent_map_linearIsometry",
         "Preiss.uniformPseudotangent_trans"
       ],
       "proposed_lean_name": "Preiss.uniformPseudotangent_trans",
@@ -3032,7 +3595,10 @@
       "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/ScalingOrbit.lean"
+      ]
     },
     {
       "id": "lem:flatness-continuous",
@@ -3047,7 +3613,9 @@
         "lem:grassmannian",
         "lem:vague-moving-tests"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.flatness_continuous"
+      ],
       "proposed_lean_name": "Preiss.flatness_continuous",
       "proposed_file": "Preiss/Uniform/FlatnessContinuity.lean",
       "scope": "core",
@@ -3055,7 +3623,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatnessContinuity.lean"
+      ]
     },
     {
       "id": "lem:dimensional-tangent-compactness",
@@ -3082,7 +3653,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Compactness.lean"
+      ]
     },
     {
       "id": "lem:tangent-ray",
@@ -3103,7 +3677,10 @@
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Tangent/Normalization.lean"
+      "proposed_file": "Preiss/Tangent/Normalization.lean",
+      "source_files": [
+        "Preiss/Tangent/Normalization.lean"
+      ]
     },
     {
       "id": "gmt:uniform-tangents",
@@ -3114,13 +3691,14 @@
         "SUniformAux.isSUniform_of_isTangentMeasure"
       ],
       "deps": [
-        "def:uniform-api",
         "def:tangent-api",
+        "def:uniform-api",
         "gmt:mattila-14-7-4",
         "gmt:origin-support"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "thm:uniform-upstream",
@@ -3130,16 +3708,17 @@
         "mattila_14_9"
       ],
       "deps": [
-        "def:uniform-api",
         "def:tangent-api",
+        "def:uniform-api",
         "gmt:density-exists-set",
-        "gmt:mattila-14-7-1",
-        "gmt:uniform-density-adapter",
         "gmt:doubling-bounds",
-        "gmt:origin-support"
+        "gmt:mattila-14-7-1",
+        "gmt:origin-support",
+        "gmt:uniform-density-adapter"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:gaussian-translation-series",
@@ -3168,7 +3747,10 @@
         "Use domination exp(-s|z|^2+2s|z||x|) <= C exp(-(s/2)|z|^2); the source has an invalid sign in the displayed dominator."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentEstimates.lean"
+      ]
     },
     {
       "id": "def:rigidity-adjusted-form",
@@ -3185,8 +3767,7 @@
       ],
       "lean_names": [
         "Preiss.IsRigidityAdjustedForm",
-        "Preiss.RigidityAdjustedForm",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityAdjustedForm"
       ],
       "proposed_lean_name": "Preiss.rigidityAdjustedForm",
       "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
@@ -3195,7 +3776,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+      ]
     },
     {
       "id": "lem:decomposition",
@@ -3219,7 +3803,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Maximize mass among Borel canonical rectifiable subsets. Graph-only source definition is not required.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/Decomposition.lean"
+      ]
     },
     {
       "id": "lem:pure-cone-escape",
@@ -3242,7 +3829,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean"
+      ]
     },
     {
       "id": "thm:rectifiable-blowup",
@@ -3267,7 +3857,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/TangentNecessity.lean"
+      ]
     },
     {
       "id": "lem:projection-hole-cover",
@@ -3294,7 +3887,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Reuse Vitali.exists_disjoint_subfamily_covering_enlargement_ball within the plane.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+      ]
     },
     {
       "id": "lem:uniform-finite-metric-covers",
@@ -3319,7 +3915,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Compactness.lean"
+      ]
     },
     {
       "id": "lem:infinity-compactness",
@@ -3332,7 +3931,8 @@
         "def:tangent-at-infinity",
         "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:uniform-compactness"
+        "lem:uniform-compactness",
+        "lem:uniform-scaling"
       ],
       "lean_names": [
         "Preiss.exists_tangentAtInfinity"
@@ -3344,7 +3944,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownCompactness.lean"
+      ]
     },
     {
       "id": "lem:tangent-blowdown",
@@ -3369,7 +3972,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Blowdown.lean"
+      ]
     },
     {
       "id": "lem:flatness-radius-continuous",
@@ -3384,7 +3990,9 @@
         "lem:flatness-continuous",
         "lem:vague-moving-blowups"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.continuousOn_flatness_dimensionalBlowup"
+      ],
       "proposed_lean_name": "Preiss.continuousOn_flatness_dimensionalBlowUp",
       "proposed_file": "Preiss/Tangent/Flatness.lean",
       "scope": "core",
@@ -3392,7 +4000,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Flatness.lean"
+      ]
     },
     {
       "id": "lem:dimensional-tangent-ball-constant",
@@ -3420,7 +4031,10 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentNormalization.lean"
+      ]
     },
     {
       "id": "gmt:uniform-halfspace",
@@ -3431,11 +4045,12 @@
       ],
       "deps": [
         "def:uniform-api",
-        "gmt:uniform-tangents",
-        "gmt:portmanteau"
+        "gmt:portmanteau",
+        "gmt:uniform-tangents"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "gmt:uniform-hyperplane",
@@ -3446,11 +4061,12 @@
       ],
       "deps": [
         "def:uniform-api",
-        "gmt:uniform-tangents",
-        "gmt:uniform-radial"
+        "gmt:uniform-radial",
+        "gmt:uniform-tangents"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:uniform-adapter",
@@ -3472,7 +4088,10 @@
       "branch": "Existing interfaces",
       "role": "Preiss proof",
       "proposed_file": "Preiss/Uniform/GMTAdapters.lean",
-      "statement_tex": "For $m>0$, positive finite existing density almost everywhere implies that almost everywhere all tangent measures are $m$-uniform and contain the origin in their support."
+      "statement_tex": "For $m>0$, positive finite existing density almost everywhere implies that almost everywhere all tangent measures are $m$-uniform and contain the origin in their support.",
+      "source_files": [
+        "Preiss/Uniform/GMTAdapters.lean"
+      ]
     },
     {
       "id": "lem:taylor-one",
@@ -3497,7 +4116,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentEstimates.lean"
+      ]
     },
     {
       "id": "lem:pure-wla-null-projection",
@@ -3523,7 +4145,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "Also reuse Besicovitch.exists_disjoint_closedBall_covering_ae and Lipschitz distortion; a fivefold covering alone is not identical.",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean"
+      ]
     },
     {
       "id": "cor:rectifiable-tangent-plane",
@@ -3548,7 +4173,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/TangentNecessity.lean"
+      ]
     },
     {
       "id": "lem:discarded-cylinder-sum",
@@ -3570,7 +4198,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+      ]
     },
     {
       "id": "lem:column-packing",
@@ -3594,7 +4225,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+      ]
     },
     {
       "id": "lem:density-normalization",
@@ -3622,7 +4256,10 @@
         "A universal gap threshold applies after one common normalization, not independently normalized arbitrary-scalar tangents."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentNormalization.lean"
+      ]
     },
     {
       "id": "lem:halfspace-tangent-witness",
@@ -3649,7 +4286,10 @@
         "Existing upstream existential statement discards the tangent witness; preserve it and its normalization."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/DimensionReduction.lean"
+      ]
     },
     {
       "id": "gmt:uniform-lower-dim",
@@ -3660,12 +4300,13 @@
       ],
       "deps": [
         "def:uniform-api",
+        "gmt:hyperplane-transport",
         "gmt:uniform-halfspace",
-        "gmt:uniform-hyperplane",
-        "gmt:hyperplane-transport"
+        "gmt:uniform-hyperplane"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:hyperplane-tangent-lineage",
@@ -3692,7 +4333,10 @@
         "Author erratum: the new hyperplane need not be the original half-space boundary. Preserve equality-or-tangent lineage."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/DimensionReduction.lean"
+      ]
     },
     {
       "id": "lem:recenter",
@@ -3725,7 +4369,10 @@
         "New measurable-hull proof replacing unjustified measurability in De Lellis Lemma 6.6; quantify all tangents, support centers and positive radii outside one null set."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Recentering.lean"
+      ]
     },
     {
       "id": "lem:moment-feature-remainder",
@@ -3739,6 +4386,7 @@
         "def:polynomial-feature",
         "def:unit-uniform",
         "lem:moment-feature-annihilation",
+        "lem:polynomial-feature-identities",
         "lem:taylor-one"
       ],
       "lean_names": [
@@ -3746,7 +4394,7 @@
         "Preiss.featureMoment_operator_remainder"
       ],
       "proposed_lean_name": "Preiss.featureMoment_operator_remainder",
-      "proposed_file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "proposed_file": "Preiss/Uniform/MomentFeatures.lean",
       "scope": "core",
       "branch": "Uniform measures and tangents",
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
@@ -3754,7 +4402,11 @@
         "Use a finite support-feature basis to obtain a genuine linear operator-norm estimate."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/PolynomialFeatures.lean",
+        "Preiss/Uniform/MomentFeatures.lean"
+      ]
     },
     {
       "id": "lem:packing-contradiction",
@@ -3779,7 +4431,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+      ]
     },
     {
       "id": "gmt:uniform-full-dimension",
@@ -3793,7 +4448,8 @@
         "gmt:uniform-lower-dim"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": []
     },
     {
       "id": "lem:uniform-reduction",
@@ -3820,7 +4476,10 @@
       "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/DimensionReduction.lean"
+      ]
     },
     {
       "id": "lem:taylor-two",
@@ -3838,6 +4497,7 @@
         "lem:moment-norm-bound"
       ],
       "lean_names": [
+        "Preiss.eq_zero_of_isLittleO_pow_smul",
         "Preiss.exists_gaussianMoment_taylor_coefficients",
         "Preiss.gaussianMomentCoefficient_unique"
       ],
@@ -3848,7 +4508,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ]
     },
     {
       "id": "thm:mm-set",
@@ -3873,7 +4536,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean"
+      ]
     },
     {
       "id": "lem:plane-supported-uniform-flat",
@@ -3901,7 +4567,10 @@
       "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/Classification.lean"
+      ]
     },
     {
       "id": "lem:moment-coefficient-vanishing",
@@ -3927,7 +4596,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ]
     },
     {
       "id": "lem:moment-second-total-trace",
@@ -3956,7 +4628,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentTrace.lean"
+      ]
     },
     {
       "id": "thm:mm-measure",
@@ -3981,7 +4656,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean"
+      ]
     },
     {
       "id": "thm:flat-pseudotangent",
@@ -4007,7 +4685,10 @@
       "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatPseudotangent.lean"
+      ]
     },
     {
       "id": "lem:small-energy-no-holes",
@@ -4025,7 +4706,9 @@
         "lem:vague-gaussian-polynomials",
         "lem:vague-support-approximation"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.dist_support_lt_of_small_gaussian_plane_energy"
+      ],
       "proposed_lean_name": "Preiss.dist_support_lt_of_small_gaussian_plane_energy",
       "proposed_file": "Preiss/Uniform/SupportProximity.lean",
       "scope": "core",
@@ -4033,7 +4716,10 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/SupportProximity.lean"
+      ]
     },
     {
       "id": "lem:moment-support-polynomial",
@@ -4060,7 +4746,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ]
     },
     {
       "id": "lem:scaled-moment-limits",
@@ -4089,7 +4778,10 @@
         "Retain the factorial omitted in the summary on printed p.74."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentExpansion.lean"
+      ]
     },
     {
       "id": "thm:rectifiable-iff-flat",
@@ -4112,7 +4804,10 @@
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
       "repair": [],
       "note": "",
-      "role": "Characterization companion"
+      "role": "Characterization companion",
+      "source_files": [
+        "Preiss/Rectifiability/TangentCharacterization.lean"
+      ]
     },
     {
       "id": "thm:part-a",
@@ -4142,7 +4837,10 @@
       "source": "De Lellis Lemma 6.6, Theorem 6.8, pp.57-58,63-65; Corollary 3.9 and corrected Lemma 3.8, pp.15,25-26; author errata.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/PartA.lean"
+      ]
     },
     {
       "id": "lem:conical-moments",
@@ -4160,7 +4858,10 @@
         "lem:moment-support-polynomial",
         "lem:taylor-two"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.conical_gaussianMoment_homogeneous",
+        "Preiss.conical_gaussianMoment_odd"
+      ],
       "proposed_lean_name": "Preiss.conical_gaussianMoment_homogeneous",
       "proposed_file": "Preiss/Uniform/ConicalMoments.lean",
       "scope": "core",
@@ -4168,7 +4869,10 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalMoments.lean"
+      ]
     },
     {
       "id": "lem:flat-infinity-moments",
@@ -4197,7 +4901,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ]
     },
     {
       "id": "lem:blowdown-moment-limits",
@@ -4215,7 +4922,9 @@
         "lem:radial",
         "lem:scaled-moment-limits"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.blowdown_gaussian_polynomial_limit"
+      ],
       "proposed_lean_name": "Preiss.blowdown_gaussian_polynomial_limit",
       "proposed_file": "Preiss/Uniform/BlowdownMoments.lean",
       "scope": "core",
@@ -4223,7 +4932,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ]
     },
     {
       "id": "lem:conical-covariance",
@@ -4239,7 +4951,9 @@
         "lem:conical-moments",
         "lem:radial"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.conical_covariance_trace_support"
+      ],
       "proposed_lean_name": "Preiss.conical_covariance_trace_support",
       "proposed_file": "Preiss/Uniform/ConicalMoments.lean",
       "scope": "core",
@@ -4247,7 +4961,10 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalMoments.lean"
+      ]
     },
     {
       "id": "lem:odd-coefficients-plane-zero",
@@ -4275,7 +4992,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ]
     },
     {
       "id": "lem:uniform-cylinder-identity",
@@ -4303,7 +5023,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ]
     },
     {
       "id": "lem:rigidity-mixed-gaussian-limit",
@@ -4332,7 +5055,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean"
+      ]
     },
     {
       "id": "thm:unique-infinity",
@@ -4350,7 +5076,10 @@
         "lem:vague-countable-metric",
         "lem:vague-gaussian-polynomials"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.blowdown_sequence_converges",
+        "Preiss.unique_tangent_at_infinity"
+      ],
       "proposed_lean_name": "Preiss.unique_tangent_at_infinity",
       "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean",
       "scope": "core",
@@ -4358,7 +5087,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ]
     },
     {
       "id": "lem:conical-eigenvalue-rigidity",
@@ -4373,7 +5105,9 @@
         "lem:conical-covariance",
         "lem:spectral-minimizing-plane"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.conical_covariance_eq_projection_of_near_eigenvector"
+      ],
       "proposed_lean_name": "Preiss.conical_covariance_eq_projection_of_near_eigenvector",
       "proposed_file": "Preiss/Uniform/ConicalGap.lean",
       "scope": "core",
@@ -4381,7 +5115,30 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalGap.lean"
+      ]
+    },
+    {
+      "id": "lem:rigidity-normal-vector-exists",
+      "kind": "lemma",
+      "title": "Existence of the normal first-moment vector",
+      "statement_tex": "For a unit uniform measure with a flat blow-down on $V$ and an explicit moment expansion, there exists $b\\in V^\\perp$ representing the first Taylor coefficient: $B_1^{(1)}(x)=2\\langle b,x\\rangle$.",
+      "lean_names": [
+        "Preiss.exists_firstMomentNormalVector"
+      ],
+      "deps": [
+        "def:rigidity-normal-vector",
+        "lem:odd-coefficients-plane-zero"
+      ],
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "proposed_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ]
     },
     {
       "id": "lem:moment-normal-trace",
@@ -4411,7 +5168,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ]
     },
     {
       "id": "lem:flat-infinity-bounded-holes",
@@ -4442,7 +5202,10 @@
         "The projected rescaling centers need not be in support; invoke the near-support compactness variant."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ]
     },
     {
       "id": "lem:rigidity-cubic-vanishing",
@@ -4472,7 +5235,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
+      ]
     },
     {
       "id": "lem:rigidity-contracted-limit-zero",
@@ -4505,7 +5271,10 @@
         "Establish the derivative-quotient limit first from mixed moments, then apply the one-sided lHopital argument; record domination for Gaussian differentiation."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean"
+      ]
     },
     {
       "id": "cor:conical",
@@ -4522,7 +5291,9 @@
         "lem:vague-moving-blowups",
         "thm:unique-infinity"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.tangent_at_infinity_conical"
+      ],
       "proposed_lean_name": "Preiss.tangent_at_infinity_conical",
       "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean",
       "scope": "core",
@@ -4530,7 +5301,10 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ]
     },
     {
       "id": "thm:gap",
@@ -4549,7 +5323,9 @@
         "lem:small-energy-no-holes",
         "lem:spectral-minimizing-plane"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.conical_flatness_gap"
+      ],
       "proposed_lean_name": "Preiss.conical_flatness_gap",
       "proposed_file": "Preiss/Uniform/ConicalGap.lean",
       "scope": "core",
@@ -4559,7 +5335,31 @@
         "Use the uniform spectral argument for every positive m; no dependence on the erroneous printed m=2 shortcut or unnecessary low-dimensional classification."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalGap.lean"
+      ]
+    },
+    {
+      "id": "lem:rigidity-forms-exist",
+      "kind": "lemma",
+      "title": "Existence of the rigidity bilinear forms",
+      "statement_tex": "Given the moment expansion, flat blow-down plane, and normal first-moment vector, there exist the normal-valued symmetric bilinear form $\\omega$ and adjusted real symmetric bilinear form satisfying their exact defining identities.",
+      "lean_names": [
+        "Preiss.exists_rigidityOmega_and_adjustedForm"
+      ],
+      "deps": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-omega",
+        "lem:rigidity-normal-vector-exists"
+      ],
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+      ]
     },
     {
       "id": "lem:rigidity-fourth-support-identity",
@@ -4588,7 +5388,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
+      ]
     },
     {
       "id": "lem:rigidity-omega-trace-zero",
@@ -4618,7 +5421,37 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+      ]
+    },
+    {
+      "id": "lem:flatness-gap-cutoff",
+      "title": "Transfer the conical gap to cutoff flatness",
+      "kind": "lemma",
+      "statement_tex": "For $0<m\\leq n$ and an admissible cutoff, there exists a positive cutoff gap threshold.",
+      "definition_dependencies": [
+        "def:flatness-gap",
+        "def:flatness-cutoff"
+      ],
+      "deps": [
+        "def:flatness-cutoff",
+        "def:flatness-gap",
+        "lem:flatness-minimum",
+        "thm:gap"
+      ],
+      "lean_names": [
+        "Preiss.exists_flatnessGap"
+      ],
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "scope": "core",
+      "branch": "Explicit analytical data",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
     },
     {
       "id": "lem:rigidity-pointwise-quadratic-bound",
@@ -4649,7 +5482,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ]
     },
     {
       "id": "lem:rigidity-rescaled-error",
@@ -4671,7 +5507,9 @@
         "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
-        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero",
+        "Preiss.rigidityError",
+        "Preiss.rigidityError_le_linear_growth"
       ],
       "proposed_lean_name": "Preiss.adjustedForm_gaussian_error_tendsto_zero",
       "proposed_file": "Preiss/Uniform/TraceRigidity.lean",
@@ -4680,7 +5518,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ]
     },
     {
       "id": "lem:rigidity-gaussian-trace",
@@ -4710,7 +5551,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+      ]
     },
     {
       "id": "lem:rigidity-omega-reproducing",
@@ -4739,7 +5583,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
+      ]
     },
     {
       "id": "lem:rigidity-integral-quadratic-bound",
@@ -4774,7 +5621,10 @@
         "Preserve the inequality through the calculation; the p.108 intermediate equality is too strong."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ]
     },
     {
       "id": "lem:trace-rigidity",
@@ -4808,7 +5658,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TraceRigidity.lean"
+      ]
     },
     {
       "id": "thm:infinity-rigidity",
@@ -4824,6 +5677,8 @@
         "def:unit-uniform",
         "lem:moment-second-total-trace",
         "lem:plane-supported-uniform-flat",
+        "lem:rigidity-forms-exist",
+        "lem:rigidity-normal-vector-exists",
         "lem:trace-rigidity",
         "lem:uniform-cylinder-identity"
       ],
@@ -4837,7 +5692,10 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Rigidity.lean"
+      ]
     },
     {
       "id": "lem:first-crossing",
@@ -4849,8 +5707,10 @@
       "deps": [
         "cor:conical",
         "def:dimensional-tangent",
+        "def:first-crossing-data",
         "def:flat",
         "def:flatness",
+        "def:flatness-gap",
         "def:positive-density",
         "def:tangent-at-infinity",
         "def:unit-uniform",
@@ -4865,7 +5725,9 @@
         "thm:infinity-rigidity",
         "thm:unique-infinity"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.exists_first_crossing_sequences"
+      ],
       "proposed_lean_name": "Preiss.exists_first_crossing_sequences",
       "proposed_file": "Preiss/Theorem/FirstCrossing.lean",
       "scope": "core",
@@ -4873,7 +5735,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ]
     },
     {
       "id": "lem:first-crossing-ratio",
@@ -4884,6 +5749,7 @@
       "proof_tex": "Prove $r_i/\\sigma_i\\to\\infty$. If the ratios have a bounded subsequence,\nextract a further limit $R\\in[1,\\infty)$. S02--S03 give\n$D^m_{0,R}\\xi=\\alpha$. Invert the dilation to conclude $\\xi$ flat,\ncontradicting $F(\\xi)=\\varepsilon>0$.",
       "deps": [
         "def:dimensional-tangent",
+        "def:first-crossing-data",
         "def:flat",
         "def:flatness",
         "def:positive-density",
@@ -4893,7 +5759,9 @@
         "lem:flatness-minimum",
         "lem:vague-moving-blowups"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.first_crossing_ratio_tendsto_atTop"
+      ],
       "proposed_lean_name": "Preiss.first_crossing_ratio_tendsto_atTop",
       "proposed_file": "Preiss/Theorem/FirstCrossing.lean",
       "scope": "core",
@@ -4901,7 +5769,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ]
     },
     {
       "id": "lem:first-crossing-flat-infinity",
@@ -4913,8 +5784,10 @@
       "deps": [
         "cor:conical",
         "def:dimensional-tangent",
+        "def:first-crossing-data",
         "def:flat",
         "def:flatness",
+        "def:flatness-gap",
         "def:positive-density",
         "def:tangent-at-infinity",
         "def:unit-uniform",
@@ -4927,7 +5800,9 @@
         "thm:gap",
         "thm:unique-infinity"
       ],
-      "lean_names": [],
+      "lean_names": [
+        "Preiss.first_crossing_limit_flat_at_infinity"
+      ],
       "proposed_lean_name": "Preiss.first_crossing_limit_flat_at_infinity",
       "proposed_file": "Preiss/Theorem/FirstCrossing.lean",
       "scope": "core",
@@ -4937,7 +5812,10 @@
         "Retain the fixed original center x and the full dimensional mass factor R^{-m}."
       ],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ]
     },
     {
       "id": "thm:part-b",
@@ -4953,6 +5831,8 @@
         "lem:density-normalization",
         "lem:first-crossing",
         "lem:first-crossing-flat-infinity",
+        "lem:flatness-cutoff-exists",
+        "lem:flatness-gap-cutoff",
         "lem:tangent-ray",
         "thm:infinity-rigidity"
       ],
@@ -4966,7 +5846,10 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof"
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/PartB.lean"
+      ]
     },
     {
       "id": "thm:preiss",
@@ -4988,7 +5871,107 @@
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
-      "proposed_file": "Preiss/Main.lean"
+      "proposed_file": "Preiss/Main.lean",
+      "source_files": [
+        "Preiss/Main.lean"
+      ]
+    },
+    {
+      "id": "def:uniform-constant",
+      "kind": "definition",
+      "title": "Uniform measures with a specified ball constant",
+      "statement_tex": "An uncentered uniform measure with constant $q$ is regular, has nonempty support, satisfies $q>0$, and gives every closed support-centered ball of radius $r>0$ mass $qr^m$. Nonempty support excludes the zero measure.",
+      "lean_names": [
+        "Preiss.IsUniformWithConstant"
+      ],
+      "deps": [],
+      "proposed_file": "Preiss/Uniform/Scaling.lean",
+      "scope": "core",
+      "role": "Preiss proof",
+      "branch": "Uniform normalization",
+      "source_files": [
+        "Preiss/Uniform/Scaling.lean"
+      ]
+    },
+    {
+      "id": "lem:uniform-constant-one",
+      "kind": "lemma",
+      "title": "Centered unit normalization",
+      "statement_tex": "A measure is unit uniform exactly when it is uniform with constant one and its support contains the origin.",
+      "lean_names": [
+        "Preiss.isUnitUniform_iff_constant_one"
+      ],
+      "deps": [
+        "def:uniform-constant",
+        "def:unit-uniform"
+      ],
+      "proposed_file": "Preiss/Uniform/Scaling.lean",
+      "scope": "core",
+      "role": "Preiss proof",
+      "branch": "Uniform normalization",
+      "source_files": [
+        "Preiss/Uniform/Scaling.lean"
+      ]
+    },
+    {
+      "id": "lem:uniform-scaling",
+      "kind": "lemma",
+      "title": "Scaling uniform measures and their ball constants",
+      "statement_tex": "Dimensional blow-ups preserve a specified uniform ball constant. Centering at a support point preserves unit uniformity. Multiplication by a positive finite scalar multiplies the ball constant by the same scalar.",
+      "lean_names": [
+        "Preiss.isUnitUniform_dimensionalBlowup",
+        "Preiss.uniformWithConstant_dimensionalBlowup",
+        "Preiss.uniformWithConstant_smul"
+      ],
+      "deps": [
+        "def:dimensional-blowup",
+        "def:uniform-constant",
+        "lem:blowup-composition",
+        "lem:uniform-constant-one"
+      ],
+      "proposed_file": "Preiss/Uniform/Scaling.lean",
+      "scope": "core",
+      "role": "Preiss proof",
+      "branch": "Uniform normalization",
+      "source_files": [
+        "Preiss/Uniform/Scaling.lean"
+      ]
+    },
+    {
+      "id": "lem:density-limit-values",
+      "kind": "lemma",
+      "title": "Values of existing dimensional densities",
+      "statement_tex": "For an outer measure on a pseudo extended metric space and any real dimension parameter, convergence of the dimensional density ratio identifies its density value with the limit. Whenever the density exists, its value equals both the lower and upper densities.",
+      "lean_names": [
+        "Preiss.density_eq_lower_of_hasDensity",
+        "Preiss.density_eq_upper_of_hasDensity",
+        "Preiss.dimensional_density_eq_of_tendsto",
+        "Preiss.lower_eq_upper_of_hasDensity"
+      ],
+      "deps": [
+        "def:density-api"
+      ],
+      "proposed_file": "Preiss/Density/Limits.lean",
+      "scope": "core",
+      "branch": "Density and dimension",
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/Limits.lean"
+      ]
+    },
+    {
+      "id": "gmt:uniform-dimension-bound",
+      "kind": "lemma",
+      "title": "Uniform measures cannot exceed ambient dimension",
+      "lean_names": [
+        "SUniformAux.not_isSUniform_of_lt"
+      ],
+      "deps": [
+        "def:uniform-api"
+      ],
+      "branch": "Existing FormalizingGMT",
+      "role": "Preiss proof",
+      "source_files": []
     }
   ],
   "preiss_core": [
@@ -5000,14 +5983,18 @@
     "def:density-api",
     "def:dimensional-blowup",
     "def:dimensional-tangent",
+    "def:first-crossing-data",
     "def:flat",
     "def:flatness",
+    "def:flatness-cutoff",
+    "def:flatness-gap",
     "def:lipschitz-graph",
     "def:moment-coefficients",
     "def:moments",
     "def:parametrized-coverage",
     "def:plane",
     "def:polynomial-feature",
+    "def:polynomial-growth-bound",
     "def:positive-density",
     "def:purely-unrectifiable",
     "def:rectifiable",
@@ -5017,6 +6004,7 @@
     "def:tangent-api",
     "def:tangent-at-infinity",
     "def:uniform-api",
+    "def:uniform-constant",
     "def:unit-uniform",
     "def:weak-approximation",
     "def:weak-approximation-good-set",
@@ -5048,6 +6036,7 @@
     "gmt:support-not-full",
     "gmt:transfer-ball-bounds",
     "gmt:uniform-density-adapter",
+    "gmt:uniform-dimension-bound",
     "gmt:uniform-full-dimension",
     "gmt:uniform-halfspace",
     "gmt:uniform-hyperplane",
@@ -5057,11 +6046,9 @@
     "gmt:vague",
     "gmt:vitali",
     "gmt:zero-barycenter-hyperplane",
-    "lem:absolute-continuity",
     "lem:bilinear-trace-basis",
     "lem:blowdown-moment-limits",
     "lem:blowup-composition",
-    "lem:borel-carrier",
     "lem:carrier-calculus",
     "lem:carrier-closure",
     "lem:closed-weak-approximation-good-set",
@@ -5072,6 +6059,7 @@
     "lem:conical-moments",
     "lem:decomposition",
     "lem:density-bridge",
+    "lem:density-limit-values",
     "lem:density-measure-comparison",
     "lem:density-normalization",
     "lem:dimensional-compactness",
@@ -5095,6 +6083,8 @@
     "lem:flat-limit-tube",
     "lem:flat-to-approximation",
     "lem:flatness-continuous",
+    "lem:flatness-cutoff-exists",
+    "lem:flatness-gap-cutoff",
     "lem:flatness-minimum",
     "lem:flatness-radius-continuous",
     "lem:gaussian-parameter-derivative",
@@ -5132,6 +6122,7 @@
     "lem:plane-hausdorff",
     "lem:plane-scaling",
     "lem:plane-supported-uniform-flat",
+    "lem:polynomial-feature-identities",
     "lem:projected-tube-slab-bound",
     "lem:projection-hole-cover",
     "lem:pseudotangent-transitive",
@@ -5142,10 +6133,12 @@
     "lem:recenter",
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-cubic-vanishing",
+    "lem:rigidity-forms-exist",
     "lem:rigidity-fourth-support-identity",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-integral-quadratic-bound",
     "lem:rigidity-mixed-gaussian-limit",
+    "lem:rigidity-normal-vector-exists",
     "lem:rigidity-omega-reproducing",
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-pointwise-quadratic-bound",
@@ -5163,10 +6156,12 @@
     "lem:uniform-adapter",
     "lem:uniform-compact-selection",
     "lem:uniform-compactness",
+    "lem:uniform-constant-one",
     "lem:uniform-cylinder-identity",
     "lem:uniform-finite-metric-covers",
     "lem:uniform-near-support-compactness",
     "lem:uniform-reduction",
+    "lem:uniform-scaling",
     "lem:uniform-vague-closed",
     "lem:unit-uniform-adapter",
     "lem:vague-countable-metric",
@@ -5249,6 +6244,7 @@
     "lem:cone-graph",
     "lem:decomposition",
     "lem:density-bridge",
+    "lem:density-limit-values",
     "lem:density-measure-comparison",
     "lem:dimensional-compactness",
     "lem:discarded-cylinder-sum",

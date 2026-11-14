@@ -11,6 +11,9 @@ variable {m : ℕ} {X : Type*} [MetricSpace X] [MeasurableSpace X] [BorelSpace X
 
 /-- The empty carrier witnesses rectifiability of the zero measure. -/
 theorem zero_isRectifiableMeasure : IsRectifiableMeasure m (0 : Measure X) := by
-  sorry
+  refine ⟨?_, ∅, ?_, by simp⟩
+  · intro s hs
+    simp
+  · exact ⟨∅, ⟨∅, Set.countable_empty, by simp⟩, by simp⟩
 
 end Preiss
