@@ -4,6 +4,7 @@ public import Preiss.Rectifiability.WeakApproximation.Basic
 public import Preiss.Geometry.PlaneTopology
 public import Preiss.Geometry.Cones
 public import Preiss.Analysis.MovingSets
+public import Preiss.Analysis.CompactExhaustion
 public import Mathlib.Topology.Semicontinuity.Basic
 public import Mathlib.MeasureTheory.Measure.Regular
 public import Mathlib.MeasureTheory.Integral.Lebesgue.Basic
@@ -25,6 +26,16 @@ def weakApproximationGoodSet (m : ℕ) (μ : Measure (Euclidean n)) (η a R : �
     μ (ball x r \ closedTube x V (η * r)) ≤ ENNReal.ofReal (η * r ^ m) ∧
     ∀ z : Euclidean n, z - x ∈ V.1 → z ∈ ball x r →
       ENNReal.ofReal (a * r ^ m) ≤ μ (closedBall z (η * r))}
+
+theorem weakApproximationGoodSet_mono (μ : Measure (Euclidean n))
+    {η a a' R R' : ℝ} (ha : a' ≤ a) (hR : R' ≤ R) :
+    weakApproximationGoodSet m μ η a R ⊆ weakApproximationGoodSet m μ η a' R' := by
+  intro x hx r hr hrR
+  obtain ⟨V, hupper, hlower⟩ := hx r hr (hrR.trans_le hR)
+  refine ⟨V, hupper, ?_⟩
+  intro z hz hzr
+  exact (ENNReal.ofReal_le_ofReal (mul_le_mul_of_nonneg_right ha (pow_nonneg hr.le m))).trans
+    (hlower z hz hzr)
 
 theorem isClosed_weakApproximationGoodSet (μ : Measure (Euclidean n))
     [IsFiniteMeasure μ] [μ.Regular] {η a R : ℝ}
@@ -125,7 +136,33 @@ theorem exists_compact_uniform_weakApproximation_subset
     (A : Finset ℝ) (hA : ∀ η ∈ A, 0 < η) {ε : ℝ} (hε : 0 < ε) :
     ∃ C : Set (Euclidean n), IsCompact C ∧ C ⊆ E ∧
       μ (E \ C) < ENNReal.ofReal ε ∧ ∀ η ∈ A, ∃ N : ℕ,
-        C ⊆ weakApproximationGoodSet m μ η (1 / (N + 1 : ℝ)) (1 / (N + 1 : ℝ)) := by sorry
+        C ⊆ weakApproximationGoodSet m μ η (1 / (N + 1 : ℝ)) (1 / (N + 1 : ℝ)) := by
+  let G : ℝ → ℕ → Set (Euclidean n) := fun η N ↦
+    weakApproximationGoodSet m μ η (1 / (N + 1 : ℝ)) (1 / (N + 1 : ℝ))
+  have hgmono (η : ℝ) : Monotone (G η) := by
+    intro i j hij
+    have hh : 1 / (j + 1 : ℝ) ≤ 1 / (i + 1 : ℝ) :=
+      one_div_le_one_div_of_le (by positivity) (by exact_mod_cast Nat.add_le_add_right hij 1)
+    exact weakApproximationGoodSet_mono μ hh hh
+  let S : ℕ → Set (Euclidean n) := fun N ↦ ⋂ η ∈ A, G η N
+  have hSm (N : ℕ) : MeasurableSet (S N) :=
+    A.measurableSet_biInter fun η hη ↦
+      (isClosed_weakApproximationGoodSet μ (hA η hη) (by positivity) (by positivity)).measurableSet
+  have hSmono : Monotone S := by
+    intro i j hij x hx
+    exact mem_iInter₂.mpr fun η hη ↦ hgmono η hij (mem_iInter₂.mp hx η hη)
+  have hcover : ∀ᵐ x ∂μ.restrict E, x ∈ ⋃ N, S N := by
+    filter_upwards [hw] with x hx
+    have hη (η : ℝ) (hη : η ∈ A) : ∀ᶠ N in atTop, x ∈ G η N := by
+      obtain ⟨N, hN⟩ := (weaklyLinearlyApproximableAt_iff_goodSet_exhaustion μ x).mp hx η (hA η hη)
+      exact eventually_atTop.mpr ⟨N, fun M hNM ↦ hgmono η hNM hN⟩
+    obtain ⟨N, hN⟩ := ((eventually_all_finset A).mpr hη).exists
+    exact mem_iUnion.mpr ⟨N, mem_iInter₂.mpr hN⟩
+  obtain ⟨N, C, hCcomp, hCsub, hCmeasure⟩ :=
+    exists_compact_subset_of_ae_mem_iUnion μ E hE S hSm hSmono hcover hε
+  refine ⟨C, hCcomp, fun x hx ↦ (hCsub hx).1, hCmeasure, ?_⟩
+  intro η hη
+  exact ⟨N, fun x hx ↦ mem_iInter₂.mp (hCsub hx).2 η hη⟩
 
 theorem subset_tube_of_lower_mass_and_small_outside_mass
     (μ : Measure (Euclidean n)) (C : Set (Euclidean n)) (a : Euclidean n)

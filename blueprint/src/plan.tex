@@ -1225,7 +1225,7 @@ At a point with positive lower and finite upper $m$-density, a locally finite me
 \begin{lemma}[Positive dilations preserve dimensional tangents]
 \label{lem:dimensional-tangent-dilation}
 \lean{Preiss.dimensionalTangent_dilate}
-\uses{def:dimensional-blowup, def:dimensional-tangent, lem:blowup-composition, lem:vague-moving-blowups}
+\uses{def:dimensional-blowup, def:dimensional-tangent, lem:blowup-composition, lem:vague-moving-blowups, lem:dimensional-tangent-operations}
 
 
 
@@ -1616,7 +1616,7 @@ then weak linear approximation of \(E\) at \(x\) implies that of \(F\) at \(x\).
 
 \begin{lemma}[Aperture slack gives countable good-set exhaustion]
 \label{lem:weak-approximation-good-exhaustion}
-\lean{Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion}
+\lean{Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion, Preiss.weakApproximationGoodSet_mono}
 \uses{def:weak-approximation, def:weak-approximation-good-set}
 
 No finiteness or regularity of $\mu$ is assumed.
@@ -1631,7 +1631,7 @@ For any measure $\mu$ on $\mathbb R^n$, weak linear approximation at $x$ is equi
 \begin{lemma}[Compact subsets with uniform approximation and density bounds]
 \label{lem:uniform-compact-selection}
 \lean{Preiss.exists_compact_uniform_weakApproximation_subset}
-\uses{gmt:goodsets, gmt:hausdorff-regular, lem:closed-weak-approximation-good-set, lem:weak-approximation-good-exhaustion, lem:weak-approximation-lower-density}
+\uses{gmt:goodsets, gmt:hausdorff-regular, lem:closed-weak-approximation-good-set, lem:weak-approximation-good-exhaustion, lem:weak-approximation-lower-density, lem:compact-measurable-exhaustion}
 
 
 
@@ -1652,7 +1652,7 @@ One can choose compact \(C\subset E\) losing arbitrarily little \(\mathcal H^m\)
 \begin{lemma}[Weak approximation restricts to Borel subsets almost everywhere]
 \label{lem:weak-approximation-restrict-ae}
 \lean{Preiss.ae_weaklyLinearlyApproximableAt_subset}
-\uses{gmt:density-points, gmt:hausdorff-density-upper, lem:weak-approximation-deletion, mathlib:besicovitch-differentiation}
+\uses{gmt:density-points, gmt:hausdorff-density-upper, lem:weak-approximation-deletion, mathlib:besicovitch-differentiation, lem:vanishing-density-negligible-deletion}
 
 
 
@@ -1673,7 +1673,7 @@ If \(E\) is weakly linearly approximable at \(\mathcal H^m\)-almost every point 
 \begin{lemma}[Base point with upper mass and small discarded mass]
 \label{lem:packing-base-point}
 \lean{Preiss.ae_upperPowerBoundAt_restrict_hausdorff, Preiss.exists_upper_mass_small_sdiff_point}
-\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper}
+\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, lem:vanishing-density-scaled-balls}
 
 
 
@@ -1959,7 +1959,8 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Analytic extension of weighted complementary projections]
 \label{lem:graded-analytic-projection}
-\lean{Preiss.IsOrthogonalGrading, Preiss.weightedGrading, Preiss.weightedComplement, Preiss.analyticAt_weightedProjection_zero}
+\uses{def:orthogonal-grading}
+\lean{Preiss.analyticAt_weightedProjection_zero}
 
 
 This is a measure-independent linear algebra theorem. Let the finite-dimensional
@@ -2029,7 +2030,8 @@ value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
 
 \begin{definition}[Finite Euclidean polynomial feature map]
 \label{def:polynomial-feature}
-\lean{Preiss.PolynomialFeatureIndex, Preiss.PolynomialFeatureSpace, Preiss.polynomialFeature, Preiss.polynomialFeatureBlock, Preiss.polynomialFeatureProjection, Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeatureProjection_inner}
+\uses{}
+\lean{Preiss.PolynomialFeatureIndex, Preiss.PolynomialFeatureSpace, Preiss.polynomialFeature, Preiss.polynomialFeatureBlock, Preiss.polynomialFeatureProjection}
 
 
 For $1\leq k\leq N$, index a Euclidean block by all $\iota:\operatorname{Fin}k\to\operatorname{Fin}n$ and set $\Phi_k(x)_\iota=\sqrt{2^k/k!}\prod_j x_{\iota(j)}$. The block pairing is $\langle\Phi_k(x),\Phi_k(y)\rangle=(2^k/k!)\langle x,y\rangle^k$. The direct sum has orthogonal coordinate projections $P_k$.
@@ -2146,7 +2148,7 @@ A regular Euclidean measure is a positive Borel measure equipped with regularity
 \begin{lemma}[Existence of a countable-test vague metric]
 \label{lem:vague-countable-metric}
 \lean{Preiss.exists_vagueMetrization}
-\uses{def:vague-metrization}
+\uses{def:vague-metrization, lem:countable-coordinate-metric}
 For every natural ambient dimension $n$, there exists a countable-test vague metrization with the preceding specification.
 \end{lemma}
 \begin{proof}[Planned construction]
@@ -2410,7 +2412,7 @@ inside the current single trace-rigidity node.
 
 \begin{lemma}[Operator norm remainder from finitely many support features]
 \label{lem:moment-feature-remainder}
-\lean{Preiss.exists_normPolynomial_feature_functionals, Preiss.featureMoment_operator_remainder}
+\lean{Preiss.featureMoment_operator_remainder}
 \uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:moment-feature-annihilation, lem:polynomial-feature-identities, lem:taylor-one}
 
 
@@ -2729,7 +2731,7 @@ the convergent exponential series with its remainder bound.
 \begin{lemma}[Coherent operator-norm moment Taylor coefficients]
 \label{lem:taylor-two}
 \lean{Preiss.exists_gaussianMoment_taylor_coefficients, Preiss.gaussianMomentCoefficient_unique, Preiss.eq_zero_of_isLittleO_pow_smul}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound}
+\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound, lem:feature-norm-functionals}
 
 
 
@@ -4436,8 +4438,8 @@ Given the moment expansion, flat blow-down plane, and normal first-moment vector
 
 \begin{lemma}[Inner products and grading of polynomial features]
 \label{lem:polynomial-feature-identities}
-\lean{Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading}
-\uses{def:polynomial-feature}
+\lean{Preiss.polynomialFeatureProjection_apply, Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeatureProjection_inner}
+\uses{def:polynomial-feature, def:orthogonal-grading, lem:orthonormal-span-projection}
 The coordinate polynomial feature map recovers the weighted powers of $\langle x,y\rangle$ through inner products. Its homogeneous coordinate blocks form an orthogonal grading.
 \end{lemma}
 
@@ -4831,4 +4833,65 @@ In a real or complex inner-product space, let $V$ be a linear subspace admitting
 \uses{def:plane, lem:grassmannian}
 
 For every sequence of $m$-planes $V_i\subseteq\mathbb R^n$, there exist an $m$-plane $V$ and a strictly increasing $\phi:\mathbb N\to\mathbb N$ such that $P_{V_{\phi(i)}}\to P_V$ in operator norm.
+\end{lemma}
+
+\begin{lemma}[Compact approximation inside an increasing measurable exhaustion]
+\label{lem:compact-measurable-exhaustion}
+\lean{Preiss.exists_compact_subset_of_ae_mem_iUnion}
+
+Let $\mu$ be a finite regular Borel measure on a Hausdorff space, let $E$ and $S_i$ be measurable, and assume $S_i\subseteq S_{i+1}$ and $\mu(E\setminus\bigcup_i S_i)=0$. For every $\varepsilon>0$ there exist $N$ and a compact set $C\subseteq E\cap S_N$ such that $\mu(E\setminus C)<\varepsilon$.
+\end{lemma}
+
+\begin{lemma}[Projection onto a finite orthonormal span]
+\label{lem:orthonormal-span-projection}
+\lean{Preiss.starProjection_span_orthonormal, Preiss.starProjection_span_orthonormal_apply}
+
+For every finite orthonormal family $(u_i)$ in a finite dimensional real inner product space, the orthogonal projection onto its span is the sum of the rank-one maps $x\mapsto\langle u_i,x\rangle u_i$. The family may be empty.
+\end{lemma}
+
+\begin{definition}[Orthogonal grading and its weighted complement]
+\label{def:orthogonal-grading}
+\uses{}
+\lean{Preiss.IsOrthogonalGrading, Preiss.weightedGrading, Preiss.weightedComplement}
+
+An orthogonal grading consists of finitely many self-adjoint idempotents $P_i$ with $P_iP_j=0$ for distinct indices and $\sum_iP_i=\operatorname{id}$. For every real $s$, define $A(s)=\sum_i s^{i+1}P_i$ and $F_s=A(s)^{-1}(V^\perp)$ for a subspace $V$. These are data and total definitions, with no analytic-extension assertion.
+\end{definition}
+
+\begin{lemma}[A metric from countably many separating real coordinates]
+\label{lem:countable-coordinate-metric}
+\lean{Preiss.countableCoordinateMap, Preiss.countableCoordinateMap_injective, Preiss.countableCoordinateMetric, Preiss.countableCoordinateMetric_dist, Preiss.countableCoordinateMetric_tendsto_iff}
+
+For an arbitrary type $A$, let $f_j:A\to\mathbb R$, $j\in\mathbb N$, separate points. The explicit shifted weighted coordinate map induces a metric $d(a,b)=\sum_{j\geq0}2^{-(j+1)}\min(1,|f_j(a)-f_j(b)|)$. For every type $B$, filter $\mathcal F$ on $B$, function $g:B\to A$, and point $a\in A$, convergence of $g$ to $a$ in this metric is equivalent to convergence of every $f_j\circ g$ to $f_j(a)$.
+\end{lemma}
+
+\begin{lemma}[Norm powers as explicit feature functionals]
+\label{lem:feature-norm-functionals}
+\lean{Preiss.norm_pow_eq_sum_coordinate_monomials, Preiss.exists_normPolynomial_feature_functionals}
+\uses{def:polynomial-feature}
+
+For every natural $d$, $\|x\|^{2d}=\sum_{f:\operatorname{Fin}d\to\operatorname{Fin}n}(\prod_jx_{f(j)})^2$. Consequently, for all natural $n,q$, there exist continuous linear functionals $L_j$ on the degree-$2q$ feature space, indexed by $j:\operatorname{Fin}q$, with $L_j(\Phi_{2q}(x))=\|x\|^{2(j+1)}$ for every $x$.
+\end{lemma}
+
+\begin{lemma}[General tangents, scalar multiplication and dilation]
+\label{lem:dimensional-tangent-operations}
+\lean{Preiss.IsDimensionalTangent.isTangentMeasure, Preiss.IsDimensionalTangent.smul, Preiss.IsDimensionalTangent.dilate}
+\uses{def:dimensional-tangent, lem:blowup-composition, lem:dimensional-blowup-support, lem:vague-moving-blowups, def:tangent-api}
+
+Every dimensional tangent is a general tangent measure. If $c$ is positive and finite, $\nu\in\operatorname{Tan}_m(\mu,x)$ implies $c\nu\in\operatorname{Tan}_m(c\mu,x)$. For locally finite $\mu$ and $s>0$, origin dilation also preserves $\operatorname{Tan}_m(\mu,x)$. The first two assertions need no local-finiteness hypothesis.
+\end{lemma}
+
+\begin{lemma}[Vanishing upper density at a fixed positive ball scale]
+\label{lem:vanishing-density-scaled-balls}
+\lean{Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero}
+\uses{def:density-api}
+
+Let $\nu$ be an outer measure on a pseudometric space and $m\in\mathbb N$. If $\Theta^{*m}(\nu,x)=0$, then for every fixed $c>0$, $\nu(B_{cr}(x))/r^m\to0$ as $r\downarrow0$.
+\end{lemma}
+
+\begin{lemma}[Vanishing density of a deleted restriction gives negligible deletion]
+\label{lem:vanishing-density-negligible-deletion}
+\lean{Preiss.negligibleDeletionAt_of_upperDensity_restrict_compl_eq_zero}
+\uses{def:density-api, def:weak-approximation, lem:vanishing-density-scaled-balls}
+
+For a measure $\mu$ on $\mathbb R^n$ and a measurable set $F$, if $\Theta^{*m}(\mu|_{F^c},x)=0$, then $\mu(B_{2r}(x)\setminus F)/r^m\to0$ as $r\downarrow0$.
 \end{lemma}

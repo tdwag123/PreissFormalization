@@ -1,0 +1,65 @@
+{
+  "status": "Source/API investigation plus uncompiled pure metric scratch; no existence proof claimed.",
+  "exact_target": "Preiss.exists_vagueMetrization (n : Nat) : Nonempty (Preiss.VagueMetrization n)",
+  "stages": [
+    {
+      "title": "Pure countable separating-coordinate metric",
+      "scratch": "tmp/lean-audit/CountableCoordinateMetricCheck.lean",
+      "names": [
+        "Preiss.countableCoordinateMap",
+        "Preiss.countableCoordinateMap_injective",
+        "Preiss.countableCoordinateMetric",
+        "Preiss.countableCoordinateMetric_dist",
+        "Preiss.countableCoordinateMetric_tendsto_iff"
+      ],
+      "construction": "Embed a at coordinate0=0 and coordinate(j+1)=2^(-(j+1))*f_j(a). Pull back PiCountable.metricSpace along this injection. Its truncation cap at coordinate(j+1) is exactly the required weight; min(weight,weight*|delta|)=weight*min(1,|delta|).",
+      "sources": [
+        "Mathlib/Topology/MetricSpace/PiNat.lean: PiCountable.metricSpace, dist_eq_tsum, dist_summable",
+        "Mathlib/Topology/MetricSpace/Basic.lean: MetricSpace.induced",
+        "Mathlib/Topology/Maps/Basic.lean: Function.Injective.isEmbedding_induced, IsEmbedding.tendsto_nhds_iff"
+      ]
+    },
+    {
+      "title": "Generic compact-test family with common compact approximation",
+      "ambient": "A locally compact second-countable Hausdorff space; no Euclidean linear structure is needed for this pure topology stage.",
+      "family_specification": [
+        "tests : Nat -> C_c(X, Real)",
+        "For each compact K there is a nonnegative test >=1 on K.",
+        "For each f in C_c(X,Real), there is one compact K containing tsupport f such that for every epsilon>0 a test supported in K approximates f uniformly within epsilon on all X."
+      ],
+      "construction": "Take a compact exhaustion K_N and Urysohn cutoffs u_N equal1 on K_N, with 0<=u_N<=1 and support in K_(N+1). Take a countable compact-open dense sequence g_j in global C(X,Real). Enumerate all u_N and u_N*g_j. The dense global sequence approximates f uniformly on K_(N+1); multiplication by u_N gives uniform global approximation and common compact support whenever tsupport f is contained in K_N.",
+      "sources": [
+        "Mathlib/Topology/ContinuousMap/SecondCountableSpace.lean: ContinuousMap.instSeparableSpace",
+        "Mathlib/Topology/Bases.lean: exists_dense_seq",
+        "Mathlib/Topology/UniformSpace/CompactConvergence.lean: Filter.HasBasis.compactConvergenceUniformity",
+        "Mathlib/Topology/UniformSpace/Defs.lean: nhds_basis_uniformity",
+        "Mathlib/Topology/Continuous.lean: DenseRange.mem_nhds",
+        "Mathlib/Topology/UrysohnsLemma.lean: exists_continuousMap_one_of_isCompact_subset_isOpen",
+        "Mathlib/Topology/Compactness/SigmaCompact.lean: compact exhaustion machinery"
+      ]
+    },
+    {
+      "title": "Selected-test convergence detects all compact tests",
+      "construction": "For the compact K supplied by approximation, choose one nonnegative cutoff test majorizing1 on K. Convergence of its integrals bounds their values eventually. Uniform approximation bounds both source and limit integral errors by epsilon times cutoff integrals. A three-term estimate proves convergence for every compact test. This adapts the already checked cutoff domination in vague_integral_moving_compact_test but does not assume full vague convergence.",
+      "sources": [
+        "Preiss/Analysis/Vague/CompactTests.lean: cutoff-domination estimate",
+        "Mathlib/MeasureTheory/Integral/Bochner/Basic.lean: norm_integral_le_of_norm_le, integral_sub, integral_const_mul"
+      ]
+    },
+    {
+      "title": "Separation and final metric packaging",
+      "construction": "If two regular measures agree on the selected tests, apply the detection theorem to a constant sequence to obtain equality of all compact-test integrals, then use regular-measure extensionality. The pure coordinate metric applied to test integrals now supplies the exact distance and convergence fields of VagueMetrization. Compact cutoff coverage specializes to closed Euclidean balls.",
+      "sources": [
+        "Mathlib/MeasureTheory/Integral/RieszMarkovKakutani/Real.lean: Measure.ext_of_integral_eq_on_compactlySupported",
+        "Preiss/Analysis/Vague/Metrization.lean: VagueMetrization exact data fields"
+      ]
+    }
+  ],
+  "risks_and_checks": [
+    "Do not assume separability of all compactly supported functions in one unqualified supremum topology; construct the common-support approximation property explicitly.",
+    "Cutoff tests must be part of the same countable enumerated family, ensuring convergence controls compact mass.",
+    "PiCountable distance uses min(weight,coordinate-distance), not weight*min(1,coordinate-distance); the shifted scaled embedding resolves this exactly without changing the required metric definition.",
+    "No completeness assertion about the entire regular-measure space is needed.",
+    "Keep pure metric and compact-test construction modules modern; GMT vague-convergence adapters remain legacy imports."
+  ]
+}

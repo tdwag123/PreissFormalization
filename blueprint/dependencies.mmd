@@ -293,6 +293,14 @@ flowchart LR
   lem_moving_set_measure_bounds["Measure bounds from eventual membership in moving sets"]
   lem_projection_distance["Distance to a subspace through orthogonal projection"]
   lem_plane_projection_subsequence["Convergent subsequences of fixed-rank plane projections"]
+  lem_compact_measurable_exhaustion["Compact approximation inside an increasing measurable exhaustion"]
+  lem_orthonormal_span_projection["Projection onto a finite orthonormal span"]
+  def_orthogonal_grading["Orthogonal grading and its weighted complement"]
+  lem_countable_coordinate_metric["A metric from countably many separating real coordinates"]
+  lem_feature_norm_functionals["Norm powers as explicit feature functionals"]
+  lem_dimensional_tangent_operations["General tangents, scalar multiplication and dilation"]
+  lem_vanishing_density_scaled_balls["Vanishing upper density at a fixed positive ball scale"]
+  lem_vanishing_density_negligible_deletion["Vanishing density of a deleted restriction gives negligible deletion"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -546,6 +554,7 @@ flowchart LR
   def_dimensional_blowup --> lem_dimensional_tangent_dilation
   def_dimensional_tangent --> lem_dimensional_tangent_dilation
   lem_blowup_composition --> lem_dimensional_tangent_dilation
+  lem_dimensional_tangent_operations --> lem_dimensional_tangent_dilation
   lem_vague_moving_blowups --> lem_dimensional_tangent_dilation
   def_dimensional_blowup --> lem_pseudotangent_transitive
   lem_blowup_composition --> lem_pseudotangent_transitive
@@ -606,14 +615,17 @@ flowchart LR
   gmt_goodsets --> lem_uniform_compact_selection
   gmt_hausdorff_regular --> lem_uniform_compact_selection
   lem_closed_weak_approximation_good_set --> lem_uniform_compact_selection
+  lem_compact_measurable_exhaustion --> lem_uniform_compact_selection
   lem_weak_approximation_good_exhaustion --> lem_uniform_compact_selection
   lem_weak_approximation_lower_density --> lem_uniform_compact_selection
   gmt_density_points --> lem_weak_approximation_restrict_ae
   gmt_hausdorff_density_upper --> lem_weak_approximation_restrict_ae
+  lem_vanishing_density_negligible_deletion --> lem_weak_approximation_restrict_ae
   lem_weak_approximation_deletion --> lem_weak_approximation_restrict_ae
   mathlib_besicovitch_differentiation --> lem_weak_approximation_restrict_ae
   gmt_hausdorff_density_outside --> lem_packing_base_point
   gmt_hausdorff_density_upper --> lem_packing_base_point
+  lem_vanishing_density_scaled_balls --> lem_packing_base_point
   gmt_finite_restriction --> lem_finite_piece_transfer
   gmt_restriction_tangents --> lem_finite_piece_transfer
   lem_finite_pieces --> lem_finite_piece_transfer
@@ -652,6 +664,7 @@ flowchart LR
   def_polynomial_growth_bound --> lem_gaussian_polynomial_integrable
   lem_annulus_integrability --> lem_gaussian_polynomial_integrable
   lem_gaussian_annulus_majorant --> lem_gaussian_polynomial_integrable
+  def_orthogonal_grading --> lem_graded_analytic_projection
   def_plane --> lem_spectral_minimizing_plane
   def_polynomial_growth_bound --> lem_moment_determination
   lem_complex_mgf_moment_determination --> lem_moment_determination
@@ -666,6 +679,7 @@ flowchart LR
   lem_polynomial_gaussian_integrability --> lem_gaussian_parameter_derivative
   gmt_vague --> def_vague_metrization
   def_vague_metrization --> lem_vague_countable_metric
+  lem_countable_coordinate_metric --> lem_vague_countable_metric
   def_vague_metrization --> lem_vague_metric_properties
   mathlib_measurable_hull --> lem_measurable_hull_holes
   lem_gaussian_projection_integrability --> lem_gaussian_wick_fourth
@@ -730,6 +744,7 @@ flowchart LR
   def_moment_coefficients --> lem_taylor_two
   def_moments --> lem_taylor_two
   def_unit_uniform --> lem_taylor_two
+  lem_feature_norm_functionals --> lem_taylor_two
   lem_graded_analytic_projection --> lem_taylor_two
   lem_moment_feature_remainder --> lem_taylor_two
   lem_moment_norm_bound --> lem_taylor_two
@@ -1141,7 +1156,9 @@ flowchart LR
   def_rigidity_adjusted_form --> lem_rigidity_forms_exist
   def_rigidity_omega --> lem_rigidity_forms_exist
   lem_rigidity_normal_vector_exists --> lem_rigidity_forms_exist
+  def_orthogonal_grading --> lem_polynomial_feature_identities
   def_polynomial_feature --> lem_polynomial_feature_identities
+  lem_orthonormal_span_projection --> lem_polynomial_feature_identities
   def_uniform_constant --> lem_uniform_constant_one
   def_unit_uniform --> lem_uniform_constant_one
   def_dimensional_blowup --> lem_uniform_scaling
@@ -1202,3 +1219,13 @@ flowchart LR
   lem_vague_projection_energy --> lem_flatness_vague_general
   def_plane --> lem_plane_projection_subsequence
   lem_grassmannian --> lem_plane_projection_subsequence
+  def_polynomial_feature --> lem_feature_norm_functionals
+  def_dimensional_tangent --> lem_dimensional_tangent_operations
+  def_tangent_api --> lem_dimensional_tangent_operations
+  lem_blowup_composition --> lem_dimensional_tangent_operations
+  lem_dimensional_blowup_support --> lem_dimensional_tangent_operations
+  lem_vague_moving_blowups --> lem_dimensional_tangent_operations
+  def_density_api --> lem_vanishing_density_scaled_balls
+  def_density_api --> lem_vanishing_density_negligible_deletion
+  def_weak_approximation --> lem_vanishing_density_negligible_deletion
+  lem_vanishing_density_scaled_balls --> lem_vanishing_density_negligible_deletion

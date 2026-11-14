@@ -1,4 +1,4 @@
-import Preiss.Tangent.Defs
+import Preiss.Tangent.Basic
 import Preiss.Density.Defs
 import FormalizingGMT.TangentMeasures.Basic
 
@@ -44,7 +44,7 @@ theorem dimensionalTangent_dilate (μ ν : Measure (Euclidean n))
     [IsLocallyFiniteMeasure μ] (x : Euclidean n)
     (hν : IsDimensionalTangent m μ ν x) (r : ℝ) (hr : 0 < r) :
     IsDimensionalTangent m μ (dimensionalBlowup m ν 0 r) x := by
-  sorry
+  exact hν.dilate hr
 
 theorem dimensionalTangent_nonempty_compact
     (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)

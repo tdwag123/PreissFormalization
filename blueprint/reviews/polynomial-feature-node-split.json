@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "purpose": "Keep concrete weighted polynomial-coordinate data separate from proved projection, grading, and pairing identities.",
+  "source_file": "Preiss/Analysis/PolynomialFeatures.lean",
+  "nodes": [
+    {
+      "id": "def:polynomial-feature",
+      "kind": "definition",
+      "title": "Weighted polynomial coordinate features",
+      "lean_names": [
+        "Preiss.PolynomialFeatureIndex",
+        "Preiss.PolynomialFeatureSpace",
+        "Preiss.polynomialFeature",
+        "Preiss.polynomialFeatureBlock",
+        "Preiss.polynomialFeatureProjection"
+      ],
+      "statement_tex": "For $1\\leq k\\leq N$, index the degree-$k$ Euclidean block by all maps $\\iota:\\operatorname{Fin}k\\to\\operatorname{Fin}n$ and define $\\Phi_k(x)_\\iota=\\sqrt{2^k/k!}\\prod_jx_{\\iota(j)}$. The whole feature space is the direct sum of these coordinate blocks; the block submodules and their orthogonal projections are concrete definitions.",
+      "deps": [],
+      "status_note": "Concrete definitions contain no placeholders; algebraic identities are separate theorems."
+    },
+    {
+      "id": "lem:polynomial-feature-identities",
+      "kind": "lemma",
+      "title": "Exact block projections and feature pairings",
+      "lean_names": [
+        "Preiss.polynomialFeatureProjection_apply",
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
+        "Preiss.polynomialFeatureProjection_inner"
+      ],
+      "statement_tex": "The degree-$k$ projection keeps exactly the coordinates in block $k$ and annihilates the others. These projections form an orthogonal grading. Moreover $\\langle\\Phi(x),\\Phi(y)\\rangle=\\sum_{k=1}^N(2^k/k!)\\langle x,y\\rangle^k$ and $\\langle P_k\\Phi(x),\\Phi(y)\\rangle=(2^k/k!)\\langle x,y\\rangle^k$. All dimensions and truncation orders are natural numbers, including zero.",
+      "deps": [
+        "def:polynomial-feature",
+        "def:orthogonal-grading",
+        "lem:orthonormal-span-projection"
+      ],
+      "status_note": "Exact source checked locally with only standard axioms; canonical integration awaits CI."
+    }
+  ],
+  "dependency_replacements": {
+    "lem:moment-feature-annihilation": {
+      "add": [
+        "lem:polynomial-feature-identities"
+      ]
+    },
+    "lem:moment-feature-remainder": {
+      "add": [
+        "lem:polynomial-feature-identities"
+      ]
+    }
+  }
+}

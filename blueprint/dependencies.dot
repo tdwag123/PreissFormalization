@@ -117,7 +117,7 @@ digraph Preiss {
   "lem:flat-to-approximation" [label="All flat tangents imply weak linear approximation", fillcolor="#fff0bf"];
   "lem:plane-scaling" [label="Plane and scaling API", fillcolor="#dce5ee"];
   "lem:tangent-existence" [label="Tangent existence under two-sided density bounds", fillcolor="#dce5ee"];
-  "lem:dimensional-tangent-dilation" [label="Positive dilations preserve dimensional tangents", fillcolor="#fff0bf"];
+  "lem:dimensional-tangent-dilation" [label="Positive dilations preserve dimensional tangents", fillcolor="#dce5ee"];
   "lem:pseudotangent-transitive" [label="Transitivity of the support-centered scaling orbit closure", fillcolor="#fff0bf"];
   "lem:dimensional-tangent-compactness" [label="Nonempty compact tangent family at a density point", fillcolor="#fff0bf"];
   "lem:tangent-ray" [label="Comparison of tangent conventions", fillcolor="#fff0bf"];
@@ -132,8 +132,8 @@ digraph Preiss {
   "lem:weak-approximation-lower-density" [label="Weak approximation gives positive lower density", fillcolor="#dce5ee"];
   "lem:weak-approximation-deletion" [label="Weak approximation survives negligible deletion", fillcolor="#dce5ee"];
   "lem:weak-approximation-good-exhaustion" [label="Aperture slack gives countable good-set exhaustion", fillcolor="#dce5ee"];
-  "lem:uniform-compact-selection" [label="Compact subsets with uniform approximation and density bounds", fillcolor="#fff0bf"];
-  "lem:weak-approximation-restrict-ae" [label="Weak approximation restricts to Borel subsets almost everywhere", fillcolor="#fff0bf"];
+  "lem:uniform-compact-selection" [label="Compact subsets with uniform approximation and density bounds", fillcolor="#dce5ee"];
+  "lem:weak-approximation-restrict-ae" [label="Weak approximation restricts to Borel subsets almost everywhere", fillcolor="#dce5ee"];
   "lem:packing-base-point" [label="Base point with upper mass and small discarded mass", fillcolor="#fff0bf"];
   "lem:finite-piece-transfer" [label="Transfer density bounds and flat tangents to finite pieces", fillcolor="#fff0bf"];
   "lem:nested-compact-approximation" [label="Nested compact two-sided approximation", fillcolor="#fff0bf"];
@@ -148,7 +148,7 @@ digraph Preiss {
   "lem:gaussian-polynomial-integrable" [label="Gaussian polynomial integrability under polynomial growth", fillcolor="#dce5ee"];
   "lem:graded-analytic-projection" [label="Analytic extension of weighted complementary projections", fillcolor="#fff0bf"];
   "lem:greatest-crossing" [label="Greatest crossing with an interval bound", fillcolor="#dce5ee"];
-  "def:polynomial-feature" [label="Finite Euclidean polynomial feature map", fillcolor="#fff0bf"];
+  "def:polynomial-feature" [label="Finite Euclidean polynomial feature map", fillcolor="#d9eaf7"];
   "lem:spectral-minimizing-plane" [label="Top eigenspaces minimize normal covariance trace", fillcolor="#fff0bf"];
   "lem:moment-determination" [label="Gaussian weighted polynomials determine growing measures", fillcolor="#dce5ee"];
   "lem:gaussian-uniform-tails" [label="Uniform Gaussian polynomial tails", fillcolor="#dce5ee"];
@@ -247,7 +247,7 @@ digraph Preiss {
   "def:first-crossing-data" [label="Quantified crossing scale data", fillcolor="#d9eaf7"];
   "lem:rigidity-normal-vector-exists" [label="Existence of the normal first-moment vector", fillcolor="#fff0bf"];
   "lem:rigidity-forms-exist" [label="Existence of the rigidity bilinear forms", fillcolor="#fff0bf"];
-  "lem:polynomial-feature-identities" [label="Inner products and grading of polynomial features", fillcolor="#fff0bf"];
+  "lem:polynomial-feature-identities" [label="Inner products and grading of polynomial features", fillcolor="#dce5ee"];
   "def:uniform-constant" [label="Uniform measures with a specified ball constant", fillcolor="#d9eaf7"];
   "lem:uniform-constant-one" [label="Centered unit normalization", fillcolor="#dce5ee"];
   "lem:uniform-scaling" [label="Scaling uniform measures and their ball constants", fillcolor="#dce5ee"];
@@ -295,6 +295,14 @@ digraph Preiss {
   "lem:moving-set-measure-bounds" [label="Measure bounds from eventual membership in moving sets", fillcolor="#dce5ee"];
   "lem:projection-distance" [label="Distance to a subspace through orthogonal projection", fillcolor="#dce5ee"];
   "lem:plane-projection-subsequence" [label="Convergent subsequences of fixed-rank plane projections", fillcolor="#dce5ee"];
+  "lem:compact-measurable-exhaustion" [label="Compact approximation inside an increasing measurable exhaustion", fillcolor="#dce5ee"];
+  "lem:orthonormal-span-projection" [label="Projection onto a finite orthonormal span", fillcolor="#dce5ee"];
+  "def:orthogonal-grading" [label="Orthogonal grading and its weighted complement", fillcolor="#d9eaf7"];
+  "lem:countable-coordinate-metric" [label="A metric from countably many separating real coordinates", fillcolor="#dce5ee"];
+  "lem:feature-norm-functionals" [label="Norm powers as explicit feature functionals", fillcolor="#dce5ee"];
+  "lem:dimensional-tangent-operations" [label="General tangents, scalar multiplication and dilation", fillcolor="#dce5ee"];
+  "lem:vanishing-density-scaled-balls" [label="Vanishing upper density at a fixed positive ball scale", fillcolor="#dce5ee"];
+  "lem:vanishing-density-negligible-deletion" [label="Vanishing density of a deleted restriction gives negligible deletion", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -548,6 +556,7 @@ digraph Preiss {
   "def:dimensional-blowup" -> "lem:dimensional-tangent-dilation";
   "def:dimensional-tangent" -> "lem:dimensional-tangent-dilation";
   "lem:blowup-composition" -> "lem:dimensional-tangent-dilation";
+  "lem:dimensional-tangent-operations" -> "lem:dimensional-tangent-dilation";
   "lem:vague-moving-blowups" -> "lem:dimensional-tangent-dilation";
   "def:dimensional-blowup" -> "lem:pseudotangent-transitive";
   "lem:blowup-composition" -> "lem:pseudotangent-transitive";
@@ -608,14 +617,17 @@ digraph Preiss {
   "gmt:goodsets" -> "lem:uniform-compact-selection";
   "gmt:hausdorff-regular" -> "lem:uniform-compact-selection";
   "lem:closed-weak-approximation-good-set" -> "lem:uniform-compact-selection";
+  "lem:compact-measurable-exhaustion" -> "lem:uniform-compact-selection";
   "lem:weak-approximation-good-exhaustion" -> "lem:uniform-compact-selection";
   "lem:weak-approximation-lower-density" -> "lem:uniform-compact-selection";
   "gmt:density-points" -> "lem:weak-approximation-restrict-ae";
   "gmt:hausdorff-density-upper" -> "lem:weak-approximation-restrict-ae";
+  "lem:vanishing-density-negligible-deletion" -> "lem:weak-approximation-restrict-ae";
   "lem:weak-approximation-deletion" -> "lem:weak-approximation-restrict-ae";
   "mathlib:besicovitch-differentiation" -> "lem:weak-approximation-restrict-ae";
   "gmt:hausdorff-density-outside" -> "lem:packing-base-point";
   "gmt:hausdorff-density-upper" -> "lem:packing-base-point";
+  "lem:vanishing-density-scaled-balls" -> "lem:packing-base-point";
   "gmt:finite-restriction" -> "lem:finite-piece-transfer";
   "gmt:restriction-tangents" -> "lem:finite-piece-transfer";
   "lem:finite-pieces" -> "lem:finite-piece-transfer";
@@ -654,6 +666,7 @@ digraph Preiss {
   "def:polynomial-growth-bound" -> "lem:gaussian-polynomial-integrable";
   "lem:annulus-integrability" -> "lem:gaussian-polynomial-integrable";
   "lem:gaussian-annulus-majorant" -> "lem:gaussian-polynomial-integrable";
+  "def:orthogonal-grading" -> "lem:graded-analytic-projection";
   "def:plane" -> "lem:spectral-minimizing-plane";
   "def:polynomial-growth-bound" -> "lem:moment-determination";
   "lem:complex-mgf-moment-determination" -> "lem:moment-determination";
@@ -668,6 +681,7 @@ digraph Preiss {
   "lem:polynomial-gaussian-integrability" -> "lem:gaussian-parameter-derivative";
   "gmt:vague" -> "def:vague-metrization";
   "def:vague-metrization" -> "lem:vague-countable-metric";
+  "lem:countable-coordinate-metric" -> "lem:vague-countable-metric";
   "def:vague-metrization" -> "lem:vague-metric-properties";
   "mathlib:measurable-hull" -> "lem:measurable-hull-holes";
   "lem:gaussian-projection-integrability" -> "lem:gaussian-wick-fourth";
@@ -732,6 +746,7 @@ digraph Preiss {
   "def:moment-coefficients" -> "lem:taylor-two";
   "def:moments" -> "lem:taylor-two";
   "def:unit-uniform" -> "lem:taylor-two";
+  "lem:feature-norm-functionals" -> "lem:taylor-two";
   "lem:graded-analytic-projection" -> "lem:taylor-two";
   "lem:moment-feature-remainder" -> "lem:taylor-two";
   "lem:moment-norm-bound" -> "lem:taylor-two";
@@ -1143,7 +1158,9 @@ digraph Preiss {
   "def:rigidity-adjusted-form" -> "lem:rigidity-forms-exist";
   "def:rigidity-omega" -> "lem:rigidity-forms-exist";
   "lem:rigidity-normal-vector-exists" -> "lem:rigidity-forms-exist";
+  "def:orthogonal-grading" -> "lem:polynomial-feature-identities";
   "def:polynomial-feature" -> "lem:polynomial-feature-identities";
+  "lem:orthonormal-span-projection" -> "lem:polynomial-feature-identities";
   "def:uniform-constant" -> "lem:uniform-constant-one";
   "def:unit-uniform" -> "lem:uniform-constant-one";
   "def:dimensional-blowup" -> "lem:uniform-scaling";
@@ -1204,4 +1221,14 @@ digraph Preiss {
   "lem:vague-projection-energy" -> "lem:flatness-vague-general";
   "def:plane" -> "lem:plane-projection-subsequence";
   "lem:grassmannian" -> "lem:plane-projection-subsequence";
+  "def:polynomial-feature" -> "lem:feature-norm-functionals";
+  "def:dimensional-tangent" -> "lem:dimensional-tangent-operations";
+  "def:tangent-api" -> "lem:dimensional-tangent-operations";
+  "lem:blowup-composition" -> "lem:dimensional-tangent-operations";
+  "lem:dimensional-blowup-support" -> "lem:dimensional-tangent-operations";
+  "lem:vague-moving-blowups" -> "lem:dimensional-tangent-operations";
+  "def:density-api" -> "lem:vanishing-density-scaled-balls";
+  "def:density-api" -> "lem:vanishing-density-negligible-deletion";
+  "def:weak-approximation" -> "lem:vanishing-density-negligible-deletion";
+  "lem:vanishing-density-scaled-balls" -> "lem:vanishing-density-negligible-deletion";
 }

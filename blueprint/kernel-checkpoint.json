@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "9c7441cad8317433f5ae236e9d233d88c6e07ea6",
+  "source_revision": "bc8bc3238e0c02795cbfbbf1d3394f9baea98c61",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -1033,15 +1033,14 @@
     "Preiss.continuousOn_flatness_dimensionalBlowup": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Tangent/Flatness.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.continuous_integral_projectionEnergy": {
       "project": "local",
@@ -1706,15 +1705,14 @@
     "Preiss.exists_greatest_crossing": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GreatestCrossing.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_halfSpace_dimensionalTangent": {
       "project": "local",
@@ -1869,15 +1867,14 @@
     "Preiss.exists_support_sequence_of_vague": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/Vague/Support.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_tangentAtInfinity": {
       "project": "local",
@@ -1891,6 +1888,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_tendsto_planeProjection_subseq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneTopology.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.exists_uniform_dist_plane_support_bound": {
       "project": "local",
@@ -1959,28 +1968,26 @@
     "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/Compactness.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_vague_subsequence_unitUniform": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/Compactness.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.false_of_column_mass_exceeds_upper_bound": {
       "project": "local",
@@ -2199,15 +2206,14 @@
     "Preiss.flatness_continuous": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatnessContinuity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.flatness_eq_zero_of_isFlat": {
       "project": "local",
@@ -2274,6 +2280,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatnessBasic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.flatness_tendsto_of_vague": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/FlatnessVague.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -2481,54 +2499,62 @@
     "Preiss.gaussian_integral_bilinear_sq": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "depends_on_unproved",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "depends_on_sorry"
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussian_integral_four_inner": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.gaussian_integral_inner_pow_even": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
-      "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianMoments.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.gaussian_integral_inner_sq_mul_inner_sq": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
-      "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianMoments.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.gaussian_polynomial_uniform_tail": {
       "project": "local",
@@ -2701,6 +2727,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.infDist_submodule_eq_norm_sub_starProjection": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/Projections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integrableOn_homogeneous_closedBall": {
       "project": "local",
       "kind": "theorem",
@@ -2766,6 +2804,42 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_gaussian_four_inner": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_gaussian_inner_pow": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_gaussian_inner_prod": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianMoments.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -2852,6 +2926,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/BallBoundary.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integral_gaussianReal_zero_pow_even": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianMoments.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -2960,15 +3046,14 @@
     "Preiss.isClosed_weakApproximationGoodSet": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.isCompact_rankProjectionSet": {
       "project": "local",
@@ -3107,15 +3192,50 @@
     "Preiss.isUnitUniform_of_vague": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/Compactness.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.iteratedDeriv_exp_quadratic_even": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianDerivatives.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.iteratedDeriv_id_mul_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianDerivatives.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.le_measure_of_pointwise_eventually_notMem": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/MovingSets.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.linearJacobian": {
       "project": "local",
@@ -3263,6 +3383,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.measure_le_of_pointwise_eventually_mem": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/MovingSets.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.measure_le_smul_hausdorff_of_diameter_bound": {
       "project": "local",
       "kind": "theorem",
@@ -3375,15 +3507,14 @@
     "Preiss.mem_support_of_vague_lower_ball_bound": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/Vague/Support.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.mixed_gaussian_limit_eq_omega": {
       "project": "local",
@@ -3893,15 +4024,14 @@
     "Preiss.subset_tube_of_lower_mass_and_small_outside_mass": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow": {
       "project": "local",
@@ -4042,6 +4172,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.tendsto_of_subsequence_subsequence": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/SequentialLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.thirdMomentCoefficient_normal_vanishes": {
       "project": "local",
       "kind": "theorem",
@@ -4136,15 +4278,14 @@
     "Preiss.uniformPseudotangent_isUnitUniform": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Tangent/ScalingOrbit.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.uniformPseudotangent_map_linearIsometry": {
       "project": "local",
@@ -4351,15 +4492,14 @@
     "Preiss.unitUniform_totallyBounded": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/Compactness.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.vagueMetric_finite_cover_of_compact": {
       "project": "local",
@@ -4459,6 +4599,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.vague_integral_projectionEnergy_moving": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/ProjectionEnergy.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.vague_smul_map_sub_div": {
       "project": "local",
       "kind": "theorem",
@@ -4498,15 +4650,14 @@
     "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat": {
       "project": "local",

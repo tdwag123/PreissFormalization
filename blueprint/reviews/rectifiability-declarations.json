@@ -602,7 +602,7 @@
       "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.ae_weaklyLinearlyApproximableAt_subset"
       ],
@@ -611,11 +611,11 @@
           "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement",
-          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+          "status": "proof_candidate",
+          "verification": "Generic conversion and assembly proof checked locally with explicit hypotheses matching the GMT theorem. Actual GMT endpoint imports await Linux integration CI."
         }
       ],
-      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+      "verification": "Generic conversion and assembly proof checked locally with explicit hypotheses matching the GMT theorem. Actual GMT endpoint imports await Linux integration CI."
     },
     "def:weak-approximation-good-set": {
       "lean_name": "Preiss.weakApproximationGoodSet",
@@ -661,7 +661,8 @@
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
       "status": "proof_candidate",
       "lean_names": [
-        "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion"
+        "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+        "Preiss.weakApproximationGoodSet_mono"
       ],
       "declarations": [
         {
@@ -670,6 +671,13 @@
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
           "status": "proof_candidate",
           "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+        },
+        {
+          "lean_name": "Preiss.weakApproximationGoodSet_mono",
+          "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+          "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+          "status": "proof_candidate",
+          "verification": "Exact-source local Lean/kernel check passed with only standard axioms; authoritative integration status remains blueprint/kernel-checkpoint.json at its source_revision."
         }
       ],
       "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
@@ -678,7 +686,7 @@
       "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
       "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.exists_compact_uniform_weakApproximation_subset"
       ],
@@ -687,11 +695,11 @@
           "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
           "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
           "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-          "status": "unproved_statement",
-          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+          "status": "proof_candidate",
+          "verification": "Exact-source local Lean/kernel check passed with only standard axioms; authoritative integration status remains blueprint/kernel-checkpoint.json at its source_revision."
         }
       ],
-      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+      "verification": "Exact-source local Lean/kernel check passed with only standard axioms; authoritative integration status remains blueprint/kernel-checkpoint.json at its source_revision."
     },
     "lem:tube-support-upgrade": {
       "lean_name": "Preiss.subset_tube_of_lower_mass_and_small_outside_mass",
@@ -817,8 +825,8 @@
           "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement",
-          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+          "status": "proof_candidate",
+          "verification": "Generic conversion and assembly proof checked locally with explicit hypotheses matching the GMT theorem. Actual GMT endpoint imports await Linux integration CI."
         }
       ],
       "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"

@@ -961,6 +961,211 @@
       "definition_dependencies": [
         "def:vague-metrization"
       ]
+    },
+    {
+      "id": "lem:compact-measurable-exhaustion",
+      "title": "Compact approximation inside an increasing measurable exhaustion",
+      "kind": "lemma",
+      "statement_tex": "Let $\\mu$ be a finite regular Borel measure on a Hausdorff space, let $E$ and $S_i$ be measurable, and assume $S_i\\subseteq S_{i+1}$ and $\\mu(E\\setminus\\bigcup_i S_i)=0$. For every $\\varepsilon>0$ there exist $N$ and a compact set $C\\subseteq E\\cap S_N$ such that $\\mu(E\\setminus C)<\\varepsilon$.",
+      "hypotheses": [
+        "A Hausdorff topological space with its Borel measurable structure; a finite regular measure; measurable carrier and increasing measurable exhaustion covering it almost everywhere."
+      ],
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+      ],
+      "file": "Preiss/Analysis/CompactExhaustion.lean",
+      "used_by": [
+        "lem:uniform-compact-selection"
+      ]
+    },
+    {
+      "id": "lem:orthonormal-span-projection",
+      "kind": "lemma",
+      "title": "Projection onto a finite orthonormal span",
+      "statement_tex": "For every finite orthonormal family $(u_i)$ in a finite dimensional real inner product space, the orthogonal projection onto its span is the sum of the rank-one maps $x\\mapsto\\langle u_i,x\\rangle u_i$. The family may be empty.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.starProjection_span_orthonormal",
+        "Preiss.starProjection_span_orthonormal_apply"
+      ],
+      "file": "Preiss/Analysis/OrthonormalProjection.lean",
+      "proof_sketch_tex": "Turn the linearly independent family into the orthonormal basis of its span and apply the basis expansion of orthogonal projection.",
+      "used_by": [
+        "lem:polynomial-feature-identities"
+      ],
+      "verification": "Projection identities passed exact-source PolynomialFeatureProjectionCheck with only standard axioms; grading definitions are unchanged data moved to a pure module; canonical import integration awaits CI.",
+      "statements_lean": [
+        "theorem starProjection_span_orthonormal {E ι : Type*} [Fintype ι]\n    [NormedAddCommGroup E] [InnerProductSpace ℝ E] [FiniteDimensional ℝ E]\n    (u : ι → E) (hu : Orthonormal ℝ u) :\n    (Submodule.span ℝ (Set.range u)).starProjection =\n      ∑ i, InnerProductSpace.rankOne ℝ (u i) (u i)",
+        "theorem starProjection_span_orthonormal_apply {E ι : Type*} [Fintype ι]\n    [NormedAddCommGroup E] [InnerProductSpace ℝ E] [FiniteDimensional ℝ E]\n    (u : ι → E) (hu : Orthonormal ℝ u) (x : E) :\n    (Submodule.span ℝ (Set.range u)).starProjection x =\n      ∑ i, (inner ℝ (u i) x) • u i"
+      ]
+    },
+    {
+      "id": "lem:polynomial-feature-identities",
+      "kind": "lemma",
+      "title": "Exact block projections and feature pairings",
+      "lean_names": [
+        "Preiss.polynomialFeatureProjection_apply",
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
+        "Preiss.polynomialFeatureProjection_inner"
+      ],
+      "statement_tex": "The degree-$k$ projection keeps exactly the coordinates in block $k$ and annihilates the others. These projections form an orthogonal grading. Moreover $\\langle\\Phi(x),\\Phi(y)\\rangle=\\sum_{k=1}^N(2^k/k!)\\langle x,y\\rangle^k$ and $\\langle P_k\\Phi(x),\\Phi(y)\\rangle=(2^k/k!)\\langle x,y\\rangle^k$. All dimensions and truncation orders are natural numbers, including zero.",
+      "deps": [
+        "def:polynomial-feature",
+        "def:orthogonal-grading",
+        "lem:orthonormal-span-projection"
+      ],
+      "status_note": "Exact source checked locally with only standard axioms; canonical integration awaits CI.",
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "definition_dependencies": [
+        "def:polynomial-feature",
+        "def:orthogonal-grading"
+      ],
+      "verification": "Projection identities passed exact-source PolynomialFeatureProjectionCheck with only standard axioms; grading definitions are unchanged data moved to a pure module; canonical import integration awaits CI.",
+      "statements_lean": [
+        "theorem polynomialFeatureProjection_apply {n N : ℕ} (k : Fin N)\n    (x : PolynomialFeatureSpace n N) (i : PolynomialFeatureIndex n N) :\n    polynomialFeatureProjection k x i = if i.1 = k then x i else 0",
+        "theorem polynomialFeature_inner {n N : ℕ} (x y : Euclidean n) :\n    inner ℝ (polynomialFeature N x) (polynomialFeature N y) =\n      ∑ k : Fin N, ((2 : ℝ) ^ (k.val + 1) / ((k.val + 1).factorial : ℝ)) *\n        (inner ℝ x y) ^ (k.val + 1)",
+        "theorem polynomialFeatureProjection_isOrthogonalGrading (n N : ℕ) :\n    IsOrthogonalGrading (polynomialFeatureProjection (n",
+        "theorem polynomialFeatureProjection_inner {n N : ℕ} (k : Fin N)\n    (x y : Euclidean n) :\n    inner ℝ (polynomialFeatureProjection k (polynomialFeature N x))\n      (polynomialFeature N y) =\n      ((2 : ℝ) ^ (k.val + 1) / ((k.val + 1).factorial : ℝ)) *\n        (inner ℝ x y) ^ (k.val + 1)"
+      ]
+    },
+    {
+      "id": "def:orthogonal-grading",
+      "kind": "definition",
+      "title": "Orthogonal grading and its weighted complement",
+      "lean_names": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedGrading",
+        "Preiss.weightedComplement"
+      ],
+      "file": "Preiss/Analysis/Grading.lean",
+      "statement_tex": "An orthogonal grading consists of finitely many self-adjoint idempotents $P_i$ with $P_iP_j=0$ for distinct indices and $\\sum_iP_i=\\operatorname{id}$. For every real $s$, define $A(s)=\\sum_i s^{i+1}P_i$ and $F_s=A(s)^{-1}(V^\\perp)$ for a subspace $V$. These are data and total definitions, with no analytic-extension assertion.",
+      "deps": [],
+      "status_note": "Concrete data definitions contain no placeholders.",
+      "definition_dependencies": [],
+      "verification": "Projection identities passed exact-source PolynomialFeatureProjectionCheck with only standard axioms; grading definitions are unchanged data moved to a pure module; canonical import integration awaits CI.",
+      "statements_lean": []
+    },
+    {
+      "id": "lem:countable-coordinate-metric",
+      "kind": "lemma",
+      "title": "A metric from countably many separating real coordinates",
+      "statement_tex": "For an arbitrary type $A$, let $f_j:A\\to\\mathbb R$, $j\\in\\mathbb N$, separate points. The explicit shifted weighted coordinate map induces a metric $d(a,b)=\\sum_{j\\geq0}2^{-(j+1)}\\min(1,|f_j(a)-f_j(b)|)$. For every type $B$, filter $\\mathcal F$ on $B$, function $g:B\\to A$, and point $a\\in A$, convergence of $g$ to $a$ in this metric is equivalent to convergence of every $f_j\\circ g$ to $f_j(a)$.",
+      "hypotheses": [
+        "A and B are arbitrary types, with no prior topology on A.",
+        "The coordinates separate points: equality in every coordinate implies equality in A.",
+        "The convergence equivalence holds for arbitrary filters, not only sequences."
+      ],
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.countableCoordinateMap",
+        "Preiss.countableCoordinateMap_injective",
+        "Preiss.countableCoordinateMetric",
+        "Preiss.countableCoordinateMetric_dist",
+        "Preiss.countableCoordinateMetric_tendsto_iff"
+      ],
+      "file": "Preiss/Analysis/CountableCoordinateMetric.lean",
+      "proof_sketch_tex": "Embed A into the countable real product by a zero coordinate followed by weighted coordinates. Separation gives injectivity. Pull back the existing countable product metric; expand its truncated weighted distance and use the induced topology to characterize convergence coordinatewise.",
+      "used_by": [
+        "lem:vague-countable-metric"
+      ],
+      "verification": "Build agent exact-source check passed with only standard axioms; separate-module integration awaits CI."
+    },
+    {
+      "id": "lem:feature-norm-functionals",
+      "kind": "lemma",
+      "title": "Norm powers as explicit feature functionals",
+      "statement_tex": "For every natural $d$, $\\|x\\|^{2d}=\\sum_{f:\\operatorname{Fin}d\\to\\operatorname{Fin}n}(\\prod_jx_{f(j)})^2$. Consequently, for all natural $n,q$, there exist continuous linear functionals $L_j$ on the degree-$2q$ feature space, indexed by $j:\\operatorname{Fin}q$, with $L_j(\\Phi_{2q}(x))=\\|x\\|^{2(j+1)}$ for every $x$.",
+      "hypotheses": [
+        "n,q,d are natural numbers, including zero."
+      ],
+      "definition_dependencies": [
+        "def:polynomial-feature"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.norm_pow_eq_sum_coordinate_monomials",
+        "Preiss.exists_normPolynomial_feature_functionals"
+      ],
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "proof_sketch_tex": "Expand $(\\sum_i x_i^2)^d$ by the finite multinomial sum. For each $j$, duplicate every coordinate tuple of length $j+1$ into a tuple of length $2(j+1)$, sum the corresponding coordinate projections in that feature block, and divide by the strictly positive square-root weight. This constructs the functional explicitly and uses no Gaussian or analytic-projection theorem.",
+      "used_by": [
+        "lem:taylor-two"
+      ],
+      "status_note": "Exact source passed NormFeatureFunctionalCheck with only standard axioms; canonical integration awaits CI.",
+      "statements_lean": [
+        "theorem norm_pow_eq_sum_coordinate_monomials {n : ℕ} (x : Euclidean n) (d : ℕ) :\n    ‖x‖ ^ (2 * d) = ∑ f : Fin d → Fin n, (∏ j, x (f j)) ^ 2",
+        "theorem exists_normPolynomial_feature_functionals (n q : ℕ) :\n    ∃ L : Fin q → PolynomialFeatureSpace n (2 * q) →L[ℝ] ℝ,\n      ∀ j x, L j (polynomialFeature (2 * q) x) = ‖x‖ ^ (2 * (j.val + 1))"
+      ]
+    },
+    {
+      "id": "lem:dimensional-tangent-operations",
+      "kind": "lemma",
+      "title": "General tangents, scalar multiplication and dilation",
+      "lean_names": [
+        "Preiss.IsDimensionalTangent.isTangentMeasure",
+        "Preiss.IsDimensionalTangent.smul",
+        "Preiss.IsDimensionalTangent.dilate"
+      ],
+      "file": "Preiss/Tangent/Basic.lean",
+      "statement_tex": "Every dimensional tangent is a general tangent measure. If $c$ is positive and finite, $\\nu\\in\\operatorname{Tan}_m(\\mu,x)$ implies $c\\nu\\in\\operatorname{Tan}_m(c\\mu,x)$. For locally finite $\\mu$ and $s>0$, origin dilation also preserves $\\operatorname{Tan}_m(\\mu,x)$. The first two assertions need no local-finiteness hypothesis.",
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:blowup-composition",
+        "lem:dimensional-blowup-support",
+        "lem:vague-moving-blowups",
+        "def:tangent-api"
+      ],
+      "used_by": [],
+      "status_note": "Local Lean kernel check passed with only standard axioms; full integration CI separate."
+    },
+    {
+      "id": "lem:vanishing-density-scaled-balls",
+      "title": "Vanishing upper density at a fixed positive ball scale",
+      "kind": "lemma",
+      "statement_tex": "Let $\\nu$ be an outer measure on a pseudometric space and $m\\in\\mathbb N$. If $\\Theta^{*m}(\\nu,x)=0$, then for every fixed $c>0$, $\\nu(B_{cr}(x))/r^m\\to0$ as $r\\downarrow0$.",
+      "hypotheses": [
+        "An arbitrary outer measure on a pseudometric space, a natural dimension, a fixed positive real scale, and vanishing diameter-normalized upper density. No finiteness hypothesis is required."
+      ],
+      "definition_dependencies": [
+        "def:density-api"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero"
+      ],
+      "file": "Preiss/Density/Vanishing.lean",
+      "used_by": [
+        "lem:vanishing-density-negligible-deletion",
+        "lem:packing-base-point"
+      ]
+    },
+    {
+      "id": "lem:vanishing-density-negligible-deletion",
+      "title": "Vanishing density of a deleted restriction gives negligible deletion",
+      "kind": "lemma",
+      "statement_tex": "For a measure $\\mu$ on $\\mathbb R^n$ and a measurable set $F$, if $\\Theta^{*m}(\\mu|_{F^c},x)=0$, then $\\mu(B_{2r}(x)\\setminus F)/r^m\\to0$ as $r\\downarrow0$.",
+      "hypotheses": [
+        "A Euclidean Borel measure, measurable deleted carrier, and zero upper density for its complementary restriction. No local finiteness is required for this conversion."
+      ],
+      "definition_dependencies": [
+        "def:density-api",
+        "def:weak-approximation"
+      ],
+      "deps": [
+        "lem:vanishing-density-scaled-balls"
+      ],
+      "lean_names": [
+        "Preiss.negligibleDeletionAt_of_upperDensity_restrict_compl_eq_zero"
+      ],
+      "file": "Preiss/Rectifiability/WeakApproximation/Density.lean",
+      "used_by": [
+        "lem:weak-approximation-restrict-ae"
+      ]
     }
   ],
   "definition_edge_additions": {

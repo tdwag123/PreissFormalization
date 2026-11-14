@@ -1878,7 +1878,7 @@
       "id": "lem:dimensional-tangent-dilation",
       "title": "Positive dilations preserve dimensional tangents",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.dimensionalTangent_dilate"
       ],
@@ -1887,6 +1887,7 @@
         "def:dimensional-blowup",
         "def:dimensional-tangent",
         "lem:blowup-composition",
+        "lem:dimensional-tangent-operations",
         "lem:vague-moving-blowups"
       ],
       "proof_dependencies": [],
@@ -1986,8 +1987,7 @@
       "proof_dependencies": [],
       "expanded_line": 2416,
       "unfinished_dependencies": [
-        "lem:dimensional-tangent-closed",
-        "lem:dimensional-tangent-dilation"
+        "lem:dimensional-tangent-closed"
       ]
     },
     {
@@ -2038,7 +2038,6 @@
       "unfinished_dependencies": [
         "lem:dimensional-tangent-ball-constant",
         "lem:dimensional-tangent-closed",
-        "lem:dimensional-tangent-dilation",
         "lem:hull-support-approximation",
         "lem:uniform-adapter"
       ]
@@ -2169,6 +2168,7 @@
       "kind": "lemma",
       "status": "proof_candidate",
       "lean": [
+        "Preiss.weakApproximationGoodSet_mono",
         "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion"
       ],
       "verification": "source_audit_only",
@@ -2184,7 +2184,7 @@
       "id": "lem:uniform-compact-selection",
       "title": "Compact subsets with uniform approximation and density bounds",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_compact_uniform_weakApproximation_subset"
       ],
@@ -2193,6 +2193,7 @@
         "gmt:goodsets",
         "gmt:hausdorff-regular",
         "lem:closed-weak-approximation-good-set",
+        "lem:compact-measurable-exhaustion",
         "lem:weak-approximation-good-exhaustion",
         "lem:weak-approximation-lower-density"
       ],
@@ -2204,7 +2205,7 @@
       "id": "lem:weak-approximation-restrict-ae",
       "title": "Weak approximation restricts to Borel subsets almost everywhere",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.ae_weaklyLinearlyApproximableAt_subset"
       ],
@@ -2212,6 +2213,7 @@
       "statement_dependencies": [
         "gmt:density-points",
         "gmt:hausdorff-density-upper",
+        "lem:vanishing-density-negligible-deletion",
         "lem:weak-approximation-deletion",
         "mathlib:besicovitch-differentiation"
       ],
@@ -2231,7 +2233,8 @@
       "verification": "source_audit_only",
       "statement_dependencies": [
         "gmt:hausdorff-density-outside",
-        "gmt:hausdorff-density-upper"
+        "gmt:hausdorff-density-upper",
+        "lem:vanishing-density-scaled-balls"
       ],
       "proof_dependencies": [],
       "expanded_line": 2743,
@@ -2275,10 +2278,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 2789,
-      "unfinished_dependencies": [
-        "lem:uniform-compact-selection",
-        "lem:weak-approximation-restrict-ae"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:pure-cone-escape",
@@ -2340,8 +2340,7 @@
       "proof_dependencies": [],
       "expanded_line": 2861,
       "unfinished_dependencies": [
-        "lem:projected-tube-slab-bound",
-        "lem:uniform-compact-selection"
+        "lem:projected-tube-slab-bound"
       ]
     },
     {
@@ -2426,8 +2425,7 @@
       "expanded_line": 2960,
       "unfinished_dependencies": [
         "lem:packing-contradiction",
-        "lem:pure-wla-null-projection",
-        "lem:weak-approximation-restrict-ae"
+        "lem:pure-wla-null-projection"
       ]
     },
     {
@@ -2479,13 +2477,12 @@
       "kind": "lemma",
       "status": "unproved_statement",
       "lean": [
-        "Preiss.IsOrthogonalGrading",
-        "Preiss.analyticAt_weightedProjection_zero",
-        "Preiss.weightedComplement",
-        "Preiss.weightedGrading"
+        "Preiss.analyticAt_weightedProjection_zero"
       ],
       "verification": "source_audit_only",
-      "statement_dependencies": [],
+      "statement_dependencies": [
+        "def:orthogonal-grading"
+      ],
       "proof_dependencies": [],
       "expanded_line": 3030,
       "unfinished_dependencies": []
@@ -2501,28 +2498,25 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 3073,
+      "expanded_line": 3074,
       "unfinished_dependencies": []
     },
     {
       "id": "def:polynomial-feature",
       "title": "Finite Euclidean polynomial feature map",
       "kind": "definition",
-      "status": "unproved_statement",
+      "status": "definition",
       "lean": [
         "Preiss.PolynomialFeatureIndex",
         "Preiss.PolynomialFeatureSpace",
         "Preiss.polynomialFeature",
         "Preiss.polynomialFeatureBlock",
-        "Preiss.polynomialFeatureProjection",
-        "Preiss.polynomialFeatureProjection_inner",
-        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeature_inner"
+        "Preiss.polynomialFeatureProjection"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 3100,
+      "expanded_line": 3101,
       "unfinished_dependencies": []
     },
     {
@@ -2538,7 +2532,7 @@
         "def:plane"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3110,
+      "expanded_line": 3112,
       "unfinished_dependencies": []
     },
     {
@@ -2558,7 +2552,7 @@
         "lem:gaussian-weight-finite"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3137,
+      "expanded_line": 3139,
       "unfinished_dependencies": []
     },
     {
@@ -2577,7 +2571,7 @@
         "lem:gaussian-tail-series-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3154,
+      "expanded_line": 3156,
       "unfinished_dependencies": []
     },
     {
@@ -2596,7 +2590,7 @@
         "lem:polynomial-gaussian-integrability"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3182,
+      "expanded_line": 3184,
       "unfinished_dependencies": []
     },
     {
@@ -2614,7 +2608,7 @@
         "gmt:vague"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3209,
+      "expanded_line": 3211,
       "unfinished_dependencies": []
     },
     {
@@ -2627,10 +2621,11 @@
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:vague-metrization"
+        "def:vague-metrization",
+        "lem:countable-coordinate-metric"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3216,
+      "expanded_line": 3218,
       "unfinished_dependencies": []
     },
     {
@@ -2646,7 +2641,7 @@
         "mathlib:measurable-hull"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3237,
+      "expanded_line": 3239,
       "unfinished_dependencies": []
     },
     {
@@ -2666,7 +2661,7 @@
         "mathlib:standard-gaussian"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3269,
+      "expanded_line": 3271,
       "unfinished_dependencies": []
     },
     {
@@ -2682,7 +2677,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 3296,
+      "expanded_line": 3298,
       "unfinished_dependencies": []
     },
     {
@@ -2698,7 +2693,7 @@
         "gmt:portmanteau"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3304,
+      "expanded_line": 3306,
       "unfinished_dependencies": []
     },
     {
@@ -2714,7 +2709,7 @@
         "gmt:portmanteau"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3330,
+      "expanded_line": 3332,
       "unfinished_dependencies": []
     },
     {
@@ -2732,7 +2727,7 @@
         "gmt:vague"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3357,
+      "expanded_line": 3359,
       "unfinished_dependencies": []
     },
     {
@@ -2748,7 +2743,7 @@
         "lem:vague-countable-metric"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3385,
+      "expanded_line": 3387,
       "unfinished_dependencies": [
         "lem:vague-countable-metric"
       ]
@@ -2766,7 +2761,7 @@
         "def:bilinear-trace"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3410,
+      "expanded_line": 3412,
       "unfinished_dependencies": []
     },
     {
@@ -2784,7 +2779,7 @@
         "lem:vague-moving-tests"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3419,
+      "expanded_line": 3421,
       "unfinished_dependencies": []
     },
     {
@@ -2806,7 +2801,7 @@
         "mathlib:standard-gaussian"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3447,
+      "expanded_line": 3449,
       "unfinished_dependencies": []
     },
     {
@@ -2815,7 +2810,6 @@
       "kind": "lemma",
       "status": "unproved_statement",
       "lean": [
-        "Preiss.exists_normPolynomial_feature_functionals",
         "Preiss.featureMoment_operator_remainder"
       ],
       "verification": "source_audit_only",
@@ -2828,11 +2822,9 @@
         "lem:taylor-one"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3481,
+      "expanded_line": 3483,
       "unfinished_dependencies": [
-        "def:polynomial-feature",
         "lem:moment-feature-annihilation",
-        "lem:polynomial-feature-identities",
         "lem:taylor-one"
       ]
     },
@@ -2851,7 +2843,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 3518,
+      "expanded_line": 3520,
       "unfinished_dependencies": []
     },
     {
@@ -2873,11 +2865,8 @@
         "lem:polynomial-feature-identities"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3531,
-      "unfinished_dependencies": [
-        "def:polynomial-feature",
-        "lem:polynomial-feature-identities"
-      ]
+      "expanded_line": 3533,
+      "unfinished_dependencies": []
     },
     {
       "id": "def:moment-coefficients",
@@ -2894,7 +2883,7 @@
         "def:moments"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3564,
+      "expanded_line": 3566,
       "unfinished_dependencies": []
     },
     {
@@ -2912,7 +2901,7 @@
         "def:moments"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3585,
+      "expanded_line": 3587,
       "unfinished_dependencies": []
     },
     {
@@ -2930,7 +2919,7 @@
         "lem:unit-uniform-adapter"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3594,
+      "expanded_line": 3596,
       "unfinished_dependencies": []
     },
     {
@@ -2953,7 +2942,7 @@
         "lem:moment-kernel-calculus"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3625,
+      "expanded_line": 3627,
       "unfinished_dependencies": []
     },
     {
@@ -2976,7 +2965,7 @@
         "lem:radial"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3661,
+      "expanded_line": 3663,
       "unfinished_dependencies": []
     },
     {
@@ -2996,7 +2985,7 @@
         "lem:radial"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3698,
+      "expanded_line": 3700,
       "unfinished_dependencies": []
     },
     {
@@ -3017,7 +3006,7 @@
         "lem:radial"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3726,
+      "expanded_line": 3728,
       "unfinished_dependencies": [
         "lem:moment-norm-bound"
       ]
@@ -3038,7 +3027,7 @@
         "lem:moment-norm-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3763,
+      "expanded_line": 3765,
       "unfinished_dependencies": [
         "lem:gaussian-translation-series",
         "lem:moment-norm-bound"
@@ -3059,12 +3048,13 @@
         "def:moment-coefficients",
         "def:moments",
         "def:unit-uniform",
+        "lem:feature-norm-functionals",
         "lem:graded-analytic-projection",
         "lem:moment-feature-remainder",
         "lem:moment-norm-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3799,
+      "expanded_line": 3801,
       "unfinished_dependencies": [
         "lem:graded-analytic-projection",
         "lem:moment-feature-remainder",
@@ -3088,7 +3078,7 @@
         "lem:taylor-two"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3829,
+      "expanded_line": 3831,
       "unfinished_dependencies": [
         "lem:moment-norm-bound",
         "lem:taylor-two"
@@ -3114,7 +3104,7 @@
         "lem:taylor-two"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3859,
+      "expanded_line": 3861,
       "unfinished_dependencies": [
         "lem:taylor-two"
       ]
@@ -3137,7 +3127,7 @@
         "lem:taylor-two"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3884,
+      "expanded_line": 3886,
       "unfinished_dependencies": [
         "lem:moment-coefficient-vanishing",
         "lem:taylor-one",
@@ -3162,7 +3152,7 @@
         "lem:taylor-two"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3914,
+      "expanded_line": 3916,
       "unfinished_dependencies": [
         "lem:moment-coefficient-vanishing",
         "lem:taylor-two"
@@ -3184,7 +3174,7 @@
         "lem:vague-support-limit"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3941,
+      "expanded_line": 3943,
       "unfinished_dependencies": []
     },
     {
@@ -3205,7 +3195,7 @@
         "lem:vague-moving-blowups"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3968,
+      "expanded_line": 3970,
       "unfinished_dependencies": []
     },
     {
@@ -3228,7 +3218,7 @@
         "lem:blowup-composition"
       ],
       "proof_dependencies": [],
-      "expanded_line": 3978,
+      "expanded_line": 3980,
       "unfinished_dependencies": []
     },
     {
@@ -3246,7 +3236,7 @@
         "thm:compactness"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4009,
+      "expanded_line": 4011,
       "unfinished_dependencies": []
     },
     {
@@ -3267,7 +3257,7 @@
         "lem:vague-moving-blowups"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4036,
+      "expanded_line": 4038,
       "unfinished_dependencies": []
     },
     {
@@ -3287,7 +3277,7 @@
         "lem:uniform-scaling"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4054,
+      "expanded_line": 4056,
       "unfinished_dependencies": []
     },
     {
@@ -3309,7 +3299,7 @@
         "thm:doubling"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4080,
+      "expanded_line": 4082,
       "unfinished_dependencies": [
         "lem:tangent-ray"
       ]
@@ -3331,7 +3321,7 @@
         "lem:dimensional-tangent-ball-constant"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4108,
+      "expanded_line": 4110,
       "unfinished_dependencies": [
         "lem:dimensional-tangent-ball-constant"
       ]
@@ -3352,7 +3342,7 @@
         "lem:dimensional-tangent-ball-constant"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4137,
+      "expanded_line": 4139,
       "unfinished_dependencies": [
         "lem:dimensional-tangent-ball-constant"
       ]
@@ -3373,7 +3363,7 @@
         "gmt:zero-barycenter-hyperplane"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4168,
+      "expanded_line": 4170,
       "unfinished_dependencies": []
     },
     {
@@ -3394,7 +3384,7 @@
         "lem:pseudotangent-transitive"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4209,
+      "expanded_line": 4211,
       "unfinished_dependencies": [
         "lem:halfspace-tangent-witness",
         "lem:hyperplane-tangent-lineage",
@@ -3421,7 +3411,7 @@
         "lem:plane-scaling"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4233,
+      "expanded_line": 4235,
       "unfinished_dependencies": [
         "lem:hyperplane-transport-map"
       ]
@@ -3443,7 +3433,7 @@
         "lem:uniform-reduction"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4257,
+      "expanded_line": 4259,
       "unfinished_dependencies": [
         "lem:plane-supported-uniform-flat",
         "lem:pseudotangent-transitive",
@@ -3470,7 +3460,7 @@
         "lem:vague-gaussian-polynomials"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4275,
+      "expanded_line": 4277,
       "unfinished_dependencies": [
         "lem:blowdown-moment-limits",
         "lem:infinity-compactness",
@@ -3494,7 +3484,7 @@
         "lem:spectral-minimizing-plane"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4298,
+      "expanded_line": 4300,
       "unfinished_dependencies": [
         "lem:conical-covariance",
         "lem:spectral-minimizing-plane"
@@ -3518,7 +3508,7 @@
         "thm:unique-infinity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4326,
+      "expanded_line": 4328,
       "unfinished_dependencies": [
         "thm:unique-infinity"
       ]
@@ -3544,7 +3534,7 @@
         "lem:uniform-ball-boundary"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4349,
+      "expanded_line": 4351,
       "unfinished_dependencies": [
         "lem:conical-eigenvalue-rigidity",
         "lem:plane-supported-uniform-flat",
@@ -3567,7 +3557,7 @@
         "def:plane"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4380,
+      "expanded_line": 4382,
       "unfinished_dependencies": []
     },
     {
@@ -3587,7 +3577,7 @@
         "def:rigidity-normal-vector"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4395,
+      "expanded_line": 4397,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector"
       ]
@@ -3610,7 +3600,7 @@
         "def:rigidity-omega"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4411,
+      "expanded_line": 4413,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega"
@@ -3636,7 +3626,7 @@
         "lem:vague-gaussian-polynomials"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4427,
+      "expanded_line": 4429,
       "unfinished_dependencies": [
         "lem:flat-gaussian-even-moments",
         "lem:scaled-moment-limits",
@@ -3662,7 +3652,7 @@
         "lem:vague-support-approximation"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4452,
+      "expanded_line": 4454,
       "unfinished_dependencies": [
         "lem:flat-infinity-moments",
         "lem:moment-support-polynomial"
@@ -3687,7 +3677,7 @@
         "lem:moment-support-polynomial"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4483,
+      "expanded_line": 4485,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:flat-infinity-moments",
@@ -3714,7 +3704,7 @@
         "lem:taylor-two"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4508,
+      "expanded_line": 4510,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
@@ -3743,7 +3733,7 @@
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4545,
+      "expanded_line": 4547,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:taylor-two",
@@ -3770,7 +3760,7 @@
         "lem:vague-support-approximation"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4570,
+      "expanded_line": 4572,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:plane-supported-uniform-flat",
@@ -3798,7 +3788,7 @@
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4608,
+      "expanded_line": 4610,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:odd-coefficients-plane-zero",
@@ -3828,7 +3818,7 @@
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4637,
+      "expanded_line": 4639,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
@@ -3856,7 +3846,7 @@
         "lem:rigidity-cubic-vanishing"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4674,
+      "expanded_line": 4676,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:flat-infinity-moments",
@@ -3885,7 +3875,7 @@
         "lem:rigidity-mixed-gaussian-limit"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4703,
+      "expanded_line": 4705,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
@@ -3916,7 +3906,7 @@
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4728,
+      "expanded_line": 4730,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
@@ -3950,7 +3940,7 @@
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4767,
+      "expanded_line": 4769,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
@@ -3981,7 +3971,7 @@
         "lem:rigidity-omega-trace-zero"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4796,
+      "expanded_line": 4798,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
@@ -4010,7 +4000,7 @@
         "lem:rigidity-omega-trace-zero"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4822,
+      "expanded_line": 4824,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
@@ -4041,7 +4031,7 @@
         "lem:vague-gaussian-polynomials"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4851,
+      "expanded_line": 4853,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
@@ -4078,7 +4068,7 @@
         "lem:rigidity-integral-quadratic-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4888,
+      "expanded_line": 4890,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
@@ -4109,7 +4099,7 @@
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4921,
+      "expanded_line": 4923,
       "unfinished_dependencies": [
         "lem:moment-second-total-trace",
         "lem:plane-supported-uniform-flat",
@@ -4140,7 +4130,7 @@
         "thm:flat-pseudotangent"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4957,
+      "expanded_line": 4959,
       "unfinished_dependencies": [
         "lem:dimensional-tangent-closed",
         "lem:dimensional-tangent-compactness",
@@ -4182,7 +4172,7 @@
         "thm:unique-infinity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 4982,
+      "expanded_line": 4984,
       "unfinished_dependencies": [
         "cor:conical",
         "lem:density-normalization",
@@ -4216,7 +4206,7 @@
         "lem:vague-moving-blowups"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5022,
+      "expanded_line": 5024,
       "unfinished_dependencies": [
         "lem:first-crossing"
       ]
@@ -4251,7 +4241,7 @@
         "thm:unique-infinity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5046,
+      "expanded_line": 5048,
       "unfinished_dependencies": [
         "cor:conical",
         "lem:first-crossing",
@@ -4282,7 +4272,7 @@
         "thm:infinity-rigidity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5072,
+      "expanded_line": 5074,
       "unfinished_dependencies": [
         "lem:density-normalization",
         "lem:first-crossing",
@@ -4313,7 +4303,7 @@
         "thm:part-b"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5100,
+      "expanded_line": 5102,
       "unfinished_dependencies": [
         "lem:excess-dimension",
         "lem:uniform-adapter",
@@ -4333,7 +4323,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5453,
+      "expanded_line": 5455,
       "unfinished_dependencies": []
     },
     {
@@ -4347,7 +4337,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5459,
+      "expanded_line": 5461,
       "unfinished_dependencies": []
     },
     {
@@ -4363,7 +4353,7 @@
         "def:flatness-cutoff"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5465,
+      "expanded_line": 5467,
       "unfinished_dependencies": []
     },
     {
@@ -4382,7 +4372,7 @@
         "def:unit-uniform"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5472,
+      "expanded_line": 5474,
       "unfinished_dependencies": []
     },
     {
@@ -4401,7 +4391,7 @@
         "thm:gap"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5479,
+      "expanded_line": 5481,
       "unfinished_dependencies": [
         "thm:gap"
       ]
@@ -4421,7 +4411,7 @@
         "gmt:vague"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5486,
+      "expanded_line": 5488,
       "unfinished_dependencies": []
     },
     {
@@ -4438,7 +4428,7 @@
         "lem:odd-coefficients-plane-zero"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5493,
+      "expanded_line": 5495,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "lem:odd-coefficients-plane-zero"
@@ -4459,7 +4449,7 @@
         "lem:rigidity-normal-vector-exists"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5500,
+      "expanded_line": 5502,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
         "def:rigidity-omega",
@@ -4470,21 +4460,22 @@
       "id": "lem:polynomial-feature-identities",
       "title": "Inner products and grading of polynomial features",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
+        "Preiss.polynomialFeatureProjection_apply",
         "Preiss.polynomialFeatureProjection_inner",
         "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
         "Preiss.polynomialFeature_inner"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:polynomial-feature"
+        "def:orthogonal-grading",
+        "def:polynomial-feature",
+        "lem:orthonormal-span-projection"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5507,
-      "unfinished_dependencies": [
-        "def:polynomial-feature"
-      ]
+      "expanded_line": 5509,
+      "unfinished_dependencies": []
     },
     {
       "id": "def:uniform-constant",
@@ -4497,7 +4488,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5516,
+      "expanded_line": 5518,
       "unfinished_dependencies": []
     },
     {
@@ -4514,7 +4505,7 @@
         "def:unit-uniform"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5522,
+      "expanded_line": 5524,
       "unfinished_dependencies": []
     },
     {
@@ -4536,7 +4527,7 @@
         "lem:uniform-constant-one"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5529,
+      "expanded_line": 5531,
       "unfinished_dependencies": []
     },
     {
@@ -4555,7 +4546,7 @@
         "def:density-api"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5537,
+      "expanded_line": 5539,
       "unfinished_dependencies": []
     },
     {
@@ -4574,7 +4565,7 @@
         "def:moments"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5544,
+      "expanded_line": 5546,
       "unfinished_dependencies": []
     },
     {
@@ -4590,7 +4581,7 @@
         "mathlib:hausdorff-mass-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5559,
+      "expanded_line": 5561,
       "unfinished_dependencies": []
     },
     {
@@ -4606,7 +4597,7 @@
         "lem:diameter-hausdorff-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5572,
+      "expanded_line": 5574,
       "unfinished_dependencies": []
     },
     {
@@ -4620,7 +4611,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5606,
+      "expanded_line": 5608,
       "unfinished_dependencies": []
     },
     {
@@ -4634,7 +4625,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5615,
+      "expanded_line": 5617,
       "unfinished_dependencies": []
     },
     {
@@ -4648,7 +4639,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5624,
+      "expanded_line": 5626,
       "unfinished_dependencies": []
     },
     {
@@ -4662,7 +4653,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5630,
+      "expanded_line": 5632,
       "unfinished_dependencies": []
     },
     {
@@ -4681,7 +4672,7 @@
         "lem:nonnegative-integral-cover-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5636,
+      "expanded_line": 5638,
       "unfinished_dependencies": []
     },
     {
@@ -4697,7 +4688,7 @@
         "lem:gaussian-polynomial-integrable"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5643,
+      "expanded_line": 5645,
       "unfinished_dependencies": []
     },
     {
@@ -4715,7 +4706,7 @@
         "def:dimensional-blowup"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5651,
+      "expanded_line": 5653,
       "unfinished_dependencies": []
     },
     {
@@ -4731,7 +4722,7 @@
         "mathlib:vitali-enlargement"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5659,
+      "expanded_line": 5661,
       "unfinished_dependencies": []
     },
     {
@@ -4747,7 +4738,7 @@
         "lem:lower-ball-small-cover"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5667,
+      "expanded_line": 5669,
       "unfinished_dependencies": []
     },
     {
@@ -4763,7 +4754,7 @@
         "lem:lower-ball-open-comparison"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5675,
+      "expanded_line": 5677,
       "unfinished_dependencies": []
     },
     {
@@ -4779,7 +4770,7 @@
         "lem:lower-ball-hausdorff-bound"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5683,
+      "expanded_line": 5685,
       "unfinished_dependencies": []
     },
     {
@@ -4794,7 +4785,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5691,
+      "expanded_line": 5693,
       "unfinished_dependencies": []
     },
     {
@@ -4812,7 +4803,7 @@
         "lem:measure-support-transport"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5698,
+      "expanded_line": 5700,
       "unfinished_dependencies": []
     },
     {
@@ -4829,7 +4820,7 @@
         "gmt:goodsets"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5706,
+      "expanded_line": 5708,
       "unfinished_dependencies": []
     },
     {
@@ -4847,7 +4838,7 @@
         "lem:plane-hausdorff"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5714,
+      "expanded_line": 5716,
       "unfinished_dependencies": []
     },
     {
@@ -4864,7 +4855,7 @@
         "def:flatness"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5722,
+      "expanded_line": 5724,
       "unfinished_dependencies": []
     },
     {
@@ -4883,7 +4874,7 @@
         "lem:flatness-basic-nonneg"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5730,
+      "expanded_line": 5732,
       "unfinished_dependencies": []
     },
     {
@@ -4900,7 +4891,7 @@
         "lem:exponential-tail-integral"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5738,
+      "expanded_line": 5740,
       "unfinished_dependencies": []
     },
     {
@@ -4914,7 +4905,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5746,
+      "expanded_line": 5748,
       "unfinished_dependencies": []
     },
     {
@@ -4930,7 +4921,7 @@
         "def:density-api"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5753,
+      "expanded_line": 5755,
       "unfinished_dependencies": []
     },
     {
@@ -4944,7 +4935,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5761,
+      "expanded_line": 5763,
       "unfinished_dependencies": []
     },
     {
@@ -4961,7 +4952,7 @@
         "lem:gaussian-polynomial-integrable"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5768,
+      "expanded_line": 5770,
       "unfinished_dependencies": []
     },
     {
@@ -4979,7 +4970,7 @@
         "lem:gaussian-polynomial-integrable"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5776,
+      "expanded_line": 5778,
       "unfinished_dependencies": []
     },
     {
@@ -4995,7 +4986,7 @@
         "def:plane"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5784,
+      "expanded_line": 5786,
       "unfinished_dependencies": []
     },
     {
@@ -5012,7 +5003,7 @@
         "def:flatness"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5792,
+      "expanded_line": 5794,
       "unfinished_dependencies": []
     },
     {
@@ -5031,7 +5022,7 @@
         "lem:projection-energy-continuity"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5800,
+      "expanded_line": 5802,
       "unfinished_dependencies": []
     },
     {
@@ -5047,7 +5038,7 @@
         "def:flatness"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5808,
+      "expanded_line": 5810,
       "unfinished_dependencies": []
     },
     {
@@ -5063,7 +5054,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5816,
+      "expanded_line": 5818,
       "unfinished_dependencies": []
     },
     {
@@ -5080,7 +5071,7 @@
         "lem:continuous-ball-profile-boundary"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5823,
+      "expanded_line": 5825,
       "unfinished_dependencies": []
     },
     {
@@ -5094,7 +5085,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5831,
+      "expanded_line": 5833,
       "unfinished_dependencies": []
     },
     {
@@ -5110,7 +5101,7 @@
         "lem:iterated-derivative-id-product"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5838,
+      "expanded_line": 5840,
       "unfinished_dependencies": []
     },
     {
@@ -5126,7 +5117,7 @@
         "lem:quadratic-exponential-even-derivatives"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5846,
+      "expanded_line": 5848,
       "unfinished_dependencies": []
     },
     {
@@ -5142,7 +5133,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5854,
+      "expanded_line": 5856,
       "unfinished_dependencies": []
     },
     {
@@ -5156,7 +5147,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5861,
+      "expanded_line": 5863,
       "unfinished_dependencies": []
     },
     {
@@ -5172,7 +5163,7 @@
         "lem:vague-moving-tests"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5868,
+      "expanded_line": 5870,
       "unfinished_dependencies": []
     },
     {
@@ -5192,7 +5183,7 @@
         "lem:vague-projection-energy"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5876,
+      "expanded_line": 5878,
       "unfinished_dependencies": []
     },
     {
@@ -5207,7 +5198,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5884,
+      "expanded_line": 5886,
       "unfinished_dependencies": []
     },
     {
@@ -5221,7 +5212,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [],
       "proof_dependencies": [],
-      "expanded_line": 5891,
+      "expanded_line": 5893,
       "unfinished_dependencies": []
     },
     {
@@ -5238,7 +5229,143 @@
         "lem:grassmannian"
       ],
       "proof_dependencies": [],
-      "expanded_line": 5898,
+      "expanded_line": 5900,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:compact-measurable-exhaustion",
+      "title": "Compact approximation inside an increasing measurable exhaustion",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5908,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:orthonormal-span-projection",
+      "title": "Projection onto a finite orthonormal span",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.starProjection_span_orthonormal",
+        "Preiss.starProjection_span_orthonormal_apply"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5915,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "def:orthogonal-grading",
+      "title": "Orthogonal grading and its weighted complement",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedComplement",
+        "Preiss.weightedGrading"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5922,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:countable-coordinate-metric",
+      "title": "A metric from countably many separating real coordinates",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.countableCoordinateMap",
+        "Preiss.countableCoordinateMap_injective",
+        "Preiss.countableCoordinateMetric",
+        "Preiss.countableCoordinateMetric_dist",
+        "Preiss.countableCoordinateMetric_tendsto_iff"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5930,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:feature-norm-functionals",
+      "title": "Norm powers as explicit feature functionals",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_normPolynomial_feature_functionals",
+        "Preiss.norm_pow_eq_sum_coordinate_monomials"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:polynomial-feature"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5937,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:dimensional-tangent-operations",
+      "title": "General tangents, scalar multiplication and dilation",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.IsDimensionalTangent.dilate",
+        "Preiss.IsDimensionalTangent.isTangentMeasure",
+        "Preiss.IsDimensionalTangent.smul"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:dimensional-tangent",
+        "def:tangent-api",
+        "lem:blowup-composition",
+        "lem:dimensional-blowup-support",
+        "lem:vague-moving-blowups"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5945,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vanishing-density-scaled-balls",
+      "title": "Vanishing upper density at a fixed positive ball scale",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:density-api"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5953,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vanishing-density-negligible-deletion",
+      "title": "Vanishing density of a deleted restriction gives negligible deletion",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.negligibleDeletionAt_of_upperDensity_restrict_compl_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:density-api",
+        "def:weak-approximation",
+        "lem:vanishing-density-scaled-balls"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5961,
       "unfinished_dependencies": []
     }
   ]

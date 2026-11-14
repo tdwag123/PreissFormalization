@@ -1,0 +1,21 @@
+{
+  "local_check": "tmp/PolynomialFeatureProjectionCheck.lean exited zero session17942; generic projection and both primary feature identities printed only standard axioms.",
+  "split_manifests": [
+    "polynomial-feature-node-split.json",
+    "orthogonal-grading-node-split.json"
+  ],
+  "existing_node_additional_deps": {
+    "lem:moment-feature-annihilation": [
+      "lem:polynomial-feature-identities"
+    ],
+    "lem:moment-feature-remainder": [
+      "lem:polynomial-feature-identities"
+    ]
+  },
+  "new_modules": [
+    "Preiss/Analysis/OrthonormalProjection.lean",
+    "Preiss/Analysis/Grading.lean"
+  ],
+  "proof_sketch_tex": "The finite orthonormal-span formula gives the exact coordinate mask for each degree block. Coordinate masks prove self-adjointness, idempotence, cross-block annihilation, and sum-to-identity. Sum the weighted coordinate products to obtain the full and projected kernel identities. The analytic weighted-projection theorem is not used.",
+  "remaining_feature_obligation": "exists_normPolynomial_feature_functionals remains unfinished."
+}

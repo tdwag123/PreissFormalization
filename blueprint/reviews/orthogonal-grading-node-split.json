@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "purpose": "Separate concrete orthogonal grading data from the unproved analytic extension theorem.",
+  "source_file": "Preiss/Analysis/Grading.lean",
+  "nodes": [
+    {
+      "id": "def:orthogonal-grading",
+      "kind": "definition",
+      "title": "Orthogonal grading and its weighted complement",
+      "lean_names": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedGrading",
+        "Preiss.weightedComplement"
+      ],
+      "file": "Preiss/Analysis/Grading.lean",
+      "statement_tex": "An orthogonal grading consists of finitely many self-adjoint idempotents $P_i$ with $P_iP_j=0$ for distinct indices and $\\sum_iP_i=\\operatorname{id}$. For every real $s$, define $A(s)=\\sum_i s^{i+1}P_i$ and $F_s=A(s)^{-1}(V^\\perp)$ for a subspace $V$. These are data and total definitions, with no analytic-extension assertion.",
+      "deps": [],
+      "status_note": "Concrete data definitions contain no placeholders."
+    },
+    {
+      "id": "lem:graded-analytic-projection",
+      "kind": "lemma",
+      "title": "Analytic extension of a weighted projection",
+      "lean_names": [
+        "Preiss.analyticAt_weightedProjection_zero"
+      ],
+      "file": "Preiss/Analysis/GradedProjection.lean",
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "status_note": "Canonical statement compiled previously; analytic existence proof remains unfinished."
+    }
+  ]
+}

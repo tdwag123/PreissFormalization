@@ -550,18 +550,12 @@
     },
     "lem:graded-analytic-projection": {
       "lean_names": [
-        "Preiss.IsOrthogonalGrading",
-        "Preiss.weightedGrading",
-        "Preiss.weightedComplement",
         "Preiss.analyticAt_weightedProjection_zero"
       ],
       "planned_lean_names": [
-        "Preiss.IsOrthogonalGrading",
-        "Preiss.weightedGrading",
-        "Preiss.weightedComplement",
         "Preiss.analyticAt_weightedProjection_zero"
       ],
-      "status": "source interface written",
+      "status": "Canonical statement compiled previously; analytic existence proof remains unfinished.",
       "files": [
         "Preiss/Analysis/GradedProjection.lean"
       ],
@@ -573,22 +567,16 @@
         "Preiss.PolynomialFeatureSpace",
         "Preiss.polynomialFeature",
         "Preiss.polynomialFeatureBlock",
-        "Preiss.polynomialFeatureProjection",
-        "Preiss.polynomialFeature_inner",
-        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeatureProjection_inner"
+        "Preiss.polynomialFeatureProjection"
       ],
       "planned_lean_names": [
         "Preiss.PolynomialFeatureIndex",
         "Preiss.PolynomialFeatureSpace",
         "Preiss.polynomialFeature",
         "Preiss.polynomialFeatureBlock",
-        "Preiss.polynomialFeatureProjection",
-        "Preiss.polynomialFeature_inner",
-        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeatureProjection_inner"
+        "Preiss.polynomialFeatureProjection"
       ],
-      "status": "source interface written",
+      "status": "Concrete definitions contain no placeholders; algebraic identities are separate theorems.",
       "files": [
         "Preiss/Analysis/PolynomialFeatures.lean"
       ],
@@ -615,16 +603,13 @@
     },
     "lem:moment-feature-remainder": {
       "lean_names": [
-        "Preiss.exists_normPolynomial_feature_functionals",
         "Preiss.featureMoment_operator_remainder"
       ],
       "planned_lean_names": [
-        "Preiss.exists_normPolynomial_feature_functionals",
         "Preiss.featureMoment_operator_remainder"
       ],
-      "status": "source interface written",
+      "status": "Canonical statement takes L and its exact norm-power evaluation as hypotheses; proof remains unfinished.",
       "files": [
-        "Preiss/Analysis/PolynomialFeatures.lean",
         "Preiss/Uniform/MomentFeatures.lean"
       ],
       "planned_file": "Preiss/Uniform/MomentFeatures.lean"
@@ -1367,6 +1352,77 @@
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
       ]
     },
+    "lem:feature-norm-functionals": {
+      "lean_names": [
+        "Preiss.norm_pow_eq_sum_coordinate_monomials",
+        "Preiss.exists_normPolynomial_feature_functionals"
+      ],
+      "status": "Exact source passed NormFeatureFunctionalCheck with only standard axioms; canonical integration awaits CI.",
+      "files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ],
+      "planned_lean_names": [
+        "Preiss.norm_pow_eq_sum_coordinate_monomials",
+        "Preiss.exists_normPolynomial_feature_functionals"
+      ]
+    },
+    "lem:countable-coordinate-metric": {
+      "lean_names": [
+        "Preiss.countableCoordinateMap",
+        "Preiss.countableCoordinateMap_injective",
+        "Preiss.countableCoordinateMetric",
+        "Preiss.countableCoordinateMetric_dist",
+        "Preiss.countableCoordinateMetric_tendsto_iff"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/CountableCoordinateMetric.lean"
+      ]
+    },
+    "def:orthogonal-grading": {
+      "lean_names": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedGrading",
+        "Preiss.weightedComplement"
+      ],
+      "status": "Concrete data definitions contain no placeholders.",
+      "files": [
+        "Preiss/Analysis/Grading.lean"
+      ],
+      "planned_lean_names": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedGrading",
+        "Preiss.weightedComplement"
+      ]
+    },
+    "lem:polynomial-feature-identities": {
+      "lean_names": [
+        "Preiss.polynomialFeatureProjection_apply",
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
+        "Preiss.polynomialFeatureProjection_inner"
+      ],
+      "status": "Exact source checked locally with only standard axioms; canonical integration awaits CI.",
+      "files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ],
+      "planned_lean_names": [
+        "Preiss.polynomialFeatureProjection_apply",
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
+        "Preiss.polynomialFeatureProjection_inner"
+      ]
+    },
+    "lem:orthonormal-span-projection": {
+      "lean_names": [
+        "Preiss.starProjection_span_orthonormal",
+        "Preiss.starProjection_span_orthonormal_apply"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/OrthonormalProjection.lean"
+      ]
+    },
     "lem:vague-metric-properties": {
       "lean_names": [
         "Preiss.vagueMetric_tendsto_iff",
@@ -1942,6 +1998,48 @@
       ],
       "planned_file": "Preiss/Geometry/PlaneTopology.lean",
       "verification": "Local exact-source Lean check passed with only standard axioms; authoritative integration status is blueprint/kernel-checkpoint.json at its source_revision."
+    },
+    "lem:compact-measurable-exhaustion": {
+      "lean_names": [
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+      ],
+      "status": "proof_candidate",
+      "files": [
+        "Preiss/Analysis/CompactExhaustion.lean"
+      ],
+      "planned_file": "Preiss/Analysis/CompactExhaustion.lean",
+      "verification": "Exact-source local Lean/kernel check passed with only standard axioms; authoritative integration status remains blueprint/kernel-checkpoint.json at its source_revision."
+    },
+    "lem:vanishing-density-scaled-balls": {
+      "lean_names": [
+        "Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero"
+      ],
+      "files": [
+        "Preiss/Density/Vanishing.lean"
+      ],
+      "planned_file": "Preiss/Density/Vanishing.lean",
+      "status": "proof_candidate",
+      "verification": "Local exact-source Lean/kernel check passed with standard axioms; current integration status is blueprint/kernel-checkpoint.json."
+    },
+    "lem:vanishing-density-negligible-deletion": {
+      "lean_names": [
+        "Preiss.negligibleDeletionAt_of_upperDensity_restrict_compl_eq_zero"
+      ],
+      "planned_lean_names": [
+        "Preiss.negligibleDeletionAt_of_upperDensity_restrict_compl_eq_zero"
+      ],
+      "files": [
+        "Preiss/Rectifiability/WeakApproximation/Density.lean"
+      ],
+      "planned_file": "Preiss/Rectifiability/WeakApproximation/Density.lean",
+      "status": "proof_candidate",
+      "verification": "Local exact-source Lean/kernel check passed with standard axioms; current integration status is blueprint/kernel-checkpoint.json."
     }
   },
   "pending": [],

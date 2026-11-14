@@ -252,7 +252,8 @@
         "n is an arbitrary natural number."
       ],
       "deps": [
-        "def:vague-metrization"
+        "def:vague-metrization",
+        "lem:countable-coordinate-metric"
       ],
       "lean_name": "Preiss.exists_vagueMetrization",
       "file": "Preiss/Analysis/Vague/Metrization.lean",
@@ -1002,9 +1003,11 @@
         "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
         "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
       ],
-      "deps": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
       "lean_name": "Preiss.analyticAt_weightedProjection_zero",
-      "file": "Preiss/Analysis/InnerProductSpace/GradedProjection.lean",
+      "file": "Preiss/Analysis/GradedProjection.lean",
       "core_vs_companion": "core",
       "status": "new",
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
@@ -1018,18 +1021,18 @@
       "id": "def:polynomial-feature",
       "audit_code": "M06a",
       "title": "Finite Euclidean polynomial feature map",
-      "statement_tex": "For $1\\leq k\\leq N$, index a Euclidean block by all $\\iota:\\operatorname{Fin}k\\to\\operatorname{Fin}n$ and set $\\Phi_k(x)_\\iota=\\sqrt{2^k/k!}\\prod_j x_{\\iota(j)}$. The block pairing is $\\langle\\Phi_k(x),\\Phi_k(y)\\rangle=(2^k/k!)\\langle x,y\\rangle^k$. The direct sum has orthogonal coordinate projections $P_k$.",
+      "statement_tex": "For $1\\leq k\\leq N$, index the degree-$k$ Euclidean block by all maps $\\iota:\\operatorname{Fin}k\\to\\operatorname{Fin}n$ and define $\\Phi_k(x)_\\iota=\\sqrt{2^k/k!}\\prod_jx_{\\iota(j)}$. The whole feature space is the direct sum of these coordinate blocks; the block submodules and their orthogonal projections are concrete definitions.",
       "hypotheses": [
         "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
         "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
       ],
       "deps": [],
       "lean_name": "Preiss.polynomialFeature",
-      "file": "Preiss/Analysis/InnerProductSpace/PolynomialFeatures.lean",
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
       "core_vs_companion": "core",
       "status": "new",
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
-      "proof_sketch_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
+      "proof_sketch_tex": "Concrete weighted coordinate, subspace, and projection definitions; the identities are separate proved lemmas.",
       "repair": [
         "New coordinate model avoids the incorrectly normalized symmetrized basis in the printed proof."
       ],
@@ -1047,7 +1050,8 @@
       ],
       "deps": [
         "def:polynomial-feature",
-        "def:moments"
+        "def:moments",
+        "lem:polynomial-feature-identities"
       ],
       "lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
       "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
@@ -1062,23 +1066,24 @@
       "id": "lem:moment-feature-remainder",
       "audit_code": "M06c",
       "title": "Operator norm remainder from finitely many support features",
-      "statement_tex": "The norm polynomials $|x|^{2j}$ are linear functionals of $\\Phi(x)$ for $j\\leq q$. Choose a finite basis of $V$ from support features. The pointwise remainders at those basis points imply $\\|L_s|V-\\sum_{j=1}^q s^j\\ell_j|V/j!\\|=O(s^{q+1/2})$ as $s\\downarrow0$.",
+      "statement_tex": "For a unit uniform measure, a positive truncation order $q$, and supplied continuous linear forms $L_j$ satisfying $L_j(\\Phi(x))=\\|x\\|^{2(j+1)}$, the restricted operator difference $L_s-\\sum_{j=0}^{q-1}s^{j+1}L_j/(j+1)!$ on the support feature span is $O(s^{q+1/2})$ as $s\\downarrow0$.",
       "hypotheses": [
-        "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
-        "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
-        "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
+        "1 <= m; mu is a unit m-uniform measure on R^n.",
+        "q is a positive natural number.",
+        "L_j are explicitly supplied continuous linear functionals with the stated evaluation identity at every x."
       ],
       "deps": [
         "lem:moment-feature-annihilation",
         "lem:taylor-one",
-        "def:polynomial-feature"
+        "def:polynomial-feature",
+        "lem:polynomial-feature-identities"
       ],
       "lean_name": "Preiss.featureMoment_operator_remainder",
       "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
       "core_vs_companion": "core",
       "status": "new",
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
-      "proof_sketch_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
+      "proof_sketch_tex": "Choose a finite basis of the support feature span from support features. The pointwise moment Taylor remainder at these finitely many basis points yields the operator-norm estimate by finite-dimensional norm equivalence. The supplied functionals identify the polynomial terms.",
       "repair": [
         "Use a finite support-feature basis to obtain a genuine linear operator-norm estimate."
       ],
@@ -1097,7 +1102,8 @@
       "deps": [
         "lem:graded-analytic-projection",
         "lem:moment-feature-remainder",
-        "lem:moment-norm-bound"
+        "lem:moment-norm-bound",
+        "lem:feature-norm-functionals"
       ],
       "lean_name": "Preiss.exists_gaussianMoment_taylor_coefficients",
       "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",

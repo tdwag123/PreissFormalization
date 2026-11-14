@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "purpose": "Separate existence of norm-power feature functionals from the operator remainder theorem, which receives those functionals as explicit hypotheses.",
+  "nodes": [
+    {
+      "id": "lem:feature-norm-functionals",
+      "kind": "lemma",
+      "title": "Norm powers as explicit feature functionals",
+      "statement_tex": "For every natural $d$, $\\|x\\|^{2d}=\\sum_{f:\\operatorname{Fin}d\\to\\operatorname{Fin}n}(\\prod_jx_{f(j)})^2$. Consequently, for all natural $n,q$, there exist continuous linear functionals $L_j$ on the degree-$2q$ feature space, indexed by $j:\\operatorname{Fin}q$, with $L_j(\\Phi_{2q}(x))=\\|x\\|^{2(j+1)}$ for every $x$.",
+      "hypotheses": [
+        "n,q,d are natural numbers, including zero."
+      ],
+      "definition_dependencies": [
+        "def:polynomial-feature"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.norm_pow_eq_sum_coordinate_monomials",
+        "Preiss.exists_normPolynomial_feature_functionals"
+      ],
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "proof_sketch_tex": "Expand $(\\sum_i x_i^2)^d$ by the finite multinomial sum. For each $j$, duplicate every coordinate tuple of length $j+1$ into a tuple of length $2(j+1)$, sum the corresponding coordinate projections in that feature block, and divide by the strictly positive square-root weight. This constructs the functional explicitly and uses no Gaussian or analytic-projection theorem.",
+      "used_by": [
+        "lem:taylor-two"
+      ],
+      "status_note": "Exact source passed NormFeatureFunctionalCheck with only standard axioms; canonical integration awaits CI.",
+      "statements_lean": [
+        "theorem norm_pow_eq_sum_coordinate_monomials {n : ℕ} (x : Euclidean n) (d : ℕ) :\n    ‖x‖ ^ (2 * d) = ∑ f : Fin d → Fin n, (∏ j, x (f j)) ^ 2",
+        "theorem exists_normPolynomial_feature_functionals (n q : ℕ) :\n    ∃ L : Fin q → PolynomialFeatureSpace n (2 * q) →L[ℝ] ℝ,\n      ∀ j x, L j (polynomialFeature (2 * q) x) = ‖x‖ ^ (2 * (j.val + 1))"
+      ]
+    },
+    {
+      "id": "lem:moment-feature-remainder",
+      "kind": "lemma",
+      "title": "Operator remainder on the support feature span",
+      "lean_names": [
+        "Preiss.featureMoment_operator_remainder"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "status_note": "Canonical statement takes L and its exact norm-power evaluation as hypotheses; proof remains unfinished."
+    }
+  ],
+  "dependency_replacements": {
+    "lem:taylor-two": {
+      "add": [
+        "lem:feature-norm-functionals"
+      ]
+    },
+    "lem:moment-feature-remainder": {
+      "remove": [
+        "lem:feature-norm-functionals"
+      ],
+      "reason": "The theorem is quantified over supplied L and hL, so it does not assume their existence."
+    }
+  }
+}

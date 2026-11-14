@@ -2307,6 +2307,7 @@
         "def:dimensional-blowup",
         "def:dimensional-tangent",
         "lem:blowup-composition",
+        "lem:dimensional-tangent-operations",
         "lem:vague-moving-blowups"
       ],
       "lean_names": [
@@ -2697,6 +2698,7 @@
         "def:weak-approximation-good-set"
       ],
       "lean_names": [
+        "Preiss.weakApproximationGoodSet_mono",
         "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion"
       ],
       "proposed_lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
@@ -2722,6 +2724,7 @@
         "gmt:goodsets",
         "gmt:hausdorff-regular",
         "lem:closed-weak-approximation-good-set",
+        "lem:compact-measurable-exhaustion",
         "lem:weak-approximation-good-exhaustion",
         "lem:weak-approximation-lower-density"
       ],
@@ -2750,6 +2753,7 @@
       "deps": [
         "gmt:density-points",
         "gmt:hausdorff-density-upper",
+        "lem:vanishing-density-negligible-deletion",
         "lem:weak-approximation-deletion",
         "mathlib:besicovitch-differentiation"
       ],
@@ -2777,7 +2781,8 @@
       "proof_tex": "",
       "deps": [
         "gmt:hausdorff-density-outside",
-        "gmt:hausdorff-density-upper"
+        "gmt:hausdorff-density-upper",
+        "lem:vanishing-density-scaled-balls"
       ],
       "lean_names": [
         "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
@@ -3110,12 +3115,11 @@
       "statement_tex": "This is a measure-independent linear algebra theorem. Let the finite-dimensional\nreal inner-product space $X$ have an orthogonal decomposition\n$X=\\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\\leq X$.\nFor $s>0$ put $A(s)=\\sum_j s^jP_j$ and\n$F_s=A(s)^{-1}(V^\\perp)$. Then $X=V\\oplus F_s$; the projection $Q_s$\nonto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.\nIn particular its operator norm stays bounded as $s\\downarrow0$.\nFor the proof, orthogonally split $V^\\perp$ according to the filtration\n$V^\\perp\\cap\\bigoplus_{j\\leq k}X_j$ and define a polynomial family which\nis identity on $V$ and equals $P_k+sP_{k-1}+\\cdots+s^{k-1}P_1$ on the\n$k$th filtration summand. Its value at zero is invertible, by the\nleast-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial\nfamily. In the least-degree argument the lower-degree vector belongs to the\nsum of all earlier filtration summands, not necessarily only the immediately\npreceding one.",
       "hypotheses_tex": "",
       "proof_tex": "This is a measure-independent linear algebra theorem. Let the finite-dimensional\nreal inner-product space $X$ have an orthogonal decomposition\n$X=\\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\\leq X$.\nFor $s>0$ put $A(s)=\\sum_j s^jP_j$ and\n$F_s=A(s)^{-1}(V^\\perp)$. Then $X=V\\oplus F_s$; the projection $Q_s$\nonto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.\nIn particular its operator norm stays bounded as $s\\downarrow0$.\nFor the proof, orthogonally split $V^\\perp$ according to the filtration\n$V^\\perp\\cap\\bigoplus_{j\\leq k}X_j$ and define a polynomial family which\nis identity on $V$ and equals $P_k+sP_{k-1}+\\cdots+s^{k-1}P_1$ on the\n$k$th filtration summand. Its value at zero is invertible, by the\nleast-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial\nfamily. In the least-degree argument the lower-degree vector belongs to the\nsum of all earlier filtration summands, not necessarily only the immediately\npreceding one.",
-      "deps": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
       "lean_names": [
-        "Preiss.IsOrthogonalGrading",
-        "Preiss.analyticAt_weightedProjection_zero",
-        "Preiss.weightedComplement",
-        "Preiss.weightedGrading"
+        "Preiss.analyticAt_weightedProjection_zero"
       ],
       "proposed_lean_name": "Preiss.analyticAt_weightedProjection_zero",
       "proposed_file": "Preiss/Analysis/GradedProjection.lean",
@@ -3169,10 +3173,7 @@
         "Preiss.PolynomialFeatureSpace",
         "Preiss.polynomialFeature",
         "Preiss.polynomialFeatureBlock",
-        "Preiss.polynomialFeatureProjection",
-        "Preiss.polynomialFeatureProjection_inner",
-        "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeature_inner"
+        "Preiss.polynomialFeatureProjection"
       ],
       "proposed_lean_name": "Preiss.polynomialFeature",
       "proposed_file": "Preiss/Analysis/PolynomialFeatures.lean",
@@ -3329,7 +3330,8 @@
       "hypotheses_tex": "",
       "proof_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
       "deps": [
-        "def:vague-metrization"
+        "def:vague-metrization",
+        "lem:countable-coordinate-metric"
       ],
       "lean_names": [
         "Preiss.exists_vagueMetrization"
@@ -3640,7 +3642,6 @@
         "lem:taylor-one"
       ],
       "lean_names": [
-        "Preiss.exists_normPolynomial_feature_functionals",
         "Preiss.featureMoment_operator_remainder"
       ],
       "proposed_lean_name": "Preiss.featureMoment_operator_remainder",
@@ -3654,7 +3655,6 @@
       "note": "",
       "role": "Preiss proof",
       "source_files": [
-        "Preiss/Analysis/PolynomialFeatures.lean",
         "Preiss/Uniform/MomentFeatures.lean"
       ]
     },
@@ -3954,6 +3954,7 @@
         "def:moment-coefficients",
         "def:moments",
         "def:unit-uniform",
+        "lem:feature-norm-functionals",
         "lem:graded-analytic-projection",
         "lem:moment-feature-remainder",
         "lem:moment-norm-bound"
@@ -6048,12 +6049,15 @@
       "title": "Inner products and grading of polynomial features",
       "statement_tex": "The coordinate polynomial feature map recovers the weighted powers of $\\langle x,y\\rangle$ through inner products. Its homogeneous coordinate blocks form an orthogonal grading.",
       "lean_names": [
+        "Preiss.polynomialFeatureProjection_apply",
         "Preiss.polynomialFeatureProjection_inner",
         "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
         "Preiss.polynomialFeature_inner"
       ],
       "deps": [
-        "def:polynomial-feature"
+        "def:orthogonal-grading",
+        "def:polynomial-feature",
+        "lem:orthonormal-span-projection"
       ],
       "scope": "core",
       "branch": "Explicit analytical data",
@@ -6891,6 +6895,150 @@
         "Preiss/Geometry/PlaneTopology.lean"
       ],
       "proposed_file": "Preiss/Geometry/PlaneTopology.lean"
+    },
+    {
+      "id": "lem:compact-measurable-exhaustion",
+      "kind": "lemma",
+      "title": "Compact approximation inside an increasing measurable exhaustion",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/CompactExhaustion.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/CompactExhaustion.lean"
+    },
+    {
+      "id": "lem:orthonormal-span-projection",
+      "kind": "lemma",
+      "title": "Projection onto a finite orthonormal span",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.starProjection_span_orthonormal",
+        "Preiss.starProjection_span_orthonormal_apply"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/OrthonormalProjection.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/OrthonormalProjection.lean"
+    },
+    {
+      "id": "def:orthogonal-grading",
+      "kind": "definition",
+      "title": "Orthogonal grading and its weighted complement",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.IsOrthogonalGrading",
+        "Preiss.weightedComplement",
+        "Preiss.weightedGrading"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Grading.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Grading.lean"
+    },
+    {
+      "id": "lem:countable-coordinate-metric",
+      "kind": "lemma",
+      "title": "A metric from countably many separating real coordinates",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.countableCoordinateMap",
+        "Preiss.countableCoordinateMap_injective",
+        "Preiss.countableCoordinateMetric",
+        "Preiss.countableCoordinateMetric_dist",
+        "Preiss.countableCoordinateMetric_tendsto_iff"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/CountableCoordinateMetric.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/CountableCoordinateMetric.lean"
+    },
+    {
+      "id": "lem:feature-norm-functionals",
+      "kind": "lemma",
+      "title": "Norm powers as explicit feature functionals",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_normPolynomial_feature_functionals",
+        "Preiss.norm_pow_eq_sum_coordinate_monomials"
+      ],
+      "deps": [
+        "def:polynomial-feature"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/PolynomialFeatures.lean"
+    },
+    {
+      "id": "lem:dimensional-tangent-operations",
+      "kind": "lemma",
+      "title": "General tangents, scalar multiplication and dilation",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.IsDimensionalTangent.dilate",
+        "Preiss.IsDimensionalTangent.isTangentMeasure",
+        "Preiss.IsDimensionalTangent.smul"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "def:tangent-api",
+        "lem:blowup-composition",
+        "lem:dimensional-blowup-support",
+        "lem:vague-moving-blowups"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Basic.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Basic.lean"
+    },
+    {
+      "id": "lem:vanishing-density-scaled-balls",
+      "kind": "lemma",
+      "title": "Vanishing upper density at a fixed positive ball scale",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero"
+      ],
+      "deps": [
+        "def:density-api"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/Vanishing.lean"
+      ],
+      "proposed_file": "Preiss/Density/Vanishing.lean"
+    },
+    {
+      "id": "lem:vanishing-density-negligible-deletion",
+      "kind": "lemma",
+      "title": "Vanishing density of a deleted restriction gives negligible deletion",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.negligibleDeletionAt_of_upperDensity_restrict_compl_eq_zero"
+      ],
+      "deps": [
+        "def:density-api",
+        "def:weak-approximation",
+        "lem:vanishing-density-scaled-balls"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/Density.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/Density.lean"
     }
   ],
   "preiss_core": [
@@ -6910,6 +7058,7 @@
     "def:lipschitz-graph",
     "def:moment-coefficients",
     "def:moments",
+    "def:orthogonal-grading",
     "def:parametrized-coverage",
     "def:plane",
     "def:polynomial-feature",
@@ -6974,6 +7123,7 @@
     "lem:carrier-closure",
     "lem:closed-weak-approximation-good-set",
     "lem:column-packing",
+    "lem:compact-measurable-exhaustion",
     "lem:complex-mgf-moment-determination",
     "lem:cone-graph",
     "lem:conical-covariance",
@@ -6981,6 +7131,7 @@
     "lem:conical-moments",
     "lem:continuous-ball-profile-boundary",
     "lem:countable-carrier",
+    "lem:countable-coordinate-metric",
     "lem:decomposition",
     "lem:density-bounds-good-set",
     "lem:density-bridge",
@@ -6994,11 +7145,13 @@
     "lem:dimensional-tangent-closed",
     "lem:dimensional-tangent-compactness",
     "lem:dimensional-tangent-dilation",
+    "lem:dimensional-tangent-operations",
     "lem:discarded-cylinder-sum",
     "lem:domain-extension",
     "lem:empty-cylinder-direction",
     "lem:excess-dimension",
     "lem:exponential-tail-integral",
+    "lem:feature-norm-functionals",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
     "lem:first-crossing",
@@ -7069,6 +7222,7 @@
     "lem:nested-compact-approximation",
     "lem:nonnegative-integral-cover-bound",
     "lem:odd-coefficients-plane-zero",
+    "lem:orthonormal-span-projection",
     "lem:packing-base-point",
     "lem:packing-contradiction",
     "lem:plane-exists",
@@ -7133,6 +7287,8 @@
     "lem:vague-projection-energy",
     "lem:vague-support-approximation",
     "lem:vague-support-limit",
+    "lem:vanishing-density-negligible-deletion",
+    "lem:vanishing-density-scaled-balls",
     "lem:weak-approximation-deletion",
     "lem:weak-approximation-good-exhaustion",
     "lem:weak-approximation-lower-density",
@@ -7206,6 +7362,7 @@
     "lem:carrier-closure",
     "lem:closed-weak-approximation-good-set",
     "lem:column-packing",
+    "lem:compact-measurable-exhaustion",
     "lem:cone-graph",
     "lem:decomposition",
     "lem:density-bounds-good-set",
@@ -7258,6 +7415,8 @@
     "lem:tangent-ray",
     "lem:tube-support-upgrade",
     "lem:uniform-compact-selection",
+    "lem:vanishing-density-negligible-deletion",
+    "lem:vanishing-density-scaled-balls",
     "lem:weak-approximation-deletion",
     "lem:weak-approximation-good-exhaustion",
     "lem:weak-approximation-lower-density",

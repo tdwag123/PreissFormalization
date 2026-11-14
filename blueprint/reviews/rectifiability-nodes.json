@@ -968,7 +968,9 @@
       "dependencies": [
         "lem:weak-approximation-deletion",
         "gmt:hausdorff-density-upper",
-        "gmt:density-points"
+        "gmt:density-points",
+        "gmt:hausdorff-density-outside",
+        "lem:vanishing-density-negligible-deletion"
       ],
       "proposed_lean_name": "ae_weaklyLinearlyApproximableAt_subset",
       "proposed_file": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
@@ -981,7 +983,7 @@
         "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
         "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
         "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-        "status": "sorry_placeholder",
+        "status": "proof_candidate",
         "lean_names": [
           "Preiss.ae_weaklyLinearlyApproximableAt_subset"
         ],
@@ -990,7 +992,8 @@
             "lean_name": "Preiss.ae_weaklyLinearlyApproximableAt_subset",
             "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
             "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-            "status": "sorry_placeholder"
+            "status": "proof_candidate",
+            "verification": "Generic conversion and assembly proof checked locally with explicit hypotheses matching the GMT theorem. Actual GMT endpoint imports await Linux integration CI."
           }
         ]
       }
@@ -1082,7 +1085,7 @@
       "scope": "core",
       "note": "",
       "status": "proposed_interface",
-      "statement_tex": "For any measure $\\mu$ on $\\mathbb R^n$, weak linear approximation at $x$ is equivalent to: for every $\\eta>0$ there exists $N\\in\\mathbb N$ with $x\\in G(\\mu,m,\\eta,1/(N+1),1/(N+1))$. The reverse implication uses the good-set condition at aperture $\\eta/2$ to obtain strict upper error and open lower balls at aperture $\\eta$.",
+      "statement_tex": "For any measure $\\mu$ on $\\mathbb R^n$, weak linear approximation at $x$ is equivalent to: for every $\\eta>0$ there exists $N\\in\\mathbb N$ with $x\\in G(\\mu,m,\\eta,1/(N+1),1/(N+1))$. The reverse implication uses the good-set condition at aperture $\\eta/2$ to obtain strict upper error and open lower balls at aperture $\\eta$. The good sets also satisfy $G(\\mu,m,\\eta,a,R)\\subseteq G(\\mu,m,\\eta,a^{\\prime},R^{\\prime})$ whenever $a^{\\prime}\\le a$ and $R^{\\prime}\\le R$.",
       "hypotheses_tex": "No finiteness or regularity of $\\mu$ is assumed.",
       "actual_lean": {
         "lean_name": "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
@@ -1090,7 +1093,8 @@
         "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
         "status": "sorry_placeholder",
         "lean_names": [
-          "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion"
+          "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion",
+          "Preiss.weakApproximationGoodSet_mono"
         ],
         "declarations": [
           {
@@ -1098,6 +1102,13 @@
             "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
             "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
             "status": "sorry_placeholder"
+          },
+          {
+            "lean_name": "Preiss.weakApproximationGoodSet_mono",
+            "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+            "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
+            "status": "proof_candidate",
+            "verification": "Exact-source local Lean/kernel check passed with only standard axioms; authoritative integration status remains blueprint/kernel-checkpoint.json at its source_revision."
           }
         ]
       }
@@ -1113,20 +1124,21 @@
         "lem:weak-approximation-good-exhaustion",
         "lem:weak-approximation-lower-density",
         "gmt:goodsets",
-        "gmt:hausdorff-regular"
+        "gmt:hausdorff-regular",
+        "lem:compact-measurable-exhaustion"
       ],
       "proposed_lean_name": "exists_compact_uniform_weakApproximation_subset",
       "proposed_file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "scope": "core",
       "note": "",
-      "status": "proposed_interface",
+      "status": "proof_candidate",
       "statement_tex": "One can choose compact \\(C\\subset E\\) losing arbitrarily little \\(\\mathcal H^m\\)-measure, on which the selected lower mass bounds and finitely many relaxed weak-approximation conditions have uniform positive parameters.",
       "hypotheses_tex": "The Borel set \\(E\\) has finite \\(\\mathcal H^m\\)-measure and is weakly linearly approximable almost everywhere. Intersect Borel \\(E\\) with closed good sets before applying inner regularity.",
       "actual_lean": {
         "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
         "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
         "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-        "status": "sorry_placeholder",
+        "status": "proof_candidate",
         "lean_names": [
           "Preiss.exists_compact_uniform_weakApproximation_subset"
         ],
@@ -1135,7 +1147,7 @@
             "lean_name": "Preiss.exists_compact_uniform_weakApproximation_subset",
             "file": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
             "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
-            "status": "sorry_placeholder"
+            "status": "proof_candidate"
           }
         ]
       }
@@ -1332,7 +1344,8 @@
       "quantifiers": "After choosing t>0 select a and cutoff.",
       "dependencies": [
         "gmt:hausdorff-density-upper",
-        "gmt:hausdorff-density-outside"
+        "gmt:hausdorff-density-outside",
+        "lem:upper-density-localization"
       ],
       "proposed_lean_name": "exists_upper_mass_small_sdiff_point",
       "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
@@ -1361,7 +1374,8 @@
             "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
             "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
             "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-            "status": "sorry_placeholder"
+            "status": "proof_candidate",
+            "verification": "Generic conversion and assembly proof checked locally with explicit hypotheses matching the GMT theorem. Actual GMT endpoint imports await Linux integration CI."
           }
         ]
       }
