@@ -1367,7 +1367,8 @@
       "file": "Preiss/Analysis/Vague/ScalarLimits.lean",
       "statement_tex": "On any locally compact Hausdorff space with its Borel measurable structure, suppose $\\mu_i\\rightharpoonup\\nu$ and $c_i\\mu_i\\rightharpoonup\\xi$, where $\\nu,\\xi$ are nonzero regular measures and $c_i\\in[0,\\infty]$. Then $\\xi=a\\nu$ for some positive finite $a$. No regularity assumption on the sequence is needed for the compact-test integral formulation.",
       "deps": [
-        "gmt:vague"
+        "gmt:vague",
+        "mathlib:regular-measure-ext"
       ],
       "kind": "lemma",
       "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
@@ -1421,6 +1422,125 @@
       ],
       "kind": "lemma",
       "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
+    },
+    {
+      "id": "lem:quantitative-upper-density-bound",
+      "title": "Prescribed upper-density thresholds give quantitative ball bounds",
+      "kind": "lemma",
+      "statement_tex": "For an outer measure $\\nu$ on a pseudometric space, $m\\in\\mathbb N$ and $b>0$, if $\\Theta^{*m}(\\nu,x)<b$, then there is $R>0$ such that $\\nu(\\overline B_r(x))\\le b\\,2^m r^m$ for every $0<r<R$.",
+      "hypotheses": [
+        "An arbitrary outer measure on a pseudometric space, natural dimension, and positive real upper-density threshold; no finiteness assumptions."
+      ],
+      "definition_dependencies": [
+        "def:density-api"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "file": "Preiss/Density/UpperBounds.lean",
+      "used_by": [
+        "lem:packing-base-point"
+      ]
+    },
+    {
+      "id": "lem:closed-upper-ball-bound-sets",
+      "title": "Closed sets defined by uniform upper ball bounds",
+      "kind": "lemma",
+      "statement_tex": "For a measure $\\mu$ on a pseudometric space, define $U_{m,b,R}=\\{x: \\mu(B_r(x))\\le\\operatorname{ofReal}(b r^m)\\text{ for every }0<r<R\\}$. This set is closed. If $b\\le b^{\\prime}$ and $R^{\\prime}\\le R$, then $U_{m,b,R}\\subseteq U_{m,b^{\\prime},R^{\\prime}}$.",
+      "hypotheses": [
+        "An arbitrary measurable space equipped with a pseudometric and a measure; real coefficient and cutoff. Neither Borel compatibility, regularity nor finiteness is needed for closedness."
+      ],
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moving-set-measure-bounds"
+      ],
+      "lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.isClosed_ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono"
+      ],
+      "file": "Preiss/Density/UpperBallSets.lean",
+      "used_by": [
+        "lem:nested-compact-approximation"
+      ]
+    },
+    {
+      "id": "lem:dimensional-family-compact-ball-bounds",
+      "title": "Compactness of dimensional tangent families under ball bounds",
+      "lean_names": [
+        "Preiss.dimensionalTangent_nonempty_compact_of_ball_bounds"
+      ],
+      "file": "Preiss/Tangent/Compactness.lean",
+      "statement_tex": "Under positive two-sided local $m$-power closed-ball bounds at $x$, the family $\\operatorname{Tan}_m(\\mu,x)$ is nonempty and every sequence in it has a strictly increasing subsequence converging vaguely to another member. The source measure is locally finite; no density-limit existence is required.",
+      "deps": [
+        "lem:dimensional-extraction-ball-bounds",
+        "def:vague-metrization",
+        "lem:vague-countable-metric"
+      ],
+      "used_by": [
+        "lem:dimensional-tangent-compactness"
+      ],
+      "kind": "lemma",
+      "status_note": "Proof candidate undergoing full CI verification; no local kernel-pass claim for this batch."
+    },
+    {
+      "id": "lem:radius-power-density",
+      "title": "Radius-power limits from diameter-normalized densities",
+      "lean_names": [
+        "Preiss.tendsto_radiusPowerRatio_of_densityRatio",
+        "Preiss.HasPositiveFiniteDensityAt.exists_radiusPowerDensity"
+      ],
+      "file": "Preiss/Density/RadiusPower.lean",
+      "statement_tex": "For outer measures on pseudometric spaces, convergence of the diameter-normalized $m$-density ratio to $\\theta$ implies convergence of $\\mu(\\overline B(x,r))/r^m$ to $2^m\\theta$. In particular, a positive finite density point of a measure on any metric space has a positive real radius-power limit $q$. No local-finiteness or Borel-space assumption is needed.",
+      "deps": [
+        "def:positive-density",
+        "def:density-api",
+        "gmt:density-bounds"
+      ],
+      "used_by": [
+        "thm:part-b"
+      ],
+      "kind": "lemma",
+      "status_note": "Proof candidate undergoing full CI verification; no local kernel-pass claim for this batch."
+    },
+    {
+      "id": "lem:gaussian-feature-integrability",
+      "kind": "lemma",
+      "title": "Gaussian integrability of polynomial feature kernels",
+      "statement_tex": "For a measure with a polynomial ball-growth bound, every finite polynomial feature vector and its weighted linear-functional kernel are integrable against $e^{-s\\lVert z\\rVert^2}$ for $s>0$. Uniformity and regularity are not needed.",
+      "definition_dependencies": [
+        "def:polynomial-feature"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_names": [
+        "Preiss.integrable_gaussian_polynomialFeature",
+        "Preiss.integrable_featureMomentKernel_of_growth"
+      ],
+      "file": "Preiss/Analysis/GaussianFeatures.lean",
+      "proof_sketch_tex": "Use coordinatewise Gaussian polynomial integrability, then bounded linear maps and scalar multiplication.",
+      "used_by": [
+        "lem:moment-feature-annihilation"
+      ],
+      "verification": "Locally checked exact-source candidates; full module certification pending."
+    },
+    {
+      "id": "lem:gaussian-ball-power-parameter",
+      "kind": "lemma",
+      "title": "Gaussian integral from a centered ball law at arbitrary scale",
+      "statement_tex": "Let $\\mu$ be an s-finite Borel measure on a real normed space with $\\mu(\\overline B(0,r))=Cr^d$ for $r>0$, where $C\\geq0$ and $d>0$. For every $s>0$, the function $e^{-s\\lVert z\\rVert^2}$ is integrable and its integral is $C\\Gamma(d/2+1)s^{-d/2}$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-ball-power"
+      ],
+      "lean_names": [
+        "Preiss.integral_gaussian_parameter_of_closedBall_power"
+      ],
+      "file": "Preiss/Analysis/GaussianBallPowerParameter.lean",
+      "proof_sketch_tex": "Push the measure forward under multiplication by $\\sqrt{s}$. Its centered ball law has coefficient $Cs^{-d/2}$. Apply the unit-parameter formula and the change-of-variables formula for the Bochner integral.",
+      "verification": "Exact-source parameter lemma passed local Lean and #print axioms with standard axioms only. Full canonical module build pending."
     }
   ],
   "definition_edge_additions": {

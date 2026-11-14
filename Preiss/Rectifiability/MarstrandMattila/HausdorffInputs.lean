@@ -87,6 +87,61 @@ theorem exists_upper_mass_small_sdiff_point (m n : ℕ) :
       ∀ t : ℝ, 0 < t → ∃ (a : Euclidean n) (R : ℝ), a ∈ G ∧ 0 < R ∧
         ∀ r : ℝ, 0 < r → r < R →
           ((Measure.hausdorffMeasure (m : ℝ))).restrict E (ball a r) ≤ ENNReal.ofReal (C * r ^ m) ∧
-          (Measure.hausdorffMeasure (m : ℝ)) ((E \ G) ∩ ball a (2 * r)) ≤ ENNReal.ofReal (t * r ^ m) := by sorry
+          (Measure.hausdorffMeasure (m : ℝ)) ((E \ G) ∩ ball a (2 * r)) ≤ ENNReal.ofReal (t * r ^ m) := by
+  refine ⟨2 * 2 ^ m, by positivity, ?_⟩
+  intro E G hE hG hGE hfin hpos t ht
+  have hEcar : MeasurableSet[(Hs_outer (X := Euclidean n) (m : ℝ)).caratheodory] E :=
+    (OuterMeasure.mkMetric'_isMetric _).le_caratheodory _ hE
+  have hinside := hausdorffMeasure_upperDensity_le_one_ae_mem (s := (m : ℝ))
+    (by positivity) E hEcar hfin.ne
+  have hEGcar : MeasurableSet[(Hs_outer (X := Euclidean n) (m : ℝ)).caratheodory] (E \ G) :=
+    (OuterMeasure.mkMetric'_isMetric _).le_caratheodory _ (hE.diff hG)
+  have hEGfin : (Hs_outer (X := Euclidean n) (m : ℝ)) (E \ G) < ∞ := by
+    rw [← hausdorff_measure_eq_outer (m : ℝ) (E \ G)]
+    exact (measure_mono sdiff_subset).trans_lt hfin
+  have houtside := hausdorffMeasure_upperDensity_eq_zero_ae_notMem (s := (m : ℝ))
+    (by positivity) hEGcar hEGfin
+  let H : Measure (Euclidean n) := Measure.hausdorffMeasure (m : ℝ)
+  let ν : OuterMeasure (Euclidean n) :=
+    OuterMeasure.restrict (E \ G) (OuterMeasure.mkMetric (fun r : ℝ≥0∞ ↦ r ^ (m : ℝ)))
+  have hI : ∀ᵐ x ∂H, ¬(x ∈ E ∧ 1 < dimensional_upper_density (H.restrict E).toOuterMeasure (m : ℝ) x) :=
+    ae_iff.mpr (by simpa only [not_not] using hinside)
+  have hO : ∀ᵐ x ∂H, ¬(x ∉ E \ G ∧ dimensional_upper_density ν (m : ℝ) x ≠ 0) :=
+    ae_iff.mpr (by simpa only [not_not] using houtside)
+  have hgood : ∀ᵐ x ∂H.restrict G,
+      dimensional_upper_density (H.restrict E).toOuterMeasure (m : ℝ) x ≤ 1 ∧
+      dimensional_upper_density ν (m : ℝ) x = 0 := by
+    apply (ae_restrict_iff' hG).mpr
+    filter_upwards [hI, hO] with x hxI hxO hxG
+    refine ⟨le_of_not_gt fun hh ↦ hxI ⟨hGE hxG, hh⟩, ?_⟩
+    by_contra hne
+    exact hxO ⟨fun hxEG ↦ hxEG.2 hxG, hne⟩
+  obtain ⟨a, haG, haI, haO⟩ := Measure.exists_mem_of_measure_ne_zero_of_ae hpos.ne' hgood
+  have hlt : dimensional_upper_density (H.restrict E).toOuterMeasure (m : ℝ) a <
+      ENNReal.ofReal 2 := haI.trans_lt (by norm_num)
+  obtain ⟨R₁, hR₁, hupper⟩ := exists_closedBall_power_bound_of_upperDensity_lt
+    m (H.restrict E).toOuterMeasure a (show (0 : ℝ) < 2 by norm_num) hlt
+  have hvan := tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero m ν a
+    (show (0 : ℝ) < 2 by norm_num) haO
+  obtain ⟨R₂, hR₂, herror⟩ := mem_nhdsGT_iff_exists_Ioo_subset.mp
+    (hvan.eventually_lt_const (ENNReal.ofReal_pos.mpr ht))
+  refine ⟨a, min R₁ R₂, haG, lt_min hR₁ hR₂, ?_⟩
+  intro r hr hrR
+  refine ⟨(measure_mono ball_subset_closedBall).trans
+    (hupper r hr (hrR.trans_le (min_le_left _ _))), ?_⟩
+  have he := herror ⟨hr, hrR.trans_le (min_le_right _ _)⟩
+  have hden : ENNReal.ofReal (r ^ m) ≠ 0 := (ENNReal.ofReal_pos.mpr (pow_pos hr m)).ne'
+  have hmul := (ENNReal.div_lt_iff (Or.inl hden) (Or.inl ENNReal.ofReal_ne_top)).mp he
+  have hmass : ν (ball a (2 * r)) = H ((E \ G) ∩ ball a (2 * r)) := by
+    dsimp only [ν]
+    rw [OuterMeasure.restrict_apply]
+    have hH : H.toOuterMeasure = OuterMeasure.mkMetric (fun w : ℝ≥0∞ ↦ w ^ (m : ℝ)) := by
+      simp only [H, Measure.hausdorffMeasure, Measure.mkMetric_toOuterMeasure]
+    rw [← hH]
+    change H (ball a (2 * r) ∩ (E \ G)) = H ((E \ G) ∩ ball a (2 * r))
+    rw [inter_comm]
+  rw [hmass, ← ENNReal.ofReal_mul ht.le] at hmul
+  exact hmul.le
+
 
 end Preiss

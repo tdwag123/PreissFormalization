@@ -868,6 +868,18 @@
       "source_files": []
     },
     {
+      "id": "mathlib:regular-measure-ext",
+      "kind": "lemma",
+      "title": "mathlib: compact tests determine regular measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "MeasureTheory.Measure.ext_of_integral_eq_on_compactlySupported"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": []
+    },
+    {
       "id": "def:plane",
       "kind": "definition",
       "title": "Linear planes",
@@ -2175,6 +2187,7 @@
       "proof_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
       "deps": [
         "def:tangent-api",
+        "gmt:blowup-regular",
         "lem:vague-diagonal"
       ],
       "lean_names": [
@@ -2201,6 +2214,7 @@
       "proof_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
       "deps": [
         "def:dimensional-tangent",
+        "lem:dimensional-blowup-support",
         "lem:vague-diagonal"
       ],
       "lean_names": [
@@ -2364,12 +2378,8 @@
       "hypotheses_tex": "",
       "proof_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
       "deps": [
-        "def:dimensional-tangent",
-        "def:positive-density",
         "gmt:density-bounds",
-        "gmt:portmanteau",
-        "lem:dimensional-tangent-closed",
-        "thm:compactness"
+        "lem:dimensional-family-compact-ball-bounds"
       ],
       "lean_names": [
         "Preiss.dimensionalTangent_nonempty_compact"
@@ -2773,6 +2783,7 @@
       "deps": [
         "gmt:hausdorff-density-outside",
         "gmt:hausdorff-density-upper",
+        "lem:quantitative-upper-density-bound",
         "lem:vanishing-density-scaled-balls"
       ],
       "lean_names": [
@@ -2829,6 +2840,7 @@
       "proof_tex": "",
       "deps": [
         "gmt:density-points",
+        "lem:closed-upper-ball-bound-sets",
         "lem:tube-support-upgrade",
         "lem:uniform-compact-selection",
         "lem:weak-approximation-restrict-ae"
@@ -3691,11 +3703,13 @@
         "def:moments",
         "def:polynomial-feature",
         "def:unit-uniform",
+        "lem:gaussian-feature-integrability",
         "lem:gaussian-polynomial-integrable",
         "lem:polynomial-feature-identities"
       ],
       "lean_names": [
-        "Preiss.featureMoment_apply_feature"
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_apply_feature_of_growth"
       ],
       "proposed_lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
       "proposed_file": "Preiss/Uniform/MomentFeatures.lean",
@@ -5437,6 +5451,7 @@
         "lem:first-crossing-flat-infinity",
         "lem:flatness-cutoff-exists",
         "lem:flatness-gap-cutoff",
+        "lem:radius-power-density",
         "lem:tangent-ray",
         "thm:infinity-rigidity"
       ],
@@ -6045,7 +6060,8 @@
         "Preiss.polynomialFeatureProjection_apply",
         "Preiss.polynomialFeatureProjection_inner",
         "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeature_inner"
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeature_weighted_inner"
       ],
       "deps": [
         "def:orthogonal-grading",
@@ -7092,7 +7108,8 @@
       ],
       "deps": [
         "def:dense-compact-tests",
-        "gmt:vague"
+        "gmt:vague",
+        "mathlib:regular-measure-ext"
       ],
       "role": "Preiss proof",
       "source_files": [
@@ -7184,7 +7201,8 @@
         "Preiss.exists_pos_smul_of_vague_and_scaled_vague"
       ],
       "deps": [
-        "gmt:vague"
+        "gmt:vague",
+        "mathlib:regular-measure-ext"
       ],
       "role": "Preiss proof",
       "source_files": [
@@ -7250,6 +7268,117 @@
         "Preiss/Tangent/Normalization.lean"
       ],
       "proposed_file": "Preiss/Tangent/Normalization.lean"
+    },
+    {
+      "id": "lem:quantitative-upper-density-bound",
+      "kind": "lemma",
+      "title": "Prescribed upper-density thresholds give quantitative ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "deps": [
+        "def:density-api"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/UpperBounds.lean"
+      ],
+      "proposed_file": "Preiss/Density/UpperBounds.lean"
+    },
+    {
+      "id": "lem:closed-upper-ball-bound-sets",
+      "kind": "lemma",
+      "title": "Closed sets defined by uniform upper ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono",
+        "Preiss.isClosed_ballPowerUpperBoundSet"
+      ],
+      "deps": [
+        "lem:moving-set-measure-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/UpperBallSets.lean"
+      ],
+      "proposed_file": "Preiss/Density/UpperBallSets.lean"
+    },
+    {
+      "id": "lem:dimensional-family-compact-ball-bounds",
+      "kind": "lemma",
+      "title": "Compactness of dimensional tangent families under ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dimensionalTangent_nonempty_compact_of_ball_bounds"
+      ],
+      "deps": [
+        "def:vague-metrization",
+        "lem:dimensional-extraction-ball-bounds",
+        "lem:vague-countable-metric"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Compactness.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Compactness.lean"
+    },
+    {
+      "id": "lem:radius-power-density",
+      "kind": "lemma",
+      "title": "Radius-power limits from diameter-normalized densities",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.HasPositiveFiniteDensityAt.exists_radiusPowerDensity",
+        "Preiss.tendsto_radiusPowerRatio_of_densityRatio"
+      ],
+      "deps": [
+        "def:density-api",
+        "def:positive-density",
+        "gmt:density-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/RadiusPower.lean"
+      ],
+      "proposed_file": "Preiss/Density/RadiusPower.lean"
+    },
+    {
+      "id": "lem:gaussian-feature-integrability",
+      "kind": "lemma",
+      "title": "Gaussian integrability of polynomial feature kernels",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_featureMomentKernel_of_growth",
+        "Preiss.integrable_gaussian_polynomialFeature"
+      ],
+      "deps": [
+        "def:polynomial-feature",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianFeatures.lean"
+    },
+    {
+      "id": "lem:gaussian-ball-power-parameter",
+      "kind": "lemma",
+      "title": "Gaussian integral from a centered ball law at arbitrary scale",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_gaussian_parameter_of_closedBall_power"
+      ],
+      "deps": [
+        "lem:gaussian-ball-power"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianBallPowerParameter.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBallPowerParameter.lean"
     }
   ],
   "preiss_core": [
@@ -7335,6 +7464,7 @@
     "lem:blowup-composition",
     "lem:carrier-calculus",
     "lem:carrier-closure",
+    "lem:closed-upper-ball-bound-sets",
     "lem:closed-weak-approximation-good-set",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
@@ -7358,6 +7488,7 @@
     "lem:dimensional-blowup-support",
     "lem:dimensional-compactness",
     "lem:dimensional-extraction-ball-bounds",
+    "lem:dimensional-family-compact-ball-bounds",
     "lem:dimensional-tangent-ball-constant",
     "lem:dimensional-tangent-closed",
     "lem:dimensional-tangent-compactness",
@@ -7395,6 +7526,7 @@
     "lem:gaussian-annulus-integral",
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-ball-power",
+    "lem:gaussian-feature-integrability",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-polynomial-integrable",
     "lem:gaussian-projection-integrability",
@@ -7461,7 +7593,9 @@
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
     "lem:quadratic-exponential-even-derivatives",
+    "lem:quantitative-upper-density-bound",
     "lem:radial",
+    "lem:radius-power-density",
     "lem:real-gaussian-even-moments",
     "lem:recenter",
     "lem:rigidity-contracted-limit-zero",
@@ -7524,6 +7658,7 @@
     "mathlib:besicovitch-differentiation",
     "mathlib:hausdorff-mass-bound",
     "mathlib:measurable-hull",
+    "mathlib:regular-measure-ext",
     "mathlib:standard-gaussian",
     "mathlib:vitali-enlargement",
     "thm:compactness",
@@ -7578,6 +7713,7 @@
     "lem:borel-carrier",
     "lem:carrier-calculus",
     "lem:carrier-closure",
+    "lem:closed-upper-ball-bound-sets",
     "lem:closed-weak-approximation-good-set",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
@@ -7628,6 +7764,7 @@
     "lem:pure-basic",
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
+    "lem:quantitative-upper-density-bound",
     "lem:rank-deficient-image-null",
     "lem:representation",
     "lem:tangent-ray",
@@ -7647,6 +7784,7 @@
     "mathlib:besicovitch-differentiation",
     "mathlib:derivative-partitions",
     "mathlib:hausdorff-mass-bound",
+    "mathlib:regular-measure-ext",
     "mathlib:vitali-enlargement",
     "thm:compactness",
     "thm:matching",

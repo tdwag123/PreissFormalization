@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "46d70a3de716f5d1deea32b05468617de2009b87",
+  "source_revision": "afc323bec7a6203858b45c33b4d2e0059f8d81c0",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -182,6 +182,18 @@
       "kind": "def",
       "source_status": "definition",
       "path": "Preiss/Rectifiability/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.DenseCompactTestFamily": {
+      "project": "local",
+      "kind": "structure",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/DenseCompactTests.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -1320,6 +1332,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.dense_continuousMap_uniform_approximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/DenseCompactTests.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.density_eq_lower_of_hasDensity": {
       "project": "local",
       "kind": "theorem",
@@ -1681,18 +1705,41 @@
       ],
       "kernel_status": "unproved_statement"
     },
-    "Preiss.exists_dimensional_tangent_subseq_of_density_bounds": {
+    "Preiss.exists_denseCompactTestFamily": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
-      "path": "Preiss/Tangent/Compactness.lean",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/DenseCompactTests.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_dimensional_tangent_subseq_of_ball_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Extraction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_dimensional_tangent_subseq_of_density_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Extraction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.exists_finite_hausdorff_pieces_of_density_bounds": {
       "project": "local",
@@ -1917,6 +1964,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_pos_smul_of_vague_and_scaled_vague": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/ScalarLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_projection_hole_disk_family": {
       "project": "local",
       "kind": "theorem",
@@ -2058,15 +2117,14 @@
     "Preiss.exists_vagueMetrization": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/Vague/Metrization.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero": {
       "project": "local",
@@ -2143,6 +2201,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.featureMoment_eq_zero_of_mem_weightedComplement": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.featureMoment_operator_remainder": {
       "project": "local",
       "kind": "theorem",
@@ -2159,15 +2229,14 @@
     "Preiss.featureMoment_vanishes_weightedComplement": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentFeatures.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.first_crossing_limit_flat_at_infinity": {
       "project": "local",
@@ -3024,6 +3093,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.integral_apply_eq_zero_of_ae": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/LinearMapIntegral.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integral_ball_eq_closedBall_of_continuous_profile": {
       "project": "local",
       "kind": "theorem",
@@ -3236,6 +3317,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isTangentMeasure_smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Basic.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -3473,6 +3566,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.measure_eq_of_denseCompactTests": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/DeterminingTests.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.measure_eq_of_gaussian_polynomial_moments_eq": {
       "project": "local",
@@ -4285,15 +4390,38 @@
     "Preiss.tangent_iff_dimensional_ray": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Tangent/Normalization.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.tangent_iff_dimensional_ray_of_ball_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Normalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.tangent_iff_dimensional_ray_of_density_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Normalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.tendsto_densityRatio_zero": {
       "project": "local",
@@ -4710,6 +4838,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.vagueMetrizationOfDenseCompactTests": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
     "Preiss.vagueTestDistance": {
       "project": "local",
       "kind": "def",
@@ -4825,6 +4965,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.weaklyConverges_iff_denseCompactTests": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/DeterminingTests.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

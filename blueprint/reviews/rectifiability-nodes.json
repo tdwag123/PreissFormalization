@@ -1302,7 +1302,8 @@
         "lem:uniform-compact-selection",
         "lem:tube-support-upgrade",
         "lem:weak-approximation-restrict-ae",
-        "gmt:density-points"
+        "gmt:density-points",
+        "lem:closed-upper-ball-bound-sets"
       ],
       "proposed_lean_name": "exists_nested_compact_twoSided_approximation",
       "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
@@ -1345,20 +1346,22 @@
       "dependencies": [
         "gmt:hausdorff-density-upper",
         "gmt:hausdorff-density-outside",
-        "lem:upper-density-localization"
+        "lem:upper-density-localization",
+        "lem:quantitative-upper-density-bound",
+        "lem:vanishing-density-scaled-balls"
       ],
       "proposed_lean_name": "exists_upper_mass_small_sdiff_point",
       "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
       "scope": "core",
       "note": "",
-      "status": "proposed_interface",
+      "status": "proof_candidate",
       "statement_tex": "Choose \\(a\\in G\\) and \\(r_0>0\\) so that, for \\(0<r<r_0\\),\n\\[\n \\mathcal H^m(E\\cap B_r(a))\\leq C_m r^m,\\qquad\n \\mathcal H^m((E\\setminus G)\\cap B_{2r}(a))\\leq t r^m.\n\\]",
       "hypotheses_tex": "The Borel sets \\(G\\subset E\\) satisfy \\(0<\\mathcal H^m(G)\\leq\\mathcal H^m(E)<\\infty\\), and \\(t>0\\) is chosen before \\(a,r_0\\).",
       "actual_lean": {
         "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
         "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
         "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-        "status": "sorry_placeholder",
+        "status": "proof_candidate",
         "lean_names": [
           "Preiss.exists_upper_mass_small_sdiff_point",
           "Preiss.ae_upperPowerBoundAt_restrict_hausdorff"
@@ -1368,7 +1371,8 @@
             "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
             "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
             "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-            "status": "sorry_placeholder"
+            "status": "proof_candidate",
+            "verification": "Proof candidate pending full Linux CI. Local checking stopped at a missing Measure namespace, now corrected; the complete base-point assembly has not passed a local check."
           },
           {
             "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",

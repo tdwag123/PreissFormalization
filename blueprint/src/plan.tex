@@ -1114,7 +1114,7 @@ $D^m_{a_i,r_i}\mu_i\to D^m_{a,r}\mu$ is used repeatedly.
 \begin{lemma}[Closedness of arbitrary-scalar tangents]
 \label{lem:tangent-closed}
 \lean{Preiss.tangent_closed}
-\uses{def:tangent-api, lem:vague-diagonal}
+\uses{def:tangent-api, lem:vague-diagonal, gmt:blowup-regular}
 
 
 
@@ -1144,7 +1144,7 @@ implements closure without assuming a topology on all raw measures.
 \begin{lemma}[Closedness of dimensional tangents]
 \label{lem:dimensional-tangent-closed}
 \lean{Preiss.dimensionalTangent_closed}
-\uses{def:dimensional-tangent, lem:vague-diagonal}
+\uses{def:dimensional-tangent, lem:vague-diagonal, lem:dimensional-blowup-support}
 
 
 
@@ -1292,7 +1292,7 @@ closure membership into the sequence form in the current Lean statement.
 \begin{lemma}[Nonempty compact tangent family at a density point]
 \label{lem:dimensional-tangent-compactness}
 \lean{Preiss.dimensionalTangent_nonempty_compact}
-\uses{def:dimensional-tangent, def:positive-density, gmt:density-bounds, gmt:portmanteau, lem:dimensional-tangent-closed, thm:compactness}
+\uses{lem:dimensional-family-compact-ball-bounds, gmt:density-bounds}
 
 
 
@@ -1674,7 +1674,7 @@ If \(E\) is weakly linearly approximable at \(\mathcal H^m\)-almost every point 
 \begin{lemma}[Base point with upper mass and small discarded mass]
 \label{lem:packing-base-point}
 \lean{Preiss.ae_upperPowerBoundAt_restrict_hausdorff, Preiss.exists_upper_mass_small_sdiff_point}
-\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, lem:vanishing-density-scaled-balls}
+\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, lem:vanishing-density-scaled-balls, lem:quantitative-upper-density-bound}
 
 
 
@@ -1720,7 +1720,7 @@ For each finite piece \(S_j\), the measure \(\nu_j=\mathcal H^m\!\restriction S_
 \begin{lemma}[Nested compact two-sided approximation]
 \label{lem:nested-compact-approximation}
 \lean{Preiss.TwoSidedApproximation, Preiss.exists_nested_compact_twoSided_approximation}
-\uses{gmt:density-points, lem:tube-support-upgrade, lem:uniform-compact-selection, lem:weak-approximation-restrict-ae}
+\uses{gmt:density-points, lem:tube-support-upgrade, lem:uniform-compact-selection, lem:weak-approximation-restrict-ae, lem:closed-upper-ball-bound-sets}
 
 
 
@@ -2463,8 +2463,8 @@ For $s>0$, define the continuous symmetric $k$-linear form $b_{k,s}(u_1,\ldots,u
 
 \begin{lemma}[Feature moment functional and weighted annihilator]
 \label{lem:moment-feature-annihilation}
-\lean{Preiss.featureMoment_apply_feature}
-\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:polynomial-feature-identities, def:feature-moment, lem:gaussian-polynomial-integrable}
+\lean{Preiss.featureMoment_apply_feature, Preiss.featureMoment_apply_feature_of_growth}
+\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:polynomial-feature-identities, def:feature-moment, lem:gaussian-polynomial-integrable, lem:gaussian-feature-integrability}
 
 
 
@@ -4005,7 +4005,7 @@ retain the factor $R^{-m}$.
 \begin{theorem}[One flat tangent implies all tangents are flat]
 \label{thm:part-b}
 \lean{Preiss.all_tangents_flat_of_one}
-\uses{def:dimensional-tangent, def:flat, def:positive-density, lem:density-normalization, lem:first-crossing, lem:first-crossing-flat-infinity, lem:flatness-cutoff-exists, lem:flatness-gap-cutoff, lem:tangent-ray, thm:infinity-rigidity}
+\uses{def:dimensional-tangent, def:flat, def:positive-density, lem:density-normalization, lem:first-crossing, lem:first-crossing-flat-infinity, lem:flatness-cutoff-exists, lem:flatness-gap-cutoff, lem:tangent-ray, thm:infinity-rigidity, lem:radius-power-density}
 
 
 
@@ -4439,7 +4439,7 @@ Given the moment expansion, flat blow-down plane, and normal first-moment vector
 
 \begin{lemma}[Inner products and grading of polynomial features]
 \label{lem:polynomial-feature-identities}
-\lean{Preiss.polynomialFeatureProjection_apply, Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeatureProjection_inner}
+\lean{Preiss.polynomialFeatureProjection_apply, Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeatureProjection_inner, Preiss.polynomialFeature_weighted_inner}
 \uses{def:polynomial-feature, def:orthogonal-grading, lem:orthonormal-span-projection}
 The coordinate polynomial feature map recovers the weighted powers of $\langle x,y\rangle$ through inner products. Its homogeneous coordinate blocks form an orthogonal grading.
 \end{lemma}
@@ -4922,7 +4922,7 @@ Every locally compact, second-countable Hausdorff space admits DenseCompactTestF
 \begin{lemma}[Supplied compact tests determine vague convergence and measures]
 \label{lem:vague-determining-tests}
 \lean{Preiss.weaklyConverges_iff_denseCompactTests, Preiss.measure_eq_of_denseCompactTests}
-\uses{def:dense-compact-tests, gmt:vague}
+\uses{def:dense-compact-tests, gmt:vague, mathlib:regular-measure-ext}
 
 For a supplied DenseCompactTestFamily on $\mathbb R^n$ and regular measures $\mu_i,\nu$, vague convergence $\mu_i\rightharpoonup\nu$ is equivalent to convergence of the integrals of every enumerated test. Two regular measures with equal integrals on every enumerated test are equal.
 \end{lemma}
@@ -4961,7 +4961,7 @@ For every measure $\mu$ on $\mathbb R^n$, every natural $N$, every real $s$, and
 \begin{lemma}[Nonzero vague limits of scalar rescalings are proportional]
 \label{lem:vague-scalar-limits}
 \lean{Preiss.exists_pos_smul_of_vague_and_scaled_vague}
-\uses{gmt:vague}
+\uses{gmt:vague, mathlib:regular-measure-ext}
 
 On any locally compact Hausdorff space with its Borel measurable structure, suppose $\mu_i\rightharpoonup\nu$ and $c_i\mu_i\rightharpoonup\xi$, where $\nu,\xi$ are nonzero regular measures and $c_i\in[0,\infty]$. Then $\xi=a\nu$ for some positive finite $a$. No regularity assumption on the sequence is needed for the compact-test integral formulation.
 \end{lemma}
@@ -4988,4 +4988,52 @@ Let $\mu$ be locally finite and suppose $p r^m\leq\mu(\overline B(x,r))\leq q r^
 \uses{lem:dimensional-extraction-ball-bounds, lem:vague-scalar-limits, lem:general-tangent-scalar, gmt:density-bounds}
 
 For a locally finite measure with positive lower and finite upper $m$-density at $x$, $\nu\in\operatorname{Tan}(\mu,x)$ if and only if $\nu=c\xi$ for some $0<c<\infty$ and $\xi\in\operatorname{Tan}_m(\mu,x)$. A preceding version assumes only explicit two-sided local ball bounds. No existence of a density limit is used.
+\end{lemma}
+
+\begin{lemma}[Prescribed upper-density thresholds give quantitative ball bounds]
+\label{lem:quantitative-upper-density-bound}
+\lean{Preiss.exists_closedBall_power_bound_of_upperDensity_lt}
+\uses{def:density-api}
+
+For an outer measure $\nu$ on a pseudometric space, $m\in\mathbb N$ and $b>0$, if $\Theta^{*m}(\nu,x)<b$, then there is $R>0$ such that $\nu(\overline B_r(x))\le b\,2^m r^m$ for every $0<r<R$.
+\end{lemma}
+
+\begin{lemma}[Closed sets defined by uniform upper ball bounds]
+\label{lem:closed-upper-ball-bound-sets}
+\lean{Preiss.ballPowerUpperBoundSet, Preiss.isClosed_ballPowerUpperBoundSet, Preiss.ballPowerUpperBoundSet_mono}
+\uses{lem:moving-set-measure-bounds}
+
+For a measure $\mu$ on a pseudometric space, define $U_{m,b,R}=\{x: \mu(B_r(x))\le\operatorname{ofReal}(b r^m)\text{ for every }0<r<R\}$. This set is closed. If $b\le b^{\prime}$ and $R^{\prime}\le R$, then $U_{m,b,R}\subseteq U_{m,b^{\prime},R^{\prime}}$.
+\end{lemma}
+
+\begin{lemma}[Compactness of dimensional tangent families under ball bounds]
+\label{lem:dimensional-family-compact-ball-bounds}
+\lean{Preiss.dimensionalTangent_nonempty_compact_of_ball_bounds}
+\uses{lem:dimensional-extraction-ball-bounds, def:vague-metrization, lem:vague-countable-metric}
+
+Under positive two-sided local $m$-power closed-ball bounds at $x$, the family $\operatorname{Tan}_m(\mu,x)$ is nonempty and every sequence in it has a strictly increasing subsequence converging vaguely to another member. The source measure is locally finite; no density-limit existence is required.
+\end{lemma}
+
+\begin{lemma}[Radius-power limits from diameter-normalized densities]
+\label{lem:radius-power-density}
+\lean{Preiss.tendsto_radiusPowerRatio_of_densityRatio, Preiss.HasPositiveFiniteDensityAt.exists_radiusPowerDensity}
+\uses{def:positive-density, def:density-api, gmt:density-bounds}
+
+For outer measures on pseudometric spaces, convergence of the diameter-normalized $m$-density ratio to $\theta$ implies convergence of $\mu(\overline B(x,r))/r^m$ to $2^m\theta$. In particular, a positive finite density point of a measure on any metric space has a positive real radius-power limit $q$. No local-finiteness or Borel-space assumption is needed.
+\end{lemma}
+
+\begin{lemma}[Gaussian integrability of polynomial feature kernels]
+\label{lem:gaussian-feature-integrability}
+\lean{Preiss.integrable_gaussian_polynomialFeature, Preiss.integrable_featureMomentKernel_of_growth}
+\uses{def:polynomial-feature, lem:gaussian-polynomial-integrable}
+
+For a measure with a polynomial ball-growth bound, every finite polynomial feature vector and its weighted linear-functional kernel are integrable against $e^{-s\lVert z\rVert^2}$ for $s>0$. Uniformity and regularity are not needed.
+\end{lemma}
+
+\begin{lemma}[Gaussian integral from a centered ball law at arbitrary scale]
+\label{lem:gaussian-ball-power-parameter}
+\lean{Preiss.integral_gaussian_parameter_of_closedBall_power}
+\uses{lem:gaussian-ball-power}
+
+Let $\mu$ be an s-finite Borel measure on a real normed space with $\mu(\overline B(0,r))=Cr^d$ for $r>0$, where $C\geq0$ and $d>0$. For every $s>0$, the function $e^{-s\lVert z\rVert^2}$ is integrable and its integral is $C\Gamma(d/2+1)s^{-d/2}$.
 \end{lemma}

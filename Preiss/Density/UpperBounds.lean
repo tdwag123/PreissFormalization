@@ -12,6 +12,27 @@ open scoped ENNReal
 namespace Preiss
 variable {m n : ℕ}
 
+theorem exists_closedBall_power_bound_of_upperDensity_lt
+    {X : Type*} [PseudoMetricSpace X] (m : ℕ) (ν : OuterMeasure X) (x : X)
+    {b : ℝ} (hb : 0 < b)
+    (h : dimensional_upper_density ν (m : ℝ) x < ENNReal.ofReal b) :
+    ∃ R : ℝ, 0 < R ∧ ∀ r : ℝ, 0 < r → r < R →
+      ν (closedBall x r) ≤ ENNReal.ofReal ((b * 2 ^ m) * r ^ m) := by
+  obtain ⟨R, hR, hbound⟩ := mem_nhdsGT_iff_exists_Ioo_subset.mp
+    (eventually_lt_of_upper_density_lt (m : ℝ) x (ENNReal.ofReal b) h)
+  refine ⟨R, hR, ?_⟩
+  intro r hr hrR
+  have hratio := hbound ⟨hr, hrR⟩
+  change dimensional_density_ratio ν (m : ℝ) x r < ENNReal.ofReal b at hratio
+  rw [dimensional_density_ratio_closedBall ν (m : ℝ) x hr.le] at hratio
+  have hden : ENNReal.ofReal ((2 * r) ^ (m : ℝ)) ≠ 0 :=
+    (ENNReal.ofReal_pos.mpr (Real.rpow_pos_of_pos (by positivity) _)).ne'
+  have hmul := (ENNReal.div_lt_iff (Or.inl hden) (Or.inl ENNReal.ofReal_ne_top)).mp hratio
+  have heq : ENNReal.ofReal b * ENNReal.ofReal ((2 * r) ^ (m : ℝ)) =
+      ENNReal.ofReal ((b * 2 ^ m) * r ^ m) := by
+    rw [← ENNReal.ofReal_mul hb.le, Real.rpow_natCast, mul_pow, mul_assoc]
+  exact hmul.le.trans_eq heq
+
 theorem exists_closedBall_upper_bound_of_upperDensity_lt_top
     (μ : Measure (Euclidean n)) (x : Euclidean n)
     (h : dimensional_upper_density μ.toOuterMeasure (m : ℝ) x < ∞) :

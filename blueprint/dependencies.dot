@@ -59,6 +59,7 @@ digraph Preiss {
   "gmt:uniform-dimension-bound" [label="Uniform measures cannot exceed ambient dimension", fillcolor="#d9efdb"];
   "gmt:goodballs" [label="GMT: closed sets controlling all balls through a point", fillcolor="#d9efdb"];
   "mathlib:hausdorff-mass-bound" [label="mathlib: mass-distribution bound for Hausdorff measure", fillcolor="#d9efdb"];
+  "mathlib:regular-measure-ext" [label="mathlib: compact tests determine regular measures", fillcolor="#d9efdb"];
   "def:plane" [label="Linear planes", fillcolor="#d9eaf7"];
   "def:coverage" [label="Countable Lipschitz coverage", fillcolor="#d9eaf7"];
   "def:parametrized-coverage" [label="Lipschitz pieces and countable partial-domain coverage", fillcolor="#d9eaf7"];
@@ -112,16 +113,16 @@ digraph Preiss {
   "lem:blowup-composition" [label="Composition, scalar and isometric covariance of blow-ups", fillcolor="#dce5ee"];
   "lem:hull-support-approximation" [label="Support approximation from arbitrary positive outer measure sets", fillcolor="#fff0bf"];
   "lem:vague-moving-blowups" [label="Joint continuity of translated dilations", fillcolor="#dce5ee"];
-  "lem:tangent-closed" [label="Closedness of arbitrary-scalar tangents", fillcolor="#fff0bf"];
-  "lem:dimensional-tangent-closed" [label="Closedness of dimensional tangents", fillcolor="#fff0bf"];
+  "lem:tangent-closed" [label="Closedness of arbitrary-scalar tangents", fillcolor="#dce5ee"];
+  "lem:dimensional-tangent-closed" [label="Closedness of dimensional tangents", fillcolor="#dce5ee"];
   "lem:flat-to-approximation" [label="All flat tangents imply weak linear approximation", fillcolor="#fff0bf"];
   "lem:plane-scaling" [label="Plane and scaling API", fillcolor="#dce5ee"];
   "lem:tangent-existence" [label="Tangent existence under two-sided density bounds", fillcolor="#dce5ee"];
   "lem:dimensional-tangent-dilation" [label="Positive dilations preserve dimensional tangents", fillcolor="#dce5ee"];
   "lem:pseudotangent-transitive" [label="Transitivity of the support-centered scaling orbit closure", fillcolor="#fff0bf"];
-  "lem:dimensional-tangent-compactness" [label="Nonempty compact tangent family at a density point", fillcolor="#fff0bf"];
+  "lem:dimensional-tangent-compactness" [label="Nonempty compact tangent family at a density point", fillcolor="#dce5ee"];
   "lem:tangent-ray" [label="Comparison of tangent conventions", fillcolor="#dce5ee"];
-  "lem:tangent-blowdown" [label="Blow-downs of tangents remain tangents", fillcolor="#ffe0b2"];
+  "lem:tangent-blowdown" [label="Blow-downs of tangents remain tangents", fillcolor="#dce5ee"];
   "lem:flatness-radius-continuous" [label="Continuity of the scale function", fillcolor="#dce5ee"];
   "lem:recenter" [label="One null exceptional set for all dimensional recenterings", fillcolor="#fff0bf"];
   "def:weak-approximation-good-set" [label="Relaxed uniform approximation good sets", fillcolor="#d9eaf7"];
@@ -134,7 +135,7 @@ digraph Preiss {
   "lem:weak-approximation-good-exhaustion" [label="Aperture slack gives countable good-set exhaustion", fillcolor="#dce5ee"];
   "lem:uniform-compact-selection" [label="Compact subsets with uniform approximation and density bounds", fillcolor="#dce5ee"];
   "lem:weak-approximation-restrict-ae" [label="Weak approximation restricts to Borel subsets almost everywhere", fillcolor="#dce5ee"];
-  "lem:packing-base-point" [label="Base point with upper mass and small discarded mass", fillcolor="#fff0bf"];
+  "lem:packing-base-point" [label="Base point with upper mass and small discarded mass", fillcolor="#dce5ee"];
   "lem:finite-piece-transfer" [label="Transfer density bounds and flat tangents to finite pieces", fillcolor="#fff0bf"];
   "lem:nested-compact-approximation" [label="Nested compact two-sided approximation", fillcolor="#fff0bf"];
   "lem:pure-cone-escape" [label="Pure sets have arbitrarily close points outside fixed cones", fillcolor="#dce5ee"];
@@ -162,13 +163,13 @@ digraph Preiss {
   "lem:vague-support-approximation" [label="Approximation of support points under vague convergence", fillcolor="#dce5ee"];
   "lem:vague-support-limit" [label="Limits of support points under lower ball bounds", fillcolor="#dce5ee"];
   "lem:vague-moving-tests" [label="Vague convergence with uniformly moving compact tests", fillcolor="#dce5ee"];
-  "lem:vague-diagonal" [label="Diagonal selection for vague convergence", fillcolor="#fff0bf"];
+  "lem:vague-diagonal" [label="Diagonal selection for vague convergence", fillcolor="#dce5ee"];
   "lem:bilinear-trace-basis" [label="Trace as an orthonormal diagonal sum", fillcolor="#dce5ee"];
   "lem:vague-gaussian-polynomials" [label="Vague convergence of Gaussian polynomial integrals", fillcolor="#fff0bf"];
   "lem:gaussian-quadratic-trace-bound" [label="Gaussian quadratic form second moment and trace bound", fillcolor="#dce5ee"];
   "lem:moment-feature-remainder" [label="Operator norm remainder from finitely many support features", fillcolor="#fff0bf"];
   "def:moments" [label="Continuous symmetric Gaussian moment forms", fillcolor="#d9eaf7"];
-  "lem:moment-feature-annihilation" [label="Feature moment functional and weighted annihilator", fillcolor="#fff0bf"];
+  "lem:moment-feature-annihilation" [label="Feature moment functional and weighted annihilator", fillcolor="#dce5ee"];
   "def:moment-coefficients" [label="Gaussian moment coefficient families", fillcolor="#d9eaf7"];
   "lem:moment-form-evaluation" [label="Evaluation of Gaussian moment forms", fillcolor="#dce5ee"];
   "lem:radial" [label="Radial pushforward distribution and integrals", fillcolor="#dce5ee"];
@@ -315,6 +316,12 @@ digraph Preiss {
   "lem:general-tangent-scalar" [label="Positive finite scalar multiples preserve general tangents", fillcolor="#dce5ee"];
   "lem:dimensional-extraction-ball-bounds" [label="Dimensional subsequence extraction from two-sided ball bounds", fillcolor="#dce5ee"];
   "lem:tangent-ray-density-bounds" [label="Tangent-ray correspondence under density bounds", fillcolor="#dce5ee"];
+  "lem:quantitative-upper-density-bound" [label="Prescribed upper-density thresholds give quantitative ball bounds", fillcolor="#dce5ee"];
+  "lem:closed-upper-ball-bound-sets" [label="Closed sets defined by uniform upper ball bounds", fillcolor="#dce5ee"];
+  "lem:dimensional-family-compact-ball-bounds" [label="Compactness of dimensional tangent families under ball bounds", fillcolor="#dce5ee"];
+  "lem:radius-power-density" [label="Radius-power limits from diameter-normalized densities", fillcolor="#dce5ee"];
+  "lem:gaussian-feature-integrability" [label="Gaussian integrability of polynomial feature kernels", fillcolor="#dce5ee"];
+  "lem:gaussian-ball-power-parameter" [label="Gaussian integral from a centered ball law at arbitrary scale", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -545,8 +552,10 @@ digraph Preiss {
   "gmt:blowup-regular" -> "lem:vague-moving-blowups";
   "lem:vague-moving-tests" -> "lem:vague-moving-blowups";
   "def:tangent-api" -> "lem:tangent-closed";
+  "gmt:blowup-regular" -> "lem:tangent-closed";
   "lem:vague-diagonal" -> "lem:tangent-closed";
   "def:dimensional-tangent" -> "lem:dimensional-tangent-closed";
+  "lem:dimensional-blowup-support" -> "lem:dimensional-tangent-closed";
   "lem:vague-diagonal" -> "lem:dimensional-tangent-closed";
   "def:weak-approximation" -> "lem:flat-to-approximation";
   "lem:dimensional-compactness" -> "lem:flat-to-approximation";
@@ -574,12 +583,8 @@ digraph Preiss {
   "lem:vague-diagonal" -> "lem:pseudotangent-transitive";
   "lem:vague-moving-blowups" -> "lem:pseudotangent-transitive";
   "lem:vague-support-approximation" -> "lem:pseudotangent-transitive";
-  "def:dimensional-tangent" -> "lem:dimensional-tangent-compactness";
-  "def:positive-density" -> "lem:dimensional-tangent-compactness";
   "gmt:density-bounds" -> "lem:dimensional-tangent-compactness";
-  "gmt:portmanteau" -> "lem:dimensional-tangent-compactness";
-  "lem:dimensional-tangent-closed" -> "lem:dimensional-tangent-compactness";
-  "thm:compactness" -> "lem:dimensional-tangent-compactness";
+  "lem:dimensional-family-compact-ball-bounds" -> "lem:dimensional-tangent-compactness";
   "def:positive-density" -> "lem:tangent-ray";
   "lem:tangent-ray-density-bounds" -> "lem:tangent-ray";
   "def:dimensional-tangent" -> "lem:tangent-blowdown";
@@ -630,6 +635,7 @@ digraph Preiss {
   "mathlib:besicovitch-differentiation" -> "lem:weak-approximation-restrict-ae";
   "gmt:hausdorff-density-outside" -> "lem:packing-base-point";
   "gmt:hausdorff-density-upper" -> "lem:packing-base-point";
+  "lem:quantitative-upper-density-bound" -> "lem:packing-base-point";
   "lem:vanishing-density-scaled-balls" -> "lem:packing-base-point";
   "gmt:finite-restriction" -> "lem:finite-piece-transfer";
   "gmt:restriction-tangents" -> "lem:finite-piece-transfer";
@@ -637,6 +643,7 @@ digraph Preiss {
   "mathlib:besicovitch-differentiation" -> "lem:finite-piece-transfer";
   "thm:matching" -> "lem:finite-piece-transfer";
   "gmt:density-points" -> "lem:nested-compact-approximation";
+  "lem:closed-upper-ball-bound-sets" -> "lem:nested-compact-approximation";
   "lem:tube-support-upgrade" -> "lem:nested-compact-approximation";
   "lem:uniform-compact-selection" -> "lem:nested-compact-approximation";
   "lem:weak-approximation-restrict-ae" -> "lem:nested-compact-approximation";
@@ -717,6 +724,7 @@ digraph Preiss {
   "def:moments" -> "lem:moment-feature-annihilation";
   "def:polynomial-feature" -> "lem:moment-feature-annihilation";
   "def:unit-uniform" -> "lem:moment-feature-annihilation";
+  "lem:gaussian-feature-integrability" -> "lem:moment-feature-annihilation";
   "lem:gaussian-polynomial-integrable" -> "lem:moment-feature-annihilation";
   "lem:polynomial-feature-identities" -> "lem:moment-feature-annihilation";
   "def:moments" -> "def:moment-coefficients";
@@ -1103,6 +1111,7 @@ digraph Preiss {
   "lem:first-crossing-flat-infinity" -> "thm:part-b";
   "lem:flatness-cutoff-exists" -> "thm:part-b";
   "lem:flatness-gap-cutoff" -> "thm:part-b";
+  "lem:radius-power-density" -> "thm:part-b";
   "lem:tangent-ray" -> "thm:part-b";
   "thm:infinity-rigidity" -> "thm:part-b";
   "def:positive-density" -> "thm:preiss";
@@ -1243,6 +1252,7 @@ digraph Preiss {
   "lem:dense-continuous-approximation" -> "lem:dense-compact-tests-exist";
   "def:dense-compact-tests" -> "lem:vague-determining-tests";
   "gmt:vague" -> "lem:vague-determining-tests";
+  "mathlib:regular-measure-ext" -> "lem:vague-determining-tests";
   "def:dense-compact-tests" -> "def:vague-metrization-from-tests";
   "def:vague-metrization" -> "def:vague-metrization-from-tests";
   "lem:countable-coordinate-metric" -> "def:vague-metrization-from-tests";
@@ -1254,6 +1264,7 @@ digraph Preiss {
   "def:orthogonal-grading" -> "lem:feature-moment-vanishing";
   "lem:integral-operator-annihilation" -> "lem:feature-moment-vanishing";
   "gmt:vague" -> "lem:vague-scalar-limits";
+  "mathlib:regular-measure-ext" -> "lem:vague-scalar-limits";
   "def:tangent-api" -> "lem:general-tangent-scalar";
   "def:dimensional-tangent" -> "lem:dimensional-extraction-ball-bounds";
   "gmt:blowup-balls" -> "lem:dimensional-extraction-ball-bounds";
@@ -1264,4 +1275,15 @@ digraph Preiss {
   "lem:dimensional-extraction-ball-bounds" -> "lem:tangent-ray-density-bounds";
   "lem:general-tangent-scalar" -> "lem:tangent-ray-density-bounds";
   "lem:vague-scalar-limits" -> "lem:tangent-ray-density-bounds";
+  "def:density-api" -> "lem:quantitative-upper-density-bound";
+  "lem:moving-set-measure-bounds" -> "lem:closed-upper-ball-bound-sets";
+  "def:vague-metrization" -> "lem:dimensional-family-compact-ball-bounds";
+  "lem:dimensional-extraction-ball-bounds" -> "lem:dimensional-family-compact-ball-bounds";
+  "lem:vague-countable-metric" -> "lem:dimensional-family-compact-ball-bounds";
+  "def:density-api" -> "lem:radius-power-density";
+  "def:positive-density" -> "lem:radius-power-density";
+  "gmt:density-bounds" -> "lem:radius-power-density";
+  "def:polynomial-feature" -> "lem:gaussian-feature-integrability";
+  "lem:gaussian-polynomial-integrable" -> "lem:gaussian-feature-integrability";
+  "lem:gaussian-ball-power" -> "lem:gaussian-ball-power-parameter";
 }

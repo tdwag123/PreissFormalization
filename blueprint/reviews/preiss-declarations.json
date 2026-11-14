@@ -584,12 +584,13 @@
     },
     "lem:moment-feature-annihilation": {
       "lean_names": [
-        "Preiss.featureMoment_apply_feature"
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_apply_feature_of_growth"
       ],
       "planned_lean_names": [
         "Preiss.featureMoment_apply_feature"
       ],
-      "status": "Canonical statement compiled; evaluation proof remains unfinished.",
+      "status": "Proof candidates locally checked in exact-source scratch; integrated module certification pending.",
       "files": [
         "Preiss/Uniform/MomentFeatures.lean"
       ],
@@ -1477,9 +1478,10 @@
         "Preiss.polynomialFeatureProjection_apply",
         "Preiss.polynomialFeature_inner",
         "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeatureProjection_inner"
+        "Preiss.polynomialFeatureProjection_inner",
+        "Preiss.polynomialFeature_weighted_inner"
       ],
-      "status": "Exact source checked locally with only standard axioms; canonical integration awaits CI.",
+      "status": "Proof candidates locally checked in exact-source scratch; integrated module certification pending.",
       "files": [
         "Preiss/Analysis/PolynomialFeatures.lean"
       ],
@@ -2117,6 +2119,38 @@
       "planned_file": "Preiss/Rectifiability/WeakApproximation/Density.lean",
       "status": "proof_candidate",
       "verification": "Local exact-source Lean/kernel check passed with standard axioms; current integration status is blueprint/kernel-checkpoint.json."
+    },
+    "lem:quantitative-upper-density-bound": {
+      "lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "files": [
+        "Preiss/Density/UpperBounds.lean"
+      ],
+      "planned_file": "Preiss/Density/UpperBounds.lean",
+      "status": "proof_candidate",
+      "verification": "Generic helper proof passed exact-source local Lean/kernel checking with standard axioms; full integration status remains blueprint/kernel-checkpoint.json."
+    },
+    "lem:closed-upper-ball-bound-sets": {
+      "lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.isClosed_ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono"
+      ],
+      "planned_lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.isClosed_ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono"
+      ],
+      "files": [
+        "Preiss/Density/UpperBallSets.lean"
+      ],
+      "planned_file": "Preiss/Density/UpperBallSets.lean",
+      "status": "proof_candidate",
+      "verification": "Generic helper proof passed exact-source local Lean/kernel checking with standard axioms; full integration status remains blueprint/kernel-checkpoint.json."
     }
   },
   "pending": [],

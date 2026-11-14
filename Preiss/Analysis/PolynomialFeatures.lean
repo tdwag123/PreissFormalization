@@ -172,4 +172,19 @@ theorem exists_normPolynomial_feature_functionals (n q : ℕ) :
   simp only [← mul_assoc, inv_mul_cancel₀ hc.ne', one_mul, hprod]
   exact (norm_pow_eq_sum_coordinate_monomials x d).symm
 
+theorem polynomialFeature_weighted_inner {n N : ℕ} (s : ℝ) (x z : Euclidean n) :
+    inner ℝ (polynomialFeature N z)
+      (weightedGrading polynomialFeatureProjection s (polynomialFeature N x)) =
+      ∑ k : Fin N, (s ^ (k.val+1) *
+        ((2 : ℝ) ^ (k.val+1) / ((k.val+1).factorial : ℝ))) *
+          (inner ℝ z x) ^ (k.val+1) := by
+  simp only [weightedGrading, ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply,
+    inner_sum, inner_smul_right]
+  apply Finset.sum_congr rfl
+  intro k _
+  rw [real_inner_comm (polynomialFeatureProjection k (polynomialFeature N x))
+      (polynomialFeature N z), polynomialFeatureProjection_inner,
+    real_inner_comm z x]
+  ring
+
 end Preiss

@@ -694,3 +694,16 @@ small set is at most the corresponding Hausdorff measure.
 \leanok
 Use the maximal outer measure defining the metric Hausdorff construction.
 \end{proof}
+
+\begin{lemma}[mathlib: compact tests determine regular measures]
+\label{mathlib:regular-measure-ext}
+\lean{MeasureTheory.Measure.ext_of_integral_eq_on_compactlySupported}
+\leanok
+On a locally compact Hausdorff space with its Borel measurable structure,
+two regular measures are equal if their integrals agree against every
+real-valued compactly supported continuous function.
+\end{lemma}
+\begin{proof}[Existing mathlib proof]
+\leanok
+Use regularity and continuous compactly supported approximations to compact sets.
+\end{proof}
