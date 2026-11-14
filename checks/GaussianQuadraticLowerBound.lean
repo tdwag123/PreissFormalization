@@ -8,7 +8,7 @@ theorem quadratic_lower_bound_of_square_upper
     -8*d*q/(d+2) ≤ t := by
   apply (div_le_iff₀ (by linarith : 0 < d+2)).mpr
   have hmul := mul_le_mul_of_nonneg_left h hd.le
-  have hfac : d*(1+2/d)=d+2 := by field_simp; ring
+  have hfac : d*(1+2/d)=d+2 := by field_simp <;> ring
   rw [← mul_assoc, hfac] at hmul
   have hquad : (d+2)*t^2 ≤ -8*d*q*t := by nlinarith [hmul]
   by_contra hn

@@ -1,5 +1,10 @@
-import Mathlib.Analysis.Calculus.LHopital
-import Mathlib.Tactic
+module
+public import Mathlib.Analysis.Calculus.LHopital
+public import Mathlib.Tactic
+
+/-! # Limits of derivatives multiplied by the scale -/
+
+@[expose] public section
 open Filter Set
 open scoped Topology
 namespace Preiss
@@ -28,5 +33,4 @@ theorem scale_derivative_limit_eq_zero
   have h := tendsto_nhds_unique hquot hquot'
   linarith
 
-#print axioms scale_derivative_limit_eq_zero
 end Preiss

@@ -3478,7 +3478,7 @@ Record differentiability and domination hypotheses before using l'Hopital.
 \begin{lemma}[Normal second Taylor trace]
 \label{lem:moment-normal-trace}
 \lean{Preiss.trace_secondMomentCoefficient_normal_eq}
-\uses{def:bilinear-trace, def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:bilinear-trace-basis, lem:taylor-two, lem:uniform-cylinder-identity}
+\uses{lem:cylinder-second-coefficient-trace, lem:uniform-cylinder-identity}
 
 
 
@@ -4433,7 +4433,7 @@ For a unit uniform measure with a flat blow-down on $V$ and an explicit moment e
 \begin{lemma}[Existence of the rigidity bilinear forms]
 \label{lem:rigidity-forms-exist}
 \lean{Preiss.exists_rigidityOmega_and_adjustedForm}
-\uses{def:rigidity-omega, def:rigidity-adjusted-form, lem:rigidity-normal-vector-exists}
+\uses{lem:rigidity-forms-from-symmetry, def:moment-coefficients}
 Given the moment expansion, flat blow-down plane, and normal first-moment vector, there exist the normal-valued symmetric bilinear form $\omega$ and adjusted real symmetric bilinear form satisfying their exact defining identities.
 \end{lemma}
 
@@ -5965,4 +5965,62 @@ For a positive-dimensional unit-uniform measure satisfying the quadratic cylinde
 \uses{lem:bilinear-trace-basis}
 
 The trace of any continuous real bilinear form on a finite-dimensional inner-product space equals the sum of its traces restricted to a subspace and its orthogonal complement.
+\end{lemma}
+
+\begin{lemma}[Scalar Gaussian moments from product growth]
+\label{lem:moment-product-growth}
+\lean{Preiss.gaussianMomentForm_apply_isBigO_of_product_bound}
+\uses{lem:uniform-normalized-gaussian-norm}
+
+If the product of the degree-$k$ evaluation functionals is bounded almost everywhere by $C\lVert z\rVert^d$, its Gaussian moment is $O(s^{k-d/2})$. Zero degrees are included.
+\end{lemma}
+
+\begin{lemma}[Cubic coefficients with two normal inputs vanish]
+\label{lem:bounded-tube-cubic-vanishing}
+\lean{Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube}
+\uses{lem:moment-product-growth, lem:moment-coefficient-growth-images}
+
+For a unit-uniform measure whose support lies in a bounded tube around a subspace, $B_3^2(v,w,w)=0$ whenever $w$ is normal to that subspace and $v$ is arbitrary.
+\end{lemma}
+
+\begin{lemma}[Binomial formula for a symmetric trilinear form]
+\label{lem:symmetric-cubic-binomial}
+\lean{Preiss.symmetricTrilinear_diagonal_add}
+
+The diagonal of a continuous symmetric real trilinear form at $x+y$ expands with coefficients $1,3,3,1$ into its pure and mixed evaluations.
+\end{lemma}
+
+\begin{lemma}[Leading coefficient from a little-o remainder]
+\label{lem:leading-coefficient-limit}
+\lean{Preiss.tendsto_scaled_of_isLittleO_sub}
+
+A normed-space-valued function equal to $s^j a+o(s^j)$ converges to $a$ after division by $s^j$ as $s$ tends to zero through positive values.
+\end{lemma}
+
+\begin{lemma}[Vanishing of scaled normalized bounded integrals]
+\label{lem:scale-normalized-bounded-integral}
+\lean{Preiss.tendsto_scale_normalized_integral_of_ae_bound}
+
+For any nonnegative integrable weights with positive mass, the weighted average of an essentially bounded function tends to zero after multiplication by a positive scale tending to zero.
+\end{lemma}
+
+\begin{lemma}[A convergent function has no nonzero scaled derivative limit]
+\label{lem:scale-derivative-limit}
+\lean{Preiss.scale_derivative_limit_eq_zero}
+
+If $f(s)$ converges to a finite real limit and $s f\prime(s)$ has a finite limit as $s\downarrow0$, that scaled derivative limit is zero. The proof uses the quotient $(sf(s))/s$.
+\end{lemma}
+
+\begin{lemma}[Rigidity forms from symmetric coefficient tensors]
+\label{lem:rigidity-forms-from-symmetry}
+\lean{Preiss.exists_rigidity_forms_of_symmetry}
+
+Symmetric second and third coefficient forms determine the required normal-valued bilinear map and adjusted scalar bilinear form through Riesz representation. No measure or tangent assumption is required.
+\end{lemma}
+
+\begin{lemma}[Quadratic bound from bounded offsets]
+\label{lem:quadratic-bound-bounded-offsets}
+\lean{Preiss.quadratic_square_bound_of_bounded_offsets}
+
+If $y_i\to v$, $\lVert q_i\rVert\le B$ eventually, and $A(y_i,y_i)+\langle\omega(y_i,y_i),q_i\rangle\to0$, then $A(v,v)^2\le B^2\lVert\omega(v,v)\rVert^2$. The spaces and continuous bilinear maps are arbitrary.
 \end{lemma}

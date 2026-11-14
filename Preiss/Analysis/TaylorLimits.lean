@@ -1,5 +1,10 @@
-import Mathlib.Analysis.Asymptotics.Lemmas
-import Mathlib.Tactic
+module
+public import Mathlib.Analysis.Asymptotics.Lemmas
+public import Mathlib.Tactic
+
+/-! # Limits of leading Taylor coefficients in normed spaces. -/
+
+@[expose] public section
 open Filter Set Asymptotics
 open scoped Topology
 namespace Preiss
@@ -17,5 +22,4 @@ theorem tendsto_scaled_of_isLittleO_sub
   rw [smul_sub, smul_smul, inv_mul_cancel₀ (pow_ne_zero k (ne_of_gt hs)), one_smul,
     sub_add_cancel]
 
-#print axioms tendsto_scaled_of_isLittleO_sub
 end Preiss

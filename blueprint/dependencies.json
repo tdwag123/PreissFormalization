@@ -3729,7 +3729,7 @@
       "id": "def:rigidity-omega",
       "title": "Normal valued bilinear map from the third coefficient",
       "kind": "definition",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.IsRigidityOmega",
         "Preiss.RigidityOmega",
@@ -3749,7 +3749,7 @@
       "id": "def:rigidity-adjusted-form",
       "title": "Adjusted symmetric quadratic form on the limiting plane",
       "kind": "definition",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.IsRigidityAdjustedForm",
         "Preiss.RigidityAdjustedForm",
@@ -3764,9 +3764,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4440,
-      "unfinished_dependencies": [
-        "def:rigidity-omega"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:flat-infinity-moments",
@@ -3846,28 +3844,19 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4537,
-      "unfinished_dependencies": [
-        "def:rigidity-omega"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:moment-normal-trace",
       "title": "Normal second Taylor trace",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.trace_secondMomentCoefficient_normal_eq"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:taylor-two",
+        "lem:cylinder-second-coefficient-trace",
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
@@ -3940,7 +3929,6 @@
       "proof_dependencies": [],
       "expanded_line": 4666,
       "unfinished_dependencies": [
-        "def:rigidity-omega",
         "lem:rigidity-mixed-gaussian-limit"
       ]
     },
@@ -3992,7 +3980,6 @@
       "proof_dependencies": [],
       "expanded_line": 4732,
       "unfinished_dependencies": [
-        "def:rigidity-omega",
         "lem:rigidity-contracted-limit-zero",
         "lem:rigidity-mixed-gaussian-limit"
       ]
@@ -4021,8 +4008,6 @@
       "proof_dependencies": [],
       "expanded_line": 4757,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-fourth-support-identity"
       ]
     },
@@ -4052,8 +4037,6 @@
       "proof_dependencies": [],
       "expanded_line": 4796,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-fourth-support-identity"
       ]
     },
@@ -4081,8 +4064,6 @@
       "proof_dependencies": [],
       "expanded_line": 4825,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-omega-trace-zero"
       ]
     },
@@ -4108,7 +4089,6 @@
       "proof_dependencies": [],
       "expanded_line": 4851,
       "unfinished_dependencies": [
-        "def:rigidity-omega",
         "lem:rigidity-omega-trace-zero"
       ]
     },
@@ -4138,8 +4118,6 @@
       "proof_dependencies": [],
       "expanded_line": 4880,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-mixed-gaussian-limit",
         "lem:rigidity-omega-reproducing",
         "lem:rigidity-pointwise-quadratic-bound",
@@ -4173,8 +4151,6 @@
       "proof_dependencies": [],
       "expanded_line": 4917,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "lem:moment-normal-trace",
         "lem:rigidity-gaussian-trace",
         "lem:rigidity-integral-quadratic-bound"
       ]
@@ -4203,7 +4179,6 @@
       "proof_dependencies": [],
       "expanded_line": 4950,
       "unfinished_dependencies": [
-        "lem:rigidity-forms-exist",
         "lem:trace-rigidity"
       ]
     },
@@ -4776,22 +4751,18 @@
       "id": "lem:rigidity-forms-exist",
       "title": "Existence of the rigidity bilinear forms",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_rigidityOmega_and_adjustedForm"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
-        "lem:rigidity-normal-vector-exists"
+        "def:moment-coefficients",
+        "lem:rigidity-forms-from-symmetry"
       ],
       "proof_dependencies": [],
       "expanded_line": 5529,
-      "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:polynomial-feature-identities",
@@ -8093,6 +8064,123 @@
       "proof_dependencies": [],
       "expanded_line": 7058,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:moment-product-growth",
+      "title": "Scalar Gaussian moments from product growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_apply_isBigO_of_product_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7066,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:bounded-tube-cubic-vanishing",
+      "title": "Cubic coefficients with two normal inputs vanish",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:moment-coefficient-growth-images",
+        "lem:moment-product-growth"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7074,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:symmetric-cubic-binomial",
+      "title": "Binomial formula for a symmetric trilinear form",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.symmetricTrilinear_diagonal_add"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7082,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:leading-coefficient-limit",
+      "title": "Leading coefficient from a little-o remainder",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_scaled_of_isLittleO_sub"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7089,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:scale-normalized-bounded-integral",
+      "title": "Vanishing of scaled normalized bounded integrals",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_scale_normalized_integral_of_ae_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7096,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:scale-derivative-limit",
+      "title": "A convergent function has no nonzero scaled derivative limit",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.scale_derivative_limit_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7103,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-forms-from-symmetry",
+      "title": "Rigidity forms from symmetric coefficient tensors",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_rigidity_forms_of_symmetry"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7110,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:quadratic-bound-bounded-offsets",
+      "title": "Quadratic bound from bounded offsets",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.quadratic_square_bound_of_bounded_offsets"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7117,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -8147,6 +8235,7 @@
     "lem:leading-homogeneous-term",
     "lem:symmetric-multilinear-diagonal-injective",
     "lem:normal-coordinate-identities",
+    "lem:rigidity-forms-from-symmetry",
     "lem:orthonormal-span-projection",
     "lem:nonnegative-integral-cover-bound",
     "lem:gaussian-annulus-integral",
@@ -8169,6 +8258,11 @@
     "lem:orthonormal-plane-distance",
     "lem:unit-uniform-nonzero",
     "lem:gaussian-norm-half-mass",
+    "lem:symmetric-cubic-binomial",
+    "lem:leading-coefficient-limit",
+    "lem:scale-normalized-bounded-integral",
+    "lem:scale-derivative-limit",
+    "lem:quadratic-bound-bounded-offsets",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -8325,6 +8419,7 @@
     "lem:moment-trace-operator",
     "lem:bilinear-trace-orthogonal-split",
     "def:rigidity-normal-vector",
+    "lem:rigidity-forms-exist",
     "lem:moment-taylor-linear-image",
     "lem:even-moment-positivity",
     "lem:flat-moment-projection",
@@ -8449,6 +8544,7 @@
     "lem:taylor-one",
     "lem:moment-coefficient-vanishing",
     "lem:moment-second-total-trace",
+    "lem:moment-product-growth",
     "lem:gaussian-bilinear-contraction",
     "lem:tangent-closed",
     "lem:dimensional-tangent-closed",
@@ -8469,6 +8565,7 @@
     "lem:moment-feature-remainder",
     "lem:moment-support-polynomial",
     "lem:scaled-moment-limits",
+    "lem:bounded-tube-cubic-vanishing",
     "lem:tangent-blowdown",
     "lem:dimensional-tangent-bounded-orbit",
     "lem:flat-to-approximation",
@@ -8522,7 +8619,6 @@
     "lem:rigidity-cubic-vanishing",
     "lem:rigidity-contracted-limit-zero",
     "lem:flat-infinity-bounded-holes",
-    "lem:rigidity-forms-exist",
     "lem:rigidity-fourth-support-identity",
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-pointwise-quadratic-bound",

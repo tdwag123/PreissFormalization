@@ -202,13 +202,13 @@ digraph Preiss {
   "cor:conical" [label="The unique blow-down is conical", fillcolor="#dce5ee"];
   "thm:gap" [label="Uniform conical flatness gap", fillcolor="#dce5ee"];
   "def:rigidity-normal-vector" [label="Normal first-moment vector", fillcolor="#dce5ee"];
-  "def:rigidity-omega" [label="Normal valued bilinear map from the third coefficient", fillcolor="#fff0bf"];
-  "def:rigidity-adjusted-form" [label="Adjusted symmetric quadratic form on the limiting plane", fillcolor="#fff0bf"];
+  "def:rigidity-omega" [label="Normal valued bilinear map from the third coefficient", fillcolor="#dce5ee"];
+  "def:rigidity-adjusted-form" [label="Adjusted symmetric quadratic form on the limiting plane", fillcolor="#dce5ee"];
   "lem:flat-infinity-moments" [label="Even Taylor coefficients from a flat blow-down", fillcolor="#dce5ee"];
   "lem:odd-coefficients-plane-zero" [label="Odd top coefficients vanish on the flat limiting plane", fillcolor="#dce5ee"];
   "lem:uniform-cylinder-identity" [label="Cylinder identity and bounded normal coordinates", fillcolor="#dce5ee"];
   "lem:rigidity-mixed-gaussian-limit" [label="Mixed Gaussian moment limit defining omega", fillcolor="#fff0bf"];
-  "lem:moment-normal-trace" [label="Normal second Taylor trace", fillcolor="#fff0bf"];
+  "lem:moment-normal-trace" [label="Normal second Taylor trace", fillcolor="#dce5ee"];
   "lem:flat-infinity-bounded-holes" [label="Bounded distance from the limiting plane to the support", fillcolor="#dce5ee"];
   "lem:rigidity-cubic-vanishing" [label="Vanishing normal mixed cubic coefficients", fillcolor="#fff0bf"];
   "lem:rigidity-contracted-limit-zero" [label="Vanishing contracted Gaussian limit", fillcolor="#fff0bf"];
@@ -248,7 +248,7 @@ digraph Preiss {
   "lem:flatness-gap-cutoff" [label="Transfer the conical gap to cutoff flatness", fillcolor="#fff0bf"];
   "def:first-crossing-data" [label="Quantified crossing scale data", fillcolor="#d9eaf7"];
   "lem:rigidity-normal-vector-exists" [label="Existence of the normal first-moment vector", fillcolor="#dce5ee"];
-  "lem:rigidity-forms-exist" [label="Existence of the rigidity bilinear forms", fillcolor="#fff0bf"];
+  "lem:rigidity-forms-exist" [label="Existence of the rigidity bilinear forms", fillcolor="#dce5ee"];
   "lem:polynomial-feature-identities" [label="Inner products and grading of polynomial features", fillcolor="#dce5ee"];
   "def:uniform-constant" [label="Uniform measures with a specified ball constant", fillcolor="#d9eaf7"];
   "lem:uniform-constant-one" [label="Centered unit normalization", fillcolor="#dce5ee"];
@@ -442,6 +442,14 @@ digraph Preiss {
   "lem:moment-taylor-linear-image" [label="Taylor remainders under scalar linear maps", fillcolor="#dce5ee"];
   "lem:cylinder-second-coefficient-trace" [label="Second coefficient trace from a cylinder identity", fillcolor="#dce5ee"];
   "lem:bilinear-trace-orthogonal-split" [label="Trace splits over orthogonal complementary subspaces", fillcolor="#dce5ee"];
+  "lem:moment-product-growth" [label="Scalar Gaussian moments from product growth", fillcolor="#dce5ee"];
+  "lem:bounded-tube-cubic-vanishing" [label="Cubic coefficients with two normal inputs vanish", fillcolor="#dce5ee"];
+  "lem:symmetric-cubic-binomial" [label="Binomial formula for a symmetric trilinear form", fillcolor="#dce5ee"];
+  "lem:leading-coefficient-limit" [label="Leading coefficient from a little-o remainder", fillcolor="#dce5ee"];
+  "lem:scale-normalized-bounded-integral" [label="Vanishing of scaled normalized bounded integrals", fillcolor="#dce5ee"];
+  "lem:scale-derivative-limit" [label="A convergent function has no nonzero scaled derivative limit", fillcolor="#dce5ee"];
+  "lem:rigidity-forms-from-symmetry" [label="Rigidity forms from symmetric coefficient tensors", fillcolor="#dce5ee"];
+  "lem:quadratic-bound-bounded-offsets" [label="Quadratic bound from bounded offsets", fillcolor="#dce5ee"];
   "def:density-api" -> "gmt:density-order";
   "def:density-api" -> "gmt:density-limit";
   "def:density-api" -> "gmt:density-bounds";
@@ -1031,14 +1039,7 @@ digraph Preiss {
   "def:unit-uniform" -> "lem:rigidity-mixed-gaussian-limit";
   "lem:flat-infinity-moments" -> "lem:rigidity-mixed-gaussian-limit";
   "lem:taylor-two" -> "lem:rigidity-mixed-gaussian-limit";
-  "def:bilinear-trace" -> "lem:moment-normal-trace";
-  "def:moment-coefficients" -> "lem:moment-normal-trace";
-  "def:plane" -> "lem:moment-normal-trace";
-  "def:rigidity-normal-vector" -> "lem:moment-normal-trace";
-  "def:tangent-at-infinity" -> "lem:moment-normal-trace";
-  "def:unit-uniform" -> "lem:moment-normal-trace";
-  "lem:bilinear-trace-basis" -> "lem:moment-normal-trace";
-  "lem:taylor-two" -> "lem:moment-normal-trace";
+  "lem:cylinder-second-coefficient-trace" -> "lem:moment-normal-trace";
   "lem:uniform-cylinder-identity" -> "lem:moment-normal-trace";
   "lem:bounded-tube-plane-to-support" -> "lem:flat-infinity-bounded-holes";
   "lem:rigidity-normal-vector-exists" -> "lem:flat-infinity-bounded-holes";
@@ -1277,9 +1278,8 @@ digraph Preiss {
   "gmt:vague" -> "def:first-crossing-data";
   "lem:first-moment-normal-from-vanishing" -> "lem:rigidity-normal-vector-exists";
   "lem:odd-coefficients-plane-zero" -> "lem:rigidity-normal-vector-exists";
-  "def:rigidity-adjusted-form" -> "lem:rigidity-forms-exist";
-  "def:rigidity-omega" -> "lem:rigidity-forms-exist";
-  "lem:rigidity-normal-vector-exists" -> "lem:rigidity-forms-exist";
+  "def:moment-coefficients" -> "lem:rigidity-forms-exist";
+  "lem:rigidity-forms-from-symmetry" -> "lem:rigidity-forms-exist";
   "def:orthogonal-grading" -> "lem:polynomial-feature-identities";
   "def:polynomial-feature" -> "lem:polynomial-feature-identities";
   "lem:orthonormal-span-projection" -> "lem:polynomial-feature-identities";
@@ -1590,4 +1590,7 @@ digraph Preiss {
   "lem:subspace-gaussian-trace-cylinder" -> "lem:cylinder-second-coefficient-trace";
   "lem:taylor-multiply-scale" -> "lem:cylinder-second-coefficient-trace";
   "lem:bilinear-trace-basis" -> "lem:bilinear-trace-orthogonal-split";
+  "lem:uniform-normalized-gaussian-norm" -> "lem:moment-product-growth";
+  "lem:moment-coefficient-growth-images" -> "lem:bounded-tube-cubic-vanishing";
+  "lem:moment-product-growth" -> "lem:bounded-tube-cubic-vanishing";
 }

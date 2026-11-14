@@ -1,6 +1,11 @@
-import Mathlib.MeasureTheory.Integral.Bochner.Basic
-import Mathlib.Analysis.SpecificLimits.Basic
-import Mathlib.Tactic
+module
+public import Mathlib.MeasureTheory.Integral.Bochner.Basic
+public import Mathlib.Analysis.SpecificLimits.Basic
+public import Mathlib.Tactic
+
+/-! # Normalized weighted integrals of bounded functions. -/
+
+@[expose] public section
 open MeasureTheory Filter Set
 open scoped Topology
 namespace Preiss
@@ -33,5 +38,4 @@ theorem tendsto_scale_normalized_integral_of_ae_bound
       tendsto_nhdsWithin_of_tendsto_nhds tendsto_id
     simpa using hid.mul_const C
 
-#print axioms tendsto_scale_normalized_integral_of_ae_bound
 end Preiss

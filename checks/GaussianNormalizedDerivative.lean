@@ -1,5 +1,5 @@
 import Preiss.Uniform.MomentTrace
-import Mathlib.Analysis.Calculus.Deriv.Div
+import Mathlib.Analysis.Calculus.Deriv.Inv
 import Mathlib.Tactic
 open MeasureTheory
 open scoped BigOperators
@@ -30,7 +30,7 @@ theorem hasDerivAt_normalized_polynomial_gaussian_unitUniform
   have hmass : gaussianMass μ s ≠ 0 := by
     rw [gaussianMass_unitUniform μ hm hμ s hs]
     exact (mul_pos (Real.Gamma_pos_of_pos (by positivity)) (Real.rpow_pos_of_pos hs _)).ne'
-  convert hN.div hI hmass using 1
+  convert! hN.div hI hmass using 1
   field_simp [hmass]
   <;> ring
 

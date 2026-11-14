@@ -4859,14 +4859,7 @@
       "hypotheses_tex": "",
       "proof_tex": "The exact radial identity $\\operatorname{tr}b_{2,s}=ms$ and M07 imply\n$\\operatorname{tr}b_2^{(2)}=0$.\nR03 and the first-moment expansion give\n$\\operatorname{tr}(b_2^{(2)}|V^\\perp)=8|b|^2\n=2\\|b_1^{(1)}\\|^2$.\nThese are separate, comparatively short lemmas.",
       "deps": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:taylor-two",
+        "lem:cylinder-second-coefficient-trace",
         "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
@@ -6051,9 +6044,8 @@
         "Preiss.exists_rigidityOmega_and_adjustedForm"
       ],
       "deps": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
-        "lem:rigidity-normal-vector-exists"
+        "def:moment-coefficients",
+        "lem:rigidity-forms-from-symmetry"
       ],
       "scope": "core",
       "branch": "Explicit analytical data",
@@ -9454,7 +9446,7 @@
         "def:bilinear-trace",
         "def:moments"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/SubspaceMomentTrace.lean"
       ],
@@ -9472,7 +9464,7 @@
       "deps": [
         "lem:subspace-moment-trace"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/SubspaceMomentTrace.lean"
       ],
@@ -9489,7 +9481,7 @@
       "deps": [
         "lem:asymptotic-taylor-vanishing"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/TaylorShift.lean"
       ],
@@ -9525,7 +9517,7 @@
       "deps": [
         "def:moment-coefficients"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/SubspaceMomentCoefficients.lean"
       ],
@@ -9544,7 +9536,7 @@
         "lem:subspace-gaussian-trace-cylinder",
         "lem:taylor-multiply-scale"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/SubspaceMomentCoefficients.lean"
       ],
@@ -9566,6 +9558,131 @@
         "Preiss/Analysis/OrthogonalTraceSplit.lean"
       ],
       "proposed_file": "Preiss/Analysis/OrthogonalTraceSplit.lean"
+    },
+    {
+      "id": "lem:moment-product-growth",
+      "kind": "lemma",
+      "title": "Scalar Gaussian moments from product growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_apply_isBigO_of_product_bound"
+      ],
+      "deps": [
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/MixedMomentBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MixedMomentBounds.lean"
+    },
+    {
+      "id": "lem:bounded-tube-cubic-vanishing",
+      "kind": "lemma",
+      "title": "Cubic coefficients with two normal inputs vanish",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube"
+      ],
+      "deps": [
+        "lem:moment-coefficient-growth-images",
+        "lem:moment-product-growth"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/MixedMomentBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MixedMomentBounds.lean"
+    },
+    {
+      "id": "lem:symmetric-cubic-binomial",
+      "kind": "lemma",
+      "title": "Binomial formula for a symmetric trilinear form",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.symmetricTrilinear_diagonal_add"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/MultilinearDiagonal.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/MultilinearDiagonal.lean"
+    },
+    {
+      "id": "lem:leading-coefficient-limit",
+      "kind": "lemma",
+      "title": "Leading coefficient from a little-o remainder",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_scaled_of_isLittleO_sub"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/TaylorLimits.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/TaylorLimits.lean"
+    },
+    {
+      "id": "lem:scale-normalized-bounded-integral",
+      "kind": "lemma",
+      "title": "Vanishing of scaled normalized bounded integrals",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_scale_normalized_integral_of_ae_bound"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/NormalizedIntegral.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/NormalizedIntegral.lean"
+    },
+    {
+      "id": "lem:scale-derivative-limit",
+      "kind": "lemma",
+      "title": "A convergent function has no nonzero scaled derivative limit",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.scale_derivative_limit_eq_zero"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/ScaleDerivative.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ScaleDerivative.lean"
+    },
+    {
+      "id": "lem:rigidity-forms-from-symmetry",
+      "kind": "lemma",
+      "title": "Rigidity forms from symmetric coefficient tensors",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_rigidity_forms_of_symmetry"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+    },
+    {
+      "id": "lem:quadratic-bound-bounded-offsets",
+      "kind": "lemma",
+      "title": "Quadratic bound from bounded offsets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.quadratic_square_bound_of_bounded_offsets"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/QuadraticBoundedOffset.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/QuadraticBoundedOffset.lean"
     }
   ],
   "preiss_core": [
@@ -9690,6 +9807,7 @@
     "lem:countable-coordinate-metric",
     "lem:countable-coordinate-second-countability",
     "lem:covariance-minimizing-plane",
+    "lem:cylinder-second-coefficient-trace",
     "lem:decomposition",
     "lem:dense-compact-tests-exist",
     "lem:dense-continuous-approximation",
@@ -9820,6 +9938,7 @@
     "lem:moment-operator-growth",
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
+    "lem:moment-taylor-linear-image",
     "lem:moment-trace-operator",
     "lem:moving-set-measure-bounds",
     "lem:multilinear-symmetrization",
@@ -9869,6 +9988,7 @@
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-cubic-vanishing",
     "lem:rigidity-forms-exist",
+    "lem:rigidity-forms-from-symmetry",
     "lem:rigidity-fourth-support-identity",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-integral-quadratic-bound",
@@ -9883,11 +10003,14 @@
     "lem:sequential-uniform-scale",
     "lem:small-energy-no-holes",
     "lem:subsequence-limit-criterion",
+    "lem:subspace-gaussian-trace-cylinder",
+    "lem:subspace-moment-trace",
     "lem:symmetric-multilinear-diagonal-injective",
     "lem:tangent-blowdown",
     "lem:tangent-existence",
     "lem:tangent-ray",
     "lem:tangent-ray-density-bounds",
+    "lem:taylor-multiply-scale",
     "lem:taylor-one",
     "lem:taylor-two",
     "lem:trace-rigidity",

@@ -44,7 +44,7 @@ theorem first_crossing_ratio_tendsto_atTop_checked (hmn : m ≤ n)
   have hratio1 (i : ℕ) : 1 ≤ r i / σ i :=
     (le_div_iff₀ (hσ i).1).mpr (by simpa only [one_mul] using (hσ i).2)
   have hratioPos (i : ℕ) : 0 < r i / σ i := lt_of_lt_of_le zero_lt_one (hratio1 i)
-  apply tendsto_atTop.mpr
+  apply Filter.tendsto_atTop.mpr
   intro M
   by_contra hnot
   have hfreq : ∃ᶠ i in atTop, r i / σ i ∈ Icc 1 M := by

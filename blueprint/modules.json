@@ -978,16 +978,19 @@
       "purpose": "Reusable Analysis.MultilinearDiagonal interfaces.",
       "current_source_imports": [
         "Mathlib.Analysis.Analytic.IteratedFDeriv",
+        "Mathlib.Data.Fin.VecNotation",
         "Mathlib.Tactic"
       ],
       "mathlib_imports": [
         "Mathlib.Analysis.Analytic.IteratedFDeriv",
+        "Mathlib.Data.Fin.VecNotation",
         "Mathlib.Tactic"
       ],
       "gmt_imports": [],
       "proof_imports": [],
       "nodes": [
-        "lem:symmetric-multilinear-diagonal-injective"
+        "lem:symmetric-multilinear-diagonal-injective",
+        "lem:symmetric-cubic-binomial"
       ],
       "source_exists": true,
       "local_imports": [],
@@ -1031,6 +1034,29 @@
       "proof_imports": [],
       "nodes": [
         "lem:nested-orthogonal-layers"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Analysis.NormalizedIntegral",
+      "file": "Preiss/Analysis/NormalizedIntegral.lean",
+      "purpose": "Reusable Analysis.NormalizedIntegral interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Tactic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:scale-normalized-bounded-integral"
       ],
       "source_exists": true,
       "local_imports": [],
@@ -1257,6 +1283,33 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.QuadraticBoundedOffset",
+      "file": "Preiss/Analysis/QuadraticBoundedOffset.lean",
+      "purpose": "Reusable Analysis.QuadraticBoundedOffset interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Basic",
+        "Mathlib.Analysis.Normed.Operator.Bilinear",
+        "Mathlib.Analysis.Normed.Operator.BoundedLinearMaps",
+        "Mathlib.Tactic",
+        "Mathlib.Topology.Algebra.Order.LiminfLimsup"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Basic",
+        "Mathlib.Analysis.Normed.Operator.Bilinear",
+        "Mathlib.Analysis.Normed.Operator.BoundedLinearMaps",
+        "Mathlib.Tactic",
+        "Mathlib.Topology.Algebra.Order.LiminfLimsup"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:quadratic-bound-bounded-offsets"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.QuadraticSpectralRigidity",
       "file": "Preiss/Analysis/QuadraticSpectralRigidity.lean",
       "purpose": "Reusable Analysis.QuadraticSpectralRigidity interfaces.",
@@ -1282,6 +1335,27 @@
       "local_imports": [
         "Preiss.Analysis.OrderedSums"
       ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Analysis.ScaleDerivative",
+      "file": "Preiss/Analysis/ScaleDerivative.lean",
+      "purpose": "Reusable Analysis.ScaleDerivative interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Calculus.LHopital",
+        "Mathlib.Tactic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Calculus.LHopital",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:scale-derivative-limit"
+      ],
+      "source_exists": true,
+      "local_imports": [],
       "scope": "core"
     },
     {
@@ -1352,6 +1426,27 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Analysis.SpectralOptimization interfaces."
+    },
+    {
+      "module": "Preiss.Analysis.TaylorLimits",
+      "file": "Preiss/Analysis/TaylorLimits.lean",
+      "purpose": "Reusable Analysis.TaylorLimits interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Asymptotics.Lemmas",
+        "Mathlib.Tactic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Asymptotics.Lemmas",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:leading-coefficient-limit"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
     },
     {
       "module": "Preiss.Analysis.TaylorShift",
@@ -5093,7 +5188,8 @@
         "Preiss.Uniform.MomentCoefficients",
         "Preiss.Uniform.MomentExpansion",
         "Preiss.Uniform.MomentVague",
-        "Preiss.Uniform.Scaling"
+        "Preiss.Uniform.Scaling",
+        "Preiss.Uniform.SubspaceMomentCoefficients"
       ],
       "local_imports": [
         "Preiss.Analysis.BilinearTrace",
@@ -5115,28 +5211,27 @@
         "Preiss.Uniform.MomentCoefficients",
         "Preiss.Uniform.MomentExpansion",
         "Preiss.Uniform.MomentVague",
-        "Preiss.Uniform.Scaling"
+        "Preiss.Uniform.Scaling",
+        "Preiss.Uniform.SubspaceMomentCoefficients"
       ],
       "mathlib_imports": [
         "Mathlib.Analysis.Normed.Module.Multilinear.Curry"
       ],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Analysis.BilinearTrace",
         "Preiss.Analysis.LeadingHomogeneousTerm",
         "Preiss.Analysis.MultilinearDiagonal",
         "Preiss.Analysis.Vague.Support",
         "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.Planes",
         "Preiss.Tangent.BlowupSupport",
-        "Preiss.Tangent.Defs",
         "Preiss.Uniform.BlowdownMoments",
         "Preiss.Uniform.BoundedTube",
-        "Preiss.Uniform.Defs",
         "Preiss.Uniform.FlatMoments",
         "Preiss.Uniform.MomentCoefficients",
         "Preiss.Uniform.MomentExpansion",
-        "Preiss.Uniform.MomentVague"
+        "Preiss.Uniform.MomentVague",
+        "Preiss.Uniform.SubspaceMomentCoefficients"
       ],
       "nodes": [
         "def:rigidity-normal-vector",
@@ -5230,7 +5325,10 @@
       "module": "Preiss.Uniform.FlatAtInfinity.TraceData",
       "file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
       "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Dual",
+        "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
         "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Tactic",
         "Preiss.Uniform.FlatAtInfinity.Basic"
       ],
       "local_imports": [
@@ -5239,7 +5337,10 @@
         "Preiss.Uniform.MomentCoefficients"
       ],
       "mathlib_imports": [
-        "Mathlib.Data.Fin.VecNotation"
+        "Mathlib.Analysis.InnerProductSpace.Dual",
+        "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Tactic"
       ],
       "gmt_imports": [],
       "proof_imports": [
@@ -5250,7 +5351,8 @@
       "nodes": [
         "def:rigidity-omega",
         "def:rigidity-adjusted-form",
-        "lem:rigidity-forms-exist"
+        "lem:rigidity-forms-exist",
+        "lem:rigidity-forms-from-symmetry"
       ],
       "source_exists": true,
       "scope": "core",
@@ -5818,6 +5920,38 @@
       "local_imports": [
         "Preiss.Tangent.Blowup",
         "Preiss.Uniform.Defs"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Uniform.MixedMomentBounds",
+      "file": "Preiss/Uniform/MixedMomentBounds.lean",
+      "purpose": "Reusable Uniform.MixedMomentBounds interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Tactic",
+        "Preiss.Uniform.GaussianNormBounds",
+        "Preiss.Uniform.MomentCoefficientEstimates"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Data.Fin.VecNotation",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Uniform.GaussianNormBounds",
+        "Preiss.Uniform.MomentCoefficientEstimates"
+      ],
+      "nodes": [
+        "lem:moment-product-growth",
+        "lem:bounded-tube-cubic-vanishing"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Uniform.GaussianNormBounds",
+        "Preiss.Uniform.MomentCoefficientEstimates"
       ],
       "scope": "core"
     },
@@ -6643,12 +6777,16 @@
     "Preiss.Analysis.MovingSets",
     "Preiss.Analysis.MultilinearDiagonal",
     "Preiss.Analysis.MultilinearSymmetrization",
+    "Preiss.Analysis.NormalizedIntegral",
     "Preiss.Analysis.OrderedSums",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PowerSeriesRemainder",
     "Preiss.Analysis.ProperMeasureTransport",
+    "Preiss.Analysis.QuadraticBoundedOffset",
+    "Preiss.Analysis.ScaleDerivative",
     "Preiss.Analysis.SequentialLimits",
     "Preiss.Analysis.SequentialScale",
+    "Preiss.Analysis.TaylorLimits",
     "Preiss.Analysis.Vague.Map",
     "Preiss.Analysis.Vague.ScalarLimits",
     "Preiss.Density.Limits",
@@ -6803,6 +6941,7 @@
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
     "Preiss.Rectifiability.GraphBlowup",
     "Preiss.Uniform.DimensionReduction",
+    "Preiss.Uniform.MixedMomentBounds",
     "Preiss.Uniform.SupportProximity",
     "Preiss.Uniform.MomentTaylorJets",
     "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
@@ -6887,6 +7026,7 @@
     "Preiss.Analysis.QuadraticSpectralRigidity",
     "Preiss.Analysis.SequentialLimits",
     "Preiss.Analysis.SequentialScale",
+    "Preiss.Analysis.TaylorShift",
     "Preiss.Analysis.Vague.CompactMass",
     "Preiss.Analysis.Vague.CompactTests",
     "Preiss.Analysis.Vague.DeterminingTests",
@@ -7033,6 +7173,8 @@
     "Preiss.Uniform.Moments",
     "Preiss.Uniform.Radial",
     "Preiss.Uniform.Scaling",
+    "Preiss.Uniform.SubspaceMomentCoefficients",
+    "Preiss.Uniform.SubspaceMomentTrace",
     "Preiss.Uniform.SupportProximity",
     "Preiss.Uniform.TangentAtInfinity",
     "Preiss.Uniform.TangentExistence",

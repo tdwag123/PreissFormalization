@@ -3360,7 +3360,7 @@
       "id": "def:rigidity-omega",
       "title": "Normal valued bilinear map from the third coefficient",
       "kind": "definition",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.IsRigidityOmega",
         "Preiss.RigidityOmega",
@@ -3380,7 +3380,7 @@
       "id": "def:rigidity-adjusted-form",
       "title": "Adjusted symmetric quadratic form on the limiting plane",
       "kind": "definition",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.IsRigidityAdjustedForm",
         "Preiss.RigidityAdjustedForm",
@@ -3395,9 +3395,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4440,
-      "unfinished_dependencies": [
-        "def:rigidity-omega"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:flat-infinity-moments",
@@ -3477,28 +3475,19 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4537,
-      "unfinished_dependencies": [
-        "def:rigidity-omega"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:moment-normal-trace",
       "title": "Normal second Taylor trace",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.trace_secondMomentCoefficient_normal_eq"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:taylor-two",
+        "lem:cylinder-second-coefficient-trace",
         "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
@@ -3571,7 +3560,6 @@
       "proof_dependencies": [],
       "expanded_line": 4666,
       "unfinished_dependencies": [
-        "def:rigidity-omega",
         "lem:rigidity-mixed-gaussian-limit"
       ]
     },
@@ -3623,7 +3611,6 @@
       "proof_dependencies": [],
       "expanded_line": 4732,
       "unfinished_dependencies": [
-        "def:rigidity-omega",
         "lem:rigidity-contracted-limit-zero",
         "lem:rigidity-mixed-gaussian-limit"
       ]
@@ -3652,8 +3639,6 @@
       "proof_dependencies": [],
       "expanded_line": 4757,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-fourth-support-identity"
       ]
     },
@@ -3683,8 +3668,6 @@
       "proof_dependencies": [],
       "expanded_line": 4796,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-fourth-support-identity"
       ]
     },
@@ -3712,8 +3695,6 @@
       "proof_dependencies": [],
       "expanded_line": 4825,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-omega-trace-zero"
       ]
     },
@@ -3739,7 +3720,6 @@
       "proof_dependencies": [],
       "expanded_line": 4851,
       "unfinished_dependencies": [
-        "def:rigidity-omega",
         "lem:rigidity-omega-trace-zero"
       ]
     },
@@ -3769,8 +3749,6 @@
       "proof_dependencies": [],
       "expanded_line": 4880,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
         "lem:rigidity-mixed-gaussian-limit",
         "lem:rigidity-omega-reproducing",
         "lem:rigidity-pointwise-quadratic-bound",
@@ -3804,8 +3782,6 @@
       "proof_dependencies": [],
       "expanded_line": 4917,
       "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "lem:moment-normal-trace",
         "lem:rigidity-gaussian-trace",
         "lem:rigidity-integral-quadratic-bound"
       ]
@@ -3834,7 +3810,6 @@
       "proof_dependencies": [],
       "expanded_line": 4950,
       "unfinished_dependencies": [
-        "lem:rigidity-forms-exist",
         "lem:trace-rigidity"
       ]
     },
@@ -4161,22 +4136,18 @@
       "id": "lem:rigidity-forms-exist",
       "title": "Existence of the rigidity bilinear forms",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_rigidityOmega_and_adjustedForm"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
-        "lem:rigidity-normal-vector-exists"
+        "def:moment-coefficients",
+        "lem:rigidity-forms-from-symmetry"
       ],
       "proof_dependencies": [],
       "expanded_line": 5529,
-      "unfinished_dependencies": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:polynomial-feature-identities",
@@ -7188,6 +7159,58 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:subspace-moment-trace",
+      "title": "Continuous trace of moments on a subspace",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.subspaceMomentTraceCLM",
+        "Preiss.subspaceMomentTraceCLM_apply",
+        "Preiss.subspaceMomentTraceCLM_momentKernel"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7010,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:subspace-gaussian-trace-cylinder",
+      "title": "Subspace Gaussian trace under a cylinder identity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.subspaceTrace_gaussianMoment_eq_integral",
+        "Preiss.subspaceTrace_gaussianMoment_of_cylinder"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:subspace-moment-trace"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7018,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:taylor-multiply-scale",
+      "title": "Taylor coefficients after multiplication by scale",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.first_second_taylor_coefficients_of_mul_scale"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7026,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:bounded-tube-plane-to-support",
       "title": "Bounded holes in a plane near a uniform support",
       "kind": "lemma",
@@ -7203,6 +7226,54 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 7034,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:moment-taylor-linear-image",
+      "title": "Taylor remainders under scalar linear maps",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMoment_taylor_remainder_map"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:moment-coefficients"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7042,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:cylinder-second-coefficient-trace",
+      "title": "Second coefficient trace from a cylinder identity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.subspaceTrace_secondCoefficient_of_cylinder"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:moment-taylor-linear-image",
+        "lem:subspace-gaussian-trace-cylinder",
+        "lem:taylor-multiply-scale"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7050,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:rigidity-forms-from-symmetry",
+      "title": "Rigidity forms from symmetric coefficient tensors",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_rigidity_forms_of_symmetry"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 7110,
       "unfinished_dependencies": []
     }
   ]

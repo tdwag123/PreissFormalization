@@ -66,8 +66,9 @@ theorem normalized_gaussian_integral_tendsto_zero_of_linear_growth
       simpa only [K, Nat.cast_one, Real.one_rpow, pow_one, mul_one] using
         integral_norm_pow_mul_gaussian_le_unitUniform μ hm hμ 1 (by decide) s hs
     have hpow : s * s ^ (-(1/2 : ℝ)) = s ^ (1/2 : ℝ) := by
-      rw [← Real.rpow_one s, ← Real.rpow_add hs]
-      norm_num
+      calc
+        s * s ^ (-(1/2 : ℝ)) = s ^ (1 : ℝ) * s ^ (-(1/2 : ℝ)) := by rw [Real.rpow_one]
+        _ = s ^ (1/2 : ℝ) := by rw [← Real.rpow_add hs]; norm_num
     calc
       ‖(s / gaussianMass μ s) * ∫ z, Real.exp (-s * ‖z‖ ^ 2) * f z ∂μ‖ =
           (s / gaussianMass μ s) * |∫ z, Real.exp (-s * ‖z‖ ^ 2) * f z ∂μ| := by
@@ -77,7 +78,7 @@ theorem normalized_gaussian_integral_tendsto_zero_of_linear_growth
         mul_le_mul_of_nonneg_left hbound' (div_pos hs hmass).le
       _ ≤ (s / gaussianMass μ s) *
           (C * (gaussianMass μ s + K * s ^ (-(1/2 : ℝ)) * gaussianMass μ s)) :=
-        mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left (add_le_add_left hmoment _) hC)
+        mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left (add_le_add le_rfl hmoment) hC)
           (div_pos hs hmass).le
       _ = C * s + C * K * (s * s ^ (-(1/2 : ℝ))) := by field_simp [hmass.ne'] <;> ring
       _ = _ := by rw [hpow]

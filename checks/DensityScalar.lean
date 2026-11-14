@@ -26,7 +26,7 @@ theorem HasPositiveFiniteDensityAt.smul
       ENNReal.ofReal ((2*r)^(m : ℝ))) =
       (c • μ) (Metric.closedEBall x (ENNReal.ofReal r)) /
         ENNReal.ofReal ((2*r)^(m : ℝ))
-    rw [Measure.smul_apply, smul_eq_mul, ENNReal.mul_div_assoc]
+    rw [Measure.smul_apply, smul_eq_mul, mul_div_assoc]
   have hlo : dimensional_lower_density (c • μ).toOuterMeasure (m : ℝ) x = c * θ :=
     hlim.liminf_eq
   have hup : dimensional_upper_density (c • μ).toOuterMeasure (m : ℝ) x = c * θ :=

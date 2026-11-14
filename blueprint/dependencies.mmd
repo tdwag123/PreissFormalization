@@ -440,6 +440,14 @@ flowchart LR
   lem_moment_taylor_linear_image["Taylor remainders under scalar linear maps"]
   lem_cylinder_second_coefficient_trace["Second coefficient trace from a cylinder identity"]
   lem_bilinear_trace_orthogonal_split["Trace splits over orthogonal complementary subspaces"]
+  lem_moment_product_growth["Scalar Gaussian moments from product growth"]
+  lem_bounded_tube_cubic_vanishing["Cubic coefficients with two normal inputs vanish"]
+  lem_symmetric_cubic_binomial["Binomial formula for a symmetric trilinear form"]
+  lem_leading_coefficient_limit["Leading coefficient from a little-o remainder"]
+  lem_scale_normalized_bounded_integral["Vanishing of scaled normalized bounded integrals"]
+  lem_scale_derivative_limit["A convergent function has no nonzero scaled derivative limit"]
+  lem_rigidity_forms_from_symmetry["Rigidity forms from symmetric coefficient tensors"]
+  lem_quadratic_bound_bounded_offsets["Quadratic bound from bounded offsets"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -1029,14 +1037,7 @@ flowchart LR
   def_unit_uniform --> lem_rigidity_mixed_gaussian_limit
   lem_flat_infinity_moments --> lem_rigidity_mixed_gaussian_limit
   lem_taylor_two --> lem_rigidity_mixed_gaussian_limit
-  def_bilinear_trace --> lem_moment_normal_trace
-  def_moment_coefficients --> lem_moment_normal_trace
-  def_plane --> lem_moment_normal_trace
-  def_rigidity_normal_vector --> lem_moment_normal_trace
-  def_tangent_at_infinity --> lem_moment_normal_trace
-  def_unit_uniform --> lem_moment_normal_trace
-  lem_bilinear_trace_basis --> lem_moment_normal_trace
-  lem_taylor_two --> lem_moment_normal_trace
+  lem_cylinder_second_coefficient_trace --> lem_moment_normal_trace
   lem_uniform_cylinder_identity --> lem_moment_normal_trace
   lem_bounded_tube_plane_to_support --> lem_flat_infinity_bounded_holes
   lem_rigidity_normal_vector_exists --> lem_flat_infinity_bounded_holes
@@ -1275,9 +1276,8 @@ flowchart LR
   gmt_vague --> def_first_crossing_data
   lem_first_moment_normal_from_vanishing --> lem_rigidity_normal_vector_exists
   lem_odd_coefficients_plane_zero --> lem_rigidity_normal_vector_exists
-  def_rigidity_adjusted_form --> lem_rigidity_forms_exist
-  def_rigidity_omega --> lem_rigidity_forms_exist
-  lem_rigidity_normal_vector_exists --> lem_rigidity_forms_exist
+  def_moment_coefficients --> lem_rigidity_forms_exist
+  lem_rigidity_forms_from_symmetry --> lem_rigidity_forms_exist
   def_orthogonal_grading --> lem_polynomial_feature_identities
   def_polynomial_feature --> lem_polynomial_feature_identities
   lem_orthonormal_span_projection --> lem_polynomial_feature_identities
@@ -1588,3 +1588,6 @@ flowchart LR
   lem_subspace_gaussian_trace_cylinder --> lem_cylinder_second_coefficient_trace
   lem_taylor_multiply_scale --> lem_cylinder_second_coefficient_trace
   lem_bilinear_trace_basis --> lem_bilinear_trace_orthogonal_split
+  lem_uniform_normalized_gaussian_norm --> lem_moment_product_growth
+  lem_moment_coefficient_growth_images --> lem_bounded_tube_cubic_vanishing
+  lem_moment_product_growth --> lem_bounded_tube_cubic_vanishing

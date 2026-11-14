@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "1ca73520747f34c69b7e67a7dd7d93de0272c41b",
+  "source_revision": "4f82b5f1f3718c6dca7ea0ffaaa301b4da37d323",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -1159,6 +1159,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.bilinearTrace_eq_restrict_add_orthogonal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/OrthogonalTraceSplit.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.bilinearTrace_eq_sum_diagonal": {
       "project": "local",
       "kind": "theorem",
@@ -1318,15 +1330,14 @@
     "Preiss.conical_flatness_gap": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/ConicalGap.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.conical_gaussianMoment_homogeneous": {
       "project": "local",
@@ -1345,6 +1356,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/ConicalMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.conical_gaussian_planeEnergy_eq_ball": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/ConicalPlaneEnergy.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -2067,15 +2090,14 @@
     "Preiss.evenMomentCoefficient_eq_projection_norm": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.eventually_ball_mass_lower_bound_of_flat_limit": {
       "project": "local",
@@ -2345,15 +2367,14 @@
     "Preiss.exists_firstMomentNormalVector": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero": {
       "project": "local",
@@ -2681,6 +2702,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/BoundedTube.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_points_rescaled_tendsto_of_infDist": {
       "project": "local",
       "kind": "theorem",
@@ -2853,15 +2886,14 @@
     "Preiss.exists_uniform_dist_plane_support_bound": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_uniform_gaussian_tail_radius": {
       "project": "local",
@@ -3152,6 +3184,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.first_second_taylor_coefficients_of_mul_scale": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/TaylorShift.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.flagProjectionLayer": {
       "project": "local",
@@ -3503,6 +3547,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.gaussianMass_half_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianNormBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussianMass_unitUniform": {
       "project": "local",
       "kind": "theorem",
@@ -3526,6 +3582,18 @@
         "propext"
       ],
       "kernel_status": "definition_checked"
+    },
+    "Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentCoefficientEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.gaussianMomentCoefficient_conical": {
       "project": "local",
@@ -3556,6 +3624,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentCoefficientEstimates.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -3760,6 +3840,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMoment_taylor_remainder_map": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/SubspaceMomentCoefficients.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4586,6 +4678,30 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_norm_pow_mul_gaussian_le_halfMass": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianNormBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integral_norm_pow_mul_gaussian_le_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianNormBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.integral_norm_sq_gaussian_unitUniform": {
       "project": "local",
@@ -5767,18 +5883,29 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.normalized_gaussian_norm_pow_le_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianNormBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.oddMomentCoefficient_restrict_plane_eq_zero": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.ordered_nonnegative_trace_cutoff_bounds": {
       "project": "local",
@@ -6447,6 +6574,78 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.subspaceMomentTraceCLM": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.subspaceMomentTraceCLM_apply": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.subspaceMomentTraceCLM_momentKernel": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.subspaceTrace_gaussianMoment_eq_integral": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.subspaceTrace_gaussianMoment_of_cylinder": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.subspaceTrace_secondCoefficient_of_cylinder": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/SubspaceMomentCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow": {
       "project": "local",
       "kind": "theorem",
@@ -6510,15 +6709,14 @@
     "Preiss.support_normal_sq_eq_inner": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero": {
       "project": "local",

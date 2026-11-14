@@ -1,23 +1,11 @@
+import Preiss.Analysis.TaylorLimits
 import Preiss.Uniform.FlatAtInfinity.Basic
 import Preiss.Uniform.MomentExpansion
 import Mathlib.Tactic
 open MeasureTheory Filter Set Asymptotics
-open scoped Topology
+open scoped Topology BigOperators
 namespace Preiss
 variable {m n : ℕ}
-theorem tendsto_scaled_of_isLittleO_sub
-    {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F]
-    (f : ℝ → F) (a : F) (k : ℕ)
-    (h : IsLittleO (𝓝[>] (0 : ℝ))
-      (fun s => f s - s ^ k • a) (fun s : ℝ => s ^ k)) :
-    Tendsto (fun s => (s ^ k)⁻¹ • f s) (𝓝[>] (0 : ℝ)) (𝓝 a) := by
-  have ht := h.tendsto_inv_smul_nhds_zero.add_const a
-  simp only [zero_add] at ht
-  apply ht.congr'
-  filter_upwards [self_mem_nhdsWithin] with s hs
-  rw [smul_sub, smul_smul, inv_mul_cancel₀ (pow_ne_zero k (ne_of_gt hs)), one_smul,
-    sub_add_cancel]
-
 theorem gaussianMoment_first_scaled_limit
     (μ : Measure (Euclidean n)) (B : MomentCoefficientFamily n)
     (hB : IsMomentExpansion μ B) (k : ℕ) (hk : 0 < k) (u : Fin k → Euclidean n) :
@@ -29,7 +17,7 @@ theorem gaussianMoment_first_scaled_limit
   have ht := tendsto_scaled_of_isLittleO_sub _ _ 1 h
   have he := ((ContinuousMultilinearMap.apply ℝ (fun _ : Fin k => Euclidean n) ℝ u).continuous.tendsto
     (B k 1)).comp ht
-  simpa only [ContinuousMultilinearMap.apply_apply, ContinuousMultilinearMap.smul_apply,
+  simpa only [Function.comp_def, ContinuousMultilinearMap.apply_apply, ContinuousMultilinearMap.smul_apply,
     smul_eq_mul, pow_one, div_eq_mul_inv, mul_comm] using he
 
 theorem gaussianMoment_second_scaled_limit
@@ -46,8 +34,8 @@ theorem gaussianMoment_second_scaled_limit
   have ht := tendsto_scaled_of_isLittleO_sub _ _ 2 h
   have he := ((ContinuousMultilinearMap.apply ℝ (fun _ : Fin k => Euclidean n) ℝ u).continuous.tendsto
     ((1 / 2 : ℝ) • B k 2)).comp ht
-  simpa only [ContinuousMultilinearMap.apply_apply, ContinuousMultilinearMap.smul_apply,
-    smul_eq_mul, one_div, div_eq_mul_inv, mul_comm] using he
+  simpa only [Function.comp_def, ContinuousMultilinearMap.apply_apply, ContinuousMultilinearMap.smul_apply,
+    smul_eq_mul, one_mul, one_div, div_eq_mul_inv, mul_comm] using he
 
 theorem mixed_gaussian_limit_of_moment_expansion
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
@@ -85,7 +73,7 @@ theorem mixed_gaussian_limit_of_moment_expansion
   rw [split, gaussianMomentForm_apply μ 3 s (integrable_gaussianMomentKernel μ hm hμ 3 s hs'),
     gaussianMomentForm_apply μ 2 s (integrable_gaussianMomentKernel μ hm hμ 2 s hs')]
   simp only [gaussianMoment, Fin.prod_univ_three, Fin.prod_univ_two,
-    Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two]
+    Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.head_cons, Matrix.tail_cons]
   have swap₃ : (∫ z, inner ℝ z v * inner ℝ z v * inner ℝ z w * Real.exp (-s * ‖z‖ ^ 2) ∂μ) =
       ∫ z, Real.exp (-s * ‖z‖ ^ 2) * (inner ℝ z v)^2 * inner ℝ z w ∂μ := by
     congr 1
@@ -102,6 +90,7 @@ theorem mixed_gaussian_limit_of_moment_expansion
     rw [gaussianMass_unitUniform μ hm hμ s hs']
     exact (mul_pos (Real.Gamma_pos_of_pos (by positivity)) (Real.rpow_pos_of_pos hs' _)).ne'
   unfold gaussianMass at hmass ⊢
+  simp only [neg_mul] at hmass ⊢
   field_simp [hs'.ne', hmass]
   <;> ring
 
@@ -137,9 +126,49 @@ theorem normalized_centered_gaussian_limit_of_first_coefficient
     gaussianMomentForm_apply μ 1 s (integrable_gaussianMomentKernel μ hm hμ 1 s hs')]
   simp only [gaussianMoment, Fin.prod_univ_one, pow_one, Nat.factorial_one, Nat.cast_one, div_one]
   unfold gaussianMass at hmass ⊢
+  simp only [neg_mul] at hmass ⊢
   field_simp [hmass, hs'.ne']
   <;> ring
 
 #print axioms normalized_centered_gaussian_limit_of_first_coefficient
+
+theorem exists_normalized_norm_sq_centered_gaussian_limit
+    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
+    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B) (b w : Euclidean n) :
+    ∃ L : ℝ, Tendsto (fun s => (s / gaussianMass μ s) *
+      ∫ z, ‖z‖^2 * inner ℝ (z-b) w * Real.exp (-s * ‖z‖^2) ∂μ)
+      (𝓝[>] (0 : ℝ)) (𝓝 L) := by
+  classical
+  let e := EuclideanSpace.basisFun (Fin n) ℝ
+  let A (i : Fin n) := 3 * B 3 2 ![e i,e i,w] - 4 * B 2 1 ![e i,e i] * inner ℝ b w
+  have hlim := tendsto_finset_sum Finset.univ (fun i _ =>
+    mixed_gaussian_limit_of_moment_expansion μ hm hμ B hB b (e i) w)
+  refine ⟨(∑ i, A i) / 8, ?_⟩
+  apply (hlim.div_const 8).congr'
+  filter_upwards [self_mem_nhdsWithin] with s hs
+  have hs' : 0 < s := hs
+  have hint (i : Fin n) : Integrable
+      (fun z => Real.exp (-s * ‖z‖^2) * (inner ℝ z (e i))^2 * inner ℝ (z-b) w) μ := by
+    have h₃ := (ContinuousMultilinearMap.apply ℝ (fun _ : Fin 3 => Euclidean n) ℝ
+      ![e i,e i,w]).integrable_comp (integrable_gaussianMomentKernel μ hm hμ 3 s hs')
+    have h₂ := (ContinuousMultilinearMap.apply ℝ (fun _ : Fin 2 => Euclidean n) ℝ
+      ![e i,e i]).integrable_comp (integrable_gaussianMomentKernel μ hm hμ 2 s hs')
+    have hi₃ : Integrable (fun z => Real.exp (-s * ‖z‖^2) * (inner ℝ z (e i))^2 * inner ℝ z w) μ := by
+      simpa [Function.comp_def, ContinuousMultilinearMap.smul_apply, momentKernel_apply,
+        Fin.prod_univ_three, pow_two, mul_assoc] using h₃
+    have hi₂ : Integrable (fun z => Real.exp (-s * ‖z‖^2) * (inner ℝ z (e i))^2) μ := by
+      simpa [Function.comp_def, ContinuousMultilinearMap.smul_apply, momentKernel_apply,
+        Fin.prod_univ_two, pow_two, mul_assoc] using h₂
+    simpa only [inner_sub_left, mul_sub] using hi₃.sub (hi₂.mul_const (inner ℝ b w))
+  rw [← Finset.mul_sum, ← integral_finsetSum _ (fun i _ => hint i)]
+  have hsum (z : Euclidean n) :
+      (∑ i, Real.exp (-s * ‖z‖^2) * (inner ℝ z (e i))^2 * inner ℝ (z-b) w) =
+        ‖z‖^2 * inner ℝ (z-b) w * Real.exp (-s * ‖z‖^2) := by
+    rw [← Finset.sum_mul, ← Finset.mul_sum, e.sum_sq_inner_left z]
+    ring
+  simp_rw [hsum]
+  ring
+
+#print axioms exists_normalized_norm_sq_centered_gaussian_limit
 end Preiss
 
