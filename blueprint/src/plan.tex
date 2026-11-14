@@ -287,8 +287,8 @@ A measure is $m$-conical if $D^m_{0,r}\nu=\nu$ for every $r>0$.
 
 \begin{lemma}[Gaussian moments of a normalized flat measure]
 \label{lem:flat-gaussian-even-moments}
-\lean{Preiss.flat_gaussianMoment_diagonal, Preiss.flat_gaussianMoment_odd}
-\uses{def:moments, def:plane, mathlib:standard-gaussian}
+\lean{Preiss.flat_gaussianMoment_diagonal}
+\uses{lem:unit-flat-conical, lem:zero-dimensional-flat-moments, lem:flat-moment-projection, lem:conical-even-support-moments, lem:conical-moment-scaling}
 
 
 
@@ -398,7 +398,7 @@ For $m>0$, positive finite existing density almost everywhere implies that almos
 \begin{lemma}[Small Gaussian distance energy forces plane support proximity]
 \label{lem:small-energy-no-holes}
 \lean{Preiss.dist_support_lt_of_small_gaussian_plane_energy}
-\uses{def:plane, def:unit-uniform, lem:grassmannian, lem:plane-supported-uniform-flat, lem:uniform-compactness, lem:vague-gaussian-polynomials, lem:vague-support-approximation}
+\uses{lem:weighted-energy-limit-support, lem:gaussian-plane-energy-integrable, lem:uniform-compactness, lem:plane-projection-subsequence, lem:plane-supported-uniform-flat, lem:unit-flat-support-regularity, lem:vague-support-approximation}
 
 
 
@@ -430,7 +430,7 @@ require conicality or eigenvalue assumptions.
 \begin{lemma}[Homogeneity and parity of conical moments]
 \label{lem:conical-moments}
 \lean{Preiss.conical_gaussianMoment_homogeneous, Preiss.conical_gaussianMoment_odd}
-\uses{def:conical, def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-covariance, lem:moment-support-polynomial, lem:taylor-two}
+\uses{lem:conical-moment-scaling, lem:scaled-moment-limits, lem:taylor-two}
 
 
 
@@ -452,7 +452,7 @@ The support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.
 \begin{lemma}[All Gaussian polynomial moments of blow-downs have limits]
 \label{lem:blowdown-moment-limits}
 \lean{Preiss.blowdown_gaussian_polynomial_limit}
-\uses{def:dimensional-blowup, def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-covariance, lem:radial, lem:scaled-moment-limits}
+\uses{lem:coordinate-product-representation, lem:blowdown-product-limits, lem:gaussian-product-moment-conversion}
 
 
 
@@ -475,7 +475,7 @@ polynomial moment of $D^m_{0,r}\nu$ as $r\to\infty$.
 \begin{lemma}[Positive covariance form, trace and support identity]
 \label{lem:conical-covariance}
 \lean{Preiss.conical_covariance_trace_support}
-\uses{def:conical, def:moments, def:unit-uniform, lem:conical-moments, lem:radial}
+\uses{lem:even-moment-positivity, lem:moment-second-total-trace, lem:conical-support-covariance}
 
 
 
@@ -838,33 +838,15 @@ Closed balls decrease to the singleton, and one such ball has finite measure.
 Apply continuity from above.
 \end{proof}
 
-\begin{lemma}[Normalization bridges]
+\begin{lemma}[Upstream density convention]
 \label{lem:density-bridge}
-\uses{lem:density-limit-values}
-\lean{Preiss.density_iff_upstream, Preiss.density_iff_openBall_limit}
-\uses{def:positive-density, gmt:density-bounds, gmt:density-exists-set, gmt:density-limit}
-
-
-
-
-
-
-
-
-
-
-Positive finite equal densities are equivalent to membership in the existing
-positive-finite-density-exists set, and to a positive finite limit of
-$\mu(B(x,r))/r^m$.
+\lean{Preiss.density_iff_upstream}
+\uses{def:positive-density, gmt:density-exists-set, lem:density-limit-values}
+Positive finite equal lower and upper densities are equivalent to membership in
+FormalizingGMT's positive-finite-density-exists set.
 \end{lemma}
-\begin{proof}[Planned proof]
-
-Use the complete order topology of ENNReal. Squeeze open and closed balls
-using radii $(1\pm\varepsilon)r$, then let $\varepsilon\downarrow0$.
-The radius-normalized limit is $2^m$ times the diameter-normalized one.
-De Lellis further divides by $\omega_m$; the resulting constant is positive
-and finite. Equality, positivity, and finiteness are invariant under this
-change, but exact constants in uniform-measure lemmas must be transported.
+\begin{proof}
+Use the existing density-value identifications with the lower and upper densities.
 \end{proof}
 
 \begin{lemma}[Finite upper density implies Hausdorff absolute continuity]
@@ -1519,7 +1501,7 @@ A measure $\mu$ is weakly linearly approximable at $x$ if for every $\eta>0$ the
 \begin{lemma}[Small projection direction bounds projected tube measure]
 \label{lem:projected-tube-slab-bound}
 \lean{Preiss.hausdorffMeasure_projected_tube_le}
-\uses{lem:plane-hausdorff}
+\uses{lem:plane-hausdorff, lem:plane-slab-measure, lem:projected-tube-contained-slab, lem:empty-cylinder-direction}
 
 
 
@@ -1699,7 +1681,7 @@ Choose \(a\in G\) and \(r_0>0\) so that, for \(0<r<r_0\),
 \begin{lemma}[Transfer density bounds and flat tangents to finite pieces]
 \label{lem:finite-piece-transfer}
 \lean{Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff}
-\uses{gmt:finite-restriction, gmt:restriction-tangents, lem:finite-pieces, mathlib:besicovitch-differentiation, thm:matching}
+\uses{lem:absolute-continuity-density-bounds, lem:absolute-continuity-tangent-cones}
 
 
 
@@ -1792,7 +1774,7 @@ Reuse Vitali.exists\_disjoint\_subfamily\_covering\_enlargement\_ball within the
 \begin{lemma}[Pure weakly approximable sets have every-plane null projection]
 \label{lem:pure-wla-null-projection}
 \lean{Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation}
-\uses{lem:projected-tube-slab-bound, lem:pure-cone-escape, lem:tube-support-upgrade, lem:uniform-compact-selection, mathlib:besicovitch-cover}
+\uses{lem:fixed-lower-density-projection-null, lem:closed-weak-approximation-good-set, lem:weak-approximation-good-exhaustion}
 
 
 
@@ -1891,7 +1873,7 @@ contradicting the upper bound \(C_m\sigma^m\) when \(\eta\) is sufficiently smal
 \begin{theorem}[Marstrand-Mattila set criterion]
 \label{thm:mm-set}
 \lean{Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt}
-\uses{lem:decomposition, lem:packing-contradiction, lem:pure-wla-null-projection, lem:weak-approximation-restrict-ae}
+\uses{lem:decomposition, lem:weak-approximation-restrict-ae, lem:packing-contradiction, lem:pure-wla-null-projection, lem:packing-base-point, lem:carrier-closure}
 
 
 
@@ -1912,7 +1894,7 @@ A Borel set \(E\subset\mathbb R^n\) with finite \(\mathcal H^m\)-measure which i
 \begin{theorem}[Marstrand-Mattila measure criterion]
 \label{thm:mm-measure}
 \lean{Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents}
-\uses{lem:carrier-calculus, lem:finite-piece-transfer, lem:flat-to-approximation, thm:mm-set}
+\uses{lem:finite-pieces, lem:carrier-calculus, lem:finite-piece-transfer, lem:flat-to-approximation, thm:mm-set}
 
 
 
@@ -1960,7 +1942,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Analytic extension of weighted complementary projections]
 \label{lem:graded-analytic-projection}
-\uses{def:orthogonal-grading, lem:weighted-grading-positive-complement, lem:divided-grading-constant-injective}
+\uses{def:orthogonal-grading, lem:kernel-flag-divided-operators, lem:divided-operator-positive-inverse, lem:weighted-grading-positive-complement}
 \lean{Preiss.analyticAt_weightedProjection_zero}
 
 
@@ -2731,8 +2713,8 @@ the convergent exponential series with its remainder bound.
 
 \begin{lemma}[Coherent operator-norm moment Taylor coefficients]
 \label{lem:taylor-two}
-\lean{Preiss.exists_gaussianMoment_taylor_coefficients, Preiss.gaussianMomentCoefficient_unique, Preiss.eq_zero_of_isLittleO_pow_smul}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound, lem:feature-norm-functionals, lem:feature-moment-vanishing}
+\lean{Preiss.exists_gaussianMoment_taylor_coefficients, Preiss.gaussianMomentCoefficient_unique}
+\uses{def:moment-coefficients, lem:finite-moment-taylor-jets, lem:coherent-finite-jets, lem:asymptotic-taylor-vanishing}
 
 
 
@@ -2762,7 +2744,7 @@ statement is stronger and safer than merely pointwise convergence on the support
 \begin{lemma}[Degree restriction on Taylor coefficients]
 \label{lem:moment-coefficient-vanishing}
 \lean{Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-norm-bound, lem:taylor-two}
+\uses{def:moment-coefficients, lem:asymptotic-taylor-vanishing, lem:moment-operator-growth}
 
 
 
@@ -2792,7 +2774,7 @@ statement is stronger and safer than merely pointwise convergence on the support
 \begin{lemma}[Vanishing total second Taylor trace]
 \label{lem:moment-second-total-trace}
 \lean{Preiss.trace_gaussianMomentForm_two, Preiss.trace_secondMomentCoefficient_eq_zero}
-\uses{def:bilinear-trace, def:moment-coefficients, def:moments, def:unit-uniform, lem:bilinear-trace-basis, lem:radial, lem:taylor-two}
+\uses{lem:moment-trace-operator, lem:gaussian-radial-second-moment, lem:asymptotic-taylor-vanishing, def:moment-coefficients}
 
 
 
@@ -2817,7 +2799,7 @@ These are separate, comparatively short lemmas.
 \begin{lemma}[Polynomial support identities for Taylor coefficients]
 \label{lem:moment-support-polynomial}
 \lean{Preiss.sum_gaussianMomentCoefficient_eq_norm_pow}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-coefficient-vanishing, lem:taylor-one, lem:taylor-two}
+\uses{def:moment-coefficients, lem:moment-coefficient-vanishing, lem:taylor-one, lem:asymptotic-taylor-vanishing}
 
 
 
@@ -2847,7 +2829,7 @@ statement is stronger and safer than merely pointwise convergence on the support
 \begin{lemma}[Odd and even leading moment limits]
 \label{lem:scaled-moment-limits}
 \lean{Preiss.gaussianMoment_scaled_odd_limit, Preiss.gaussianMoment_scaled_even_limit}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:moment-coefficient-vanishing, lem:taylor-two}
+\uses{def:moment-coefficients, lem:moment-coefficient-vanishing, lem:asymptotic-taylor-vanishing}
 
 
 
@@ -3070,7 +3052,7 @@ adapter before applying a universal flatness threshold.
 \begin{lemma}[Half-space reduction retaining the tangent witness]
 \label{lem:halfspace-tangent-witness}
 \lean{Preiss.exists_halfSpace_dimensionalTangent}
-\uses{gmt:support-not-full, gmt:uniform-halfspace, gmt:uniform-tangents, lem:dimensional-tangent-ball-constant}
+\uses{gmt:support-not-full, gmt:uniform-halfspace, gmt:uniform-tangents, lem:dimensional-tangent-ball-constant, lem:unit-uniform-tangent-existence, gmt:tangent-open-null}
 
 
 
@@ -3101,7 +3083,7 @@ The adapter should reuse that proof pattern and retain its witness.
 \begin{lemma}[Corrected hyperplane reduction with lineage]
 \label{lem:hyperplane-tangent-lineage}
 \lean{Preiss.exists_hyperplane_eq_or_dimensionalTangent}
-\uses{gmt:barycenter-quadratic-bound, gmt:quadratic-support-tangent, gmt:uniform-hyperplane, gmt:zero-barycenter-hyperplane}
+\uses{gmt:barycenter-quadratic-bound, gmt:quadratic-support-tangent, gmt:uniform-hyperplane, gmt:zero-barycenter-hyperplane, lem:unit-uniform-tangent-existence}
 
 
 
@@ -3142,7 +3124,7 @@ the original half-space boundary must not enter the graph.
 \begin{lemma}[Codimension reduction retaining orbit membership]
 \label{lem:uniform-reduction}
 \lean{Preiss.uniform_dimension_reduction}
-\uses{def:unit-uniform, gmt:support-not-full, lem:halfspace-tangent-witness, lem:hyperplane-tangent-lineage, lem:hyperplane-transport-map, lem:pseudotangent-transitive}
+\uses{def:unit-uniform, gmt:support-not-full, lem:halfspace-tangent-witness, lem:hyperplane-tangent-lineage, lem:hyperplane-transport-map, lem:pseudotangent-transitive, lem:dimensional-tangent-bounded-orbit, lem:plane-isometric-parametrization}
 
 
 
@@ -3189,8 +3171,8 @@ dimension theorem, or classification of all uniform measures.
 
 \begin{theorem}[Flat pseudotangent of a uniform measure]
 \label{thm:flat-pseudotangent}
-\lean{Preiss.uniform_has_flat_pseudotangent}
-\uses{def:flat, def:unit-uniform, lem:plane-supported-uniform-flat, lem:pseudotangent-transitive, lem:uniform-reduction}
+\lean{Preiss.uniform_has_flat_pseudotangent, Preiss.unitUniform_exists_flat_uniformPseudotangent}
+\uses{def:flat, def:unit-uniform, lem:plane-supported-uniform-flat, lem:pseudotangent-transitive, lem:uniform-reduction, lem:unit-flat-support-regularity, lem:unit-flat-unit-uniform}
 
 
 For $0<m\leq n$ and an $m$-uniform measure $\nu$, there are an $m$-plane $V$, support centres $a_i$, and radii $0<r_i\leq1$ such that $D^m_{a_i,r_i}\nu\rightharpoonup\sigma_V$, where $\sigma_V$ is the unit-ball normalized flat measure on $V$. The centres may move; no assertion that $r_i\to0$ is made.
@@ -3208,7 +3190,7 @@ dimension theorem, or classification of all uniform measures.
 \begin{theorem}[Uniqueness and full convergence of the blow-down]
 \label{thm:unique-infinity}
 \lean{Preiss.unique_tangent_at_infinity, Preiss.blowdown_sequence_converges}
-\uses{def:tangent-at-infinity, def:unit-uniform, lem:blowdown-moment-limits, lem:infinity-compactness, lem:moment-determination, lem:vague-countable-metric, lem:vague-gaussian-polynomials}
+\uses{lem:unit-uniform-infinity-existence, lem:unit-uniform-infinity-unique, lem:uniform-compactness}
 
 
 
@@ -3231,7 +3213,7 @@ factor preserves the set of limits at infinity, so S02--S03 imply conicality.
 \begin{lemma}[Elementary eigenvalue rigidity from one nearby support point]
 \label{lem:conical-eigenvalue-rigidity}
 \lean{Preiss.conical_covariance_eq_projection_of_near_eigenvector}
-\uses{def:conical, def:plane, lem:conical-covariance, lem:spectral-minimizing-plane}
+\uses{lem:quadratic-near-basis-rigidity}
 
 
 
@@ -3259,7 +3241,7 @@ two-dimensional shortcut in the original printed proof.
 \begin{corollary}[The unique blow-down is conical]
 \label{cor:conical}
 \lean{Preiss.tangent_at_infinity_conical}
-\uses{def:conical, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:vague-moving-blowups, thm:unique-infinity}
+\uses{lem:unit-uniform-infinity-unique, lem:vague-moving-blowups, lem:blowup-composition}
 
 
 
@@ -3282,7 +3264,7 @@ factor preserves the set of limits at infinity, so S02--S03 imply conicality.
 \begin{theorem}[Uniform conical flatness gap]
 \label{thm:gap}
 \lean{Preiss.conical_flatness_gap}
-\uses{def:conical, def:plane, def:unit-uniform, lem:conical-eigenvalue-rigidity, lem:homogeneous-energy-radial, lem:plane-supported-uniform-flat, lem:small-energy-no-holes, lem:spectral-minimizing-plane, lem:uniform-ball-boundary}
+\uses{lem:ordered-bilinear-spectrum, lem:covariance-minimizing-plane, lem:gaussian-bilinear-covariance, lem:conical-gaussian-ball-energy, lem:small-energy-no-holes, lem:conical-covariance, lem:conical-eigenvalue-rigidity}
 
 
 
@@ -3327,7 +3309,7 @@ For $\nu\in\mathcal U_m$ with blow-down $\sigma_V$, there is a unique $b\in V^\p
 
 \begin{definition}[Normal valued bilinear map from the third coefficient]
 \label{def:rigidity-omega}
-\lean{Preiss.RigidityOmega, Preiss.IsRigidityOmega, Preiss.exists_rigidityOmega_and_adjustedForm}
+\lean{Preiss.RigidityOmega, Preiss.IsRigidityOmega}
 \uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector}
 
 
@@ -3343,7 +3325,7 @@ Define the continuous symmetric bilinear map $\omega:V\times V\to V^\perp$ by $\
 
 \begin{definition}[Adjusted symmetric quadratic form on the limiting plane]
 \label{def:rigidity-adjusted-form}
-\lean{Preiss.RigidityAdjustedForm, Preiss.IsRigidityAdjustedForm, Preiss.exists_rigidityOmega_and_adjustedForm}
+\lean{Preiss.RigidityAdjustedForm, Preiss.IsRigidityAdjustedForm}
 \uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega}
 
 
@@ -3360,7 +3342,7 @@ Define the continuous symmetric bilinear form $\widehat b(u,v)=b_2^{(2)}(u,v)+\l
 \begin{lemma}[Even Taylor coefficients from a flat blow-down]
 \label{lem:flat-infinity-moments}
 \lean{Preiss.evenMomentCoefficient_eq_projection_norm}
-\uses{def:moment-coefficients, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:moment-covariance, lem:scaled-moment-limits, lem:vague-gaussian-polynomials}
+\uses{lem:blowdown-even-moment-limit, lem:vague-gaussian-moments, lem:flat-gaussian-even-moments}
 
 
 
@@ -3385,7 +3367,7 @@ factorial from M08.
 \begin{lemma}[Odd top coefficients vanish on the flat limiting plane]
 \label{lem:odd-coefficients-plane-zero}
 \lean{Preiss.oddMomentCoefficient_restrict_plane_eq_zero}
-\uses{def:moment-coefficients, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial, lem:vague-support-approximation}
+\uses{lem:flat-infinity-moments, lem:moment-support-polynomial, lem:vague-support-approximation, lem:dimensional-blowup-support, lem:leading-homogeneous-term, lem:symmetric-multilinear-diagonal-injective}
 
 
 
@@ -3416,7 +3398,7 @@ Repeat with $-v$ and use polarization to obtain the full multilinear restriction
 \begin{lemma}[Cylinder identity and bounded normal coordinates]
 \label{lem:uniform-cylinder-identity}
 \lean{Preiss.support_normal_sq_eq_inner}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial}
+\uses{lem:moment-support-polynomial, lem:flat-infinity-moments, lem:normal-coordinate-identities}
 
 
 
@@ -3441,7 +3423,7 @@ Also $|Qx-b|=|b|$ there. Keep these identities as named lemmas.
 \begin{lemma}[Mixed Gaussian moment limit defining omega]
 \label{lem:rigidity-mixed-gaussian-limit}
 \lean{Preiss.mixed_gaussian_limit_eq_omega}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:taylor-two}
+\uses{lem:mixed-centered-gaussian-limit}
 
 
 
@@ -3478,7 +3460,7 @@ Record differentiability and domination hypotheses before using l'Hopital.
 \begin{lemma}[Normal second Taylor trace]
 \label{lem:moment-normal-trace}
 \lean{Preiss.trace_secondMomentCoefficient_normal_eq}
-\uses{def:bilinear-trace, def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:bilinear-trace-basis, lem:taylor-two, lem:uniform-cylinder-identity}
+\uses{lem:cylinder-second-coefficient-trace, lem:uniform-cylinder-identity}
 
 
 
@@ -3503,7 +3485,7 @@ These are separate, comparatively short lemmas.
 \begin{lemma}[Bounded distance from the limiting plane to the support]
 \label{lem:flat-infinity-bounded-holes}
 \lean{Preiss.exists_uniform_dist_plane_support_bound}
-\uses{def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:plane-supported-uniform-flat, lem:uniform-cylinder-identity, lem:uniform-near-support-compactness, lem:vague-support-approximation}
+\uses{lem:rigidity-normal-vector-exists, lem:uniform-cylinder-identity, lem:bounded-tube-plane-to-support}
 
 
 
@@ -3541,7 +3523,7 @@ near-support variant of S05 is essential.
 \begin{lemma}[Vanishing normal mixed cubic coefficients]
 \label{lem:rigidity-cubic-vanishing}
 \lean{Preiss.thirdMomentCoefficient_normal_vanishes}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:odd-coefficients-plane-zero, lem:taylor-two, lem:uniform-cylinder-identity}
+\uses{lem:bounded-tube-cubic-vanishing, lem:uniform-cylinder-identity, lem:odd-coefficients-plane-zero, lem:flat-infinity-moments, lem:symmetric-cubic-binomial, lem:moment-support-polynomial}
 
 
 
@@ -3570,7 +3552,7 @@ without first establishing these vanishings.
 \begin{lemma}[Vanishing contracted Gaussian limit]
 \label{lem:rigidity-contracted-limit-zero}
 \lean{Preiss.contracted_gaussian_limit_eq_zero}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-parameter-derivative, lem:gaussian-polynomial-integrable, lem:rigidity-mixed-gaussian-limit, lem:uniform-cylinder-identity}
+\uses{lem:bounded-tube-projected-contraction, lem:uniform-cylinder-identity}
 
 
 
@@ -3607,7 +3589,7 @@ Record differentiability and domination hypotheses before using l'Hopital.
 \begin{lemma}[Fourth degree support identity]
 \label{lem:rigidity-fourth-support-identity}
 \lean{Preiss.fourth_order_support_identity}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial, lem:rigidity-cubic-vanishing}
+\uses{lem:bounded-tube-cubic-vanishing, lem:uniform-cylinder-identity, lem:odd-coefficients-plane-zero, lem:flat-infinity-moments, lem:symmetric-cubic-binomial, lem:moment-support-polynomial}
 
 
 
@@ -3636,7 +3618,7 @@ without first establishing these vanishings.
 \begin{lemma}[Zero Gaussian mean of omega]
 \label{lem:rigidity-omega-trace-zero}
 \lean{Preiss.integral_rigidityOmega_eq_zero}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-contracted-limit-zero, lem:rigidity-mixed-gaussian-limit}
+\uses{lem:gaussian-vector-trace-contractions, lem:projected-mixed-gaussian-sum, lem:rigidity-mixed-gaussian-limit, lem:rigidity-contracted-limit-zero, lem:flat-infinity-moments}
 
 
 
@@ -3661,7 +3643,7 @@ The same argument works against each fixed normal vector, not only $b$.
 \begin{lemma}[Pointwise square bound for the adjusted form]
 \label{lem:rigidity-pointwise-quadratic-bound}
 \lean{Preiss.adjustedForm_sq_le_norm_omega_sq}
-\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-bounded-holes, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity}
+\uses{lem:rigidity-pointwise-from-growth, lem:rigidity-error-linear-growth}
 
 
 
@@ -3699,8 +3681,8 @@ the inequality.
 
 \begin{lemma}[Vanishing lower order Gaussian error]
 \label{lem:rigidity-rescaled-error}
-\lean{Preiss.rigidityError, Preiss.rigidityError_le_linear_growth, Preiss.adjustedForm_gaussian_error_tendsto_zero}
-\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity}
+\lean{Preiss.adjustedForm_gaussian_error_tendsto_zero}
+\uses{lem:rigidity-error-limit-from-growth, lem:rigidity-error-linear-growth}
 
 
 
@@ -3729,7 +3711,7 @@ This is equation (9.34); it is a necessary bridge to the global trace bound.
 \begin{lemma}[Tangential trace is the mean adjusted form]
 \label{lem:rigidity-gaussian-trace}
 \lean{Preiss.trace_tangent_eq_integral_adjustedForm}
-\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-omega-trace-zero, def:bilinear-trace}
+\uses{lem:rigidity-omega-trace-zero, lem:gaussian-mean-zero-correction}
 
 
 
@@ -3755,7 +3737,7 @@ The same argument works against each fixed normal vector, not only $b$.
 \begin{lemma}[Gaussian reproducing identity for omega]
 \label{lem:rigidity-omega-reproducing}
 \lean{Preiss.integral_inner_sq_mul_omega}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-wick-fourth, lem:rigidity-omega-trace-zero}
+\uses{lem:rigidity-omega-trace-zero, lem:gaussian-vector-trace-contractions}
 
 
 
@@ -3784,7 +3766,7 @@ Justify limits by Gaussian quartic domination and Fubini.
 \begin{lemma}[Integral quadratic inequality]
 \label{lem:rigidity-integral-quadratic-bound}
 \lean{Preiss.integral_adjustedForm_sq_le}
-\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:rigidity-mixed-gaussian-limit, lem:rigidity-omega-reproducing, lem:rigidity-pointwise-quadratic-bound, lem:rigidity-rescaled-error, lem:vague-gaussian-polynomials}
+\uses{lem:rigidity-omega-contraction, lem:rigidity-omega-trace-zero, lem:rigidity-rescaled-error, lem:rigidity-pointwise-quadratic-bound, lem:gaussian-rigidity-integral-bounds}
 
 
 
@@ -3821,7 +3803,7 @@ inequality; its final statement (9.41) has the correct direction.
 \begin{lemma}[Positive lower bound for the total second coefficient trace]
 \label{lem:trace-rigidity}
 \lean{Preiss.integral_adjustedForm_lower_bound, Preiss.secondMomentCoefficient_trace_lower_bound}
-\uses{def:bilinear-trace, def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:bilinear-trace-basis, lem:gaussian-quadratic-trace-bound, lem:moment-normal-trace, lem:rigidity-gaussian-trace, lem:rigidity-integral-quadratic-bound}
+\uses{lem:rigidity-integral-quadratic-bound, lem:gaussian-square-upper-trace-lower, lem:moment-normal-trace, lem:rigidity-gaussian-trace, lem:bilinear-trace-orthogonal-split}
 
 
 
@@ -3854,7 +3836,7 @@ inside the current single trace-rigidity node.
 \begin{theorem}[Flatness follows from flatness at infinity]
 \label{thm:infinity-rigidity}
 \lean{Preiss.flat_of_flat_at_infinity}
-\uses{def:flat, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:moment-second-total-trace, lem:plane-supported-uniform-flat, lem:rigidity-forms-exist, lem:rigidity-normal-vector-exists, lem:trace-rigidity, lem:uniform-cylinder-identity}
+\uses{lem:trace-rigidity, lem:moment-second-total-trace, lem:taylor-two, lem:rigidity-normal-vector-exists, lem:rigidity-forms-exist, lem:uniform-cylinder-identity, lem:plane-supported-uniform-flat, lem:unit-uniform-infinity-existence}
 
 
 
@@ -3890,7 +3872,7 @@ inside the current single trace-rigidity node.
 \begin{theorem}[Existence of a flat tangent almost everywhere]
 \label{thm:part-a}
 \lean{Preiss.ae_exists_flat_tangent}
-\uses{def:flat, def:positive-density, lem:dimensional-tangent-closed, lem:dimensional-tangent-compactness, lem:recenter, lem:tangent-existence, lem:tangent-ray, lem:uniform-adapter, thm:flat-pseudotangent}
+\uses{lem:uniform-adapter, lem:recenter, lem:radius-power-density, lem:dimensional-tangent-compactness, lem:dimensional-tangent-ball-constant, lem:flat-tangent-from-uniform-recentering, lem:unit-flat-support-regularity, lem:flat-positive-scalar}
 
 
 
@@ -3915,7 +3897,7 @@ nonzero flat limit. This is \texttt{ae\_exists\_flat\_tangent}.
 \begin{lemma}[First-crossing sequences and their uniform tangent limit]
 \label{lem:first-crossing}
 \lean{Preiss.exists_first_crossing_sequences}
-\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:density-normalization, lem:dimensional-tangent-compactness, lem:flatness-continuous, lem:flatness-minimum, lem:flatness-radius-continuous, lem:greatest-crossing, lem:tangent-blowdown, thm:gap, thm:infinity-rigidity, thm:unique-infinity, def:flatness-cutoff}
+\uses{lem:nonflat-uniform-large-flatness, lem:first-crossing-from-large-flatness}
 
 
 
@@ -3955,7 +3937,7 @@ value theorem. Extract a nonzero unit uniform limit $\xi$ at the $\sigma_i$.
 \begin{lemma}[Divergence of the crossing scale ratios]
 \label{lem:first-crossing-ratio}
 \lean{Preiss.first_crossing_ratio_tendsto_atTop}
-\uses{def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:flatness-minimum, lem:vague-moving-blowups, def:flatness-cutoff}
+\uses{lem:vague-limit-unique, lem:vague-moving-blowups, lem:plane-scaling}
 
 
 
@@ -3979,7 +3961,7 @@ contradicting $F(\xi)=\varepsilon>0$.
 \begin{lemma}[Crossing limit has flat blow-down]
 \label{lem:first-crossing-flat-infinity}
 \lean{Preiss.first_crossing_limit_flat_at_infinity}
-\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:first-crossing, lem:first-crossing-ratio, lem:flatness-continuous, lem:flatness-minimum, lem:vague-moving-blowups, thm:gap, thm:unique-infinity, def:flatness-cutoff}
+\uses{cor:conical, lem:unit-uniform-infinity-existence, lem:flatness-continuous}
 
 
 
@@ -4005,7 +3987,7 @@ retain the factor $R^{-m}$.
 \begin{theorem}[One flat tangent implies all tangents are flat]
 \label{thm:part-b}
 \lean{Preiss.all_tangents_flat_of_one}
-\uses{def:dimensional-tangent, def:flat, def:positive-density, lem:density-normalization, lem:first-crossing, lem:first-crossing-flat-infinity, lem:flatness-cutoff-exists, lem:flatness-gap-cutoff, lem:tangent-ray, thm:infinity-rigidity, lem:radius-power-density}
+\uses{lem:all-dimensional-tangents-flat, lem:density-normalization, lem:density-positive-scalar, lem:flat-tangent-normalization, lem:radius-power-density}
 
 
 
@@ -4412,7 +4394,7 @@ A positive number $\varepsilon$ is a cutoff gap threshold if every unit $m$-unif
 \begin{lemma}[Transfer the conical gap to cutoff flatness]
 \label{lem:flatness-gap-cutoff}
 \lean{Preiss.exists_flatnessGap}
-\uses{def:flatness-cutoff, def:flatness-gap, lem:flatness-minimum, thm:gap}
+\uses{thm:gap, lem:flatness-minimum}
 For $0<m\leq n$ and an admissible cutoff, there exists a positive cutoff gap threshold.
 \end{lemma}
 
@@ -4426,14 +4408,14 @@ Crossing data record positive scales $\sigma_i\leq r_i\to0$, vague limits of the
 \begin{lemma}[Existence of the normal first-moment vector]
 \label{lem:rigidity-normal-vector-exists}
 \lean{Preiss.exists_firstMomentNormalVector}
-\uses{def:rigidity-normal-vector, lem:odd-coefficients-plane-zero}
+\uses{lem:odd-coefficients-plane-zero, lem:first-moment-normal-from-vanishing}
 For a unit uniform measure with a flat blow-down on $V$ and an explicit moment expansion, there exists $b\in V^\perp$ representing the first Taylor coefficient: $B_1^{(1)}(x)=2\langle b,x\rangle$.
 \end{lemma}
 
 \begin{lemma}[Existence of the rigidity bilinear forms]
 \label{lem:rigidity-forms-exist}
 \lean{Preiss.exists_rigidityOmega_and_adjustedForm}
-\uses{def:rigidity-omega, def:rigidity-adjusted-form, lem:rigidity-normal-vector-exists}
+\uses{lem:rigidity-forms-from-symmetry, def:moment-coefficients}
 Given the moment expansion, flat blow-down plane, and normal first-moment vector, there exist the normal-valued symmetric bilinear form $\omega$ and adjusted real symmetric bilinear form satisfying their exact defining identities.
 \end{lemma}
 
@@ -5295,8 +5277,8 @@ Every $m$-dimensional plane in $\mathbb R^n$ is the range of a linear isometric 
 
 \begin{lemma}[Support and regularity of normalized flat measures]
 \label{lem:unit-flat-support-regularity}
-\lean{Preiss.flatOn_support, Preiss.regular_unitFlat, Preiss.unitFlat_support}
-\uses{lem:flat-measure-regularity, lem:measure-support-transport, lem:plane-hausdorff}
+\lean{Preiss.flatOn_support, Preiss.regular_unitFlat, Preiss.unitFlat_support, Preiss.isFlat_unitFlat, Preiss.unitFlat_ne_zero}
+\uses{lem:flat-measure-regularity, lem:measure-support-transport, lem:plane-hausdorff, def:flat}
 
 A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.
 \end{lemma}
@@ -5354,4 +5336,954 @@ Let $D_i$ be the kernel-flag layers and $R_i$ the compression of $P_i$ to $V$. T
 \uses{gmt:uniform-full-dimension, lem:uniform-scaling}
 
 In positive dimension $m$, two $m$-uniform measures on $\mathbb R^m$ with the same positive ball constant are equal. This reuses FormalizingGMT\textquotesingle s full-dimensional classification and identifies the scalar by the unit-ball mass.
+\end{lemma}
+
+\begin{lemma}[Taylor coefficient vanishing from a growth exponent]
+\label{lem:asymptotic-taylor-vanishing}
+\lean{Preiss.isLittleO_rpow_nhdsGT_zero, Preiss.eq_zero_of_isLittleO_pow_smul, Preiss.taylorCoefficient_eq_zero_of_lt_growth}
+
+For positive scales, $s^a=o(s^b)$ when $b<a$. A constant vector whose multiple $s^qv$ is $o(s^q)$ must vanish. Consequently, a normed-space-valued function bounded by $O(s^a)$ and admitting Taylor expansions has zero coefficients in all positive integer degrees below $a$.
+\end{lemma}
+
+\begin{lemma}[Operator-norm growth of Gaussian moments at zero]
+\label{lem:moment-operator-growth}
+\lean{Preiss.gaussianMoment_isBigO_rpow}
+\uses{lem:moment-norm-bound}
+
+For a positive-dimensional unit uniform measure and $k>0$, its $k$-linear Gaussian moment is $O(s^{k/2})$ in operator norm as $s\downarrow0$.
+\end{lemma}
+
+\begin{lemma}[Polynomial division along a triangular grading]
+\label{lem:graded-polynomial-division}
+\lean{Preiss.dividedGradingMap, Preiss.dividedGradingMap_row, Preiss.weightedGrading_comp_dividedGradingMap, Preiss.dividedGradingMap_zero, Preiss.analyticAt_dividedGradingMap}
+\uses{def:orthogonal-grading}
+
+For an orthogonal grading $(D_i)$ and operators $R_j$ with $D_iR_j=0$ when $j<i$, the polynomial $H(s)=\sum_{i\le j}s^{j-i}D_iR_j$ satisfies $(\sum_i s^{i+1}D_i)H(s)=\sum_j s^{j+1}R_j$. Its rows and value at zero are explicit, and it is analytic at every real parameter.
+\end{lemma}
+
+\begin{lemma}[Analytic divided operators for the kernel flag]
+\label{lem:kernel-flag-divided-operators}
+\lean{Preiss.projectedGradingPiece, Preiss.flagProjectionLayer_projectedGradingPiece_eq_zero, Preiss.dividedFlagMap, Preiss.dividedFlagOperator, Preiss.dividedFlagOperator_zero, Preiss.weightedGrading_comp_dividedFlagMap, Preiss.analyticAt_dividedFlagMap, Preiss.analyticAt_dividedFlagOperator, Preiss.isUnit_dividedFlagOperator_zero}
+\uses{lem:graded-polynomial-division, lem:kernel-flag-layer-grading, lem:divided-grading-constant-injective}
+
+Compressing the original grading to a subspace gives the triangular relations needed for polynomial division. The resulting divided map and its restriction to the subspace are analytic; their weighted factorization is exact, and the restricted operator is invertible at zero.
+\end{lemma}
+
+\begin{lemma}[Invertibility of the divided operator at positive scales]
+\label{lem:divided-operator-positive-inverse}
+\lean{Preiss.isUnit_dividedFlagOperator_pos}
+\uses{lem:kernel-flag-divided-operators, lem:weighted-grading-positive-complement}
+
+The restricted divided kernel-flag operator is invertible at every positive parameter, by its weighted factorization and positivity of the original weighted grading.
+\end{lemma}
+
+\begin{lemma}[Uniform Hausdorff bounds for slabs in linear planes]
+\label{lem:plane-slab-measure}
+\lean{Preiss.hausdorffMeasure_plane_slab_le}
+\uses{def:plane}
+
+For $m>0$, a universal constant bounds the $m$-dimensional Hausdorff measure of $\{z\in V:\|z-c\|\le R,\ |\langle v,z-c\rangle|\le dR\}$ by $CdR^m$, for every $m$-plane, center in that plane, unit normal in that plane, and nonnegative $R,d$.
+\end{lemma}
+
+\begin{lemma}[A projected tube lies in a thin plane slab]
+\label{lem:projected-tube-contained-slab}
+\lean{Preiss.projected_tube_subset_slab}
+\uses{def:cone, lem:projection-distance}
+
+If a unit vector $v\in V$ has $\|P_Wv\|\le\varepsilon$, the projection onto $V$ of the radius-$R$ portion of an $\eta R$-tube about $a+W$ lies in the radius-$R$ slab centered at $P_Va$ of relative thickness $\varepsilon+\eta$.
+\end{lemma}
+
+\begin{lemma}[Image-measure bounds from a buffered Vitali cover]
+\label{lem:fivefold-image-covering}
+\lean{Preiss.measure_image_le_mul_of_ball_image_bounds}
+
+In a separable pseudometric space with measurable open sets, assume every point of $C$ admits a positive radius bounded by a common upper bound and $\nu(f(C\cap B(x,5r)))\le K\mu(B(x,r))$. A disjoint Vitali subfamily gives $\nu(f(C))\le K\mu(X)$. No measurability of $f$ or $C$ is needed.
+\end{lemma}
+
+\begin{lemma}[Unit uniform dimensional tangents at every support point]
+\label{lem:unit-uniform-tangent-existence}
+\lean{Preiss.exists_unitUniform_dimensionalTangent}
+\uses{lem:uniform-compactness, lem:uniform-scaling, def:dimensional-tangent}
+
+A unit $m$-uniform measure admits a unit $m$-uniform dimensional tangent at every support point, including $m=0$.
+\end{lemma}
+
+\begin{lemma}[Finite Taylor jets of normed-space-valued analytic functions]
+\label{lem:analytic-finite-jets}
+\lean{Preiss.exists_taylor_jets_of_analyticAt_zero, Preiss.exists_positive_taylor_jets_of_analyticAt_zero}
+
+Every real-parameter analytic function into a real normed space has one coefficient sequence whose degree-$q$ truncation differs from the function by $o(s^q)$ near zero, for every $q$. Its constant coefficient is the value at zero. If that value is zero, the truncations start in degree one.
+\end{lemma}
+
+\begin{lemma}[Extending analytic approximations from a subspace]
+\label{lem:analytic-projection-approximation}
+\lean{Preiss.functional_comp_projection_eq_self, Preiss.exists_analyticApproximation_of_weightedComplement}
+\uses{lem:graded-analytic-projection}
+
+Let $f(s)$ be continuous linear maps into a normed space annihilating the weighted complement of $V$ for positive $s$. If an analytic family $g(s)$, vanishing at zero, approximates $f(s)$ on $V$ with operator error $O(r(s))$, then an analytic family vanishing at zero approximates $f(s)$ on the whole space with the same error order.
+\end{lemma}
+
+\begin{lemma}[Dimensional tangents lie in the bounded-radius scaling orbit closure]
+\label{lem:dimensional-tangent-bounded-orbit}
+\lean{Preiss.IsDimensionalTangent.isUniformPseudotangent}
+\uses{def:dimensional-tangent, lem:pseudotangent-transitive}
+
+Every dimensional tangent at a support point lies in the support-centered scaling orbit closure with radii at most one. The proof discards finitely many large radii; no uniformity of the source measure is needed.
+\end{lemma}
+
+\begin{lemma}[Small projected directions from plane proximity and cone escape]
+\label{lem:cone-projection-direction}
+\lean{Preiss.exists_unit_small_projection_of_near_plane, Preiss.norm_projection_lt_of_outside_cone}
+\uses{def:cone, lem:projection-distance}
+
+A nonzero displacement close to a plane and with small projection onto another plane yields a unit direction in the first plane with quantitatively small projection. Escaping a cone supplies the required nonzero displacement and projection bound.
+\end{lemma}
+
+\begin{lemma}[Quantitative projection bounds from uniform tubes and cone escape]
+\label{lem:uniform-tube-projection-cover}
+\lean{Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape}
+\uses{lem:fivefold-image-covering, lem:projected-tube-slab-bound, lem:cone-projection-direction}
+
+If $D\subseteq C$ has uniform lower ball mass $\delta r^m$, the carrier $C$ lies in sufficiently thin approximating tubes around points of $D$, and every such point admits arbitrarily small cone-escaping displacements, then $\mathcal H^m(P_VD)\le (K\varepsilon/\delta)\mu(X)$. The fivefold-cover estimate uses the tube information at a larger scale, preserving the entire image mass.
+\end{lemma}
+
+\begin{lemma}[Coherent Taylor coefficients from compatible finite jets]
+\label{lem:coherent-finite-jets}
+\lean{Preiss.exists_coherent_taylor_coefficients_of_finite_jets}
+\uses{lem:asymptotic-taylor-vanishing}
+
+Let $f$ take values in a real normed space. Suppose every positive order $q$ admits coefficients giving $o(s^j)$ remainders for all $1\leq j\leq q$, as $s\downarrow0$. Then one coefficient sequence gives these remainders simultaneously at every positive order. Uniqueness of the first differing coefficient yields compatibility.
+\end{lemma}
+
+\begin{lemma}[Analytic approximation of the complete feature moment functional]
+\label{lem:feature-moment-analytic-approximation}
+\lean{Preiss.exists_featureMoment_analytic_approximation}
+\uses{lem:analytic-projection-approximation, lem:feature-norm-functionals, lem:moment-feature-remainder, lem:feature-moment-vanishing}
+
+For every unit-uniform measure of positive dimension and every positive integer $q$, the degree-$2q$ feature moment functional admits an analytic approximation vanishing at zero, with operator error $O(s^{q+1/2})$ as $s\downarrow0$.
+\end{lemma}
+
+\begin{lemma}[Compact tube uniformization preserving a fixed lower density bound]
+\label{lem:compact-uniform-tubes}
+\lean{Preiss.exists_compact_uniform_tubes_subset}
+\uses{lem:uniform-compact-selection, lem:tube-support-upgrade}
+
+For a finite regular measure, a measurable carrier with a fixed positive lower ball-mass bound and weak linear approximation almost everywhere contains a compact subset losing arbitrarily little measure, with uniform small-scale tube containment at any prescribed positive aperture at most one.
+\end{lemma}
+
+\begin{lemma}[A flat dimensional tangent from uniformity and simultaneous recentering]
+\label{lem:flat-tangent-from-uniform-recentering}
+\lean{Preiss.exists_flat_dimensionalTangent_of_uniform_recenter}
+\uses{thm:flat-pseudotangent, lem:uniform-scaling, lem:blowup-composition, lem:dimensional-tangent-closed, lem:unit-flat-support-regularity}
+
+For $0<m\leq n$, suppose a $q$-uniform measure has zero in its support and every support-centered dimensional rescaling is a dimensional tangent of a locally finite measure $\mu$ at $x$. There is an $m$-plane $V$ such that $q$ times the normalized plane measure on $V$ is a dimensional tangent of $\mu$ at $x$. The coefficient $q$ is retained throughout the limiting argument.
+\end{lemma}
+
+\begin{definition}[Symmetric multilinear forms and permutation averaging]
+\label{def:symmetric-multilinear}
+\lean{Preiss.symmetricContinuousMultilinearSubmodule, Preiss.symmetrizeContinuousMultilinearMap}
+
+Symmetric continuous multilinear maps form a concrete real submodule. Symmetrization is the average over all permutations of the finite index set.
+\end{definition}
+
+\begin{lemma}[Symmetrization identities]
+\label{lem:multilinear-symmetrization}
+\lean{Preiss.symmetrizeContinuousMultilinearMap_apply_perm, Preiss.symmetrizeContinuousMultilinearMap_eq_self, Preiss.symmetrizeContinuousMultilinearMap_diagonal, Preiss.comp_symmetrizeContinuousMultilinearMap}
+\uses{def:symmetric-multilinear}
+
+Permutation averaging produces a symmetric map, fixes every symmetric map, preserves diagonal evaluation, and commutes with continuous linear maps on the target.
+\end{lemma}
+
+\begin{lemma}[Multilinear coordinate tensors for polynomial feature blocks]
+\label{lem:feature-multilinear-block}
+\lean{Preiss.polynomialFeatureMultilinearBlock, Preiss.polynomialFeatureMultilinearBlock_apply, Preiss.inner_polynomialFeature_multilinearBlock, Preiss.polynomialFeatureMultilinearBlock_mem, Preiss.weightedGrading_polynomialFeatureMultilinearBlock}
+\uses{def:polynomial-feature, lem:polynomial-feature-identities}
+
+The degree-$k$ coordinate tensor takes values in its polynomial feature block. Its inner product with a feature vector is the normalized product of $k$ inner products, and weighted grading multiplies it by $s^k$.
+\end{lemma}
+
+\begin{definition}[Bounded recovery of symmetric forms from feature functionals]
+\label{def:symmetric-feature-recovery}
+\lean{Preiss.symmetricPolynomialFeatureMultilinearBlock, Preiss.polynomialFeatureMomentRecovery, Preiss.polynomialFeatureMomentRecovery_symmetric, Preiss.symmetricPolynomialFeatureMomentRecovery}
+\uses{lem:feature-multilinear-block, lem:multilinear-symmetrization}
+
+Composition with the symmetrized coordinate tensor is a bounded linear map from feature functionals to symmetric multilinear forms. Its range is corestricted to the concrete symmetric submodule.
+\end{definition}
+
+\begin{lemma}[Exact Gaussian moment recovery from polynomial features]
+\label{lem:feature-moment-exact-recovery}
+\lean{Preiss.featureMoment_comp_multilinearBlock_of_growth, Preiss.polynomialFeatureMomentRecovery_featureMoment_of_growth}
+\uses{def:symmetric-feature-recovery, lem:gaussian-feature-integrability, lem:moment-form-symmetry}
+
+For a measure with polynomial ball growth and positive Gaussian parameter, applying the degree-$k$ recovery map to its feature moment functional recovers its Gaussian multilinear moment exactly.
+\end{lemma}
+
+\begin{definition}[Gaussian moments as elements of the symmetric-form submodule]
+\label{def:symmetric-moment-form}
+\lean{Preiss.SymmetricMomentForm, Preiss.symmetricGaussianMomentForm}
+\uses{def:symmetric-multilinear, def:moments, lem:moment-form-symmetry}
+
+The symmetric moment space is the concrete submodule of permutation-invariant continuous multilinear forms. Gaussian moment forms lie in it by the proved permutation identity.
+\end{definition}
+
+\begin{lemma}[Finite Gaussian moment jets in the symmetric-form space]
+\label{lem:finite-moment-taylor-jets}
+\lean{Preiss.exists_gaussianMoment_finite_jets}
+\uses{def:symmetric-moment-form, lem:feature-moment-analytic-approximation, def:symmetric-feature-recovery, lem:feature-moment-exact-recovery, lem:analytic-finite-jets, lem:asymptotic-taylor-vanishing}
+
+For every positive moment degree and positive truncation order $q$, a unit-uniform measure of positive dimension admits symmetric multilinear coefficients giving $o(s^j)$ remainders simultaneously for every $1\leq j\leq q$. Recovery from sufficiently many polynomial features preserves symmetry and operator estimates.
+\end{lemma}
+
+\begin{lemma}[Reflection invariance of flat measures]
+\label{lem:flat-measure-reflection}
+\lean{Preiss.flatOn_map_neg, Preiss.unitFlat_map_neg}
+\uses{lem:plane-hausdorff}
+
+Every scalar flat measure and every normalized plane measure is invariant under reflection $z\mapsto-z$, including dimension zero.
+\end{lemma}
+
+\begin{lemma}[Odd Gaussian moments of reflection-invariant measures]
+\label{lem:reflection-odd-gaussian-moments}
+\lean{Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg}
+\uses{def:moments, lem:moment-kernel-calculus}
+
+Every odd Gaussian multilinear moment of a reflection-invariant measure vanishes. No integrability, uniformity, or positivity assumption on the Gaussian parameter is required.
+\end{lemma}
+
+\begin{lemma}[Odd Gaussian moments of flat measures vanish]
+\label{lem:flat-gaussian-odd-moments}
+\lean{Preiss.flat_gaussianMoment_odd}
+\uses{lem:flat-measure-reflection, lem:reflection-odd-gaussian-moments}
+
+All odd Gaussian multilinear moments of a normalized plane measure vanish, including for zero-dimensional planes.
+\end{lemma}
+
+\begin{lemma}[Projection nullness with fixed lower ball mass]
+\label{lem:fixed-lower-density-projection-null}
+\lean{Preiss.measure_projection_eq_zero_of_uniformLower_and_weakApproximation}
+\uses{lem:compact-uniform-tubes, lem:uniform-tube-projection-cover, lem:pure-cone-escape}
+
+A measurable purely unrectifiable subset of a finite Hausdorff-measure carrier, with a uniform positive lower ball-mass bound and weak linear approximation almost everywhere, has zero projection measure onto every plane of the same dimension.
+\end{lemma}
+
+\begin{lemma}[Vanishing weighted projection energy controls the vague-limit support]
+\label{lem:weighted-energy-limit-support}
+\lean{Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero}
+\uses{lem:vague-projection-energy}
+
+Let regular Euclidean measures $\mu_i$ converge vaguely to $\nu$, and continuous linear maps $P_i$ converge to $Q$. For a strictly positive continuous weight $w$, suppose $w(z)\lVert z-P_i z\rVert^2$ is integrable for each $\mu_i$ and its integral tends to zero. Then the support of $\nu$ lies in $\{z:Qz=z\}$. No global integrability assumption on $\nu$ is required.
+\end{lemma}
+
+\begin{lemma}[Gaussian plane energy is integrable for unit-uniform measures]
+\label{lem:gaussian-plane-energy-integrable}
+\lean{Preiss.integrable_gaussian_planeEnergy_of_unitUniform}
+\uses{lem:moment-norm-bound, lem:gaussian-polynomial-integrable}
+
+For every unit-uniform measure $\mu$ and $m$-plane $V$, the function $e^{-\lVert z\rVert^2}\operatorname{dist}(z,V)^2$ is $\mu$-integrable. This includes $m=0$.
+\end{lemma}
+
+\begin{lemma}[Density bounds inherited under absolute continuity]
+\label{lem:absolute-continuity-density-bounds}
+\lean{Preiss.ae_hasPositiveFiniteDensitiesAt_of_absolutelyContinuous}
+\uses{def:positive-density, mathlib:besicovitch-differentiation}
+
+If locally finite Euclidean measures satisfy $\nu\ll\mu$ and $\mu$ has positive finite lower and upper $m$-densities almost everywhere, then $\nu$ has the same density-bound property at $\nu$-almost every point. The proof uses positive finite Radon--Nikodym derivatives and differentiation along closed balls.
+\end{lemma}
+
+\begin{lemma}[Tangent cones agree under finite absolute continuity]
+\label{lem:absolute-continuity-tangent-cones}
+\lean{Preiss.ae_isTangentMeasure_iff_of_absolutelyContinuous}
+\uses{thm:matching}
+
+For locally finite Euclidean $\mu$ and finite $\nu\ll\mu$, their full tangent cones agree at $\nu$-almost every point. Apply the pinned FormalizingGMT density-matching theorem to the real Radon--Nikodym derivative.
+\end{lemma}
+
+\begin{lemma}[Orthogonal representatives and normal-coordinate identities]
+\label{lem:normal-coordinate-identities}
+\lean{Preiss.exists_orthogonal_representative, Preiss.normal_coordinates_of_quadratic_identity}
+
+A continuous linear functional vanishing on a closed subspace has a representing vector in its orthogonal complement. If $2\langle b,x\rangle+\lVert P_Vx\rVert^2=\lVert x\rVert^2$ with $b\perp V$, then $\lVert x-P_Vx\rVert^2=2\langle b,x\rangle$, $\lVert x-P_Vx-b\rVert=\lVert b\rVert$, and $\lVert x-P_Vx\rVert\leq2\lVert b\rVert$.
+\end{lemma}
+
+\begin{lemma}[Even diagonal Gaussian moments are nonnegative]
+\label{lem:even-moment-positivity}
+\lean{Preiss.gaussianMomentForm_even_nonneg}
+\uses{def:moments, lem:moment-form-evaluation}
+
+Every even diagonal Gaussian moment is nonnegative, for any measure and real Gaussian parameter. The statement also covers the nonintegrable case in the Bochner integral definition.
+\end{lemma}
+
+\begin{lemma}[Exact moment homogeneity for conical measures]
+\label{lem:conical-moment-scaling}
+\lean{Preiss.gaussianMomentForm_homogeneous_of_isConical}
+\uses{def:conical, lem:moment-covariance}
+
+For every conical measure, its degree-$k$ Gaussian multilinear moment at positive parameter $s$ equals $s^{k/2}$ times its moment at parameter one. No uniformity assumption is required.
+\end{lemma}
+
+\begin{lemma}[Conical covariance equals squared norm on the support]
+\label{lem:conical-support-covariance}
+\lean{Preiss.conical_covariance_eq_norm_sq_on_support}
+\uses{lem:conical-moment-scaling, lem:scaled-moment-limits, lem:taylor-two, lem:moment-support-polynomial}
+
+For a positive-dimensional unit-uniform conical measure, its second Gaussian moment at parameter one equals squared norm at every support point.
+\end{lemma}
+
+\begin{lemma}[The second-moment trace as a bounded linear functional]
+\label{lem:moment-trace-operator}
+\lean{Preiss.momentTraceCLM, Preiss.momentTraceCLM_apply, Preiss.momentTraceCLM_momentKernel}
+\uses{lem:bilinear-trace-basis, def:bilinear-trace, def:moments}
+
+The finite sum of diagonal evaluations defines a continuous linear functional on second moment forms. It equals the associated bilinear trace and maps the moment kernel at $z$ to $\lVert z\rVert^2$.
+\end{lemma}
+
+\begin{lemma}[Radial second Gaussian moment of a unit-uniform measure]
+\label{lem:gaussian-radial-second-moment}
+\lean{Preiss.integral_norm_sq_gaussian_unitUniform}
+\uses{lem:moment-norm-bound, lem:gaussian-parameter-derivative}
+
+For a positive-dimensional unit-uniform measure and $s>0$, the integral of $\lVert z\rVert^2e^{-s\lVert z\rVert^2}$ is $m/(2s)$ times its Gaussian mass. Differentiate the explicit Gaussian mass formula under the integral.
+\end{lemma}
+
+\begin{lemma}[Finite ordered trace bounds and extremizers]
+\label{lem:ordered-trace-bounds}
+\lean{Preiss.ordered_nonnegative_trace_cutoff_bounds, Preiss.ordered_nonnegative_trace_eq_initial_indicator, Preiss.antitone_weighted_sum_le_initial_sum}
+
+An antitone nonnegative tuple of total $m$ has its $m$-th entry at most one; equality forces the indicator of its first $m$ entries. For any antitone real tuple and weights in $[0,1]$ summing to $m$, the weighted sum is at most the sum of its first $m$ entries.
+\end{lemma}
+
+\begin{lemma}[Quadratic rigidity near a critical basis vector]
+\label{lem:quadratic-near-basis-rigidity}
+\lean{Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector}
+\uses{lem:ordered-trace-bounds}
+
+In a real inner-product space with a finite orthonormal basis, an ordered nonnegative spectrum of total $m$ is the rank-$m$ indicator spectrum if its quadratic identity holds at a point within distance $\delta<1/m$ of the $m$-th basis vector.
+\end{lemma}
+
+\begin{lemma}[Taylor coefficients of an exact monomial]
+\label{lem:exact-monomial-coefficients}
+\lean{Preiss.taylorCoefficient_eq_of_exact_monomial}
+\uses{lem:asymptotic-taylor-vanishing}
+
+If a normed-space-valued function equals $s^d a$ for positive $s$ and admits compatible Taylor remainders of every order, its only nonzero positive-order Taylor coefficient is $a$ in degree $d>0$.
+\end{lemma}
+
+\begin{lemma}[A normal vector from first-moment plane vanishing]
+\label{lem:first-moment-normal-from-vanishing}
+\lean{Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero}
+\uses{lem:normal-coordinate-identities, def:rigidity-normal-vector}
+
+If the first coefficient form vanishes on a plane, half its Riesz representative lies in the orthogonal complement and represents that form as $x\mapsto2\langle b,x\rangle$.
+\end{lemma}
+
+\begin{lemma}[Inverse-square scales approach zero through positive values]
+\label{lem:inverse-square-positive-limit}
+\lean{Preiss.tendsto_inv_sq_atTop_nhdsGT_zero}
+
+As $r\to\infty$, the scale $r^{-2}$ tends to zero through positive values.
+\end{lemma}
+
+\begin{lemma}[Gaussian product integrals and moment forms on unit-uniform measures]
+\label{lem:gaussian-product-moment-conversion}
+\lean{Preiss.gaussian_integral_product_eq_moment, Preiss.integrable_polynomial_gaussian_unitUniform}
+\uses{lem:moment-norm-bound, lem:polynomial-gaussian-integrability}
+
+For a unit-uniform measure, Gaussian integrals of products of linear functionals equal explicit scalar multiples of their moment forms. Polynomial Gaussian tests are integrable.
+\end{lemma}
+
+\begin{lemma}[Coordinate monomials are finite products of linear inner products]
+\label{lem:coordinate-product-representation}
+\lean{Preiss.exists_coordinate_product_representation}
+
+Every coordinate monomial can be represented as a finite product of inner products with coordinate basis vectors.
+\end{lemma}
+
+\begin{lemma}[Gaussian linear-product tests have blowdown limits]
+\label{lem:blowdown-product-limits}
+\lean{Preiss.exists_blowdown_product_gaussian_limit}
+\uses{lem:blowdown-form-limits, lem:gaussian-product-moment-conversion, lem:uniform-scaling}
+
+Gaussian integrals of every finite product of linear functionals have a limit along dimensional blowdowns of a positive-dimensional unit-uniform measure.
+\end{lemma}
+
+\begin{lemma}[Every positive-degree Gaussian moment has a blowdown limit]
+\label{lem:blowdown-form-limits}
+\lean{Preiss.exists_blowdown_gaussianMoment_limit}
+\uses{lem:inverse-square-positive-limit, lem:taylor-two, lem:scaled-moment-limits, lem:moment-covariance}
+
+Every positive-degree Gaussian multilinear moment at parameter one has a limit along the dimensional blowdowns of a positive-dimensional unit-uniform measure. The even limits come from leading Taylor coefficients; the odd limits vanish.
+\end{lemma}
+
+\begin{lemma}[Orthonormal sums are bounded by leading eigenvalues]
+\label{lem:orthonormal-spectral-sum-bound}
+\lean{Preiss.orthonormal_diagonal_sum_le_initial_sum}
+\uses{lem:ordered-trace-bounds}
+
+For an ordered real spectrum, the sum of its quadratic form over any orthonormal family of size $m$ is bounded by the sum of its first $m$ eigenvalues.
+\end{lemma}
+
+\begin{lemma}[Ordered spectrum of a positive symmetric bilinear form]
+\label{lem:ordered-bilinear-spectrum}
+\lean{Preiss.exists_ordered_spectral_representation}
+\uses{def:bilinear-trace}
+
+A positive symmetric bilinear form on a finite-dimensional real inner-product space admits an orthonormal eigenbasis, with nonnegative decreasing eigenvalues summing to its trace.
+\end{lemma}
+
+\begin{lemma}[Distance to a plane in orthonormal coordinates]
+\label{lem:orthonormal-plane-distance}
+\lean{Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis, Preiss.exists_plane_of_orthonormalBasis_finset}
+
+Squared distance to a subspace equals squared norm minus the sum of squared coordinates in an orthonormal basis. Selecting $m$ vectors of an ambient orthonormal basis constructs an $m$-plane with this distance formula.
+\end{lemma}
+
+\begin{lemma}[Explicit even moment limits of blowdowns]
+\label{lem:blowdown-even-moment-limit}
+\lean{Preiss.blowdown_gaussianMoment_even_limit}
+\uses{lem:scaled-moment-limits, lem:inverse-square-positive-limit, lem:moment-covariance}
+
+The degree $2j$ Gaussian moment of dimensional blowdowns converges to $B_{2j}^{j}/j!$ for every positive $j$.
+\end{lemma}
+
+\begin{lemma}[Gaussian moment continuity under vague convergence]
+\label{lem:vague-gaussian-moments}
+\lean{Preiss.vague_gaussianMomentForm_apply}
+\uses{lem:vague-gaussian-polynomials, lem:moment-norm-bound}
+
+Along vaguely convergent unit-uniform measures, every Gaussian multilinear moment evaluated on fixed vectors converges at every positive Gaussian parameter.
+\end{lemma}
+
+\begin{lemma}[Taylor coefficients of an exactly homogeneous moment]
+\label{lem:exact-homogeneous-moment-coefficients}
+\lean{Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity}
+\uses{lem:exact-monomial-coefficients}
+
+If a positive-degree Gaussian moment is exactly $s^d A$, its Taylor coefficient family has only one nonzero positive-order coefficient, equal to $d!A$ in degree $d$.
+\end{lemma}
+
+\begin{lemma}[Sparse moment coefficients of conical measures]
+\label{lem:conical-moment-coefficients}
+\lean{Preiss.gaussianMomentCoefficient_conical}
+\uses{lem:exact-homogeneous-moment-coefficients, lem:conical-moments}
+
+For a positive-dimensional conical unit-uniform measure, $B_k^j$ vanishes unless $k=2j$; in that degree it equals $j!$ times the moment at parameter one.
+\end{lemma}
+
+\begin{lemma}[Even Gaussian moments at support points]
+\label{lem:conical-even-support-moments}
+\lean{Preiss.conical_even_moment_on_support}
+\uses{lem:conical-moment-coefficients, lem:moment-support-polynomial, lem:taylor-two}
+
+For a positive-dimensional conical unit-uniform measure and $x$ in its support, the degree $2j$ diagonal moment at parameter one equals $\lVert x\rVert^{2j}/j!$ for every $j>0$.
+\end{lemma}
+
+\begin{lemma}[A symmetric multilinear form is determined by its diagonal]
+\label{lem:symmetric-multilinear-diagonal-injective}
+\lean{Preiss.symmetricMultilinear_eq_zero_of_diagonal}
+
+A continuous symmetric multilinear map over real normed spaces is zero if all its diagonal evaluations vanish. This includes degree zero and requires neither finite dimension nor completeness.
+\end{lemma}
+
+\begin{lemma}[Weighted plane energy in orthonormal coordinates]
+\label{lem:weighted-plane-energy-decomposition}
+\lean{Preiss.integral_weighted_planeEnergy_eq_sub_sum}
+\uses{lem:orthonormal-plane-distance}
+
+An integrable weighted squared distance to a subspace equals the weighted squared norm integral minus the sum of directional second moments.
+\end{lemma}
+
+\begin{lemma}[Leading covariance eigenspaces minimize plane energy]
+\label{lem:covariance-minimizing-plane}
+\lean{Preiss.exists_minimizing_plane_of_ordered_covariance}
+\uses{lem:weighted-plane-energy-decomposition, lem:orthonormal-spectral-sum-bound}
+
+Given an ordered spectral representation of the weighted covariance, the plane spanned by its first $m$ eigenvectors minimizes weighted squared distance among all $m$-planes.
+\end{lemma}
+
+\begin{lemma}[Gaussian bilinear covariance identities]
+\label{lem:gaussian-bilinear-covariance}
+\lean{Preiss.momentBilinear_diag, Preiss.momentBilinear_gaussianMomentForm_symmetric, Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel, Preiss.integral_gaussian_inner_sq_eq_momentBilinear}
+\uses{def:bilinear-trace, def:moments}
+
+The degree-two Gaussian moment defines a symmetric bilinear form. Its diagonal equals twice the Gaussian directional second moment divided by Gaussian mass, with directional integrability following from moment-kernel integrability.
+\end{lemma}
+
+\begin{lemma}[Normalized flat measures are conical]
+\label{lem:unit-flat-conical}
+\lean{Preiss.isConical_unitFlat}
+\uses{lem:flat-plane-blowup}
+
+The normalized Hausdorff measure on a linear plane is invariant under dimensional dilations.
+\end{lemma}
+
+\begin{lemma}[Zero-dimensional flat measures and their moments]
+\label{lem:zero-dimensional-flat-moments}
+\lean{Preiss.unitFlat_eq_dirac_of_dim_zero, Preiss.gaussianMomentForm_dirac_zero_diagonal, Preiss.flat_gaussianMoment_diagonal_dim_zero}
+\uses{lem:plane-hausdorff}
+
+A normalized zero-dimensional flat measure is the Dirac mass at the origin. Its zeroth moment is one and every positive-degree moment vanishes, including the required projected even-moment formula.
+\end{lemma}
+
+\begin{lemma}[Flat moments depend only on projected vectors]
+\label{lem:flat-moment-projection}
+\lean{Preiss.gaussianMomentForm_unitFlat_diagonal_project, Preiss.gaussianMomentForm_unitFlat_zero_diagonal}
+\uses{lem:moment-form-evaluation, lem:gaussian-polynomial-integrable}
+
+Diagonal Gaussian moments of a normalized flat measure are unchanged by orthogonal projection of their argument to the plane. The zeroth moment equals one at every positive Gaussian parameter.
+\end{lemma}
+
+\begin{lemma}[Unit-uniform measures are nonzero]
+\label{lem:unit-uniform-nonzero}
+\lean{Preiss.IsUnitUniform.ne_zero}
+
+A unit-uniform measure is nonzero because its support contains the origin.
+\end{lemma}
+
+\begin{lemma}[Existence and uniformity of tangents at infinity]
+\label{lem:unit-uniform-infinity-existence}
+\lean{Preiss.isUnitUniform_of_tangentAtInfinity, Preiss.exists_unitUniform_tangentAtInfinity}
+\uses{lem:unit-uniform-nonzero, lem:uniform-vague-closed, lem:uniform-compactness, lem:uniform-scaling}
+
+A positive-dimensional unit-uniform measure admits a tangent at infinity, and every such tangent remains unit-uniform.
+\end{lemma}
+
+\begin{lemma}[Uniqueness of tangents at infinity]
+\label{lem:unit-uniform-infinity-unique}
+\lean{Preiss.tangentAtInfinity_eq_of_unitUniform}
+\uses{lem:unit-uniform-infinity-existence, lem:blowdown-moment-limits, lem:vague-gaussian-polynomials, lem:moment-determination}
+
+Any two tangents at infinity of a positive-dimensional unit-uniform measure agree, by equality of their Gaussian polynomial moments.
+\end{lemma}
+
+\begin{lemma}[Leading homogeneous terms along escaping sequences]
+\label{lem:leading-homogeneous-term}
+\lean{Preiss.tendsto_scaled_homogeneous_sum, Preiss.leading_diagonal_nonneg_of_rescaled_points}
+
+For a finite sum of continuous multilinear homogeneous polynomials, dividing its values at $r_i y_i$ by the highest power of $r_i$ yields the leading diagonal value when $r_i\to\infty$ and $y_i\to v$. Nonnegativity on those points implies nonnegativity of the leading value.
+\end{lemma}
+
+\begin{lemma}[Conical Gaussian energy and unit-ball energy]
+\label{lem:conical-gaussian-ball-energy}
+\lean{Preiss.conical_gaussian_planeEnergy_eq_ball}
+\uses{lem:homogeneous-energy-radial}
+
+For a conical unit-uniform measure, Gaussian squared-distance energy equals unit-ball squared-distance energy times the corresponding Gamma factor.
+\end{lemma}
+
+\begin{lemma}[Gaussian norm moments bounded by half-scale mass]
+\label{lem:gaussian-norm-half-mass}
+\lean{Preiss.integral_norm_pow_mul_gaussian_le_halfMass}
+
+An integrable Gaussian norm moment of positive degree $k$ is bounded by $(k/s)^{k/2}$ times the Gaussian mass at parameter $s/2$, for any measure on a real normed additive group.
+\end{lemma}
+
+\begin{lemma}[Normalized Gaussian norm bounds for uniform measures]
+\label{lem:uniform-normalized-gaussian-norm}
+\lean{Preiss.gaussianMass_half_unitUniform, Preiss.integral_norm_pow_mul_gaussian_le_unitUniform, Preiss.normalized_gaussian_norm_pow_le_unitUniform}
+\uses{lem:gaussian-norm-half-mass, lem:moment-norm-bound}
+
+For positive-dimensional unit-uniform measures, halving the Gaussian parameter scales its mass by $2^{m/2}$. Dividing Gaussian norm moments by Gaussian mass gives an explicit bound of order $s^{-k/2}$.
+\end{lemma}
+
+\begin{lemma}[Coefficient vanishing from growth of linear images]
+\label{lem:moment-coefficient-growth-images}
+\lean{Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth, Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth}
+\uses{lem:asymptotic-taylor-vanishing}
+
+If a continuous linear image of a positive-degree Gaussian moment is $O(s^a)$, every positive Taylor coefficient of degree $j<a$ has zero image. Fixed-vector evaluation is a specialization.
+\end{lemma}
+
+\begin{lemma}[Continuous trace of moments on a subspace]
+\label{lem:subspace-moment-trace}
+\lean{Preiss.subspaceMomentTraceCLM, Preiss.subspaceMomentTraceCLM_apply, Preiss.subspaceMomentTraceCLM_momentKernel}
+\uses{def:bilinear-trace, def:moments}
+
+Tracing a degree-two moment on a subspace is a continuous linear functional. On the moment kernel it equals the squared norm of orthogonal projection.
+\end{lemma}
+
+\begin{lemma}[Subspace Gaussian trace under a cylinder identity]
+\label{lem:subspace-gaussian-trace-cylinder}
+\lean{Preiss.subspaceTrace_gaussianMoment_eq_integral, Preiss.subspaceTrace_gaussianMoment_of_cylinder}
+\uses{lem:subspace-moment-trace}
+
+The subspace trace of the Gaussian second moment is an explicit integral of squared projection. If that squared projection equals $2\langle b,z\rangle$ almost everywhere, the trace equals $2s$ times the first moment evaluated at $b$.
+\end{lemma}
+
+\begin{lemma}[Taylor coefficients after multiplication by scale]
+\label{lem:taylor-multiply-scale}
+\lean{Preiss.first_second_taylor_coefficients_of_mul_scale}
+\uses{lem:asymptotic-taylor-vanishing}
+
+If $f(s)=sa+o(s)$, $g(s)=sb+s^2c/2+o(s^2)$, and $g(s)=dsf(s)$ near zero through positive values, then $b=0$ and $c=2da$.
+\end{lemma}
+
+\begin{lemma}[Bounded holes in a plane near a uniform support]
+\label{lem:bounded-tube-plane-to-support}
+\lean{Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates}
+\uses{lem:uniform-compactness, lem:uniform-vague-closed, lem:vague-support-approximation}
+
+If the support of an $m$-dimensional unit-uniform measure lies in a bounded tube around an $m$-plane, every point of that plane lies within a uniform finite distance of the support.
+\end{lemma}
+
+\begin{lemma}[Taylor remainders under scalar linear maps]
+\label{lem:moment-taylor-linear-image}
+\lean{Preiss.gaussianMoment_taylor_remainder_map}
+\uses{def:moment-coefficients}
+
+Applying a continuous real linear functional to a Gaussian moment preserves its Taylor remainder estimate and applies the same functional to every coefficient.
+\end{lemma}
+
+\begin{lemma}[Second coefficient trace from a cylinder identity]
+\label{lem:cylinder-second-coefficient-trace}
+\lean{Preiss.subspaceTrace_secondCoefficient_of_cylinder}
+\uses{lem:moment-taylor-linear-image, lem:subspace-gaussian-trace-cylinder, lem:taylor-multiply-scale}
+
+For a positive-dimensional unit-uniform measure satisfying the quadratic cylinder identity almost everywhere, the subspace trace of $B_2^2$ equals $4B_1^1(b)$.
+\end{lemma}
+
+\begin{lemma}[Trace splits over orthogonal complementary subspaces]
+\label{lem:bilinear-trace-orthogonal-split}
+\lean{Preiss.bilinearTrace_eq_restrict_add_orthogonal}
+\uses{lem:bilinear-trace-basis}
+
+The trace of any continuous real bilinear form on a finite-dimensional inner-product space equals the sum of its traces restricted to a subspace and its orthogonal complement.
+\end{lemma}
+
+\begin{lemma}[Scalar Gaussian moments from product growth]
+\label{lem:moment-product-growth}
+\lean{Preiss.gaussianMomentForm_apply_isBigO_of_product_bound}
+\uses{lem:uniform-normalized-gaussian-norm}
+
+If the product of the degree-$k$ evaluation functionals is bounded almost everywhere by $C\lVert z\rVert^d$, its Gaussian moment is $O(s^{k-d/2})$. Zero degrees are included.
+\end{lemma}
+
+\begin{lemma}[Cubic coefficients with two normal inputs vanish]
+\label{lem:bounded-tube-cubic-vanishing}
+\lean{Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube}
+\uses{lem:moment-product-growth, lem:moment-coefficient-growth-images}
+
+For a unit-uniform measure whose support lies in a bounded tube around a subspace, $B_3^2(v,w,w)=0$ whenever $w$ is normal to that subspace and $v$ is arbitrary.
+\end{lemma}
+
+\begin{lemma}[Binomial formula for a symmetric trilinear form]
+\label{lem:symmetric-cubic-binomial}
+\lean{Preiss.symmetricTrilinear_diagonal_add}
+
+The diagonal of a continuous symmetric real trilinear form at $x+y$ expands with coefficients $1,3,3,1$ into its pure and mixed evaluations.
+\end{lemma}
+
+\begin{lemma}[Leading coefficient from a little-o remainder]
+\label{lem:leading-coefficient-limit}
+\lean{Preiss.tendsto_scaled_of_isLittleO_sub}
+
+A normed-space-valued function equal to $s^j a+o(s^j)$ converges to $a$ after division by $s^j$ as $s$ tends to zero through positive values.
+\end{lemma}
+
+\begin{lemma}[Vanishing of scaled normalized bounded integrals]
+\label{lem:scale-normalized-bounded-integral}
+\lean{Preiss.tendsto_scale_normalized_integral_of_ae_bound}
+
+For any nonnegative integrable weights with positive mass, the weighted average of an essentially bounded function tends to zero after multiplication by a positive scale tending to zero.
+\end{lemma}
+
+\begin{lemma}[A convergent function has no nonzero scaled derivative limit]
+\label{lem:scale-derivative-limit}
+\lean{Preiss.scale_derivative_limit_eq_zero}
+
+If $f(s)$ converges to a finite real limit and $s f\prime(s)$ has a finite limit as $s\downarrow0$, that scaled derivative limit is zero. The proof uses the quotient $(sf(s))/s$.
+\end{lemma}
+
+\begin{lemma}[Rigidity forms from symmetric coefficient tensors]
+\label{lem:rigidity-forms-from-symmetry}
+\lean{Preiss.exists_rigidity_forms_of_symmetry}
+
+Symmetric second and third coefficient forms determine the required normal-valued bilinear map and adjusted scalar bilinear form through Riesz representation. No measure or tangent assumption is required.
+\end{lemma}
+
+\begin{lemma}[Quadratic bound from bounded offsets]
+\label{lem:quadratic-bound-bounded-offsets}
+\lean{Preiss.quadratic_square_bound_of_bounded_offsets}
+
+If $y_i\to v$, $\lVert q_i\rVert\le B$ eventually, and $A(y_i,y_i)+\langle\omega(y_i,y_i),q_i\rangle\to0$, then $A(v,v)^2\le B^2\lVert\omega(v,v)\rVert^2$. The spaces and continuous bilinear maps are arbitrary.
+\end{lemma}
+
+\begin{lemma}[Gaussian integrals of functions with linear growth]
+\label{lem:gaussian-linear-growth-integral}
+\lean{Preiss.gaussian_integral_bound_of_linear_growth}
+
+A measurable function bounded almost everywhere by $C(1+\lVert z\rVert)$ is Gaussian integrable whenever Gaussian mass and first norm moment are integrable, with the corresponding explicit integral bound.
+\end{lemma}
+
+\begin{lemma}[Vanishing of scaled Gaussian linear-growth averages]
+\label{lem:uniform-gaussian-linear-growth-limit}
+\lean{Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth}
+\uses{lem:gaussian-linear-growth-integral, lem:uniform-normalized-gaussian-norm}
+
+For a positive-dimensional unit-uniform measure, the Gaussian integral of a linearly bounded measurable function, multiplied by $s$ and divided by Gaussian mass, tends to zero as $s\downarrow0$.
+\end{lemma}
+
+\begin{lemma}[Scalar lower bound from a quadratic inequality]
+\label{lem:quadratic-square-upper-lower}
+\lean{Preiss.quadratic_lower_bound_of_square_upper}
+
+If $d>0$, $q\ge0$, and $(1+2/d)t^2\le-8qt$, then $t\ge-8dq/(d+2)$.
+\end{lemma}
+
+\begin{lemma}[Gaussian trace lower bound from a squared-form upper bound]
+\label{lem:gaussian-square-upper-trace-lower}
+\lean{Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper}
+\uses{lem:quadratic-square-upper-lower, lem:gaussian-quadratic-trace-bound}
+
+For a symmetric bilinear form on a positive-dimensional real inner-product space, a Gaussian squared-form bound by $-8q$ times its mean forces the mean to be at least $-8dq/(d+2)$.
+\end{lemma}
+
+\begin{lemma}[Difference of bilinear diagonal values]
+\label{lem:bilinear-diagonal-difference}
+\lean{Preiss.norm_bilinear_diagonal_sub_le}
+
+For a continuous bilinear map, $\lVert Q(z,z)-Q(p,p)\rVert\le\lVert Q\rVert\lVert z-p\rVert(\lVert z\rVert+\lVert p\rVert)$.
+\end{lemma}
+
+\begin{lemma}[Uniqueness of regular vague limits]
+\label{lem:vague-limit-unique}
+\lean{Preiss.vague_limit_unique}
+
+Two regular measures that are vague limits of the same sequence agree.
+\end{lemma}
+
+\begin{lemma}[Flatness transfers between tangent normalizations]
+\label{lem:flat-tangent-normalization}
+\lean{Preiss.exists_flat_dimensionalTangent_of_flat_tangent, Preiss.all_tangents_flat_of_dimensionalTangents, Preiss.all_dimensionalTangents_flat_of_smul}
+\uses{lem:tangent-ray-density-bounds}
+
+Under positive finite density bounds, a flat tangent yields a flat dimensional tangent, and flatness of all dimensional tangents yields flatness of all tangents. A common positive finite scalar normalization can be undone.
+\end{lemma}
+
+\begin{lemma}[Positive finite density under scalar multiplication]
+\label{lem:density-positive-scalar}
+\lean{Preiss.HasPositiveFiniteDensityAt.smul}
+\uses{def:positive-density}
+
+Multiplication of a measure by a positive finite scalar preserves positive finite existing dimensional density.
+\end{lemma}
+
+\begin{lemma}[Integrability of squared norms of Gaussian bilinear diagonals]
+\label{lem:gaussian-bilinear-norm-integrable}
+\lean{Preiss.integrable_gaussian_norm_sq_bilinear}
+
+The squared norm of a continuous Hilbert-valued bilinear form evaluated diagonally is integrable under standard Gaussian measure on a finite-dimensional real inner-product space.
+\end{lemma}
+
+\begin{lemma}[Vector-valued Gaussian fourth moment with zero mean]
+\label{lem:gaussian-vector-bilinear-wick}
+\lean{Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero}
+\uses{lem:gaussian-bilinear-norm-integrable, lem:gaussian-quadratic-trace-bound}
+
+For a symmetric Hilbert-valued bilinear form with zero Gaussian mean, its Gaussian squared norm equals twice the sum of squared norms of its matrix entries in an orthonormal basis.
+\end{lemma}
+
+\begin{lemma}[Gaussian means and contractions of vector bilinear forms]
+\label{lem:gaussian-vector-trace-contractions}
+\lean{Preiss.gaussian_integral_bilinear_eq_basis_sum, Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero, Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero}
+\uses{lem:gaussian-bilinear-contraction, lem:gaussian-quadratic-trace-bound}
+
+The Gaussian mean of a vector-valued bilinear diagonal is its basis trace. Zero mean implies zero scalar component means and the corresponding factor-two weighted Gaussian contraction.
+\end{lemma}
+
+\begin{lemma}[Polarization of weighted integral limits]
+\label{lem:weighted-integral-polarization}
+\lean{Preiss.tendsto_weighted_integral_mul_of_square_limits, Preiss.integrable_weighted_mul_of_squares, Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits}
+
+Integrability and convergence of weighted diagonal square integrals imply their cross-product counterparts by polarization. This applies to diagonal limits of Hilbert-valued bilinear forms.
+\end{lemma}
+
+\begin{lemma}[Finite-basis bilinear expansion and integral limits]
+\label{lem:finite-bilinear-integral-limits}
+\lean{Preiss.bilinear_diagonal_eq_sum_orthonormalBasis, Preiss.tendsto_weighted_integral_finite_linear_combination}
+
+A bilinear diagonal expands in a finite orthonormal basis. Eventual integrability and limits of finitely many weighted integrals pass through their fixed linear combinations.
+\end{lemma}
+
+\begin{lemma}[First and second scaled moment limits]
+\label{lem:low-order-moment-limits}
+\lean{Preiss.gaussianMoment_first_scaled_limit, Preiss.gaussianMoment_second_scaled_limit}
+\uses{lem:leading-coefficient-limit, def:moment-coefficients}
+
+For every positive moment degree, division by $s$ yields the first coefficient in the limit. If that coefficient vanishes, division by $s^2$ yields half the second coefficient.
+\end{lemma}
+
+\begin{lemma}[Centered mixed Gaussian limit from Taylor coefficients]
+\label{lem:mixed-centered-gaussian-limit}
+\lean{Preiss.mixed_gaussian_limit_of_moment_expansion}
+\uses{lem:low-order-moment-limits, lem:moment-coefficient-vanishing}
+
+The normalized centered cubic Gaussian integral converges to $3B_3^2(v,v,w)-4B_2^1(v,v)\langle b,w\rangle$.
+\end{lemma}
+
+\begin{lemma}[Centered Gaussian mean from its first coefficient]
+\label{lem:centered-gaussian-mean-limit}
+\lean{Preiss.normalized_centered_gaussian_limit_of_first_coefficient}
+\uses{lem:low-order-moment-limits}
+
+If $B_1^1(w)=2\langle b,w\rangle$, the normalized Gaussian average of $\langle z-b,w\rangle$ tends to zero.
+\end{lemma}
+
+\begin{definition}[The quadratic rigidity error]
+\label{def:rigidity-error}
+\lean{Preiss.rigidityError}
+\uses{def:rigidity-omega, def:rigidity-adjusted-form}
+
+The error is $A(Pz,Pz)+\langle\omega(Pz,Pz),z-Pz-b\rangle$, where $P$ is the orthogonal projection onto the limiting plane.
+\end{definition}
+
+\begin{lemma}[Linear growth of the rigidity error]
+\label{lem:rigidity-error-linear-growth}
+\lean{Preiss.rigidityError_le_linear_growth}
+\uses{lem:rigidity-error-remainder, lem:rigidity-fourth-support-identity, lem:uniform-cylinder-identity, lem:bilinear-diagonal-difference}
+
+On the support of the unit-uniform measure, the rigidity error is bounded in absolute value by $C(1+\lVert z\rVert)$ for some nonnegative constant $C$.
+\end{lemma}
+
+\begin{lemma}[Coefficient remainder identity for the rigidity error]
+\label{lem:rigidity-error-remainder}
+\lean{Preiss.rigidityError_eq_coefficient_remainder}
+\uses{def:rigidity-error, def:rigidity-omega, def:rigidity-adjusted-form}
+
+Assuming the cylinder and fourth-order coefficient identities at $z$, the rigidity error equals $\lVert z-Pz\rVert^4-B_1^2(z)-(B_2^2(z,z)-B_2^2(Pz,Pz))$.
+\end{lemma}
+
+\begin{lemma}[Pointwise quadratic bound from linear error growth]
+\label{lem:rigidity-pointwise-from-growth}
+\lean{Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth}
+\uses{def:rigidity-error, lem:quadratic-bound-bounded-offsets, lem:uniform-cylinder-identity, lem:vague-support-approximation}
+
+For flat-at-infinity moment data, a linear growth bound on the rigidity error implies $A(v,v)^2\le\lVert b\rVert^2\lVert\omega(v,v)\rVert^2$. The proof uses support points approximating the plane along blowdowns.
+\end{lemma}
+
+\begin{lemma}[Gaussian error limit from linear growth]
+\label{lem:rigidity-error-limit-from-growth}
+\lean{Preiss.continuous_rigidityError, Preiss.gaussian_rigidityError_limit_of_linear_growth}
+\uses{def:rigidity-error, lem:uniform-gaussian-linear-growth-limit}
+
+The rigidity error is continuous. If it has linear growth on a unit-uniform support, its Gaussian integral multiplied by $s$ and divided by Gaussian mass tends to zero.
+\end{lemma}
+
+\begin{lemma}[Gaussian traces are unchanged by a zero-mean correction]
+\label{lem:gaussian-mean-zero-correction}
+\lean{Preiss.gaussian_integral_bilinear_eq_trace_of_mean_zero_correction}
+\uses{lem:gaussian-vector-trace-contractions}
+
+Adding a fixed scalar component of a vector-valued bilinear form with zero Gaussian mean leaves the Gaussian integral of a scalar bilinear diagonal unchanged.
+\end{lemma}
+
+\begin{lemma}[First-crossing sequences from a large-flatness tangent]
+\label{lem:first-crossing-from-large-flatness}
+\lean{Preiss.exists_first_crossing_sequences_of_flatness_gt}
+\uses{lem:flatness-radius-continuous, lem:greatest-crossing, lem:dimensional-compactness}
+
+A flat dimensional tangent and a dimensional tangent whose flatness exceeds the threshold produce the full first-crossing scale data, including every intermediate-scale bound.
+\end{lemma}
+
+\begin{lemma}[Gaussian quadratic bounds from a mean-square identity]
+\label{lem:gaussian-rigidity-integral-bounds}
+\lean{Preiss.gaussian_quadratic_bounds_of_mean_square_identity}
+\uses{lem:gaussian-square-upper-trace-lower, lem:gaussian-bilinear-norm-integrable}
+
+If $A(v,v)^2\le q\lVert\omega(v,v)\rVert^2$ and the Gaussian mean square of $\omega$ equals $-8$ times the mean of $A$, then the Gaussian square of $A$ is at most $-8q$ times its mean, and that mean is at least $-8dq/(d+2)$.
+\end{lemma}
+
+\begin{lemma}[Derivatives of normalized Gaussian expectations]
+\label{lem:normalized-gaussian-derivative}
+\lean{Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform, Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform}
+\uses{lem:gaussian-parameter-derivative, lem:gaussian-radial-second-moment, lem:moment-norm-bound}
+
+The derivative of a normalized polynomial Gaussian expectation is $m/(2s)$ times that expectation minus its normalized squared-norm-weighted expectation. The centered linear polynomial is a specialization.
+\end{lemma}
+
+\begin{lemma}[Existence of the centered full Gaussian contraction limit]
+\label{lem:centered-gaussian-full-contraction-exists}
+\lean{Preiss.exists_normalized_norm_sq_centered_gaussian_limit}
+\uses{lem:mixed-centered-gaussian-limit}
+
+Summing the centered mixed limits over an ambient orthonormal basis gives a finite limit for the normalized centered squared-norm Gaussian contraction.
+\end{lemma}
+
+\begin{lemma}[Vanishing of the centered full Gaussian contraction]
+\label{lem:centered-gaussian-full-contraction-zero}
+\lean{Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero}
+\uses{lem:centered-gaussian-full-contraction-exists, lem:centered-gaussian-mean-limit, lem:normalized-gaussian-derivative, lem:scale-derivative-limit}
+
+When the first moment coefficient represents the center, the normalized centered squared-norm Gaussian contraction tends to zero. This follows by differentiating the normalized centered mean and applying the scaled derivative limit lemma.
+\end{lemma}
+
+\begin{lemma}[Vanishing projected contraction for a bounded tube]
+\label{lem:bounded-tube-projected-contraction}
+\lean{Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube}
+\uses{lem:centered-gaussian-full-contraction-zero, lem:scale-normalized-bounded-integral}
+
+For a uniform support in a bounded tube around a subspace, the corresponding projected squared-norm Gaussian contraction tends to zero against every normal vector satisfying the centered first-coefficient identity.
+\end{lemma}
+
+\begin{lemma}[Projected Gaussian contraction as a finite basis sum]
+\label{lem:projected-mixed-gaussian-sum}
+\lean{Preiss.sum_mixed_gaussian_eq_projected}
+\uses{lem:moment-norm-bound}
+
+The projected squared-norm centered Gaussian contraction is the sum of its directional mixed contractions over an orthonormal basis of the plane.
+\end{lemma}
+
+\begin{lemma}[Gaussian contraction from weighted moment limits]
+\label{lem:gaussian-weighted-contraction}
+\lean{Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits}
+\uses{lem:finite-bilinear-integral-limits, lem:gaussian-vector-bilinear-wick}
+
+Finite families of second and mixed weighted moment limits, together with a vanishing quadratic error and a zero Gaussian mean, imply that the Gaussian mean square of the bilinear vector form is $-8$ times the mean of the scalar quadratic form.
+\end{lemma}
+
+\begin{lemma}[Gaussian inner-product integrability and limits]
+\label{lem:gaussian-inner-product-limits}
+\lean{Preiss.integrable_gaussian_inner_sq_unitUniform, Preiss.integrable_gaussian_inner_sq_centered_unitUniform, Preiss.normalized_gaussian_inner_sq_limit}
+\uses{lem:low-order-moment-limits, lem:moment-product-growth}
+
+Inner-product squares and their centered linear multiples are Gaussian-integrable for a uniform measure. The normalized square integral converges to half of the first quadratic moment coefficient.
+\end{lemma}
+
+\begin{lemma}[Polarized Gaussian moment limits on the limiting plane]
+\label{lem:gaussian-cross-product-limits}
+\lean{Preiss.normalized_gaussian_inner_mul_limit_on_plane, Preiss.normalized_gaussian_mixed_limit_rigidityOmega}
+\uses{lem:weighted-integral-polarization, lem:gaussian-inner-product-limits, lem:rigidity-mixed-gaussian-limit, lem:flat-infinity-moments}
+
+Polarization gives the normalized second and centered mixed Gaussian limits for two arbitrary vectors in the limiting plane.
+\end{lemma}
+
+\begin{lemma}[Mean-square contraction of the rigidity form]
+\label{lem:rigidity-omega-contraction}
+\lean{Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit}
+\uses{lem:gaussian-weighted-contraction, lem:gaussian-cross-product-limits, def:rigidity-error}
+
+Under the zero-mean and vanishing-error identities, the Gaussian mean of $\lVert\omega(v,v)\rVert^2$ equals $-8$ times the Gaussian mean of $A(v,v)$.
+\end{lemma}
+
+\begin{lemma}[Open-ball density convention]
+\label{lem:density-open-ball-bridge}
+\lean{Preiss.density_iff_openBall_limit}
+\uses{def:positive-density, lem:density-limit-values, gmt:density-limit}
+
+Positive finite existing density is equivalent to a positive finite limit of $\mu(B(x,r))/r^m$ over open balls. This companion convention adapter remains an explicit open obligation and is not needed by the upstream density adapter.
+\end{lemma}
+
+\begin{lemma}[Nonflat uniform measures have a dilation above the flatness gap]
+\label{lem:nonflat-uniform-large-flatness}
+\lean{Preiss.exists_dilate_flatness_gt_of_unitUniform_not_flat}
+\uses{thm:infinity-rigidity, lem:unit-uniform-infinity-existence, cor:conical, lem:flatness-continuous}
+
+A nonflat unit-uniform measure has a dilation whose flatness exceeds the conical gap. Otherwise its tangent at infinity would be flat and rigidity would make the original measure flat.
+\end{lemma}
+
+\begin{lemma}[One flat dimensional tangent forces all dimensional tangents to be flat]
+\label{lem:all-dimensional-tangents-flat}
+\lean{Preiss.all_dimensionalTangents_flat_of_one}
+\uses{lem:first-crossing, lem:first-crossing-ratio, lem:first-crossing-flat-infinity, thm:infinity-rigidity, lem:flatness-gap-cutoff}
+
+Under positive finite existing density and unit uniformity of every dimensional tangent, the existence of one flat dimensional tangent forces every dimensional tangent to be flat.
 \end{lemma}

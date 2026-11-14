@@ -1,6 +1,7 @@
 module
 public import Preiss.Uniform.MomentForms
 public import Preiss.Tangent.Blowup
+public import Mathlib.Tactic.Linarith
 
 @[expose] public section
 open MeasureTheory
@@ -118,5 +119,39 @@ theorem gaussianMomentForm_map_linearIsometry {n d : ℕ}
     simp only [gaussianMomentForm, integral_undef hnot, integral_undef hint, smul_zero,
       ContinuousMultilinearMap.zero_apply]
 
+
+theorem gaussianMomentForm_eq_zero_of_odd_of_map_neg
+    (μ : Measure (Euclidean n))
+    (hμ : μ.map (fun z => -z) = μ) (k : ℕ) (hk : Odd k) (s : ℝ) :
+    gaussianMomentForm μ k s = 0 := by
+  let F : Euclidean n → MomentForm n k :=
+    fun z => Real.exp (-s * ‖z‖ ^ 2) • momentKernel k z
+  have hcont : Continuous F :=
+    (show Continuous (fun z : Euclidean n => Real.exp (-s * ‖z‖ ^ 2)) by fun_prop).smul
+      (continuous_momentKernel k)
+  have hF (z : Euclidean n) : F (-z) = -F z := by
+    have hK : momentKernel k (-z) = -momentKernel k z := by
+      calc
+        _ = ((-1 : ℝ) ^ k) • momentKernel k z := by
+          simpa only [neg_one_smul] using momentKernel_smul k z (-1)
+        _ = -momentKernel k z := by
+          rw [hk.neg_one_pow]
+          exact neg_one_smul ℝ (momentKernel k z)
+    simp only [F, norm_neg, hK, smul_neg]
+  have hchange : (∫ z, F z ∂μ) = ∫ z, F (-z) ∂μ := by
+    conv_lhs => rw [← hμ]
+    exact integral_map measurable_neg.aemeasurable hcont.aestronglyMeasurable
+  have hneg : (∫ z, F z ∂μ) = -(∫ z, F z ∂μ) := by
+    calc
+      _ = ∫ z, F (-z) ∂μ := hchange
+      _ = _ := by simp_rw [hF]; exact integral_neg _
+  have hzero : (∫ z, F z ∂μ) = 0 := by
+    ext u
+    have h := congrArg (fun A : MomentForm n k => A u) hneg
+    simp only [ContinuousMultilinearMap.neg_apply] at h
+    change (∫ z, F z ∂μ) u = 0
+    linarith
+  change _ • (∫ z, F z ∂μ) = 0
+  rw [hzero, smul_zero]
 
 end Preiss

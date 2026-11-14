@@ -16,6 +16,18 @@ def IsUniformPseudotangent (m : ℕ) (ν ξ : Measure (Euclidean n)) : Prop :=
     (∀ i, a i ∈ ν.support) ∧ (∀ i, 0 < r i ∧ r i ≤ 1) ∧
       Measure.WeaklyConverges (fun i => dimensionalBlowup m ν (a i) (r i)) ξ
 
+/-- A dimensional tangent at a support point belongs to the bounded-radius scaling orbit. -/
+theorem IsDimensionalTangent.isUniformPseudotangent
+    {ν ξ : Measure (Euclidean n)} {y : Euclidean n}
+    (h : IsDimensionalTangent m ν ξ y) (hy : y ∈ ν.support) :
+    IsUniformPseudotangent m ν ξ := by
+  obtain ⟨hreg, hne, r, hr, hr0, hlim⟩ := h
+  obtain ⟨N, hN⟩ := eventually_atTop.mp (hr0.eventually (eventually_lt_nhds zero_lt_one))
+  have hshift : Tendsto (fun i : ℕ => i + N) atTop atTop := tendsto_add_atTop_nat N
+  refine ⟨hreg, fun _ => y, fun i => r (i + N), fun _ => hy,
+    fun i => ⟨hr _, (hN _ (Nat.le_add_left N i)).le⟩, ?_⟩
+  exact fun f => (hlim f).comp hshift
+
 theorem uniformPseudotangent_isUnitUniform (ν ξ : Measure (Euclidean n))
     (hν : IsUnitUniform m ν) (hξ : IsUniformPseudotangent m ν ξ) :
     IsUnitUniform m ξ := by

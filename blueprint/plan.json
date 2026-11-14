@@ -41,7 +41,7 @@
         "def:density-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": []
     },
     {
@@ -381,7 +381,7 @@
         "gmt:blowup-regular"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": []
     },
     {
@@ -771,7 +771,7 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": []
     },
     {
@@ -877,6 +877,20 @@
         "MeasureTheory.Measure.ext_of_integral_eq_on_compactlySupported"
       ],
       "deps": [],
+      "role": "Preiss proof",
+      "source_files": []
+    },
+    {
+      "id": "gmt:tangent-open-null",
+      "kind": "lemma",
+      "title": "FormalizingGMT: tangent nullity from excluded support images",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "SUniformAux.measure_open_eq_zero_of_isTangentMeasure"
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
       "role": "Preiss proof",
       "source_files": []
     },
@@ -1221,13 +1235,14 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $j\\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.\nUse M02, M03 and the Gaussian moment formula of the flat limit, including the\nfactorial from M08.",
       "deps": [
-        "def:moments",
-        "def:plane",
-        "mathlib:standard-gaussian"
+        "lem:conical-even-support-moments",
+        "lem:conical-moment-scaling",
+        "lem:flat-moment-projection",
+        "lem:unit-flat-conical",
+        "lem:zero-dimensional-flat-moments"
       ],
       "lean_names": [
-        "Preiss.flat_gaussianMoment_diagonal",
-        "Preiss.flat_gaussianMoment_odd"
+        "Preiss.flat_gaussianMoment_diagonal"
       ],
       "proposed_lean_name": "Preiss.flat_gaussianMoment_diagonal",
       "proposed_file": "Preiss/Uniform/FlatMoments.lean",
@@ -1366,13 +1381,13 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $\\delta>0$ there exists $\\eta>0$ such that if $\\nu\\in\\mathcal U_m$\nand $V$ is an $m$-plane with Gaussian distance energy at most $\\eta$, every\n$x\\in V\\cap\\overline B(0,1)$ has distance less than $\\delta$ to the support.\nOtherwise rotate planes to one fixed plane, take a convergent subsequence of\nmeasures and alleged holes, and use S04--S05. Vanishing energy puts the limit's\nsupport in the plane; the plane-supported uniform classification identifies it\nwith $\\sigma_V$, contradicting the persistent hole. This lemma does not\nrequire conicality or eigenvalue assumptions.",
       "deps": [
-        "def:plane",
-        "def:unit-uniform",
-        "lem:grassmannian",
+        "lem:gaussian-plane-energy-integrable",
+        "lem:plane-projection-subsequence",
         "lem:plane-supported-uniform-flat",
         "lem:uniform-compactness",
-        "lem:vague-gaussian-polynomials",
-        "lem:vague-support-approximation"
+        "lem:unit-flat-support-regularity",
+        "lem:vague-support-approximation",
+        "lem:weighted-energy-limit-support"
       ],
       "lean_names": [
         "Preiss.dist_support_lt_of_small_gaussian_plane_energy"
@@ -1397,12 +1412,8 @@
       "hypotheses_tex": "",
       "proof_tex": "Conicality gives $b_{k,s}=s^{k/2}b_{k,1}$. Comparing with M07 makes odd forms\nzero and gives $b_{2j,s}=s^j b_{2j}^{(j)}/j!$.\nThe support identities give $b_{2j}^{(j)}(x^{2j})=|x|^{2j}$ on the support.",
       "deps": [
-        "def:conical",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:moment-support-polynomial",
+        "lem:conical-moment-scaling",
+        "lem:scaled-moment-limits",
         "lem:taylor-two"
       ],
       "lean_names": [
@@ -1429,13 +1440,9 @@
       "hypotheses_tex": "",
       "proof_tex": "For odd $k$, $s^{-k/2}b_{k,s}\\to0$; for $k=2j$,\n$s^{-j}b_{2j,s}\\to b_{2j}^{(j)}/j!$.\nThe factorial is essential; the displayed summary on printed page 74 omits it,\nwhereas the calculation in Chapter 9 includes it correctly.\nUse M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted\npolynomial moment of $D^m_{0,r}\\nu$ as $r\\to\\infty$.",
       "deps": [
-        "def:dimensional-blowup",
-        "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-covariance",
-        "lem:radial",
-        "lem:scaled-moment-limits"
+        "lem:blowdown-product-limits",
+        "lem:coordinate-product-representation",
+        "lem:gaussian-product-moment-conversion"
       ],
       "lean_names": [
         "Preiss.blowdown_gaussian_polynomial_limit"
@@ -1460,11 +1467,9 @@
       "hypotheses_tex": "",
       "proof_tex": "The symmetric form $B=b_{2,1}$ is positive semidefinite,\n$\\operatorname{tr}B=m$, and $B(x,x)=|x|^2$ on the support.\nThe trace calculation is the radial Gaussian second moment. This statement\ndoes not require spectral choices.",
       "deps": [
-        "def:conical",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:conical-moments",
-        "lem:radial"
+        "lem:conical-support-covariance",
+        "lem:even-moment-positivity",
+        "lem:moment-second-total-trace"
       ],
       "lean_names": [
         "Preiss.conical_covariance_trace_support"
@@ -1862,14 +1867,11 @@
       "kind": "lemma",
       "title": "Normalization bridges",
       "lean_names": [
-        "Preiss.density_iff_openBall_limit",
         "Preiss.density_iff_upstream"
       ],
       "deps": [
         "def:positive-density",
-        "gmt:density-bounds",
         "gmt:density-exists-set",
-        "gmt:density-limit",
         "lem:density-limit-values"
       ],
       "branch": "Existing interfaces",
@@ -2007,7 +2009,7 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Tangent/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Tangent/Defs.lean"
       ]
@@ -2289,7 +2291,7 @@
         "lem:plane-hausdorff"
       ],
       "branch": "Existing interfaces",
-      "role": "Companion result",
+      "role": "Preiss proof",
       "proposed_file": "Preiss/Tangent/FlatScaling.lean",
       "statement_tex": "Flat measures are regular and nonzero. Dimensional dilation and recentering at a point of their supporting plane preserve flatness; pushforward by a linear isometry gives the corresponding flat measure on the image plane. Unit-uniform scaling and blow-up composition have separate interfaces.",
       "source_files": [
@@ -2342,7 +2344,7 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Tangent/Compactness.lean"
       ]
@@ -2453,7 +2455,7 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Tangent/Blowdown.lean"
       ]
@@ -2599,7 +2601,10 @@
       "hypotheses_tex": "The subspaces \\(V,W\\) have dimension \\(m>0\\); \\(\\varepsilon,\\eta\\geq0\\) and \\(R>0\\). The constant depends only on dimension and normalization.",
       "proof_tex": "",
       "deps": [
-        "lem:plane-hausdorff"
+        "lem:empty-cylinder-direction",
+        "lem:plane-hausdorff",
+        "lem:plane-slab-measure",
+        "lem:projected-tube-contained-slab"
       ],
       "lean_names": [
         "Preiss.hausdorffMeasure_projected_tube_le"
@@ -2822,11 +2827,8 @@
       "hypotheses_tex": "The pieces are Borel, finite in \\(\\mathcal H^m\\), and their restrictions are comparable with positive finite constants. Assume the density and flat-tangent hypotheses for locally finite \\(\\mu\\).",
       "proof_tex": "",
       "deps": [
-        "gmt:finite-restriction",
-        "gmt:restriction-tangents",
-        "lem:finite-pieces",
-        "mathlib:besicovitch-differentiation",
-        "thm:matching"
+        "lem:absolute-continuity-density-bounds",
+        "lem:absolute-continuity-tangent-cones"
       ],
       "lean_names": [
         "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff"
@@ -2945,11 +2947,9 @@
       "hypotheses_tex": "The Borel set \\(E\\) is purely \\(m\\)-unrectifiable, has finite \\(\\mathcal H^m\\)-measure, and is weakly linearly approximable almost everywhere; \\(0<m\\leq n\\).",
       "proof_tex": "",
       "deps": [
-        "lem:projected-tube-slab-bound",
-        "lem:pure-cone-escape",
-        "lem:tube-support-upgrade",
-        "lem:uniform-compact-selection",
-        "mathlib:besicovitch-cover"
+        "lem:closed-weak-approximation-good-set",
+        "lem:fixed-lower-density-projection-null",
+        "lem:weak-approximation-good-exhaustion"
       ],
       "lean_names": [
         "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation"
@@ -3055,7 +3055,9 @@
       "hypotheses_tex": "Assume \\(0<m\\leq n\\). The zero-measure case is included and is immediate.",
       "proof_tex": "",
       "deps": [
+        "lem:carrier-closure",
         "lem:decomposition",
+        "lem:packing-base-point",
         "lem:packing-contradiction",
         "lem:pure-wla-null-projection",
         "lem:weak-approximation-restrict-ae"
@@ -3085,6 +3087,7 @@
       "deps": [
         "lem:carrier-calculus",
         "lem:finite-piece-transfer",
+        "lem:finite-pieces",
         "lem:flat-to-approximation",
         "thm:mm-set"
       ],
@@ -3141,7 +3144,8 @@
       "proof_tex": "This is a measure-independent linear algebra theorem. Let the finite-dimensional\nreal inner-product space $X$ have an orthogonal decomposition\n$X=\\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\\leq X$.\nFor $s>0$ put $A(s)=\\sum_j s^jP_j$ and\n$F_s=A(s)^{-1}(V^\\perp)$. Then $X=V\\oplus F_s$; the projection $Q_s$\nonto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.\nIn particular its operator norm stays bounded as $s\\downarrow0$.\nFor the proof, orthogonally split $V^\\perp$ according to the filtration\n$V^\\perp\\cap\\bigoplus_{j\\leq k}X_j$ and define a polynomial family which\nis identity on $V$ and equals $P_k+sP_{k-1}+\\cdots+s^{k-1}P_1$ on the\n$k$th filtration summand. Its value at zero is invertible, by the\nleast-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial\nfamily. In the least-degree argument the lower-degree vector belongs to the\nsum of all earlier filtration summands, not necessarily only the immediately\npreceding one.",
       "deps": [
         "def:orthogonal-grading",
-        "lem:divided-grading-constant-injective",
+        "lem:divided-operator-positive-inverse",
+        "lem:kernel-flag-divided-operators",
         "lem:weighted-grading-positive-complement"
       ],
       "lean_names": [
@@ -3235,7 +3239,7 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Analysis/SpectralOptimization.lean"
       ]
@@ -3992,16 +3996,11 @@
       "proof_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
       "deps": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:feature-moment-vanishing",
-        "lem:feature-norm-functionals",
-        "lem:graded-analytic-projection",
-        "lem:moment-feature-remainder",
-        "lem:moment-norm-bound"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:coherent-finite-jets",
+        "lem:finite-moment-taylor-jets"
       ],
       "lean_names": [
-        "Preiss.eq_zero_of_isLittleO_pow_smul",
         "Preiss.exists_gaussianMoment_taylor_coefficients",
         "Preiss.gaussianMomentCoefficient_unique"
       ],
@@ -4026,10 +4025,8 @@
       "proof_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
       "deps": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-norm-bound",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:moment-operator-growth"
       ],
       "lean_names": [
         "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt"
@@ -4054,13 +4051,10 @@
       "hypotheses_tex": "",
       "proof_tex": "The exact radial identity $\\operatorname{tr}b_{2,s}=ms$ and M07 imply\n$\\operatorname{tr}b_2^{(2)}=0$.\nR03 and the first-moment expansion give\n$\\operatorname{tr}(b_2^{(2)}|V^\\perp)=8|b|^2\n=2\\|b_1^{(1)}\\|^2$.\nThese are separate, comparatively short lemmas.",
       "deps": [
-        "def:bilinear-trace",
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:radial",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-trace-operator"
       ],
       "lean_names": [
         "Preiss.trace_gaussianMomentForm_two",
@@ -4087,11 +4081,9 @@
       "proof_tex": "There exist symmetric continuous forms $b_k^{(j)}$, $k,j\\geq1$, such that for\nevery $q\\geq1$,\n\\[\n b_{k,s}=\\sum_{j=1}^{q}\\frac{s^j}{j!}b_k^{(j)}+o(s^q),\\qquad\n b_k^{(j)}=0\\ (k>2j),\\qquad\n \\sum_{k=1}^{2q}b_k^{(q)}(x^k)=|x|^{2q}\\ (x\\in\\operatorname{supp}\\nu).\n\\]\nUniqueness of finite Taylor coefficients makes choices from different truncation\norders coherent. If $k>2q$, M04 gives $o(s^q)$ directly. The operator-norm\nstatement is stronger and safer than merely pointwise convergence on the support.",
       "deps": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
+        "lem:asymptotic-taylor-vanishing",
         "lem:moment-coefficient-vanishing",
-        "lem:taylor-one",
-        "lem:taylor-two"
+        "lem:taylor-one"
       ],
       "lean_names": [
         "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow"
@@ -4117,10 +4109,8 @@
       "proof_tex": "For odd $k$, $s^{-k/2}b_{k,s}\\to0$; for $k=2j$,\n$s^{-j}b_{2j,s}\\to b_{2j}^{(j)}/j!$.\nThe factorial is essential; the displayed summary on printed page 74 omits it,\nwhereas the calculation in Chapter 9 includes it correctly.\nUse M03 with $s=r^{-2}$ to deduce the limit of every Gaussian-weighted\npolynomial moment of $D^m_{0,r}\\nu$ as $r\\to\\infty$.",
       "deps": [
         "def:moment-coefficients",
-        "def:moments",
-        "def:unit-uniform",
-        "lem:moment-coefficient-vanishing",
-        "lem:taylor-two"
+        "lem:asymptotic-taylor-vanishing",
+        "lem:moment-coefficient-vanishing"
       ],
       "lean_names": [
         "Preiss.gaussianMoment_scaled_even_limit",
@@ -4195,7 +4185,7 @@
         "Needed when blow-up centers are projections onto a plane rather than support points."
       ],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/Compactness.lean"
       ]
@@ -4315,7 +4305,7 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/BlowdownCompactness.lean"
       ]
@@ -4395,9 +4385,11 @@
       "proof_tex": "For uniform $\\nu$ with non-full support there exist a support point $y$,\na nonzero vector $e$, and a tangent $\\lambda$ at $y$ supported in\n$\\{z:\\langle z,e\\rangle\\geq0\\}$. Preserve the exact normalization when\nchoosing the tangent. GMT's \\texttt{SUniformAux.exists\\_halfSpace} proves\nthis in its body but exports only the existence of the new uniform measure.\nThe adapter should reuse that proof pattern and retain its witness.",
       "deps": [
         "gmt:support-not-full",
+        "gmt:tangent-open-null",
         "gmt:uniform-halfspace",
         "gmt:uniform-tangents",
-        "lem:dimensional-tangent-ball-constant"
+        "lem:dimensional-tangent-ball-constant",
+        "lem:unit-uniform-tangent-existence"
       ],
       "lean_names": [
         "Preiss.exists_halfSpace_dimensionalTangent"
@@ -4427,7 +4419,8 @@
         "gmt:barycenter-quadratic-bound",
         "gmt:quadratic-support-tangent",
         "gmt:uniform-hyperplane",
-        "gmt:zero-barycenter-hyperplane"
+        "gmt:zero-barycenter-hyperplane",
+        "lem:unit-uniform-tangent-existence"
       ],
       "lean_names": [
         "Preiss.exists_hyperplane_eq_or_dimensionalTangent"
@@ -4456,9 +4449,11 @@
       "deps": [
         "def:unit-uniform",
         "gmt:support-not-full",
+        "lem:dimensional-tangent-bounded-orbit",
         "lem:halfspace-tangent-witness",
         "lem:hyperplane-tangent-lineage",
         "lem:hyperplane-transport-map",
+        "lem:plane-isometric-parametrization",
         "lem:pseudotangent-transitive"
       ],
       "lean_names": [
@@ -4518,10 +4513,13 @@
         "def:unit-uniform",
         "lem:plane-supported-uniform-flat",
         "lem:pseudotangent-transitive",
-        "lem:uniform-reduction"
+        "lem:uniform-reduction",
+        "lem:unit-flat-support-regularity",
+        "lem:unit-flat-unit-uniform"
       ],
       "lean_names": [
-        "Preiss.uniform_has_flat_pseudotangent"
+        "Preiss.uniform_has_flat_pseudotangent",
+        "Preiss.unitUniform_exists_flat_uniformPseudotangent"
       ],
       "proposed_lean_name": "Preiss.uniform_has_flat_pseudotangent",
       "proposed_file": "Preiss/Uniform/FlatPseudotangent.lean",
@@ -4543,13 +4541,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their\nGaussian moments, and M09 to identify the limits. The compactness principle\n``every sequence escaping to infinity has a convergent subsequence with the\nsame limit'' gives full convergence. A separate output is that every positive\nsequence $r_i\\to\\infty$ converges to this same measure. Scaling by a fixed\nfactor preserves the set of limits at infinity, so S02--S03 imply conicality.",
       "deps": [
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowdown-moment-limits",
-        "lem:infinity-compactness",
-        "lem:moment-determination",
-        "lem:vague-countable-metric",
-        "lem:vague-gaussian-polynomials"
+        "lem:uniform-compactness",
+        "lem:unit-uniform-infinity-existence",
+        "lem:unit-uniform-infinity-unique"
       ],
       "lean_names": [
         "Preiss.blowdown_sequence_converges",
@@ -4562,7 +4556,7 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/TangentAtInfinity.lean"
       ]
@@ -4575,10 +4569,7 @@
       "hypotheses_tex": "",
       "proof_tex": "Under G02, assume the top-$m$ eigenspace has a support point within distance\n$\\delta$ of its $m$th unit eigenvector, where $0<\\delta<1/m$.\nIf $\\alpha_m<1$, the trace gives\n$\\alpha_i-1\\leq(m-1)(1-\\alpha_m)$ for $i<m$ and\n$\\alpha_i\\leq\\alpha_m$ for $i\\geq m$.\nThe support identity then gives\n$0\\leq(1-\\alpha_m)((m-1)^2\\delta^2-(1-\\delta)^2)<0$.\nThus $\\alpha_m\\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one\nand the rest zero. Hence support is contained in $V$ and $\\nu=\\sigma_V$.\nG03--G06 give the conical gap for all positive $m$ without the flawed\ntwo-dimensional shortcut in the original printed proof.",
       "deps": [
-        "def:conical",
-        "def:plane",
-        "lem:conical-covariance",
-        "lem:spectral-minimizing-plane"
+        "lem:quadratic-near-basis-rigidity"
       ],
       "lean_names": [
         "Preiss.conical_covariance_eq_projection_of_near_eigenvector"
@@ -4603,12 +4594,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their\nGaussian moments, and M09 to identify the limits. The compactness principle\n``every sequence escaping to infinity has a convergent subsequence with the\nsame limit'' gives full convergence. A separate output is that every positive\nsequence $r_i\\to\\infty$ converges to this same measure. Scaling by a fixed\nfactor preserves the set of limits at infinity, so S02--S03 imply conicality.",
       "deps": [
-        "def:conical",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:vague-moving-blowups",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-unique",
+        "lem:vague-moving-blowups"
       ],
       "lean_names": [
         "Preiss.tangent_at_infinity_conical"
@@ -4633,15 +4621,13 @@
       "hypotheses_tex": "",
       "proof_tex": "Under G02, assume the top-$m$ eigenspace has a support point within distance\n$\\delta$ of its $m$th unit eigenvector, where $0<\\delta<1/m$.\nIf $\\alpha_m<1$, the trace gives\n$\\alpha_i-1\\leq(m-1)(1-\\alpha_m)$ for $i<m$ and\n$\\alpha_i\\leq\\alpha_m$ for $i\\geq m$.\nThe support identity then gives\n$0\\leq(1-\\alpha_m)((m-1)^2\\delta^2-(1-\\delta)^2)<0$.\nThus $\\alpha_m\\geq1$. Trace $m$ forces the first $m$ eigenvalues to be one\nand the rest zero. Hence support is contained in $V$ and $\\nu=\\sigma_V$.\nG03--G06 give the conical gap for all positive $m$ without the flawed\ntwo-dimensional shortcut in the original printed proof.",
       "deps": [
-        "def:conical",
-        "def:plane",
-        "def:unit-uniform",
+        "lem:conical-covariance",
         "lem:conical-eigenvalue-rigidity",
-        "lem:homogeneous-energy-radial",
-        "lem:plane-supported-uniform-flat",
-        "lem:small-energy-no-holes",
-        "lem:spectral-minimizing-plane",
-        "lem:uniform-ball-boundary"
+        "lem:conical-gaussian-ball-energy",
+        "lem:covariance-minimizing-plane",
+        "lem:gaussian-bilinear-covariance",
+        "lem:ordered-bilinear-spectrum",
+        "lem:small-energy-no-holes"
       ],
       "lean_names": [
         "Preiss.conical_flatness_gap"
@@ -4701,8 +4687,7 @@
       ],
       "lean_names": [
         "Preiss.IsRigidityOmega",
-        "Preiss.RigidityOmega",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityOmega"
       ],
       "proposed_lean_name": "Preiss.rigidityOmega",
       "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
@@ -4731,8 +4716,7 @@
       ],
       "lean_names": [
         "Preiss.IsRigidityAdjustedForm",
-        "Preiss.RigidityAdjustedForm",
-        "Preiss.exists_rigidityOmega_and_adjustedForm"
+        "Preiss.RigidityAdjustedForm"
       ],
       "proposed_lean_name": "Preiss.rigidityAdjustedForm",
       "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
@@ -4754,14 +4738,9 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $j\\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.\nUse M02, M03 and the Gaussian moment formula of the flat limit, including the\nfactorial from M08.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:blowdown-even-moment-limit",
         "lem:flat-gaussian-even-moments",
-        "lem:moment-covariance",
-        "lem:scaled-moment-limits",
-        "lem:vague-gaussian-polynomials"
+        "lem:vague-gaussian-moments"
       ],
       "lean_names": [
         "Preiss.evenMomentCoefficient_eq_projection_norm"
@@ -4786,12 +4765,11 @@
       "hypotheses_tex": "",
       "proof_tex": "For $j\\geq1$, the restriction of $b_{2j-1}^{(j)}$ to $V$ is zero.\nFor a nonzero $v\\in V$, use the flat blow-down and S04 to find support points\n$x_i$ with $|x_i|\\to\\infty$ and $x_i/|x_i|\\to v/|v|$.\nThe support polynomial identity, R01 and the fact that all remaining terms have\nlower degree show $b_{2j-1}^{(j)}(v^{2j-1})\\geq0$.\nRepeat with $-v$ and use polarization to obtain the full multilinear restriction.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:dimensional-blowup-support",
         "lem:flat-infinity-moments",
+        "lem:leading-homogeneous-term",
         "lem:moment-support-polynomial",
+        "lem:symmetric-multilinear-diagonal-injective",
         "lem:vague-support-approximation"
       ],
       "lean_names": [
@@ -4817,13 +4795,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Riesz representation and R02 give $b\\in V^\\perp$ with\n$b_1^{(1)}(x)=2\\langle b,x\\rangle$. The first support identity gives\n$|Qx|^2=2\\langle b,x\\rangle$ on the support, and hence $|Qx|\\leq2|b|$.\nAlso $|Qx-b|=|b|$ there. Keep these identities as named lemmas.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial"
+        "lem:moment-support-polynomial",
+        "lem:normal-coordinate-identities"
       ],
       "lean_names": [
         "Preiss.support_normal_sq_eq_inner"
@@ -4848,14 +4822,7 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v,w\\in\\mathbb R^n$, prove\n\\[\n \\lim_{s\\downarrow0}\\frac{8s}{I(s)}\\int e^{-s|z|^2}\n \\langle z,v\\rangle^2\\langle z-b,w\\rangle\\,d\\nu\n =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\\langle b,w\\rangle.\n\\]\nFor $v\\in V,w\\in V^\\perp$ this is $\\langle\\omega(v,v),w\\rangle$.\nFurther prove\n\\[\n \\lim_{s\\downarrow0}\\frac{s}{I(s)}\\int e^{-s|z|^2}\n |Pz|^2\\langle z-b,w\\rangle\\,d\\nu=0.\n\\]\nTo justify the latter, the analogous $|z|^2$ expression has a limit by the\nfirst formula and a finite orthonormal-basis sum. Differentiating the Gaussian\nfirst moment and applying the appropriate one-sided l'Hopital argument\nidentifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.\nRecord differentiability and domination hypotheses before using l'Hopital.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-moments",
-        "lem:taylor-two"
+        "lem:mixed-centered-gaussian-limit"
       ],
       "lean_names": [
         "Preiss.mixed_gaussian_limit_eq_omega"
@@ -4880,14 +4847,7 @@
       "hypotheses_tex": "",
       "proof_tex": "The exact radial identity $\\operatorname{tr}b_{2,s}=ms$ and M07 imply\n$\\operatorname{tr}b_2^{(2)}=0$.\nR03 and the first-moment expansion give\n$\\operatorname{tr}(b_2^{(2)}|V^\\perp)=8|b|^2\n=2\\|b_1^{(1)}\\|^2$.\nThese are separate, comparatively short lemmas.",
       "deps": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:taylor-two",
+        "lem:cylinder-second-coefficient-trace",
         "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
@@ -4913,14 +4873,9 @@
       "hypotheses_tex": "",
       "proof_tex": "There exists $R_0<\\infty$ with\n$\\operatorname{dist}(v,\\operatorname{supp}\\nu)<R_0$ for every $v\\in V$.\nIf not, choose $v_i$ with distances $r_i\\to\\infty$, a nearest support point,\nand its projection $z_i\\in V$. The measures $D^m_{z_i,r_i}\\nu$ have\nsupports approaching the origin and lie in shrinking tubes about $V$ by R03.\nS05 gives a unit uniform limit supported in $V$, hence $\\sigma_V$.\nThe original holes give a unit hole centred at a bounded point of $V$, a\ncontradiction. The centres $z_i$ need not lie in the support, which is why the\nnear-support variant of S05 is essential.",
       "deps": [
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:plane-supported-uniform-flat",
-        "lem:uniform-cylinder-identity",
-        "lem:uniform-near-support-compactness",
-        "lem:vague-support-approximation"
+        "lem:bounded-tube-plane-to-support",
+        "lem:rigidity-normal-vector-exists",
+        "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
         "Preiss.exists_uniform_dist_plane_support_bound"
@@ -4934,7 +4889,7 @@
         "The projected rescaling centers need not be in support; invoke the near-support compactness variant."
       ],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatAtInfinity/Basic.lean"
       ]
@@ -4947,14 +4902,11 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v\\in V,w\\in V^\\perp$,\n$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.\nThe first is R02; the others follow by R03's bounded normal coordinates and\nGaussian estimates in the defining limits. Therefore, on the support,\n\\[\n b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)\n =|Qz|^4+2|Pz|^2|Qz|^2.\n\\]\nUse the order-two support identity and R01; do not drop mixed cubic terms\nwithout first establishing these vanishings.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
+        "lem:bounded-tube-cubic-vanishing",
+        "lem:flat-infinity-moments",
+        "lem:moment-support-polynomial",
         "lem:odd-coefficients-plane-zero",
-        "lem:taylor-two",
+        "lem:symmetric-cubic-binomial",
         "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
@@ -4967,7 +4919,7 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean"
       ]
@@ -4980,15 +4932,7 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v,w\\in\\mathbb R^n$, prove\n\\[\n \\lim_{s\\downarrow0}\\frac{8s}{I(s)}\\int e^{-s|z|^2}\n \\langle z,v\\rangle^2\\langle z-b,w\\rangle\\,d\\nu\n =3b_3^{(2)}(v,v,w)-4b_2^{(1)}(v,v)\\langle b,w\\rangle.\n\\]\nFor $v\\in V,w\\in V^\\perp$ this is $\\langle\\omega(v,v),w\\rangle$.\nFurther prove\n\\[\n \\lim_{s\\downarrow0}\\frac{s}{I(s)}\\int e^{-s|z|^2}\n |Pz|^2\\langle z-b,w\\rangle\\,d\\nu=0.\n\\]\nTo justify the latter, the analogous $|z|^2$ expression has a limit by the\nfirst formula and a finite orthonormal-basis sum. Differentiating the Gaussian\nfirst moment and applying the appropriate one-sided l'Hopital argument\nidentifies this limit as zero; the $|Qz|^2$ term tends to zero by R03 and M02.\nRecord differentiability and domination hypotheses before using l'Hopital.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-parameter-derivative",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-mixed-gaussian-limit",
+        "lem:bounded-tube-projected-contraction",
         "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
@@ -5016,14 +4960,12 @@
       "hypotheses_tex": "",
       "proof_tex": "For $v\\in V,w\\in V^\\perp$,\n$b_3^{(2)}(v,v,v)=b_3^{(2)}(v,w,w)=b_3^{(2)}(w,w,w)=0$.\nThe first is R02; the others follow by R03's bounded normal coordinates and\nGaussian estimates in the defining limits. Therefore, on the support,\n\\[\n b_1^{(2)}(z)+b_2^{(2)}(z,z)+3b_3^{(2)}(Pz,Pz,Qz)\n =|Qz|^4+2|Pz|^2|Qz|^2.\n\\]\nUse the order-two support identity and R01; do not drop mixed cubic terms\nwithout first establishing these vanishings.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:bounded-tube-cubic-vanishing",
         "lem:flat-infinity-moments",
         "lem:moment-support-polynomial",
-        "lem:rigidity-cubic-vanishing"
+        "lem:odd-coefficients-plane-zero",
+        "lem:symmetric-cubic-binomial",
+        "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
         "Preiss.fourth_order_support_identity"
@@ -5048,13 +4990,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Let $\\gamma$ be the standard covariance-one Gaussian probability measure on\n$V$. Prove $\\int\\langle\\omega(v,v),b\\rangle\\,d\\gamma(v)=0$ using R07,\nFubini and domination by a constant times $|v|^2$.\nThen\n$\\operatorname{tr}(b_2^{(2)}|V)=\\int\\widehat b(v,v)\\,d\\gamma(v)$.\nThe same argument works against each fixed normal vector, not only $b$.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-gaussian-even-moments",
+        "lem:flat-infinity-moments",
+        "lem:gaussian-vector-trace-contractions",
+        "lem:projected-mixed-gaussian-sum",
         "lem:rigidity-contracted-limit-zero",
         "lem:rigidity-mixed-gaussian-limit"
       ],
@@ -5081,16 +5019,8 @@
       "hypotheses_tex": "",
       "proof_tex": "For all $v\\in V$,\n$\\widehat b(v,v)^2\\leq |b|^2|\\omega(v,v)|^2$.\nChoose support points $t_i v+v_i+w_i$ within bounded distance of $t_i v$ using\nR05. Pass to a convergent subsequence of bounded normal components $w_i$.\nDivide R09 by $t_i^2$ and use R03 to obtain\n$b_2^{(2)}(v,v)+\\langle\\omega(v,v),w\\rangle=0$ and\n$|w|^2=2\\langle b,w\\rangle$.\nThus $|w-b|=|b|$ and\n$\\widehat b(v,v)+\\langle\\omega(v,v),w-b\\rangle=0$; Cauchy--Schwarz proves\nthe inequality.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-infinity-bounded-holes",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-linear-growth",
+        "lem:rigidity-pointwise-from-growth"
       ],
       "lean_names": [
         "Preiss.adjustedForm_sq_le_norm_omega_sq"
@@ -5115,21 +5045,11 @@
       "hypotheses_tex": "",
       "proof_tex": "R09 and R03 imply that\n$\\widehat b(Pz,Pz)+\\langle\\omega(Pz,Pz),Qz-b\\rangle$\nhas absolute value at most $C(1+|z|)$ on the support.\nHence its integral against $sI(s)^{-1}e^{-s|z|^2}\\nu$ tends to zero.\nThis is equation (9.34); it is a necessary bridge to the global trace bound.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-polynomial-integrable",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-error-limit-from-growth",
+        "lem:rigidity-error-linear-growth"
       ],
       "lean_names": [
-        "Preiss.adjustedForm_gaussian_error_tendsto_zero",
-        "Preiss.rigidityError",
-        "Preiss.rigidityError_le_linear_growth"
+        "Preiss.adjustedForm_gaussian_error_tendsto_zero"
       ],
       "proposed_lean_name": "Preiss.adjustedForm_gaussian_error_tendsto_zero",
       "proposed_file": "Preiss/Uniform/TraceRigidity.lean",
@@ -5151,15 +5071,7 @@
       "hypotheses_tex": "",
       "proof_tex": "Let $\\gamma$ be the standard covariance-one Gaussian probability measure on\n$V$. Prove $\\int\\langle\\omega(v,v),b\\rangle\\,d\\gamma(v)=0$ using R07,\nFubini and domination by a constant times $|v|^2$.\nThen\n$\\operatorname{tr}(b_2^{(2)}|V)=\\int\\widehat b(v,v)\\,d\\gamma(v)$.\nThe same argument works against each fixed normal vector, not only $b$.",
       "deps": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-gaussian-even-moments",
+        "lem:gaussian-mean-zero-correction",
         "lem:rigidity-omega-trace-zero"
       ],
       "lean_names": [
@@ -5185,13 +5097,7 @@
       "hypotheses_tex": "",
       "proof_tex": "For $y,z\\in V$,\n$\\int\\langle y,v\\rangle^2\\langle z,v\\rangle^2\\,d\\gamma\n=|y|^2|z|^2+2\\langle y,z\\rangle^2$.\nCombining this with R07 yields, for $w\\in V^\\perp$,\n\\[\n \\int\\langle y,v\\rangle^2\\langle\\omega(v,v),w\\rangle\\,d\\gamma(v)\n =2\\langle\\omega(y,y),w\\rangle.\n\\]\nJustify limits by Gaussian quartic domination and Fubini.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-wick-fourth",
+        "lem:gaussian-vector-trace-contractions",
         "lem:rigidity-omega-trace-zero"
       ],
       "lean_names": [
@@ -5204,7 +5110,7 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
       ]
@@ -5217,18 +5123,11 @@
       "hypotheses_tex": "",
       "proof_tex": "Integrate R10, express $\\int|\\omega(v,v)|^2\\,d\\gamma$ through R07 and R12,\nuse R11, and pass to the flat blow-down using M02. The result is\n\\[\n \\int\\widehat b(v,v)^2\\,d\\gamma(v)\n \\leq-8|b|^2\\int\\widehat b(v,v)\\,d\\gamma(v).\n\\]\nThe inequality must remain an inequality throughout. The equality sign at\nthe start of the second long display on printed page 108 loses the earlier\ninequality; its final statement (9.41) has the correct direction.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:rigidity-mixed-gaussian-limit",
-        "lem:rigidity-omega-reproducing",
+        "lem:gaussian-rigidity-integral-bounds",
+        "lem:rigidity-omega-contraction",
+        "lem:rigidity-omega-trace-zero",
         "lem:rigidity-pointwise-quadratic-bound",
-        "lem:rigidity-rescaled-error",
-        "lem:vague-gaussian-polynomials"
+        "lem:rigidity-rescaled-error"
       ],
       "lean_names": [
         "Preiss.integral_adjustedForm_sq_le"
@@ -5255,15 +5154,8 @@
       "hypotheses_tex": "",
       "proof_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
       "deps": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:gaussian-quadratic-trace-bound",
+        "lem:bilinear-trace-orthogonal-split",
+        "lem:gaussian-square-upper-trace-lower",
         "lem:moment-normal-trace",
         "lem:rigidity-gaussian-trace",
         "lem:rigidity-integral-quadratic-bound"
@@ -5292,16 +5184,14 @@
       "hypotheses_tex": "",
       "proof_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
       "deps": [
-        "def:flat",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:moment-second-total-trace",
         "lem:plane-supported-uniform-flat",
         "lem:rigidity-forms-exist",
         "lem:rigidity-normal-vector-exists",
+        "lem:taylor-two",
         "lem:trace-rigidity",
-        "lem:uniform-cylinder-identity"
+        "lem:uniform-cylinder-identity",
+        "lem:unit-uniform-infinity-existence"
       ],
       "lean_names": [
         "Preiss.flat_of_flat_at_infinity"
@@ -5326,15 +5216,14 @@
       "hypotheses_tex": "",
       "proof_tex": "Intersect the a.e. sets for uniformity, density and A09. Choose any tangent,\nuse A06, recenter every approximating term using A09, and use S07 for the\nnonzero flat limit. This is \\texttt{ae\\_exists\\_flat\\_tangent}.",
       "deps": [
-        "def:flat",
-        "def:positive-density",
-        "lem:dimensional-tangent-closed",
+        "lem:dimensional-tangent-ball-constant",
         "lem:dimensional-tangent-compactness",
+        "lem:flat-positive-scalar",
+        "lem:flat-tangent-from-uniform-recentering",
+        "lem:radius-power-density",
         "lem:recenter",
-        "lem:tangent-existence",
-        "lem:tangent-ray",
         "lem:uniform-adapter",
-        "thm:flat-pseudotangent"
+        "lem:unit-flat-support-regularity"
       ],
       "lean_names": [
         "Preiss.ae_exists_flat_tangent"
@@ -5359,26 +5248,8 @@
       "hypotheses_tex": "",
       "proof_tex": "After S08 normalization, suppose $\\alpha$ is a flat dimensional tangent and\n$\\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit\nuniform. Let $\\chi$ be the blow-down of $\\zeta$. Rigidity and the gap give\n$F(\\chi)>\\varepsilon$. Choose $r_i\\to0$ with blow-ups tending to $\\alpha$\nand $s_i<r_i$ with blow-ups tending to $\\chi$; subsequence selection makes\nthe ordering possible. For sufficiently large $i$, the continuous scale\nfunction satisfies $F(D_{x,r_i}^m\\mu)<\\varepsilon$ and\n$F(D_{x,s_i}^m\\mu)>\\varepsilon$.\nChoose $\\sigma_i\\in[s_i,r_i]$ with energy exactly $\\varepsilon$ and energy\nat most $\\varepsilon$ on the entire interval $[\\sigma_i,r_i]$.\nThis is a greatest-crossing/last-crossing assertion, not merely the intermediate\nvalue theorem. Extract a nonzero unit uniform limit $\\xi$ at the $\\sigma_i$.",
       "deps": [
-        "cor:conical",
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:flatness-gap",
-        "def:positive-density",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:density-normalization",
-        "lem:dimensional-tangent-compactness",
-        "lem:flatness-continuous",
-        "lem:flatness-minimum",
-        "lem:flatness-radius-continuous",
-        "lem:greatest-crossing",
-        "lem:tangent-blowdown",
-        "thm:gap",
-        "thm:infinity-rigidity",
-        "thm:unique-infinity"
+        "lem:first-crossing-from-large-flatness",
+        "lem:nonflat-uniform-large-flatness"
       ],
       "lean_names": [
         "Preiss.exists_first_crossing_sequences"
@@ -5403,16 +5274,8 @@
       "hypotheses_tex": "",
       "proof_tex": "Prove $r_i/\\sigma_i\\to\\infty$. If the ratios have a bounded subsequence,\nextract a further limit $R\\in[1,\\infty)$. S02--S03 give\n$D^m_{0,R}\\xi=\\alpha$. Invert the dilation to conclude $\\xi$ flat,\ncontradicting $F(\\xi)=\\varepsilon>0$.",
       "deps": [
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:positive-density",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:flatness-minimum",
+        "lem:plane-scaling",
+        "lem:vague-limit-unique",
         "lem:vague-moving-blowups"
       ],
       "lean_names": [
@@ -5439,23 +5302,8 @@
       "proof_tex": "For every fixed $R\\geq1$, eventually $\\sigma_i R\\in[\\sigma_i,r_i]$.\nS02--S03 and C04 give $F(D^m_{0,R}\\xi)\\leq\\varepsilon$.\nLet $R\\to\\infty$. M10 and continuity give $F(\\psi)\\leq\\varepsilon$ for\nthe conical blow-down $\\psi$ of $\\xi$. Apply the conical gap, then rigidity,\nto conclude $\\xi$ flat, the final contradiction.\nKeep the centre $x$ fixed throughout; the printed scale function sometimes\nuses zero where $x$ is intended. Every use of $F$ on a dilated measure must\nretain the factor $R^{-m}$.",
       "deps": [
         "cor:conical",
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:flatness-gap",
-        "def:positive-density",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:first-crossing",
-        "lem:first-crossing-ratio",
         "lem:flatness-continuous",
-        "lem:flatness-minimum",
-        "lem:vague-moving-blowups",
-        "thm:gap",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-existence"
       ],
       "lean_names": [
         "Preiss.first_crossing_limit_flat_at_infinity"
@@ -5482,17 +5330,11 @@
       "hypotheses_tex": "",
       "proof_tex": "For every fixed $R\\geq1$, eventually $\\sigma_i R\\in[\\sigma_i,r_i]$.\nS02--S03 and C04 give $F(D^m_{0,R}\\xi)\\leq\\varepsilon$.\nLet $R\\to\\infty$. M10 and continuity give $F(\\psi)\\leq\\varepsilon$ for\nthe conical blow-down $\\psi$ of $\\xi$. Apply the conical gap, then rigidity,\nto conclude $\\xi$ flat, the final contradiction.\nKeep the centre $x$ fixed throughout; the printed scale function sometimes\nuses zero where $x$ is intended. Every use of $F$ on a dilated measure must\nretain the factor $R^{-m}$.",
       "deps": [
-        "def:dimensional-tangent",
-        "def:flat",
-        "def:positive-density",
+        "lem:all-dimensional-tangents-flat",
         "lem:density-normalization",
-        "lem:first-crossing",
-        "lem:first-crossing-flat-infinity",
-        "lem:flatness-cutoff-exists",
-        "lem:flatness-gap-cutoff",
-        "lem:radius-power-density",
-        "lem:tangent-ray",
-        "thm:infinity-rigidity"
+        "lem:density-positive-scalar",
+        "lem:flat-tangent-normalization",
+        "lem:radius-power-density"
       ],
       "lean_names": [
         "Preiss.all_tangents_flat_of_one"
@@ -5899,7 +5741,7 @@
       "file": "Preiss/Uniform/MomentForms.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/MomentForms.lean"
       ],
@@ -5960,7 +5802,7 @@
       "file": "Preiss/Uniform/FlatnessContinuity.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatnessContinuity.lean"
       ],
@@ -5989,7 +5831,7 @@
       "file": "Preiss/Theorem/FirstCrossing.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ],
@@ -6005,8 +5847,6 @@
         "def:flatness-cutoff"
       ],
       "deps": [
-        "def:flatness-cutoff",
-        "def:flatness-gap",
         "lem:flatness-minimum",
         "thm:gap"
       ],
@@ -6043,7 +5883,7 @@
       "file": "Preiss/Theorem/FirstCrossing.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ],
@@ -6058,7 +5898,7 @@
         "Preiss.exists_firstMomentNormalVector"
       ],
       "deps": [
-        "def:rigidity-normal-vector",
+        "lem:first-moment-normal-from-vanishing",
         "lem:odd-coefficients-plane-zero"
       ],
       "scope": "core",
@@ -6078,9 +5918,8 @@
         "Preiss.exists_rigidityOmega_and_adjustedForm"
       ],
       "deps": [
-        "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
-        "lem:rigidity-normal-vector-exists"
+        "def:moment-coefficients",
+        "lem:rigidity-forms-from-symmetry"
       ],
       "scope": "core",
       "branch": "Explicit analytical data",
@@ -6523,7 +6362,7 @@
         "lem:blowup-composition",
         "lem:plane-hausdorff"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Tangent/FlatScaling.lean"
       ],
@@ -6754,7 +6593,7 @@
         "Preiss.measure_sphere_eq_zero_of_continuous_profile"
       ],
       "deps": [],
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Analysis/BallBoundary.lean"
       ],
@@ -6772,7 +6611,7 @@
         "def:unit-uniform",
         "lem:continuous-ball-profile-boundary"
       ],
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/BallBoundary.lean"
       ],
@@ -7945,7 +7784,7 @@
         "lem:gaussian-quadratic-trace-bound",
         "lem:gaussian-wick-fourth"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianQuadraticForms.lean"
       ],
@@ -8011,10 +7850,13 @@
       "branch": "Reusable proof infrastructure",
       "lean_names": [
         "Preiss.flatOn_support",
+        "Preiss.isFlat_unitFlat",
         "Preiss.regular_unitFlat",
+        "Preiss.unitFlat_ne_zero",
         "Preiss.unitFlat_support"
       ],
       "deps": [
+        "def:flat",
         "lem:flat-measure-regularity",
         "lem:measure-support-transport",
         "lem:plane-hausdorff"
@@ -8167,6 +8009,2206 @@
         "Preiss/Uniform/FullDimension.lean"
       ],
       "proposed_file": "Preiss/Uniform/FullDimension.lean"
+    },
+    {
+      "id": "lem:asymptotic-taylor-vanishing",
+      "kind": "lemma",
+      "title": "Taylor coefficient vanishing from a growth exponent",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.eq_zero_of_isLittleO_pow_smul",
+        "Preiss.isLittleO_rpow_nhdsGT_zero",
+        "Preiss.taylorCoefficient_eq_zero_of_lt_growth"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AsymptoticCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AsymptoticCoefficients.lean"
+    },
+    {
+      "id": "lem:moment-operator-growth",
+      "kind": "lemma",
+      "title": "Operator-norm growth of Gaussian moments at zero",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMoment_isBigO_rpow"
+      ],
+      "deps": [
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentAsymptotics.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentAsymptotics.lean"
+    },
+    {
+      "id": "lem:graded-polynomial-division",
+      "kind": "lemma",
+      "title": "Polynomial division along a triangular grading",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.analyticAt_dividedGradingMap",
+        "Preiss.dividedGradingMap",
+        "Preiss.dividedGradingMap_row",
+        "Preiss.dividedGradingMap_zero",
+        "Preiss.weightedGrading_comp_dividedGradingMap"
+      ],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedDivision.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedDivision.lean"
+    },
+    {
+      "id": "lem:kernel-flag-divided-operators",
+      "kind": "lemma",
+      "title": "Analytic divided operators for the kernel flag",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.analyticAt_dividedFlagMap",
+        "Preiss.analyticAt_dividedFlagOperator",
+        "Preiss.dividedFlagMap",
+        "Preiss.dividedFlagOperator",
+        "Preiss.dividedFlagOperator_zero",
+        "Preiss.flagProjectionLayer_projectedGradingPiece_eq_zero",
+        "Preiss.isUnit_dividedFlagOperator_zero",
+        "Preiss.projectedGradingPiece",
+        "Preiss.weightedGrading_comp_dividedFlagMap"
+      ],
+      "deps": [
+        "lem:divided-grading-constant-injective",
+        "lem:graded-polynomial-division",
+        "lem:kernel-flag-layer-grading"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjectionFlag.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjectionFlag.lean"
+    },
+    {
+      "id": "lem:divided-operator-positive-inverse",
+      "kind": "lemma",
+      "title": "Invertibility of the divided operator at positive scales",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isUnit_dividedFlagOperator_pos"
+      ],
+      "deps": [
+        "lem:kernel-flag-divided-operators",
+        "lem:weighted-grading-positive-complement"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjection.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjection.lean"
+    },
+    {
+      "id": "lem:plane-slab-measure",
+      "kind": "lemma",
+      "title": "Uniform Hausdorff bounds for slabs in linear planes",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.hausdorffMeasure_plane_slab_le"
+      ],
+      "deps": [
+        "def:plane"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneSlab.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneSlab.lean"
+    },
+    {
+      "id": "lem:projected-tube-contained-slab",
+      "kind": "lemma",
+      "title": "A projected tube lies in a thin plane slab",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.projected_tube_subset_slab"
+      ],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/ProjectionEstimate.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/ProjectionEstimate.lean"
+    },
+    {
+      "id": "lem:fivefold-image-covering",
+      "kind": "lemma",
+      "title": "Image-measure bounds from a buffered Vitali cover",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_image_le_mul_of_ball_image_bounds"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/CoveringImage.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/CoveringImage.lean"
+    },
+    {
+      "id": "lem:unit-uniform-tangent-existence",
+      "kind": "lemma",
+      "title": "Unit uniform dimensional tangents at every support point",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_unitUniform_dimensionalTangent"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:uniform-compactness",
+        "lem:uniform-scaling"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentExistence.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentExistence.lean"
+    },
+    {
+      "id": "lem:analytic-finite-jets",
+      "kind": "lemma",
+      "title": "Finite Taylor jets of normed-space-valued analytic functions",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_positive_taylor_jets_of_analyticAt_zero",
+        "Preiss.exists_taylor_jets_of_analyticAt_zero"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AnalyticJets.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AnalyticJets.lean"
+    },
+    {
+      "id": "lem:analytic-projection-approximation",
+      "kind": "lemma",
+      "title": "Extending analytic approximations from a subspace",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_analyticApproximation_of_weightedComplement",
+        "Preiss.functional_comp_projection_eq_self"
+      ],
+      "deps": [
+        "lem:graded-analytic-projection"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AnalyticProjectionApproximation.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AnalyticProjectionApproximation.lean"
+    },
+    {
+      "id": "lem:dimensional-tangent-bounded-orbit",
+      "kind": "lemma",
+      "title": "Dimensional tangents lie in the bounded-radius scaling orbit closure",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.IsDimensionalTangent.isUniformPseudotangent"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:pseudotangent-transitive"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/ScalingOrbit.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/ScalingOrbit.lean"
+    },
+    {
+      "id": "lem:cone-projection-direction",
+      "kind": "lemma",
+      "title": "Small projected directions from plane proximity and cone escape",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_unit_small_projection_of_near_plane",
+        "Preiss.norm_projection_lt_of_outside_cone"
+      ],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/Cylinders.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/Cylinders.lean"
+    },
+    {
+      "id": "lem:uniform-tube-projection-cover",
+      "kind": "lemma",
+      "title": "Quantitative projection bounds from uniform tubes and cone escape",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape"
+      ],
+      "deps": [
+        "lem:cone-projection-direction",
+        "lem:fivefold-image-covering",
+        "lem:projected-tube-slab-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean"
+    },
+    {
+      "id": "lem:coherent-finite-jets",
+      "kind": "lemma",
+      "title": "Coherent Taylor coefficients from compatible finite jets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_coherent_taylor_coefficients_of_finite_jets"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AsymptoticCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AsymptoticCoefficients.lean"
+    },
+    {
+      "id": "lem:feature-moment-analytic-approximation",
+      "kind": "lemma",
+      "title": "Analytic approximation of the complete feature moment functional",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_featureMoment_analytic_approximation"
+      ],
+      "deps": [
+        "lem:analytic-projection-approximation",
+        "lem:feature-moment-vanishing",
+        "lem:feature-norm-functionals",
+        "lem:moment-feature-remainder"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentFeatures.lean"
+    },
+    {
+      "id": "lem:compact-uniform-tubes",
+      "kind": "lemma",
+      "title": "Compact tube uniformization preserving a fixed lower density bound",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_compact_uniform_tubes_subset"
+      ],
+      "deps": [
+        "lem:tube-support-upgrade",
+        "lem:uniform-compact-selection"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/UniformTubes.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/UniformTubes.lean"
+    },
+    {
+      "id": "lem:flat-tangent-from-uniform-recentering",
+      "kind": "lemma",
+      "title": "A flat dimensional tangent from uniformity and simultaneous recentering",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_flat_dimensionalTangent_of_uniform_recenter"
+      ],
+      "deps": [
+        "lem:blowup-composition",
+        "lem:dimensional-tangent-closed",
+        "lem:uniform-scaling",
+        "lem:unit-flat-support-regularity",
+        "thm:flat-pseudotangent"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/FlatFromUniform.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/FlatFromUniform.lean"
+    },
+    {
+      "id": "def:symmetric-multilinear",
+      "kind": "definition",
+      "title": "Symmetric multilinear forms and permutation averaging",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.symmetricContinuousMultilinearSubmodule",
+        "Preiss.symmetrizeContinuousMultilinearMap"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/MultilinearSymmetrization.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/MultilinearSymmetrization.lean"
+    },
+    {
+      "id": "lem:multilinear-symmetrization",
+      "kind": "lemma",
+      "title": "Symmetrization identities",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.comp_symmetrizeContinuousMultilinearMap",
+        "Preiss.symmetrizeContinuousMultilinearMap_apply_perm",
+        "Preiss.symmetrizeContinuousMultilinearMap_diagonal",
+        "Preiss.symmetrizeContinuousMultilinearMap_eq_self"
+      ],
+      "deps": [
+        "def:symmetric-multilinear"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/MultilinearSymmetrization.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/MultilinearSymmetrization.lean"
+    },
+    {
+      "id": "lem:feature-multilinear-block",
+      "kind": "lemma",
+      "title": "Multilinear coordinate tensors for polynomial feature blocks",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.inner_polynomialFeature_multilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock_apply",
+        "Preiss.polynomialFeatureMultilinearBlock_mem",
+        "Preiss.weightedGrading_polynomialFeatureMultilinearBlock"
+      ],
+      "deps": [
+        "def:polynomial-feature",
+        "lem:polynomial-feature-identities"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/PolynomialFeatures.lean"
+    },
+    {
+      "id": "def:symmetric-feature-recovery",
+      "kind": "definition",
+      "title": "Bounded recovery of symmetric forms from feature functionals",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.polynomialFeatureMomentRecovery",
+        "Preiss.polynomialFeatureMomentRecovery_symmetric",
+        "Preiss.symmetricPolynomialFeatureMomentRecovery",
+        "Preiss.symmetricPolynomialFeatureMultilinearBlock"
+      ],
+      "deps": [
+        "lem:feature-multilinear-block",
+        "lem:multilinear-symmetrization"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/PolynomialFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/PolynomialFeatures.lean"
+    },
+    {
+      "id": "lem:feature-moment-exact-recovery",
+      "kind": "lemma",
+      "title": "Exact Gaussian moment recovery from polynomial features",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.featureMoment_comp_multilinearBlock_of_growth",
+        "Preiss.polynomialFeatureMomentRecovery_featureMoment_of_growth"
+      ],
+      "deps": [
+        "def:symmetric-feature-recovery",
+        "lem:gaussian-feature-integrability",
+        "lem:moment-form-symmetry"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentFeatures.lean"
+    },
+    {
+      "id": "def:symmetric-moment-form",
+      "kind": "definition",
+      "title": "Gaussian moments as elements of the symmetric-form submodule",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.SymmetricMomentForm",
+        "Preiss.symmetricGaussianMomentForm"
+      ],
+      "deps": [
+        "def:moments",
+        "def:symmetric-multilinear",
+        "lem:moment-form-symmetry"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "lem:finite-moment-taylor-jets",
+      "kind": "lemma",
+      "title": "Finite Gaussian moment jets in the symmetric-form space",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_gaussianMoment_finite_jets"
+      ],
+      "deps": [
+        "def:symmetric-feature-recovery",
+        "def:symmetric-moment-form",
+        "lem:analytic-finite-jets",
+        "lem:asymptotic-taylor-vanishing",
+        "lem:feature-moment-analytic-approximation",
+        "lem:feature-moment-exact-recovery"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentTaylorJets.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentTaylorJets.lean"
+    },
+    {
+      "id": "lem:flat-measure-reflection",
+      "kind": "lemma",
+      "title": "Reflection invariance of flat measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatOn_map_neg",
+        "Preiss.unitFlat_map_neg"
+      ],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Geometry/PlaneSymmetry.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneSymmetry.lean"
+    },
+    {
+      "id": "lem:reflection-odd-gaussian-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of reflection-invariant measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg"
+      ],
+      "deps": [
+        "def:moments",
+        "lem:moment-kernel-calculus"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/MomentCovariance.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentCovariance.lean"
+    },
+    {
+      "id": "lem:flat-gaussian-odd-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of flat measures vanish",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flat_gaussianMoment_odd"
+      ],
+      "deps": [
+        "lem:flat-measure-reflection",
+        "lem:reflection-odd-gaussian-moments"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/FlatMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMoments.lean"
+    },
+    {
+      "id": "lem:fixed-lower-density-projection-null",
+      "kind": "lemma",
+      "title": "Projection nullness with fixed lower ball mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_projection_eq_zero_of_uniformLower_and_weakApproximation"
+      ],
+      "deps": [
+        "lem:compact-uniform-tubes",
+        "lem:pure-cone-escape",
+        "lem:uniform-tube-projection-cover"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean"
+    },
+    {
+      "id": "lem:weighted-energy-limit-support",
+      "kind": "lemma",
+      "title": "Vanishing weighted projection energy controls the vague-limit support",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero"
+      ],
+      "deps": [
+        "lem:vague-projection-energy"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/WeightedProjectionSupport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/WeightedProjectionSupport.lean"
+    },
+    {
+      "id": "lem:gaussian-plane-energy-integrable",
+      "kind": "lemma",
+      "title": "Gaussian plane energy is integrable for unit-uniform measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_planeEnergy_of_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:absolute-continuity-density-bounds",
+      "kind": "lemma",
+      "title": "Density bounds inherited under absolute continuity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ae_hasPositiveFiniteDensitiesAt_of_absolutelyContinuous"
+      ],
+      "deps": [
+        "def:positive-density",
+        "mathlib:besicovitch-differentiation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/AbsoluteContinuous.lean"
+      ],
+      "proposed_file": "Preiss/Density/AbsoluteContinuous.lean"
+    },
+    {
+      "id": "lem:absolute-continuity-tangent-cones",
+      "kind": "lemma",
+      "title": "Tangent cones agree under finite absolute continuity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ae_isTangentMeasure_iff_of_absolutelyContinuous"
+      ],
+      "deps": [
+        "thm:matching"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Restriction.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Restriction.lean"
+    },
+    {
+      "id": "lem:normal-coordinate-identities",
+      "kind": "lemma",
+      "title": "Orthogonal representatives and normal-coordinate identities",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_orthogonal_representative",
+        "Preiss.normal_coordinates_of_quadratic_identity"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/NormalCoordinates.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/NormalCoordinates.lean"
+    },
+    {
+      "id": "lem:even-moment-positivity",
+      "kind": "lemma",
+      "title": "Even diagonal Gaussian moments are nonnegative",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_even_nonneg"
+      ],
+      "deps": [
+        "def:moments",
+        "lem:moment-form-evaluation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentForms.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "lem:conical-moment-scaling",
+      "kind": "lemma",
+      "title": "Exact moment homogeneity for conical measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_homogeneous_of_isConical"
+      ],
+      "deps": [
+        "def:conical",
+        "lem:moment-covariance"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalMoments.lean"
+    },
+    {
+      "id": "lem:conical-support-covariance",
+      "kind": "lemma",
+      "title": "Conical covariance equals squared norm on the support",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.conical_covariance_eq_norm_sq_on_support"
+      ],
+      "deps": [
+        "lem:conical-moment-scaling",
+        "lem:moment-support-polynomial",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalMoments.lean"
+    },
+    {
+      "id": "lem:moment-trace-operator",
+      "kind": "lemma",
+      "title": "The second-moment trace as a bounded linear functional",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.momentTraceCLM",
+        "Preiss.momentTraceCLM_apply",
+        "Preiss.momentTraceCLM_momentKernel"
+      ],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments",
+        "lem:bilinear-trace-basis"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentTrace.lean"
+    },
+    {
+      "id": "lem:gaussian-radial-second-moment",
+      "kind": "lemma",
+      "title": "Radial second Gaussian moment of a unit-uniform measure",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_norm_sq_gaussian_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-parameter-derivative",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentTrace.lean"
+    },
+    {
+      "id": "lem:ordered-trace-bounds",
+      "kind": "lemma",
+      "title": "Finite ordered trace bounds and extremizers",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.antitone_weighted_sum_le_initial_sum",
+        "Preiss.ordered_nonnegative_trace_cutoff_bounds",
+        "Preiss.ordered_nonnegative_trace_eq_initial_indicator"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/OrderedSums.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/OrderedSums.lean"
+    },
+    {
+      "id": "lem:quadratic-near-basis-rigidity",
+      "kind": "lemma",
+      "title": "Quadratic rigidity near a critical basis vector",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector"
+      ],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/QuadraticSpectralRigidity.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/QuadraticSpectralRigidity.lean"
+    },
+    {
+      "id": "lem:exact-monomial-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exact monomial",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.taylorCoefficient_eq_of_exact_monomial"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AsymptoticCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AsymptoticCoefficients.lean"
+    },
+    {
+      "id": "lem:first-moment-normal-from-vanishing",
+      "kind": "lemma",
+      "title": "A normal vector from first-moment plane vanishing",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero"
+      ],
+      "deps": [
+        "def:rigidity-normal-vector",
+        "lem:normal-coordinate-identities"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatAtInfinity/Basic.lean"
+    },
+    {
+      "id": "lem:inverse-square-positive-limit",
+      "kind": "lemma",
+      "title": "Inverse-square scales approach zero through positive values",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_inv_sq_atTop_nhdsGT_zero"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:gaussian-product-moment-conversion",
+      "kind": "lemma",
+      "title": "Gaussian product integrals and moment forms on unit-uniform measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_product_eq_moment",
+        "Preiss.integrable_polynomial_gaussian_unitUniform"
+      ],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:coordinate-product-representation",
+      "kind": "lemma",
+      "title": "Coordinate monomials are finite products of linear inner products",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_coordinate_product_representation"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:blowdown-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian linear-product tests have blowdown limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_blowdown_product_gaussian_limit"
+      ],
+      "deps": [
+        "lem:blowdown-form-limits",
+        "lem:gaussian-product-moment-conversion",
+        "lem:uniform-scaling"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:blowdown-form-limits",
+      "kind": "lemma",
+      "title": "Every positive-degree Gaussian moment has a blowdown limit",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_blowdown_gaussianMoment_limit"
+      ],
+      "deps": [
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:orthonormal-spectral-sum-bound",
+      "kind": "lemma",
+      "title": "Orthonormal sums are bounded by leading eigenvalues",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.orthonormal_diagonal_sum_le_initial_sum"
+      ],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/OrderedSpectralBound.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/OrderedSpectralBound.lean"
+    },
+    {
+      "id": "lem:ordered-bilinear-spectrum",
+      "kind": "lemma",
+      "title": "Ordered spectrum of a positive symmetric bilinear form",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_ordered_spectral_representation"
+      ],
+      "deps": [
+        "def:bilinear-trace"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/BilinearSpectrum.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/BilinearSpectrum.lean"
+    },
+    {
+      "id": "lem:orthonormal-plane-distance",
+      "kind": "lemma",
+      "title": "Distance to a plane in orthonormal coordinates",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_plane_of_orthonormalBasis_finset",
+        "Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/OrthonormalPlane.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/OrthonormalPlane.lean"
+    },
+    {
+      "id": "lem:blowdown-even-moment-limit",
+      "kind": "lemma",
+      "title": "Explicit even moment limits of blowdowns",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.blowdown_gaussianMoment_even_limit"
+      ],
+      "deps": [
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance",
+        "lem:scaled-moment-limits"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:vague-gaussian-moments",
+      "kind": "lemma",
+      "title": "Gaussian moment continuity under vague convergence",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vague_gaussianMomentForm_apply"
+      ],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentVague.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentVague.lean"
+    },
+    {
+      "id": "lem:exact-homogeneous-moment-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exactly homogeneous moment",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity"
+      ],
+      "deps": [
+        "lem:exact-monomial-coefficients"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalCoefficients.lean"
+    },
+    {
+      "id": "lem:conical-moment-coefficients",
+      "kind": "lemma",
+      "title": "Sparse moment coefficients of conical measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_conical"
+      ],
+      "deps": [
+        "lem:conical-moments",
+        "lem:exact-homogeneous-moment-coefficients"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalCoefficients.lean"
+    },
+    {
+      "id": "lem:conical-even-support-moments",
+      "kind": "lemma",
+      "title": "Even Gaussian moments at support points",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.conical_even_moment_on_support"
+      ],
+      "deps": [
+        "lem:conical-moment-coefficients",
+        "lem:moment-support-polynomial",
+        "lem:taylor-two"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalCoefficients.lean"
+    },
+    {
+      "id": "lem:symmetric-multilinear-diagonal-injective",
+      "kind": "lemma",
+      "title": "A symmetric multilinear form is determined by its diagonal",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.symmetricMultilinear_eq_zero_of_diagonal"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/MultilinearDiagonal.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/MultilinearDiagonal.lean"
+    },
+    {
+      "id": "lem:weighted-plane-energy-decomposition",
+      "kind": "lemma",
+      "title": "Weighted plane energy in orthonormal coordinates",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_weighted_planeEnergy_eq_sub_sum"
+      ],
+      "deps": [
+        "lem:orthonormal-plane-distance"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/SpectralPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/SpectralPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:covariance-minimizing-plane",
+      "kind": "lemma",
+      "title": "Leading covariance eigenspaces minimize plane energy",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_minimizing_plane_of_ordered_covariance"
+      ],
+      "deps": [
+        "lem:orthonormal-spectral-sum-bound",
+        "lem:weighted-plane-energy-decomposition"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/SpectralPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/SpectralPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:gaussian-bilinear-covariance",
+      "kind": "lemma",
+      "title": "Gaussian bilinear covariance identities",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel",
+        "Preiss.integral_gaussian_inner_sq_eq_momentBilinear",
+        "Preiss.momentBilinear_diag",
+        "Preiss.momentBilinear_gaussianMomentForm_symmetric"
+      ],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianCovariance.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianCovariance.lean"
+    },
+    {
+      "id": "lem:unit-flat-conical",
+      "kind": "lemma",
+      "title": "Normalized flat measures are conical",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isConical_unitFlat"
+      ],
+      "deps": [
+        "lem:flat-plane-blowup"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMomentGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMomentGeometry.lean"
+    },
+    {
+      "id": "lem:zero-dimensional-flat-moments",
+      "kind": "lemma",
+      "title": "Zero-dimensional flat measures and their moments",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flat_gaussianMoment_diagonal_dim_zero",
+        "Preiss.gaussianMomentForm_dirac_zero_diagonal",
+        "Preiss.unitFlat_eq_dirac_of_dim_zero"
+      ],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMomentGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMomentGeometry.lean"
+    },
+    {
+      "id": "lem:flat-moment-projection",
+      "kind": "lemma",
+      "title": "Flat moments depend only on projected vectors",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_unitFlat_diagonal_project",
+        "Preiss.gaussianMomentForm_unitFlat_zero_diagonal"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:moment-form-evaluation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMomentGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMomentGeometry.lean"
+    },
+    {
+      "id": "lem:unit-uniform-nonzero",
+      "kind": "lemma",
+      "title": "Unit-uniform measures are nonzero",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.IsUnitUniform.ne_zero"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    {
+      "id": "lem:unit-uniform-infinity-existence",
+      "kind": "lemma",
+      "title": "Existence and uniformity of tangents at infinity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_unitUniform_tangentAtInfinity",
+        "Preiss.isUnitUniform_of_tangentAtInfinity"
+      ],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-scaling",
+        "lem:uniform-vague-closed",
+        "lem:unit-uniform-nonzero"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    {
+      "id": "lem:unit-uniform-infinity-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of tangents at infinity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tangentAtInfinity_eq_of_unitUniform"
+      ],
+      "deps": [
+        "lem:blowdown-moment-limits",
+        "lem:moment-determination",
+        "lem:unit-uniform-infinity-existence",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    {
+      "id": "lem:leading-homogeneous-term",
+      "kind": "lemma",
+      "title": "Leading homogeneous terms along escaping sequences",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.leading_diagonal_nonneg_of_rescaled_points",
+        "Preiss.tendsto_scaled_homogeneous_sum"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/LeadingHomogeneousTerm.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/LeadingHomogeneousTerm.lean"
+    },
+    {
+      "id": "lem:conical-gaussian-ball-energy",
+      "kind": "lemma",
+      "title": "Conical Gaussian energy and unit-ball energy",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.conical_gaussian_planeEnergy_eq_ball"
+      ],
+      "deps": [
+        "lem:homogeneous-energy-radial"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ConicalPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:gaussian-norm-half-mass",
+      "kind": "lemma",
+      "title": "Gaussian norm moments bounded by half-scale mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_norm_pow_mul_gaussian_le_halfMass"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianNormBounds.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianNormBounds.lean"
+    },
+    {
+      "id": "lem:uniform-normalized-gaussian-norm",
+      "kind": "lemma",
+      "title": "Normalized Gaussian norm bounds for uniform measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMass_half_unitUniform",
+        "Preiss.integral_norm_pow_mul_gaussian_le_unitUniform",
+        "Preiss.normalized_gaussian_norm_pow_le_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-norm-half-mass",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianNormBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianNormBounds.lean"
+    },
+    {
+      "id": "lem:moment-coefficient-growth-images",
+      "kind": "lemma",
+      "title": "Coefficient vanishing from growth of linear images",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth",
+        "Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentCoefficientEstimates.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentCoefficientEstimates.lean"
+    },
+    {
+      "id": "lem:subspace-moment-trace",
+      "kind": "lemma",
+      "title": "Continuous trace of moments on a subspace",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.subspaceMomentTraceCLM",
+        "Preiss.subspaceMomentTraceCLM_apply",
+        "Preiss.subspaceMomentTraceCLM_momentKernel"
+      ],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentTrace.lean"
+    },
+    {
+      "id": "lem:subspace-gaussian-trace-cylinder",
+      "kind": "lemma",
+      "title": "Subspace Gaussian trace under a cylinder identity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.subspaceTrace_gaussianMoment_eq_integral",
+        "Preiss.subspaceTrace_gaussianMoment_of_cylinder"
+      ],
+      "deps": [
+        "lem:subspace-moment-trace"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentTrace.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentTrace.lean"
+    },
+    {
+      "id": "lem:taylor-multiply-scale",
+      "kind": "lemma",
+      "title": "Taylor coefficients after multiplication by scale",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.first_second_taylor_coefficients_of_mul_scale"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/TaylorShift.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/TaylorShift.lean"
+    },
+    {
+      "id": "lem:bounded-tube-plane-to-support",
+      "kind": "lemma",
+      "title": "Bounded holes in a plane near a uniform support",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates"
+      ],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-vague-closed",
+        "lem:vague-support-approximation"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/BoundedTube.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BoundedTube.lean"
+    },
+    {
+      "id": "lem:moment-taylor-linear-image",
+      "kind": "lemma",
+      "title": "Taylor remainders under scalar linear maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMoment_taylor_remainder_map"
+      ],
+      "deps": [
+        "def:moment-coefficients"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+    },
+    {
+      "id": "lem:cylinder-second-coefficient-trace",
+      "kind": "lemma",
+      "title": "Second coefficient trace from a cylinder identity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.subspaceTrace_secondCoefficient_of_cylinder"
+      ],
+      "deps": [
+        "lem:moment-taylor-linear-image",
+        "lem:subspace-gaussian-trace-cylinder",
+        "lem:taylor-multiply-scale"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+    },
+    {
+      "id": "lem:bilinear-trace-orthogonal-split",
+      "kind": "lemma",
+      "title": "Trace splits over orthogonal complementary subspaces",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.bilinearTrace_eq_restrict_add_orthogonal"
+      ],
+      "deps": [
+        "lem:bilinear-trace-basis"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/OrthogonalTraceSplit.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/OrthogonalTraceSplit.lean"
+    },
+    {
+      "id": "lem:moment-product-growth",
+      "kind": "lemma",
+      "title": "Scalar Gaussian moments from product growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_apply_isBigO_of_product_bound"
+      ],
+      "deps": [
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MixedMomentBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MixedMomentBounds.lean"
+    },
+    {
+      "id": "lem:bounded-tube-cubic-vanishing",
+      "kind": "lemma",
+      "title": "Cubic coefficients with two normal inputs vanish",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube"
+      ],
+      "deps": [
+        "lem:moment-coefficient-growth-images",
+        "lem:moment-product-growth"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MixedMomentBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MixedMomentBounds.lean"
+    },
+    {
+      "id": "lem:symmetric-cubic-binomial",
+      "kind": "lemma",
+      "title": "Binomial formula for a symmetric trilinear form",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.symmetricTrilinear_diagonal_add"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/MultilinearDiagonal.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/MultilinearDiagonal.lean"
+    },
+    {
+      "id": "lem:leading-coefficient-limit",
+      "kind": "lemma",
+      "title": "Leading coefficient from a little-o remainder",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_scaled_of_isLittleO_sub"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/TaylorLimits.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/TaylorLimits.lean"
+    },
+    {
+      "id": "lem:scale-normalized-bounded-integral",
+      "kind": "lemma",
+      "title": "Vanishing of scaled normalized bounded integrals",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_scale_normalized_integral_of_ae_bound"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/NormalizedIntegral.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/NormalizedIntegral.lean"
+    },
+    {
+      "id": "lem:scale-derivative-limit",
+      "kind": "lemma",
+      "title": "A convergent function has no nonzero scaled derivative limit",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.scale_derivative_limit_eq_zero"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/ScaleDerivative.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ScaleDerivative.lean"
+    },
+    {
+      "id": "lem:rigidity-forms-from-symmetry",
+      "kind": "lemma",
+      "title": "Rigidity forms from symmetric coefficient tensors",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_rigidity_forms_of_symmetry"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean"
+    },
+    {
+      "id": "lem:quadratic-bound-bounded-offsets",
+      "kind": "lemma",
+      "title": "Quadratic bound from bounded offsets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.quadratic_square_bound_of_bounded_offsets"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/QuadraticBoundedOffset.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/QuadraticBoundedOffset.lean"
+    },
+    {
+      "id": "lem:gaussian-linear-growth-integral",
+      "kind": "lemma",
+      "title": "Gaussian integrals of functions with linear growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_bound_of_linear_growth"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianLinearGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianLinearGrowth.lean"
+    },
+    {
+      "id": "lem:uniform-gaussian-linear-growth-limit",
+      "kind": "lemma",
+      "title": "Vanishing of scaled Gaussian linear-growth averages",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth"
+      ],
+      "deps": [
+        "lem:gaussian-linear-growth-integral",
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianLinearGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianLinearGrowth.lean"
+    },
+    {
+      "id": "lem:quadratic-square-upper-lower",
+      "kind": "lemma",
+      "title": "Scalar lower bound from a quadratic inequality",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.quadratic_lower_bound_of_square_upper"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+    },
+    {
+      "id": "lem:gaussian-square-upper-trace-lower",
+      "kind": "lemma",
+      "title": "Gaussian trace lower bound from a squared-form upper bound",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper"
+      ],
+      "deps": [
+        "lem:gaussian-quadratic-trace-bound",
+        "lem:quadratic-square-upper-lower"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
+    },
+    {
+      "id": "lem:bilinear-diagonal-difference",
+      "kind": "lemma",
+      "title": "Difference of bilinear diagonal values",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.norm_bilinear_diagonal_sub_le"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/BilinearDiagonalDifference.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/BilinearDiagonalDifference.lean"
+    },
+    {
+      "id": "lem:vague-limit-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of regular vague limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vague_limit_unique"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Uniqueness.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/Uniqueness.lean"
+    },
+    {
+      "id": "lem:flat-tangent-normalization",
+      "kind": "lemma",
+      "title": "Flatness transfers between tangent normalizations",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.all_dimensionalTangents_flat_of_smul",
+        "Preiss.all_tangents_flat_of_dimensionalTangents",
+        "Preiss.exists_flat_dimensionalTangent_of_flat_tangent"
+      ],
+      "deps": [
+        "lem:tangent-ray-density-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/FlatNormalization.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/FlatNormalization.lean"
+    },
+    {
+      "id": "lem:density-positive-scalar",
+      "kind": "lemma",
+      "title": "Positive finite density under scalar multiplication",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.HasPositiveFiniteDensityAt.smul"
+      ],
+      "deps": [
+        "def:positive-density"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/Scalar.lean"
+      ],
+      "proposed_file": "Preiss/Density/Scalar.lean"
+    },
+    {
+      "id": "lem:gaussian-bilinear-norm-integrable",
+      "kind": "lemma",
+      "title": "Integrability of squared norms of Gaussian bilinear diagonals",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_norm_sq_bilinear"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearNorm.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearNorm.lean"
+    },
+    {
+      "id": "lem:gaussian-vector-bilinear-wick",
+      "kind": "lemma",
+      "title": "Vector-valued Gaussian fourth moment with zero mean",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero"
+      ],
+      "deps": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearNorm.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearNorm.lean"
+    },
+    {
+      "id": "lem:gaussian-vector-trace-contractions",
+      "kind": "lemma",
+      "title": "Gaussian means and contractions of vector bilinear forms",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_basis_sum",
+        "Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero",
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero"
+      ],
+      "deps": [
+        "lem:gaussian-bilinear-contraction",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+    },
+    {
+      "id": "lem:weighted-integral-polarization",
+      "kind": "lemma",
+      "title": "Polarization of weighted integral limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_weighted_mul_of_squares",
+        "Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits",
+        "Preiss.tendsto_weighted_integral_mul_of_square_limits"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/WeightedIntegralPolarization.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/WeightedIntegralPolarization.lean"
+    },
+    {
+      "id": "lem:finite-bilinear-integral-limits",
+      "kind": "lemma",
+      "title": "Finite-basis bilinear expansion and integral limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.bilinear_diagonal_eq_sum_orthonormalBasis",
+        "Preiss.tendsto_weighted_integral_finite_linear_combination"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/BilinearIntegralLimits.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/BilinearIntegralLimits.lean"
+    },
+    {
+      "id": "lem:low-order-moment-limits",
+      "kind": "lemma",
+      "title": "First and second scaled moment limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMoment_first_scaled_limit",
+        "Preiss.gaussianMoment_second_scaled_limit"
+      ],
+      "deps": [
+        "def:moment-coefficients",
+        "lem:leading-coefficient-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentCoefficientLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentCoefficientLimits.lean"
+    },
+    {
+      "id": "lem:mixed-centered-gaussian-limit",
+      "kind": "lemma",
+      "title": "Centered mixed Gaussian limit from Taylor coefficients",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.mixed_gaussian_limit_of_moment_expansion"
+      ],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:centered-gaussian-mean-limit",
+      "kind": "lemma",
+      "title": "Centered Gaussian mean from its first coefficient",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_centered_gaussian_limit_of_first_coefficient"
+      ],
+      "deps": [
+        "lem:low-order-moment-limits"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "def:rigidity-error",
+      "kind": "definition",
+      "title": "The quadratic rigidity error",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityError"
+      ],
+      "deps": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-omega"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityError.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityError.lean"
+    },
+    {
+      "id": "lem:rigidity-error-linear-growth",
+      "kind": "lemma",
+      "title": "Linear growth of the rigidity error",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityError_le_linear_growth"
+      ],
+      "deps": [
+        "lem:bilinear-diagonal-difference",
+        "lem:rigidity-error-remainder",
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityErrorBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityErrorBounds.lean"
+    },
+    {
+      "id": "lem:rigidity-error-remainder",
+      "kind": "lemma",
+      "title": "Coefficient remainder identity for the rigidity error",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityError_eq_coefficient_remainder"
+      ],
+      "deps": [
+        "def:rigidity-adjusted-form",
+        "def:rigidity-error",
+        "def:rigidity-omega"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityErrorBounds.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityErrorBounds.lean"
+    },
+    {
+      "id": "lem:rigidity-pointwise-from-growth",
+      "kind": "lemma",
+      "title": "Pointwise quadratic bound from linear error growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth"
+      ],
+      "deps": [
+        "def:rigidity-error",
+        "lem:quadratic-bound-bounded-offsets",
+        "lem:uniform-cylinder-identity",
+        "lem:vague-support-approximation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityPointwise.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityPointwise.lean"
+    },
+    {
+      "id": "lem:rigidity-error-limit-from-growth",
+      "kind": "lemma",
+      "title": "Gaussian error limit from linear growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.continuous_rigidityError",
+        "Preiss.gaussian_rigidityError_limit_of_linear_growth"
+      ],
+      "deps": [
+        "def:rigidity-error",
+        "lem:uniform-gaussian-linear-growth-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityErrorLimit.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityErrorLimit.lean"
+    },
+    {
+      "id": "lem:gaussian-mean-zero-correction",
+      "kind": "lemma",
+      "title": "Gaussian traces are unchanged by a zero-mean correction",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_trace_of_mean_zero_correction"
+      ],
+      "deps": [
+        "lem:gaussian-vector-trace-contractions"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
+    },
+    {
+      "id": "lem:first-crossing-from-large-flatness",
+      "kind": "lemma",
+      "title": "First-crossing sequences from a large-flatness tangent",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_first_crossing_sequences_of_flatness_gt"
+      ],
+      "deps": [
+        "lem:dimensional-compactness",
+        "lem:flatness-radius-continuous",
+        "lem:greatest-crossing"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    {
+      "id": "lem:gaussian-rigidity-integral-bounds",
+      "kind": "lemma",
+      "title": "Gaussian quadratic bounds from a mean-square identity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_quadratic_bounds_of_mean_square_identity"
+      ],
+      "deps": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-square-upper-trace-lower"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianRigidityBounds.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianRigidityBounds.lean"
+    },
+    {
+      "id": "lem:normalized-gaussian-derivative",
+      "kind": "lemma",
+      "title": "Derivatives of normalized Gaussian expectations",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform",
+        "Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform"
+      ],
+      "deps": [
+        "lem:gaussian-parameter-derivative",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianQuotient.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianQuotient.lean"
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-exists",
+      "kind": "lemma",
+      "title": "Existence of the centered full Gaussian contraction limit",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_normalized_norm_sq_centered_gaussian_limit"
+      ],
+      "deps": [
+        "lem:mixed-centered-gaussian-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-zero",
+      "kind": "lemma",
+      "title": "Vanishing of the centered full Gaussian contraction",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero"
+      ],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-exists",
+        "lem:centered-gaussian-mean-limit",
+        "lem:normalized-gaussian-derivative",
+        "lem:scale-derivative-limit"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:bounded-tube-projected-contraction",
+      "kind": "lemma",
+      "title": "Vanishing projected contraction for a bounded tube",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube"
+      ],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-zero",
+        "lem:scale-normalized-bounded-integral"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/CenteredGaussianLimits.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/CenteredGaussianLimits.lean"
+    },
+    {
+      "id": "lem:projected-mixed-gaussian-sum",
+      "kind": "lemma",
+      "title": "Projected Gaussian contraction as a finite basis sum",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.sum_mixed_gaussian_eq_projected"
+      ],
+      "deps": [
+        "lem:moment-norm-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/ProjectedMixedGaussian.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ProjectedMixedGaussian.lean"
+    },
+    {
+      "id": "lem:gaussian-weighted-contraction",
+      "kind": "lemma",
+      "title": "Gaussian contraction from weighted moment limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits"
+      ],
+      "deps": [
+        "lem:finite-bilinear-integral-limits",
+        "lem:gaussian-vector-bilinear-wick"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBilinearContraction.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBilinearContraction.lean"
+    },
+    {
+      "id": "lem:gaussian-inner-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian inner-product integrability and limits",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_sq_centered_unitUniform",
+        "Preiss.integrable_gaussian_inner_sq_unitUniform",
+        "Preiss.normalized_gaussian_inner_sq_limit"
+      ],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-product-growth"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/GaussianInnerProducts.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianInnerProducts.lean"
+    },
+    {
+      "id": "lem:gaussian-cross-product-limits",
+      "kind": "lemma",
+      "title": "Polarized Gaussian moment limits on the limiting plane",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.normalized_gaussian_inner_mul_limit_on_plane",
+        "Preiss.normalized_gaussian_mixed_limit_rigidityOmega"
+      ],
+      "deps": [
+        "lem:flat-infinity-moments",
+        "lem:gaussian-inner-product-limits",
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:weighted-integral-polarization"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityContraction.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityContraction.lean"
+    },
+    {
+      "id": "lem:rigidity-omega-contraction",
+      "kind": "lemma",
+      "title": "Mean-square contraction of the rigidity form",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit"
+      ],
+      "deps": [
+        "def:rigidity-error",
+        "lem:gaussian-cross-product-limits",
+        "lem:gaussian-weighted-contraction"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/RigidityContraction.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/RigidityContraction.lean"
+    },
+    {
+      "id": "lem:density-open-ball-bridge",
+      "kind": "lemma",
+      "title": "Open-ball density convention",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.density_iff_openBall_limit"
+      ],
+      "deps": [
+        "def:positive-density",
+        "gmt:density-limit",
+        "lem:density-limit-values"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Density/Adapters.lean"
+      ],
+      "proposed_file": "Preiss/Density/Adapters.lean"
+    },
+    {
+      "id": "lem:nonflat-uniform-large-flatness",
+      "kind": "lemma",
+      "title": "Nonflat uniform measures have a dilation above the flatness gap",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_dilate_flatness_gt_of_unitUniform_not_flat"
+      ],
+      "deps": [
+        "cor:conical",
+        "lem:flatness-continuous",
+        "lem:unit-uniform-infinity-existence",
+        "thm:infinity-rigidity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    {
+      "id": "lem:all-dimensional-tangents-flat",
+      "kind": "lemma",
+      "title": "One flat dimensional tangent forces all dimensional tangents to be flat",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.all_dimensionalTangents_flat_of_one"
+      ],
+      "deps": [
+        "lem:first-crossing",
+        "lem:first-crossing-flat-infinity",
+        "lem:first-crossing-ratio",
+        "lem:flatness-gap-cutoff",
+        "thm:infinity-rigidity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/PartB.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/PartB.lean"
     }
   ],
   "preiss_core": [
@@ -8180,11 +10222,9 @@
     "def:dimensional-blowup",
     "def:dimensional-tangent",
     "def:feature-moment",
-    "def:first-crossing-data",
     "def:flat",
     "def:flatness",
     "def:flatness-cutoff",
-    "def:flatness-gap",
     "def:lipschitz-graph",
     "def:moment-coefficients",
     "def:moments",
@@ -8197,10 +10237,13 @@
     "def:purely-unrectifiable",
     "def:rectifiable",
     "def:rigidity-adjusted-form",
+    "def:rigidity-error",
     "def:rigidity-normal-vector",
     "def:rigidity-omega",
+    "def:symmetric-feature-recovery",
+    "def:symmetric-moment-form",
+    "def:symmetric-multilinear",
     "def:tangent-api",
-    "def:tangent-at-infinity",
     "def:two-sided-approximation",
     "def:uniform-api",
     "def:uniform-constant",
@@ -8217,7 +10260,6 @@
     "gmt:continuity-sets",
     "gmt:density-bounds",
     "gmt:density-exists-set",
-    "gmt:density-limit",
     "gmt:density-points",
     "gmt:doubling-bounds",
     "gmt:finite-restriction",
@@ -8233,8 +10275,8 @@
     "gmt:origin-support",
     "gmt:portmanteau",
     "gmt:quadratic-support-tangent",
-    "gmt:restriction-tangents",
     "gmt:support-not-full",
+    "gmt:tangent-open-null",
     "gmt:transfer-ball-bounds",
     "gmt:uniform-density-adapter",
     "gmt:uniform-dimension-bound",
@@ -8246,30 +10288,56 @@
     "gmt:uniform-tangents",
     "gmt:vague",
     "gmt:zero-barycenter-hyperplane",
+    "lem:absolute-continuity-density-bounds",
+    "lem:absolute-continuity-tangent-cones",
+    "lem:all-dimensional-tangents-flat",
+    "lem:analytic-finite-jets",
+    "lem:analytic-projection-approximation",
     "lem:annulus-integrability",
+    "lem:asymptotic-taylor-vanishing",
     "lem:ball-upper-hausdorff-bound",
+    "lem:bilinear-diagonal-difference",
     "lem:bilinear-trace-basis",
+    "lem:bilinear-trace-orthogonal-split",
+    "lem:blowdown-even-moment-limit",
+    "lem:blowdown-form-limits",
     "lem:blowdown-moment-limits",
+    "lem:blowdown-product-limits",
     "lem:blowup-composition",
+    "lem:bounded-tube-cubic-vanishing",
+    "lem:bounded-tube-projected-contraction",
     "lem:carrier-calculus",
     "lem:carrier-closure",
+    "lem:centered-gaussian-full-contraction-exists",
+    "lem:centered-gaussian-full-contraction-zero",
+    "lem:centered-gaussian-mean-limit",
     "lem:closed-map-outer-regularity",
     "lem:closed-map-support",
     "lem:closed-upper-ball-bound-sets",
     "lem:closed-weak-approximation-good-set",
+    "lem:coherent-finite-jets",
     "lem:column-mass-contradiction",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
     "lem:compact-two-sided-general",
+    "lem:compact-uniform-tubes",
     "lem:complex-mgf-moment-determination",
     "lem:cone-graph",
+    "lem:cone-projection-direction",
     "lem:conical-covariance",
     "lem:conical-eigenvalue-rigidity",
+    "lem:conical-even-support-moments",
+    "lem:conical-gaussian-ball-energy",
+    "lem:conical-moment-coefficients",
+    "lem:conical-moment-scaling",
     "lem:conical-moments",
-    "lem:continuous-ball-profile-boundary",
+    "lem:conical-support-covariance",
+    "lem:coordinate-product-representation",
     "lem:countable-carrier",
     "lem:countable-coordinate-metric",
     "lem:countable-coordinate-second-countability",
+    "lem:covariance-minimizing-plane",
+    "lem:cylinder-second-coefficient-trace",
     "lem:decomposition",
     "lem:dense-compact-tests-exist",
     "lem:dense-continuous-approximation",
@@ -8278,6 +10346,7 @@
     "lem:density-limit-values",
     "lem:density-measure-comparison",
     "lem:density-normalization",
+    "lem:density-positive-scalar",
     "lem:diameter-hausdorff-bound",
     "lem:dimensional-blowup-set-estimates",
     "lem:dimensional-blowup-support",
@@ -8286,38 +10355,53 @@
     "lem:dimensional-family-compact-ball-bounds",
     "lem:dimensional-moving-centers",
     "lem:dimensional-tangent-ball-constant",
+    "lem:dimensional-tangent-bounded-orbit",
     "lem:dimensional-tangent-closed",
     "lem:dimensional-tangent-compactness",
-    "lem:dimensional-tangent-dilation",
     "lem:dimensional-tangent-metric-separation",
     "lem:dimensional-tangent-operations",
     "lem:dimensional-tangent-origin-ball-law",
     "lem:discarded-cylinder-sum",
     "lem:divided-grading-constant-injective",
+    "lem:divided-operator-positive-inverse",
     "lem:domain-extension",
     "lem:empty-cylinder-direction",
+    "lem:even-moment-positivity",
+    "lem:exact-homogeneous-moment-coefficients",
+    "lem:exact-monomial-coefficients",
     "lem:excess-dimension",
     "lem:exponential-tail-integral",
+    "lem:feature-moment-analytic-approximation",
+    "lem:feature-moment-exact-recovery",
     "lem:feature-moment-vanishing",
+    "lem:feature-multilinear-block",
     "lem:feature-norm-functionals",
+    "lem:finite-bilinear-integral-limits",
     "lem:finite-dimensional-operator-bigO",
+    "lem:finite-moment-taylor-jets",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
     "lem:first-crossing",
     "lem:first-crossing-flat-infinity",
+    "lem:first-crossing-from-large-flatness",
     "lem:first-crossing-ratio",
+    "lem:first-moment-normal-from-vanishing",
+    "lem:fivefold-image-covering",
+    "lem:fixed-lower-density-projection-null",
     "lem:flat-gaussian-even-moments",
-    "lem:flat-infinity-bounded-holes",
     "lem:flat-infinity-moments",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
     "lem:flat-measure-regularity",
+    "lem:flat-moment-projection",
+    "lem:flat-plane-blowup",
     "lem:flat-positive-scalar",
+    "lem:flat-tangent-from-uniform-recentering",
+    "lem:flat-tangent-normalization",
     "lem:flat-to-approximation",
     "lem:flatness-basic-nonneg",
     "lem:flatness-basic-zero",
     "lem:flatness-continuous",
-    "lem:flatness-cutoff-exists",
     "lem:flatness-energy-integrable",
     "lem:flatness-gap-cutoff",
     "lem:flatness-minimizer-finite-compacts",
@@ -8328,20 +10412,37 @@
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-ball-power",
     "lem:gaussian-ball-power-parameter",
+    "lem:gaussian-bilinear-contraction",
+    "lem:gaussian-bilinear-covariance",
+    "lem:gaussian-bilinear-norm-integrable",
+    "lem:gaussian-cross-product-limits",
     "lem:gaussian-feature-integrability",
+    "lem:gaussian-inner-product-limits",
+    "lem:gaussian-linear-growth-integral",
+    "lem:gaussian-mean-zero-correction",
+    "lem:gaussian-norm-half-mass",
     "lem:gaussian-parameter-derivative",
+    "lem:gaussian-plane-energy-integrable",
     "lem:gaussian-polynomial-integrable",
     "lem:gaussian-power-envelope",
+    "lem:gaussian-product-moment-conversion",
     "lem:gaussian-projection-integrability",
     "lem:gaussian-quadratic-trace-bound",
+    "lem:gaussian-radial-second-moment",
+    "lem:gaussian-rigidity-integral-bounds",
+    "lem:gaussian-square-upper-trace-lower",
     "lem:gaussian-tail-series-bound",
     "lem:gaussian-translation-series",
     "lem:gaussian-uniform-tails",
+    "lem:gaussian-vector-bilinear-wick",
+    "lem:gaussian-vector-trace-contractions",
     "lem:gaussian-weight-exponential",
     "lem:gaussian-weight-finite",
+    "lem:gaussian-weighted-contraction",
     "lem:gaussian-wick-fourth",
     "lem:general-tangent-scalar",
     "lem:graded-analytic-projection",
+    "lem:graded-polynomial-division",
     "lem:graph-parametrization",
     "lem:graph-rectifiable",
     "lem:grassmannian",
@@ -8352,12 +10453,16 @@
     "lem:hull-support-approximation",
     "lem:hyperplane-tangent-lineage",
     "lem:hyperplane-transport-map",
-    "lem:infinity-compactness",
     "lem:integral-operator-annihilation",
     "lem:integrated-gaussian-exponential-series",
+    "lem:inverse-square-positive-limit",
     "lem:iterated-derivative-id-product",
+    "lem:kernel-flag-divided-operators",
     "lem:kernel-flag-layer-grading",
     "lem:kernel-grading-flag",
+    "lem:leading-coefficient-limit",
+    "lem:leading-homogeneous-term",
+    "lem:low-order-moment-limits",
     "lem:lower-ball-hausdorff-bound",
     "lem:lower-ball-open-comparison",
     "lem:lower-ball-restrict-comparison",
@@ -8365,23 +10470,38 @@
     "lem:lower-density-from-power",
     "lem:measurable-hull-holes",
     "lem:measure-support-transport",
+    "lem:mixed-centered-gaussian-limit",
+    "lem:moment-coefficient-growth-images",
     "lem:moment-coefficient-vanishing",
     "lem:moment-covariance",
     "lem:moment-determination",
     "lem:moment-feature-annihilation",
     "lem:moment-feature-remainder",
     "lem:moment-form-evaluation",
+    "lem:moment-form-symmetry",
     "lem:moment-kernel-calculus",
     "lem:moment-norm-bound",
     "lem:moment-normal-trace",
+    "lem:moment-operator-growth",
+    "lem:moment-product-growth",
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
+    "lem:moment-taylor-linear-image",
+    "lem:moment-trace-operator",
     "lem:moving-set-measure-bounds",
+    "lem:multilinear-symmetrization",
     "lem:nested-compact-approximation",
     "lem:nested-orthogonal-layers",
+    "lem:nonflat-uniform-large-flatness",
     "lem:nonnegative-integral-cover-bound",
+    "lem:normal-coordinate-identities",
+    "lem:normalized-gaussian-derivative",
     "lem:odd-coefficients-plane-zero",
+    "lem:ordered-bilinear-spectrum",
+    "lem:ordered-trace-bounds",
+    "lem:orthonormal-plane-distance",
     "lem:orthonormal-span-projection",
+    "lem:orthonormal-spectral-sum-bound",
     "lem:packing-base-point",
     "lem:packing-contradiction",
     "lem:plane-distance-homogeneous",
@@ -8389,11 +10509,15 @@
     "lem:plane-hausdorff",
     "lem:plane-isometric-parametrization",
     "lem:plane-projection-subsequence",
+    "lem:plane-scaling",
+    "lem:plane-slab-measure",
     "lem:plane-supported-uniform-flat",
     "lem:polynomial-feature-identities",
     "lem:polynomial-gaussian-integrability",
     "lem:polynomial-gaussian-norm-tails",
     "lem:polynomial-norm-growth",
+    "lem:projected-mixed-gaussian-sum",
+    "lem:projected-tube-contained-slab",
     "lem:projected-tube-slab-bound",
     "lem:projection-distance",
     "lem:projection-energy-continuity",
@@ -8403,7 +10527,10 @@
     "lem:pure-basic",
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
+    "lem:quadratic-bound-bounded-offsets",
     "lem:quadratic-exponential-even-derivatives",
+    "lem:quadratic-near-basis-rigidity",
+    "lem:quadratic-square-upper-lower",
     "lem:quantitative-upper-density-bound",
     "lem:radial",
     "lem:radius-power-density",
@@ -8413,52 +10540,69 @@
     "lem:recenter-separated-set-null",
     "lem:rescaled-distance-selection",
     "lem:rigidity-contracted-limit-zero",
-    "lem:rigidity-cubic-vanishing",
+    "lem:rigidity-error-limit-from-growth",
+    "lem:rigidity-error-linear-growth",
+    "lem:rigidity-error-remainder",
     "lem:rigidity-forms-exist",
+    "lem:rigidity-forms-from-symmetry",
     "lem:rigidity-fourth-support-identity",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-integral-quadratic-bound",
     "lem:rigidity-mixed-gaussian-limit",
     "lem:rigidity-normal-vector-exists",
-    "lem:rigidity-omega-reproducing",
+    "lem:rigidity-omega-contraction",
     "lem:rigidity-omega-trace-zero",
+    "lem:rigidity-pointwise-from-growth",
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
     "lem:scalar-gaussian-series-remainder",
+    "lem:scale-derivative-limit",
+    "lem:scale-normalized-bounded-integral",
     "lem:scaled-moment-limits",
     "lem:sequential-uniform-scale",
     "lem:small-energy-no-holes",
-    "lem:spectral-minimizing-plane",
     "lem:subsequence-limit-criterion",
-    "lem:tangent-blowdown",
+    "lem:subspace-gaussian-trace-cylinder",
+    "lem:subspace-moment-trace",
+    "lem:symmetric-cubic-binomial",
+    "lem:symmetric-multilinear-diagonal-injective",
     "lem:tangent-existence",
     "lem:tangent-ray",
     "lem:tangent-ray-density-bounds",
+    "lem:taylor-multiply-scale",
     "lem:taylor-one",
     "lem:taylor-two",
     "lem:trace-rigidity",
     "lem:tube-support-upgrade",
     "lem:two-sided-packing-core",
     "lem:uniform-adapter",
-    "lem:uniform-ball-boundary",
     "lem:uniform-compact-selection",
     "lem:uniform-compactness",
     "lem:uniform-constant-one",
     "lem:uniform-cylinder-identity",
     "lem:uniform-full-dimension-unique",
-    "lem:uniform-near-support-compactness",
+    "lem:uniform-gaussian-linear-growth-limit",
+    "lem:uniform-normalized-gaussian-norm",
     "lem:uniform-reduction",
     "lem:uniform-scaling",
+    "lem:uniform-tube-projection-cover",
     "lem:uniform-vague-closed",
+    "lem:unit-flat-conical",
     "lem:unit-flat-support-regularity",
     "lem:unit-flat-unit-uniform",
     "lem:unit-uniform-adapter",
+    "lem:unit-uniform-infinity-existence",
+    "lem:unit-uniform-infinity-unique",
+    "lem:unit-uniform-nonzero",
+    "lem:unit-uniform-tangent-existence",
     "lem:vague-cocompact-pushforward",
     "lem:vague-compact-null-mass",
     "lem:vague-countable-metric",
     "lem:vague-determining-tests",
     "lem:vague-diagonal",
+    "lem:vague-gaussian-moments",
     "lem:vague-gaussian-polynomials",
+    "lem:vague-limit-unique",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
     "lem:vague-projection-energy",
@@ -8475,12 +10619,15 @@
     "lem:weak-approximation-lower-density",
     "lem:weak-approximation-restrict-ae",
     "lem:weak-approximation-scale-transfer",
+    "lem:weighted-energy-limit-support",
     "lem:weighted-grading-positive-complement",
+    "lem:weighted-integral-polarization",
+    "lem:weighted-plane-energy-decomposition",
     "lem:zero-density-atoms",
     "lem:zero-dimension",
+    "lem:zero-dimensional-flat-moments",
     "lem:zero-hausdorff-ac",
     "lem:zero-measure",
-    "mathlib:besicovitch-cover",
     "mathlib:besicovitch-differentiation",
     "mathlib:hausdorff-mass-bound",
     "mathlib:measurable-hull",
@@ -8498,8 +10645,7 @@
     "thm:part-a",
     "thm:part-b",
     "thm:preiss",
-    "thm:uniform-upstream",
-    "thm:unique-infinity"
+    "thm:uniform-upstream"
   ],
   "characterization_closure": [
     "cor:rectifiable-tangent-plane",
@@ -8532,9 +10678,10 @@
     "gmt:hausdorff-density-upper",
     "gmt:hausdorff-regular",
     "gmt:portmanteau",
-    "gmt:restriction-tangents",
     "gmt:scaled-discarded-mass",
     "gmt:vague",
+    "lem:absolute-continuity-density-bounds",
+    "lem:absolute-continuity-tangent-cones",
     "lem:ball-upper-hausdorff-bound",
     "lem:blowup-composition",
     "lem:borel-carrier",
@@ -8546,7 +10693,9 @@
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
     "lem:compact-two-sided-general",
+    "lem:compact-uniform-tubes",
     "lem:cone-graph",
+    "lem:cone-projection-direction",
     "lem:decomposition",
     "lem:density-bounds-good-set",
     "lem:density-measure-comparison",
@@ -8561,6 +10710,8 @@
     "lem:empty-cylinder-direction",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
+    "lem:fivefold-image-covering",
+    "lem:fixed-lower-density-projection-null",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
     "lem:flat-measure-regularity",
@@ -8590,6 +10741,8 @@
     "lem:plane-distance-homogeneous",
     "lem:plane-hausdorff",
     "lem:plane-projection-subsequence",
+    "lem:plane-slab-measure",
+    "lem:projected-tube-contained-slab",
     "lem:projected-tube-slab-bound",
     "lem:projection-distance",
     "lem:projection-hole-cover",
@@ -8605,6 +10758,7 @@
     "lem:tube-support-upgrade",
     "lem:two-sided-packing-core",
     "lem:uniform-compact-selection",
+    "lem:uniform-tube-projection-cover",
     "lem:vague-compact-null-mass",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
@@ -8617,7 +10771,6 @@
     "lem:weak-approximation-lower-density",
     "lem:weak-approximation-restrict-ae",
     "lem:weak-approximation-scale-transfer",
-    "mathlib:besicovitch-cover",
     "mathlib:besicovitch-differentiation",
     "mathlib:derivative-partitions",
     "mathlib:hausdorff-mass-bound",

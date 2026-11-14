@@ -2137,7 +2137,9 @@
       "lean_names": [
         "Preiss.flatOn_support",
         "Preiss.regular_unitFlat",
-        "Preiss.unitFlat_support"
+        "Preiss.unitFlat_support",
+        "Preiss.isFlat_unitFlat",
+        "Preiss.unitFlat_ne_zero"
       ],
       "file": "Preiss/Geometry/UnitFlat.lean",
       "statement_tex": "A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.",
@@ -2287,6 +2289,2084 @@
       ],
       "used_by": [],
       "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:asymptotic-taylor-vanishing",
+      "kind": "lemma",
+      "title": "Taylor coefficient vanishing from a growth exponent",
+      "lean_names": [
+        "Preiss.isLittleO_rpow_nhdsGT_zero",
+        "Preiss.eq_zero_of_isLittleO_pow_smul",
+        "Preiss.taylorCoefficient_eq_zero_of_lt_growth"
+      ],
+      "file": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "statement_tex": "For positive scales, $s^a=o(s^b)$ when $b<a$. A constant vector whose multiple $s^qv$ is $o(s^q)$ must vanish. Consequently, a normed-space-valued function bounded by $O(s^a)$ and admitting Taylor expansions has zero coefficients in all positive integer degrees below $a$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:moment-operator-growth",
+      "kind": "lemma",
+      "title": "Operator-norm growth of Gaussian moments at zero",
+      "lean_names": [
+        "Preiss.gaussianMoment_isBigO_rpow"
+      ],
+      "file": "Preiss/Uniform/MomentAsymptotics.lean",
+      "statement_tex": "For a positive-dimensional unit uniform measure and $k>0$, its $k$-linear Gaussian moment is $O(s^{k/2})$ in operator norm as $s\\downarrow0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:graded-polynomial-division",
+      "kind": "lemma",
+      "title": "Polynomial division along a triangular grading",
+      "lean_names": [
+        "Preiss.dividedGradingMap",
+        "Preiss.dividedGradingMap_row",
+        "Preiss.weightedGrading_comp_dividedGradingMap",
+        "Preiss.dividedGradingMap_zero",
+        "Preiss.analyticAt_dividedGradingMap"
+      ],
+      "file": "Preiss/Analysis/GradedDivision.lean",
+      "statement_tex": "For an orthogonal grading $(D_i)$ and operators $R_j$ with $D_iR_j=0$ when $j<i$, the polynomial $H(s)=\\sum_{i\\le j}s^{j-i}D_iR_j$ satisfies $(\\sum_i s^{i+1}D_i)H(s)=\\sum_j s^{j+1}R_j$. Its rows and value at zero are explicit, and it is analytic at every real parameter.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:kernel-flag-divided-operators",
+      "kind": "lemma",
+      "title": "Analytic divided operators for the kernel flag",
+      "lean_names": [
+        "Preiss.projectedGradingPiece",
+        "Preiss.flagProjectionLayer_projectedGradingPiece_eq_zero",
+        "Preiss.dividedFlagMap",
+        "Preiss.dividedFlagOperator",
+        "Preiss.dividedFlagOperator_zero",
+        "Preiss.weightedGrading_comp_dividedFlagMap",
+        "Preiss.analyticAt_dividedFlagMap",
+        "Preiss.analyticAt_dividedFlagOperator",
+        "Preiss.isUnit_dividedFlagOperator_zero"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "Compressing the original grading to a subspace gives the triangular relations needed for polynomial division. The resulting divided map and its restriction to the subspace are analytic; their weighted factorization is exact, and the restricted operator is invertible at zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:graded-polynomial-division",
+        "lem:kernel-flag-layer-grading",
+        "lem:divided-grading-constant-injective"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:divided-operator-positive-inverse",
+      "kind": "lemma",
+      "title": "Invertibility of the divided operator at positive scales",
+      "lean_names": [
+        "Preiss.isUnit_dividedFlagOperator_pos"
+      ],
+      "file": "Preiss/Analysis/GradedProjection.lean",
+      "statement_tex": "The restricted divided kernel-flag operator is invertible at every positive parameter, by its weighted factorization and positivity of the original weighted grading.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:kernel-flag-divided-operators",
+        "lem:weighted-grading-positive-complement"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:plane-slab-measure",
+      "kind": "lemma",
+      "title": "Uniform Hausdorff bounds for slabs in linear planes",
+      "lean_names": [
+        "Preiss.hausdorffMeasure_plane_slab_le"
+      ],
+      "file": "Preiss/Geometry/PlaneSlab.lean",
+      "statement_tex": "For $m>0$, a universal constant bounds the $m$-dimensional Hausdorff measure of $\\{z\\in V:\\|z-c\\|\\le R,\\ |\\langle v,z-c\\rangle|\\le dR\\}$ by $CdR^m$, for every $m$-plane, center in that plane, unit normal in that plane, and nonnegative $R,d$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:plane"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:projected-tube-contained-slab",
+      "kind": "lemma",
+      "title": "A projected tube lies in a thin plane slab",
+      "lean_names": [
+        "Preiss.projected_tube_subset_slab"
+      ],
+      "file": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "statement_tex": "If a unit vector $v\\in V$ has $\\|P_Wv\\|\\le\\varepsilon$, the projection onto $V$ of the radius-$R$ portion of an $\\eta R$-tube about $a+W$ lies in the radius-$R$ slab centered at $P_Va$ of relative thickness $\\varepsilon+\\eta$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:fivefold-image-covering",
+      "kind": "lemma",
+      "title": "Image-measure bounds from a buffered Vitali cover",
+      "lean_names": [
+        "Preiss.measure_image_le_mul_of_ball_image_bounds"
+      ],
+      "file": "Preiss/Analysis/CoveringImage.lean",
+      "statement_tex": "In a separable pseudometric space with measurable open sets, assume every point of $C$ admits a positive radius bounded by a common upper bound and $\\nu(f(C\\cap B(x,5r)))\\le K\\mu(B(x,r))$. A disjoint Vitali subfamily gives $\\nu(f(C))\\le K\\mu(X)$. No measurability of $f$ or $C$ is needed.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-tangent-existence",
+      "kind": "lemma",
+      "title": "Unit uniform dimensional tangents at every support point",
+      "lean_names": [
+        "Preiss.exists_unitUniform_dimensionalTangent"
+      ],
+      "file": "Preiss/Uniform/TangentExistence.lean",
+      "statement_tex": "A unit $m$-uniform measure admits a unit $m$-uniform dimensional tangent at every support point, including $m=0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-scaling",
+        "def:dimensional-tangent"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proofs checked with standard foundations; separate-module CI pending."
+    },
+    {
+      "id": "lem:analytic-finite-jets",
+      "kind": "lemma",
+      "title": "Finite Taylor jets of normed-space-valued analytic functions",
+      "lean_names": [
+        "Preiss.exists_taylor_jets_of_analyticAt_zero",
+        "Preiss.exists_positive_taylor_jets_of_analyticAt_zero"
+      ],
+      "file": "Preiss/Analysis/AnalyticJets.lean",
+      "statement_tex": "Every real-parameter analytic function into a real normed space has one coefficient sequence whose degree-$q$ truncation differs from the function by $o(s^q)$ near zero, for every $q$. Its constant coefficient is the value at zero. If that value is zero, the truncations start in degree one.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:analytic-projection-approximation",
+      "kind": "lemma",
+      "title": "Extending analytic approximations from a subspace",
+      "lean_names": [
+        "Preiss.functional_comp_projection_eq_self",
+        "Preiss.exists_analyticApproximation_of_weightedComplement"
+      ],
+      "file": "Preiss/Analysis/AnalyticProjectionApproximation.lean",
+      "statement_tex": "Let $f(s)$ be continuous linear maps into a normed space annihilating the weighted complement of $V$ for positive $s$. If an analytic family $g(s)$, vanishing at zero, approximates $f(s)$ on $V$ with operator error $O(r(s))$, then an analytic family vanishing at zero approximates $f(s)$ on the whole space with the same error order.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:graded-analytic-projection"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:dimensional-tangent-bounded-orbit",
+      "kind": "lemma",
+      "title": "Dimensional tangents lie in the bounded-radius scaling orbit closure",
+      "lean_names": [
+        "Preiss.IsDimensionalTangent.isUniformPseudotangent"
+      ],
+      "file": "Preiss/Tangent/ScalingOrbit.lean",
+      "statement_tex": "Every dimensional tangent at a support point lies in the support-centered scaling orbit closure with radii at most one. The proof discards finitely many large radii; no uniformity of the source measure is needed.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:pseudotangent-transitive"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:cone-projection-direction",
+      "kind": "lemma",
+      "title": "Small projected directions from plane proximity and cone escape",
+      "lean_names": [
+        "Preiss.exists_unit_small_projection_of_near_plane",
+        "Preiss.norm_projection_lt_of_outside_cone"
+      ],
+      "file": "Preiss/Geometry/Cylinders.lean",
+      "statement_tex": "A nonzero displacement close to a plane and with small projection onto another plane yields a unit direction in the first plane with quantitatively small projection. Escaping a cone supplies the required nonzero displacement and projection bound.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:cone",
+        "lem:projection-distance"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:uniform-tube-projection-cover",
+      "kind": "lemma",
+      "title": "Quantitative projection bounds from uniform tubes and cone escape",
+      "lean_names": [
+        "Preiss.measure_projection_le_of_uniform_tubes_and_cone_escape"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionCovering.lean",
+      "statement_tex": "If $D\\subseteq C$ has uniform lower ball mass $\\delta r^m$, the carrier $C$ lies in sufficiently thin approximating tubes around points of $D$, and every such point admits arbitrarily small cone-escaping displacements, then $\\mathcal H^m(P_VD)\\le (K\\varepsilon/\\delta)\\mu(X)$. The fivefold-cover estimate uses the tube information at a larger scale, preserving the entire image mass.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:fivefold-image-covering",
+        "lem:projected-tube-slab-bound",
+        "lem:cone-projection-direction"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:coherent-finite-jets",
+      "kind": "lemma",
+      "title": "Coherent Taylor coefficients from compatible finite jets",
+      "lean_names": [
+        "Preiss.exists_coherent_taylor_coefficients_of_finite_jets"
+      ],
+      "file": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "statement_tex": "Let $f$ take values in a real normed space. Suppose every positive order $q$ admits coefficients giving $o(s^j)$ remainders for all $1\\leq j\\leq q$, as $s\\downarrow0$. Then one coefficient sequence gives these remainders simultaneously at every positive order. Uniqueness of the first differing coefficient yields compatibility.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:feature-moment-analytic-approximation",
+      "kind": "lemma",
+      "title": "Analytic approximation of the complete feature moment functional",
+      "lean_names": [
+        "Preiss.exists_featureMoment_analytic_approximation"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "statement_tex": "For every unit-uniform measure of positive dimension and every positive integer $q$, the degree-$2q$ feature moment functional admits an analytic approximation vanishing at zero, with operator error $O(s^{q+1/2})$ as $s\\downarrow0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:analytic-projection-approximation",
+        "lem:feature-norm-functionals",
+        "lem:moment-feature-remainder",
+        "lem:feature-moment-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:compact-uniform-tubes",
+      "kind": "lemma",
+      "title": "Compact tube uniformization preserving a fixed lower density bound",
+      "lean_names": [
+        "Preiss.exists_compact_uniform_tubes_subset"
+      ],
+      "file": "Preiss/Rectifiability/WeakApproximation/UniformTubes.lean",
+      "statement_tex": "For a finite regular measure, a measurable carrier with a fixed positive lower ball-mass bound and weak linear approximation almost everywhere contains a compact subset losing arbitrarily little measure, with uniform small-scale tube containment at any prescribed positive aperture at most one.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:uniform-compact-selection",
+        "lem:tube-support-upgrade"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:flat-tangent-from-uniform-recentering",
+      "kind": "lemma",
+      "title": "A flat dimensional tangent from uniformity and simultaneous recentering",
+      "lean_names": [
+        "Preiss.exists_flat_dimensionalTangent_of_uniform_recenter"
+      ],
+      "file": "Preiss/Tangent/FlatFromUniform.lean",
+      "statement_tex": "For $0<m\\leq n$, suppose a $q$-uniform measure has zero in its support and every support-centered dimensional rescaling is a dimensional tangent of a locally finite measure $\\mu$ at $x$. There is an $m$-plane $V$ such that $q$ times the normalized plane measure on $V$ is a dimensional tangent of $\\mu$ at $x$. The coefficient $q$ is retained throughout the limiting argument.",
+      "definition_dependencies": [],
+      "deps": [
+        "thm:flat-pseudotangent",
+        "lem:uniform-scaling",
+        "lem:blowup-composition",
+        "lem:dimensional-tangent-closed",
+        "lem:unit-flat-support-regularity"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "def:symmetric-multilinear",
+      "kind": "definition",
+      "title": "Symmetric multilinear forms and permutation averaging",
+      "lean_names": [
+        "Preiss.symmetricContinuousMultilinearSubmodule",
+        "Preiss.symmetrizeContinuousMultilinearMap"
+      ],
+      "file": "Preiss/Analysis/MultilinearSymmetrization.lean",
+      "statement_tex": "Symmetric continuous multilinear maps form a concrete real submodule. Symmetrization is the average over all permutations of the finite index set.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:multilinear-symmetrization",
+      "kind": "lemma",
+      "title": "Symmetrization identities",
+      "lean_names": [
+        "Preiss.symmetrizeContinuousMultilinearMap_apply_perm",
+        "Preiss.symmetrizeContinuousMultilinearMap_eq_self",
+        "Preiss.symmetrizeContinuousMultilinearMap_diagonal",
+        "Preiss.comp_symmetrizeContinuousMultilinearMap"
+      ],
+      "file": "Preiss/Analysis/MultilinearSymmetrization.lean",
+      "statement_tex": "Permutation averaging produces a symmetric map, fixes every symmetric map, preserves diagonal evaluation, and commutes with continuous linear maps on the target.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-multilinear"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:feature-multilinear-block",
+      "kind": "lemma",
+      "title": "Multilinear coordinate tensors for polynomial feature blocks",
+      "lean_names": [
+        "Preiss.polynomialFeatureMultilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock_apply",
+        "Preiss.inner_polynomialFeature_multilinearBlock",
+        "Preiss.polynomialFeatureMultilinearBlock_mem",
+        "Preiss.weightedGrading_polynomialFeatureMultilinearBlock"
+      ],
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "statement_tex": "The degree-$k$ coordinate tensor takes values in its polynomial feature block. Its inner product with a feature vector is the normalized product of $k$ inner products, and weighted grading multiplies it by $s^k$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:polynomial-feature",
+        "lem:polynomial-feature-identities"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "def:symmetric-feature-recovery",
+      "kind": "definition",
+      "title": "Bounded recovery of symmetric forms from feature functionals",
+      "lean_names": [
+        "Preiss.symmetricPolynomialFeatureMultilinearBlock",
+        "Preiss.polynomialFeatureMomentRecovery",
+        "Preiss.polynomialFeatureMomentRecovery_symmetric",
+        "Preiss.symmetricPolynomialFeatureMomentRecovery"
+      ],
+      "file": "Preiss/Analysis/PolynomialFeatures.lean",
+      "statement_tex": "Composition with the symmetrized coordinate tensor is a bounded linear map from feature functionals to symmetric multilinear forms. Its range is corestricted to the concrete symmetric submodule.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:feature-multilinear-block",
+        "lem:multilinear-symmetrization"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "lem:feature-moment-exact-recovery",
+      "kind": "lemma",
+      "title": "Exact Gaussian moment recovery from polynomial features",
+      "lean_names": [
+        "Preiss.featureMoment_comp_multilinearBlock_of_growth",
+        "Preiss.polynomialFeatureMomentRecovery_featureMoment_of_growth"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "statement_tex": "For a measure with polynomial ball growth and positive Gaussian parameter, applying the degree-$k$ recovery map to its feature moment functional recovers its Gaussian multilinear moment exactly.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-feature-recovery",
+        "lem:gaussian-feature-integrability",
+        "lem:moment-form-symmetry"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; canonical import integration pending."
+    },
+    {
+      "id": "def:symmetric-moment-form",
+      "kind": "definition",
+      "title": "Gaussian moments as elements of the symmetric-form submodule",
+      "lean_names": [
+        "Preiss.SymmetricMomentForm",
+        "Preiss.symmetricGaussianMomentForm"
+      ],
+      "file": "Preiss/Uniform/MomentForms.lean",
+      "statement_tex": "The symmetric moment space is the concrete submodule of permutation-invariant continuous multilinear forms. Gaussian moment forms lie in it by the proved permutation identity.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-multilinear",
+        "def:moments",
+        "lem:moment-form-symmetry"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:finite-moment-taylor-jets",
+      "kind": "lemma",
+      "title": "Finite Gaussian moment jets in the symmetric-form space",
+      "lean_names": [
+        "Preiss.exists_gaussianMoment_finite_jets"
+      ],
+      "file": "Preiss/Uniform/MomentTaylorJets.lean",
+      "statement_tex": "For every positive moment degree and positive truncation order $q$, a unit-uniform measure of positive dimension admits symmetric multilinear coefficients giving $o(s^j)$ remainders simultaneously for every $1\\leq j\\leq q$. Recovery from sufficiently many polynomial features preserves symmetry and operator estimates.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:symmetric-moment-form",
+        "lem:feature-moment-analytic-approximation",
+        "def:symmetric-feature-recovery",
+        "lem:feature-moment-exact-recovery",
+        "lem:analytic-finite-jets",
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:flat-measure-reflection",
+      "kind": "lemma",
+      "title": "Reflection invariance of flat measures",
+      "lean_names": [
+        "Preiss.flatOn_map_neg",
+        "Preiss.unitFlat_map_neg"
+      ],
+      "file": "Preiss/Geometry/PlaneSymmetry.lean",
+      "statement_tex": "Every scalar flat measure and every normalized plane measure is invariant under reflection $z\\mapsto-z$, including dimension zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:reflection-odd-gaussian-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of reflection-invariant measures",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_eq_zero_of_odd_of_map_neg"
+      ],
+      "file": "Preiss/Uniform/MomentCovariance.lean",
+      "statement_tex": "Every odd Gaussian multilinear moment of a reflection-invariant measure vanishes. No integrability, uniformity, or positivity assumption on the Gaussian parameter is required.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:moments",
+        "lem:moment-kernel-calculus"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:flat-gaussian-odd-moments",
+      "kind": "lemma",
+      "title": "Odd Gaussian moments of flat measures vanish",
+      "lean_names": [
+        "Preiss.flat_gaussianMoment_odd"
+      ],
+      "file": "Preiss/Uniform/FlatMoments.lean",
+      "statement_tex": "All odd Gaussian multilinear moments of a normalized plane measure vanish, including for zero-dimensional planes.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flat-measure-reflection",
+        "lem:reflection-odd-gaussian-moments"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:fixed-lower-density-projection-null",
+      "kind": "lemma",
+      "title": "Projection nullness with fixed lower ball mass",
+      "lean_names": [
+        "Preiss.measure_projection_eq_zero_of_uniformLower_and_weakApproximation"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "statement_tex": "A measurable purely unrectifiable subset of a finite Hausdorff-measure carrier, with a uniform positive lower ball-mass bound and weak linear approximation almost everywhere, has zero projection measure onto every plane of the same dimension.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:compact-uniform-tubes",
+        "lem:uniform-tube-projection-cover",
+        "lem:pure-cone-escape"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:weighted-energy-limit-support",
+      "kind": "lemma",
+      "title": "Vanishing weighted projection energy controls the vague-limit support",
+      "lean_names": [
+        "Preiss.support_subset_fixedPoints_of_vague_of_weighted_projectionEnergy_tendsto_zero"
+      ],
+      "file": "Preiss/Analysis/Vague/WeightedProjectionSupport.lean",
+      "statement_tex": "Let regular Euclidean measures $\\mu_i$ converge vaguely to $\\nu$, and continuous linear maps $P_i$ converge to $Q$. For a strictly positive continuous weight $w$, suppose $w(z)\\lVert z-P_i z\\rVert^2$ is integrable for each $\\mu_i$ and its integral tends to zero. Then the support of $\\nu$ lies in $\\{z:Qz=z\\}$. No global integrability assumption on $\\nu$ is required.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:vague-projection-energy"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:gaussian-plane-energy-integrable",
+      "kind": "lemma",
+      "title": "Gaussian plane energy is integrable for unit-uniform measures",
+      "lean_names": [
+        "Preiss.integrable_gaussian_planeEnergy_of_unitUniform"
+      ],
+      "file": "Preiss/Uniform/GaussianPlaneEnergy.lean",
+      "statement_tex": "For every unit-uniform measure $\\mu$ and $m$-plane $V$, the function $e^{-\\lVert z\\rVert^2}\\operatorname{dist}(z,V)^2$ is $\\mu$-integrable. This includes $m=0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with standard foundations; actual-import CI pending."
+    },
+    {
+      "id": "lem:absolute-continuity-density-bounds",
+      "kind": "lemma",
+      "title": "Density bounds inherited under absolute continuity",
+      "lean_names": [
+        "Preiss.ae_hasPositiveFiniteDensitiesAt_of_absolutelyContinuous"
+      ],
+      "file": "Preiss/Density/AbsoluteContinuous.lean",
+      "statement_tex": "If locally finite Euclidean measures satisfy $\\nu\\ll\\mu$ and $\\mu$ has positive finite lower and upper $m$-densities almost everywhere, then $\\nu$ has the same density-bound property at $\\nu$-almost every point. The proof uses positive finite Radon--Nikodym derivatives and differentiation along closed balls.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:positive-density",
+        "mathlib:besicovitch-differentiation"
+      ],
+      "used_by": [],
+      "verification": "Proof supplied; full actual-import CI pending. Density inheritance independently passed local kernel audit."
+    },
+    {
+      "id": "lem:absolute-continuity-tangent-cones",
+      "kind": "lemma",
+      "title": "Tangent cones agree under finite absolute continuity",
+      "lean_names": [
+        "Preiss.ae_isTangentMeasure_iff_of_absolutelyContinuous"
+      ],
+      "file": "Preiss/Tangent/Restriction.lean",
+      "statement_tex": "For locally finite Euclidean $\\mu$ and finite $\\nu\\ll\\mu$, their full tangent cones agree at $\\nu$-almost every point. Apply the pinned FormalizingGMT density-matching theorem to the real Radon--Nikodym derivative.",
+      "definition_dependencies": [],
+      "deps": [
+        "thm:matching"
+      ],
+      "used_by": [],
+      "verification": "Proof supplied; full actual-import CI pending. Density inheritance independently passed local kernel audit."
+    },
+    {
+      "id": "lem:normal-coordinate-identities",
+      "kind": "lemma",
+      "title": "Orthogonal representatives and normal-coordinate identities",
+      "lean_names": [
+        "Preiss.exists_orthogonal_representative",
+        "Preiss.normal_coordinates_of_quadratic_identity"
+      ],
+      "file": "Preiss/Geometry/NormalCoordinates.lean",
+      "statement_tex": "A continuous linear functional vanishing on a closed subspace has a representing vector in its orthogonal complement. If $2\\langle b,x\\rangle+\\lVert P_Vx\\rVert^2=\\lVert x\\rVert^2$ with $b\\perp V$, then $\\lVert x-P_Vx\\rVert^2=2\\langle b,x\\rangle$, $\\lVert x-P_Vx-b\\rVert=\\lVert b\\rVert$, and $\\lVert x-P_Vx\\rVert\\leq2\\lVert b\\rVert$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:even-moment-positivity",
+      "kind": "lemma",
+      "title": "Even diagonal Gaussian moments are nonnegative",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_even_nonneg"
+      ],
+      "file": "Preiss/Uniform/MomentForms.lean",
+      "statement_tex": "Every even diagonal Gaussian moment is nonnegative, for any measure and real Gaussian parameter. The statement also covers the nonintegrable case in the Bochner integral definition.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:moments",
+        "lem:moment-form-evaluation"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-moment-scaling",
+      "kind": "lemma",
+      "title": "Exact moment homogeneity for conical measures",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_homogeneous_of_isConical"
+      ],
+      "file": "Preiss/Uniform/ConicalMoments.lean",
+      "statement_tex": "For every conical measure, its degree-$k$ Gaussian multilinear moment at positive parameter $s$ equals $s^{k/2}$ times its moment at parameter one. No uniformity assumption is required.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:conical",
+        "lem:moment-covariance"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-support-covariance",
+      "kind": "lemma",
+      "title": "Conical covariance equals squared norm on the support",
+      "lean_names": [
+        "Preiss.conical_covariance_eq_norm_sq_on_support"
+      ],
+      "file": "Preiss/Uniform/ConicalMoments.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform conical measure, its second Gaussian moment at parameter one equals squared norm at every support point.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:conical-moment-scaling",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two",
+        "lem:moment-support-polynomial"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:moment-trace-operator",
+      "kind": "lemma",
+      "title": "The second-moment trace as a bounded linear functional",
+      "lean_names": [
+        "Preiss.momentTraceCLM",
+        "Preiss.momentTraceCLM_apply",
+        "Preiss.momentTraceCLM_momentKernel"
+      ],
+      "file": "Preiss/Uniform/MomentTrace.lean",
+      "statement_tex": "The finite sum of diagonal evaluations defines a continuous linear functional on second moment forms. It equals the associated bilinear trace and maps the moment kernel at $z$ to $\\lVert z\\rVert^2$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:bilinear-trace-basis",
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-radial-second-moment",
+      "kind": "lemma",
+      "title": "Radial second Gaussian moment of a unit-uniform measure",
+      "lean_names": [
+        "Preiss.integral_norm_sq_gaussian_unitUniform"
+      ],
+      "file": "Preiss/Uniform/MomentTrace.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform measure and $s>0$, the integral of $\\lVert z\\rVert^2e^{-s\\lVert z\\rVert^2}$ is $m/(2s)$ times its Gaussian mass. Differentiate the explicit Gaussian mass formula under the integral.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:gaussian-parameter-derivative"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:ordered-trace-bounds",
+      "kind": "lemma",
+      "title": "Finite ordered trace bounds and extremizers",
+      "lean_names": [
+        "Preiss.ordered_nonnegative_trace_cutoff_bounds",
+        "Preiss.ordered_nonnegative_trace_eq_initial_indicator",
+        "Preiss.antitone_weighted_sum_le_initial_sum"
+      ],
+      "file": "Preiss/Analysis/OrderedSums.lean",
+      "statement_tex": "An antitone nonnegative tuple of total $m$ has its $m$-th entry at most one; equality forces the indicator of its first $m$ entries. For any antitone real tuple and weights in $[0,1]$ summing to $m$, the weighted sum is at most the sum of its first $m$ entries.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:quadratic-near-basis-rigidity",
+      "kind": "lemma",
+      "title": "Quadratic rigidity near a critical basis vector",
+      "lean_names": [
+        "Preiss.ordered_quadratic_identity_rigid_of_near_basis_vector"
+      ],
+      "file": "Preiss/Analysis/QuadraticSpectralRigidity.lean",
+      "statement_tex": "In a real inner-product space with a finite orthonormal basis, an ordered nonnegative spectrum of total $m$ is the rank-$m$ indicator spectrum if its quadratic identity holds at a point within distance $\\delta<1/m$ of the $m$-th basis vector.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "used_by": [],
+      "verification": "Passed independent kernel checks with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:exact-monomial-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exact monomial",
+      "lean_names": [
+        "Preiss.taylorCoefficient_eq_of_exact_monomial"
+      ],
+      "file": "Preiss/Analysis/AsymptoticCoefficients.lean",
+      "statement_tex": "If a normed-space-valued function equals $s^d a$ for positive $s$ and admits compatible Taylor remainders of every order, its only nonzero positive-order Taylor coefficient is $a$ in degree $d>0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:first-moment-normal-from-vanishing",
+      "kind": "lemma",
+      "title": "A normal vector from first-moment plane vanishing",
+      "lean_names": [
+        "Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero"
+      ],
+      "file": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "statement_tex": "If the first coefficient form vanishes on a plane, half its Riesz representative lies in the orthogonal complement and represents that form as $x\\mapsto2\\langle b,x\\rangle$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:normal-coordinate-identities",
+        "def:rigidity-normal-vector"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:inverse-square-positive-limit",
+      "kind": "lemma",
+      "title": "Inverse-square scales approach zero through positive values",
+      "lean_names": [
+        "Preiss.tendsto_inv_sq_atTop_nhdsGT_zero"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "As $r\\to\\infty$, the scale $r^{-2}$ tends to zero through positive values.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:blowdown-form-limits",
+      "kind": "lemma",
+      "title": "Every positive-degree Gaussian moment has a blowdown limit",
+      "lean_names": [
+        "Preiss.exists_blowdown_gaussianMoment_limit"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "Every positive-degree Gaussian multilinear moment at parameter one has a limit along the dimensional blowdowns of a positive-dimensional unit-uniform measure. The even limits come from leading Taylor coefficients; the odd limits vanish.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:inverse-square-positive-limit",
+        "lem:taylor-two",
+        "lem:scaled-moment-limits",
+        "lem:moment-covariance"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-product-moment-conversion",
+      "kind": "lemma",
+      "title": "Gaussian product integrals and moment forms on unit-uniform measures",
+      "lean_names": [
+        "Preiss.gaussian_integral_product_eq_moment",
+        "Preiss.integrable_polynomial_gaussian_unitUniform"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "For a unit-uniform measure, Gaussian integrals of products of linear functionals equal explicit scalar multiples of their moment forms. Polynomial Gaussian tests are integrable.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:coordinate-product-representation",
+      "kind": "lemma",
+      "title": "Coordinate monomials are finite products of linear inner products",
+      "lean_names": [
+        "Preiss.exists_coordinate_product_representation"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "Every coordinate monomial can be represented as a finite product of inner products with coordinate basis vectors.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:blowdown-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian linear-product tests have blowdown limits",
+      "lean_names": [
+        "Preiss.exists_blowdown_product_gaussian_limit"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "Gaussian integrals of every finite product of linear functionals have a limit along dimensional blowdowns of a positive-dimensional unit-uniform measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:blowdown-form-limits",
+        "lem:gaussian-product-moment-conversion",
+        "lem:uniform-scaling"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:orthonormal-spectral-sum-bound",
+      "kind": "lemma",
+      "title": "Orthonormal sums are bounded by leading eigenvalues",
+      "lean_names": [
+        "Preiss.orthonormal_diagonal_sum_le_initial_sum"
+      ],
+      "file": "Preiss/Analysis/OrderedSpectralBound.lean",
+      "statement_tex": "For an ordered real spectrum, the sum of its quadratic form over any orthonormal family of size $m$ is bounded by the sum of its first $m$ eigenvalues.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:ordered-bilinear-spectrum",
+      "kind": "lemma",
+      "title": "Ordered spectrum of a positive symmetric bilinear form",
+      "lean_names": [
+        "Preiss.exists_ordered_spectral_representation"
+      ],
+      "file": "Preiss/Analysis/BilinearSpectrum.lean",
+      "statement_tex": "A positive symmetric bilinear form on a finite-dimensional real inner-product space admits an orthonormal eigenbasis, with nonnegative decreasing eigenvalues summing to its trace.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:bilinear-trace"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:orthonormal-plane-distance",
+      "kind": "lemma",
+      "title": "Distance to a plane in orthonormal coordinates",
+      "lean_names": [
+        "Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis",
+        "Preiss.exists_plane_of_orthonormalBasis_finset"
+      ],
+      "file": "Preiss/Geometry/OrthonormalPlane.lean",
+      "statement_tex": "Squared distance to a subspace equals squared norm minus the sum of squared coordinates in an orthonormal basis. Selecting $m$ vectors of an ambient orthonormal basis constructs an $m$-plane with this distance formula.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:blowdown-even-moment-limit",
+      "kind": "lemma",
+      "title": "Explicit even moment limits of blowdowns",
+      "lean_names": [
+        "Preiss.blowdown_gaussianMoment_even_limit"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "The degree $2j$ Gaussian moment of dimensional blowdowns converges to $B_{2j}^{j}/j!$ for every positive $j$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:scaled-moment-limits",
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:vague-gaussian-moments",
+      "kind": "lemma",
+      "title": "Gaussian moment continuity under vague convergence",
+      "lean_names": [
+        "Preiss.vague_gaussianMomentForm_apply"
+      ],
+      "file": "Preiss/Uniform/MomentVague.lean",
+      "statement_tex": "Along vaguely convergent unit-uniform measures, every Gaussian multilinear moment evaluated on fixed vectors converges at every positive Gaussian parameter.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:vague-gaussian-polynomials",
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:exact-homogeneous-moment-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exactly homogeneous moment",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity"
+      ],
+      "file": "Preiss/Uniform/ConicalCoefficients.lean",
+      "statement_tex": "If a positive-degree Gaussian moment is exactly $s^d A$, its Taylor coefficient family has only one nonzero positive-order coefficient, equal to $d!A$ in degree $d$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:exact-monomial-coefficients"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-moment-coefficients",
+      "kind": "lemma",
+      "title": "Sparse moment coefficients of conical measures",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_conical"
+      ],
+      "file": "Preiss/Uniform/ConicalCoefficients.lean",
+      "statement_tex": "For a positive-dimensional conical unit-uniform measure, $B_k^j$ vanishes unless $k=2j$; in that degree it equals $j!$ times the moment at parameter one.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:exact-homogeneous-moment-coefficients",
+        "lem:conical-moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-even-support-moments",
+      "kind": "lemma",
+      "title": "Even Gaussian moments at support points",
+      "lean_names": [
+        "Preiss.conical_even_moment_on_support"
+      ],
+      "file": "Preiss/Uniform/ConicalCoefficients.lean",
+      "statement_tex": "For a positive-dimensional conical unit-uniform measure and $x$ in its support, the degree $2j$ diagonal moment at parameter one equals $\\lVert x\\rVert^{2j}/j!$ for every $j>0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:conical-moment-coefficients",
+        "lem:moment-support-polynomial",
+        "lem:taylor-two"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:symmetric-multilinear-diagonal-injective",
+      "kind": "lemma",
+      "title": "A symmetric multilinear form is determined by its diagonal",
+      "lean_names": [
+        "Preiss.symmetricMultilinear_eq_zero_of_diagonal"
+      ],
+      "file": "Preiss/Analysis/MultilinearDiagonal.lean",
+      "statement_tex": "A continuous symmetric multilinear map over real normed spaces is zero if all its diagonal evaluations vanish. This includes degree zero and requires neither finite dimension nor completeness.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:weighted-plane-energy-decomposition",
+      "kind": "lemma",
+      "title": "Weighted plane energy in orthonormal coordinates",
+      "lean_names": [
+        "Preiss.integral_weighted_planeEnergy_eq_sub_sum"
+      ],
+      "file": "Preiss/Geometry/SpectralPlaneEnergy.lean",
+      "statement_tex": "An integrable weighted squared distance to a subspace equals the weighted squared norm integral minus the sum of directional second moments.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:orthonormal-plane-distance"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:covariance-minimizing-plane",
+      "kind": "lemma",
+      "title": "Leading covariance eigenspaces minimize plane energy",
+      "lean_names": [
+        "Preiss.exists_minimizing_plane_of_ordered_covariance"
+      ],
+      "file": "Preiss/Geometry/SpectralPlaneEnergy.lean",
+      "statement_tex": "Given an ordered spectral representation of the weighted covariance, the plane spanned by its first $m$ eigenvectors minimizes weighted squared distance among all $m$-planes.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:weighted-plane-energy-decomposition",
+        "lem:orthonormal-spectral-sum-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-bilinear-covariance",
+      "kind": "lemma",
+      "title": "Gaussian bilinear covariance identities",
+      "lean_names": [
+        "Preiss.momentBilinear_diag",
+        "Preiss.momentBilinear_gaussianMomentForm_symmetric",
+        "Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel",
+        "Preiss.integral_gaussian_inner_sq_eq_momentBilinear"
+      ],
+      "file": "Preiss/Uniform/GaussianCovariance.lean",
+      "statement_tex": "The degree-two Gaussian moment defines a symmetric bilinear form. Its diagonal equals twice the Gaussian directional second moment divided by Gaussian mass, with directional integrability following from moment-kernel integrability.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-flat-conical",
+      "kind": "lemma",
+      "title": "Normalized flat measures are conical",
+      "lean_names": [
+        "Preiss.isConical_unitFlat"
+      ],
+      "file": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "statement_tex": "The normalized Hausdorff measure on a linear plane is invariant under dimensional dilations.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flat-plane-blowup"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:zero-dimensional-flat-moments",
+      "kind": "lemma",
+      "title": "Zero-dimensional flat measures and their moments",
+      "lean_names": [
+        "Preiss.unitFlat_eq_dirac_of_dim_zero",
+        "Preiss.gaussianMomentForm_dirac_zero_diagonal",
+        "Preiss.flat_gaussianMoment_diagonal_dim_zero"
+      ],
+      "file": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "statement_tex": "A normalized zero-dimensional flat measure is the Dirac mass at the origin. Its zeroth moment is one and every positive-degree moment vanishes, including the required projected even-moment formula.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:flat-moment-projection",
+      "kind": "lemma",
+      "title": "Flat moments depend only on projected vectors",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_unitFlat_diagonal_project",
+        "Preiss.gaussianMomentForm_unitFlat_zero_diagonal"
+      ],
+      "file": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "statement_tex": "Diagonal Gaussian moments of a normalized flat measure are unchanged by orthogonal projection of their argument to the plane. The zeroth moment equals one at every positive Gaussian parameter.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-form-evaluation",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-nonzero",
+      "kind": "lemma",
+      "title": "Unit-uniform measures are nonzero",
+      "lean_names": [
+        "Preiss.IsUnitUniform.ne_zero"
+      ],
+      "file": "Preiss/Uniform/TangentAtInfinity.lean",
+      "statement_tex": "A unit-uniform measure is nonzero because its support contains the origin.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-infinity-existence",
+      "kind": "lemma",
+      "title": "Existence and uniformity of tangents at infinity",
+      "lean_names": [
+        "Preiss.isUnitUniform_of_tangentAtInfinity",
+        "Preiss.exists_unitUniform_tangentAtInfinity"
+      ],
+      "file": "Preiss/Uniform/TangentAtInfinity.lean",
+      "statement_tex": "A positive-dimensional unit-uniform measure admits a tangent at infinity, and every such tangent remains unit-uniform.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:unit-uniform-nonzero",
+        "lem:uniform-vague-closed",
+        "lem:uniform-compactness",
+        "lem:uniform-scaling"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-infinity-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of tangents at infinity",
+      "lean_names": [
+        "Preiss.tangentAtInfinity_eq_of_unitUniform"
+      ],
+      "file": "Preiss/Uniform/TangentAtInfinity.lean",
+      "statement_tex": "Any two tangents at infinity of a positive-dimensional unit-uniform measure agree, by equality of their Gaussian polynomial moments.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:unit-uniform-infinity-existence",
+        "lem:blowdown-moment-limits",
+        "lem:vague-gaussian-polynomials",
+        "lem:moment-determination"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:leading-homogeneous-term",
+      "kind": "lemma",
+      "title": "Leading homogeneous terms along escaping sequences",
+      "lean_names": [
+        "Preiss.tendsto_scaled_homogeneous_sum",
+        "Preiss.leading_diagonal_nonneg_of_rescaled_points"
+      ],
+      "file": "Preiss/Analysis/LeadingHomogeneousTerm.lean",
+      "statement_tex": "For a finite sum of continuous multilinear homogeneous polynomials, dividing its values at $r_i y_i$ by the highest power of $r_i$ yields the leading diagonal value when $r_i\\to\\infty$ and $y_i\\to v$. Nonnegativity on those points implies nonnegativity of the leading value.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-gaussian-ball-energy",
+      "kind": "lemma",
+      "title": "Conical Gaussian energy and unit-ball energy",
+      "lean_names": [
+        "Preiss.conical_gaussian_planeEnergy_eq_ball"
+      ],
+      "file": "Preiss/Uniform/ConicalPlaneEnergy.lean",
+      "statement_tex": "For a conical unit-uniform measure, Gaussian squared-distance energy equals unit-ball squared-distance energy times the corresponding Gamma factor.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:homogeneous-energy-radial"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-norm-half-mass",
+      "kind": "lemma",
+      "title": "Gaussian norm moments bounded by half-scale mass",
+      "lean_names": [
+        "Preiss.integral_norm_pow_mul_gaussian_le_halfMass"
+      ],
+      "file": "Preiss/Analysis/GaussianNormBounds.lean",
+      "statement_tex": "An integrable Gaussian norm moment of positive degree $k$ is bounded by $(k/s)^{k/2}$ times the Gaussian mass at parameter $s/2$, for any measure on a real normed additive group.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:uniform-normalized-gaussian-norm",
+      "kind": "lemma",
+      "title": "Normalized Gaussian norm bounds for uniform measures",
+      "lean_names": [
+        "Preiss.gaussianMass_half_unitUniform",
+        "Preiss.integral_norm_pow_mul_gaussian_le_unitUniform",
+        "Preiss.normalized_gaussian_norm_pow_le_unitUniform"
+      ],
+      "file": "Preiss/Uniform/GaussianNormBounds.lean",
+      "statement_tex": "For positive-dimensional unit-uniform measures, halving the Gaussian parameter scales its mass by $2^{m/2}$. Dividing Gaussian norm moments by Gaussian mass gives an explicit bound of order $s^{-k/2}$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-norm-half-mass",
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:moment-coefficient-growth-images",
+      "kind": "lemma",
+      "title": "Coefficient vanishing from growth of linear images",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_map_eq_zero_of_lt_growth",
+        "Preiss.gaussianMomentCoefficient_apply_eq_zero_of_lt_growth"
+      ],
+      "file": "Preiss/Uniform/MomentCoefficientEstimates.lean",
+      "statement_tex": "If a continuous linear image of a positive-degree Gaussian moment is $O(s^a)$, every positive Taylor coefficient of degree $j<a$ has zero image. Fixed-vector evaluation is a specialization.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:subspace-moment-trace",
+      "kind": "lemma",
+      "title": "Continuous trace of moments on a subspace",
+      "lean_names": [
+        "Preiss.subspaceMomentTraceCLM",
+        "Preiss.subspaceMomentTraceCLM_apply",
+        "Preiss.subspaceMomentTraceCLM_momentKernel"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "statement_tex": "Tracing a degree-two moment on a subspace is a continuous linear functional. On the moment kernel it equals the squared norm of orthogonal projection.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:subspace-gaussian-trace-cylinder",
+      "kind": "lemma",
+      "title": "Subspace Gaussian trace under a cylinder identity",
+      "lean_names": [
+        "Preiss.subspaceTrace_gaussianMoment_eq_integral",
+        "Preiss.subspaceTrace_gaussianMoment_of_cylinder"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentTrace.lean",
+      "statement_tex": "The subspace trace of the Gaussian second moment is an explicit integral of squared projection. If that squared projection equals $2\\langle b,z\\rangle$ almost everywhere, the trace equals $2s$ times the first moment evaluated at $b$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:subspace-moment-trace"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:taylor-multiply-scale",
+      "kind": "lemma",
+      "title": "Taylor coefficients after multiplication by scale",
+      "lean_names": [
+        "Preiss.first_second_taylor_coefficients_of_mul_scale"
+      ],
+      "file": "Preiss/Analysis/TaylorShift.lean",
+      "statement_tex": "If $f(s)=sa+o(s)$, $g(s)=sb+s^2c/2+o(s^2)$, and $g(s)=dsf(s)$ near zero through positive values, then $b=0$ and $c=2da$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bounded-tube-plane-to-support",
+      "kind": "lemma",
+      "title": "Bounded holes in a plane near a uniform support",
+      "lean_names": [
+        "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates"
+      ],
+      "file": "Preiss/Uniform/BoundedTube.lean",
+      "statement_tex": "If the support of an $m$-dimensional unit-uniform measure lies in a bounded tube around an $m$-plane, every point of that plane lies within a uniform finite distance of the support.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-vague-closed",
+        "lem:vague-support-approximation"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:moment-taylor-linear-image",
+      "kind": "lemma",
+      "title": "Taylor remainders under scalar linear maps",
+      "lean_names": [
+        "Preiss.gaussianMoment_taylor_remainder_map"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentCoefficients.lean",
+      "statement_tex": "Applying a continuous real linear functional to a Gaussian moment preserves its Taylor remainder estimate and applies the same functional to every coefficient.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:moment-coefficients"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:cylinder-second-coefficient-trace",
+      "kind": "lemma",
+      "title": "Second coefficient trace from a cylinder identity",
+      "lean_names": [
+        "Preiss.subspaceTrace_secondCoefficient_of_cylinder"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentCoefficients.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform measure satisfying the quadratic cylinder identity almost everywhere, the subspace trace of $B_2^2$ equals $4B_1^1(b)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-taylor-linear-image",
+        "lem:subspace-gaussian-trace-cylinder",
+        "lem:taylor-multiply-scale"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bilinear-trace-orthogonal-split",
+      "kind": "lemma",
+      "title": "Trace splits over orthogonal complementary subspaces",
+      "lean_names": [
+        "Preiss.bilinearTrace_eq_restrict_add_orthogonal"
+      ],
+      "file": "Preiss/Analysis/OrthogonalTraceSplit.lean",
+      "statement_tex": "The trace of any continuous real bilinear form on a finite-dimensional inner-product space equals the sum of its traces restricted to a subspace and its orthogonal complement.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:bilinear-trace-basis"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:moment-product-growth",
+      "kind": "lemma",
+      "title": "Scalar Gaussian moments from product growth",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_apply_isBigO_of_product_bound"
+      ],
+      "file": "Preiss/Uniform/MixedMomentBounds.lean",
+      "statement_tex": "If the product of the degree-$k$ evaluation functionals is bounded almost everywhere by $C\\lVert z\\rVert^d$, its Gaussian moment is $O(s^{k-d/2})$. Zero degrees are included.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bounded-tube-cubic-vanishing",
+      "kind": "lemma",
+      "title": "Cubic coefficients with two normal inputs vanish",
+      "lean_names": [
+        "Preiss.thirdMomentCoefficient_two_normal_eq_zero_of_bounded_tube"
+      ],
+      "file": "Preiss/Uniform/MixedMomentBounds.lean",
+      "statement_tex": "For a unit-uniform measure whose support lies in a bounded tube around a subspace, $B_3^2(v,w,w)=0$ whenever $w$ is normal to that subspace and $v$ is arbitrary.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-product-growth",
+        "lem:moment-coefficient-growth-images"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:symmetric-cubic-binomial",
+      "kind": "lemma",
+      "title": "Binomial formula for a symmetric trilinear form",
+      "lean_names": [
+        "Preiss.symmetricTrilinear_diagonal_add"
+      ],
+      "file": "Preiss/Analysis/MultilinearDiagonal.lean",
+      "statement_tex": "The diagonal of a continuous symmetric real trilinear form at $x+y$ expands with coefficients $1,3,3,1$ into its pure and mixed evaluations.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:leading-coefficient-limit",
+      "kind": "lemma",
+      "title": "Leading coefficient from a little-o remainder",
+      "lean_names": [
+        "Preiss.tendsto_scaled_of_isLittleO_sub"
+      ],
+      "file": "Preiss/Analysis/TaylorLimits.lean",
+      "statement_tex": "A normed-space-valued function equal to $s^j a+o(s^j)$ converges to $a$ after division by $s^j$ as $s$ tends to zero through positive values.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:scale-normalized-bounded-integral",
+      "kind": "lemma",
+      "title": "Vanishing of scaled normalized bounded integrals",
+      "lean_names": [
+        "Preiss.tendsto_scale_normalized_integral_of_ae_bound"
+      ],
+      "file": "Preiss/Analysis/NormalizedIntegral.lean",
+      "statement_tex": "For any nonnegative integrable weights with positive mass, the weighted average of an essentially bounded function tends to zero after multiplication by a positive scale tending to zero.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:scale-derivative-limit",
+      "kind": "lemma",
+      "title": "A convergent function has no nonzero scaled derivative limit",
+      "lean_names": [
+        "Preiss.scale_derivative_limit_eq_zero"
+      ],
+      "file": "Preiss/Analysis/ScaleDerivative.lean",
+      "statement_tex": "If $f(s)$ converges to a finite real limit and $s f\\prime(s)$ has a finite limit as $s\\downarrow0$, that scaled derivative limit is zero. The proof uses the quotient $(sf(s))/s$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-forms-from-symmetry",
+      "kind": "lemma",
+      "title": "Rigidity forms from symmetric coefficient tensors",
+      "lean_names": [
+        "Preiss.exists_rigidity_forms_of_symmetry"
+      ],
+      "file": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "statement_tex": "Symmetric second and third coefficient forms determine the required normal-valued bilinear map and adjusted scalar bilinear form through Riesz representation. No measure or tangent assumption is required.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:quadratic-bound-bounded-offsets",
+      "kind": "lemma",
+      "title": "Quadratic bound from bounded offsets",
+      "lean_names": [
+        "Preiss.quadratic_square_bound_of_bounded_offsets"
+      ],
+      "file": "Preiss/Analysis/QuadraticBoundedOffset.lean",
+      "statement_tex": "If $y_i\\to v$, $\\lVert q_i\\rVert\\le B$ eventually, and $A(y_i,y_i)+\\langle\\omega(y_i,y_i),q_i\\rangle\\to0$, then $A(v,v)^2\\le B^2\\lVert\\omega(v,v)\\rVert^2$. The spaces and continuous bilinear maps are arbitrary.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-linear-growth-integral",
+      "kind": "lemma",
+      "title": "Gaussian integrals of functions with linear growth",
+      "lean_names": [
+        "Preiss.gaussian_integral_bound_of_linear_growth"
+      ],
+      "file": "Preiss/Analysis/GaussianLinearGrowth.lean",
+      "statement_tex": "A measurable function bounded almost everywhere by $C(1+\\lVert z\\rVert)$ is Gaussian integrable whenever Gaussian mass and first norm moment are integrable, with the corresponding explicit integral bound.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:uniform-gaussian-linear-growth-limit",
+      "kind": "lemma",
+      "title": "Vanishing of scaled Gaussian linear-growth averages",
+      "lean_names": [
+        "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth"
+      ],
+      "file": "Preiss/Uniform/GaussianLinearGrowth.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform measure, the Gaussian integral of a linearly bounded measurable function, multiplied by $s$ and divided by Gaussian mass, tends to zero as $s\\downarrow0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-linear-growth-integral",
+        "lem:uniform-normalized-gaussian-norm"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:quadratic-square-upper-lower",
+      "kind": "lemma",
+      "title": "Scalar lower bound from a quadratic inequality",
+      "lean_names": [
+        "Preiss.quadratic_lower_bound_of_square_upper"
+      ],
+      "file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean",
+      "statement_tex": "If $d>0$, $q\\ge0$, and $(1+2/d)t^2\\le-8qt$, then $t\\ge-8dq/(d+2)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-square-upper-trace-lower",
+      "kind": "lemma",
+      "title": "Gaussian trace lower bound from a squared-form upper bound",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper"
+      ],
+      "file": "Preiss/Analysis/GaussianQuadraticLowerBound.lean",
+      "statement_tex": "For a symmetric bilinear form on a positive-dimensional real inner-product space, a Gaussian squared-form bound by $-8q$ times its mean forces the mean to be at least $-8dq/(d+2)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:quadratic-square-upper-lower",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bilinear-diagonal-difference",
+      "kind": "lemma",
+      "title": "Difference of bilinear diagonal values",
+      "lean_names": [
+        "Preiss.norm_bilinear_diagonal_sub_le"
+      ],
+      "file": "Preiss/Analysis/BilinearDiagonalDifference.lean",
+      "statement_tex": "For a continuous bilinear map, $\\lVert Q(z,z)-Q(p,p)\\rVert\\le\\lVert Q\\rVert\\lVert z-p\\rVert(\\lVert z\\rVert+\\lVert p\\rVert)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:vague-limit-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of regular vague limits",
+      "lean_names": [
+        "Preiss.vague_limit_unique"
+      ],
+      "file": "Preiss/Analysis/Vague/Uniqueness.lean",
+      "statement_tex": "Two regular measures that are vague limits of the same sequence agree.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:flat-tangent-normalization",
+      "kind": "lemma",
+      "title": "Flatness transfers between tangent normalizations",
+      "lean_names": [
+        "Preiss.exists_flat_dimensionalTangent_of_flat_tangent",
+        "Preiss.all_tangents_flat_of_dimensionalTangents",
+        "Preiss.all_dimensionalTangents_flat_of_smul"
+      ],
+      "file": "Preiss/Tangent/FlatNormalization.lean",
+      "statement_tex": "Under positive finite density bounds, a flat tangent yields a flat dimensional tangent, and flatness of all dimensional tangents yields flatness of all tangents. A common positive finite scalar normalization can be undone.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:tangent-ray-density-bounds"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:density-positive-scalar",
+      "kind": "lemma",
+      "title": "Positive finite density under scalar multiplication",
+      "lean_names": [
+        "Preiss.HasPositiveFiniteDensityAt.smul"
+      ],
+      "file": "Preiss/Density/Scalar.lean",
+      "statement_tex": "Multiplication of a measure by a positive finite scalar preserves positive finite existing dimensional density.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:positive-density"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-bilinear-norm-integrable",
+      "kind": "lemma",
+      "title": "Integrability of squared norms of Gaussian bilinear diagonals",
+      "lean_names": [
+        "Preiss.integrable_gaussian_norm_sq_bilinear"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearNorm.lean",
+      "statement_tex": "The squared norm of a continuous Hilbert-valued bilinear form evaluated diagonally is integrable under standard Gaussian measure on a finite-dimensional real inner-product space.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-vector-bilinear-wick",
+      "kind": "lemma",
+      "title": "Vector-valued Gaussian fourth moment with zero mean",
+      "lean_names": [
+        "Preiss.gaussian_integral_norm_sq_bilinear_of_mean_zero"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearNorm.lean",
+      "statement_tex": "For a symmetric Hilbert-valued bilinear form with zero Gaussian mean, its Gaussian squared norm equals twice the sum of squared norms of its matrix entries in an orthonormal basis.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-bilinear-norm-integrable",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-vector-trace-contractions",
+      "kind": "lemma",
+      "title": "Gaussian means and contractions of vector bilinear forms",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_basis_sum",
+        "Preiss.gaussian_integral_inner_bilinear_eq_zero_of_mean_zero",
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear_of_mean_zero"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean",
+      "statement_tex": "The Gaussian mean of a vector-valued bilinear diagonal is its basis trace. Zero mean implies zero scalar component means and the corresponding factor-two weighted Gaussian contraction.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-bilinear-contraction",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:weighted-integral-polarization",
+      "kind": "lemma",
+      "title": "Polarization of weighted integral limits",
+      "lean_names": [
+        "Preiss.tendsto_weighted_integral_mul_of_square_limits",
+        "Preiss.integrable_weighted_mul_of_squares",
+        "Preiss.tendsto_weighted_bilinear_mixed_of_diagonal_limits"
+      ],
+      "file": "Preiss/Analysis/WeightedIntegralPolarization.lean",
+      "statement_tex": "Integrability and convergence of weighted diagonal square integrals imply their cross-product counterparts by polarization. This applies to diagonal limits of Hilbert-valued bilinear forms.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:finite-bilinear-integral-limits",
+      "kind": "lemma",
+      "title": "Finite-basis bilinear expansion and integral limits",
+      "lean_names": [
+        "Preiss.bilinear_diagonal_eq_sum_orthonormalBasis",
+        "Preiss.tendsto_weighted_integral_finite_linear_combination"
+      ],
+      "file": "Preiss/Analysis/BilinearIntegralLimits.lean",
+      "statement_tex": "A bilinear diagonal expands in a finite orthonormal basis. Eventual integrability and limits of finitely many weighted integrals pass through their fixed linear combinations.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:low-order-moment-limits",
+      "kind": "lemma",
+      "title": "First and second scaled moment limits",
+      "lean_names": [
+        "Preiss.gaussianMoment_first_scaled_limit",
+        "Preiss.gaussianMoment_second_scaled_limit"
+      ],
+      "file": "Preiss/Uniform/MomentCoefficientLimits.lean",
+      "statement_tex": "For every positive moment degree, division by $s$ yields the first coefficient in the limit. If that coefficient vanishes, division by $s^2$ yields half the second coefficient.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:leading-coefficient-limit",
+        "def:moment-coefficients"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:mixed-centered-gaussian-limit",
+      "kind": "lemma",
+      "title": "Centered mixed Gaussian limit from Taylor coefficients",
+      "lean_names": [
+        "Preiss.mixed_gaussian_limit_of_moment_expansion"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "The normalized centered cubic Gaussian integral converges to $3B_3^2(v,v,w)-4B_2^1(v,v)\\langle b,w\\rangle$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-coefficient-vanishing"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:centered-gaussian-mean-limit",
+      "kind": "lemma",
+      "title": "Centered Gaussian mean from its first coefficient",
+      "lean_names": [
+        "Preiss.normalized_centered_gaussian_limit_of_first_coefficient"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "If $B_1^1(w)=2\\langle b,w\\rangle$, the normalized Gaussian average of $\\langle z-b,w\\rangle$ tends to zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:low-order-moment-limits"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "def:rigidity-error",
+      "kind": "definition",
+      "title": "The quadratic rigidity error",
+      "lean_names": [
+        "Preiss.rigidityError"
+      ],
+      "file": "Preiss/Uniform/RigidityError.lean",
+      "statement_tex": "The error is $A(Pz,Pz)+\\langle\\omega(Pz,Pz),z-Pz-b\\rangle$, where $P$ is the orthogonal projection onto the limiting plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-omega",
+        "def:rigidity-adjusted-form"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-error-linear-growth",
+      "kind": "lemma",
+      "title": "Linear growth of the rigidity error",
+      "lean_names": [
+        "Preiss.rigidityError_le_linear_growth"
+      ],
+      "file": "Preiss/Uniform/RigidityErrorBounds.lean",
+      "statement_tex": "On the support of the unit-uniform measure, the rigidity error is bounded in absolute value by $C(1+\\lVert z\\rVert)$ for some nonnegative constant $C$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "lem:rigidity-fourth-support-identity",
+        "lem:uniform-cylinder-identity"
+      ],
+      "used_by": [],
+      "verification": "Exact original-signature body passed independent kernel audit; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-error-remainder",
+      "kind": "lemma",
+      "title": "Coefficient remainder identity for the rigidity error",
+      "lean_names": [
+        "Preiss.rigidityError_eq_coefficient_remainder"
+      ],
+      "file": "Preiss/Uniform/RigidityErrorBounds.lean",
+      "statement_tex": "Assuming the cylinder and fourth-order coefficient identities at $z$, the rigidity error equals $\\lVert z-Pz\\rVert^4-B_1^2(z)-(B_2^2(z,z)-B_2^2(Pz,Pz))$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "def:rigidity-omega",
+        "def:rigidity-adjusted-form"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-pointwise-from-growth",
+      "kind": "lemma",
+      "title": "Pointwise quadratic bound from linear error growth",
+      "lean_names": [
+        "Preiss.adjustedForm_sq_le_of_rigidityError_linear_growth"
+      ],
+      "file": "Preiss/Uniform/RigidityPointwise.lean",
+      "statement_tex": "For flat-at-infinity moment data, a linear growth bound on the rigidity error implies $A(v,v)^2\\le\\lVert b\\rVert^2\\lVert\\omega(v,v)\\rVert^2$. The proof uses support points approximating the plane along blowdowns.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "lem:quadratic-bound-bounded-offsets",
+        "lem:uniform-cylinder-identity",
+        "lem:vague-support-approximation"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-error-limit-from-growth",
+      "kind": "lemma",
+      "title": "Gaussian error limit from linear growth",
+      "lean_names": [
+        "Preiss.continuous_rigidityError",
+        "Preiss.gaussian_rigidityError_limit_of_linear_growth"
+      ],
+      "file": "Preiss/Uniform/RigidityErrorLimit.lean",
+      "statement_tex": "The rigidity error is continuous. If it has linear growth on a unit-uniform support, its Gaussian integral multiplied by $s$ and divided by Gaussian mass tends to zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:rigidity-error",
+        "lem:uniform-gaussian-linear-growth-limit"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-mean-zero-correction",
+      "kind": "lemma",
+      "title": "Gaussian traces are unchanged by a zero-mean correction",
+      "lean_names": [
+        "Preiss.gaussian_integral_bilinear_eq_trace_of_mean_zero_correction"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearVectorTrace.lean",
+      "statement_tex": "Adding a fixed scalar component of a vector-valued bilinear form with zero Gaussian mean leaves the Gaussian integral of a scalar bilinear diagonal unchanged.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-vector-trace-contractions"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:first-crossing-from-large-flatness",
+      "kind": "lemma",
+      "title": "First-crossing sequences from a large-flatness tangent",
+      "lean_names": [
+        "Preiss.exists_first_crossing_sequences_of_flatness_gt"
+      ],
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "statement_tex": "A flat dimensional tangent and a dimensional tangent whose flatness exceeds the threshold produce the full first-crossing scale data, including every intermediate-scale bound.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flatness-radius-continuous",
+        "lem:greatest-crossing",
+        "lem:dimensional-compactness"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-rigidity-integral-bounds",
+      "kind": "lemma",
+      "title": "Gaussian quadratic bounds from a mean-square identity",
+      "lean_names": [
+        "Preiss.gaussian_quadratic_bounds_of_mean_square_identity"
+      ],
+      "file": "Preiss/Analysis/GaussianRigidityBounds.lean",
+      "statement_tex": "If $A(v,v)^2\\le q\\lVert\\omega(v,v)\\rVert^2$ and the Gaussian mean square of $\\omega$ equals $-8$ times the mean of $A$, then the Gaussian square of $A$ is at most $-8q$ times its mean, and that mean is at least $-8dq/(d+2)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-square-upper-trace-lower",
+        "lem:gaussian-bilinear-norm-integrable"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:normalized-gaussian-derivative",
+      "kind": "lemma",
+      "title": "Derivatives of normalized Gaussian expectations",
+      "lean_names": [
+        "Preiss.hasDerivAt_normalized_polynomial_gaussian_unitUniform",
+        "Preiss.hasDerivAt_normalized_centered_gaussian_unitUniform"
+      ],
+      "file": "Preiss/Uniform/GaussianQuotient.lean",
+      "statement_tex": "The derivative of a normalized polynomial Gaussian expectation is $m/(2s)$ times that expectation minus its normalized squared-norm-weighted expectation. The centered linear polynomial is a specialization.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-parameter-derivative",
+        "lem:gaussian-radial-second-moment",
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-exists",
+      "kind": "lemma",
+      "title": "Existence of the centered full Gaussian contraction limit",
+      "lean_names": [
+        "Preiss.exists_normalized_norm_sq_centered_gaussian_limit"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "Summing the centered mixed limits over an ambient orthonormal basis gives a finite limit for the normalized centered squared-norm Gaussian contraction.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:mixed-centered-gaussian-limit"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:centered-gaussian-full-contraction-zero",
+      "kind": "lemma",
+      "title": "Vanishing of the centered full Gaussian contraction",
+      "lean_names": [
+        "Preiss.normalized_norm_sq_centered_gaussian_limit_eq_zero"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "When the first moment coefficient represents the center, the normalized centered squared-norm Gaussian contraction tends to zero. This follows by differentiating the normalized centered mean and applying the scaled derivative limit lemma.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-exists",
+        "lem:centered-gaussian-mean-limit",
+        "lem:normalized-gaussian-derivative",
+        "lem:scale-derivative-limit"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bounded-tube-projected-contraction",
+      "kind": "lemma",
+      "title": "Vanishing projected contraction for a bounded tube",
+      "lean_names": [
+        "Preiss.contracted_gaussian_limit_eq_zero_of_bounded_tube"
+      ],
+      "file": "Preiss/Uniform/CenteredGaussianLimits.lean",
+      "statement_tex": "For a uniform support in a bounded tube around a subspace, the corresponding projected squared-norm Gaussian contraction tends to zero against every normal vector satisfying the centered first-coefficient identity.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:centered-gaussian-full-contraction-zero",
+        "lem:scale-normalized-bounded-integral"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:projected-mixed-gaussian-sum",
+      "kind": "lemma",
+      "title": "Projected Gaussian contraction as a finite basis sum",
+      "lean_names": [
+        "Preiss.sum_mixed_gaussian_eq_projected"
+      ],
+      "file": "Preiss/Uniform/ProjectedMixedGaussian.lean",
+      "statement_tex": "The projected squared-norm centered Gaussian contraction is the sum of its directional mixed contractions over an orthonormal basis of the plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-weighted-contraction",
+      "kind": "lemma",
+      "title": "Gaussian contraction from weighted moment limits",
+      "lean_names": [
+        "Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits"
+      ],
+      "file": "Preiss/Analysis/GaussianBilinearContraction.lean",
+      "statement_tex": "Finite families of second and mixed weighted moment limits, together with a vanishing quadratic error and a zero Gaussian mean, imply that the Gaussian mean square of the bilinear vector form is $-8$ times the mean of the scalar quadratic form.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:finite-bilinear-integral-limits",
+        "lem:gaussian-vector-bilinear-wick"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-inner-product-limits",
+      "kind": "lemma",
+      "title": "Gaussian inner-product integrability and limits",
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_sq_unitUniform",
+        "Preiss.integrable_gaussian_inner_sq_centered_unitUniform",
+        "Preiss.normalized_gaussian_inner_sq_limit"
+      ],
+      "file": "Preiss/Uniform/GaussianInnerProducts.lean",
+      "statement_tex": "Inner-product squares and their centered linear multiples are Gaussian-integrable for a uniform measure. The normalized square integral converges to half of the first quadratic moment coefficient.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:low-order-moment-limits",
+        "lem:moment-product-growth"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-cross-product-limits",
+      "kind": "lemma",
+      "title": "Polarized Gaussian moment limits on the limiting plane",
+      "lean_names": [
+        "Preiss.normalized_gaussian_inner_mul_limit_on_plane",
+        "Preiss.normalized_gaussian_mixed_limit_rigidityOmega"
+      ],
+      "file": "Preiss/Uniform/RigidityContraction.lean",
+      "statement_tex": "Polarization gives the normalized second and centered mixed Gaussian limits for two arbitrary vectors in the limiting plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:weighted-integral-polarization",
+        "lem:gaussian-inner-product-limits",
+        "lem:rigidity-mixed-gaussian-limit",
+        "lem:flat-infinity-moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:rigidity-omega-contraction",
+      "kind": "lemma",
+      "title": "Mean-square contraction of the rigidity form",
+      "lean_names": [
+        "Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit"
+      ],
+      "file": "Preiss/Uniform/RigidityContraction.lean",
+      "statement_tex": "Under the zero-mean and vanishing-error identities, the Gaussian mean of $\\lVert\\omega(v,v)\\rVert^2$ equals $-8$ times the Gaussian mean of $A(v,v)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-weighted-contraction",
+        "lem:gaussian-cross-product-limits",
+        "def:rigidity-error"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:density-open-ball-bridge",
+      "kind": "lemma",
+      "title": "Open-ball density convention",
+      "lean_names": [
+        "Preiss.density_iff_openBall_limit"
+      ],
+      "file": "Preiss/Density/Adapters.lean",
+      "statement_tex": "Positive finite existing density is equivalent to a positive finite limit of $\\mu(B(x,r))/r^m$ over open balls. This companion convention adapter remains an explicit open obligation and is not needed by the upstream density adapter.",
+      "definition_dependencies": [
+        "def:positive-density"
+      ],
+      "deps": [
+        "lem:density-limit-values",
+        "gmt:density-limit"
+      ],
+      "used_by": [],
+      "verification": "Unfinished original companion obligation; separated from the proved upstream adapter."
+    },
+    {
+      "id": "lem:nonflat-uniform-large-flatness",
+      "kind": "lemma",
+      "title": "Nonflat uniform measures have a dilation above the flatness gap",
+      "lean_names": [
+        "Preiss.exists_dilate_flatness_gt_of_unitUniform_not_flat"
+      ],
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "statement_tex": "A nonflat unit-uniform measure has a dilation whose flatness exceeds the conical gap. Otherwise its tangent at infinity would be flat and rigidity would make the original measure flat.",
+      "definition_dependencies": [],
+      "deps": [
+        "thm:infinity-rigidity",
+        "lem:unit-uniform-infinity-existence",
+        "cor:conical",
+        "lem:flatness-continuous"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:all-dimensional-tangents-flat",
+      "kind": "lemma",
+      "title": "One flat dimensional tangent forces all dimensional tangents to be flat",
+      "lean_names": [
+        "Preiss.all_dimensionalTangents_flat_of_one"
+      ],
+      "file": "Preiss/Theorem/PartB.lean",
+      "statement_tex": "Under positive finite existing density and unit uniformity of every dimensional tangent, the existence of one flat dimensional tangent forces every dimensional tangent to be flat.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:first-crossing",
+        "lem:first-crossing-ratio",
+        "lem:first-crossing-flat-infinity",
+        "thm:infinity-rigidity",
+        "lem:flatness-gap-cutoff"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

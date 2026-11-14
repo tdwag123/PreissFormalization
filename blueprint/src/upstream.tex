@@ -707,3 +707,16 @@ real-valued compactly supported continuous function.
 \leanok
 Use regularity and continuous compactly supported approximations to compact sets.
 \end{proof}
+
+\begin{lemma}[FormalizingGMT: tangent nullity from excluded support images]
+\label{gmt:tangent-open-null}
+\lean{SUniformAux.measure_open_eq_zero_of_isTangentMeasure}
+\leanok
+If a regular measure has a tangent at $a$ and every sufficiently small blow-up
+of its support avoids an open set $G$, then the tangent gives $G$ zero mass.
+\end{lemma}
+\begin{proof}[Existing pinned FormalizingGMT proof]
+\uses{gmt:portmanteau}
+\leanok
+Apply the open-set lower bound for vague convergence.
+\end{proof}

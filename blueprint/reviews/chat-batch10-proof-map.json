@@ -1,0 +1,26 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:inverse-square-positive-limit": [],
+    "lem:blowdown-form-limits": [
+      "lem:inverse-square-positive-limit",
+      "lem:taylor-two",
+      "lem:scaled-moment-limits",
+      "lem:moment-covariance"
+    ],
+    "lem:gaussian-product-moment-conversion": [
+      "lem:moment-norm-bound",
+      "lem:polynomial-gaussian-integrability"
+    ],
+    "lem:coordinate-product-representation": [],
+    "lem:blowdown-product-limits": [
+      "lem:blowdown-form-limits",
+      "lem:gaussian-product-moment-conversion",
+      "lem:uniform-scaling"
+    ],
+    "lem:blowdown-moment-limits": [
+      "lem:coordinate-product-representation",
+      "lem:blowdown-product-limits",
+      "lem:gaussian-product-moment-conversion"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:rigidity-rescaled-error": [
+      "lem:rigidity-error-limit-from-growth",
+      "lem:rigidity-error-linear-growth"
+    ],
+    "lem:rigidity-pointwise-quadratic-bound": [
+      "lem:rigidity-pointwise-from-growth",
+      "lem:rigidity-error-linear-growth"
+    ],
+    "lem:rigidity-forms-from-symmetry": [
+      "def:rigidity-omega",
+      "def:rigidity-adjusted-form"
+    ]
+  }
+}

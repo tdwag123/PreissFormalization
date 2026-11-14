@@ -1,0 +1,54 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:rigidity-omega-trace-zero": [
+      "lem:gaussian-vector-trace-contractions",
+      "lem:projected-mixed-gaussian-sum",
+      "lem:rigidity-mixed-gaussian-limit",
+      "lem:rigidity-contracted-limit-zero",
+      "lem:flat-infinity-moments"
+    ],
+    "lem:rigidity-gaussian-trace": [
+      "lem:rigidity-omega-trace-zero",
+      "lem:gaussian-mean-zero-correction"
+    ],
+    "lem:rigidity-omega-reproducing": [
+      "lem:rigidity-omega-trace-zero",
+      "lem:gaussian-vector-trace-contractions"
+    ],
+    "lem:rigidity-integral-quadratic-bound": [
+      "lem:rigidity-omega-contraction",
+      "lem:rigidity-omega-trace-zero",
+      "lem:rigidity-rescaled-error",
+      "lem:rigidity-pointwise-quadratic-bound",
+      "lem:gaussian-rigidity-integral-bounds"
+    ],
+    "lem:trace-rigidity": [
+      "lem:rigidity-integral-quadratic-bound",
+      "lem:gaussian-square-upper-trace-lower",
+      "lem:moment-normal-trace",
+      "lem:rigidity-gaussian-trace",
+      "lem:bilinear-trace-orthogonal-split"
+    ],
+    "thm:infinity-rigidity": [
+      "lem:trace-rigidity",
+      "lem:moment-second-total-trace",
+      "lem:taylor-two",
+      "lem:rigidity-normal-vector-exists",
+      "lem:rigidity-forms-exist",
+      "lem:uniform-cylinder-identity",
+      "lem:plane-supported-uniform-flat",
+      "lem:unit-uniform-infinity-existence"
+    ],
+    "lem:first-crossing": [
+      "lem:nonflat-uniform-large-flatness",
+      "lem:first-crossing-from-large-flatness"
+    ],
+    "thm:part-b": [
+      "lem:all-dimensional-tangents-flat",
+      "lem:density-normalization",
+      "lem:density-positive-scalar",
+      "lem:flat-tangent-normalization",
+      "lem:radius-power-density"
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 module
 
 public import Preiss.Uniform.Moments
+public import Preiss.Analysis.MultilinearSymmetrization
 public import Mathlib.Analysis.InnerProductSpace.LinearMap
 public import Mathlib.Analysis.Normed.Module.Multilinear.Basic
 public import Mathlib.Analysis.Normed.Module.Multilinear.Curry
@@ -104,5 +105,28 @@ theorem gaussianMomentForm_permute (μ : Measure (Euclidean n)) (k : ℕ) (s : �
     rw [Equiv.prod_comp σ (fun i => inner ℝ z (u i))]
   · simp only [gaussianMomentForm, integral_undef hint, smul_zero,
       ContinuousMultilinearMap.zero_apply]
+
+noncomputable abbrev SymmetricMomentForm (n k : ℕ) :=
+  symmetricContinuousMultilinearSubmodule (ι := Fin k) (E := Euclidean n) (F := ℝ)
+
+noncomputable def symmetricGaussianMomentForm (μ : Measure (Euclidean n)) (k : ℕ)
+    (s : ℝ) : SymmetricMomentForm n k :=
+  ⟨gaussianMomentForm μ k s,gaussianMomentForm_permute μ k s⟩
+
+
+theorem gaussianMomentForm_even_nonneg (μ : Measure (Euclidean n))
+    (k : ℕ) (hk : Even k) (s : ℝ) (x : Euclidean n) :
+    0 ≤ gaussianMomentForm μ k s (fun _ => x) := by
+  by_cases hint : Integrable (fun z => Real.exp (-s * ‖z‖^2) • momentKernel k z) μ
+  · rw [gaussianMomentForm_apply μ k s hint]
+    unfold gaussianMoment
+    simp only [Finset.prod_const,Finset.card_univ,Fintype.card_fin]
+    apply mul_nonneg
+    · apply mul_nonneg
+      · exact div_nonneg (hk.pow_nonneg _) (Nat.cast_nonneg _)
+      · exact inv_nonneg.mpr (integral_nonneg (fun z => (Real.exp_pos _).le))
+    · exact integral_nonneg (fun z => mul_nonneg (hk.pow_nonneg _) (Real.exp_pos _).le)
+  · rw [gaussianMomentForm, integral_undef hint, smul_zero]
+    exact le_rfl
 
 end Preiss

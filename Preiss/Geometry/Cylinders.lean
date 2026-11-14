@@ -1,6 +1,7 @@
 module
 
 public import Preiss.Geometry.Projections
+public import Preiss.Geometry.Cones
 public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 public import Mathlib.Tactic
 
@@ -179,4 +180,68 @@ theorem exists_unit_small_projection_swapped (V W : Plane m n)
     refine ⟨‖v‖⁻¹ • (v : Euclidean n), V.1.smul_mem _ v.property, norm_smul_inv_norm hvcoe, ?_⟩
     rw [hnormalize, show S v = 0 from hvker, norm_zero, zero_div]
     exact hε
+
+theorem exists_unit_small_projection_of_near_plane (V W : Plane m n)
+    (y : Euclidean n) {ε τ : ℝ} (hy : y ≠ 0) (hε : 0 ≤ ε)
+    (hτ : 0 ≤ τ) (hτmax : τ ≤ 1 / 2)
+    (hnear : infDist y (W.1 : Set (Euclidean n)) ≤ τ * ‖y‖)
+    (hproj : ‖proj V y‖ ≤ ε * ‖y‖) :
+    ∃ w : Euclidean n, w ∈ W.1 ∧ ‖w‖ = 1 ∧ ‖proj V w‖ ≤ 2 * (ε + τ) := by
+  let u := proj W y
+  have hres : ‖y - u‖ ≤ τ * ‖y‖ := by
+    have heq : ‖y - u‖ = infDist y (W.1 : Set (Euclidean n)) := by
+      change ‖y - W.1.starProjection y‖ = _
+      rw [Submodule.starProjection_minimal, infDist_eq_iInf]
+      rfl
+    rwa [heq]
+  have hnormy : 0 < ‖y‖ := norm_pos_iff.mpr hy
+  have hhalf : ‖y‖ / 2 ≤ ‖u‖ := by
+    have hh : ‖y‖ ≤ ‖y - u‖ + ‖u‖ := by
+      simpa only [sub_add_cancel] using norm_add_le (y - u) u
+    have hh' := mul_le_mul_of_nonneg_right hτmax (norm_nonneg y)
+    linarith
+  have hu : 0 < ‖u‖ := lt_of_lt_of_le (by positivity) hhalf
+  have hunonzero : u ≠ 0 := norm_pos_iff.mp hu
+  have hVdiff : ‖proj V u - proj V y‖ ≤ τ * ‖y‖ := by
+    change ‖V.1.starProjection u - V.1.starProjection y‖ ≤ _
+    rw [← map_sub]
+    apply (V.1.norm_starProjection_apply_le _).trans
+    rwa [norm_sub_rev]
+  have hVu : ‖proj V u‖ ≤ (ε + τ) * ‖y‖ := by
+    have hh : ‖proj V u‖ ≤ ‖proj V u - proj V y‖ + ‖proj V y‖ := by
+      simpa only [sub_add_cancel] using norm_add_le (proj V u - proj V y) (proj V y)
+    nlinarith
+  refine ⟨‖u‖⁻¹ • u, W.1.smul_mem _ (W.1.orthogonalProjectionOnto y).property,
+    norm_smul_inv_norm hunonzero, ?_⟩
+  have heq : proj V (‖u‖⁻¹ • u) = ‖u‖⁻¹ • proj V u := by
+    change V.1.starProjection (_ • _) = _
+    rw [map_smul]
+    rfl
+  rw [heq, norm_smul, Real.norm_eq_abs, abs_inv, abs_of_nonneg hu.le]
+  have hfrac : ‖proj V u‖ / ‖u‖ ≤ 2 * (ε + τ) := by
+    apply (div_le_iff₀ hu).mpr
+    have hh := mul_le_mul_of_nonneg_left hhalf (add_nonneg hε hτ)
+    nlinarith
+  simpa only [div_eq_mul_inv, mul_comm] using hfrac
+
+theorem norm_projection_lt_of_outside_cone (V : Plane m n) (a b : Euclidean n)
+    {ε : ℝ} (hε : 0 < ε) (houtside : b ∉ cone a V (1 / ε)) :
+    b - a ≠ 0 ∧ ‖proj V (b - a)‖ < ε * ‖b - a‖ := by
+  have hlt : (1 / ε) * ‖proj V (b - a)‖ < ‖(b - a) - proj V (b - a)‖ :=
+    lt_of_not_ge houtside
+  have hres : ‖(b - a) - proj V (b - a)‖ ≤ ‖b - a‖ := by
+    have heq : ‖(b - a) - proj V (b - a)‖ = infDist (b - a) (V.1 : Set (Euclidean n)) := by
+      change ‖(b - a) - V.1.starProjection (b - a)‖ = _
+      rw [Submodule.starProjection_minimal, infDist_eq_iInf]
+      rfl
+    rw [heq]
+    simpa only [dist_zero_right] using (infDist_le_dist_of_mem (x := b - a) V.1.zero_mem)
+  have hfrac : ‖proj V (b - a)‖ / ε < ‖b - a‖ := by
+    simpa only [one_div, div_eq_mul_inv, mul_comm, one_mul, mul_one] using hlt.trans_le hres
+  have hh : ‖proj V (b - a)‖ < ε * ‖b - a‖ := by
+    simpa only [mul_comm] using (div_lt_iff₀ hε).mp hfrac
+  refine ⟨?_, hh⟩
+  intro heq
+  rw [heq, norm_zero, mul_zero] at hh
+  exact not_lt_of_ge (norm_nonneg _) hh
 end Preiss

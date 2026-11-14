@@ -1,0 +1,12 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:moment-normal-trace": [
+      "lem:cylinder-second-coefficient-trace",
+      "lem:uniform-cylinder-identity"
+    ],
+    "lem:rigidity-forms-exist": [
+      "lem:rigidity-forms-from-symmetry",
+      "def:moment-coefficients"
+    ]
+  }
+}

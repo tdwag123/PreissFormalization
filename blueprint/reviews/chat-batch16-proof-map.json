@@ -1,0 +1,37 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:rigidity-cubic-vanishing": [
+      "lem:bounded-tube-cubic-vanishing",
+      "lem:uniform-cylinder-identity",
+      "lem:odd-coefficients-plane-zero",
+      "lem:flat-infinity-moments",
+      "lem:symmetric-cubic-binomial",
+      "lem:moment-support-polynomial"
+    ],
+    "lem:rigidity-fourth-support-identity": [
+      "lem:bounded-tube-cubic-vanishing",
+      "lem:uniform-cylinder-identity",
+      "lem:odd-coefficients-plane-zero",
+      "lem:flat-infinity-moments",
+      "lem:symmetric-cubic-binomial",
+      "lem:moment-support-polynomial"
+    ],
+    "lem:flatness-gap-cutoff": [
+      "thm:gap",
+      "lem:flatness-minimum"
+    ],
+    "lem:first-crossing-ratio": [
+      "lem:vague-limit-unique",
+      "lem:vague-moving-blowups",
+      "lem:plane-scaling"
+    ],
+    "lem:first-crossing-flat-infinity": [
+      "cor:conical",
+      "lem:unit-uniform-infinity-existence",
+      "lem:flatness-continuous"
+    ],
+    "lem:rigidity-mixed-gaussian-limit": [
+      "lem:mixed-centered-gaussian-limit"
+    ]
+  }
+}

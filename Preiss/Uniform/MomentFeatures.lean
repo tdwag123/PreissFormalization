@@ -1,5 +1,6 @@
 module
 public import Preiss.Analysis.PolynomialFeatures
+public import Preiss.Analysis.AnalyticProjectionApproximation
 public import Preiss.Analysis.FiniteDimensionalBigO
 public import Preiss.Analysis.LinearMapIntegral
 public import Preiss.Uniform.MomentForms
@@ -145,5 +146,79 @@ theorem featureMoment_operator_remainder
   have H := hbound μ hμ x hx s hs
   rw [Real.mul_rpow hs.le (sq_nonneg ‖x‖)] at H
   exact H.trans_eq (by ring)
+
+
+theorem exists_featureMoment_analytic_approximation
+    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
+    (q : ℕ) (hq : 0 < q) :
+    ∃ a : ℝ → PolynomialFeatureSpace n (2*q) →L[ℝ] ℝ,
+      AnalyticAt ℝ a 0 ∧ a 0 = 0 ∧
+      Asymptotics.IsBigO (nhdsWithin 0 (Ioi 0))
+        (fun s => featureMoment μ (2*q) s - a s)
+        (fun s : ℝ => s^((q : ℝ)+1/2)) := by
+  obtain ⟨L,hL⟩ := exists_normPolynomial_feature_functionals n q
+  let g : ℝ → PolynomialFeatureSpace n (2*q) →L[ℝ] ℝ :=
+    fun s => ∑ j : Fin q,(s^(j.val+1)/((j.val+1).factorial : ℝ)) • L j
+  have hg : AnalyticAt ℝ g 0 := by
+    have hj (j : Fin q) : AnalyticAt ℝ
+        (fun s : ℝ => (s^(j.val+1)/((j.val+1).factorial : ℝ)) • L j) 0 :=
+      ((analyticAt_id.pow _).div_const).smul analyticAt_const
+    have h := Finset.analyticAt_sum Finset.univ (fun j _ => hj j)
+    convert h using 1
+    ext s
+    simp only [g,Finset.sum_apply]
+  have hg0 : g 0 = 0 := by simp [g]
+  exact exists_analyticApproximation_of_weightedComplement
+    polynomialFeatureProjection (polynomialFeatureProjection_isOrthogonalGrading n (2*q))
+    (supportFeatureSpan μ (2*q)) (featureMoment μ (2*q)) g hg hg0
+    (fun s : ℝ => s^((q : ℝ)+1/2))
+    (fun s _ w hw => featureMoment_eq_zero_of_mem_weightedComplement μ (2*q) s w hw)
+    (featureMoment_operator_remainder μ hm hμ q hq L hL)
+
+
+variable {N : ℕ}
+theorem featureMoment_comp_multilinearBlock_of_growth
+    (μ : Measure (Euclidean n)) (C p : ℝ) (hgrowth : HasPolynomialGrowthBound μ C p)
+    (k : Fin N) (s : ℝ) (hs : 0 < s) :
+    (featureMoment μ N s).compContinuousMultilinearMap (polynomialFeatureMultilinearBlock k) =
+      gaussianMomentForm μ (k.val+1) s := by
+  have hK : Integrable (fun z => Real.exp (-s * ‖z‖ ^ 2) • momentKernel (k.val+1) z) μ :=
+    integrable_gaussianMomentKernel_of_integrable_norm μ (k.val+1) s
+      (integrable_norm_pow_mul_gaussian_of_ball_bound μ C p hgrowth.1 hgrowth.2.2
+        (k.val+1) s hs)
+  ext u
+  change featureMoment μ N s (polynomialFeatureMultilinearBlock k u) =
+    gaussianMomentForm μ (k.val+1) s u
+  rw [featureMoment,ContinuousLinearMap.smul_apply,
+    ContinuousLinearMap.integral_apply (integrable_featureMomentKernel_of_growth μ C p hgrowth N s hs),
+    gaussianMomentForm,ContinuousMultilinearMap.smul_apply,
+    ContinuousMultilinearMap.integral_apply hK]
+  simp only [ContinuousLinearMap.smul_apply,ContinuousLinearMap.comp_apply,
+    innerSL_apply_apply,weightedGrading_polynomialFeatureMultilinearBlock,
+    inner_smul_right,inner_polynomialFeature_multilinearBlock,
+    ContinuousMultilinearMap.smul_apply,momentKernel_apply,smul_eq_mul]
+  have hi : (∫ z, Real.exp (-s * ‖z‖^2) *
+      (s^(k.val+1) * (((2 : ℝ)^(k.val+1)/((k.val+1).factorial : ℝ)) *
+        ∏ j,inner ℝ z (u j))) ∂μ) =
+      (s^(k.val+1) * ((2 : ℝ)^(k.val+1)/((k.val+1).factorial : ℝ))) *
+        ∫ z,Real.exp (-s * ‖z‖^2) * ∏ j,inner ℝ z (u j) ∂μ := by
+    rw [← integral_const_mul]
+    apply integral_congr_ae
+    filter_upwards [] with z
+    ring
+  rw [hi,mul_pow]
+  ring
+
+theorem polynomialFeatureMomentRecovery_featureMoment_of_growth
+    (μ : Measure (Euclidean n)) (C p : ℝ) (hgrowth : HasPolynomialGrowthBound μ C p)
+    (k : Fin N) (s : ℝ) (hs : 0 < s) :
+    polynomialFeatureMomentRecovery k (featureMoment μ N s) =
+      gaussianMomentForm μ (k.val+1) s := by
+  change (featureMoment μ N s).compContinuousMultilinearMap
+    (symmetrizeContinuousMultilinearMap (polynomialFeatureMultilinearBlock k)) = _
+  rw [comp_symmetrizeContinuousMultilinearMap,
+    featureMoment_comp_multilinearBlock_of_growth μ C p hgrowth k s hs]
+  exact symmetrizeContinuousMultilinearMap_eq_self _
+    (gaussianMomentForm_permute μ (k.val+1) s)
 
 end Preiss

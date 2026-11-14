@@ -1,0 +1,60 @@
+name: Independent proof checks
+
+on:
+  pull_request:
+    paths:
+      - 'checks/**'
+      - 'Preiss/**'
+      - 'scripts/remote_proof_check.py'
+      - 'scripts/test_remote_proof_check.py'
+      - '.github/workflows/proof-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: proof-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v6
+      - run: python scripts/test_remote_proof_check.py
+      - id: matrix
+        run: python scripts/remote_proof_check.py --matrix >> "$GITHUB_OUTPUT"
+  proof:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix: ${{ fromJson(needs.prepare.outputs.matrix) }}
+    env:
+      PROOF_CHECK: ${{ matrix.check }}
+    steps:
+      - uses: actions/checkout@v6
+      - id: targets
+        run: python scripts/remote_proof_check.py "$PROOF_CHECK" --targets >> "$GITHUB_OUTPUT"
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: true
+          build-args: ${{ steps.targets.outputs.modules }}
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: true
+      - name: Compile candidate and audit every declaration
+        run: python scripts/remote_proof_check.py "$PROOF_CHECK"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proof-check-${{ strategy.job-index }}
+          path: tmp/remote-proof-checks/
+          if-no-files-found: ignore

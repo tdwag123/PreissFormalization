@@ -1,3 +1,4 @@
+import Preiss.Uniform.CenteredGaussianLimits
 import Preiss.Uniform.FlatAtInfinity.TraceData
 
 open MeasureTheory Filter Set
@@ -17,13 +18,15 @@ theorem mixed_gaussian_limit_eq_omega (v w : Euclidean n) :
       (nhdsWithin 0 (Ioi 0))
       (𝓝 (3 * B 3 2 ![v, v, w] -
         4 * B 2 1 ![v, v] * inner ℝ (b : Euclidean n) w)) := by
-  sorry
+  exact mixed_gaussian_limit_of_moment_expansion μ hm hμ B hB b v w
 
 theorem contracted_gaussian_limit_eq_zero (w : V.1ᗮ) :
     Tendsto (fun s : ℝ => (s / gaussianMass μ s) *
       ∫ z, Real.exp (-s * ‖z‖ ^ 2) * ‖proj V z‖ ^ 2 *
         inner ℝ (z - (b : Euclidean n)) (w : Euclidean n) ∂μ)
       (nhdsWithin 0 (Ioi 0)) (𝓝 0) := by
-  sorry
+  exact contracted_gaussian_limit_eq_zero_of_bounded_tube μ hm hμ B hB V.1 b w (hb w)
+    (2*‖b‖) (by positivity) (fun z hz =>
+      (support_normal_sq_eq_inner μ hm hμ B hB V hV b hb z hz).2.2)
 
 end Preiss

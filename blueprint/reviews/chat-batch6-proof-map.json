@@ -1,0 +1,33 @@
+{
+  "existing_node_additional_deps": {
+    "lem:halfspace-tangent-witness": [
+      "lem:unit-uniform-tangent-existence"
+    ],
+    "lem:hyperplane-tangent-lineage": [
+      "lem:unit-uniform-tangent-existence"
+    ],
+    "lem:projected-tube-slab-bound": [
+      "lem:plane-slab-measure",
+      "lem:projected-tube-contained-slab",
+      "lem:empty-cylinder-direction"
+    ]
+  },
+  "existing_node_replacement_deps": {
+    "lem:moment-coefficient-vanishing": [
+      "def:moment-coefficients",
+      "lem:asymptotic-taylor-vanishing",
+      "lem:moment-operator-growth"
+    ],
+    "lem:scaled-moment-limits": [
+      "def:moment-coefficients",
+      "lem:moment-coefficient-vanishing",
+      "lem:asymptotic-taylor-vanishing"
+    ],
+    "lem:graded-analytic-projection": [
+      "def:orthogonal-grading",
+      "lem:kernel-flag-divided-operators",
+      "lem:divided-operator-positive-inverse",
+      "lem:weighted-grading-positive-complement"
+    ]
+  }
+}

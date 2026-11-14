@@ -1,0 +1,31 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:flat-infinity-moments": [
+      "lem:blowdown-even-moment-limit",
+      "lem:vague-gaussian-moments",
+      "lem:flat-gaussian-even-moments"
+    ],
+    "lem:odd-coefficients-plane-zero": [
+      "lem:flat-infinity-moments",
+      "lem:moment-support-polynomial",
+      "lem:vague-support-approximation",
+      "lem:dimensional-blowup-support",
+      "lem:leading-homogeneous-term",
+      "lem:symmetric-multilinear-diagonal-injective"
+    ],
+    "lem:rigidity-normal-vector-exists": [
+      "lem:odd-coefficients-plane-zero",
+      "lem:first-moment-normal-from-vanishing"
+    ],
+    "lem:uniform-cylinder-identity": [
+      "lem:moment-support-polynomial",
+      "lem:flat-infinity-moments",
+      "lem:normal-coordinate-identities"
+    ],
+    "lem:flat-infinity-bounded-holes": [
+      "lem:rigidity-normal-vector-exists",
+      "lem:uniform-cylinder-identity",
+      "lem:bounded-tube-plane-to-support"
+    ]
+  }
+}

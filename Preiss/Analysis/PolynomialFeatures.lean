@@ -1,6 +1,7 @@
 module
 public import Preiss.Geometry.Euclidean
 public import Preiss.Analysis.Grading
+public import Preiss.Analysis.MultilinearSymmetrization
 public import Preiss.Analysis.OrthonormalProjection
 public import Mathlib.Analysis.SpecialFunctions.Sqrt
 public import Mathlib.Algebra.BigOperators.Ring.Finset
@@ -186,5 +187,108 @@ theorem polynomialFeature_weighted_inner {n N : ℕ} (s : ℝ) (x z : Euclidean 
       (polynomialFeature N z), polynomialFeatureProjection_inner,
     real_inner_comm z x]
   ring
+
+noncomputable def polynomialFeatureMultilinearBlock {n N : ℕ} (k : Fin N) :
+    ContinuousMultilinearMap ℝ (fun _ : Fin (k.val+1) => Euclidean n)
+      (PolynomialFeatureSpace n N) :=
+  ∑ ι : Fin (k.val+1) → Fin n,
+    ((ContinuousMultilinearMap.mkPiAlgebra ℝ (Fin (k.val+1)) ℝ).compContinuousLinearMap
+      (fun j => EuclideanSpace.proj (ι j))).smulRight
+        (EuclideanSpace.single (⟨k,ι⟩ : PolynomialFeatureIndex n N)
+          (Real.sqrt ((2 : ℝ)^(k.val+1)/((k.val+1).factorial : ℝ))))
+
+theorem polynomialFeatureMultilinearBlock_apply {n N : ℕ} (k : Fin N)
+    (u : Fin (k.val+1) → Euclidean n) :
+    polynomialFeatureMultilinearBlock k u =
+      ∑ ι : Fin (k.val+1) → Fin n, (∏ j, u j (ι j)) •
+        EuclideanSpace.single (⟨k,ι⟩ : PolynomialFeatureIndex n N)
+          (Real.sqrt ((2 : ℝ)^(k.val+1)/((k.val+1).factorial : ℝ))) := by
+  simp [polynomialFeatureMultilinearBlock]
+
+theorem inner_polynomialFeature_multilinearBlock {n N : ℕ} (k : Fin N)
+    (z : Euclidean n) (u : Fin (k.val+1) → Euclidean n) :
+    inner ℝ (polynomialFeature N z) (polynomialFeatureMultilinearBlock k u) =
+      ((2 : ℝ)^(k.val+1)/((k.val+1).factorial : ℝ)) * ∏ j, inner ℝ z (u j) := by
+  classical
+  let c : ℝ := (2 : ℝ)^(k.val+1)/((k.val+1).factorial : ℝ)
+  have hc : 0 ≤ c := by dsimp [c]; positivity
+  have hexp : (∏ j, inner ℝ z (u j)) =
+      ∑ ι : Fin (k.val+1) → Fin n, ∏ j, u j (ι j) * z (ι j) := by
+    change (∏ j, ∑ a : Fin n, u j a * z a) = _
+    exact Fintype.prod_sum _
+  rw [polynomialFeatureMultilinearBlock_apply, inner_sum, hexp, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro ι _
+  simp only [inner_smul_right, EuclideanSpace.inner_single_right, RCLike.conj_to_real]
+  change (∏ j, u j (ι j)) * (Real.sqrt c * (Real.sqrt c * ∏ j, z (ι j))) =
+    c * ∏ j, u j (ι j) * z (ι j)
+  rw [Finset.prod_mul_distrib]
+  calc
+    _ = (Real.sqrt c * Real.sqrt c) * ((∏ j, u j (ι j)) * ∏ j, z (ι j)) := by ring
+    _ = _ := by rw [Real.mul_self_sqrt hc]
+
+theorem polynomialFeatureMultilinearBlock_mem {n N : ℕ} (k : Fin N)
+    (u : Fin (k.val+1) → Euclidean n) :
+    polynomialFeatureMultilinearBlock k u ∈ polynomialFeatureBlock (n := n) k := by
+  classical
+  rw [polynomialFeatureMultilinearBlock_apply]
+  apply Submodule.sum_mem
+  intro ι _
+  apply Submodule.smul_mem
+  have hb : EuclideanSpace.single (⟨k,ι⟩ : PolynomialFeatureIndex n N) (1 : ℝ) ∈
+      polynomialFeatureBlock (n := n) k := Submodule.subset_span ⟨ι,rfl⟩
+  have hs := (polynomialFeatureBlock (n := n) k).smul_mem
+    (Real.sqrt ((2 : ℝ)^(k.val+1)/((k.val+1).factorial : ℝ))) hb
+  convert hs using 1
+  ext a
+  simp [PiLp.single_apply]
+
+theorem weightedGrading_polynomialFeatureMultilinearBlock {n N : ℕ} (k : Fin N)
+    (s : ℝ) (u : Fin (k.val+1) → Euclidean n) :
+    weightedGrading polynomialFeatureProjection s (polynomialFeatureMultilinearBlock k u) =
+      s ^ (k.val+1) • polynomialFeatureMultilinearBlock k u := by
+  classical
+  have hD := polynomialFeatureProjection_isOrthogonalGrading n N
+  have hk : polynomialFeatureProjection k (polynomialFeatureMultilinearBlock k u) =
+      polynomialFeatureMultilinearBlock k u :=
+    Submodule.starProjection_eq_self_iff.mpr (polynomialFeatureMultilinearBlock_mem k u)
+  simp only [weightedGrading,ContinuousLinearMap.sum_apply,ContinuousLinearMap.smul_apply]
+  rw [Finset.sum_eq_single k]
+  · rw [hk]
+  · intro j _ hj
+    have hz := congrArg (fun T : PolynomialFeatureSpace n N →L[ℝ] PolynomialFeatureSpace n N =>
+      T (polynomialFeatureMultilinearBlock k u)) (hD.2.2.1 j k hj)
+    change polynomialFeatureProjection j
+      (polynomialFeatureProjection k (polynomialFeatureMultilinearBlock k u)) = 0 at hz
+    rw [hk] at hz
+    rw [hz,smul_zero]
+  · simp
+
+noncomputable def symmetricPolynomialFeatureMultilinearBlock {n N : ℕ} (k : Fin N) :
+    ContinuousMultilinearMap ℝ (fun _ : Fin (k.val+1) => Euclidean n)
+      (PolynomialFeatureSpace n N) :=
+  symmetrizeContinuousMultilinearMap (polynomialFeatureMultilinearBlock k)
+
+noncomputable def polynomialFeatureMomentRecovery {n N : ℕ} (k : Fin N) :
+    (PolynomialFeatureSpace n N →L[ℝ] ℝ) →L[ℝ]
+      ContinuousMultilinearMap ℝ (fun _ : Fin (k.val+1) => Euclidean n) ℝ :=
+  (ContinuousLinearMap.compContinuousMultilinearMapL ℝ
+    (fun _ : Fin (k.val+1) => Euclidean n) (PolynomialFeatureSpace n N) ℝ).flip
+      (symmetricPolynomialFeatureMultilinearBlock k)
+
+theorem polynomialFeatureMomentRecovery_symmetric {n N : ℕ} (k : Fin N)
+    (f : PolynomialFeatureSpace n N →L[ℝ] ℝ)
+    (σ : Equiv.Perm (Fin (k.val+1))) (u : Fin (k.val+1) → Euclidean n) :
+    polynomialFeatureMomentRecovery k f (u ∘ σ) = polynomialFeatureMomentRecovery k f u := by
+  change f (symmetrizeContinuousMultilinearMap _ (u ∘ σ)) =
+    f (symmetrizeContinuousMultilinearMap _ u)
+  rw [symmetrizeContinuousMultilinearMap_apply_perm]
+
+noncomputable def symmetricPolynomialFeatureMomentRecovery {n N : ℕ} (k : Fin N) :
+    (PolynomialFeatureSpace n N →L[ℝ] ℝ) →L[ℝ]
+      symmetricContinuousMultilinearSubmodule
+        (ι := Fin (k.val+1)) (E := Euclidean n) (F := ℝ) :=
+  (polynomialFeatureMomentRecovery k).codRestrict _
+    (fun f => polynomialFeatureMomentRecovery_symmetric k f)
 
 end Preiss

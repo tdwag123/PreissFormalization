@@ -1,0 +1,14 @@
+{
+  "nodes": [
+    {
+      "id": "lem:taylor-two",
+      "lean_names": [
+        "Preiss.exists_gaussianMoment_taylor_coefficients",
+        "Preiss.gaussianMomentCoefficient_unique"
+      ],
+      "deps": [
+        "lem:asymptotic-taylor-vanishing"
+      ]
+    }
+  ]
+}
