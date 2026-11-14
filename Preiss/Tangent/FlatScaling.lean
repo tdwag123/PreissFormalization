@@ -37,7 +37,7 @@ theorem dimensionalBlowup_flatOn (V : Plane m n) (c : ℝ≥0∞)
     change μV.map ((fun y : V.1 => r⁻¹ • y) ∘ (fun y => y - v)) = _
     rw [← Measure.map_map (continuous_const_smul r⁻¹).measurable
       hsub, ht,
-      map_addHaar_smul μV (inv_ne_zero hr.ne'), V.property]
+      Measure.map_addHaar_smul μV (inv_ne_zero hr.ne'), V.property]
     simp only [inv_pow, inv_inv, abs_of_pos (pow_pos hr m)]
   have hval : Measurable (fun y : V.1 => (y : Euclidean n)) := continuous_subtype_val.measurable
   have heq : (fun y : Euclidean n => r⁻¹ • (y - x)) ∘

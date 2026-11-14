@@ -42,7 +42,7 @@ theorem flatnessEnergy_restrict_plane (φ : C_c(Euclidean n, ℝ))
         ∂(Measure.hausdorffMeasure (m : ℝ))) = 0 := by
     apply integral_eq_zero_of_ae
     filter_upwards [ae_restrict_mem V.1.closed_of_finiteDimensional.measurableSet] with z hz
-    simp only [infDist_zero_of_mem hz, zero_pow (by decide : 2 ≠ 0), mul_zero]
+    simp only [infDist_zero_of_mem hz, zero_pow (by decide : 2 ≠ 0), mul_zero, Pi.zero_apply]
   rw [hzero, smul_zero]
 
 theorem flatness_eq_zero_of_isFlat_of_nonneg (φ : C_c(Euclidean n, ℝ))
