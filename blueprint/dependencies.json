@@ -1294,15 +1294,17 @@
       "id": "lem:flat-gaussian-even-moments",
       "title": "Gaussian moments of a normalized flat measure",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.flat_gaussianMoment_diagonal"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moments",
-        "def:plane",
-        "mathlib:standard-gaussian"
+        "lem:conical-even-support-moments",
+        "lem:conical-moment-scaling",
+        "lem:flat-moment-projection",
+        "lem:unit-flat-conical",
+        "lem:zero-dimensional-flat-moments"
       ],
       "proof_dependencies": [],
       "expanded_line": 1384,
@@ -3634,20 +3636,16 @@
       "id": "thm:unique-infinity",
       "title": "Uniqueness and full convergence of the blow-down",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.blowdown_sequence_converges",
         "Preiss.unique_tangent_at_infinity"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowdown-moment-limits",
-        "lem:infinity-compactness",
-        "lem:moment-determination",
-        "lem:vague-countable-metric",
-        "lem:vague-gaussian-polynomials"
+        "lem:uniform-compactness",
+        "lem:unit-uniform-infinity-existence",
+        "lem:unit-uniform-infinity-unique"
       ],
       "proof_dependencies": [],
       "expanded_line": 4304,
@@ -3673,24 +3671,19 @@
       "id": "cor:conical",
       "title": "The unique blow-down is conical",
       "kind": "corollary",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.tangent_at_infinity_conical"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:vague-moving-blowups",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-unique",
+        "lem:vague-moving-blowups"
       ],
       "proof_dependencies": [],
       "expanded_line": 4355,
-      "unfinished_dependencies": [
-        "thm:unique-infinity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "thm:gap",
@@ -3803,9 +3796,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4456,
-      "unfinished_dependencies": [
-        "lem:flat-gaussian-even-moments"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:odd-coefficients-plane-zero",
@@ -4046,7 +4037,6 @@
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:flat-gaussian-even-moments",
         "lem:rigidity-contracted-limit-zero",
         "lem:rigidity-mixed-gaussian-limit"
       ]
@@ -4143,7 +4133,6 @@
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:flat-gaussian-even-moments",
         "lem:rigidity-omega-trace-zero"
       ]
     },
@@ -4332,10 +4321,8 @@
       "proof_dependencies": [],
       "expanded_line": 5011,
       "unfinished_dependencies": [
-        "cor:conical",
         "thm:gap",
-        "thm:infinity-rigidity",
-        "thm:unique-infinity"
+        "thm:infinity-rigidity"
       ]
     },
     {
@@ -4398,11 +4385,9 @@
       "proof_dependencies": [],
       "expanded_line": 5075,
       "unfinished_dependencies": [
-        "cor:conical",
         "lem:first-crossing",
         "lem:first-crossing-ratio",
-        "thm:gap",
-        "thm:unique-infinity"
+        "thm:gap"
       ]
     },
     {
@@ -7867,6 +7852,126 @@
       "proof_dependencies": [],
       "expanded_line": 6917,
       "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-flat-conical",
+      "title": "Normalized flat measures are conical",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.isConical_unitFlat"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:flat-plane-blowup"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6925,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:zero-dimensional-flat-moments",
+      "title": "Zero-dimensional flat measures and their moments",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flat_gaussianMoment_diagonal_dim_zero",
+        "Preiss.gaussianMomentForm_dirac_zero_diagonal",
+        "Preiss.unitFlat_eq_dirac_of_dim_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:plane-hausdorff"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6933,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-moment-projection",
+      "title": "Flat moments depend only on projected vectors",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_unitFlat_diagonal_project",
+        "Preiss.gaussianMomentForm_unitFlat_zero_diagonal"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:moment-form-evaluation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6941,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-uniform-nonzero",
+      "title": "Unit-uniform measures are nonzero",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.IsUnitUniform.ne_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6949,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-uniform-infinity-existence",
+      "title": "Existence and uniformity of tangents at infinity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_unitUniform_tangentAtInfinity",
+        "Preiss.isUnitUniform_of_tangentAtInfinity"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:uniform-compactness",
+        "lem:uniform-scaling",
+        "lem:uniform-vague-closed",
+        "lem:unit-uniform-nonzero"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6956,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-uniform-infinity-unique",
+      "title": "Uniqueness of tangents at infinity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tangentAtInfinity_eq_of_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:blowdown-moment-limits",
+        "lem:moment-determination",
+        "lem:unit-uniform-infinity-existence",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6964,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:leading-homogeneous-term",
+      "title": "Leading homogeneous terms along escaping sequences",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.leading_diagonal_nonneg_of_rescaled_points",
+        "Preiss.tendsto_scaled_homogeneous_sum"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6972,
+      "unfinished_dependencies": []
     }
   ],
   "topological_order": [
@@ -7892,7 +7997,6 @@
     "lem:domain-extension",
     "def:unit-uniform",
     "def:dimensional-blowup",
-    "def:moments",
     "def:flatness-cutoff",
     "lem:coordinate-product-representation",
     "lem:zero-hausdorff-ac",
@@ -7913,6 +8017,7 @@
     "lem:countable-coordinate-metric",
     "lem:gaussian-projection-integrability",
     "def:bilinear-trace",
+    "def:moments",
     "lem:finite-dimensional-operator-bigO",
     "lem:gaussian-power-envelope",
     "lem:scalar-gaussian-series-remainder",
@@ -7940,6 +8045,8 @@
     "lem:inverse-square-positive-limit",
     "lem:orthonormal-plane-distance",
     "lem:symmetric-multilinear-diagonal-injective",
+    "lem:unit-uniform-nonzero",
+    "lem:leading-homogeneous-term",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -7992,11 +8099,6 @@
     "def:dimensional-tangent",
     "def:tangent-at-infinity",
     "lem:dimensional-blowup-set-estimates",
-    "lem:flat-gaussian-even-moments",
-    "def:moment-coefficients",
-    "lem:moment-form-evaluation",
-    "lem:moment-form-symmetry",
-    "lem:moment-kernel-calculus",
     "lem:flatness-cutoff-exists",
     "lem:dimensional-blowup-support",
     "lem:closed-upper-ball-bound-sets",
@@ -8006,10 +8108,14 @@
     "lem:kernel-grading-flag",
     "lem:graded-polynomial-division",
     "lem:feature-norm-functionals",
-    "def:feature-moment",
     "lem:countable-coordinate-second-countability",
     "lem:bilinear-trace-basis",
     "lem:ordered-bilinear-spectrum",
+    "def:moment-coefficients",
+    "lem:moment-form-evaluation",
+    "lem:moment-form-symmetry",
+    "lem:moment-kernel-calculus",
+    "def:feature-moment",
     "lem:gaussian-bilinear-covariance",
     "lem:coherent-finite-jets",
     "lem:exact-monomial-coefficients",
@@ -8063,6 +8169,7 @@
     "lem:graph-affine-area",
     "lem:flat-measure-regularity",
     "lem:flat-measure-reflection",
+    "lem:zero-dimensional-flat-moments",
     "lem:flat-positive-scalar",
     "def:first-crossing-data",
     "lem:flatness-basic-nonneg",
@@ -8081,10 +8188,6 @@
     "lem:homogeneous-ball-scaling",
     "lem:hull-support-approximation",
     "lem:dimensional-tangent-origin-ball-law",
-    "def:rigidity-normal-vector",
-    "lem:even-moment-positivity",
-    "def:symmetric-moment-form",
-    "lem:reflection-odd-gaussian-moments",
     "lem:dimensional-tangent-metric-separation",
     "lem:recenter-nonzero",
     "lem:weak-approximation-scale-transfer",
@@ -8094,8 +8197,13 @@
     "lem:gaussian-weight-exponential",
     "lem:gaussian-feature-integrability",
     "lem:kernel-flag-layer-grading",
-    "lem:feature-moment-vanishing",
     "lem:moment-trace-operator",
+    "def:rigidity-normal-vector",
+    "lem:even-moment-positivity",
+    "lem:flat-moment-projection",
+    "def:symmetric-moment-form",
+    "lem:reflection-odd-gaussian-moments",
+    "lem:feature-moment-vanishing",
     "lem:exact-homogeneous-moment-coefficients",
     "lem:feature-multilinear-block",
     "lem:gaussian-ball-power-parameter",
@@ -8140,15 +8248,15 @@
     "lem:carrier-calculus",
     "lem:zero-dimension",
     "lem:homogeneous-energy-radial",
-    "def:rigidity-omega",
-    "lem:first-moment-normal-from-vanishing",
-    "lem:flat-gaussian-odd-moments",
     "lem:gaussian-uniform-tails",
     "lem:gaussian-parameter-derivative",
     "lem:moment-determination",
     "lem:integrated-gaussian-exponential-series",
     "lem:moment-feature-annihilation",
     "lem:divided-grading-constant-injective",
+    "def:rigidity-omega",
+    "lem:first-moment-normal-from-vanishing",
+    "lem:flat-gaussian-odd-moments",
     "def:symmetric-feature-recovery",
     "lem:moment-norm-bound",
     "lem:gaussian-wick-fourth",
@@ -8160,6 +8268,7 @@
     "lem:weighted-energy-limit-support",
     "lem:conical-moment-scaling",
     "lem:plane-scaling",
+    "lem:unit-flat-conical",
     "gmt:uniform-tangents",
     "lem:finite-piece-transfer",
     "thm:uniform-upstream",
@@ -8174,9 +8283,9 @@
     "lem:flatness-minimum",
     "lem:flatness-vague-general",
     "lem:representation",
-    "def:rigidity-adjusted-form",
     "lem:polynomial-gaussian-norm-tails",
     "lem:kernel-flag-divided-operators",
+    "def:rigidity-adjusted-form",
     "lem:feature-moment-exact-recovery",
     "lem:gaussian-translation-series",
     "lem:moment-operator-growth",
@@ -8189,6 +8298,7 @@
     "lem:uniform-finite-metric-covers",
     "lem:infinity-compactness",
     "lem:unit-uniform-tangent-existence",
+    "lem:unit-uniform-infinity-existence",
     "lem:dimensional-tangent-dilation",
     "lem:dimensional-extraction-ball-bounds",
     "lem:recenter-separated-set-null",
@@ -8237,55 +8347,57 @@
     "lem:discarded-cylinder-sum",
     "lem:column-packing",
     "lem:analytic-projection-approximation",
-    "lem:flat-infinity-moments",
     "lem:blowdown-even-moment-limit",
     "lem:dimensional-tangent-ball-constant",
     "cor:rectifiable-tangent-plane",
     "lem:uniform-full-dimension-unique",
     "lem:two-sided-packing-core",
     "lem:feature-moment-analytic-approximation",
-    "lem:odd-coefficients-plane-zero",
-    "lem:uniform-cylinder-identity",
     "lem:density-normalization",
     "lem:halfspace-tangent-witness",
     "lem:plane-supported-uniform-flat",
     "lem:packing-contradiction",
     "lem:finite-moment-taylor-jets",
-    "lem:rigidity-normal-vector-exists",
     "lem:uniform-reduction",
     "lem:small-energy-no-holes",
-    "lem:flat-infinity-bounded-holes",
     "thm:mm-set",
     "lem:taylor-two",
-    "lem:rigidity-forms-exist",
     "thm:flat-pseudotangent",
     "thm:gap",
     "thm:mm-measure",
     "lem:conical-moments",
-    "lem:rigidity-mixed-gaussian-limit",
-    "lem:moment-normal-trace",
-    "lem:rigidity-cubic-vanishing",
     "lem:conical-support-covariance",
     "lem:blowdown-form-limits",
     "lem:flat-tangent-from-uniform-recentering",
     "lem:flatness-gap-cutoff",
     "thm:rectifiable-iff-flat",
     "lem:conical-moment-coefficients",
-    "lem:rigidity-contracted-limit-zero",
-    "lem:rigidity-fourth-support-identity",
     "lem:conical-covariance",
     "lem:blowdown-product-limits",
     "thm:part-a",
     "lem:conical-even-support-moments",
+    "lem:blowdown-moment-limits",
+    "lem:flat-gaussian-even-moments",
+    "lem:unit-uniform-infinity-unique",
+    "lem:flat-infinity-moments",
+    "thm:unique-infinity",
+    "cor:conical",
+    "lem:odd-coefficients-plane-zero",
+    "lem:uniform-cylinder-identity",
+    "lem:rigidity-mixed-gaussian-limit",
+    "lem:rigidity-normal-vector-exists",
+    "lem:moment-normal-trace",
+    "lem:flat-infinity-bounded-holes",
+    "lem:rigidity-cubic-vanishing",
+    "lem:rigidity-contracted-limit-zero",
+    "lem:rigidity-forms-exist",
+    "lem:rigidity-fourth-support-identity",
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
-    "lem:blowdown-moment-limits",
     "lem:rigidity-gaussian-trace",
     "lem:rigidity-omega-reproducing",
-    "thm:unique-infinity",
     "lem:rigidity-integral-quadratic-bound",
-    "cor:conical",
     "lem:trace-rigidity",
     "thm:infinity-rigidity",
     "lem:first-crossing",

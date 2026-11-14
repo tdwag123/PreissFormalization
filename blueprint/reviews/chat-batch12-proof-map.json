@@ -1,0 +1,21 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:flat-gaussian-even-moments": [
+      "lem:unit-flat-conical",
+      "lem:zero-dimensional-flat-moments",
+      "lem:flat-moment-projection",
+      "lem:conical-even-support-moments",
+      "lem:conical-moment-scaling"
+    ],
+    "thm:unique-infinity": [
+      "lem:unit-uniform-infinity-existence",
+      "lem:unit-uniform-infinity-unique",
+      "lem:uniform-compactness"
+    ],
+    "cor:conical": [
+      "lem:unit-uniform-infinity-unique",
+      "lem:vague-moving-blowups",
+      "lem:blowup-composition"
+    ]
+  }
+}

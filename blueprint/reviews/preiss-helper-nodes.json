@@ -3328,6 +3328,126 @@
       ],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-flat-conical",
+      "kind": "lemma",
+      "title": "Normalized flat measures are conical",
+      "lean_names": [
+        "Preiss.isConical_unitFlat"
+      ],
+      "file": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "statement_tex": "The normalized Hausdorff measure on a linear plane is invariant under dimensional dilations.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flat-plane-blowup"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:zero-dimensional-flat-moments",
+      "kind": "lemma",
+      "title": "Zero-dimensional flat measures and their moments",
+      "lean_names": [
+        "Preiss.unitFlat_eq_dirac_of_dim_zero",
+        "Preiss.gaussianMomentForm_dirac_zero_diagonal",
+        "Preiss.flat_gaussianMoment_diagonal_dim_zero"
+      ],
+      "file": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "statement_tex": "A normalized zero-dimensional flat measure is the Dirac mass at the origin. Its zeroth moment is one and every positive-degree moment vanishes, including the required projected even-moment formula.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:flat-moment-projection",
+      "kind": "lemma",
+      "title": "Flat moments depend only on projected vectors",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_unitFlat_diagonal_project",
+        "Preiss.gaussianMomentForm_unitFlat_zero_diagonal"
+      ],
+      "file": "Preiss/Uniform/FlatMomentGeometry.lean",
+      "statement_tex": "Diagonal Gaussian moments of a normalized flat measure are unchanged by orthogonal projection of their argument to the plane. The zeroth moment equals one at every positive Gaussian parameter.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-form-evaluation",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-nonzero",
+      "kind": "lemma",
+      "title": "Unit-uniform measures are nonzero",
+      "lean_names": [
+        "Preiss.IsUnitUniform.ne_zero"
+      ],
+      "file": "Preiss/Uniform/TangentAtInfinity.lean",
+      "statement_tex": "A unit-uniform measure is nonzero because its support contains the origin.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-infinity-existence",
+      "kind": "lemma",
+      "title": "Existence and uniformity of tangents at infinity",
+      "lean_names": [
+        "Preiss.isUnitUniform_of_tangentAtInfinity",
+        "Preiss.exists_unitUniform_tangentAtInfinity"
+      ],
+      "file": "Preiss/Uniform/TangentAtInfinity.lean",
+      "statement_tex": "A positive-dimensional unit-uniform measure admits a tangent at infinity, and every such tangent remains unit-uniform.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:unit-uniform-nonzero",
+        "lem:uniform-vague-closed",
+        "lem:uniform-compactness",
+        "lem:uniform-scaling"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:unit-uniform-infinity-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of tangents at infinity",
+      "lean_names": [
+        "Preiss.tangentAtInfinity_eq_of_unitUniform"
+      ],
+      "file": "Preiss/Uniform/TangentAtInfinity.lean",
+      "statement_tex": "Any two tangents at infinity of a positive-dimensional unit-uniform measure agree, by equality of their Gaussian polynomial moments.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:unit-uniform-infinity-existence",
+        "lem:blowdown-moment-limits",
+        "lem:vague-gaussian-polynomials",
+        "lem:moment-determination"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:leading-homogeneous-term",
+      "kind": "lemma",
+      "title": "Leading homogeneous terms along escaping sequences",
+      "lean_names": [
+        "Preiss.tendsto_scaled_homogeneous_sum",
+        "Preiss.leading_diagonal_nonneg_of_rescaled_points"
+      ],
+      "file": "Preiss/Analysis/LeadingHomogeneousTerm.lean",
+      "statement_tex": "For a finite sum of continuous multilinear homogeneous polynomials, dividing its values at $r_i y_i$ by the highest power of $r_i$ yields the leading diagonal value when $r_i\\to\\infty$ and $y_i\\to v$. Nonnegativity on those points implies nonnegativity of the leading value.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

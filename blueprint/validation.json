@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-14T21:03:47.941960+00:00",
+  "updated_at": "2026-11-14T21:12:14.830306+00:00",
   "stage": "Proof development after the complete canonical statement build passed.",
   "graph": {
-    "nodes": 423,
-    "edges": 1142,
+    "nodes": 430,
+    "edges": 1149,
     "acyclic": true,
     "status_counts": {
       "formalized_upstream": 60,
       "definition": 33,
-      "proof_candidate": 281,
-      "unproved_statement": 43,
-      "depends_on_unproved": 6
+      "proof_candidate": 291,
+      "depends_on_unproved": 6,
+      "unproved_statement": 40
     }
   },
   "source_validation": {
@@ -30,11 +30,11 @@
     },
     "current_proof_changes": "Undergoing separate CI verification.",
     "proof_checkpoint": {
-      "commit": "f8eac0a",
-      "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43639920901",
+      "commit": "983d819",
+      "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43640858758",
       "all_modules_compiled": true,
       "kernel_axiom_audit": "passed",
-      "declarations_checked": 682,
+      "declarations_checked": 698,
       "sorry_dependent": 46,
       "report": "blueprint/kernel-checkpoint.json"
     }

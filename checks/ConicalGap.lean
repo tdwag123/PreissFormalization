@@ -112,7 +112,10 @@ theorem conical_flatness_gap_checked (hm : 0 < m) (hmn : m ≤ n) :
     have hsum' : (∑ j, α j * (inner ℝ z (e j)) ^ 2) =
         ∑ j ∈ Finset.Iic i, (inner ℝ z (e j)) ^ 2 := by
       simp_rw [heq, hle, ite_mul, one_mul, zero_mul]
-      simp
+      have hfilter : Finset.univ.filter (fun j : Fin n => j ≤ i) = Finset.Iic i := by
+        ext j
+        simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_Iic]
+      rw [← Finset.sum_filter, hfilter]
     rw [hsum'] at hsz
     have hd : (infDist z (W.1 : Set (Euclidean n))) ^ 2 = 0 := by
       rw [hWdist, hsz, sub_self]

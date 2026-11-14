@@ -288,7 +288,7 @@ A measure is $m$-conical if $D^m_{0,r}\nu=\nu$ for every $r>0$.
 \begin{lemma}[Gaussian moments of a normalized flat measure]
 \label{lem:flat-gaussian-even-moments}
 \lean{Preiss.flat_gaussianMoment_diagonal}
-\uses{def:moments, def:plane, mathlib:standard-gaussian}
+\uses{lem:unit-flat-conical, lem:zero-dimensional-flat-moments, lem:flat-moment-projection, lem:conical-even-support-moments, lem:conical-moment-scaling}
 
 
 
@@ -3208,7 +3208,7 @@ dimension theorem, or classification of all uniform measures.
 \begin{theorem}[Uniqueness and full convergence of the blow-down]
 \label{thm:unique-infinity}
 \lean{Preiss.unique_tangent_at_infinity, Preiss.blowdown_sequence_converges}
-\uses{def:tangent-at-infinity, def:unit-uniform, lem:blowdown-moment-limits, lem:infinity-compactness, lem:moment-determination, lem:vague-countable-metric, lem:vague-gaussian-polynomials}
+\uses{lem:unit-uniform-infinity-existence, lem:unit-uniform-infinity-unique, lem:uniform-compactness}
 
 
 
@@ -3259,7 +3259,7 @@ two-dimensional shortcut in the original printed proof.
 \begin{corollary}[The unique blow-down is conical]
 \label{cor:conical}
 \lean{Preiss.tangent_at_infinity_conical}
-\uses{def:conical, def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:vague-moving-blowups, thm:unique-infinity}
+\uses{lem:unit-uniform-infinity-unique, lem:vague-moving-blowups, lem:blowup-composition}
 
 
 
@@ -5824,4 +5824,58 @@ Given an ordered spectral representation of the weighted covariance, the plane s
 \uses{def:bilinear-trace, def:moments}
 
 The degree-two Gaussian moment defines a symmetric bilinear form. Its diagonal equals twice the Gaussian directional second moment divided by Gaussian mass, with directional integrability following from moment-kernel integrability.
+\end{lemma}
+
+\begin{lemma}[Normalized flat measures are conical]
+\label{lem:unit-flat-conical}
+\lean{Preiss.isConical_unitFlat}
+\uses{lem:flat-plane-blowup}
+
+The normalized Hausdorff measure on a linear plane is invariant under dimensional dilations.
+\end{lemma}
+
+\begin{lemma}[Zero-dimensional flat measures and their moments]
+\label{lem:zero-dimensional-flat-moments}
+\lean{Preiss.unitFlat_eq_dirac_of_dim_zero, Preiss.gaussianMomentForm_dirac_zero_diagonal, Preiss.flat_gaussianMoment_diagonal_dim_zero}
+\uses{lem:plane-hausdorff}
+
+A normalized zero-dimensional flat measure is the Dirac mass at the origin. Its zeroth moment is one and every positive-degree moment vanishes, including the required projected even-moment formula.
+\end{lemma}
+
+\begin{lemma}[Flat moments depend only on projected vectors]
+\label{lem:flat-moment-projection}
+\lean{Preiss.gaussianMomentForm_unitFlat_diagonal_project, Preiss.gaussianMomentForm_unitFlat_zero_diagonal}
+\uses{lem:moment-form-evaluation, lem:gaussian-polynomial-integrable}
+
+Diagonal Gaussian moments of a normalized flat measure are unchanged by orthogonal projection of their argument to the plane. The zeroth moment equals one at every positive Gaussian parameter.
+\end{lemma}
+
+\begin{lemma}[Unit-uniform measures are nonzero]
+\label{lem:unit-uniform-nonzero}
+\lean{Preiss.IsUnitUniform.ne_zero}
+
+A unit-uniform measure is nonzero because its support contains the origin.
+\end{lemma}
+
+\begin{lemma}[Existence and uniformity of tangents at infinity]
+\label{lem:unit-uniform-infinity-existence}
+\lean{Preiss.isUnitUniform_of_tangentAtInfinity, Preiss.exists_unitUniform_tangentAtInfinity}
+\uses{lem:unit-uniform-nonzero, lem:uniform-vague-closed, lem:uniform-compactness, lem:uniform-scaling}
+
+A positive-dimensional unit-uniform measure admits a tangent at infinity, and every such tangent remains unit-uniform.
+\end{lemma}
+
+\begin{lemma}[Uniqueness of tangents at infinity]
+\label{lem:unit-uniform-infinity-unique}
+\lean{Preiss.tangentAtInfinity_eq_of_unitUniform}
+\uses{lem:unit-uniform-infinity-existence, lem:blowdown-moment-limits, lem:vague-gaussian-polynomials, lem:moment-determination}
+
+Any two tangents at infinity of a positive-dimensional unit-uniform measure agree, by equality of their Gaussian polynomial moments.
+\end{lemma}
+
+\begin{lemma}[Leading homogeneous terms along escaping sequences]
+\label{lem:leading-homogeneous-term}
+\lean{Preiss.tendsto_scaled_homogeneous_sum, Preiss.leading_diagonal_nonneg_of_rescaled_points}
+
+For a finite sum of continuous multilinear homogeneous polynomials, dividing its values at $r_i y_i$ by the highest power of $r_i$ yields the leading diagonal value when $r_i\to\infty$ and $y_i\to v$. Nonnegativity on those points implies nonnegativity of the leading value.
 \end{lemma}

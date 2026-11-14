@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "f8eac0a5eb16b4af6f873c94f38391ff41d225e7",
+  "source_revision": "983d8194c68011e6c663e9863ef862453b1a006e",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -1159,6 +1159,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.blowdown_gaussianMoment_even_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/BlowdownMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.blowdown_gaussian_polynomial_limit": {
       "project": "local",
       "kind": "theorem",
@@ -1273,6 +1285,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/ConicalMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.conical_even_moment_on_support": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/ConicalCoefficients.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -2550,6 +2574,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_minimizing_plane_of_ordered_covariance": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/SpectralPlaneEnergy.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_nearest_projected_witness_in_half_ball": {
       "project": "local",
       "kind": "theorem",
@@ -2586,6 +2622,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.exists_ordered_spectral_representation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BilinearSpectrum.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_orthogonal_representative": {
       "project": "local",
       "kind": "theorem",
@@ -2603,6 +2651,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_plane_of_orthonormalBasis_finset": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/OrthonormalPlane.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -3433,6 +3493,30 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.gaussianMomentCoefficient_conical": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/ConicalCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/ConicalCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt": {
       "project": "local",
       "kind": "theorem",
@@ -3938,6 +4022,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/OrthonormalPlane.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.infDist_submodule_eq_norm_sub_starProjection": {
       "project": "local",
       "kind": "theorem",
@@ -4111,6 +4207,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianCovariance.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4312,6 +4420,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.integral_gaussian_inner_sq_eq_momentBilinear": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integral_gaussian_mul_homogeneous": {
       "project": "local",
       "kind": "theorem",
@@ -4421,6 +4541,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_weighted_planeEnergy_eq_sub_sum": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/SpectralPlaneEnergy.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.isBigO_continuousLinearMap_iff_forall_apply": {
       "project": "local",
@@ -5229,6 +5361,30 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.momentBilinear_diag": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.momentBilinear_gaussianMomentForm_symmetric": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.momentKernel": {
       "project": "local",
       "kind": "def",
@@ -5547,6 +5703,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/QuadraticSpectralRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.orthonormal_diagonal_sum_le_initial_sum": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/OrderedSpectralBound.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6281,6 +6449,18 @@
         "propext"
       ],
       "kernel_status": "definition_checked"
+    },
+    "Preiss.symmetricMultilinear_eq_zero_of_diagonal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/MultilinearDiagonal.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.symmetricPolynomialFeatureMomentRecovery": {
       "project": "local",
@@ -7026,6 +7206,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Tangent/MovingCenters.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.vague_gaussianMomentForm_apply": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentVague.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

@@ -422,6 +422,13 @@ flowchart LR
   lem_weighted_plane_energy_decomposition["Weighted plane energy in orthonormal coordinates"]
   lem_covariance_minimizing_plane["Leading covariance eigenspaces minimize plane energy"]
   lem_gaussian_bilinear_covariance["Gaussian bilinear covariance identities"]
+  lem_unit_flat_conical["Normalized flat measures are conical"]
+  lem_zero_dimensional_flat_moments["Zero-dimensional flat measures and their moments"]
+  lem_flat_moment_projection["Flat moments depend only on projected vectors"]
+  lem_unit_uniform_nonzero["Unit-uniform measures are nonzero"]
+  lem_unit_uniform_infinity_existence["Existence and uniformity of tangents at infinity"]
+  lem_unit_uniform_infinity_unique["Uniqueness of tangents at infinity"]
+  lem_leading_homogeneous_term["Leading homogeneous terms along escaping sequences"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -529,9 +536,11 @@ flowchart LR
   def_uniform_api --> lem_unit_uniform_adapter
   def_unit_uniform --> lem_unit_uniform_adapter
   def_dimensional_blowup --> def_conical
-  def_moments --> lem_flat_gaussian_even_moments
-  def_plane --> lem_flat_gaussian_even_moments
-  mathlib_standard_gaussian --> lem_flat_gaussian_even_moments
+  lem_conical_even_support_moments --> lem_flat_gaussian_even_moments
+  lem_conical_moment_scaling --> lem_flat_gaussian_even_moments
+  lem_flat_moment_projection --> lem_flat_gaussian_even_moments
+  lem_unit_flat_conical --> lem_flat_gaussian_even_moments
+  lem_zero_dimensional_flat_moments --> lem_flat_gaussian_even_moments
   def_rectifiable --> def_purely_unrectifiable
   def_flat --> lem_flatness_minimum
   def_flatness --> lem_flatness_minimum
@@ -966,20 +975,13 @@ flowchart LR
   lem_uniform_reduction --> thm_flat_pseudotangent
   lem_unit_flat_support_regularity --> thm_flat_pseudotangent
   lem_unit_flat_unit_uniform --> thm_flat_pseudotangent
-  def_tangent_at_infinity --> thm_unique_infinity
-  def_unit_uniform --> thm_unique_infinity
-  lem_blowdown_moment_limits --> thm_unique_infinity
-  lem_infinity_compactness --> thm_unique_infinity
-  lem_moment_determination --> thm_unique_infinity
-  lem_vague_countable_metric --> thm_unique_infinity
-  lem_vague_gaussian_polynomials --> thm_unique_infinity
+  lem_uniform_compactness --> thm_unique_infinity
+  lem_unit_uniform_infinity_existence --> thm_unique_infinity
+  lem_unit_uniform_infinity_unique --> thm_unique_infinity
   lem_quadratic_near_basis_rigidity --> lem_conical_eigenvalue_rigidity
-  def_conical --> cor_conical
-  def_tangent_at_infinity --> cor_conical
-  def_unit_uniform --> cor_conical
   lem_blowup_composition --> cor_conical
+  lem_unit_uniform_infinity_unique --> cor_conical
   lem_vague_moving_blowups --> cor_conical
-  thm_unique_infinity --> cor_conical
   def_conical --> thm_gap
   def_plane --> thm_gap
   def_unit_uniform --> thm_gap
@@ -1564,3 +1566,15 @@ flowchart LR
   lem_weighted_plane_energy_decomposition --> lem_covariance_minimizing_plane
   def_bilinear_trace --> lem_gaussian_bilinear_covariance
   def_moments --> lem_gaussian_bilinear_covariance
+  lem_flat_plane_blowup --> lem_unit_flat_conical
+  lem_plane_hausdorff --> lem_zero_dimensional_flat_moments
+  lem_gaussian_polynomial_integrable --> lem_flat_moment_projection
+  lem_moment_form_evaluation --> lem_flat_moment_projection
+  lem_uniform_compactness --> lem_unit_uniform_infinity_existence
+  lem_uniform_scaling --> lem_unit_uniform_infinity_existence
+  lem_uniform_vague_closed --> lem_unit_uniform_infinity_existence
+  lem_unit_uniform_nonzero --> lem_unit_uniform_infinity_existence
+  lem_blowdown_moment_limits --> lem_unit_uniform_infinity_unique
+  lem_moment_determination --> lem_unit_uniform_infinity_unique
+  lem_unit_uniform_infinity_existence --> lem_unit_uniform_infinity_unique
+  lem_vague_gaussian_polynomials --> lem_unit_uniform_infinity_unique

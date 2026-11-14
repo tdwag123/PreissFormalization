@@ -1235,9 +1235,11 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $j\\geq1$, $b_{2j}^{(j)}(x^{2j})=|Px|^{2j}$ for every $x$.\nUse M02, M03 and the Gaussian moment formula of the flat limit, including the\nfactorial from M08.",
       "deps": [
-        "def:moments",
-        "def:plane",
-        "mathlib:standard-gaussian"
+        "lem:conical-even-support-moments",
+        "lem:conical-moment-scaling",
+        "lem:flat-moment-projection",
+        "lem:unit-flat-conical",
+        "lem:zero-dimensional-flat-moments"
       ],
       "lean_names": [
         "Preiss.flat_gaussianMoment_diagonal"
@@ -1425,7 +1427,7 @@
       "source": "De Lellis Corollary 8.4, Lemmas 8.6-8.7, Proposition 8.5, pp.85-94; author errata for the dimension-two shortcut.",
       "repair": [],
       "note": "",
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ConicalMoments.lean"
       ]
@@ -4306,7 +4308,7 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/BlowdownCompactness.lean"
       ]
@@ -4542,13 +4544,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their\nGaussian moments, and M09 to identify the limits. The compactness principle\n``every sequence escaping to infinity has a convergent subsequence with the\nsame limit'' gives full convergence. A separate output is that every positive\nsequence $r_i\\to\\infty$ converges to this same measure. Scaling by a fixed\nfactor preserves the set of limits at infinity, so S02--S03 imply conicality.",
       "deps": [
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowdown-moment-limits",
-        "lem:infinity-compactness",
-        "lem:moment-determination",
-        "lem:vague-countable-metric",
-        "lem:vague-gaussian-polynomials"
+        "lem:uniform-compactness",
+        "lem:unit-uniform-infinity-existence",
+        "lem:unit-uniform-infinity-unique"
       ],
       "lean_names": [
         "Preiss.blowdown_sequence_converges",
@@ -4599,12 +4597,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Use S05 to obtain subsequential uniform limits, M02 and M08 to identify their\nGaussian moments, and M09 to identify the limits. The compactness principle\n``every sequence escaping to infinity has a convergent subsequence with the\nsame limit'' gives full convergence. A separate output is that every positive\nsequence $r_i\\to\\infty$ converges to this same measure. Scaling by a fixed\nfactor preserves the set of limits at infinity, so S02--S03 imply conicality.",
       "deps": [
-        "def:conical",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:vague-moving-blowups",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-unique",
+        "lem:vague-moving-blowups"
       ],
       "lean_names": [
         "Preiss.tangent_at_infinity_conical"
@@ -6518,7 +6513,7 @@
         "lem:blowup-composition",
         "lem:plane-hausdorff"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Tangent/FlatScaling.lean"
       ],
@@ -8831,7 +8826,7 @@
         "def:conical",
         "lem:moment-covariance"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ConicalMoments.lean"
       ],
@@ -8941,7 +8936,7 @@
       "deps": [
         "lem:asymptotic-taylor-vanishing"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/AsymptoticCoefficients.lean"
       ],
@@ -9151,7 +9146,7 @@
       "deps": [
         "lem:exact-monomial-coefficients"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ConicalCoefficients.lean"
       ],
@@ -9169,7 +9164,7 @@
         "lem:conical-moments",
         "lem:exact-homogeneous-moment-coefficients"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ConicalCoefficients.lean"
       ],
@@ -9188,7 +9183,7 @@
         "lem:moment-support-polynomial",
         "lem:taylor-two"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ConicalCoefficients.lean"
       ],
@@ -9264,6 +9259,133 @@
         "Preiss/Uniform/GaussianCovariance.lean"
       ],
       "proposed_file": "Preiss/Uniform/GaussianCovariance.lean"
+    },
+    {
+      "id": "lem:unit-flat-conical",
+      "kind": "lemma",
+      "title": "Normalized flat measures are conical",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isConical_unitFlat"
+      ],
+      "deps": [
+        "lem:flat-plane-blowup"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMomentGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMomentGeometry.lean"
+    },
+    {
+      "id": "lem:zero-dimensional-flat-moments",
+      "kind": "lemma",
+      "title": "Zero-dimensional flat measures and their moments",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flat_gaussianMoment_diagonal_dim_zero",
+        "Preiss.gaussianMomentForm_dirac_zero_diagonal",
+        "Preiss.unitFlat_eq_dirac_of_dim_zero"
+      ],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMomentGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMomentGeometry.lean"
+    },
+    {
+      "id": "lem:flat-moment-projection",
+      "kind": "lemma",
+      "title": "Flat moments depend only on projected vectors",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentForm_unitFlat_diagonal_project",
+        "Preiss.gaussianMomentForm_unitFlat_zero_diagonal"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:moment-form-evaluation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMomentGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMomentGeometry.lean"
+    },
+    {
+      "id": "lem:unit-uniform-nonzero",
+      "kind": "lemma",
+      "title": "Unit-uniform measures are nonzero",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.IsUnitUniform.ne_zero"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    {
+      "id": "lem:unit-uniform-infinity-existence",
+      "kind": "lemma",
+      "title": "Existence and uniformity of tangents at infinity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_unitUniform_tangentAtInfinity",
+        "Preiss.isUnitUniform_of_tangentAtInfinity"
+      ],
+      "deps": [
+        "lem:uniform-compactness",
+        "lem:uniform-scaling",
+        "lem:uniform-vague-closed",
+        "lem:unit-uniform-nonzero"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    {
+      "id": "lem:unit-uniform-infinity-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of tangents at infinity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tangentAtInfinity_eq_of_unitUniform"
+      ],
+      "deps": [
+        "lem:blowdown-moment-limits",
+        "lem:moment-determination",
+        "lem:unit-uniform-infinity-existence",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/TangentAtInfinity.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/TangentAtInfinity.lean"
+    },
+    {
+      "id": "lem:leading-homogeneous-term",
+      "kind": "lemma",
+      "title": "Leading homogeneous terms along escaping sequences",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.leading_diagonal_nonneg_of_rescaled_points",
+        "Preiss.tendsto_scaled_homogeneous_sum"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/LeadingHomogeneousTerm.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/LeadingHomogeneousTerm.lean"
     }
   ],
   "preiss_core": [
@@ -9374,6 +9496,10 @@
     "lem:cone-graph",
     "lem:cone-projection-direction",
     "lem:conical-eigenvalue-rigidity",
+    "lem:conical-even-support-moments",
+    "lem:conical-moment-coefficients",
+    "lem:conical-moment-scaling",
+    "lem:conical-moments",
     "lem:continuous-ball-profile-boundary",
     "lem:coordinate-product-representation",
     "lem:countable-carrier",
@@ -9407,6 +9533,8 @@
     "lem:divided-operator-positive-inverse",
     "lem:domain-extension",
     "lem:empty-cylinder-direction",
+    "lem:exact-homogeneous-moment-coefficients",
+    "lem:exact-monomial-coefficients",
     "lem:excess-dimension",
     "lem:exponential-tail-integral",
     "lem:feature-moment-analytic-approximation",
@@ -9429,6 +9557,8 @@
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
     "lem:flat-measure-regularity",
+    "lem:flat-moment-projection",
+    "lem:flat-plane-blowup",
     "lem:flat-positive-scalar",
     "lem:flat-tangent-from-uniform-recentering",
     "lem:flat-to-approximation",
@@ -9474,7 +9604,6 @@
     "lem:hull-support-approximation",
     "lem:hyperplane-tangent-lineage",
     "lem:hyperplane-transport-map",
-    "lem:infinity-compactness",
     "lem:integral-operator-annihilation",
     "lem:integrated-gaussian-exponential-series",
     "lem:inverse-square-positive-limit",
@@ -9583,9 +9712,13 @@
     "lem:uniform-scaling",
     "lem:uniform-tube-projection-cover",
     "lem:uniform-vague-closed",
+    "lem:unit-flat-conical",
     "lem:unit-flat-support-regularity",
     "lem:unit-flat-unit-uniform",
     "lem:unit-uniform-adapter",
+    "lem:unit-uniform-infinity-existence",
+    "lem:unit-uniform-infinity-unique",
+    "lem:unit-uniform-nonzero",
     "lem:unit-uniform-tangent-existence",
     "lem:vague-cocompact-pushforward",
     "lem:vague-compact-null-mass",
@@ -9613,6 +9746,7 @@
     "lem:weighted-grading-positive-complement",
     "lem:zero-density-atoms",
     "lem:zero-dimension",
+    "lem:zero-dimensional-flat-moments",
     "lem:zero-hausdorff-ac",
     "lem:zero-measure",
     "mathlib:besicovitch-differentiation",

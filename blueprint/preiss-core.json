@@ -1118,15 +1118,17 @@
       "id": "lem:flat-gaussian-even-moments",
       "title": "Gaussian moments of a normalized flat measure",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.flat_gaussianMoment_diagonal"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moments",
-        "def:plane",
-        "mathlib:standard-gaussian"
+        "lem:conical-even-support-moments",
+        "lem:conical-moment-scaling",
+        "lem:flat-moment-projection",
+        "lem:unit-flat-conical",
+        "lem:zero-dimensional-flat-moments"
       ],
       "proof_dependencies": [],
       "expanded_line": 1384,
@@ -1242,6 +1244,25 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 1494,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-moments",
+      "title": "Homogeneity and parity of conical moments",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.conical_gaussianMoment_homogeneous",
+        "Preiss.conical_gaussianMoment_odd"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:conical-moment-scaling",
+        "lem:scaled-moment-limits",
+        "lem:taylor-two"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 1526,
       "unfinished_dependencies": []
     },
     {
@@ -3108,26 +3129,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:infinity-compactness",
-      "title": "Existence of uniform blow-down limits",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.exists_tangentAtInfinity"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowup-composition",
-        "lem:uniform-compactness",
-        "lem:uniform-scaling"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 4083,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:dimensional-tangent-ball-constant",
       "title": "Common tangent normalization at a density point",
       "kind": "lemma",
@@ -3285,20 +3286,16 @@
       "id": "thm:unique-infinity",
       "title": "Uniqueness and full convergence of the blow-down",
       "kind": "theorem",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.blowdown_sequence_converges",
         "Preiss.unique_tangent_at_infinity"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:blowdown-moment-limits",
-        "lem:infinity-compactness",
-        "lem:moment-determination",
-        "lem:vague-countable-metric",
-        "lem:vague-gaussian-polynomials"
+        "lem:uniform-compactness",
+        "lem:unit-uniform-infinity-existence",
+        "lem:unit-uniform-infinity-unique"
       ],
       "proof_dependencies": [],
       "expanded_line": 4304,
@@ -3324,24 +3321,19 @@
       "id": "cor:conical",
       "title": "The unique blow-down is conical",
       "kind": "corollary",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.tangent_at_infinity_conical"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:conical",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:vague-moving-blowups",
-        "thm:unique-infinity"
+        "lem:unit-uniform-infinity-unique",
+        "lem:vague-moving-blowups"
       ],
       "proof_dependencies": [],
       "expanded_line": 4355,
-      "unfinished_dependencies": [
-        "thm:unique-infinity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "thm:gap",
@@ -3454,9 +3446,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4456,
-      "unfinished_dependencies": [
-        "lem:flat-gaussian-even-moments"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:odd-coefficients-plane-zero",
@@ -3697,7 +3687,6 @@
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:flat-gaussian-even-moments",
         "lem:rigidity-contracted-limit-zero",
         "lem:rigidity-mixed-gaussian-limit"
       ]
@@ -3794,7 +3783,6 @@
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:flat-gaussian-even-moments",
         "lem:rigidity-omega-trace-zero"
       ]
     },
@@ -3983,10 +3971,8 @@
       "proof_dependencies": [],
       "expanded_line": 5011,
       "unfinished_dependencies": [
-        "cor:conical",
         "thm:gap",
-        "thm:infinity-rigidity",
-        "thm:unique-infinity"
+        "thm:infinity-rigidity"
       ]
     },
     {
@@ -4049,11 +4035,9 @@
       "proof_dependencies": [],
       "expanded_line": 5075,
       "unfinished_dependencies": [
-        "cor:conical",
         "lem:first-crossing",
         "lem:first-crossing-ratio",
-        "thm:gap",
-        "thm:unique-infinity"
+        "thm:gap"
       ]
     },
     {
@@ -4642,6 +4626,24 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 5735,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-plane-blowup",
+      "title": "Exact blow-up invariance of flat plane measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.dimensionalBlowup_flatOn"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:dimensional-blowup",
+        "lem:blowup-composition",
+        "lem:plane-hausdorff"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5743,
       "unfinished_dependencies": []
     },
     {
@@ -6712,6 +6714,23 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:conical-moment-scaling",
+      "title": "Exact moment homogeneity for conical measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_homogeneous_of_isConical"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:conical",
+        "lem:moment-covariance"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6730,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:moment-trace-operator",
       "title": "The second-moment trace as a bounded linear functional",
       "kind": "lemma",
@@ -6778,6 +6797,22 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6769,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:exact-monomial-coefficients",
+      "title": "Taylor coefficients of an exact monomial",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.taylorCoefficient_eq_of_exact_monomial"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:asymptotic-taylor-vanishing"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6777,
       "unfinished_dependencies": []
     },
     {
@@ -6861,6 +6896,162 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6823,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:exact-homogeneous-moment-coefficients",
+      "title": "Taylor coefficients of an exactly homogeneous moment",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:exact-monomial-coefficients"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6870,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-moment-coefficients",
+      "title": "Sparse moment coefficients of conical measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentCoefficient_conical"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:conical-moments",
+        "lem:exact-homogeneous-moment-coefficients"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6878,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:conical-even-support-moments",
+      "title": "Even Gaussian moments at support points",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.conical_even_moment_on_support"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:conical-moment-coefficients",
+        "lem:moment-support-polynomial",
+        "lem:taylor-two"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6886,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-flat-conical",
+      "title": "Normalized flat measures are conical",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.isConical_unitFlat"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:flat-plane-blowup"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6925,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:zero-dimensional-flat-moments",
+      "title": "Zero-dimensional flat measures and their moments",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flat_gaussianMoment_diagonal_dim_zero",
+        "Preiss.gaussianMomentForm_dirac_zero_diagonal",
+        "Preiss.unitFlat_eq_dirac_of_dim_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:plane-hausdorff"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6933,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-moment-projection",
+      "title": "Flat moments depend only on projected vectors",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussianMomentForm_unitFlat_diagonal_project",
+        "Preiss.gaussianMomentForm_unitFlat_zero_diagonal"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:moment-form-evaluation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6941,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-uniform-nonzero",
+      "title": "Unit-uniform measures are nonzero",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.IsUnitUniform.ne_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6949,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-uniform-infinity-existence",
+      "title": "Existence and uniformity of tangents at infinity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_unitUniform_tangentAtInfinity",
+        "Preiss.isUnitUniform_of_tangentAtInfinity"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:uniform-compactness",
+        "lem:uniform-scaling",
+        "lem:uniform-vague-closed",
+        "lem:unit-uniform-nonzero"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6956,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-uniform-infinity-unique",
+      "title": "Uniqueness of tangents at infinity",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tangentAtInfinity_eq_of_unitUniform"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:blowdown-moment-limits",
+        "lem:moment-determination",
+        "lem:unit-uniform-infinity-existence",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6964,
       "unfinished_dependencies": []
     }
   ]
