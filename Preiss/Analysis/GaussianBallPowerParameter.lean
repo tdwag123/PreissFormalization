@@ -60,4 +60,58 @@ theorem integral_gaussian_parameter_of_closedBall_power
   exact ⟨hint'',hval.trans (by ring)⟩
 
 
+theorem pow_mul_gaussian_half_le {r s : ℝ} (hr : 0 ≤ r) (hs : 0 < s)
+    (k : ℕ) (hk : 0 < k) :
+    r ^ k * Real.exp (-(s / 2) * r ^ 2) ≤ ((k : ℝ) / s) ^ ((k : ℝ) / 2) := by
+  have hk' : 0 < (k : ℝ) := Nat.cast_pos.mpr hk
+  let t := s * r ^ 2 / (k : ℝ)
+  have ht : 0 ≤ t := by dsimp [t]; positivity
+  have hsmall : t * Real.exp (-t) ≤ 1 :=
+    (Real.mul_exp_neg_le_exp_neg_one t).trans (by simpa using Real.exp_le_one_iff.mpr (by norm_num : (-1 : ℝ) ≤ 0))
+  have hbase : r ^ 2 * Real.exp (-t) ≤ (k : ℝ) / s := by
+    apply (le_div_iff₀ hs).mpr
+    have h := (mul_le_mul_of_nonneg_right hsmall hk'.le)
+    dsimp [t] at h ⊢
+    field_simp at h ⊢
+    nlinarith
+  have hpow := Real.rpow_le_rpow (by positivity : 0 ≤ r ^ 2 * Real.exp (-t)) hbase
+    (div_nonneg hk'.le (by norm_num : (0 : ℝ) ≤ 2))
+  have heq : (r ^ 2 * Real.exp (-t)) ^ ((k : ℝ) / 2) =
+      r ^ k * Real.exp (-(s / 2) * r ^ 2) := by
+    have hR : (r^2)^((k : ℝ)/2) = r^k := by
+      rw [← Real.rpow_natCast r 2, ← Real.rpow_mul hr]
+      norm_num only [Nat.cast_ofNat]
+      have hcast : (2 : ℝ) * ((k : ℝ) / 2) = k := by ring
+      rw [hcast, Real.rpow_natCast]
+    rw [Real.mul_rpow (sq_nonneg r) (Real.exp_pos _).le, hR, ← Real.exp_mul]
+    congr 2
+    dsimp [t]
+    field_simp
+  rwa [heq] at hpow
+
+theorem integral_gaussian_center_parameter_of_closedBall_power
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [MeasurableSpace E] [BorelSpace E]
+    (μ : Measure E) [SFinite μ] (x : E) (C d : ℝ) (hC : 0 ≤ C) (hd : 0 < d)
+    (hball : ∀ r : ℝ, 0 < r → μ (closedBall x r) = ENNReal.ofReal (C * r ^ d))
+    (s : ℝ) (hs : 0 < s) :
+    Integrable (fun z => Real.exp (-s * ‖z - x‖ ^ 2)) μ ∧
+      (∫ z, Real.exp (-s * ‖z - x‖ ^ 2) ∂μ) =
+        Real.Gamma (d / 2 + 1) * C * s ^ (-(d / 2)) := by
+  let φ : E → E := fun z => z - x
+  have hφ : Measurable φ := by dsimp [φ]; fun_prop
+  have hball' (r : ℝ) (hr : 0 < r) :
+      μ.map φ (closedBall 0 r) = ENNReal.ofReal (C * r ^ d) := by
+    rw [Measure.map_apply hφ measurableSet_closedBall]
+    have hset : φ ⁻¹' closedBall 0 r = closedBall x r := by
+      ext z
+      simp only [mem_preimage, mem_closedBall, dist_zero_right, dist_eq_norm, φ, sub_zero]
+    rw [hset, hball r hr]
+  obtain ⟨hint,hval⟩ := integral_gaussian_parameter_of_closedBall_power (μ.map φ) C d hC hd hball' s hs
+  have hf : Continuous (fun z : E => Real.exp (-s * ‖z‖ ^ 2)) := by fun_prop
+  have hint' := (integrable_map_measure hf.aestronglyMeasurable hφ.aemeasurable).mp hint
+  rw [integral_map hφ.aemeasurable hf.aestronglyMeasurable] at hval
+  exact ⟨hint',hval⟩
+
+
 end Preiss

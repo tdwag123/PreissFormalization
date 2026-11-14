@@ -1894,14 +1894,16 @@
       "id": "lem:flat-limit-tube",
       "title": "Flat limit excludes persistent mass away from its plane",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.tendsto_mass_outside_tube_of_flat_limit"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "gmt:portmanteau",
-        "lem:plane-hausdorff"
+        "lem:flat-measure-regularity",
+        "lem:plane-hausdorff",
+        "lem:vague-compact-null-mass"
       ],
       "proof_dependencies": [],
       "expanded_line": 2035,
@@ -1911,14 +1913,16 @@
       "id": "lem:flat-limit-moving-balls",
       "title": "Flat limit gives lower mass in moving plane balls",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.eventually_ball_mass_lower_bound_of_flat_limit"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "gmt:portmanteau",
-        "lem:plane-hausdorff"
+        "lem:flat-measure-regularity",
+        "lem:plane-hausdorff",
+        "lem:vague-uniform-ball-lower"
       ],
       "proof_dependencies": [],
       "expanded_line": 2044,
@@ -2054,10 +2058,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 2258,
-      "unfinished_dependencies": [
-        "lem:flat-limit-moving-balls",
-        "lem:flat-limit-tube"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:plane-scaling",
@@ -2125,19 +2126,24 @@
       "id": "lem:pseudotangent-transitive",
       "title": "Transitivity of the support-centered scaling orbit closure",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.IsUniformPseudotangent",
         "Preiss.uniformPseudotangent_isUnitUniform",
         "Preiss.uniformPseudotangent_map_linearIsometry",
-        "Preiss.uniformPseudotangent_trans"
+        "Preiss.uniformPseudotangent_trans",
+        "Preiss.uniformPseudotangent_trans_of_regular"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:dimensional-blowup",
         "lem:blowup-composition",
+        "lem:closed-map-support",
+        "lem:dimensional-blowup-support",
+        "lem:proper-map-regularity",
         "lem:uniform-scaling",
         "lem:uniform-vague-closed",
+        "lem:vague-cocompact-pushforward",
         "lem:vague-diagonal",
         "lem:vague-moving-blowups",
         "lem:vague-support-approximation"
@@ -2473,15 +2479,17 @@
       "id": "lem:nested-compact-approximation",
       "title": "Nested compact two-sided approximation",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
-        "Preiss.TwoSidedApproximation",
         "Preiss.exists_nested_compact_twoSided_approximation"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
+        "def:two-sided-approximation",
         "gmt:density-points",
         "lem:closed-upper-ball-bound-sets",
+        "lem:compact-measurable-exhaustion",
+        "lem:compact-two-sided-general",
         "lem:tube-support-upgrade",
         "lem:uniform-compact-selection",
         "lem:weak-approximation-restrict-ae"
@@ -2526,9 +2534,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 2849,
-      "unfinished_dependencies": [
-        "lem:nested-compact-approximation"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:pure-wla-null-projection",
@@ -2588,7 +2594,6 @@
       "expanded_line": 2927,
       "unfinished_dependencies": [
         "lem:empty-cylinder-direction",
-        "lem:nested-compact-approximation",
         "lem:projection-hole-cover"
       ]
     },
@@ -3175,9 +3180,10 @@
       "id": "lem:moment-norm-bound",
       "title": "Uniform operator norm bounds for Gaussian moments",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
+        "Preiss.gaussianMass_unitUniform",
         "Preiss.integrable_gaussianMomentKernel",
         "Preiss.integrable_gaussianMomentKernel_of_integrable_norm",
         "Preiss.norm_gaussianMomentForm_le"
@@ -3186,6 +3192,8 @@
       "statement_dependencies": [
         "def:moments",
         "def:unit-uniform",
+        "lem:gaussian-ball-power-parameter",
+        "lem:gaussian-power-envelope",
         "lem:moment-form-evaluation",
         "lem:moment-kernel-calculus",
         "lem:radial"
@@ -3218,24 +3226,26 @@
       "id": "lem:gaussian-translation-series",
       "title": "Absolutely convergent Gaussian translation series",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
-        "Preiss.hasSum_gaussianMoment_diagonal"
+        "Preiss.hasSum_gaussianMoment_diagonal",
+        "Preiss.integral_gaussian_center_unitUniform",
+        "Preiss.integral_gaussian_exp_inner_unitUniform"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:moments",
         "def:unit-uniform",
+        "lem:gaussian-ball-power-parameter",
         "lem:gaussian-polynomial-integrable",
+        "lem:integrated-gaussian-exponential-series",
         "lem:moment-form-evaluation",
         "lem:moment-norm-bound",
         "lem:radial"
       ],
       "proof_dependencies": [],
       "expanded_line": 3742,
-      "unfinished_dependencies": [
-        "lem:moment-norm-bound"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:taylor-one",
@@ -3254,10 +3264,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 3779,
-      "unfinished_dependencies": [
-        "lem:gaussian-translation-series",
-        "lem:moment-norm-bound"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:taylor-two",
@@ -3284,8 +3291,7 @@
       "expanded_line": 3815,
       "unfinished_dependencies": [
         "lem:graded-analytic-projection",
-        "lem:moment-feature-remainder",
-        "lem:moment-norm-bound"
+        "lem:moment-feature-remainder"
       ]
     },
     {
@@ -3307,7 +3313,6 @@
       "proof_dependencies": [],
       "expanded_line": 3845,
       "unfinished_dependencies": [
-        "lem:moment-norm-bound",
         "lem:taylor-two"
       ]
     },
@@ -3429,7 +3434,7 @@
       "id": "lem:hyperplane-transport-map",
       "title": "Hyperplane transport with an explicit isometry",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.isUnitUniform_map_linearIsometry",
         "Preiss.uniformWithConstant_map_linearIsometry",
@@ -3442,7 +3447,9 @@
         "def:plane",
         "def:uniform-constant",
         "gmt:hyperplane-transport",
-        "lem:blowup-composition"
+        "lem:blowup-composition",
+        "lem:closed-map-support",
+        "lem:proper-map-regularity"
       ],
       "proof_dependencies": [],
       "expanded_line": 3994,
@@ -3612,9 +3619,7 @@
       "expanded_line": 4225,
       "unfinished_dependencies": [
         "lem:halfspace-tangent-witness",
-        "lem:hyperplane-tangent-lineage",
-        "lem:hyperplane-transport-map",
-        "lem:pseudotangent-transitive"
+        "lem:hyperplane-tangent-lineage"
       ]
     },
     {
@@ -3637,9 +3642,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4249,
-      "unfinished_dependencies": [
-        "lem:hyperplane-transport-map"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "thm:flat-pseudotangent",
@@ -3661,7 +3664,6 @@
       "expanded_line": 4273,
       "unfinished_dependencies": [
         "lem:plane-supported-uniform-flat",
-        "lem:pseudotangent-transitive",
         "lem:uniform-reduction"
       ]
     },
@@ -5463,7 +5465,9 @@
       "kind": "lemma",
       "status": "proof_candidate",
       "lean": [
+        "Preiss.integrable_exp_abs_inner_mul_gaussian_parameter",
         "Preiss.integrable_exp_inner_mul_gaussian",
+        "Preiss.integrable_exp_inner_mul_gaussian_parameter",
         "Preiss.integrable_exp_inner_withDensity_gaussian"
       ],
       "verification": "source_audit_only",
@@ -5740,7 +5744,8 @@
       "kind": "lemma",
       "status": "proof_candidate",
       "lean": [
-        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion",
+        "Preiss.exists_pos_compact_subset_of_ae_mem_iUnion"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [],
@@ -6173,6 +6178,7 @@
       "kind": "lemma",
       "status": "proof_candidate",
       "lean": [
+        "Preiss.integral_gaussian_center_parameter_of_closedBall_power",
         "Preiss.integral_gaussian_parameter_of_closedBall_power"
       ],
       "verification": "source_audit_only",
@@ -6181,6 +6187,183 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6116,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:closed-map-support",
+      "title": "Support under continuous closed maps",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.measure_support_map_of_continuous_of_isClosedMap"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6124,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:closed-map-outer-regularity",
+      "title": "Outer regularity under continuous closed maps",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.outerRegular_map_of_continuous_of_isClosedMap"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6131,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:proper-map-regularity",
+      "title": "Regularity under proper maps",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.regular_map_of_isProperMap"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:closed-map-outer-regularity"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6138,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vague-cocompact-pushforward",
+      "title": "Vague convergence under cocompact and proper maps",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.weaklyConverges_map_cocompact",
+        "Preiss.weaklyConverges_map_of_isProperMap"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "gmt:vague"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6146,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:flat-measure-regularity",
+      "title": "Flat-measure regularity and positive plane-ball mass",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flatOn_ball_pos",
+        "Preiss.regular_flatOn"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:plane-hausdorff"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6154,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vague-compact-null-mass",
+      "title": "Vanishing mass on compact null sets",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.tendsto_mass_compact_null_of_vague"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "gmt:portmanteau"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6162,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:vague-uniform-ball-lower",
+      "title": "Uniform lower ball mass on compact sets",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.eventually_uniform_ball_mass_lower_bound_of_vague"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "gmt:portmanteau"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6170,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "def:two-sided-approximation",
+      "title": "A common-plane two-sided approximation predicate",
+      "kind": "definition",
+      "status": "definition",
+      "lean": [
+        "Preiss.TwoSidedApproximation"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:cone"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6178,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:compact-two-sided-general",
+      "title": "Compact two-sided approximation from uniform lower mass",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_compact_twoSided_approximation_of_uniform_lower_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:two-sided-approximation",
+        "lem:closed-upper-ball-bound-sets",
+        "lem:closed-weak-approximation-good-set",
+        "lem:compact-measurable-exhaustion",
+        "lem:tube-support-upgrade",
+        "lem:weak-approximation-good-exhaustion"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6186,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-power-envelope",
+      "title": "A scalar Gaussian envelope for polynomial growth",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.pow_mul_gaussian_half_le"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6194,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:integrated-gaussian-exponential-series",
+      "title": "Integrated exponential series under a Gaussian weight",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.hasSum_integral_gaussian_exp_inner"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-weight-exponential"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6201,
       "unfinished_dependencies": []
     }
   ],
@@ -6211,6 +6394,7 @@
     "def:flatness-cutoff",
     "lem:zero-hausdorff-ac",
     "lem:measure-support-transport",
+    "lem:closed-map-support",
     "lem:moving-set-measure-bounds",
     "lem:projection-distance",
     "lem:compact-measurable-exhaustion",
@@ -6224,6 +6408,7 @@
     "lem:countable-coordinate-metric",
     "lem:gaussian-projection-integrability",
     "def:bilinear-trace",
+    "lem:gaussian-power-envelope",
     "def:uniform-constant",
     "lem:orthonormal-span-projection",
     "lem:nonnegative-integral-cover-bound",
@@ -6235,6 +6420,7 @@
     "def:dense-compact-tests",
     "lem:dense-continuous-approximation",
     "lem:integral-operator-annihilation",
+    "lem:closed-map-outer-regularity",
     "gmt:density-order",
     "gmt:density-limit",
     "gmt:density-bounds",
@@ -6253,6 +6439,7 @@
     "thm:compactness",
     "gmt:compact-test-perturbation",
     "def:vague-metrization",
+    "lem:vague-cocompact-pushforward",
     "gmt:blowup-balls",
     "gmt:blowup-regular",
     "def:tangent-api",
@@ -6302,6 +6489,7 @@
     "lem:quadratic-exponential-even-derivatives",
     "lem:vague-determining-tests",
     "lem:dense-compact-tests-exist",
+    "lem:proper-map-regularity",
     "gmt:goodsets",
     "lem:upper-density-localization",
     "lem:radius-power-density",
@@ -6312,6 +6500,8 @@
     "gmt:continuity-sets",
     "lem:vague-support-approximation",
     "lem:vague-support-limit",
+    "lem:vague-compact-null-mass",
+    "lem:vague-uniform-ball-lower",
     "lem:vague-moving-tests",
     "lem:vague-metric-properties",
     "gmt:scaled-discarded-mass",
@@ -6329,11 +6519,11 @@
     "lem:graph-parametrization",
     "lem:plane-projection-subsequence",
     "lem:cone-graph",
-    "lem:flat-limit-tube",
-    "lem:flat-limit-moving-balls",
+    "def:two-sided-approximation",
     "lem:projected-tube-slab-bound",
     "lem:lipschitz-null-image",
     "lem:graph-affine-area",
+    "lem:flat-measure-regularity",
     "def:first-crossing-data",
     "lem:flatness-basic-nonneg",
     "lem:projection-energy-continuity",
@@ -6385,19 +6575,22 @@
     "lem:full-rank-graph-pieces",
     "lem:rank-deficient-image-null",
     "lem:graph-area",
+    "lem:flat-limit-tube",
+    "lem:flat-limit-moving-balls",
     "lem:flatness-basic-zero",
     "lem:flatness-minimizer-finite-compacts",
     "lem:weak-approximation-restrict-ae",
     "lem:borel-carrier",
     "lem:carrier-calculus",
     "lem:zero-dimension",
-    "lem:moment-norm-bound",
     "lem:homogeneous-energy-radial",
     "def:rigidity-omega",
     "lem:gaussian-uniform-tails",
     "lem:gaussian-parameter-derivative",
     "lem:moment-determination",
+    "lem:integrated-gaussian-exponential-series",
     "lem:moment-feature-annihilation",
+    "lem:moment-norm-bound",
     "lem:gaussian-wick-fourth",
     "lem:vague-countable-metric",
     "lem:uniform-compactness",
@@ -6408,14 +6601,15 @@
     "lem:lower-ball-restrict-comparison",
     "lem:pure-basic",
     "lem:uniform-compact-selection",
+    "lem:compact-two-sided-general",
     "lem:graphs",
     "lem:graph-blowup",
     "lem:flatness-minimum",
     "lem:flatness-vague-general",
     "lem:representation",
-    "lem:gaussian-translation-series",
     "def:rigidity-adjusted-form",
     "lem:vague-gaussian-polynomials",
+    "lem:gaussian-translation-series",
     "lem:gaussian-quadratic-trace-bound",
     "lem:vague-diagonal",
     "lem:uniform-near-support-compactness",

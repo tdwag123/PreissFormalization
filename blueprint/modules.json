@@ -197,7 +197,8 @@
         "Preiss.Analysis.GaussianBallPower"
       ],
       "nodes": [
-        "lem:gaussian-ball-power-parameter"
+        "lem:gaussian-ball-power-parameter",
+        "lem:gaussian-power-envelope"
       ],
       "source_exists": true,
       "local_imports": [
@@ -421,11 +422,13 @@
       "file": "Preiss/Analysis/GaussianWeight.lean",
       "purpose": "Reusable Analysis.GaussianWeight interfaces.",
       "current_source_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exponential",
         "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
         "Mathlib.MeasureTheory.Measure.WithDensity",
         "Preiss.Analysis.GaussianGrowth"
       ],
       "mathlib_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exponential",
         "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
         "Mathlib.MeasureTheory.Measure.WithDensity"
       ],
@@ -435,7 +438,8 @@
       ],
       "nodes": [
         "lem:gaussian-weight-finite",
-        "lem:gaussian-weight-exponential"
+        "lem:gaussian-weight-exponential",
+        "lem:integrated-gaussian-exponential-series"
       ],
       "source_exists": true,
       "local_imports": [
@@ -729,6 +733,31 @@
       "purpose": "Canonical Analysis.PolynomialFeatures interfaces."
     },
     {
+      "module": "Preiss.Analysis.ProperMeasureTransport",
+      "file": "Preiss/Analysis/ProperMeasureTransport.lean",
+      "purpose": "Reusable Analysis.ProperMeasureTransport interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.Topology.Maps.Proper.Basic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.MeasureTheory.Measure.Support",
+        "Mathlib.Topology.Maps.Proper.Basic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:closed-map-support",
+        "lem:closed-map-outer-regularity",
+        "lem:proper-map-regularity"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.SequentialLimits",
       "file": "Preiss/Analysis/SequentialLimits.lean",
       "purpose": "Reusable Analysis.SequentialLimits interfaces.",
@@ -775,6 +804,29 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Analysis.SpectralOptimization interfaces."
+    },
+    {
+      "module": "Preiss.Analysis.Vague.CompactMass",
+      "file": "Preiss/Analysis/Vague/CompactMass.lean",
+      "purpose": "Reusable Analysis.Vague.CompactMass interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.WeakConvergence.Basic",
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_imports": [],
+      "nodes": [
+        "lem:vague-compact-null-mass",
+        "lem:vague-uniform-ball-lower"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.Euclidean"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Analysis.Vague.CompactTests",
@@ -834,6 +886,30 @@
       "local_imports": [
         "Preiss.Analysis.DenseCompactTests"
       ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Analysis.Vague.Map",
+      "file": "Preiss/Analysis/Vague/Map.lean",
+      "purpose": "Reusable Analysis.Vague.Map interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.Topology.ContinuousMap.CompactlySupported",
+        "Mathlib.Topology.Maps.Proper.Basic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Topology.ContinuousMap.CompactlySupported",
+        "Mathlib.Topology.Maps.Proper.Basic"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_imports": [],
+      "nodes": [
+        "lem:vague-cocompact-pushforward"
+      ],
+      "source_exists": true,
+      "local_imports": [],
       "scope": "core"
     },
     {
@@ -1489,6 +1565,32 @@
       "purpose": "Canonical Geometry.PlaneMeasure interfaces."
     },
     {
+      "module": "Preiss.Geometry.PlaneRegularity",
+      "file": "Preiss/Geometry/PlaneRegularity.lean",
+      "purpose": "Reusable Geometry.PlaneRegularity interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Maps.Proper.Basic",
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Maps.Proper.Basic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "nodes": [
+        "lem:flat-measure-regularity"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.PlaneMeasure"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Geometry.Planes",
       "file": "Preiss/Geometry/Planes.lean",
       "current_source_imports": [
@@ -2000,6 +2102,38 @@
       "purpose": "Canonical Rectifiability.Graphs interfaces."
     },
     {
+      "module": "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
+      "file": "Preiss/Rectifiability/MarstrandMattila/CompactSelection.lean",
+      "purpose": "Reusable Rectifiability.MarstrandMattila.CompactSelection interfaces.",
+      "current_source_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "Preiss.Rectifiability.WeakApproximation.CompactGeometry"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.CompactExhaustion",
+        "Preiss.Density.UpperBallSets",
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "nodes": [
+        "lem:nested-compact-approximation"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.CompactExhaustion",
+        "Preiss.Density.UpperBallSets",
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "current_source_imports": [
@@ -2084,15 +2218,17 @@
         "Preiss.Geometry.Cylinders",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Rectifiability.WeakApproximation.Restriction",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided",
         "Preiss.Rectifiability.WeakApproximation.Uniformization"
       ],
       "local_imports": [
         "Preiss.Density.PowerComparison",
-        "Preiss.Density.UpperBallSets",
         "Preiss.Geometry.Cylinders",
         "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
         "Preiss.Rectifiability.WeakApproximation.Restriction",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided",
         "Preiss.Rectifiability.WeakApproximation.Uniformization"
       ],
       "mathlib_imports": [
@@ -2100,14 +2236,12 @@
       ],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Density.UpperBallSets",
         "Preiss.Geometry.Cylinders",
         "Preiss.Geometry.PlaneMeasure",
-        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+        "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
+        "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs"
       ],
       "nodes": [
-        "lem:nested-compact-approximation",
         "lem:projection-hole-cover",
         "lem:discarded-cylinder-sum",
         "lem:column-packing",
@@ -2162,12 +2296,14 @@
       "file": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
       "current_source_imports": [
         "Preiss.Rectifiability.Decomposition",
+        "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
         "Preiss.Rectifiability.MarstrandMattila.Packing",
         "Preiss.Rectifiability.MarstrandMattila.ProjectionNull"
       ],
       "local_imports": [
         "Preiss.Rectifiability.Decomposition",
+        "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
         "Preiss.Rectifiability.MarstrandMattila.Packing",
         "Preiss.Rectifiability.MarstrandMattila.ProjectionNull"
@@ -2321,6 +2457,43 @@
       "purpose": "Canonical Rectifiability.WeakApproximation.Basic interfaces."
     },
     {
+      "module": "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
+      "file": "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean",
+      "purpose": "Reusable Rectifiability.WeakApproximation.CompactGeometry interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring",
+        "Preiss.Analysis.CompactExhaustion",
+        "Preiss.Density.UpperBallSets",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.CompactExhaustion",
+        "Preiss.Density.UpperBallSets",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "nodes": [
+        "lem:compact-two-sided-general"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.CompactExhaustion",
+        "Preiss.Density.UpperBallSets",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided",
+        "Preiss.Rectifiability.WeakApproximation.Uniformization"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Rectifiability.WeakApproximation.Defs",
       "file": "Preiss/Rectifiability/WeakApproximation/Defs.lean",
       "current_source_imports": [
@@ -2405,6 +2578,30 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Rectifiability.WeakApproximation.Restriction interfaces."
+    },
+    {
+      "module": "Preiss.Rectifiability.WeakApproximation.TwoSided",
+      "file": "Preiss/Rectifiability/WeakApproximation/TwoSided.lean",
+      "purpose": "Reusable Rectifiability.WeakApproximation.TwoSided interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Measure.Basic",
+        "Preiss.Geometry.Cones"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Basic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.Cones"
+      ],
+      "nodes": [
+        "def:two-sided-approximation"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.Cones"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Rectifiability.WeakApproximation.Uniformization",
@@ -2800,16 +2997,20 @@
       "module": "Preiss.Tangent.FlatApproximation",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "current_source_imports": [
+        "Preiss.Analysis.Vague.CompactMass",
         "Preiss.Geometry.Cones",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneRegularity",
         "Preiss.Rectifiability.WeakApproximation.Defs",
         "Preiss.Tangent.Compactness"
       ],
       "local_imports": [
+        "Preiss.Analysis.Vague.CompactMass",
         "Preiss.Geometry.Cones",
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneRegularity",
         "Preiss.Rectifiability.WeakApproximation.Defs",
         "Preiss.Tangent.Compactness",
         "Preiss.Tangent.Extraction"
@@ -2817,7 +3018,9 @@
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.Vague.CompactMass",
         "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneRegularity",
         "Preiss.Rectifiability.WeakApproximation.Defs",
         "Preiss.Tangent.Extraction"
       ],
@@ -2992,15 +3195,21 @@
       "module": "Preiss.Tangent.ScalingOrbit",
       "file": "Preiss/Tangent/ScalingOrbit.lean",
       "current_source_imports": [
+        "Preiss.Analysis.ProperMeasureTransport",
+        "Preiss.Analysis.Vague.Map",
+        "Preiss.Analysis.Vague.Support",
         "Preiss.Tangent.Defs",
         "Preiss.Uniform.Compactness",
         "Preiss.Uniform.Defs"
       ],
       "local_imports": [
+        "Preiss.Analysis.ProperMeasureTransport",
+        "Preiss.Analysis.Vague.Map",
         "Preiss.Analysis.Vague.Metrization",
         "Preiss.Analysis.Vague.Support",
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup",
+        "Preiss.Tangent.BlowupSupport",
         "Preiss.Tangent.Continuity",
         "Preiss.Tangent.Defs",
         "Preiss.Uniform.Compactness",
@@ -3010,10 +3219,13 @@
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.ProperMeasureTransport",
+        "Preiss.Analysis.Vague.Map",
         "Preiss.Analysis.Vague.Metrization",
         "Preiss.Analysis.Vague.Support",
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup",
+        "Preiss.Tangent.BlowupSupport",
         "Preiss.Tangent.Continuity",
         "Preiss.Uniform.Compactness",
         "Preiss.Uniform.Scaling"
@@ -4087,12 +4299,16 @@
       "file": "Preiss/Uniform/MomentEstimates.lean",
       "current_source_imports": [
         "Mathlib.Topology.Algebra.InfiniteSum.Real",
+        "Preiss.Analysis.GaussianBallPowerParameter",
         "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianWeight",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentForms"
       ],
       "local_imports": [
+        "Preiss.Analysis.GaussianBallPowerParameter",
         "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianWeight",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentForms",
         "Preiss.Uniform.Radial"
@@ -4102,7 +4318,9 @@
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.GaussianBallPowerParameter",
         "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.GaussianWeight",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentForms",
         "Preiss.Uniform.Radial"
@@ -4540,9 +4758,11 @@
       "file": "Preiss/Uniform/Transport.lean",
       "current_source_imports": [
         "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Preiss.Analysis.ProperMeasureTransport",
         "Preiss.Uniform.Scaling"
       ],
       "local_imports": [
+        "Preiss.Analysis.ProperMeasureTransport",
         "Preiss.Geometry.Planes",
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup",
@@ -4553,6 +4773,7 @@
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.ProperMeasureTransport",
         "Preiss.Geometry.Planes",
         "Preiss.Tangent.Algebra",
         "Preiss.Tangent.Blowup",
@@ -4586,7 +4807,9 @@
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.MovingSets",
     "Preiss.Analysis.OrthonormalProjection",
+    "Preiss.Analysis.ProperMeasureTransport",
     "Preiss.Analysis.SequentialLimits",
+    "Preiss.Analysis.Vague.Map",
     "Preiss.Analysis.Vague.ScalarLimits",
     "Preiss.Density.Limits",
     "Preiss.Density.Atoms",
@@ -4596,6 +4819,7 @@
     "Preiss.Analysis.GaussianBallPowerParameter",
     "Preiss.Analysis.GaussianMoments",
     "Preiss.Analysis.GaussianGrowth",
+    "Preiss.Analysis.Vague.CompactMass",
     "Preiss.Analysis.Vague.CompactTests",
     "Preiss.Analysis.Vague.Support",
     "Preiss.Density.Defs",
@@ -4635,6 +4859,7 @@
     "Preiss.Analysis.GaussianFeatures",
     "Preiss.Analysis.GaussianMomentDetermination",
     "Preiss.Density.HausdorffComparison",
+    "Preiss.Geometry.PlaneRegularity",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Geometry.Cones",
     "Preiss.Geometry.Cylinders",
@@ -4658,6 +4883,7 @@
     "Preiss.Uniform.MomentCovariance",
     "Preiss.Density.FinitePieces",
     "Preiss.Rectifiability.ProjectionEstimate",
+    "Preiss.Rectifiability.WeakApproximation.TwoSided",
     "Preiss.Uniform.FlatnessMinimum",
     "Preiss.Rectifiability.WeakApproximation.Restriction",
     "Preiss.Rectifiability.DensityRepresentation",
@@ -4695,25 +4921,27 @@
     "Preiss.Tangent.Recentering",
     "Preiss.Uniform.DimensionReduction",
     "Preiss.Uniform.MomentExpansion",
-    "Preiss.Rectifiability.MarstrandMattila.Packing",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
+    "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
     "Preiss.Rectifiability.TangentNecessity",
     "Preiss.Uniform.FlatPseudotangent",
     "Preiss.Uniform.BlowdownMoments",
     "Preiss.Uniform.ConicalMoments",
     "Preiss.Uniform.FlatAtInfinity.Basic",
     "Preiss.Uniform.MomentTrace",
-    "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+    "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
     "Preiss.Theorem.PartA",
     "Preiss.Uniform.TangentAtInfinity",
     "Preiss.Uniform.ConicalGap",
     "Preiss.Uniform.FlatAtInfinity.TraceData",
-    "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+    "Preiss.Rectifiability.MarstrandMattila.Packing",
     "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
     "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-    "Preiss.Rectifiability.TangentCharacterization",
+    "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
     "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+    "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
     "Preiss.Uniform.TraceRigidity",
+    "Preiss.Rectifiability.TangentCharacterization",
     "Preiss.Uniform.FlatAtInfinity.Rigidity",
     "Preiss.Theorem.FirstCrossing",
     "Preiss.Theorem.PartB",
@@ -4727,6 +4955,7 @@
     "Preiss.Analysis.CountableCoordinateMetric",
     "Preiss.Analysis.DenseCompactTests",
     "Preiss.Analysis.GaussianBallPower",
+    "Preiss.Analysis.GaussianBallPowerParameter",
     "Preiss.Analysis.GaussianDerivatives",
     "Preiss.Analysis.GaussianFeatures",
     "Preiss.Analysis.GaussianGrowth",
@@ -4747,10 +4976,13 @@
     "Preiss.Analysis.MovingSets",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PolynomialFeatures",
+    "Preiss.Analysis.ProperMeasureTransport",
     "Preiss.Analysis.SequentialLimits",
     "Preiss.Analysis.SpectralOptimization",
+    "Preiss.Analysis.Vague.CompactMass",
     "Preiss.Analysis.Vague.CompactTests",
     "Preiss.Analysis.Vague.DeterminingTests",
+    "Preiss.Analysis.Vague.Map",
     "Preiss.Analysis.Vague.Metrization",
     "Preiss.Analysis.Vague.ProjectionEnergy",
     "Preiss.Analysis.Vague.ScalarLimits",
@@ -4776,6 +5008,7 @@
     "Preiss.Geometry.FlatMeasure",
     "Preiss.Geometry.LipschitzExtension",
     "Preiss.Geometry.PlaneMeasure",
+    "Preiss.Geometry.PlaneRegularity",
     "Preiss.Geometry.PlaneTopology",
     "Preiss.Geometry.Planes",
     "Preiss.Geometry.Projections",
@@ -4788,6 +5021,7 @@
     "Preiss.Rectifiability.EuclideanCarrier",
     "Preiss.Rectifiability.GraphDefs",
     "Preiss.Rectifiability.Graphs",
+    "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
     "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
     "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
     "Preiss.Rectifiability.MarstrandMattila.Packing",
@@ -4796,9 +5030,11 @@
     "Preiss.Rectifiability.ProjectionEstimate",
     "Preiss.Rectifiability.PurelyUnrectifiable",
     "Preiss.Rectifiability.WeakApproximation.Basic",
+    "Preiss.Rectifiability.WeakApproximation.CompactGeometry",
     "Preiss.Rectifiability.WeakApproximation.Defs",
     "Preiss.Rectifiability.WeakApproximation.Density",
     "Preiss.Rectifiability.WeakApproximation.Restriction",
+    "Preiss.Rectifiability.WeakApproximation.TwoSided",
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
     "Preiss.Rectifiability.Zero",
     "Preiss.Tangent.Algebra",

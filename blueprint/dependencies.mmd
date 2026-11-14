@@ -320,6 +320,17 @@ flowchart LR
   lem_radius_power_density["Radius-power limits from diameter-normalized densities"]
   lem_gaussian_feature_integrability["Gaussian integrability of polynomial feature kernels"]
   lem_gaussian_ball_power_parameter["Gaussian integral from a centered ball law at arbitrary scale"]
+  lem_closed_map_support["Support under continuous closed maps"]
+  lem_closed_map_outer_regularity["Outer regularity under continuous closed maps"]
+  lem_proper_map_regularity["Regularity under proper maps"]
+  lem_vague_cocompact_pushforward["Vague convergence under cocompact and proper maps"]
+  lem_flat_measure_regularity["Flat-measure regularity and positive plane-ball mass"]
+  lem_vague_compact_null_mass["Vanishing mass on compact null sets"]
+  lem_vague_uniform_ball_lower["Uniform lower ball mass on compact sets"]
+  def_two_sided_approximation["A common-plane two-sided approximation predicate"]
+  lem_compact_two_sided_general["Compact two-sided approximation from uniform lower mass"]
+  lem_gaussian_power_envelope["A scalar Gaussian envelope for polynomial growth"]
+  lem_integrated_gaussian_exponential_series["Integrated exponential series under a Gaussian weight"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -534,9 +545,13 @@ flowchart LR
   def_dimensional_blowup --> def_tangent_at_infinity
   gmt_vague --> def_tangent_at_infinity
   gmt_portmanteau --> lem_flat_limit_tube
+  lem_flat_measure_regularity --> lem_flat_limit_tube
   lem_plane_hausdorff --> lem_flat_limit_tube
+  lem_vague_compact_null_mass --> lem_flat_limit_tube
   gmt_portmanteau --> lem_flat_limit_moving_balls
+  lem_flat_measure_regularity --> lem_flat_limit_moving_balls
   lem_plane_hausdorff --> lem_flat_limit_moving_balls
+  lem_vague_uniform_ball_lower --> lem_flat_limit_moving_balls
   gmt_density_bounds --> lem_dimensional_compactness
   lem_dimensional_extraction_ball_bounds --> lem_dimensional_compactness
   def_dimensional_blowup --> lem_blowup_composition
@@ -576,8 +591,12 @@ flowchart LR
   lem_vague_moving_blowups --> lem_dimensional_tangent_dilation
   def_dimensional_blowup --> lem_pseudotangent_transitive
   lem_blowup_composition --> lem_pseudotangent_transitive
+  lem_closed_map_support --> lem_pseudotangent_transitive
+  lem_dimensional_blowup_support --> lem_pseudotangent_transitive
+  lem_proper_map_regularity --> lem_pseudotangent_transitive
   lem_uniform_scaling --> lem_pseudotangent_transitive
   lem_uniform_vague_closed --> lem_pseudotangent_transitive
+  lem_vague_cocompact_pushforward --> lem_pseudotangent_transitive
   lem_vague_diagonal --> lem_pseudotangent_transitive
   lem_vague_moving_blowups --> lem_pseudotangent_transitive
   lem_vague_support_approximation --> lem_pseudotangent_transitive
@@ -640,8 +659,11 @@ flowchart LR
   lem_finite_pieces --> lem_finite_piece_transfer
   mathlib_besicovitch_differentiation --> lem_finite_piece_transfer
   thm_matching --> lem_finite_piece_transfer
+  def_two_sided_approximation --> lem_nested_compact_approximation
   gmt_density_points --> lem_nested_compact_approximation
   lem_closed_upper_ball_bound_sets --> lem_nested_compact_approximation
+  lem_compact_measurable_exhaustion --> lem_nested_compact_approximation
+  lem_compact_two_sided_general --> lem_nested_compact_approximation
   lem_tube_support_upgrade --> lem_nested_compact_approximation
   lem_uniform_compact_selection --> lem_nested_compact_approximation
   lem_weak_approximation_restrict_ae --> lem_nested_compact_approximation
@@ -738,6 +760,8 @@ flowchart LR
   lem_moment_kernel_calculus --> lem_moment_covariance
   def_moments --> lem_moment_norm_bound
   def_unit_uniform --> lem_moment_norm_bound
+  lem_gaussian_ball_power_parameter --> lem_moment_norm_bound
+  lem_gaussian_power_envelope --> lem_moment_norm_bound
   lem_moment_form_evaluation --> lem_moment_norm_bound
   lem_moment_kernel_calculus --> lem_moment_norm_bound
   lem_radial --> lem_moment_norm_bound
@@ -748,7 +772,9 @@ flowchart LR
   lem_radial --> lem_homogeneous_energy_radial
   def_moments --> lem_gaussian_translation_series
   def_unit_uniform --> lem_gaussian_translation_series
+  lem_gaussian_ball_power_parameter --> lem_gaussian_translation_series
   lem_gaussian_polynomial_integrable --> lem_gaussian_translation_series
+  lem_integrated_gaussian_exponential_series --> lem_gaussian_translation_series
   lem_moment_form_evaluation --> lem_gaussian_translation_series
   lem_moment_norm_bound --> lem_gaussian_translation_series
   lem_radial --> lem_gaussian_translation_series
@@ -802,6 +828,8 @@ flowchart LR
   def_uniform_constant --> lem_hyperplane_transport_map
   gmt_hyperplane_transport --> lem_hyperplane_transport_map
   lem_blowup_composition --> lem_hyperplane_transport_map
+  lem_closed_map_support --> lem_hyperplane_transport_map
+  lem_proper_map_regularity --> lem_hyperplane_transport_map
   def_unit_uniform --> lem_uniform_compactness
   lem_uniform_vague_closed --> lem_uniform_compactness
   thm_compactness --> lem_uniform_compactness
@@ -1284,3 +1312,16 @@ flowchart LR
   def_polynomial_feature --> lem_gaussian_feature_integrability
   lem_gaussian_polynomial_integrable --> lem_gaussian_feature_integrability
   lem_gaussian_ball_power --> lem_gaussian_ball_power_parameter
+  lem_closed_map_outer_regularity --> lem_proper_map_regularity
+  gmt_vague --> lem_vague_cocompact_pushforward
+  lem_plane_hausdorff --> lem_flat_measure_regularity
+  gmt_portmanteau --> lem_vague_compact_null_mass
+  gmt_portmanteau --> lem_vague_uniform_ball_lower
+  def_cone --> def_two_sided_approximation
+  def_two_sided_approximation --> lem_compact_two_sided_general
+  lem_closed_upper_ball_bound_sets --> lem_compact_two_sided_general
+  lem_closed_weak_approximation_good_set --> lem_compact_two_sided_general
+  lem_compact_measurable_exhaustion --> lem_compact_two_sided_general
+  lem_tube_support_upgrade --> lem_compact_two_sided_general
+  lem_weak_approximation_good_exhaustion --> lem_compact_two_sided_general
+  lem_gaussian_weight_exponential --> lem_integrated_gaussian_exponential_series

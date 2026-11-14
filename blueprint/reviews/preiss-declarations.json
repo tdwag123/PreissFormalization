@@ -284,7 +284,8 @@
         "Preiss.IsUniformPseudotangent",
         "Preiss.uniformPseudotangent_isUnitUniform",
         "Preiss.uniformPseudotangent_trans",
-        "Preiss.uniformPseudotangent_map_linearIsometry"
+        "Preiss.uniformPseudotangent_map_linearIsometry",
+        "Preiss.uniformPseudotangent_trans_of_regular"
       ],
       "planned_lean_names": [
         "Preiss.IsUniformPseudotangent",
@@ -508,7 +509,8 @@
         "Preiss.integrable_gaussianMomentKernel",
         "Preiss.norm_gaussianMomentForm_le",
         "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
-        "Preiss.integrable_gaussianMomentKernel_of_integrable_norm"
+        "Preiss.integrable_gaussianMomentKernel_of_integrable_norm",
+        "Preiss.gaussianMass_unitUniform"
       ],
       "planned_lean_names": [
         "Preiss.integrable_gaussianMomentKernel",
@@ -524,7 +526,9 @@
     },
     "lem:gaussian-translation-series": {
       "lean_names": [
-        "Preiss.hasSum_gaussianMoment_diagonal"
+        "Preiss.hasSum_gaussianMoment_diagonal",
+        "Preiss.integral_gaussian_center_unitUniform",
+        "Preiss.integral_gaussian_exp_inner_unitUniform"
       ],
       "planned_lean_names": [
         "Preiss.hasSum_gaussianMoment_diagonal"
@@ -1613,7 +1617,9 @@
     "lem:gaussian-weight-exponential": {
       "lean_names": [
         "Preiss.integrable_exp_inner_mul_gaussian",
-        "Preiss.integrable_exp_inner_withDensity_gaussian"
+        "Preiss.integrable_exp_inner_withDensity_gaussian",
+        "Preiss.integrable_exp_inner_mul_gaussian_parameter",
+        "Preiss.integrable_exp_abs_inner_mul_gaussian_parameter"
       ],
       "status": "additional concrete data or source interface",
       "files": [
@@ -2080,7 +2086,8 @@
     },
     "lem:compact-measurable-exhaustion": {
       "lean_names": [
-        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion",
+        "Preiss.exists_pos_compact_subset_of_ae_mem_iUnion"
       ],
       "planned_lean_names": [
         "Preiss.exists_compact_subset_of_ae_mem_iUnion"

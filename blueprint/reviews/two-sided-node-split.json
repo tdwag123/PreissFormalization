@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "purpose": "Keep the concrete geometric predicate independent of the Hausdorff specialization.",
+  "nodes": [
+    {
+      "id": "def:two-sided-approximation",
+      "lean_names": [
+        "Preiss.TwoSidedApproximation"
+      ],
+      "deps": [
+        "def:cone"
+      ]
+    },
+    {
+      "id": "lem:nested-compact-approximation",
+      "lean_names": [
+        "Preiss.exists_nested_compact_twoSided_approximation"
+      ],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:compact-two-sided-general"
+      ]
+    }
+  ]
+}

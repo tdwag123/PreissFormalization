@@ -1,0 +1,14 @@
+{
+  "existing_node_additional_deps": {
+    "lem:pseudotangent-transitive": [
+      "lem:closed-map-support",
+      "lem:proper-map-regularity",
+      "lem:vague-cocompact-pushforward",
+      "lem:vague-support-approximation",
+      "lem:vague-moving-blowups",
+      "lem:blowup-composition",
+      "lem:dimensional-blowup-support",
+      "lem:vague-diagonal"
+    ]
+  }
+}

@@ -973,7 +973,8 @@
       "definition_dependencies": [],
       "deps": [],
       "lean_names": [
-        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion",
+        "Preiss.exists_pos_compact_subset_of_ae_mem_iUnion"
       ],
       "file": "Preiss/Analysis/CompactExhaustion.lean",
       "used_by": [
@@ -1530,17 +1531,217 @@
       "id": "lem:gaussian-ball-power-parameter",
       "kind": "lemma",
       "title": "Gaussian integral from a centered ball law at arbitrary scale",
-      "statement_tex": "Let $\\mu$ be an s-finite Borel measure on a real normed space with $\\mu(\\overline B(0,r))=Cr^d$ for $r>0$, where $C\\geq0$ and $d>0$. For every $s>0$, the function $e^{-s\\lVert z\\rVert^2}$ is integrable and its integral is $C\\Gamma(d/2+1)s^{-d/2}$.",
+      "statement_tex": "Let $\\mu$ be an s-finite Borel measure on a real normed space with $\\mu(\\overline B(0,r))=Cr^d$ for $r>0$, where $C\\geq0$ and $d>0$. For every $s>0$, the function $e^{-s\\lVert z\\rVert^2}$ is integrable and its integral is $C\\Gamma(d/2+1)s^{-d/2}$. The same conclusion holds with $\\lVert z-x\\rVert$ and centered ball law $\\mu(\\overline B(x,r))=Cr^d$ at any center $x$.",
       "definition_dependencies": [],
       "deps": [
         "lem:gaussian-ball-power"
       ],
       "lean_names": [
-        "Preiss.integral_gaussian_parameter_of_closedBall_power"
+        "Preiss.integral_gaussian_parameter_of_closedBall_power",
+        "Preiss.integral_gaussian_center_parameter_of_closedBall_power"
       ],
       "file": "Preiss/Analysis/GaussianBallPowerParameter.lean",
       "proof_sketch_tex": "Push the measure forward under multiplication by $\\sqrt{s}$. Its centered ball law has coefficient $Cs^{-d/2}$. Apply the unit-parameter formula and the change-of-variables formula for the Bochner integral.",
-      "verification": "Exact-source parameter lemma passed local Lean and #print axioms with standard axioms only. Full canonical module build pending."
+      "verification": "Exact-source parameter lemma passed local Lean and #print axioms with standard axioms only. Full canonical module build pending.",
+      "used_by": [
+        "lem:moment-norm-bound"
+      ]
+    },
+    {
+      "id": "lem:closed-map-support",
+      "kind": "lemma",
+      "title": "Support under continuous closed maps",
+      "lean_names": [
+        "Preiss.measure_support_map_of_continuous_of_isClosedMap"
+      ],
+      "file": "Preiss/Analysis/ProperMeasureTransport.lean",
+      "statement_tex": "For a regular Borel measure $\\mu$ and a continuous closed map $f$, the support of $f_*\\mu$ is $f(\\operatorname{supp}\\mu)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:hyperplane-transport-map"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:closed-map-outer-regularity",
+      "kind": "lemma",
+      "title": "Outer regularity under continuous closed maps",
+      "lean_names": [
+        "Preiss.outerRegular_map_of_continuous_of_isClosedMap"
+      ],
+      "file": "Preiss/Analysis/ProperMeasureTransport.lean",
+      "statement_tex": "A continuous closed map pushes an outer regular Borel measure forward to an outer regular Borel measure.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:proper-map-regularity",
+      "kind": "lemma",
+      "title": "Regularity under proper maps",
+      "lean_names": [
+        "Preiss.regular_map_of_isProperMap"
+      ],
+      "file": "Preiss/Analysis/ProperMeasureTransport.lean",
+      "statement_tex": "A proper map into a Hausdorff Borel space pushes a regular measure forward to a regular measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:closed-map-outer-regularity"
+      ],
+      "used_by": [
+        "lem:hyperplane-transport-map"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:vague-cocompact-pushforward",
+      "kind": "lemma",
+      "title": "Vague convergence under cocompact and proper maps",
+      "lean_names": [
+        "Preiss.weaklyConverges_map_cocompact",
+        "Preiss.weaklyConverges_map_of_isProperMap"
+      ],
+      "file": "Preiss/Analysis/Vague/Map.lean",
+      "statement_tex": "Vague convergence is preserved by pushforward along a continuous cocompact map, and hence along a proper map. No regularity hypothesis is required for this test-function identity.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:vague"
+      ],
+      "used_by": [],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:flat-measure-regularity",
+      "kind": "lemma",
+      "title": "Flat-measure regularity and positive plane-ball mass",
+      "lean_names": [
+        "Preiss.regular_flatOn",
+        "Preiss.flatOn_ball_pos"
+      ],
+      "file": "Preiss/Geometry/PlaneRegularity.lean",
+      "statement_tex": "For every $m$-plane $V$, including $m=0$, $c\\mathcal H^m\\!\\restriction V$ is regular when $c<\\infty$. When $c>0$, every positive-radius ball centered in $V$ has positive measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [
+        "lem:flat-limit-tube",
+        "lem:flat-limit-moving-balls"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:vague-compact-null-mass",
+      "kind": "lemma",
+      "title": "Vanishing mass on compact null sets",
+      "lean_names": [
+        "Preiss.tendsto_mass_compact_null_of_vague"
+      ],
+      "file": "Preiss/Analysis/Vague/CompactMass.lean",
+      "statement_tex": "If regular Euclidean measures $\\nu_i$ converge vaguely to a regular $\\mu$ and $K$ is compact with $\\mu(K)=0$, then $\\nu_i(K)\\to0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "used_by": [
+        "lem:flat-limit-tube"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:vague-uniform-ball-lower",
+      "kind": "lemma",
+      "title": "Uniform lower ball mass on compact sets",
+      "lean_names": [
+        "Preiss.eventually_uniform_ball_mass_lower_bound_of_vague"
+      ],
+      "file": "Preiss/Analysis/Vague/CompactMass.lean",
+      "statement_tex": "Let regular Euclidean measures $\\nu_i$ converge vaguely to a regular $\\mu$. If $K$ is compact, $\\eta>0$, and $\\mu(B(z,\\eta/2))>0$ for every $z\\in K$, then there exists $a>0$ such that eventually $\\nu_i(B(z,\\eta))\\ge a$ simultaneously for every $z\\in K$.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "used_by": [
+        "lem:flat-limit-moving-balls"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "def:two-sided-approximation",
+      "kind": "definition",
+      "title": "A common-plane two-sided approximation predicate",
+      "lean_names": [
+        "Preiss.TwoSidedApproximation"
+      ],
+      "file": "Preiss/Rectifiability/WeakApproximation/TwoSided.lean",
+      "statement_tex": "The set $F$ is nonempty. At each $a\\in G$ and scale $0<r<R$, a single $m$-plane gives tube containment of $F\\cap B(a,2r)$, distance less than $\\eta r$ from its points in $B(a,r)$ to $F$, and a $\\gamma(\\eta r)^m$ lower bound for the corresponding ball masses.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:cone"
+      ],
+      "used_by": [],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:compact-two-sided-general",
+      "kind": "lemma",
+      "title": "Compact two-sided approximation from uniform lower mass",
+      "lean_names": [
+        "Preiss.exists_compact_twoSided_approximation_of_uniform_lower_bound"
+      ],
+      "file": "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean",
+      "statement_tex": "For a finite regular measure and a positive-measure compact $F$ with uniform lower ball bounds, assume weak linear approximation for $\\mu\\restriction F$ almost everywhere and arbitrarily small local upper ball bounds for $\\mu\\restriction F^c$ almost everywhere on $F$. For every $0<\\eta<1$, there is a positive-measure compact $G\\subseteq F$ with common-plane two-sided approximation at uniform positive scales and constants.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:closed-weak-approximation-good-set",
+        "lem:weak-approximation-good-exhaustion",
+        "lem:closed-upper-ball-bound-sets",
+        "lem:compact-measurable-exhaustion",
+        "lem:tube-support-upgrade"
+      ],
+      "used_by": [
+        "lem:nested-compact-approximation"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:gaussian-power-envelope",
+      "kind": "lemma",
+      "title": "A scalar Gaussian envelope for polynomial growth",
+      "lean_names": [
+        "Preiss.pow_mul_gaussian_half_le"
+      ],
+      "file": "Preiss/Analysis/GaussianBallPowerParameter.lean",
+      "statement_tex": "For $r\\geq0$, $s>0$ and integer $k>0$, $r^k e^{-sr^2/2}\\leq(k/s)^{k/2}$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:moment-norm-bound"
+      ],
+      "proof_sketch_tex": "Set $t=sr^2/k$ and use $te^{-t}\\leq1$, then raise to the positive exponent $k/2$.",
+      "verification": "Exact source checked locally with standard axioms; full canonical integration pending."
+    },
+    {
+      "id": "lem:integrated-gaussian-exponential-series",
+      "kind": "lemma",
+      "title": "Integrated exponential series under a Gaussian weight",
+      "lean_names": [
+        "Preiss.hasSum_integral_gaussian_exp_inner"
+      ],
+      "file": "Preiss/Analysis/GaussianWeight.lean",
+      "statement_tex": "For a Euclidean measure with polynomial ball growth, every $s>0$, $t\\in\\mathbb R$ and vector $w$, the series of Gaussian-weighted moments $(t^k/k!)\\int\\langle z,w\\rangle^k e^{-s\\lVert z\\rVert^2}\\,d\\mu$ converges absolutely to $\\int e^{t\\langle z,w\\rangle}e^{-s\\lVert z\\rVert^2}\\,d\\mu$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-weight-exponential"
+      ],
+      "used_by": [
+        "lem:gaussian-translation-series"
+      ],
+      "proof_sketch_tex": "Apply the dominated integral-of-series theorem using the integrable absolute exponential times the Gaussian weight.",
+      "verification": "Local exact-source Lean check passed with only standard foundations. Full canonical integration pending."
     }
   ],
   "definition_edge_additions": {

@@ -2018,7 +2018,9 @@
       "proof_tex": "",
       "deps": [
         "gmt:portmanteau",
-        "lem:plane-hausdorff"
+        "lem:flat-measure-regularity",
+        "lem:plane-hausdorff",
+        "lem:vague-compact-null-mass"
       ],
       "lean_names": [
         "Preiss.tendsto_mass_outside_tube_of_flat_limit"
@@ -2044,7 +2046,9 @@
       "proof_tex": "",
       "deps": [
         "gmt:portmanteau",
-        "lem:plane-hausdorff"
+        "lem:flat-measure-regularity",
+        "lem:plane-hausdorff",
+        "lem:vague-uniform-ball-lower"
       ],
       "lean_names": [
         "Preiss.eventually_ball_mass_lower_bound_of_flat_limit"
@@ -2346,8 +2350,12 @@
       "deps": [
         "def:dimensional-blowup",
         "lem:blowup-composition",
+        "lem:closed-map-support",
+        "lem:dimensional-blowup-support",
+        "lem:proper-map-regularity",
         "lem:uniform-scaling",
         "lem:uniform-vague-closed",
+        "lem:vague-cocompact-pushforward",
         "lem:vague-diagonal",
         "lem:vague-moving-blowups",
         "lem:vague-support-approximation"
@@ -2356,7 +2364,8 @@
         "Preiss.IsUniformPseudotangent",
         "Preiss.uniformPseudotangent_isUnitUniform",
         "Preiss.uniformPseudotangent_map_linearIsometry",
-        "Preiss.uniformPseudotangent_trans"
+        "Preiss.uniformPseudotangent_trans",
+        "Preiss.uniformPseudotangent_trans_of_regular"
       ],
       "proposed_lean_name": "Preiss.uniformPseudotangent_trans",
       "proposed_file": "Preiss/Tangent/ScalingOrbit.lean",
@@ -2839,18 +2848,20 @@
       "hypotheses_tex": "The Borel set \\(E\\) has positive finite \\(\\mathcal H^m\\)-measure and is weakly linearly approximable almost everywhere. Choose the lower constant \\(\\delta\\) first, then a sufficiently small \\(\\eta\\), then the remaining constants.",
       "proof_tex": "",
       "deps": [
+        "def:two-sided-approximation",
         "gmt:density-points",
         "lem:closed-upper-ball-bound-sets",
+        "lem:compact-measurable-exhaustion",
+        "lem:compact-two-sided-general",
         "lem:tube-support-upgrade",
         "lem:uniform-compact-selection",
         "lem:weak-approximation-restrict-ae"
       ],
       "lean_names": [
-        "Preiss.TwoSidedApproximation",
         "Preiss.exists_nested_compact_twoSided_approximation"
       ],
       "proposed_lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
-      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/CompactSelection.lean",
       "scope": "core",
       "branch": "Rectifiability",
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
@@ -2858,7 +2869,7 @@
       "note": "Preserve parameter order δ then η then γ then t.",
       "role": "Preiss proof",
       "source_files": [
-        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+        "Preiss/Rectifiability/MarstrandMattila/CompactSelection.lean"
       ]
     },
     {
@@ -3836,12 +3847,15 @@
       "deps": [
         "def:moments",
         "def:unit-uniform",
+        "lem:gaussian-ball-power-parameter",
+        "lem:gaussian-power-envelope",
         "lem:moment-form-evaluation",
         "lem:moment-kernel-calculus",
         "lem:radial"
       ],
       "lean_names": [
         "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
+        "Preiss.gaussianMass_unitUniform",
         "Preiss.integrable_gaussianMomentKernel",
         "Preiss.integrable_gaussianMomentKernel_of_integrable_norm",
         "Preiss.norm_gaussianMomentForm_le"
@@ -3899,13 +3913,17 @@
       "deps": [
         "def:moments",
         "def:unit-uniform",
+        "lem:gaussian-ball-power-parameter",
         "lem:gaussian-polynomial-integrable",
+        "lem:integrated-gaussian-exponential-series",
         "lem:moment-form-evaluation",
         "lem:moment-norm-bound",
         "lem:radial"
       ],
       "lean_names": [
-        "Preiss.hasSum_gaussianMoment_diagonal"
+        "Preiss.hasSum_gaussianMoment_diagonal",
+        "Preiss.integral_gaussian_center_unitUniform",
+        "Preiss.integral_gaussian_exp_inner_unitUniform"
       ],
       "proposed_lean_name": "Preiss.hasSum_gaussianMoment_diagonal",
       "proposed_file": "Preiss/Uniform/MomentEstimates.lean",
@@ -4178,7 +4196,9 @@
         "def:plane",
         "def:uniform-constant",
         "gmt:hyperplane-transport",
-        "lem:blowup-composition"
+        "lem:blowup-composition",
+        "lem:closed-map-support",
+        "lem:proper-map-regularity"
       ],
       "lean_names": [
         "Preiss.isUnitUniform_map_linearIsometry",
@@ -6617,7 +6637,9 @@
       "title": "Every projection has all exponential moments after Gaussian weighting",
       "branch": "Reusable proof infrastructure",
       "lean_names": [
+        "Preiss.integrable_exp_abs_inner_mul_gaussian_parameter",
         "Preiss.integrable_exp_inner_mul_gaussian",
+        "Preiss.integrable_exp_inner_mul_gaussian_parameter",
         "Preiss.integrable_exp_inner_withDensity_gaussian"
       ],
       "deps": [
@@ -6911,7 +6933,8 @@
       "title": "Compact approximation inside an increasing measurable exhaustion",
       "branch": "Reusable proof infrastructure",
       "lean_names": [
-        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion",
+        "Preiss.exists_pos_compact_subset_of_ae_mem_iUnion"
       ],
       "deps": [],
       "role": "Preiss proof",
@@ -7369,16 +7392,205 @@
       "title": "Gaussian integral from a centered ball law at arbitrary scale",
       "branch": "Reusable proof infrastructure",
       "lean_names": [
+        "Preiss.integral_gaussian_center_parameter_of_closedBall_power",
         "Preiss.integral_gaussian_parameter_of_closedBall_power"
       ],
       "deps": [
         "lem:gaussian-ball-power"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianBallPowerParameter.lean"
       ],
       "proposed_file": "Preiss/Analysis/GaussianBallPowerParameter.lean"
+    },
+    {
+      "id": "lem:closed-map-support",
+      "kind": "lemma",
+      "title": "Support under continuous closed maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_support_map_of_continuous_of_isClosedMap"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/ProperMeasureTransport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ProperMeasureTransport.lean"
+    },
+    {
+      "id": "lem:closed-map-outer-regularity",
+      "kind": "lemma",
+      "title": "Outer regularity under continuous closed maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.outerRegular_map_of_continuous_of_isClosedMap"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/ProperMeasureTransport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ProperMeasureTransport.lean"
+    },
+    {
+      "id": "lem:proper-map-regularity",
+      "kind": "lemma",
+      "title": "Regularity under proper maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.regular_map_of_isProperMap"
+      ],
+      "deps": [
+        "lem:closed-map-outer-regularity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/ProperMeasureTransport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ProperMeasureTransport.lean"
+    },
+    {
+      "id": "lem:vague-cocompact-pushforward",
+      "kind": "lemma",
+      "title": "Vague convergence under cocompact and proper maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.weaklyConverges_map_cocompact",
+        "Preiss.weaklyConverges_map_of_isProperMap"
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Map.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/Map.lean"
+    },
+    {
+      "id": "lem:flat-measure-regularity",
+      "kind": "lemma",
+      "title": "Flat-measure regularity and positive plane-ball mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatOn_ball_pos",
+        "Preiss.regular_flatOn"
+      ],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneRegularity.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneRegularity.lean"
+    },
+    {
+      "id": "lem:vague-compact-null-mass",
+      "kind": "lemma",
+      "title": "Vanishing mass on compact null sets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_mass_compact_null_of_vague"
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/CompactMass.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/CompactMass.lean"
+    },
+    {
+      "id": "lem:vague-uniform-ball-lower",
+      "kind": "lemma",
+      "title": "Uniform lower ball mass on compact sets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.eventually_uniform_ball_mass_lower_bound_of_vague"
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/CompactMass.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/CompactMass.lean"
+    },
+    {
+      "id": "def:two-sided-approximation",
+      "kind": "definition",
+      "title": "A common-plane two-sided approximation predicate",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.TwoSidedApproximation"
+      ],
+      "deps": [
+        "def:cone"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/TwoSided.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/TwoSided.lean"
+    },
+    {
+      "id": "lem:compact-two-sided-general",
+      "kind": "lemma",
+      "title": "Compact two-sided approximation from uniform lower mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_compact_twoSided_approximation_of_uniform_lower_bound"
+      ],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:closed-upper-ball-bound-sets",
+        "lem:closed-weak-approximation-good-set",
+        "lem:compact-measurable-exhaustion",
+        "lem:tube-support-upgrade",
+        "lem:weak-approximation-good-exhaustion"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean"
+    },
+    {
+      "id": "lem:gaussian-power-envelope",
+      "kind": "lemma",
+      "title": "A scalar Gaussian envelope for polynomial growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.pow_mul_gaussian_half_le"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBallPowerParameter.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBallPowerParameter.lean"
+    },
+    {
+      "id": "lem:integrated-gaussian-exponential-series",
+      "kind": "lemma",
+      "title": "Integrated exponential series under a Gaussian weight",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.hasSum_integral_gaussian_exp_inner"
+      ],
+      "deps": [
+        "lem:gaussian-weight-exponential"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianWeight.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianWeight.lean"
     }
   ],
   "preiss_core": [
@@ -7413,6 +7625,7 @@
     "def:rigidity-omega",
     "def:tangent-api",
     "def:tangent-at-infinity",
+    "def:two-sided-approximation",
     "def:uniform-api",
     "def:uniform-constant",
     "def:unit-uniform",
@@ -7464,10 +7677,13 @@
     "lem:blowup-composition",
     "lem:carrier-calculus",
     "lem:carrier-closure",
+    "lem:closed-map-outer-regularity",
+    "lem:closed-map-support",
     "lem:closed-upper-ball-bound-sets",
     "lem:closed-weak-approximation-good-set",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
+    "lem:compact-two-sided-general",
     "lem:complex-mgf-moment-determination",
     "lem:cone-graph",
     "lem:conical-covariance",
@@ -7511,6 +7727,7 @@
     "lem:flat-infinity-moments",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
+    "lem:flat-measure-regularity",
     "lem:flat-plane-blowup",
     "lem:flat-to-approximation",
     "lem:flatness-basic-nonneg",
@@ -7526,9 +7743,11 @@
     "lem:gaussian-annulus-integral",
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-ball-power",
+    "lem:gaussian-ball-power-parameter",
     "lem:gaussian-feature-integrability",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-polynomial-integrable",
+    "lem:gaussian-power-envelope",
     "lem:gaussian-projection-integrability",
     "lem:gaussian-quadratic-trace-bound",
     "lem:gaussian-tail-series-bound",
@@ -7551,6 +7770,7 @@
     "lem:hyperplane-transport-map",
     "lem:infinity-compactness",
     "lem:integral-operator-annihilation",
+    "lem:integrated-gaussian-exponential-series",
     "lem:iterated-derivative-id-product",
     "lem:lower-ball-hausdorff-bound",
     "lem:lower-ball-open-comparison",
@@ -7588,6 +7808,7 @@
     "lem:projection-distance",
     "lem:projection-energy-continuity",
     "lem:projection-hole-cover",
+    "lem:proper-map-regularity",
     "lem:pseudotangent-transitive",
     "lem:pure-basic",
     "lem:pure-cone-escape",
@@ -7634,6 +7855,8 @@
     "lem:uniform-scaling",
     "lem:uniform-vague-closed",
     "lem:unit-uniform-adapter",
+    "lem:vague-cocompact-pushforward",
+    "lem:vague-compact-null-mass",
     "lem:vague-countable-metric",
     "lem:vague-determining-tests",
     "lem:vague-diagonal",
@@ -7644,6 +7867,7 @@
     "lem:vague-scalar-limits",
     "lem:vague-support-approximation",
     "lem:vague-support-limit",
+    "lem:vague-uniform-ball-lower",
     "lem:vanishing-density-negligible-deletion",
     "lem:vanishing-density-scaled-balls",
     "lem:weak-approximation-deletion",
@@ -7689,6 +7913,7 @@
     "def:purely-unrectifiable",
     "def:rectifiable",
     "def:tangent-api",
+    "def:two-sided-approximation",
     "def:weak-approximation",
     "def:weak-approximation-good-set",
     "gmt:blowup",
@@ -7717,6 +7942,7 @@
     "lem:closed-weak-approximation-good-set",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
+    "lem:compact-two-sided-general",
     "lem:cone-graph",
     "lem:decomposition",
     "lem:density-bounds-good-set",
@@ -7733,6 +7959,7 @@
     "lem:finite-pieces",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
+    "lem:flat-measure-regularity",
     "lem:flat-to-approximation",
     "lem:full-rank-graph-pieces",
     "lem:general-tangent-scalar",
@@ -7771,9 +7998,11 @@
     "lem:tangent-ray-density-bounds",
     "lem:tube-support-upgrade",
     "lem:uniform-compact-selection",
+    "lem:vague-compact-null-mass",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
     "lem:vague-scalar-limits",
+    "lem:vague-uniform-ball-lower",
     "lem:vanishing-density-negligible-deletion",
     "lem:vanishing-density-scaled-balls",
     "lem:weak-approximation-deletion",

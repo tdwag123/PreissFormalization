@@ -952,7 +952,7 @@ A nonzero regular measure $\nu$ is a tangent at infinity of $\mu$ if $D^m_{0,r_i
 \begin{lemma}[Flat limit excludes persistent mass away from its plane]
 \label{lem:flat-limit-tube}
 \lean{Preiss.tendsto_mass_outside_tube_of_flat_limit}
-\uses{gmt:portmanteau, lem:plane-hausdorff}
+\uses{gmt:portmanteau, lem:plane-hausdorff, lem:flat-measure-regularity, lem:vague-compact-null-mass}
 All measures are regular, \(V\) is an \(m\)-plane, \(0<c<\infty\), and \(\eta>0\). Use the compact closure of the region.
 If \(\nu_j\rightharpoonup c\mathcal H^m\!\restriction V\), then the mass of any fixed bounded set separated by a positive distance from \(V\) tends to zero. In particular this applies to the region outside an \(\eta\)-tube inside a fixed ball.
 \end{lemma}
@@ -961,7 +961,7 @@ If \(\nu_j\rightharpoonup c\mathcal H^m\!\restriction V\), then the mass of any 
 \begin{lemma}[Flat limit gives lower mass in moving plane balls]
 \label{lem:flat-limit-moving-balls}
 \lean{Preiss.eventually_ball_mass_lower_bound_of_flat_limit}
-\uses{gmt:portmanteau, lem:plane-hausdorff}
+\uses{gmt:portmanteau, lem:plane-hausdorff, lem:flat-measure-regularity, lem:vague-uniform-ball-lower}
 
 
 
@@ -1253,8 +1253,8 @@ implements closure without assuming a topology on all raw measures.
 
 \begin{lemma}[Transitivity of the support-centered scaling orbit closure]
 \label{lem:pseudotangent-transitive}
-\lean{Preiss.IsUniformPseudotangent, Preiss.uniformPseudotangent_isUnitUniform, Preiss.uniformPseudotangent_trans, Preiss.uniformPseudotangent_map_linearIsometry}
-\uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation, lem:uniform-vague-closed, lem:uniform-scaling}
+\lean{Preiss.IsUniformPseudotangent, Preiss.uniformPseudotangent_isUnitUniform, Preiss.uniformPseudotangent_trans, Preiss.uniformPseudotangent_map_linearIsometry, Preiss.uniformPseudotangent_trans_of_regular}
+\uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation, lem:uniform-vague-closed, lem:uniform-scaling, lem:closed-map-support, lem:proper-map-regularity, lem:vague-cocompact-pushforward, lem:dimensional-blowup-support}
 
 
 
@@ -1719,8 +1719,8 @@ For each finite piece \(S_j\), the measure \(\nu_j=\mathcal H^m\!\restriction S_
 
 \begin{lemma}[Nested compact two-sided approximation]
 \label{lem:nested-compact-approximation}
-\lean{Preiss.TwoSidedApproximation, Preiss.exists_nested_compact_twoSided_approximation}
-\uses{gmt:density-points, lem:tube-support-upgrade, lem:uniform-compact-selection, lem:weak-approximation-restrict-ae, lem:closed-upper-ball-bound-sets}
+\lean{Preiss.exists_nested_compact_twoSided_approximation}
+\uses{gmt:density-points, lem:tube-support-upgrade, lem:uniform-compact-selection, lem:weak-approximation-restrict-ae, lem:closed-upper-ball-bound-sets, def:two-sided-approximation, lem:compact-two-sided-general, lem:compact-measurable-exhaustion}
 
 
 
@@ -2593,8 +2593,8 @@ coefficient assertions below start at $k=1$.
 
 \begin{lemma}[Uniform operator norm bounds for Gaussian moments]
 \label{lem:moment-norm-bound}
-\lean{Preiss.integrable_gaussianMomentKernel, Preiss.norm_gaussianMomentForm_le, Preiss.IsUnitUniform.hasPolynomialGrowthBound, Preiss.integrable_gaussianMomentKernel_of_integrable_norm}
-\uses{def:moments, def:unit-uniform, lem:moment-form-evaluation, lem:radial, lem:moment-kernel-calculus}
+\lean{Preiss.integrable_gaussianMomentKernel, Preiss.norm_gaussianMomentForm_le, Preiss.IsUnitUniform.hasPolynomialGrowthBound, Preiss.integrable_gaussianMomentKernel_of_integrable_norm, Preiss.gaussianMass_unitUniform}
+\uses{def:moments, def:unit-uniform, lem:moment-form-evaluation, lem:radial, lem:moment-kernel-calculus, lem:gaussian-ball-power-parameter, lem:gaussian-power-envelope}
 
 
 
@@ -2658,8 +2658,8 @@ nonnegative Fubini reduce the integral to Euler's Gamma formula.
 
 \begin{lemma}[Absolutely convergent Gaussian translation series]
 \label{lem:gaussian-translation-series}
-\lean{Preiss.hasSum_gaussianMoment_diagonal}
-\uses{def:moments, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:moment-form-evaluation, lem:moment-norm-bound, lem:radial}
+\lean{Preiss.hasSum_gaussianMoment_diagonal, Preiss.integral_gaussian_center_unitUniform, Preiss.integral_gaussian_exp_inner_unitUniform}
+\uses{def:moments, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:moment-form-evaluation, lem:moment-norm-bound, lem:radial, lem:gaussian-ball-power-parameter, lem:integrated-gaussian-exponential-series}
 
 
 
@@ -2910,7 +2910,7 @@ Choose a nearest support point $y_i$ to the origin; closedness and properness gi
 
 \begin{lemma}[Hyperplane transport with an explicit isometry]
 \label{lem:hyperplane-transport-map}
-\uses{def:uniform-constant}
+\uses{def:uniform-constant, lem:closed-map-support, lem:proper-map-regularity}
 \lean{Preiss.uniform_hyperplane_transport, Preiss.uniformWithConstant_transport, Preiss.uniformWithConstant_map_linearIsometry, Preiss.isUnitUniform_map_linearIsometry}
 \uses{def:dimensional-blowup, def:plane, gmt:hyperplane-transport, lem:blowup-composition}
 
@@ -4708,7 +4708,7 @@ If $\mu$ on $\mathbb R^n$ obeys $\operatorname{HasPolynomialGrowthBound}(\mu,C,p
 
 \begin{lemma}[Every projection has all exponential moments after Gaussian weighting]
 \label{lem:gaussian-weight-exponential}
-\lean{Preiss.integrable_exp_inner_mul_gaussian, Preiss.integrable_exp_inner_withDensity_gaussian}
+\lean{Preiss.integrable_exp_inner_mul_gaussian, Preiss.integrable_exp_inner_withDensity_gaussian, Preiss.integrable_exp_inner_mul_gaussian_parameter, Preiss.integrable_exp_abs_inner_mul_gaussian_parameter}
 \uses{def:polynomial-growth-bound, lem:gaussian-polynomial-integrable}
 
 If $\operatorname{HasPolynomialGrowthBound}(\mu,C,p)$, then for every $w\in\mathbb R^n$ and $t\in\mathbb R$, the function $e^{-\|z\|^2}e^{t\langle z,w\rangle}$ is $\mu$-integrable. Equivalently, $e^{t\langle z,w\rangle}$ is integrable for the Gaussian weighted measure.
@@ -4838,7 +4838,7 @@ For every sequence of $m$-planes $V_i\subseteq\mathbb R^n$, there exist an $m$-p
 
 \begin{lemma}[Compact approximation inside an increasing measurable exhaustion]
 \label{lem:compact-measurable-exhaustion}
-\lean{Preiss.exists_compact_subset_of_ae_mem_iUnion}
+\lean{Preiss.exists_compact_subset_of_ae_mem_iUnion, Preiss.exists_pos_compact_subset_of_ae_mem_iUnion}
 
 Let $\mu$ be a finite regular Borel measure on a Hausdorff space, let $E$ and $S_i$ be measurable, and assume $S_i\subseteq S_{i+1}$ and $\mu(E\setminus\bigcup_i S_i)=0$. For every $\varepsilon>0$ there exist $N$ and a compact set $C\subseteq E\cap S_N$ such that $\mu(E\setminus C)<\varepsilon$.
 \end{lemma}
@@ -5032,8 +5032,93 @@ For a measure with a polynomial ball-growth bound, every finite polynomial featu
 
 \begin{lemma}[Gaussian integral from a centered ball law at arbitrary scale]
 \label{lem:gaussian-ball-power-parameter}
-\lean{Preiss.integral_gaussian_parameter_of_closedBall_power}
+\lean{Preiss.integral_gaussian_parameter_of_closedBall_power, Preiss.integral_gaussian_center_parameter_of_closedBall_power}
 \uses{lem:gaussian-ball-power}
 
 Let $\mu$ be an s-finite Borel measure on a real normed space with $\mu(\overline B(0,r))=Cr^d$ for $r>0$, where $C\geq0$ and $d>0$. For every $s>0$, the function $e^{-s\lVert z\rVert^2}$ is integrable and its integral is $C\Gamma(d/2+1)s^{-d/2}$.
+\end{lemma}
+
+\begin{lemma}[Support under continuous closed maps]
+\label{lem:closed-map-support}
+\lean{Preiss.measure_support_map_of_continuous_of_isClosedMap}
+
+For a regular Borel measure $\mu$ and a continuous closed map $f$, the support of $f_*\mu$ is $f(\operatorname{supp}\mu)$.
+\end{lemma}
+
+\begin{lemma}[Outer regularity under continuous closed maps]
+\label{lem:closed-map-outer-regularity}
+\lean{Preiss.outerRegular_map_of_continuous_of_isClosedMap}
+
+A continuous closed map pushes an outer regular Borel measure forward to an outer regular Borel measure.
+\end{lemma}
+
+\begin{lemma}[Regularity under proper maps]
+\label{lem:proper-map-regularity}
+\lean{Preiss.regular_map_of_isProperMap}
+\uses{lem:closed-map-outer-regularity}
+
+A proper map into a Hausdorff Borel space pushes a regular measure forward to a regular measure.
+\end{lemma}
+
+\begin{lemma}[Vague convergence under cocompact and proper maps]
+\label{lem:vague-cocompact-pushforward}
+\lean{Preiss.weaklyConverges_map_cocompact, Preiss.weaklyConverges_map_of_isProperMap}
+\uses{gmt:vague}
+
+Vague convergence is preserved by pushforward along a continuous cocompact map, and hence along a proper map. No regularity hypothesis is required for this test-function identity.
+\end{lemma}
+
+\begin{lemma}[Flat-measure regularity and positive plane-ball mass]
+\label{lem:flat-measure-regularity}
+\lean{Preiss.regular_flatOn, Preiss.flatOn_ball_pos}
+\uses{lem:plane-hausdorff}
+
+For every $m$-plane $V$, including $m=0$, $c\mathcal H^m\!\restriction V$ is regular when $c<\infty$. When $c>0$, every positive-radius ball centered in $V$ has positive measure.
+\end{lemma}
+
+\begin{lemma}[Vanishing mass on compact null sets]
+\label{lem:vague-compact-null-mass}
+\lean{Preiss.tendsto_mass_compact_null_of_vague}
+\uses{gmt:portmanteau}
+
+If regular Euclidean measures $\nu_i$ converge vaguely to a regular $\mu$ and $K$ is compact with $\mu(K)=0$, then $\nu_i(K)\to0$.
+\end{lemma}
+
+\begin{lemma}[Uniform lower ball mass on compact sets]
+\label{lem:vague-uniform-ball-lower}
+\lean{Preiss.eventually_uniform_ball_mass_lower_bound_of_vague}
+\uses{gmt:portmanteau}
+
+Let regular Euclidean measures $\nu_i$ converge vaguely to a regular $\mu$. If $K$ is compact, $\eta>0$, and $\mu(B(z,\eta/2))>0$ for every $z\in K$, then there exists $a>0$ such that eventually $\nu_i(B(z,\eta))\ge a$ simultaneously for every $z\in K$.
+\end{lemma}
+
+\begin{definition}[A common-plane two-sided approximation predicate]
+\label{def:two-sided-approximation}
+\lean{Preiss.TwoSidedApproximation}
+\uses{def:cone}
+
+The set $F$ is nonempty. At each $a\in G$ and scale $0<r<R$, a single $m$-plane gives tube containment of $F\cap B(a,2r)$, distance less than $\eta r$ from its points in $B(a,r)$ to $F$, and a $\gamma(\eta r)^m$ lower bound for the corresponding ball masses.
+\end{definition}
+
+\begin{lemma}[Compact two-sided approximation from uniform lower mass]
+\label{lem:compact-two-sided-general}
+\lean{Preiss.exists_compact_twoSided_approximation_of_uniform_lower_bound}
+\uses{def:two-sided-approximation, lem:closed-weak-approximation-good-set, lem:weak-approximation-good-exhaustion, lem:closed-upper-ball-bound-sets, lem:compact-measurable-exhaustion, lem:tube-support-upgrade}
+
+For a finite regular measure and a positive-measure compact $F$ with uniform lower ball bounds, assume weak linear approximation for $\mu\restriction F$ almost everywhere and arbitrarily small local upper ball bounds for $\mu\restriction F^c$ almost everywhere on $F$. For every $0<\eta<1$, there is a positive-measure compact $G\subseteq F$ with common-plane two-sided approximation at uniform positive scales and constants.
+\end{lemma}
+
+\begin{lemma}[A scalar Gaussian envelope for polynomial growth]
+\label{lem:gaussian-power-envelope}
+\lean{Preiss.pow_mul_gaussian_half_le}
+
+For $r\geq0$, $s>0$ and integer $k>0$, $r^k e^{-sr^2/2}\leq(k/s)^{k/2}$.
+\end{lemma}
+
+\begin{lemma}[Integrated exponential series under a Gaussian weight]
+\label{lem:integrated-gaussian-exponential-series}
+\lean{Preiss.hasSum_integral_gaussian_exp_inner}
+\uses{lem:gaussian-weight-exponential}
+
+For a Euclidean measure with polynomial ball growth, every $s>0$, $t\in\mathbb R$ and vector $w$, the series of Gaussian-weighted moments $(t^k/k!)\int\langle z,w\rangle^k e^{-s\lVert z\rVert^2}\,d\mu$ converges absolutely to $\int e^{t\langle z,w\rangle}e^{-s\lVert z\rVert^2}\,d\mu$.
 \end{lemma}

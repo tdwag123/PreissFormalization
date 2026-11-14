@@ -3,6 +3,7 @@ module
 public import Preiss.Geometry.Cylinders
 public import Preiss.Geometry.PlaneMeasure
 public import Preiss.Rectifiability.WeakApproximation.Uniformization
+public import Preiss.Rectifiability.WeakApproximation.TwoSided
 public import Preiss.Rectifiability.WeakApproximation.Restriction
 public import Preiss.Density.PowerComparison
 public import Mathlib.MeasureTheory.Covering.Vitali
@@ -14,27 +15,6 @@ open scoped NNReal ENNReal
 noncomputable section
 namespace Preiss
 variable {m n : ℕ}
-
-def TwoSidedApproximation (m : ℕ) (μ : Measure (Euclidean n))
-    (F G : Set (Euclidean n)) (η γ R : ℝ) : Prop :=
-  F.Nonempty ∧ ∀ a ∈ G, ∀ r : ℝ, 0 < r → r < R → ∃ V : Plane m n,
-    F ∩ ball a (2 * r) ⊆ closedTube a V (η * r) ∧
-    (∀ z : Euclidean n, z - a ∈ V.1 → z ∈ ball a r → infDist z F < η * r) ∧
-    (∀ z : Euclidean n, z - a ∈ V.1 → z ∈ ball a r →
-      ENNReal.ofReal (γ * (η * r) ^ m) ≤ μ (ball z (η * r)))
-
-theorem exists_nested_compact_twoSided_approximation
-    (E : Set (Euclidean n)) (hE : MeasurableSet E)
-    (hpos : 0 < (Measure.hausdorffMeasure (m : ℝ)) E) (hfin : (Measure.hausdorffMeasure (m : ℝ)) E < ∞)
-    (hu : ∀ᵐ x ∂(((Measure.hausdorffMeasure (m : ℝ))).restrict E), UpperPowerBoundAt m (((Measure.hausdorffMeasure (m : ℝ))).restrict E) x)
-    (hw : ∀ᵐ x ∂(((Measure.hausdorffMeasure (m : ℝ))).restrict E), WeaklyLinearlyApproximableAt m E x) :
-    ∃ (F : Set (Euclidean n)) (δ R₀ : ℝ), IsCompact F ∧ F ⊆ E ∧
-      0 < (Measure.hausdorffMeasure (m : ℝ)) F ∧ 0 < δ ∧ 0 < R₀ ∧
-      (∀ a ∈ F, ∀ r : ℝ, 0 < r → r < R₀ →
-        ENNReal.ofReal (δ * r ^ m) ≤ ((Measure.hausdorffMeasure (m : ℝ))).restrict E (ball a r)) ∧
-      ∀ η : ℝ, 0 < η → η < 1 → ∃ (G : Set (Euclidean n)) (γ R : ℝ),
-        IsCompact G ∧ G ⊆ F ∧ 0 < (Measure.hausdorffMeasure (m : ℝ)) G ∧ 0 < γ ∧ 0 < R ∧ R < R₀ ∧
-        TwoSidedApproximation m (((Measure.hausdorffMeasure (m : ℝ))).restrict E) F G η γ R := by sorry
 
 structure HoleFamily (V : Plane m n) (K : Set (Euclidean n))
     (a : Euclidean n) (σ η : ℝ) where
