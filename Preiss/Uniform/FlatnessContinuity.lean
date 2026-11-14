@@ -22,7 +22,8 @@ theorem exists_flatnessCutoff (n : ℕ) :
       (closedBall_subset_ball (one_lt_two : (1 : ℝ) < 2))
   refine ⟨⟨f, hcompact⟩, hbounds, ?_, hsupp⟩
   intro z hz
-  simpa using hone (by simpa only [mem_closedBall, dist_zero_right] using hz)
+  change f z = 1
+  exact hone (by simpa only [mem_closedBall, dist_zero_right] using hz)
 
 theorem flatness_exists_minimizer (hmn : m ≤ n)
     (φ : C_c(Euclidean n, ℝ)) (hφ : IsFlatnessCutoff φ)
@@ -55,6 +56,8 @@ theorem exists_plane_ball_energy_le_of_flatness_le
         ∫ z in ball 0 1, φ z * (infDist z (V.1 : Set (Euclidean n))) ^ 2 ∂μ := by
       apply setIntegral_congr_fun measurableSet_ball
       intro z hz
+      change (infDist z (V.1 : Set (Euclidean n))) ^ 2 =
+        φ z * (infDist z (V.1 : Set (Euclidean n))) ^ 2
       rw [hφ.2.1 z (by simpa only [dist_zero_right] using (mem_ball.mp hz).le), one_mul]
     _ ≤ flatnessEnergy φ μ V :=
       setIntegral_le_integral (integrable_flatnessEnergy_integrand φ μ V)
