@@ -1,3 +1,4 @@
+import Preiss.Uniform.FlatAtInfinity.Rigidity
 import Preiss.Tangent.Flatness
 import Preiss.Tangent.Extraction
 import Preiss.Analysis.GreatestCrossing
@@ -41,18 +42,6 @@ def FirstCrossingData (m : ℕ) (μ : Measure (Euclidean n)) (x : Euclidean n)
   flatness m φ ξ = ε ∧
   (∀ i, flatness m φ (dimensionalBlowup m μ x (σ i)) = ε) ∧
   ∀ i t, t ∈ Icc (σ i) (r i) → flatness m φ (dimensionalBlowup m μ x t) ≤ ε
-
-theorem exists_first_crossing_sequences (hm : 0 < m) (hmn : m ≤ n)
-    (φ : C_c(Euclidean n, ℝ)) (hφ : IsFlatnessCutoff φ)
-    (ε : ℝ) (hε : IsFlatnessGap m φ ε)
-    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)
-    (hd : HasPositiveFiniteDensityAt m μ x)
-    (hu : ∀ ν, IsDimensionalTangent m μ ν x → IsUnitUniform m ν)
-    (α ζ : Measure (Euclidean n)) (hα : IsDimensionalTangent m μ α x)
-    (hαflat : IsFlat m α) (hζ : IsDimensionalTangent m μ ζ x) (hζnotflat : ¬ IsFlat m ζ) :
-    ∃ (ξ : Measure (Euclidean n)) (r σ : ℕ → ℝ), IsUnitUniform m ξ ∧
-      IsDimensionalTangent m μ ξ x ∧ FirstCrossingData m μ x φ ε α ξ r σ := by
-  sorry
 
 theorem first_crossing_ratio_tendsto_atTop (hmn : m ≤ n)
     (φ : C_c(Euclidean n, ℝ)) (hφ : IsFlatnessCutoff φ) (ε : ℝ) (hε : 0 < ε)
@@ -206,5 +195,37 @@ theorem exists_first_crossing_sequences_of_flatness_gt
     exact hσeq (τ i)
   · intro i u hu
     exact hσinterval (τ i) u hu
+
+
+theorem exists_dilate_flatness_gt_of_unitUniform_not_flat
+    (hm : 0 < m) (hmn : m ≤ n) (φ : C_c(Euclidean n, ℝ)) (hφ : IsFlatnessCutoff φ)
+    (ε : ℝ) (hε : IsFlatnessGap m φ ε)
+    (ν : Measure (Euclidean n)) (hν : IsUnitUniform m ν) (hnot : ¬ IsFlat m ν) :
+    ∃ R > 0, ε < flatness m φ (dimensionalBlowup m ν 0 R) := by
+  by_contra hbad
+  push_neg at hbad
+  obtain ⟨ψ, hψu, hψ⟩ := exists_unitUniform_tangentAtInfinity ν hν
+  have hψflat : IsFlat m ψ := by
+    apply hε.2 ψ hψu (tangent_at_infinity_conical hm hmn ν ψ hν hψ)
+    obtain ⟨hψreg, hψne, R, hR, hRtop, hlim⟩ := hψ
+    apply le_of_tendsto (flatness_continuous hmn φ hφ _ _
+      (fun i => regular_dimensionalBlowup ν hν.1 0 (hR i)) hψreg hlim)
+    exact Filter.Eventually.of_forall (fun i => hbad (R i) (hR i))
+  exact hnot (flat_of_flat_at_infinity ν ψ hm hν hψ hψflat)
+
+theorem exists_first_crossing_sequences (hm : 0 < m) (hmn : m ≤ n)
+    (φ : C_c(Euclidean n, ℝ)) (hφ : IsFlatnessCutoff φ)
+    (ε : ℝ) (hε : IsFlatnessGap m φ ε)
+    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)
+    (hd : HasPositiveFiniteDensityAt m μ x)
+    (hu : ∀ ν, IsDimensionalTangent m μ ν x → IsUnitUniform m ν)
+    (α ζ : Measure (Euclidean n)) (hα : IsDimensionalTangent m μ α x)
+    (hαflat : IsFlat m α) (hζ : IsDimensionalTangent m μ ζ x) (hζnotflat : ¬ IsFlat m ζ) :
+    ∃ (ξ : Measure (Euclidean n)) (r σ : ℕ → ℝ), IsUnitUniform m ξ ∧
+      IsDimensionalTangent m μ ξ x ∧ FirstCrossingData m μ x φ ε α ξ r σ := by
+  obtain ⟨R, hR, hRlarge⟩ := exists_dilate_flatness_gt_of_unitUniform_not_flat
+    hm hmn φ hφ ε hε ζ (hu ζ hζ) hζnotflat
+  exact exists_first_crossing_sequences_of_flatness_gt hmn φ hφ ε hε.1 μ x hd hu
+    α (dimensionalBlowup m ζ 0 R) hα hαflat (hζ.dilate hR) hRlarge
 
 end Preiss

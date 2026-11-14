@@ -2078,7 +2078,8 @@
         "Preiss.Density.Limits"
       ],
       "nodes": [
-        "lem:density-bridge"
+        "lem:density-bridge",
+        "lem:density-open-ball-bridge"
       ],
       "source_exists": true,
       "scope": "core",
@@ -4912,6 +4913,7 @@
         "Preiss.Tangent.Flatness",
         "Preiss.Uniform.ConicalGap",
         "Preiss.Uniform.Defs",
+        "Preiss.Uniform.FlatAtInfinity.Rigidity",
         "Preiss.Uniform.FlatnessContinuity",
         "Preiss.Uniform.TangentAtInfinity"
       ],
@@ -4922,9 +4924,7 @@
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneRegularity",
         "Preiss.Tangent.Algebra",
-        "Preiss.Tangent.Blowdown",
         "Preiss.Tangent.Blowup",
-        "Preiss.Tangent.Compactness",
         "Preiss.Tangent.Continuity",
         "Preiss.Tangent.Defs",
         "Preiss.Tangent.Extraction",
@@ -4935,8 +4935,7 @@
         "Preiss.Uniform.FlatAtInfinity.Rigidity",
         "Preiss.Uniform.Flatness",
         "Preiss.Uniform.FlatnessContinuity",
-        "Preiss.Uniform.TangentAtInfinity",
-        "Preiss.Uniform.TangentNormalization"
+        "Preiss.Uniform.TangentAtInfinity"
       ],
       "mathlib_imports": [
         "Mathlib.Tactic"
@@ -4945,13 +4944,9 @@
       "proof_imports": [
         "Preiss.Analysis.GreatestCrossing",
         "Preiss.Analysis.Vague.Uniqueness",
-        "Preiss.Density.Defs",
         "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Blowdown",
         "Preiss.Tangent.Blowup",
-        "Preiss.Tangent.Compactness",
         "Preiss.Tangent.Continuity",
-        "Preiss.Tangent.Defs",
         "Preiss.Tangent.Extraction",
         "Preiss.Tangent.FlatScaling",
         "Preiss.Tangent.Flatness",
@@ -4960,8 +4955,7 @@
         "Preiss.Uniform.FlatAtInfinity.Rigidity",
         "Preiss.Uniform.Flatness",
         "Preiss.Uniform.FlatnessContinuity",
-        "Preiss.Uniform.TangentAtInfinity",
-        "Preiss.Uniform.TangentNormalization"
+        "Preiss.Uniform.TangentAtInfinity"
       ],
       "nodes": [
         "lem:first-crossing",
@@ -4970,7 +4964,8 @@
         "def:flatness-gap",
         "lem:flatness-gap-cutoff",
         "def:first-crossing-data",
-        "lem:first-crossing-from-large-flatness"
+        "lem:first-crossing-from-large-flatness",
+        "lem:nonflat-uniform-large-flatness"
       ],
       "source_exists": true,
       "scope": "core",
@@ -5020,38 +5015,41 @@
       "module": "Preiss.Theorem.PartB",
       "file": "Preiss/Theorem/PartB.lean",
       "current_source_imports": [
-        "FormalizingGMT.MarstrandTheorem",
-        "Preiss.Density.Defs",
-        "Preiss.Geometry.FlatMeasure"
-      ],
-      "local_imports": [
-        "Preiss.Density.Defs",
+        "Mathlib.Tactic",
         "Preiss.Density.RadiusPower",
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Defs",
-        "Preiss.Tangent.Normalization",
+        "Preiss.Density.Scalar",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.FlatNormalization",
         "Preiss.Theorem.FirstCrossing",
         "Preiss.Uniform.FlatAtInfinity.Rigidity",
-        "Preiss.Uniform.FlatnessContinuity",
+        "Preiss.Uniform.TangentAtInfinity",
         "Preiss.Uniform.TangentNormalization"
       ],
-      "mathlib_imports": [],
-      "gmt_imports": [
-        "FormalizingGMT.MarstrandTheorem"
-      ],
-      "proof_imports": [
-        "Preiss.Density.Defs",
+      "local_imports": [
         "Preiss.Density.RadiusPower",
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Defs",
-        "Preiss.Tangent.Normalization",
+        "Preiss.Density.Scalar",
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.FlatNormalization",
         "Preiss.Theorem.FirstCrossing",
         "Preiss.Uniform.FlatAtInfinity.Rigidity",
-        "Preiss.Uniform.FlatnessContinuity",
+        "Preiss.Uniform.TangentAtInfinity",
+        "Preiss.Uniform.TangentNormalization"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Density.RadiusPower",
+        "Preiss.Density.Scalar",
+        "Preiss.Tangent.FlatNormalization",
+        "Preiss.Theorem.FirstCrossing",
+        "Preiss.Uniform.FlatAtInfinity.Rigidity",
         "Preiss.Uniform.TangentNormalization"
       ],
       "nodes": [
-        "thm:part-b"
+        "thm:part-b",
+        "lem:all-dimensional-tangents-flat"
       ],
       "source_exists": true,
       "scope": "core",
@@ -5610,32 +5608,32 @@
       "module": "Preiss.Uniform.FlatAtInfinity.Rigidity",
       "file": "Preiss/Uniform/FlatAtInfinity/Rigidity.lean",
       "current_source_imports": [
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Defs",
-        "Preiss.Uniform.Defs"
-      ],
-      "local_imports": [
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.Defs",
+        "Mathlib.Tactic",
         "Preiss.Uniform.Classification",
-        "Preiss.Uniform.Defs",
-        "Preiss.Uniform.FlatAtInfinity.Basic",
-        "Preiss.Uniform.FlatAtInfinity.TraceData",
         "Preiss.Uniform.MomentTrace",
+        "Preiss.Uniform.TangentAtInfinity",
         "Preiss.Uniform.TraceRigidity"
       ],
-      "mathlib_imports": [],
-      "gmt_imports": [],
-      "proof_imports": [
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.Defs",
+      "local_imports": [
         "Preiss.Uniform.Classification",
-        "Preiss.Uniform.Defs",
         "Preiss.Uniform.FlatAtInfinity.Basic",
         "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.MomentExpansion",
         "Preiss.Uniform.MomentTrace",
+        "Preiss.Uniform.TangentAtInfinity",
+        "Preiss.Uniform.TraceRigidity"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Uniform.Classification",
+        "Preiss.Uniform.FlatAtInfinity.Basic",
+        "Preiss.Uniform.FlatAtInfinity.TraceData",
+        "Preiss.Uniform.MomentExpansion",
+        "Preiss.Uniform.MomentTrace",
+        "Preiss.Uniform.TangentAtInfinity",
         "Preiss.Uniform.TraceRigidity"
       ],
       "nodes": [
@@ -5720,35 +5718,26 @@
       "module": "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
       "file": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
       "current_source_imports": [
-        "Preiss.Analysis.GaussianQuadraticForms",
-        "Preiss.Uniform.FlatAtInfinity.TraceData"
+        "Mathlib.Tactic",
+        "Preiss.Analysis.GaussianBilinearVectorTrace",
+        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+        "Preiss.Uniform.ProjectedMixedGaussian"
       ],
       "local_imports": [
-        "Preiss.Analysis.BilinearTrace",
-        "Preiss.Analysis.GaussianMoments",
-        "Preiss.Analysis.GaussianQuadraticForms",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.Defs",
-        "Preiss.Uniform.Defs",
+        "Preiss.Analysis.GaussianBilinearVectorTrace",
         "Preiss.Uniform.FlatAtInfinity.Basic",
-        "Preiss.Uniform.FlatAtInfinity.TraceData",
         "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-        "Preiss.Uniform.FlatMoments",
-        "Preiss.Uniform.MomentCoefficients"
+        "Preiss.Uniform.ProjectedMixedGaussian"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Analysis.BilinearTrace",
-        "Preiss.Analysis.GaussianMoments",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.Defs",
-        "Preiss.Uniform.Defs",
+        "Preiss.Analysis.GaussianBilinearVectorTrace",
         "Preiss.Uniform.FlatAtInfinity.Basic",
-        "Preiss.Uniform.FlatAtInfinity.TraceData",
         "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-        "Preiss.Uniform.FlatMoments",
-        "Preiss.Uniform.MomentCoefficients"
+        "Preiss.Uniform.ProjectedMixedGaussian"
       ],
       "nodes": [
         "lem:rigidity-omega-trace-zero",
@@ -7319,43 +7308,41 @@
       "module": "Preiss.Uniform.TraceRigidity",
       "file": "Preiss/Uniform/TraceRigidity.lean",
       "current_source_imports": [
+        "Mathlib.Tactic",
         "Preiss.Analysis.GaussianQuadraticForms",
+        "Preiss.Analysis.GaussianRigidityBounds",
+        "Preiss.Analysis.OrthogonalTraceSplit",
+        "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
+        "Preiss.Uniform.RigidityContraction",
         "Preiss.Uniform.RigidityError",
         "Preiss.Uniform.RigidityErrorBounds",
         "Preiss.Uniform.RigidityErrorLimit",
         "Preiss.Uniform.RigidityPointwise"
       ],
       "local_imports": [
-        "Preiss.Analysis.BilinearTrace",
         "Preiss.Analysis.GaussianQuadraticForms",
-        "Preiss.Analysis.GaussianVague",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.Defs",
-        "Preiss.Uniform.Defs",
+        "Preiss.Analysis.GaussianQuadraticLowerBound",
+        "Preiss.Analysis.GaussianRigidityBounds",
+        "Preiss.Analysis.OrthogonalTraceSplit",
         "Preiss.Uniform.FlatAtInfinity.Basic",
-        "Preiss.Uniform.FlatAtInfinity.TraceData",
         "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
-        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.RigidityContraction",
         "Preiss.Uniform.RigidityError",
         "Preiss.Uniform.RigidityErrorBounds",
         "Preiss.Uniform.RigidityErrorLimit",
         "Preiss.Uniform.RigidityPointwise"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Analysis.BilinearTrace",
-        "Preiss.Analysis.GaussianQuadraticForms",
-        "Preiss.Analysis.GaussianVague",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.Defs",
-        "Preiss.Uniform.Defs",
+        "Preiss.Analysis.GaussianQuadraticLowerBound",
+        "Preiss.Analysis.GaussianRigidityBounds",
+        "Preiss.Analysis.OrthogonalTraceSplit",
         "Preiss.Uniform.FlatAtInfinity.Basic",
-        "Preiss.Uniform.FlatAtInfinity.TraceData",
         "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
-        "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.RigidityContraction",
         "Preiss.Uniform.RigidityErrorBounds",
         "Preiss.Uniform.RigidityErrorLimit",
         "Preiss.Uniform.RigidityPointwise"
@@ -7662,6 +7649,7 @@
     "Preiss.Analysis.AsymptoticCoefficients",
     "Preiss.Analysis.BallBoundary",
     "Preiss.Analysis.BilinearDiagonalDifference",
+    "Preiss.Analysis.BilinearIntegralLimits",
     "Preiss.Analysis.BilinearSpectrum",
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Analysis.CompactExhaustion",
@@ -7672,6 +7660,9 @@
     "Preiss.Analysis.FiniteDimensionalBigO",
     "Preiss.Analysis.GaussianBallPower",
     "Preiss.Analysis.GaussianBallPowerParameter",
+    "Preiss.Analysis.GaussianBilinearContraction",
+    "Preiss.Analysis.GaussianBilinearNorm",
+    "Preiss.Analysis.GaussianBilinearVectorTrace",
     "Preiss.Analysis.GaussianDerivatives",
     "Preiss.Analysis.GaussianFeatures",
     "Preiss.Analysis.GaussianGrowth",
@@ -7680,6 +7671,8 @@
     "Preiss.Analysis.GaussianMoments",
     "Preiss.Analysis.GaussianNormBounds",
     "Preiss.Analysis.GaussianQuadraticForms",
+    "Preiss.Analysis.GaussianQuadraticLowerBound",
+    "Preiss.Analysis.GaussianRigidityBounds",
     "Preiss.Analysis.GaussianVague",
     "Preiss.Analysis.GaussianWeight",
     "Preiss.Analysis.GradedDivision",
@@ -7701,6 +7694,7 @@
     "Preiss.Analysis.NormalizedIntegral",
     "Preiss.Analysis.OrderedSpectralBound",
     "Preiss.Analysis.OrderedSums",
+    "Preiss.Analysis.OrthogonalTraceSplit",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PolynomialFeatures",
     "Preiss.Analysis.PolynomialNormBound",
@@ -7725,6 +7719,7 @@
     "Preiss.Analysis.Vague.UniformTails",
     "Preiss.Analysis.Vague.Uniqueness",
     "Preiss.Analysis.Vague.WeightedProjectionSupport",
+    "Preiss.Analysis.WeightedIntegralPolarization",
     "Preiss.Density.AbsoluteContinuous",
     "Preiss.Density.Adapters",
     "Preiss.Density.Atoms",
@@ -7737,6 +7732,7 @@
     "Preiss.Density.LowerBounds",
     "Preiss.Density.PowerComparison",
     "Preiss.Density.RadiusPower",
+    "Preiss.Density.Scalar",
     "Preiss.Density.UpperBallSets",
     "Preiss.Density.UpperBounds",
     "Preiss.Density.Vanishing",
@@ -7793,7 +7789,6 @@
     "Preiss.Tangent.Algebra",
     "Preiss.Tangent.ApproximationScaling",
     "Preiss.Tangent.Basic",
-    "Preiss.Tangent.Blowdown",
     "Preiss.Tangent.Blowup",
     "Preiss.Tangent.BlowupSupport",
     "Preiss.Tangent.Compactness",
@@ -7804,6 +7799,7 @@
     "Preiss.Tangent.Extraction",
     "Preiss.Tangent.FlatApproximation",
     "Preiss.Tangent.FlatFromUniform",
+    "Preiss.Tangent.FlatNormalization",
     "Preiss.Tangent.FlatScaling",
     "Preiss.Tangent.Flatness",
     "Preiss.Tangent.MetricApproximation",
@@ -7846,6 +7842,7 @@
     "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.GMTAdapters",
     "Preiss.Uniform.GaussianCovariance",
+    "Preiss.Uniform.GaussianInnerProducts",
     "Preiss.Uniform.GaussianLinearGrowth",
     "Preiss.Uniform.GaussianNormBounds",
     "Preiss.Uniform.GaussianPlaneEnergy",
@@ -7865,7 +7862,9 @@
     "Preiss.Uniform.MomentTrace",
     "Preiss.Uniform.MomentVague",
     "Preiss.Uniform.Moments",
+    "Preiss.Uniform.ProjectedMixedGaussian",
     "Preiss.Uniform.Radial",
+    "Preiss.Uniform.RigidityContraction",
     "Preiss.Uniform.RigidityError",
     "Preiss.Uniform.RigidityErrorBounds",
     "Preiss.Uniform.RigidityErrorLimit",

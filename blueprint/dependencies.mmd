@@ -99,7 +99,7 @@ flowchart LR
   lem_countable_carrier["Countable carriers"]
   lem_zero_hausdorff_ac["Absolute continuity with respect to zero-dimensional Hausdorff measure"]
   lem_zero_density_atoms["Zero-dimensional density equals atomic mass"]
-  lem_density_bridge["Normalization bridges"]
+  lem_density_bridge["Upstream density convention"]
   lem_absolute_continuity["Finite upper density implies Hausdorff absolute continuity"]
   lem_finite_pieces["Finite Hausdorff pieces with comparable measures"]
   lem_excess_dimension["Dimensions above the ambient dimension"]
@@ -481,6 +481,9 @@ flowchart LR
   lem_gaussian_inner_product_limits["Gaussian inner-product integrability and limits"]
   lem_gaussian_cross_product_limits["Polarized Gaussian moment limits on the limiting plane"]
   lem_rigidity_omega_contraction["Mean-square contraction of the rigidity form"]
+  lem_density_open_ball_bridge["Open-ball density convention"]
+  lem_nonflat_uniform_large_flatness["Nonflat uniform measures have a dilation above the flatness gap"]
+  lem_all_dimensional_tangents_flat["One flat dimensional tangent forces all dimensional tangents to be flat"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -668,9 +671,7 @@ flowchart LR
   def_rectifiable --> lem_countable_carrier
   def_density_api --> lem_zero_density_atoms
   def_positive_density --> lem_density_bridge
-  gmt_density_bounds --> lem_density_bridge
   gmt_density_exists_set --> lem_density_bridge
-  gmt_density_limit --> lem_density_bridge
   lem_density_limit_values --> lem_density_bridge
   gmt_goodballs --> lem_absolute_continuity
   lem_ball_upper_hausdorff_bound --> lem_absolute_continuity
@@ -1082,71 +1083,37 @@ flowchart LR
   lem_odd_coefficients_plane_zero --> lem_rigidity_fourth_support_identity
   lem_symmetric_cubic_binomial --> lem_rigidity_fourth_support_identity
   lem_uniform_cylinder_identity --> lem_rigidity_fourth_support_identity
-  def_moment_coefficients --> lem_rigidity_omega_trace_zero
-  def_plane --> lem_rigidity_omega_trace_zero
-  def_rigidity_normal_vector --> lem_rigidity_omega_trace_zero
-  def_rigidity_omega --> lem_rigidity_omega_trace_zero
-  def_tangent_at_infinity --> lem_rigidity_omega_trace_zero
-  def_unit_uniform --> lem_rigidity_omega_trace_zero
-  lem_flat_gaussian_even_moments --> lem_rigidity_omega_trace_zero
+  lem_flat_infinity_moments --> lem_rigidity_omega_trace_zero
+  lem_gaussian_vector_trace_contractions --> lem_rigidity_omega_trace_zero
+  lem_projected_mixed_gaussian_sum --> lem_rigidity_omega_trace_zero
   lem_rigidity_contracted_limit_zero --> lem_rigidity_omega_trace_zero
   lem_rigidity_mixed_gaussian_limit --> lem_rigidity_omega_trace_zero
   lem_rigidity_error_linear_growth --> lem_rigidity_pointwise_quadratic_bound
   lem_rigidity_pointwise_from_growth --> lem_rigidity_pointwise_quadratic_bound
   lem_rigidity_error_limit_from_growth --> lem_rigidity_rescaled_error
   lem_rigidity_error_linear_growth --> lem_rigidity_rescaled_error
-  def_bilinear_trace --> lem_rigidity_gaussian_trace
-  def_moment_coefficients --> lem_rigidity_gaussian_trace
-  def_plane --> lem_rigidity_gaussian_trace
-  def_rigidity_adjusted_form --> lem_rigidity_gaussian_trace
-  def_rigidity_normal_vector --> lem_rigidity_gaussian_trace
-  def_rigidity_omega --> lem_rigidity_gaussian_trace
-  def_tangent_at_infinity --> lem_rigidity_gaussian_trace
-  def_unit_uniform --> lem_rigidity_gaussian_trace
-  lem_flat_gaussian_even_moments --> lem_rigidity_gaussian_trace
+  lem_gaussian_mean_zero_correction --> lem_rigidity_gaussian_trace
   lem_rigidity_omega_trace_zero --> lem_rigidity_gaussian_trace
-  def_moment_coefficients --> lem_rigidity_omega_reproducing
-  def_plane --> lem_rigidity_omega_reproducing
-  def_rigidity_normal_vector --> lem_rigidity_omega_reproducing
-  def_rigidity_omega --> lem_rigidity_omega_reproducing
-  def_tangent_at_infinity --> lem_rigidity_omega_reproducing
-  def_unit_uniform --> lem_rigidity_omega_reproducing
-  lem_gaussian_wick_fourth --> lem_rigidity_omega_reproducing
+  lem_gaussian_vector_trace_contractions --> lem_rigidity_omega_reproducing
   lem_rigidity_omega_trace_zero --> lem_rigidity_omega_reproducing
-  def_moment_coefficients --> lem_rigidity_integral_quadratic_bound
-  def_plane --> lem_rigidity_integral_quadratic_bound
-  def_rigidity_adjusted_form --> lem_rigidity_integral_quadratic_bound
-  def_rigidity_normal_vector --> lem_rigidity_integral_quadratic_bound
-  def_rigidity_omega --> lem_rigidity_integral_quadratic_bound
-  def_tangent_at_infinity --> lem_rigidity_integral_quadratic_bound
-  def_unit_uniform --> lem_rigidity_integral_quadratic_bound
-  lem_rigidity_mixed_gaussian_limit --> lem_rigidity_integral_quadratic_bound
-  lem_rigidity_omega_reproducing --> lem_rigidity_integral_quadratic_bound
+  lem_gaussian_rigidity_integral_bounds --> lem_rigidity_integral_quadratic_bound
+  lem_rigidity_omega_contraction --> lem_rigidity_integral_quadratic_bound
+  lem_rigidity_omega_trace_zero --> lem_rigidity_integral_quadratic_bound
   lem_rigidity_pointwise_quadratic_bound --> lem_rigidity_integral_quadratic_bound
   lem_rigidity_rescaled_error --> lem_rigidity_integral_quadratic_bound
-  lem_vague_gaussian_polynomials --> lem_rigidity_integral_quadratic_bound
-  def_bilinear_trace --> lem_trace_rigidity
-  def_moment_coefficients --> lem_trace_rigidity
-  def_plane --> lem_trace_rigidity
-  def_rigidity_adjusted_form --> lem_trace_rigidity
-  def_rigidity_normal_vector --> lem_trace_rigidity
-  def_tangent_at_infinity --> lem_trace_rigidity
-  def_unit_uniform --> lem_trace_rigidity
-  lem_bilinear_trace_basis --> lem_trace_rigidity
-  lem_gaussian_quadratic_trace_bound --> lem_trace_rigidity
+  lem_bilinear_trace_orthogonal_split --> lem_trace_rigidity
+  lem_gaussian_square_upper_trace_lower --> lem_trace_rigidity
   lem_moment_normal_trace --> lem_trace_rigidity
   lem_rigidity_gaussian_trace --> lem_trace_rigidity
   lem_rigidity_integral_quadratic_bound --> lem_trace_rigidity
-  def_flat --> thm_infinity_rigidity
-  def_plane --> thm_infinity_rigidity
-  def_tangent_at_infinity --> thm_infinity_rigidity
-  def_unit_uniform --> thm_infinity_rigidity
   lem_moment_second_total_trace --> thm_infinity_rigidity
   lem_plane_supported_uniform_flat --> thm_infinity_rigidity
   lem_rigidity_forms_exist --> thm_infinity_rigidity
   lem_rigidity_normal_vector_exists --> thm_infinity_rigidity
+  lem_taylor_two --> thm_infinity_rigidity
   lem_trace_rigidity --> thm_infinity_rigidity
   lem_uniform_cylinder_identity --> thm_infinity_rigidity
+  lem_unit_uniform_infinity_existence --> thm_infinity_rigidity
   lem_dimensional_tangent_ball_constant --> thm_part_a
   lem_dimensional_tangent_compactness --> thm_part_a
   lem_flat_positive_scalar --> thm_part_a
@@ -1155,43 +1122,19 @@ flowchart LR
   lem_recenter --> thm_part_a
   lem_uniform_adapter --> thm_part_a
   lem_unit_flat_support_regularity --> thm_part_a
-  cor_conical --> lem_first_crossing
-  def_dimensional_tangent --> lem_first_crossing
-  def_first_crossing_data --> lem_first_crossing
-  def_flat --> lem_first_crossing
-  def_flatness --> lem_first_crossing
-  def_flatness_cutoff --> lem_first_crossing
-  def_flatness_gap --> lem_first_crossing
-  def_positive_density --> lem_first_crossing
-  def_tangent_at_infinity --> lem_first_crossing
-  def_unit_uniform --> lem_first_crossing
-  lem_density_normalization --> lem_first_crossing
-  lem_dimensional_tangent_compactness --> lem_first_crossing
-  lem_flatness_continuous --> lem_first_crossing
-  lem_flatness_minimum --> lem_first_crossing
-  lem_flatness_radius_continuous --> lem_first_crossing
-  lem_greatest_crossing --> lem_first_crossing
-  lem_tangent_blowdown --> lem_first_crossing
-  thm_gap --> lem_first_crossing
-  thm_infinity_rigidity --> lem_first_crossing
-  thm_unique_infinity --> lem_first_crossing
+  lem_first_crossing_from_large_flatness --> lem_first_crossing
+  lem_nonflat_uniform_large_flatness --> lem_first_crossing
   lem_plane_scaling --> lem_first_crossing_ratio
   lem_vague_limit_unique --> lem_first_crossing_ratio
   lem_vague_moving_blowups --> lem_first_crossing_ratio
   cor_conical --> lem_first_crossing_flat_infinity
   lem_flatness_continuous --> lem_first_crossing_flat_infinity
   lem_unit_uniform_infinity_existence --> lem_first_crossing_flat_infinity
-  def_dimensional_tangent --> thm_part_b
-  def_flat --> thm_part_b
-  def_positive_density --> thm_part_b
+  lem_all_dimensional_tangents_flat --> thm_part_b
   lem_density_normalization --> thm_part_b
-  lem_first_crossing --> thm_part_b
-  lem_first_crossing_flat_infinity --> thm_part_b
-  lem_flatness_cutoff_exists --> thm_part_b
-  lem_flatness_gap_cutoff --> thm_part_b
+  lem_density_positive_scalar --> thm_part_b
+  lem_flat_tangent_normalization --> thm_part_b
   lem_radius_power_density --> thm_part_b
-  lem_tangent_ray --> thm_part_b
-  thm_infinity_rigidity --> thm_part_b
   def_positive_density --> thm_preiss
   def_rectifiable --> thm_preiss
   lem_excess_dimension --> thm_preiss
@@ -1621,3 +1564,15 @@ flowchart LR
   def_rigidity_error --> lem_rigidity_omega_contraction
   lem_gaussian_cross_product_limits --> lem_rigidity_omega_contraction
   lem_gaussian_weighted_contraction --> lem_rigidity_omega_contraction
+  def_positive_density --> lem_density_open_ball_bridge
+  gmt_density_limit --> lem_density_open_ball_bridge
+  lem_density_limit_values --> lem_density_open_ball_bridge
+  cor_conical --> lem_nonflat_uniform_large_flatness
+  lem_flatness_continuous --> lem_nonflat_uniform_large_flatness
+  lem_unit_uniform_infinity_existence --> lem_nonflat_uniform_large_flatness
+  thm_infinity_rigidity --> lem_nonflat_uniform_large_flatness
+  lem_first_crossing --> lem_all_dimensional_tangents_flat
+  lem_first_crossing_flat_infinity --> lem_all_dimensional_tangents_flat
+  lem_first_crossing_ratio --> lem_all_dimensional_tangents_flat
+  lem_flatness_gap_cutoff --> lem_all_dimensional_tangents_flat
+  thm_infinity_rigidity --> lem_all_dimensional_tangents_flat

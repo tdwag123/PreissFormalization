@@ -41,7 +41,7 @@
         "def:density-api"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": []
     },
     {
@@ -1867,14 +1867,11 @@
       "kind": "lemma",
       "title": "Normalization bridges",
       "lean_names": [
-        "Preiss.density_iff_openBall_limit",
         "Preiss.density_iff_upstream"
       ],
       "deps": [
         "def:positive-density",
-        "gmt:density-bounds",
         "gmt:density-exists-set",
-        "gmt:density-limit",
         "lem:density-limit-values"
       ],
       "branch": "Existing interfaces",
@@ -2012,7 +2009,7 @@
       "branch": "Basic definitions",
       "proposed_file": "Preiss/Tangent/Defs.lean",
       "scope": "core",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Tangent/Defs.lean"
       ]
@@ -2294,7 +2291,7 @@
         "lem:plane-hausdorff"
       ],
       "branch": "Existing interfaces",
-      "role": "Companion result",
+      "role": "Preiss proof",
       "proposed_file": "Preiss/Tangent/FlatScaling.lean",
       "statement_tex": "Flat measures are regular and nonzero. Dimensional dilation and recentering at a point of their supporting plane preserve flatness; pushforward by a linear isometry gives the corresponding flat measure on the image plane. Unit-uniform scaling and blow-up composition have separate interfaces.",
       "source_files": [
@@ -2347,7 +2344,7 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Tangent/Compactness.lean"
       ]
@@ -2458,7 +2455,7 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Tangent/Blowdown.lean"
       ]
@@ -4559,7 +4556,7 @@
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/TangentAtInfinity.lean"
       ]
@@ -4993,13 +4990,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Let $\\gamma$ be the standard covariance-one Gaussian probability measure on\n$V$. Prove $\\int\\langle\\omega(v,v),b\\rangle\\,d\\gamma(v)=0$ using R07,\nFubini and domination by a constant times $|v|^2$.\nThen\n$\\operatorname{tr}(b_2^{(2)}|V)=\\int\\widehat b(v,v)\\,d\\gamma(v)$.\nThe same argument works against each fixed normal vector, not only $b$.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-gaussian-even-moments",
+        "lem:flat-infinity-moments",
+        "lem:gaussian-vector-trace-contractions",
+        "lem:projected-mixed-gaussian-sum",
         "lem:rigidity-contracted-limit-zero",
         "lem:rigidity-mixed-gaussian-limit"
       ],
@@ -5078,15 +5071,7 @@
       "hypotheses_tex": "",
       "proof_tex": "Let $\\gamma$ be the standard covariance-one Gaussian probability measure on\n$V$. Prove $\\int\\langle\\omega(v,v),b\\rangle\\,d\\gamma(v)=0$ using R07,\nFubini and domination by a constant times $|v|^2$.\nThen\n$\\operatorname{tr}(b_2^{(2)}|V)=\\int\\widehat b(v,v)\\,d\\gamma(v)$.\nThe same argument works against each fixed normal vector, not only $b$.",
       "deps": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:flat-gaussian-even-moments",
+        "lem:gaussian-mean-zero-correction",
         "lem:rigidity-omega-trace-zero"
       ],
       "lean_names": [
@@ -5112,13 +5097,7 @@
       "hypotheses_tex": "",
       "proof_tex": "For $y,z\\in V$,\n$\\int\\langle y,v\\rangle^2\\langle z,v\\rangle^2\\,d\\gamma\n=|y|^2|z|^2+2\\langle y,z\\rangle^2$.\nCombining this with R07 yields, for $w\\in V^\\perp$,\n\\[\n \\int\\langle y,v\\rangle^2\\langle\\omega(v,v),w\\rangle\\,d\\gamma(v)\n =2\\langle\\omega(y,y),w\\rangle.\n\\]\nJustify limits by Gaussian quartic domination and Fubini.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:gaussian-wick-fourth",
+        "lem:gaussian-vector-trace-contractions",
         "lem:rigidity-omega-trace-zero"
       ],
       "lean_names": [
@@ -5131,7 +5110,7 @@
       "source": "De Lellis Proposition 9.1, Lemmas 9.2,9.4,9.9,9.10 and Proposition 9.5, pp.95-109.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean"
       ]
@@ -5144,18 +5123,11 @@
       "hypotheses_tex": "",
       "proof_tex": "Integrate R10, express $\\int|\\omega(v,v)|^2\\,d\\gamma$ through R07 and R12,\nuse R11, and pass to the flat blow-down using M02. The result is\n\\[\n \\int\\widehat b(v,v)^2\\,d\\gamma(v)\n \\leq-8|b|^2\\int\\widehat b(v,v)\\,d\\gamma(v).\n\\]\nThe inequality must remain an inequality throughout. The equality sign at\nthe start of the second long display on printed page 108 loses the earlier\ninequality; its final statement (9.41) has the correct direction.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:rigidity-omega",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:rigidity-mixed-gaussian-limit",
-        "lem:rigidity-omega-reproducing",
+        "lem:gaussian-rigidity-integral-bounds",
+        "lem:rigidity-omega-contraction",
+        "lem:rigidity-omega-trace-zero",
         "lem:rigidity-pointwise-quadratic-bound",
-        "lem:rigidity-rescaled-error",
-        "lem:vague-gaussian-polynomials"
+        "lem:rigidity-rescaled-error"
       ],
       "lean_names": [
         "Preiss.integral_adjustedForm_sq_le"
@@ -5182,15 +5154,8 @@
       "hypotheses_tex": "",
       "proof_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
       "deps": [
-        "def:bilinear-trace",
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:bilinear-trace-basis",
-        "lem:gaussian-quadratic-trace-bound",
+        "lem:bilinear-trace-orthogonal-split",
+        "lem:gaussian-square-upper-trace-lower",
         "lem:moment-normal-trace",
         "lem:rigidity-gaussian-trace",
         "lem:rigidity-integral-quadratic-bound"
@@ -5219,16 +5184,14 @@
       "hypotheses_tex": "",
       "proof_tex": "For every symmetric bilinear form $A$ on an $m$-dimensional Euclidean space,\n\\[\n \\int A(v,v)^2\\,d\\gamma=(\\operatorname{tr}A)^2+\n 2\\|A\\|_{\\mathrm{HS}}^2\n \\geq(1+2/m)\\left(\\int A(v,v)\\,d\\gamma\\right)^2.\n\\]\nThis is a reusable Gaussian/spectral theorem independent of uniform measures.\nCombining it with R13 gives\n$\\int\\widehat b(v,v)\\,d\\gamma\\geq-8m|b|^2/(m+2)$.\nR08 and R04 therefore give\n$\\operatorname{tr}b_2^{(2)}\\geq16|b|^2/(m+2)$.\nSince that trace is zero, $b=0$; R03 makes the support planar, and plane-supported\nuniform classification finishes rigidity. This is the actual content hidden\ninside the current single trace-rigidity node.",
       "deps": [
-        "def:flat",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:moment-second-total-trace",
         "lem:plane-supported-uniform-flat",
         "lem:rigidity-forms-exist",
         "lem:rigidity-normal-vector-exists",
+        "lem:taylor-two",
         "lem:trace-rigidity",
-        "lem:uniform-cylinder-identity"
+        "lem:uniform-cylinder-identity",
+        "lem:unit-uniform-infinity-existence"
       ],
       "lean_names": [
         "Preiss.flat_of_flat_at_infinity"
@@ -5285,26 +5248,8 @@
       "hypotheses_tex": "",
       "proof_tex": "After S08 normalization, suppose $\\alpha$ is a flat dimensional tangent and\n$\\zeta$ is a nonflat dimensional tangent, all dimensional tangents being unit\nuniform. Let $\\chi$ be the blow-down of $\\zeta$. Rigidity and the gap give\n$F(\\chi)>\\varepsilon$. Choose $r_i\\to0$ with blow-ups tending to $\\alpha$\nand $s_i<r_i$ with blow-ups tending to $\\chi$; subsequence selection makes\nthe ordering possible. For sufficiently large $i$, the continuous scale\nfunction satisfies $F(D_{x,r_i}^m\\mu)<\\varepsilon$ and\n$F(D_{x,s_i}^m\\mu)>\\varepsilon$.\nChoose $\\sigma_i\\in[s_i,r_i]$ with energy exactly $\\varepsilon$ and energy\nat most $\\varepsilon$ on the entire interval $[\\sigma_i,r_i]$.\nThis is a greatest-crossing/last-crossing assertion, not merely the intermediate\nvalue theorem. Extract a nonzero unit uniform limit $\\xi$ at the $\\sigma_i$.",
       "deps": [
-        "cor:conical",
-        "def:dimensional-tangent",
-        "def:first-crossing-data",
-        "def:flat",
-        "def:flatness",
-        "def:flatness-cutoff",
-        "def:flatness-gap",
-        "def:positive-density",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:density-normalization",
-        "lem:dimensional-tangent-compactness",
-        "lem:flatness-continuous",
-        "lem:flatness-minimum",
-        "lem:flatness-radius-continuous",
-        "lem:greatest-crossing",
-        "lem:tangent-blowdown",
-        "thm:gap",
-        "thm:infinity-rigidity",
-        "thm:unique-infinity"
+        "lem:first-crossing-from-large-flatness",
+        "lem:nonflat-uniform-large-flatness"
       ],
       "lean_names": [
         "Preiss.exists_first_crossing_sequences"
@@ -5343,7 +5288,7 @@
       "source": "De Lellis Lemma 6.20 and Section 6.4, pp.66-69.",
       "repair": [],
       "note": "",
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ]
@@ -5385,17 +5330,11 @@
       "hypotheses_tex": "",
       "proof_tex": "For every fixed $R\\geq1$, eventually $\\sigma_i R\\in[\\sigma_i,r_i]$.\nS02--S03 and C04 give $F(D^m_{0,R}\\xi)\\leq\\varepsilon$.\nLet $R\\to\\infty$. M10 and continuity give $F(\\psi)\\leq\\varepsilon$ for\nthe conical blow-down $\\psi$ of $\\xi$. Apply the conical gap, then rigidity,\nto conclude $\\xi$ flat, the final contradiction.\nKeep the centre $x$ fixed throughout; the printed scale function sometimes\nuses zero where $x$ is intended. Every use of $F$ on a dilated measure must\nretain the factor $R^{-m}$.",
       "deps": [
-        "def:dimensional-tangent",
-        "def:flat",
-        "def:positive-density",
+        "lem:all-dimensional-tangents-flat",
         "lem:density-normalization",
-        "lem:first-crossing",
-        "lem:first-crossing-flat-infinity",
-        "lem:flatness-cutoff-exists",
-        "lem:flatness-gap-cutoff",
-        "lem:radius-power-density",
-        "lem:tangent-ray",
-        "thm:infinity-rigidity"
+        "lem:density-positive-scalar",
+        "lem:flat-tangent-normalization",
+        "lem:radius-power-density"
       ],
       "lean_names": [
         "Preiss.all_tangents_flat_of_one"
@@ -5863,7 +5802,7 @@
       "file": "Preiss/Uniform/FlatnessContinuity.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/FlatnessContinuity.lean"
       ],
@@ -5892,7 +5831,7 @@
       "file": "Preiss/Theorem/FirstCrossing.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ],
@@ -5944,7 +5883,7 @@
       "file": "Preiss/Theorem/FirstCrossing.lean",
       "scope": "core",
       "branch": "Explicit analytical data",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ],
@@ -7845,7 +7784,7 @@
         "lem:gaussian-quadratic-trace-bound",
         "lem:gaussian-wick-fourth"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianQuadraticForms.lean"
       ],
@@ -9488,7 +9427,7 @@
       "deps": [
         "lem:bilinear-trace-basis"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/OrthogonalTraceSplit.lean"
       ],
@@ -9661,7 +9600,7 @@
         "Preiss.quadratic_lower_bound_of_square_upper"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
       ],
@@ -9679,7 +9618,7 @@
         "lem:gaussian-quadratic-trace-bound",
         "lem:quadratic-square-upper-lower"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianQuadraticLowerBound.lean"
       ],
@@ -9709,7 +9648,7 @@
         "Preiss.vague_limit_unique"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/Vague/Uniqueness.lean"
       ],
@@ -9728,7 +9667,7 @@
       "deps": [
         "lem:tangent-ray-density-bounds"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Tangent/FlatNormalization.lean"
       ],
@@ -9745,7 +9684,7 @@
       "deps": [
         "def:positive-density"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Density/Scalar.lean"
       ],
@@ -9760,7 +9699,7 @@
         "Preiss.integrable_gaussian_norm_sq_bilinear"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianBilinearNorm.lean"
       ],
@@ -9778,7 +9717,7 @@
         "lem:gaussian-bilinear-norm-integrable",
         "lem:gaussian-quadratic-trace-bound"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianBilinearNorm.lean"
       ],
@@ -9798,7 +9737,7 @@
         "lem:gaussian-bilinear-contraction",
         "lem:gaussian-quadratic-trace-bound"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
       ],
@@ -9815,7 +9754,7 @@
         "Preiss.tendsto_weighted_integral_mul_of_square_limits"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/WeightedIntegralPolarization.lean"
       ],
@@ -9831,7 +9770,7 @@
         "Preiss.tendsto_weighted_integral_finite_linear_combination"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/BilinearIntegralLimits.lean"
       ],
@@ -9998,7 +9937,7 @@
       "deps": [
         "lem:gaussian-vector-trace-contractions"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianBilinearVectorTrace.lean"
       ],
@@ -10017,7 +9956,7 @@
         "lem:flatness-radius-continuous",
         "lem:greatest-crossing"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Theorem/FirstCrossing.lean"
       ],
@@ -10035,7 +9974,7 @@
         "lem:gaussian-bilinear-norm-integrable",
         "lem:gaussian-square-upper-trace-lower"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianRigidityBounds.lean"
       ],
@@ -10127,7 +10066,7 @@
       "deps": [
         "lem:moment-norm-bound"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/ProjectedMixedGaussian.lean"
       ],
@@ -10145,7 +10084,7 @@
         "lem:finite-bilinear-integral-limits",
         "lem:gaussian-vector-bilinear-wick"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/GaussianBilinearContraction.lean"
       ],
@@ -10165,7 +10104,7 @@
         "lem:low-order-moment-limits",
         "lem:moment-product-growth"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/GaussianInnerProducts.lean"
       ],
@@ -10186,7 +10125,7 @@
         "lem:rigidity-mixed-gaussian-limit",
         "lem:weighted-integral-polarization"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/RigidityContraction.lean"
       ],
@@ -10205,11 +10144,71 @@
         "lem:gaussian-cross-product-limits",
         "lem:gaussian-weighted-contraction"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/RigidityContraction.lean"
       ],
       "proposed_file": "Preiss/Uniform/RigidityContraction.lean"
+    },
+    {
+      "id": "lem:density-open-ball-bridge",
+      "kind": "lemma",
+      "title": "Open-ball density convention",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.density_iff_openBall_limit"
+      ],
+      "deps": [
+        "def:positive-density",
+        "gmt:density-limit",
+        "lem:density-limit-values"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Density/Adapters.lean"
+      ],
+      "proposed_file": "Preiss/Density/Adapters.lean"
+    },
+    {
+      "id": "lem:nonflat-uniform-large-flatness",
+      "kind": "lemma",
+      "title": "Nonflat uniform measures have a dilation above the flatness gap",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_dilate_flatness_gt_of_unitUniform_not_flat"
+      ],
+      "deps": [
+        "cor:conical",
+        "lem:flatness-continuous",
+        "lem:unit-uniform-infinity-existence",
+        "thm:infinity-rigidity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/FirstCrossing.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/FirstCrossing.lean"
+    },
+    {
+      "id": "lem:all-dimensional-tangents-flat",
+      "kind": "lemma",
+      "title": "One flat dimensional tangent forces all dimensional tangents to be flat",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.all_dimensionalTangents_flat_of_one"
+      ],
+      "deps": [
+        "lem:first-crossing",
+        "lem:first-crossing-flat-infinity",
+        "lem:first-crossing-ratio",
+        "lem:flatness-gap-cutoff",
+        "thm:infinity-rigidity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Theorem/PartB.lean"
+      ],
+      "proposed_file": "Preiss/Theorem/PartB.lean"
     }
   ],
   "preiss_core": [
@@ -10223,11 +10222,9 @@
     "def:dimensional-blowup",
     "def:dimensional-tangent",
     "def:feature-moment",
-    "def:first-crossing-data",
     "def:flat",
     "def:flatness",
     "def:flatness-cutoff",
-    "def:flatness-gap",
     "def:lipschitz-graph",
     "def:moment-coefficients",
     "def:moments",
@@ -10247,7 +10244,6 @@
     "def:symmetric-moment-form",
     "def:symmetric-multilinear",
     "def:tangent-api",
-    "def:tangent-at-infinity",
     "def:two-sided-approximation",
     "def:uniform-api",
     "def:uniform-constant",
@@ -10264,7 +10260,6 @@
     "gmt:continuity-sets",
     "gmt:density-bounds",
     "gmt:density-exists-set",
-    "gmt:density-limit",
     "gmt:density-points",
     "gmt:doubling-bounds",
     "gmt:finite-restriction",
@@ -10295,6 +10290,7 @@
     "gmt:zero-barycenter-hyperplane",
     "lem:absolute-continuity-density-bounds",
     "lem:absolute-continuity-tangent-cones",
+    "lem:all-dimensional-tangents-flat",
     "lem:analytic-finite-jets",
     "lem:analytic-projection-approximation",
     "lem:annulus-integrability",
@@ -10302,6 +10298,7 @@
     "lem:ball-upper-hausdorff-bound",
     "lem:bilinear-diagonal-difference",
     "lem:bilinear-trace-basis",
+    "lem:bilinear-trace-orthogonal-split",
     "lem:blowdown-even-moment-limit",
     "lem:blowdown-form-limits",
     "lem:blowdown-moment-limits",
@@ -10349,6 +10346,7 @@
     "lem:density-limit-values",
     "lem:density-measure-comparison",
     "lem:density-normalization",
+    "lem:density-positive-scalar",
     "lem:diameter-hausdorff-bound",
     "lem:dimensional-blowup-set-estimates",
     "lem:dimensional-blowup-support",
@@ -10360,7 +10358,6 @@
     "lem:dimensional-tangent-bounded-orbit",
     "lem:dimensional-tangent-closed",
     "lem:dimensional-tangent-compactness",
-    "lem:dimensional-tangent-dilation",
     "lem:dimensional-tangent-metric-separation",
     "lem:dimensional-tangent-operations",
     "lem:dimensional-tangent-origin-ball-law",
@@ -10379,12 +10376,15 @@
     "lem:feature-moment-vanishing",
     "lem:feature-multilinear-block",
     "lem:feature-norm-functionals",
+    "lem:finite-bilinear-integral-limits",
     "lem:finite-dimensional-operator-bigO",
     "lem:finite-moment-taylor-jets",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
     "lem:first-crossing",
     "lem:first-crossing-flat-infinity",
+    "lem:first-crossing-from-large-flatness",
+    "lem:first-crossing-ratio",
     "lem:first-moment-normal-from-vanishing",
     "lem:fivefold-image-covering",
     "lem:fixed-lower-density-projection-null",
@@ -10397,11 +10397,11 @@
     "lem:flat-plane-blowup",
     "lem:flat-positive-scalar",
     "lem:flat-tangent-from-uniform-recentering",
+    "lem:flat-tangent-normalization",
     "lem:flat-to-approximation",
     "lem:flatness-basic-nonneg",
     "lem:flatness-basic-zero",
     "lem:flatness-continuous",
-    "lem:flatness-cutoff-exists",
     "lem:flatness-energy-integrable",
     "lem:flatness-gap-cutoff",
     "lem:flatness-minimizer-finite-compacts",
@@ -10412,9 +10412,14 @@
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-ball-power",
     "lem:gaussian-ball-power-parameter",
+    "lem:gaussian-bilinear-contraction",
     "lem:gaussian-bilinear-covariance",
+    "lem:gaussian-bilinear-norm-integrable",
+    "lem:gaussian-cross-product-limits",
     "lem:gaussian-feature-integrability",
+    "lem:gaussian-inner-product-limits",
     "lem:gaussian-linear-growth-integral",
+    "lem:gaussian-mean-zero-correction",
     "lem:gaussian-norm-half-mass",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-plane-energy-integrable",
@@ -10424,11 +10429,16 @@
     "lem:gaussian-projection-integrability",
     "lem:gaussian-quadratic-trace-bound",
     "lem:gaussian-radial-second-moment",
+    "lem:gaussian-rigidity-integral-bounds",
+    "lem:gaussian-square-upper-trace-lower",
     "lem:gaussian-tail-series-bound",
     "lem:gaussian-translation-series",
     "lem:gaussian-uniform-tails",
+    "lem:gaussian-vector-bilinear-wick",
+    "lem:gaussian-vector-trace-contractions",
     "lem:gaussian-weight-exponential",
     "lem:gaussian-weight-finite",
+    "lem:gaussian-weighted-contraction",
     "lem:gaussian-wick-fourth",
     "lem:general-tangent-scalar",
     "lem:graded-analytic-projection",
@@ -10482,6 +10492,7 @@
     "lem:multilinear-symmetrization",
     "lem:nested-compact-approximation",
     "lem:nested-orthogonal-layers",
+    "lem:nonflat-uniform-large-flatness",
     "lem:nonnegative-integral-cover-bound",
     "lem:normal-coordinate-identities",
     "lem:normalized-gaussian-derivative",
@@ -10498,12 +10509,14 @@
     "lem:plane-hausdorff",
     "lem:plane-isometric-parametrization",
     "lem:plane-projection-subsequence",
+    "lem:plane-scaling",
     "lem:plane-slab-measure",
     "lem:plane-supported-uniform-flat",
     "lem:polynomial-feature-identities",
     "lem:polynomial-gaussian-integrability",
     "lem:polynomial-gaussian-norm-tails",
     "lem:polynomial-norm-growth",
+    "lem:projected-mixed-gaussian-sum",
     "lem:projected-tube-contained-slab",
     "lem:projected-tube-slab-bound",
     "lem:projection-distance",
@@ -10517,6 +10530,7 @@
     "lem:quadratic-bound-bounded-offsets",
     "lem:quadratic-exponential-even-derivatives",
     "lem:quadratic-near-basis-rigidity",
+    "lem:quadratic-square-upper-lower",
     "lem:quantitative-upper-density-bound",
     "lem:radial",
     "lem:radius-power-density",
@@ -10536,7 +10550,7 @@
     "lem:rigidity-integral-quadratic-bound",
     "lem:rigidity-mixed-gaussian-limit",
     "lem:rigidity-normal-vector-exists",
-    "lem:rigidity-omega-reproducing",
+    "lem:rigidity-omega-contraction",
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-pointwise-from-growth",
     "lem:rigidity-pointwise-quadratic-bound",
@@ -10552,7 +10566,6 @@
     "lem:subspace-moment-trace",
     "lem:symmetric-cubic-binomial",
     "lem:symmetric-multilinear-diagonal-injective",
-    "lem:tangent-blowdown",
     "lem:tangent-existence",
     "lem:tangent-ray",
     "lem:tangent-ray-density-bounds",
@@ -10589,6 +10602,7 @@
     "lem:vague-diagonal",
     "lem:vague-gaussian-moments",
     "lem:vague-gaussian-polynomials",
+    "lem:vague-limit-unique",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
     "lem:vague-projection-energy",
@@ -10607,6 +10621,7 @@
     "lem:weak-approximation-scale-transfer",
     "lem:weighted-energy-limit-support",
     "lem:weighted-grading-positive-complement",
+    "lem:weighted-integral-polarization",
     "lem:weighted-plane-energy-decomposition",
     "lem:zero-density-atoms",
     "lem:zero-dimension",
@@ -10630,8 +10645,7 @@
     "thm:part-a",
     "thm:part-b",
     "thm:preiss",
-    "thm:uniform-upstream",
-    "thm:unique-infinity"
+    "thm:uniform-upstream"
   ],
   "characterization_closure": [
     "cor:rectifiable-tangent-plane",

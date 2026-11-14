@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "f4957e440301eef2e9586533987de7f135272831",
+  "source_revision": "9bb8591e2e65e1a532b85b2138376214f47c787b",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -4031,6 +4031,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.gaussian_bilinear_contraction_of_weighted_moment_limits": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianBilinearContraction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.gaussian_bilinear_integral_lower_bound_of_square_upper": {
       "project": "local",
       "kind": "theorem",
@@ -4668,6 +4680,18 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.integrable_gaussian_inner_sq_centered_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianInnerProducts.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel": {
       "project": "local",
       "kind": "theorem",
@@ -4685,6 +4709,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_gaussian_inner_sq_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianInnerProducts.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6234,11 +6270,47 @@
       ],
       "kernel_status": "proved"
     },
+    "Preiss.normalized_gaussian_inner_mul_limit_on_plane": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/RigidityContraction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.normalized_gaussian_inner_sq_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GaussianInnerProducts.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.normalized_gaussian_integral_tendsto_zero_of_linear_growth": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/GaussianLinearGrowth.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.normalized_gaussian_mixed_limit_rigidityOmega": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/RigidityContraction.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -6904,6 +6976,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/RigidityErrorBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.rigidityOmega_contraction_of_mean_zero_and_error_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/RigidityContraction.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

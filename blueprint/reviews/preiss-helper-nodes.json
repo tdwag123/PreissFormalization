@@ -4309,6 +4309,64 @@
       ],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:density-open-ball-bridge",
+      "kind": "lemma",
+      "title": "Open-ball density convention",
+      "lean_names": [
+        "Preiss.density_iff_openBall_limit"
+      ],
+      "file": "Preiss/Density/Adapters.lean",
+      "statement_tex": "Positive finite existing density is equivalent to a positive finite limit of $\\mu(B(x,r))/r^m$ over open balls. This companion convention adapter remains an explicit open obligation and is not needed by the upstream density adapter.",
+      "definition_dependencies": [
+        "def:positive-density"
+      ],
+      "deps": [
+        "lem:density-limit-values",
+        "gmt:density-limit"
+      ],
+      "used_by": [],
+      "verification": "Unfinished original companion obligation; separated from the proved upstream adapter."
+    },
+    {
+      "id": "lem:nonflat-uniform-large-flatness",
+      "kind": "lemma",
+      "title": "Nonflat uniform measures have a dilation above the flatness gap",
+      "lean_names": [
+        "Preiss.exists_dilate_flatness_gt_of_unitUniform_not_flat"
+      ],
+      "file": "Preiss/Theorem/FirstCrossing.lean",
+      "statement_tex": "A nonflat unit-uniform measure has a dilation whose flatness exceeds the conical gap. Otherwise its tangent at infinity would be flat and rigidity would make the original measure flat.",
+      "definition_dependencies": [],
+      "deps": [
+        "thm:infinity-rigidity",
+        "lem:unit-uniform-infinity-existence",
+        "cor:conical",
+        "lem:flatness-continuous"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:all-dimensional-tangents-flat",
+      "kind": "lemma",
+      "title": "One flat dimensional tangent forces all dimensional tangents to be flat",
+      "lean_names": [
+        "Preiss.all_dimensionalTangents_flat_of_one"
+      ],
+      "file": "Preiss/Theorem/PartB.lean",
+      "statement_tex": "Under positive finite existing density and unit uniformity of every dimensional tangent, the existence of one flat dimensional tangent forces every dimensional tangent to be flat.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:first-crossing",
+        "lem:first-crossing-ratio",
+        "lem:first-crossing-flat-infinity",
+        "thm:infinity-rigidity",
+        "lem:flatness-gap-cutoff"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

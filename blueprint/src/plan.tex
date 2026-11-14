@@ -838,33 +838,15 @@ Closed balls decrease to the singleton, and one such ball has finite measure.
 Apply continuity from above.
 \end{proof}
 
-\begin{lemma}[Normalization bridges]
+\begin{lemma}[Upstream density convention]
 \label{lem:density-bridge}
-\uses{lem:density-limit-values}
-\lean{Preiss.density_iff_upstream, Preiss.density_iff_openBall_limit}
-\uses{def:positive-density, gmt:density-bounds, gmt:density-exists-set, gmt:density-limit}
-
-
-
-
-
-
-
-
-
-
-Positive finite equal densities are equivalent to membership in the existing
-positive-finite-density-exists set, and to a positive finite limit of
-$\mu(B(x,r))/r^m$.
+\lean{Preiss.density_iff_upstream}
+\uses{def:positive-density, gmt:density-exists-set, lem:density-limit-values}
+Positive finite equal lower and upper densities are equivalent to membership in
+FormalizingGMT's positive-finite-density-exists set.
 \end{lemma}
-\begin{proof}[Planned proof]
-
-Use the complete order topology of ENNReal. Squeeze open and closed balls
-using radii $(1\pm\varepsilon)r$, then let $\varepsilon\downarrow0$.
-The radius-normalized limit is $2^m$ times the diameter-normalized one.
-De Lellis further divides by $\omega_m$; the resulting constant is positive
-and finite. Equality, positivity, and finiteness are invariant under this
-change, but exact constants in uniform-measure lemmas must be transported.
+\begin{proof}
+Use the existing density-value identifications with the lower and upper densities.
 \end{proof}
 
 \begin{lemma}[Finite upper density implies Hausdorff absolute continuity]
@@ -3636,7 +3618,7 @@ without first establishing these vanishings.
 \begin{lemma}[Zero Gaussian mean of omega]
 \label{lem:rigidity-omega-trace-zero}
 \lean{Preiss.integral_rigidityOmega_eq_zero}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-contracted-limit-zero, lem:rigidity-mixed-gaussian-limit}
+\uses{lem:gaussian-vector-trace-contractions, lem:projected-mixed-gaussian-sum, lem:rigidity-mixed-gaussian-limit, lem:rigidity-contracted-limit-zero, lem:flat-infinity-moments}
 
 
 
@@ -3729,7 +3711,7 @@ This is equation (9.34); it is a necessary bridge to the global trace bound.
 \begin{lemma}[Tangential trace is the mean adjusted form]
 \label{lem:rigidity-gaussian-trace}
 \lean{Preiss.trace_tangent_eq_integral_adjustedForm}
-\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:flat-gaussian-even-moments, lem:rigidity-omega-trace-zero, def:bilinear-trace}
+\uses{lem:rigidity-omega-trace-zero, lem:gaussian-mean-zero-correction}
 
 
 
@@ -3755,7 +3737,7 @@ The same argument works against each fixed normal vector, not only $b$.
 \begin{lemma}[Gaussian reproducing identity for omega]
 \label{lem:rigidity-omega-reproducing}
 \lean{Preiss.integral_inner_sq_mul_omega}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:gaussian-wick-fourth, lem:rigidity-omega-trace-zero}
+\uses{lem:rigidity-omega-trace-zero, lem:gaussian-vector-trace-contractions}
 
 
 
@@ -3784,7 +3766,7 @@ Justify limits by Gaussian quartic domination and Fubini.
 \begin{lemma}[Integral quadratic inequality]
 \label{lem:rigidity-integral-quadratic-bound}
 \lean{Preiss.integral_adjustedForm_sq_le}
-\uses{def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:rigidity-omega, def:tangent-at-infinity, def:unit-uniform, lem:rigidity-mixed-gaussian-limit, lem:rigidity-omega-reproducing, lem:rigidity-pointwise-quadratic-bound, lem:rigidity-rescaled-error, lem:vague-gaussian-polynomials}
+\uses{lem:rigidity-omega-contraction, lem:rigidity-omega-trace-zero, lem:rigidity-rescaled-error, lem:rigidity-pointwise-quadratic-bound, lem:gaussian-rigidity-integral-bounds}
 
 
 
@@ -3821,7 +3803,7 @@ inequality; its final statement (9.41) has the correct direction.
 \begin{lemma}[Positive lower bound for the total second coefficient trace]
 \label{lem:trace-rigidity}
 \lean{Preiss.integral_adjustedForm_lower_bound, Preiss.secondMomentCoefficient_trace_lower_bound}
-\uses{def:bilinear-trace, def:moment-coefficients, def:plane, def:rigidity-adjusted-form, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:bilinear-trace-basis, lem:gaussian-quadratic-trace-bound, lem:moment-normal-trace, lem:rigidity-gaussian-trace, lem:rigidity-integral-quadratic-bound}
+\uses{lem:rigidity-integral-quadratic-bound, lem:gaussian-square-upper-trace-lower, lem:moment-normal-trace, lem:rigidity-gaussian-trace, lem:bilinear-trace-orthogonal-split}
 
 
 
@@ -3854,7 +3836,7 @@ inside the current single trace-rigidity node.
 \begin{theorem}[Flatness follows from flatness at infinity]
 \label{thm:infinity-rigidity}
 \lean{Preiss.flat_of_flat_at_infinity}
-\uses{def:flat, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:moment-second-total-trace, lem:plane-supported-uniform-flat, lem:rigidity-forms-exist, lem:rigidity-normal-vector-exists, lem:trace-rigidity, lem:uniform-cylinder-identity}
+\uses{lem:trace-rigidity, lem:moment-second-total-trace, lem:taylor-two, lem:rigidity-normal-vector-exists, lem:rigidity-forms-exist, lem:uniform-cylinder-identity, lem:plane-supported-uniform-flat, lem:unit-uniform-infinity-existence}
 
 
 
@@ -3915,7 +3897,7 @@ nonzero flat limit. This is \texttt{ae\_exists\_flat\_tangent}.
 \begin{lemma}[First-crossing sequences and their uniform tangent limit]
 \label{lem:first-crossing}
 \lean{Preiss.exists_first_crossing_sequences}
-\uses{cor:conical, def:dimensional-tangent, def:first-crossing-data, def:flat, def:flatness, def:flatness-gap, def:positive-density, def:tangent-at-infinity, def:unit-uniform, lem:density-normalization, lem:dimensional-tangent-compactness, lem:flatness-continuous, lem:flatness-minimum, lem:flatness-radius-continuous, lem:greatest-crossing, lem:tangent-blowdown, thm:gap, thm:infinity-rigidity, thm:unique-infinity, def:flatness-cutoff}
+\uses{lem:nonflat-uniform-large-flatness, lem:first-crossing-from-large-flatness}
 
 
 
@@ -4005,7 +3987,7 @@ retain the factor $R^{-m}$.
 \begin{theorem}[One flat tangent implies all tangents are flat]
 \label{thm:part-b}
 \lean{Preiss.all_tangents_flat_of_one}
-\uses{def:dimensional-tangent, def:flat, def:positive-density, lem:density-normalization, lem:first-crossing, lem:first-crossing-flat-infinity, lem:flatness-cutoff-exists, lem:flatness-gap-cutoff, lem:tangent-ray, thm:infinity-rigidity, lem:radius-power-density}
+\uses{lem:all-dimensional-tangents-flat, lem:density-normalization, lem:density-positive-scalar, lem:flat-tangent-normalization, lem:radius-power-density}
 
 
 
@@ -6280,4 +6262,28 @@ Polarization gives the normalized second and centered mixed Gaussian limits for 
 \uses{lem:gaussian-weighted-contraction, lem:gaussian-cross-product-limits, def:rigidity-error}
 
 Under the zero-mean and vanishing-error identities, the Gaussian mean of $\lVert\omega(v,v)\rVert^2$ equals $-8$ times the Gaussian mean of $A(v,v)$.
+\end{lemma}
+
+\begin{lemma}[Open-ball density convention]
+\label{lem:density-open-ball-bridge}
+\lean{Preiss.density_iff_openBall_limit}
+\uses{def:positive-density, lem:density-limit-values, gmt:density-limit}
+
+Positive finite existing density is equivalent to a positive finite limit of $\mu(B(x,r))/r^m$ over open balls. This companion convention adapter remains an explicit open obligation and is not needed by the upstream density adapter.
+\end{lemma}
+
+\begin{lemma}[Nonflat uniform measures have a dilation above the flatness gap]
+\label{lem:nonflat-uniform-large-flatness}
+\lean{Preiss.exists_dilate_flatness_gt_of_unitUniform_not_flat}
+\uses{thm:infinity-rigidity, lem:unit-uniform-infinity-existence, cor:conical, lem:flatness-continuous}
+
+A nonflat unit-uniform measure has a dilation whose flatness exceeds the conical gap. Otherwise its tangent at infinity would be flat and rigidity would make the original measure flat.
+\end{lemma}
+
+\begin{lemma}[One flat dimensional tangent forces all dimensional tangents to be flat]
+\label{lem:all-dimensional-tangents-flat}
+\lean{Preiss.all_dimensionalTangents_flat_of_one}
+\uses{lem:first-crossing, lem:first-crossing-ratio, lem:first-crossing-flat-infinity, thm:infinity-rigidity, lem:flatness-gap-cutoff}
+
+Under positive finite existing density and unit uniformity of every dimensional tangent, the existence of one flat dimensional tangent forces every dimensional tangent to be flat.
 \end{lemma}

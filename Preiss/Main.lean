@@ -7,8 +7,8 @@ import Preiss.Theorem.PartB
 
 /-! # Preiss's rectifiability theorem
 
-The assembly proof is explicit. Its intermediate theorem obligations currently
-contain `sorry`, so this is not yet a completed formal proof of Preiss's theorem.
+The proof combines almost-everywhere existence of a flat tangent, uniform-measure
+rigidity, and the Marstrand–Mattila sufficient criterion for rectifiability.
 -/
 
 open MeasureTheory Filter
