@@ -49,4 +49,22 @@ theorem exists_compact_subset_of_ae_mem_iUnion
       ENNReal.add_lt_add_of_lt_of_le (measure_ne_top μ _) hN hC.le
     _ = ENNReal.ofReal ε := by rw [← ENNReal.ofReal_add (half_pos hε).le (half_pos hε).le, add_halves]
 
+/-- A positive-measure carrier has a positive-measure compact subset in one
+stage of an increasing measurable exhaustion covering it almost everywhere. -/
+theorem exists_pos_compact_subset_of_ae_mem_iUnion
+    {X : Type*} [TopologicalSpace X] [MeasurableSpace X] [BorelSpace X] [T2Space X]
+    (μ : Measure X) [IsFiniteMeasure μ] [μ.Regular]
+    (E : Set X) (hE : MeasurableSet E) (hpos : 0 < μ E) (S : ℕ → Set X)
+    (hS : ∀ i, MeasurableSet (S i)) (hmono : Monotone S)
+    (hcover : ∀ᵐ x ∂μ.restrict E, x ∈ ⋃ i, S i) :
+    ∃ N : ℕ, ∃ C : Set X, IsCompact C ∧ C ⊆ E ∩ S N ∧ 0 < μ C := by
+  have heps : 0 < (μ E).toReal := ENNReal.toReal_pos hpos.ne' (measure_ne_top μ E)
+  obtain ⟨N, C, hCcomp, hCsub, herror⟩ :=
+    exists_compact_subset_of_ae_mem_iUnion μ E hE S hS hmono hcover heps
+  refine ⟨N, C, hCcomp, hCsub, ?_⟩
+  by_contra hnot
+  have hz : μ C = 0 := le_antisymm (le_of_not_gt hnot) bot_le
+  rw [measure_sdiff_null hz, ENNReal.ofReal_toReal (measure_ne_top μ E)] at herror
+  exact lt_irrefl _ herror
+
 end Preiss

@@ -1,4 +1,3 @@
-import Preiss.Geometry.Euclidean
 import Preiss.Analysis.DenseCompactTests
 import FormalizingGMT.WeakConvergence.Basic
 import Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real
@@ -12,11 +11,12 @@ import Mathlib.Tactic.Ring
 namespace Preiss
 open MeasureTheory Filter Set Metric Topology
 open scoped CompactlySupported
-variable {n : ℕ}
+variable {X : Type*} [TopologicalSpace X] [T2Space X] [LocallyCompactSpace X]
+  [MeasurableSpace X] [BorelSpace X]
 
 theorem weaklyConverges_iff_denseCompactTests
-    (F : DenseCompactTestFamily (Euclidean n))
-    (μ : ℕ → Measure (Euclidean n)) (ν : Measure (Euclidean n))
+    (F : DenseCompactTestFamily X)
+    (μ : ℕ → Measure X) (ν : Measure X)
     (hμ : ∀ i, (μ i).Regular) (hν : ν.Regular) :
     Measure.WeaklyConverges μ ν ↔ ∀ j,
       Tendsto (fun i => ∫ x, F.tests j x ∂μ i) atTop (𝓝 (∫ x, F.tests j x ∂ν)) := by
@@ -32,12 +32,12 @@ theorem weaklyConverges_iff_denseCompactTests
     have hbound : ∀ᶠ i in atTop, (∫ x, u x ∂μ i) < C :=
       (h j₀).eventually_lt_const (lt_add_one _)
     have hνbound : (∫ x, u x ∂ν) < C := lt_add_one _
-    have estimate (ρ : Measure (Euclidean n)) (hρ : ρ.Regular)
+    have estimate (ρ : Measure X) (hρ : ρ.Regular)
         (j : ℕ) (hjK : tsupport (F.tests j) ⊆ K)
         (δ : ℝ) (hδ : 0 ≤ δ) (herr : ∀ x, |F.tests j x - f x| ≤ δ) :
         |(∫ x, F.tests j x ∂ρ) - ∫ x, f x ∂ρ| ≤ δ * ∫ x, u x ∂ρ := by
       letI : ρ.Regular := hρ
-      have hdom (x : Euclidean n) : ‖F.tests j x - f x‖ ≤ δ * u x := by
+      have hdom (x : X) : ‖F.tests j x - f x‖ ≤ δ * u x := by
         by_cases hx : x ∈ K
         · change |F.tests j x - f x| ≤ δ * u x
           calc |F.tests j x - f x| ≤ δ := herr x
@@ -84,8 +84,8 @@ theorem weaklyConverges_iff_denseCompactTests
       _ = ε := by ring
 
 theorem measure_eq_of_denseCompactTests
-    (F : DenseCompactTestFamily (Euclidean n))
-    (μ ν : Measure (Euclidean n)) (hμ : μ.Regular) (hν : ν.Regular)
+    (F : DenseCompactTestFamily X)
+    (μ ν : Measure X) (hμ : μ.Regular) (hν : ν.Regular)
     (h : ∀ j, (∫ x, F.tests j x ∂μ) = ∫ x, F.tests j x ∂ν) : μ = ν := by
   letI : μ.Regular := hμ
   letI : ν.Regular := hν

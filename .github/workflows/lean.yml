@@ -23,6 +23,7 @@ jobs:
         id: targets
         run: |
           python scripts/test_source_checks.py
+          python scripts/test_kernel_policy.py
           python scripts/check_blueprint.py
           python scripts/lean_targets.py --github-output >> "$GITHUB_OUTPUT"
       - name: Compile pinned upstream and all current project libraries

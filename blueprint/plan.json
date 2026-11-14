@@ -219,6 +219,7 @@
       "kind": "lemma",
       "title": "GMT: measurable blow-ups and ball identities",
       "lean_names": [
+        "blowUpMap_preimage_ball'",
         "map_blowUp_apply_ball",
         "map_blowUp_apply_closedBall",
         "measurable_blowUpMap"
@@ -868,6 +869,18 @@
       "source_files": []
     },
     {
+      "id": "mathlib:regular-measure-ext",
+      "kind": "lemma",
+      "title": "mathlib: compact tests determine regular measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "MeasureTheory.Measure.ext_of_integral_eq_on_compactlySupported"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": []
+    },
+    {
       "id": "def:plane",
       "kind": "definition",
       "title": "Linear planes",
@@ -1077,7 +1090,9 @@
       ],
       "lean_names": [
         "Preiss.cylinder",
-        "Preiss.exists_unit_small_projection_of_avoids_cylinder"
+        "Preiss.exists_unit_small_projection_of_avoids_cylinder",
+        "Preiss.exists_unit_small_projection_of_empty_inner_cylinder",
+        "Preiss.exists_unit_small_projection_swapped"
       ],
       "proposed_lean_name": "Preiss.exists_unit_small_projection_of_avoids_cylinder",
       "proposed_file": "Preiss/Geometry/Cylinders.lean",
@@ -2006,7 +2021,9 @@
       "proof_tex": "",
       "deps": [
         "gmt:portmanteau",
-        "lem:plane-hausdorff"
+        "lem:flat-measure-regularity",
+        "lem:plane-hausdorff",
+        "lem:vague-compact-null-mass"
       ],
       "lean_names": [
         "Preiss.tendsto_mass_outside_tube_of_flat_limit"
@@ -2032,7 +2049,9 @@
       "proof_tex": "",
       "deps": [
         "gmt:portmanteau",
-        "lem:plane-hausdorff"
+        "lem:flat-measure-regularity",
+        "lem:plane-hausdorff",
+        "lem:vague-uniform-ball-lower"
       ],
       "lean_names": [
         "Preiss.eventually_ball_mass_lower_bound_of_flat_limit"
@@ -2115,11 +2134,13 @@
         "def:dimensional-tangent",
         "gmt:density-points",
         "gmt:portmanteau",
-        "lem:measurable-hull-holes"
+        "lem:measurable-hull-holes",
+        "lem:rescaled-distance-selection"
       ],
       "lean_names": [
         "Preiss.IsMeasureDensityOnePoint",
         "Preiss.dist_badSet_rescaled_tendsto_zero",
+        "Preiss.dist_set_rescaled_tendsto_zero_of_densityOne",
         "Preiss.exists_badSet_points_rescaled_tendsto"
       ],
       "proposed_lean_name": "Preiss.dist_badSet_rescaled_tendsto_zero",
@@ -2175,6 +2196,7 @@
       "proof_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
       "deps": [
         "def:tangent-api",
+        "gmt:blowup-regular",
         "lem:vague-diagonal"
       ],
       "lean_names": [
@@ -2201,6 +2223,7 @@
       "proof_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
       "deps": [
         "def:dimensional-tangent",
+        "lem:dimensional-blowup-support",
         "lem:vague-diagonal"
       ],
       "lean_names": [
@@ -2229,7 +2252,9 @@
         "def:weak-approximation",
         "lem:dimensional-compactness",
         "lem:flat-limit-moving-balls",
-        "lem:flat-limit-tube"
+        "lem:flat-limit-tube",
+        "lem:sequential-uniform-scale",
+        "lem:weak-approximation-scale-transfer"
       ],
       "lean_names": [
         "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat"
@@ -2264,7 +2289,7 @@
         "lem:plane-hausdorff"
       ],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "proposed_file": "Preiss/Tangent/FlatScaling.lean",
       "statement_tex": "Flat measures are regular and nonzero. Dimensional dilation and recentering at a point of their supporting plane preserve flatness; pushforward by a linear isometry gives the corresponding flat measure on the image plane. Unit-uniform scaling and blow-up composition have separate interfaces.",
       "source_files": [
@@ -2332,8 +2357,12 @@
       "deps": [
         "def:dimensional-blowup",
         "lem:blowup-composition",
+        "lem:closed-map-support",
+        "lem:dimensional-blowup-support",
+        "lem:proper-map-regularity",
         "lem:uniform-scaling",
         "lem:uniform-vague-closed",
+        "lem:vague-cocompact-pushforward",
         "lem:vague-diagonal",
         "lem:vague-moving-blowups",
         "lem:vague-support-approximation"
@@ -2342,7 +2371,8 @@
         "Preiss.IsUniformPseudotangent",
         "Preiss.uniformPseudotangent_isUnitUniform",
         "Preiss.uniformPseudotangent_map_linearIsometry",
-        "Preiss.uniformPseudotangent_trans"
+        "Preiss.uniformPseudotangent_trans",
+        "Preiss.uniformPseudotangent_trans_of_regular"
       ],
       "proposed_lean_name": "Preiss.uniformPseudotangent_trans",
       "proposed_file": "Preiss/Tangent/ScalingOrbit.lean",
@@ -2364,12 +2394,8 @@
       "hypotheses_tex": "",
       "proof_tex": "For a fixed measure and centre, the limit of a vaguely convergent sequence of\ndimensional tangents is a dimensional tangent whenever that limit is regular\nand nonzero. Prove the analogous arbitrary-scalar statement as a separate\nadapter. Constant positive dilations of a dimensional tangent remain dimensional\ntangents. At a positive finite density point the dimensional tangent set is\nnonempty and compact, because every sufficiently small blow-up has compact\nmass bounds and nonzero subsequential limits. A countable-test diagonal lemma\nimplements closure without assuming a topology on all raw measures.",
       "deps": [
-        "def:dimensional-tangent",
-        "def:positive-density",
         "gmt:density-bounds",
-        "gmt:portmanteau",
-        "lem:dimensional-tangent-closed",
-        "thm:compactness"
+        "lem:dimensional-family-compact-ball-bounds"
       ],
       "lean_names": [
         "Preiss.dimensionalTangent_nonempty_compact"
@@ -2471,19 +2497,15 @@
       "hypotheses_tex": "",
       "proof_tex": "Under positive finite existing $m$-density almost everywhere, prove\n\\[\n \\text{for }\\mu\\text{-a.e. }a,\\quad\n \\forall\\nu\\in\\operatorname{Tan}_m(\\mu,a),\\quad\n \\forall y\\in\\operatorname{supp}\\nu,\\quad\\forall r>0,\n \\quad D^m_{y,r}\\nu\\in\\operatorname{Tan}_m(\\mu,a).\n\\]\nHere $\\operatorname{Tan}_m$ uses fixed dimensional normalization.\nIt is enough to prove recentering at radius one; S03 and S07 give all radii.\nFor fixed rational tolerances and radius cutoffs, take the arbitrary set of\nbad centres, stratify its density constants and intersect with a bounded ball.\nIf it has positive outer measure, use a finite metric cover of the compact\nfamily of translated uniform tangents to select one positive-outer-measure\nclass $D$ whose chosen translated tangents are pairwise close.\nTake a density point of its measurable hull lying in $D$: the hull's bad\ndensity points are null and cannot cover a set of positive outer measure.\nApply A08 to select nearby bad centres in $D$ and S02 to compare their blow-ups\nwith the chosen translated tangent. The triangle inequality contradicts the\ndefining fixed separation of the bad centres. Countably many tolerances give\none null exceptional set. This repairs the book's unjustified assertion that\nits existentially defined set $D$ is measurable.",
       "deps": [
-        "def:dimensional-tangent",
-        "def:positive-density",
-        "gmt:goodsets",
-        "lem:dimensional-tangent-ball-constant",
-        "lem:dimensional-tangent-closed",
-        "lem:dimensional-tangent-dilation",
-        "lem:hull-support-approximation",
-        "lem:uniform-adapter",
-        "lem:uniform-finite-metric-covers",
-        "lem:vague-moving-blowups"
+        "lem:dimensional-tangent-metric-separation",
+        "lem:dimensional-tangent-operations",
+        "lem:recenter-nonzero",
+        "lem:recenter-separated-set-null",
+        "lem:vague-second-countable"
       ],
       "lean_names": [
-        "Preiss.ae_recenter_dimensionalTangent"
+        "Preiss.ae_recenter_dimensionalTangent",
+        "Preiss.ae_recenter_dimensionalTangent_of_locallyFinite"
       ],
       "proposed_lean_name": "Preiss.ae_recenter_dimensionalTangent",
       "proposed_file": "Preiss/Tangent/Recentering.lean",
@@ -2773,6 +2795,7 @@
       "deps": [
         "gmt:hausdorff-density-outside",
         "gmt:hausdorff-density-upper",
+        "lem:quantitative-upper-density-bound",
         "lem:vanishing-density-scaled-balls"
       ],
       "lean_names": [
@@ -2828,17 +2851,20 @@
       "hypotheses_tex": "The Borel set \\(E\\) has positive finite \\(\\mathcal H^m\\)-measure and is weakly linearly approximable almost everywhere. Choose the lower constant \\(\\delta\\) first, then a sufficiently small \\(\\eta\\), then the remaining constants.",
       "proof_tex": "",
       "deps": [
+        "def:two-sided-approximation",
         "gmt:density-points",
+        "lem:closed-upper-ball-bound-sets",
+        "lem:compact-measurable-exhaustion",
+        "lem:compact-two-sided-general",
         "lem:tube-support-upgrade",
         "lem:uniform-compact-selection",
         "lem:weak-approximation-restrict-ae"
       ],
       "lean_names": [
-        "Preiss.TwoSidedApproximation",
         "Preiss.exists_nested_compact_twoSided_approximation"
       ],
       "proposed_lean_name": "Preiss.exists_nested_compact_twoSided_approximation",
-      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/CompactSelection.lean",
       "scope": "core",
       "branch": "Rectifiability",
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
@@ -2846,7 +2872,7 @@
       "note": "Preserve parameter order δ then η then γ then t.",
       "role": "Preiss proof",
       "source_files": [
-        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+        "Preiss/Rectifiability/MarstrandMattila/CompactSelection.lean"
       ]
     },
     {
@@ -2890,7 +2916,13 @@
       ],
       "lean_names": [
         "Preiss.HoleFamily",
+        "Preiss.HoleFamily.disjoint_cylinders",
+        "Preiss.exists_holeFamily_of_compact",
+        "Preiss.exists_nearest_projected_witness_in_half_ball",
         "Preiss.exists_projection_hole_disk_family",
+        "Preiss.holeFamily_mass_lower_bound",
+        "Preiss.mem_half_ball_of_tube_and_projected_distance",
+        "Preiss.projected_distance_le_of_affine_plane_lower_mass",
         "Preiss.projected_distance_le_of_lower_mass"
       ],
       "proposed_lean_name": "Preiss.exists_projection_hole_disk_family",
@@ -2945,7 +2977,9 @@
         "lem:projection-hole-cover"
       ],
       "lean_names": [
-        "Preiss.tsum_hole_radii_bad_indices_le"
+        "Preiss.HoleFamily.exists_disjoint_charging_balls",
+        "Preiss.tsum_hole_radii_bad_indices_le",
+        "Preiss.tsum_sdiff_ge_of_small_discarded_sum"
       ],
       "proposed_lean_name": "Preiss.tsum_hole_radii_bad_indices_le",
       "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
@@ -2994,16 +3028,15 @@
       "hypotheses_tex": "Use null projections, nested compact approximation, the selected hole disks and the surviving radius sum. Parameter order is \\(\\delta\\), then \\(\\eta\\ll\\delta\\), then the other approximation constants and \\(t\\), and finally \\(\\sigma\\).",
       "proof_tex": "",
       "deps": [
-        "lem:column-packing",
-        "lem:discarded-cylinder-sum",
-        "lem:packing-base-point"
+        "lem:nested-compact-approximation",
+        "lem:packing-base-point",
+        "lem:two-sided-packing-core"
       ],
       "lean_names": [
-        "Preiss.false_of_column_mass_exceeds_upper_bound",
         "Preiss.false_of_null_projections_and_uniform_weakApproximation"
       ],
       "proposed_lean_name": "Preiss.false_of_null_projections_and_uniform_weakApproximation",
-      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/PackingContradiction.lean",
       "scope": "core",
       "branch": "Rectifiability",
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
@@ -3011,7 +3044,7 @@
       "note": "",
       "role": "Preiss proof",
       "source_files": [
-        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+        "Preiss/Rectifiability/MarstrandMattila/PackingContradiction.lean"
       ]
     },
     {
@@ -3107,7 +3140,9 @@
       "hypotheses_tex": "",
       "proof_tex": "This is a measure-independent linear algebra theorem. Let the finite-dimensional\nreal inner-product space $X$ have an orthogonal decomposition\n$X=\\bigoplus_{j=1}^{N}X_j$, with projections $P_j$, and let $V\\leq X$.\nFor $s>0$ put $A(s)=\\sum_j s^jP_j$ and\n$F_s=A(s)^{-1}(V^\\perp)$. Then $X=V\\oplus F_s$; the projection $Q_s$\nonto $V$ along $F_s$ extends real-analytically to a neighborhood of zero.\nIn particular its operator norm stays bounded as $s\\downarrow0$.\nFor the proof, orthogonally split $V^\\perp$ according to the filtration\n$V^\\perp\\cap\\bigoplus_{j\\leq k}X_j$ and define a polynomial family which\nis identity on $V$ and equals $P_k+sP_{k-1}+\\cdots+s^{k-1}P_1$ on the\n$k$th filtration summand. Its value at zero is invertible, by the\nleast-nonzero-degree argument, and $Q_s=P_V A_s^{-1}$ for that polynomial\nfamily. In the least-degree argument the lower-degree vector belongs to the\nsum of all earlier filtration summands, not necessarily only the immediately\npreceding one.",
       "deps": [
-        "def:orthogonal-grading"
+        "def:orthogonal-grading",
+        "lem:divided-grading-constant-injective",
+        "lem:weighted-grading-positive-complement"
       ],
       "lean_names": [
         "Preiss.analyticAt_weightedProjection_zero"
@@ -3569,7 +3604,9 @@
       "deps": [
         "def:polynomial-growth-bound",
         "lem:gaussian-uniform-tails",
-        "lem:vague-moving-tests"
+        "lem:polynomial-gaussian-norm-tails",
+        "lem:vague-moving-tests",
+        "lem:vague-uniform-norm-tails"
       ],
       "lean_names": [
         "Preiss.vague_integral_polynomial_mul_gaussian"
@@ -3630,6 +3667,7 @@
         "def:moments",
         "def:polynomial-feature",
         "def:unit-uniform",
+        "lem:finite-dimensional-operator-bigO",
         "lem:moment-feature-annihilation",
         "lem:polynomial-feature-identities",
         "lem:taylor-one"
@@ -3691,11 +3729,13 @@
         "def:moments",
         "def:polynomial-feature",
         "def:unit-uniform",
+        "lem:gaussian-feature-integrability",
         "lem:gaussian-polynomial-integrable",
         "lem:polynomial-feature-identities"
       ],
       "lean_names": [
-        "Preiss.featureMoment_apply_feature"
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_apply_feature_of_growth"
       ],
       "proposed_lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
       "proposed_file": "Preiss/Uniform/MomentFeatures.lean",
@@ -3822,12 +3862,15 @@
       "deps": [
         "def:moments",
         "def:unit-uniform",
+        "lem:gaussian-ball-power-parameter",
+        "lem:gaussian-power-envelope",
         "lem:moment-form-evaluation",
         "lem:moment-kernel-calculus",
         "lem:radial"
       ],
       "lean_names": [
         "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
+        "Preiss.gaussianMass_unitUniform",
         "Preiss.integrable_gaussianMomentKernel",
         "Preiss.integrable_gaussianMomentKernel_of_integrable_norm",
         "Preiss.norm_gaussianMomentForm_le"
@@ -3885,13 +3928,17 @@
       "deps": [
         "def:moments",
         "def:unit-uniform",
+        "lem:gaussian-ball-power-parameter",
         "lem:gaussian-polynomial-integrable",
+        "lem:integrated-gaussian-exponential-series",
         "lem:moment-form-evaluation",
         "lem:moment-norm-bound",
         "lem:radial"
       ],
       "lean_names": [
-        "Preiss.hasSum_gaussianMoment_diagonal"
+        "Preiss.hasSum_gaussianMoment_diagonal",
+        "Preiss.integral_gaussian_center_unitUniform",
+        "Preiss.integral_gaussian_exp_inner_unitUniform"
       ],
       "proposed_lean_name": "Preiss.hasSum_gaussianMoment_diagonal",
       "proposed_file": "Preiss/Uniform/MomentEstimates.lean",
@@ -3918,7 +3965,8 @@
         "def:moments",
         "def:unit-uniform",
         "lem:gaussian-translation-series",
-        "lem:moment-norm-bound"
+        "lem:moment-norm-bound",
+        "lem:scalar-gaussian-series-remainder"
       ],
       "lean_names": [
         "Preiss.gaussianMoment_taylor_remainder"
@@ -4164,7 +4212,9 @@
         "def:plane",
         "def:uniform-constant",
         "gmt:hyperplane-transport",
-        "lem:blowup-composition"
+        "lem:blowup-composition",
+        "lem:closed-map-support",
+        "lem:proper-map-regularity"
       ],
       "lean_names": [
         "Preiss.isUnitUniform_map_linearIsometry",
@@ -4236,7 +4286,7 @@
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
       "repair": [],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/Compactness.lean"
       ]
@@ -4283,6 +4333,7 @@
         "def:unit-uniform",
         "gmt:continuity-sets",
         "gmt:normalized-tangent",
+        "lem:dimensional-tangent-origin-ball-law",
         "lem:tangent-ray",
         "thm:doubling"
       ],
@@ -4313,7 +4364,10 @@
         "def:positive-density",
         "def:unit-uniform",
         "lem:blowup-composition",
-        "lem:dimensional-tangent-ball-constant"
+        "lem:dimensional-tangent-ball-constant",
+        "lem:dimensional-tangent-operations",
+        "lem:flat-positive-scalar",
+        "lem:uniform-scaling"
       ],
       "lean_names": [
         "Preiss.density_normalization_unitUniform"
@@ -4430,12 +4484,11 @@
       "hypotheses_tex": "",
       "proof_tex": "Induct on ambient codimension using A01--A05. At dimension $m$, use\n\\texttt{mattila\\_14\\_11}, Hausdorff/Lebesgue normalization and isometric\npushforward to identify the terminal uniform measure with a flat one.\nThere is no need for analytic support varieties, a full Marstrand integer\ndimension theorem, or classification of all uniform measures.",
       "deps": [
-        "def:flat",
-        "def:plane",
-        "def:unit-uniform",
-        "gmt:uniform-full-dimension",
         "lem:hyperplane-transport-map",
-        "lem:plane-scaling"
+        "lem:plane-isometric-parametrization",
+        "lem:uniform-full-dimension-unique",
+        "lem:uniform-scaling",
+        "lem:unit-flat-unit-uniform"
       ],
       "lean_names": [
         "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
@@ -5437,6 +5490,7 @@
         "lem:first-crossing-flat-infinity",
         "lem:flatness-cutoff-exists",
         "lem:flatness-gap-cutoff",
+        "lem:radius-power-density",
         "lem:tangent-ray",
         "thm:infinity-rigidity"
       ],
@@ -6045,7 +6099,8 @@
         "Preiss.polynomialFeatureProjection_apply",
         "Preiss.polynomialFeatureProjection_inner",
         "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeature_inner"
+        "Preiss.polynomialFeature_inner",
+        "Preiss.polynomialFeature_weighted_inner"
       ],
       "deps": [
         "def:orthogonal-grading",
@@ -6468,7 +6523,7 @@
         "lem:blowup-composition",
         "lem:plane-hausdorff"
       ],
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Tangent/FlatScaling.lean"
       ],
@@ -6601,7 +6656,9 @@
       "title": "Every projection has all exponential moments after Gaussian weighting",
       "branch": "Reusable proof infrastructure",
       "lean_names": [
+        "Preiss.integrable_exp_abs_inner_mul_gaussian_parameter",
         "Preiss.integrable_exp_inner_mul_gaussian",
+        "Preiss.integrable_exp_inner_mul_gaussian_parameter",
         "Preiss.integrable_exp_inner_withDensity_gaussian"
       ],
       "deps": [
@@ -6895,7 +6952,8 @@
       "title": "Compact approximation inside an increasing measurable exhaustion",
       "branch": "Reusable proof infrastructure",
       "lean_names": [
-        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion",
+        "Preiss.exists_pos_compact_subset_of_ae_mem_iUnion"
       ],
       "deps": [],
       "role": "Preiss proof",
@@ -7092,7 +7150,8 @@
       ],
       "deps": [
         "def:dense-compact-tests",
-        "gmt:vague"
+        "gmt:vague",
+        "mathlib:regular-measure-ext"
       ],
       "role": "Preiss proof",
       "source_files": [
@@ -7184,7 +7243,8 @@
         "Preiss.exists_pos_smul_of_vague_and_scaled_vague"
       ],
       "deps": [
-        "gmt:vague"
+        "gmt:vague",
+        "mathlib:regular-measure-ext"
       ],
       "role": "Preiss proof",
       "source_files": [
@@ -7250,6 +7310,863 @@
         "Preiss/Tangent/Normalization.lean"
       ],
       "proposed_file": "Preiss/Tangent/Normalization.lean"
+    },
+    {
+      "id": "lem:quantitative-upper-density-bound",
+      "kind": "lemma",
+      "title": "Prescribed upper-density thresholds give quantitative ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "deps": [
+        "def:density-api"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/UpperBounds.lean"
+      ],
+      "proposed_file": "Preiss/Density/UpperBounds.lean"
+    },
+    {
+      "id": "lem:closed-upper-ball-bound-sets",
+      "kind": "lemma",
+      "title": "Closed sets defined by uniform upper ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono",
+        "Preiss.isClosed_ballPowerUpperBoundSet"
+      ],
+      "deps": [
+        "lem:moving-set-measure-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/UpperBallSets.lean"
+      ],
+      "proposed_file": "Preiss/Density/UpperBallSets.lean"
+    },
+    {
+      "id": "lem:dimensional-family-compact-ball-bounds",
+      "kind": "lemma",
+      "title": "Compactness of dimensional tangent families under ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dimensionalTangent_nonempty_compact_of_ball_bounds"
+      ],
+      "deps": [
+        "def:vague-metrization",
+        "lem:dimensional-extraction-ball-bounds",
+        "lem:vague-countable-metric"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Compactness.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Compactness.lean"
+    },
+    {
+      "id": "lem:radius-power-density",
+      "kind": "lemma",
+      "title": "Radius-power limits from diameter-normalized densities",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.HasPositiveFiniteDensityAt.exists_radiusPowerDensity",
+        "Preiss.tendsto_radiusPowerRatio_of_densityRatio"
+      ],
+      "deps": [
+        "def:density-api",
+        "def:positive-density",
+        "gmt:density-bounds"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Density/RadiusPower.lean"
+      ],
+      "proposed_file": "Preiss/Density/RadiusPower.lean"
+    },
+    {
+      "id": "lem:gaussian-feature-integrability",
+      "kind": "lemma",
+      "title": "Gaussian integrability of polynomial feature kernels",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_featureMomentKernel_of_growth",
+        "Preiss.integrable_gaussian_polynomialFeature"
+      ],
+      "deps": [
+        "def:polynomial-feature",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianFeatures.lean"
+    },
+    {
+      "id": "lem:gaussian-ball-power-parameter",
+      "kind": "lemma",
+      "title": "Gaussian integral from a centered ball law at arbitrary scale",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_gaussian_center_parameter_of_closedBall_power",
+        "Preiss.integral_gaussian_parameter_of_closedBall_power"
+      ],
+      "deps": [
+        "lem:gaussian-ball-power"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBallPowerParameter.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBallPowerParameter.lean"
+    },
+    {
+      "id": "lem:closed-map-support",
+      "kind": "lemma",
+      "title": "Support under continuous closed maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_support_map_of_continuous_of_isClosedMap"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/ProperMeasureTransport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ProperMeasureTransport.lean"
+    },
+    {
+      "id": "lem:closed-map-outer-regularity",
+      "kind": "lemma",
+      "title": "Outer regularity under continuous closed maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.outerRegular_map_of_continuous_of_isClosedMap"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/ProperMeasureTransport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ProperMeasureTransport.lean"
+    },
+    {
+      "id": "lem:proper-map-regularity",
+      "kind": "lemma",
+      "title": "Regularity under proper maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.regular_map_of_isProperMap"
+      ],
+      "deps": [
+        "lem:closed-map-outer-regularity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/ProperMeasureTransport.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/ProperMeasureTransport.lean"
+    },
+    {
+      "id": "lem:vague-cocompact-pushforward",
+      "kind": "lemma",
+      "title": "Vague convergence under cocompact and proper maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.weaklyConverges_map_cocompact",
+        "Preiss.weaklyConverges_map_of_isProperMap"
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Map.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/Map.lean"
+    },
+    {
+      "id": "lem:flat-measure-regularity",
+      "kind": "lemma",
+      "title": "Flat-measure regularity and positive plane-ball mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatOn_ball_pos",
+        "Preiss.regular_flatOn"
+      ],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneRegularity.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneRegularity.lean"
+    },
+    {
+      "id": "lem:vague-compact-null-mass",
+      "kind": "lemma",
+      "title": "Vanishing mass on compact null sets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tendsto_mass_compact_null_of_vague"
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/CompactMass.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/CompactMass.lean"
+    },
+    {
+      "id": "lem:vague-uniform-ball-lower",
+      "kind": "lemma",
+      "title": "Uniform lower ball mass on compact sets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.eventually_uniform_ball_mass_lower_bound_of_vague"
+      ],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/CompactMass.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/CompactMass.lean"
+    },
+    {
+      "id": "def:two-sided-approximation",
+      "kind": "definition",
+      "title": "A common-plane two-sided approximation predicate",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.TwoSidedApproximation"
+      ],
+      "deps": [
+        "def:cone"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/TwoSided.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/TwoSided.lean"
+    },
+    {
+      "id": "lem:compact-two-sided-general",
+      "kind": "lemma",
+      "title": "Compact two-sided approximation from uniform lower mass",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_compact_twoSided_approximation_of_uniform_lower_bound"
+      ],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:closed-upper-ball-bound-sets",
+        "lem:closed-weak-approximation-good-set",
+        "lem:compact-measurable-exhaustion",
+        "lem:tube-support-upgrade",
+        "lem:weak-approximation-good-exhaustion"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean"
+    },
+    {
+      "id": "lem:gaussian-power-envelope",
+      "kind": "lemma",
+      "title": "A scalar Gaussian envelope for polynomial growth",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.pow_mul_gaussian_half_le"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianBallPowerParameter.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianBallPowerParameter.lean"
+    },
+    {
+      "id": "lem:integrated-gaussian-exponential-series",
+      "kind": "lemma",
+      "title": "Integrated exponential series under a Gaussian weight",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.hasSum_integral_gaussian_exp_inner"
+      ],
+      "deps": [
+        "lem:gaussian-weight-exponential"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianWeight.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianWeight.lean"
+    },
+    {
+      "id": "lem:rescaled-distance-selection",
+      "kind": "lemma",
+      "title": "Rescaled distances and approximate nearest-point selection",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dist_affine_rescale",
+        "Preiss.exists_points_rescaled_tendsto_of_infDist"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/RescaledDistance.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/RescaledDistance.lean"
+    },
+    {
+      "id": "lem:sequential-uniform-scale",
+      "kind": "lemma",
+      "title": "Uniform small-scale bounds from subsequence properties",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_uniform_scale_of_subsequence_property"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/SequentialScale.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/SequentialScale.lean"
+    },
+    {
+      "id": "lem:plane-distance-homogeneous",
+      "kind": "lemma",
+      "title": "Homogeneity of distance to a linear plane",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.infDist_smul_plane"
+      ],
+      "deps": [
+        "lem:projection-distance"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneDistance.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneDistance.lean"
+    },
+    {
+      "id": "lem:dimensional-blowup-set-estimates",
+      "kind": "lemma",
+      "title": "Measure inequalities under dimensional normalization",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_apply_lt_iff",
+        "Preiss.le_dimensionalBlowup_apply_iff"
+      ],
+      "deps": [
+        "def:dimensional-blowup"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/ApproximationScaling.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/ApproximationScaling.lean"
+    },
+    {
+      "id": "lem:weak-approximation-scale-transfer",
+      "kind": "lemma",
+      "title": "Transfer of normalized plane approximation to a physical scale",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.weakApproximation_scale_of_normalized_bounds"
+      ],
+      "deps": [
+        "gmt:blowup-balls",
+        "lem:dimensional-blowup-set-estimates",
+        "lem:plane-distance-homogeneous"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/ApproximationScaling.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/ApproximationScaling.lean"
+    },
+    {
+      "id": "lem:countable-coordinate-second-countability",
+      "kind": "lemma",
+      "title": "Second countability of countable-coordinate metrics",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.countableCoordinateMetric_secondCountable"
+      ],
+      "deps": [
+        "lem:countable-coordinate-metric"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/CountableCoordinateTopology.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/CountableCoordinateTopology.lean"
+    },
+    {
+      "id": "lem:scalar-gaussian-series-remainder",
+      "kind": "lemma",
+      "title": "Summable coefficient majorants and a global Gaussian-series remainder",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.abs_power_series_tail_le",
+        "Preiss.abs_sum_positive_powers_le",
+        "Preiss.power_series_gaussian_taylor_remainder",
+        "Preiss.summable_pow_mul_halfPower_div_factorial"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/PowerSeriesRemainder.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/PowerSeriesRemainder.lean"
+    },
+    {
+      "id": "lem:vague-second-countable",
+      "kind": "lemma",
+      "title": "A second-countable metrization of vague convergence",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_secondCountable_vagueMetrization"
+      ],
+      "deps": [
+        "def:vague-metrization-from-tests",
+        "lem:countable-coordinate-second-countability"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/SecondCountable.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/SecondCountable.lean"
+    },
+    {
+      "id": "lem:dimensional-tangent-metric-separation",
+      "kind": "lemma",
+      "title": "Metric approximation and separation of dimensional tangents",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dimensionalTangent_of_metric_approximation",
+        "Preiss.exists_metric_separation_of_not_dimensionalTangent"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "def:vague-metrization",
+        "lem:dimensional-blowup-support"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/MetricApproximation.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/MetricApproximation.lean"
+    },
+    {
+      "id": "lem:dimensional-moving-centers",
+      "kind": "lemma",
+      "title": "Moving blow-up centers at the same dimensional scale",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vague_dimensionalBlowup_moving_center"
+      ],
+      "deps": [
+        "lem:blowup-composition",
+        "lem:dimensional-blowup-support",
+        "lem:vague-moving-blowups"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/MovingCenters.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/MovingCenters.lean"
+    },
+    {
+      "id": "lem:recenter-nonzero",
+      "kind": "lemma",
+      "title": "Nonvanishing after recentering at a support point",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_one_ne_zero_of_mem_support"
+      ],
+      "deps": [
+        "lem:dimensional-blowup-support"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/MovingCenters.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/MovingCenters.lean"
+    },
+    {
+      "id": "lem:recenter-separated-set-null",
+      "kind": "lemma",
+      "title": "Nullity of uniformly separated recentering witnesses",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_eq_zero_of_recenter_separation"
+      ],
+      "deps": [
+        "gmt:density-points",
+        "lem:dimensional-moving-centers",
+        "lem:hull-support-approximation",
+        "lem:rescaled-distance-selection"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Recentering.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Recentering.lean"
+    },
+    {
+      "id": "lem:finite-dimensional-operator-bigO",
+      "kind": "lemma",
+      "title": "Operator bounds from pointwise bounds in finite dimensions",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isBigO_continuousLinearMap_iff_forall_apply",
+        "Preiss.isBigO_restrict_span_of_forall_mem"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/FiniteDimensionalBigO.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/FiniteDimensionalBigO.lean"
+    },
+    {
+      "id": "lem:vague-uniform-norm-tails",
+      "kind": "lemma",
+      "title": "Extending vague convergence using uniform integral tails",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.norm_integral_sub_cutoff_le",
+        "Preiss.vague_integral_of_uniform_norm_tails"
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/UniformTails.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/UniformTails.lean"
+    },
+    {
+      "id": "lem:polynomial-norm-growth",
+      "kind": "lemma",
+      "title": "Polynomial norm growth outside the unit ball",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_polynomial_norm_bound_outside_unit_ball"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/PolynomialNormBound.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/PolynomialNormBound.lean"
+    },
+    {
+      "id": "lem:polynomial-gaussian-norm-tails",
+      "kind": "lemma",
+      "title": "Uniform tails for polynomial Gaussian tests",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.polynomial_gaussian_uniform_norm_tail"
+      ],
+      "deps": [
+        "lem:gaussian-uniform-tails",
+        "lem:polynomial-gaussian-integrability",
+        "lem:polynomial-norm-growth"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianVague.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianVague.lean"
+    },
+    {
+      "id": "lem:dimensional-tangent-origin-ball-law",
+      "kind": "lemma",
+      "title": "Centered ball laws from a positive radius-power density",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_ball_mass_tendsto",
+        "Preiss.dimensionalTangent_ball_law_at_zero"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "gmt:blowup-balls",
+        "gmt:portmanteau"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/DensityBallLaw.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/DensityBallLaw.lean"
+    },
+    {
+      "id": "lem:flat-positive-scalar",
+      "kind": "lemma",
+      "title": "Flatness under positive finite scalar multiplication",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.IsFlat.smul",
+        "Preiss.isFlat_smul_iff"
+      ],
+      "deps": [
+        "def:flat"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/FlatScalar.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/FlatScalar.lean"
+    },
+    {
+      "id": "lem:gaussian-bilinear-contraction",
+      "kind": "lemma",
+      "title": "A Gaussian fourth-moment contraction for bilinear forms",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear",
+        "Preiss.integrable_gaussian_bilinear_diagonal",
+        "Preiss.integrable_gaussian_inner_sq_smul_bilinear"
+      ],
+      "deps": [
+        "lem:gaussian-quadratic-trace-bound",
+        "lem:gaussian-wick-fourth"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/GaussianQuadraticForms.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianQuadraticForms.lean"
+    },
+    {
+      "id": "lem:column-mass-contradiction",
+      "kind": "lemma",
+      "title": "A lower packing mass exceeding an upper bound is impossible",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.false_of_column_mass_exceeds_upper_bound"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean"
+    },
+    {
+      "id": "lem:weighted-grading-positive-complement",
+      "kind": "lemma",
+      "title": "Positivity and complementary subspaces for weighted gradings",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isCompl_weightedComplement",
+        "Preiss.weightedGrading_injective",
+        "Preiss.weightedGrading_inner_left_right",
+        "Preiss.weightedGrading_inner_pos",
+        "Preiss.weightedGrading_inner_self"
+      ],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjection.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjection.lean"
+    },
+    {
+      "id": "lem:plane-isometric-parametrization",
+      "kind": "lemma",
+      "title": "Isometric parametrization of a linear plane",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_linearIsometry_range_plane"
+      ],
+      "deps": [
+        "def:plane"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/PlaneEmbedding.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/PlaneEmbedding.lean"
+    },
+    {
+      "id": "lem:unit-flat-support-regularity",
+      "kind": "lemma",
+      "title": "Support and regularity of normalized flat measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flatOn_support",
+        "Preiss.regular_unitFlat",
+        "Preiss.unitFlat_support"
+      ],
+      "deps": [
+        "lem:flat-measure-regularity",
+        "lem:measure-support-transport",
+        "lem:plane-hausdorff"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Geometry/UnitFlat.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/UnitFlat.lean"
+    },
+    {
+      "id": "lem:unit-flat-unit-uniform",
+      "kind": "lemma",
+      "title": "Normalized flat measures are unit uniform",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isUnitUniform_unitFlat"
+      ],
+      "deps": [
+        "def:unit-uniform",
+        "lem:plane-hausdorff",
+        "lem:unit-flat-support-regularity"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FlatMeasure.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FlatMeasure.lean"
+    },
+    {
+      "id": "lem:two-sided-packing-core",
+      "kind": "lemma",
+      "title": "The packing contradiction from compact two-sided approximations",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.false_of_compact_twoSided_approximation"
+      ],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:column-mass-contradiction",
+        "lem:column-packing",
+        "lem:discarded-cylinder-sum",
+        "lem:projection-hole-cover"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Rectifiability/MarstrandMattila/PackingCore.lean"
+      ],
+      "proposed_file": "Preiss/Rectifiability/MarstrandMattila/PackingCore.lean"
+    },
+    {
+      "id": "lem:nested-orthogonal-layers",
+      "kind": "lemma",
+      "title": "Orthogonal layers of a descending subspace flag",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.nestedProjectionLayer",
+        "Preiss.nestedProjectionLayer_comp_eq_zero",
+        "Preiss.nestedProjectionLayer_eq_zero_of_mem",
+        "Preiss.nestedProjectionLayer_idempotent",
+        "Preiss.nestedProjectionLayer_mem",
+        "Preiss.nestedProjectionLayer_symmetric",
+        "Preiss.starProjection_comp_of_ge",
+        "Preiss.sub_nestedProjectionLayer_mem",
+        "Preiss.sum_nestedProjectionLayer"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/NestedProjections.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/NestedProjections.lean"
+    },
+    {
+      "id": "lem:kernel-grading-flag",
+      "kind": "lemma",
+      "title": "The kernel flag induced on a subspace by an orthogonal grading",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.kernelGradingFlag",
+        "Preiss.kernelGradingFlag_antitone",
+        "Preiss.kernelGradingFlag_end",
+        "Preiss.kernelGradingFlag_zero",
+        "Preiss.mem_kernelGradingFlag"
+      ],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjectionFlag.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjectionFlag.lean"
+    },
+    {
+      "id": "lem:kernel-flag-layer-grading",
+      "kind": "lemma",
+      "title": "Orthogonal grading by kernel-flag layers",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.flagProjectionLayer",
+        "Preiss.flagProjectionLayer_isOrthogonalGrading"
+      ],
+      "deps": [
+        "lem:kernel-grading-flag",
+        "lem:nested-orthogonal-layers"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjectionFlag.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjectionFlag.lean"
+    },
+    {
+      "id": "lem:divided-grading-constant-injective",
+      "kind": "lemma",
+      "title": "Injectivity of the constant divided grading operator",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.compressedGradingPiece",
+        "Preiss.dividedGradingConstant",
+        "Preiss.dividedGradingConstant_injective",
+        "Preiss.flagProjectionLayer_compressed_inner",
+        "Preiss.flagProjectionLayer_dividedGradingConstant"
+      ],
+      "deps": [
+        "lem:kernel-flag-layer-grading",
+        "lem:kernel-grading-flag"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GradedProjectionFlag.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GradedProjectionFlag.lean"
+    },
+    {
+      "id": "lem:uniform-full-dimension-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of full-dimensional uniform measures with fixed ball constant",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.uniformWithConstant_eq_of_fullDimension"
+      ],
+      "deps": [
+        "gmt:uniform-full-dimension",
+        "lem:uniform-scaling"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/FullDimension.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/FullDimension.lean"
     }
   ],
   "preiss_core": [
@@ -7284,6 +8201,7 @@
     "def:rigidity-omega",
     "def:tangent-api",
     "def:tangent-at-infinity",
+    "def:two-sided-approximation",
     "def:uniform-api",
     "def:uniform-constant",
     "def:unit-uniform",
@@ -7335,9 +8253,14 @@
     "lem:blowup-composition",
     "lem:carrier-calculus",
     "lem:carrier-closure",
+    "lem:closed-map-outer-regularity",
+    "lem:closed-map-support",
+    "lem:closed-upper-ball-bound-sets",
     "lem:closed-weak-approximation-good-set",
+    "lem:column-mass-contradiction",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
+    "lem:compact-two-sided-general",
     "lem:complex-mgf-moment-determination",
     "lem:cone-graph",
     "lem:conical-covariance",
@@ -7346,6 +8269,7 @@
     "lem:continuous-ball-profile-boundary",
     "lem:countable-carrier",
     "lem:countable-coordinate-metric",
+    "lem:countable-coordinate-second-countability",
     "lem:decomposition",
     "lem:dense-compact-tests-exist",
     "lem:dense-continuous-approximation",
@@ -7355,21 +8279,28 @@
     "lem:density-measure-comparison",
     "lem:density-normalization",
     "lem:diameter-hausdorff-bound",
+    "lem:dimensional-blowup-set-estimates",
     "lem:dimensional-blowup-support",
     "lem:dimensional-compactness",
     "lem:dimensional-extraction-ball-bounds",
+    "lem:dimensional-family-compact-ball-bounds",
+    "lem:dimensional-moving-centers",
     "lem:dimensional-tangent-ball-constant",
     "lem:dimensional-tangent-closed",
     "lem:dimensional-tangent-compactness",
     "lem:dimensional-tangent-dilation",
+    "lem:dimensional-tangent-metric-separation",
     "lem:dimensional-tangent-operations",
+    "lem:dimensional-tangent-origin-ball-law",
     "lem:discarded-cylinder-sum",
+    "lem:divided-grading-constant-injective",
     "lem:domain-extension",
     "lem:empty-cylinder-direction",
     "lem:excess-dimension",
     "lem:exponential-tail-integral",
     "lem:feature-moment-vanishing",
     "lem:feature-norm-functionals",
+    "lem:finite-dimensional-operator-bigO",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
     "lem:first-crossing",
@@ -7380,7 +8311,8 @@
     "lem:flat-infinity-moments",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
-    "lem:flat-plane-blowup",
+    "lem:flat-measure-regularity",
+    "lem:flat-positive-scalar",
     "lem:flat-to-approximation",
     "lem:flatness-basic-nonneg",
     "lem:flatness-basic-zero",
@@ -7395,8 +8327,11 @@
     "lem:gaussian-annulus-integral",
     "lem:gaussian-annulus-majorant",
     "lem:gaussian-ball-power",
+    "lem:gaussian-ball-power-parameter",
+    "lem:gaussian-feature-integrability",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-polynomial-integrable",
+    "lem:gaussian-power-envelope",
     "lem:gaussian-projection-integrability",
     "lem:gaussian-quadratic-trace-bound",
     "lem:gaussian-tail-series-bound",
@@ -7419,7 +8354,10 @@
     "lem:hyperplane-transport-map",
     "lem:infinity-compactness",
     "lem:integral-operator-annihilation",
+    "lem:integrated-gaussian-exponential-series",
     "lem:iterated-derivative-id-product",
+    "lem:kernel-flag-layer-grading",
+    "lem:kernel-grading-flag",
     "lem:lower-ball-hausdorff-bound",
     "lem:lower-ball-open-comparison",
     "lem:lower-ball-restrict-comparison",
@@ -7440,30 +8378,40 @@
     "lem:moment-support-polynomial",
     "lem:moving-set-measure-bounds",
     "lem:nested-compact-approximation",
+    "lem:nested-orthogonal-layers",
     "lem:nonnegative-integral-cover-bound",
     "lem:odd-coefficients-plane-zero",
     "lem:orthonormal-span-projection",
     "lem:packing-base-point",
     "lem:packing-contradiction",
+    "lem:plane-distance-homogeneous",
     "lem:plane-exists",
     "lem:plane-hausdorff",
+    "lem:plane-isometric-parametrization",
     "lem:plane-projection-subsequence",
-    "lem:plane-scaling",
     "lem:plane-supported-uniform-flat",
     "lem:polynomial-feature-identities",
     "lem:polynomial-gaussian-integrability",
+    "lem:polynomial-gaussian-norm-tails",
+    "lem:polynomial-norm-growth",
     "lem:projected-tube-slab-bound",
     "lem:projection-distance",
     "lem:projection-energy-continuity",
     "lem:projection-hole-cover",
+    "lem:proper-map-regularity",
     "lem:pseudotangent-transitive",
     "lem:pure-basic",
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
     "lem:quadratic-exponential-even-derivatives",
+    "lem:quantitative-upper-density-bound",
     "lem:radial",
+    "lem:radius-power-density",
     "lem:real-gaussian-even-moments",
     "lem:recenter",
+    "lem:recenter-nonzero",
+    "lem:recenter-separated-set-null",
+    "lem:rescaled-distance-selection",
     "lem:rigidity-contracted-limit-zero",
     "lem:rigidity-cubic-vanishing",
     "lem:rigidity-forms-exist",
@@ -7476,7 +8424,9 @@
     "lem:rigidity-omega-trace-zero",
     "lem:rigidity-pointwise-quadratic-bound",
     "lem:rigidity-rescaled-error",
+    "lem:scalar-gaussian-series-remainder",
     "lem:scaled-moment-limits",
+    "lem:sequential-uniform-scale",
     "lem:small-energy-no-holes",
     "lem:spectral-minimizing-plane",
     "lem:subsequence-limit-criterion",
@@ -7488,18 +8438,23 @@
     "lem:taylor-two",
     "lem:trace-rigidity",
     "lem:tube-support-upgrade",
+    "lem:two-sided-packing-core",
     "lem:uniform-adapter",
     "lem:uniform-ball-boundary",
     "lem:uniform-compact-selection",
     "lem:uniform-compactness",
     "lem:uniform-constant-one",
     "lem:uniform-cylinder-identity",
-    "lem:uniform-finite-metric-covers",
+    "lem:uniform-full-dimension-unique",
     "lem:uniform-near-support-compactness",
     "lem:uniform-reduction",
     "lem:uniform-scaling",
     "lem:uniform-vague-closed",
+    "lem:unit-flat-support-regularity",
+    "lem:unit-flat-unit-uniform",
     "lem:unit-uniform-adapter",
+    "lem:vague-cocompact-pushforward",
+    "lem:vague-compact-null-mass",
     "lem:vague-countable-metric",
     "lem:vague-determining-tests",
     "lem:vague-diagonal",
@@ -7508,14 +8463,19 @@
     "lem:vague-moving-tests",
     "lem:vague-projection-energy",
     "lem:vague-scalar-limits",
+    "lem:vague-second-countable",
     "lem:vague-support-approximation",
     "lem:vague-support-limit",
+    "lem:vague-uniform-ball-lower",
+    "lem:vague-uniform-norm-tails",
     "lem:vanishing-density-negligible-deletion",
     "lem:vanishing-density-scaled-balls",
     "lem:weak-approximation-deletion",
     "lem:weak-approximation-good-exhaustion",
     "lem:weak-approximation-lower-density",
     "lem:weak-approximation-restrict-ae",
+    "lem:weak-approximation-scale-transfer",
+    "lem:weighted-grading-positive-complement",
     "lem:zero-density-atoms",
     "lem:zero-dimension",
     "lem:zero-hausdorff-ac",
@@ -7524,6 +8484,7 @@
     "mathlib:besicovitch-differentiation",
     "mathlib:hausdorff-mass-bound",
     "mathlib:measurable-hull",
+    "mathlib:regular-measure-ext",
     "mathlib:standard-gaussian",
     "mathlib:vitali-enlargement",
     "thm:compactness",
@@ -7554,6 +8515,7 @@
     "def:purely-unrectifiable",
     "def:rectifiable",
     "def:tangent-api",
+    "def:two-sided-approximation",
     "def:weak-approximation",
     "def:weak-approximation-good-set",
     "gmt:blowup",
@@ -7578,14 +8540,18 @@
     "lem:borel-carrier",
     "lem:carrier-calculus",
     "lem:carrier-closure",
+    "lem:closed-upper-ball-bound-sets",
     "lem:closed-weak-approximation-good-set",
+    "lem:column-mass-contradiction",
     "lem:column-packing",
     "lem:compact-measurable-exhaustion",
+    "lem:compact-two-sided-general",
     "lem:cone-graph",
     "lem:decomposition",
     "lem:density-bounds-good-set",
     "lem:density-measure-comparison",
     "lem:diameter-hausdorff-bound",
+    "lem:dimensional-blowup-set-estimates",
     "lem:dimensional-blowup-support",
     "lem:dimensional-compactness",
     "lem:dimensional-extraction-ball-bounds",
@@ -7597,6 +8563,7 @@
     "lem:finite-pieces",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
+    "lem:flat-measure-regularity",
     "lem:flat-to-approximation",
     "lem:full-rank-graph-pieces",
     "lem:general-tangent-scalar",
@@ -7620,6 +8587,7 @@
     "lem:normalized-density-transfer",
     "lem:packing-base-point",
     "lem:packing-contradiction",
+    "lem:plane-distance-homogeneous",
     "lem:plane-hausdorff",
     "lem:plane-projection-subsequence",
     "lem:projected-tube-slab-bound",
@@ -7628,25 +8596,32 @@
     "lem:pure-basic",
     "lem:pure-cone-escape",
     "lem:pure-wla-null-projection",
+    "lem:quantitative-upper-density-bound",
     "lem:rank-deficient-image-null",
     "lem:representation",
+    "lem:sequential-uniform-scale",
     "lem:tangent-ray",
     "lem:tangent-ray-density-bounds",
     "lem:tube-support-upgrade",
+    "lem:two-sided-packing-core",
     "lem:uniform-compact-selection",
+    "lem:vague-compact-null-mass",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
     "lem:vague-scalar-limits",
+    "lem:vague-uniform-ball-lower",
     "lem:vanishing-density-negligible-deletion",
     "lem:vanishing-density-scaled-balls",
     "lem:weak-approximation-deletion",
     "lem:weak-approximation-good-exhaustion",
     "lem:weak-approximation-lower-density",
     "lem:weak-approximation-restrict-ae",
+    "lem:weak-approximation-scale-transfer",
     "mathlib:besicovitch-cover",
     "mathlib:besicovitch-differentiation",
     "mathlib:derivative-partitions",
     "mathlib:hausdorff-mass-bound",
+    "mathlib:regular-measure-ext",
     "mathlib:vitali-enlargement",
     "thm:compactness",
     "thm:matching",

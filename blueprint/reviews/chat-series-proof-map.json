@@ -1,0 +1,15 @@
+{
+  "existing_node_additional_deps": {
+    "lem:gaussian-translation-series": [
+      "lem:gaussian-ball-power-parameter",
+      "lem:moment-norm-bound",
+      "lem:integrated-gaussian-exponential-series"
+    ],
+    "lem:nested-compact-approximation": [
+      "lem:compact-two-sided-general",
+      "lem:compact-measurable-exhaustion",
+      "lem:weak-approximation-restrict-ae",
+      "lem:closed-upper-ball-bound-sets"
+    ]
+  }
+}

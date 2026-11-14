@@ -272,17 +272,37 @@
       "status": "reuse",
       "notes": "Reusable uniform upper-density localization and Hausdorff comparison inputs.",
       "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean"
+    },
+    {
+      "project": "mathlib",
+      "path": "Mathlib/MeasureTheory/Integral/RieszMarkovKakutani/Real.lean",
+      "declarations": [
+        "MeasureTheory.Measure.ext_of_integral_eq_on_compactlySupported"
+      ],
+      "status": "reuse",
+      "notes": "Compact-test extensionality for regular measures on arbitrary locally compact Hausdorff Borel spaces.",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Integral/RieszMarkovKakutani/Real.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean",
+      "declarations": [
+        "blowUpMap_preimage_ball'"
+      ],
+      "status": "reuse",
+      "notes": "Exact arbitrary-center ball preimage under a positive-radius blow-up.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas1.lean"
     }
   ],
   "graph_inventory": {
-    "nodes": 314,
-    "edges": 949,
+    "nodes": 362,
+    "edges": 1050,
     "gmt_nodes": 44,
-    "linked_declarations": 485,
+    "linked_declarations": 595,
     "declarations_by_project": {
-      "PreissFormalization": 399,
-      "FormalizingGMT": 74,
-      "mathlib": 12
+      "PreissFormalization": 507,
+      "FormalizingGMT": 75,
+      "mathlib": 13
     }
   }
 }

@@ -808,7 +808,7 @@
       "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
       "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.exists_upper_mass_small_sdiff_point",
         "Preiss.ae_upperPowerBoundAt_restrict_hausdorff"
@@ -818,8 +818,8 @@
           "lean_name": "Preiss.exists_upper_mass_small_sdiff_point",
           "file": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
           "module": "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-          "status": "unproved_statement",
-          "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+          "status": "proof_candidate",
+          "verification": "Proof candidate pending full Linux CI. Local checking stopped at a missing Measure namespace, now corrected; the complete base-point assembly has not passed a local check."
         },
         {
           "lean_name": "Preiss.ae_upperPowerBoundAt_restrict_hausdorff",
@@ -829,7 +829,7 @@
           "verification": "Generic conversion and assembly proof checked locally with explicit hypotheses matching the GMT theorem. Actual GMT endpoint imports await Linux integration CI."
         }
       ],
-      "verification": "Source classification only; authoritative compiled status and revision: https://github.com/tdwag123/PreissFormalization/blob/main/blueprint/kernel-checkpoint.json"
+      "verification": "Proof candidate pending full Linux CI. Local checking stopped at a missing Measure namespace, now corrected; the complete base-point assembly has not passed a local check."
     },
     "lem:projection-hole-cover": {
       "lean_name": "Preiss.exists_projection_hole_disk_family",

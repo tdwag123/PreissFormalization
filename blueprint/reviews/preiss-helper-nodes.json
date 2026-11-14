@@ -973,7 +973,8 @@
       "definition_dependencies": [],
       "deps": [],
       "lean_names": [
-        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion",
+        "Preiss.exists_pos_compact_subset_of_ae_mem_iUnion"
       ],
       "file": "Preiss/Analysis/CompactExhaustion.lean",
       "used_by": [
@@ -1367,7 +1368,8 @@
       "file": "Preiss/Analysis/Vague/ScalarLimits.lean",
       "statement_tex": "On any locally compact Hausdorff space with its Borel measurable structure, suppose $\\mu_i\\rightharpoonup\\nu$ and $c_i\\mu_i\\rightharpoonup\\xi$, where $\\nu,\\xi$ are nonzero regular measures and $c_i\\in[0,\\infty]$. Then $\\xi=a\\nu$ for some positive finite $a$. No regularity assumption on the sequence is needed for the compact-test integral formulation.",
       "deps": [
-        "gmt:vague"
+        "gmt:vague",
+        "mathlib:regular-measure-ext"
       ],
       "kind": "lemma",
       "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
@@ -1421,6 +1423,870 @@
       ],
       "kind": "lemma",
       "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
+    },
+    {
+      "id": "lem:quantitative-upper-density-bound",
+      "title": "Prescribed upper-density thresholds give quantitative ball bounds",
+      "kind": "lemma",
+      "statement_tex": "For an outer measure $\\nu$ on a pseudometric space, $m\\in\\mathbb N$ and $b>0$, if $\\Theta^{*m}(\\nu,x)<b$, then there is $R>0$ such that $\\nu(\\overline B_r(x))\\le b\\,2^m r^m$ for every $0<r<R$.",
+      "hypotheses": [
+        "An arbitrary outer measure on a pseudometric space, natural dimension, and positive real upper-density threshold; no finiteness assumptions."
+      ],
+      "definition_dependencies": [
+        "def:density-api"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "file": "Preiss/Density/UpperBounds.lean",
+      "used_by": [
+        "lem:packing-base-point"
+      ]
+    },
+    {
+      "id": "lem:closed-upper-ball-bound-sets",
+      "title": "Closed sets defined by uniform upper ball bounds",
+      "kind": "lemma",
+      "statement_tex": "For a measure $\\mu$ on a pseudometric space, define $U_{m,b,R}=\\{x: \\mu(B_r(x))\\le\\operatorname{ofReal}(b r^m)\\text{ for every }0<r<R\\}$. This set is closed. If $b\\le b^{\\prime}$ and $R^{\\prime}\\le R$, then $U_{m,b,R}\\subseteq U_{m,b^{\\prime},R^{\\prime}}$.",
+      "hypotheses": [
+        "An arbitrary measurable space equipped with a pseudometric and a measure; real coefficient and cutoff. Neither Borel compatibility, regularity nor finiteness is needed for closedness."
+      ],
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moving-set-measure-bounds"
+      ],
+      "lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.isClosed_ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono"
+      ],
+      "file": "Preiss/Density/UpperBallSets.lean",
+      "used_by": [
+        "lem:nested-compact-approximation"
+      ]
+    },
+    {
+      "id": "lem:dimensional-family-compact-ball-bounds",
+      "title": "Compactness of dimensional tangent families under ball bounds",
+      "lean_names": [
+        "Preiss.dimensionalTangent_nonempty_compact_of_ball_bounds"
+      ],
+      "file": "Preiss/Tangent/Compactness.lean",
+      "statement_tex": "Under positive two-sided local $m$-power closed-ball bounds at $x$, the family $\\operatorname{Tan}_m(\\mu,x)$ is nonempty and every sequence in it has a strictly increasing subsequence converging vaguely to another member. The source measure is locally finite; no density-limit existence is required.",
+      "deps": [
+        "lem:dimensional-extraction-ball-bounds",
+        "def:vague-metrization",
+        "lem:vague-countable-metric"
+      ],
+      "used_by": [
+        "lem:dimensional-tangent-compactness"
+      ],
+      "kind": "lemma",
+      "status_note": "Proof candidate undergoing full CI verification; no local kernel-pass claim for this batch."
+    },
+    {
+      "id": "lem:radius-power-density",
+      "title": "Radius-power limits from diameter-normalized densities",
+      "lean_names": [
+        "Preiss.tendsto_radiusPowerRatio_of_densityRatio",
+        "Preiss.HasPositiveFiniteDensityAt.exists_radiusPowerDensity"
+      ],
+      "file": "Preiss/Density/RadiusPower.lean",
+      "statement_tex": "For outer measures on pseudometric spaces, convergence of the diameter-normalized $m$-density ratio to $\\theta$ implies convergence of $\\mu(\\overline B(x,r))/r^m$ to $2^m\\theta$. In particular, a positive finite density point of a measure on any metric space has a positive real radius-power limit $q$. No local-finiteness or Borel-space assumption is needed.",
+      "deps": [
+        "def:positive-density",
+        "def:density-api",
+        "gmt:density-bounds"
+      ],
+      "used_by": [
+        "thm:part-b"
+      ],
+      "kind": "lemma",
+      "status_note": "Proof candidate undergoing full CI verification; no local kernel-pass claim for this batch."
+    },
+    {
+      "id": "lem:gaussian-feature-integrability",
+      "kind": "lemma",
+      "title": "Gaussian integrability of polynomial feature kernels",
+      "statement_tex": "For a measure with a polynomial ball-growth bound, every finite polynomial feature vector and its weighted linear-functional kernel are integrable against $e^{-s\\lVert z\\rVert^2}$ for $s>0$. Uniformity and regularity are not needed.",
+      "definition_dependencies": [
+        "def:polynomial-feature"
+      ],
+      "deps": [
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "lean_names": [
+        "Preiss.integrable_gaussian_polynomialFeature",
+        "Preiss.integrable_featureMomentKernel_of_growth"
+      ],
+      "file": "Preiss/Analysis/GaussianFeatures.lean",
+      "proof_sketch_tex": "Use coordinatewise Gaussian polynomial integrability, then bounded linear maps and scalar multiplication.",
+      "used_by": [
+        "lem:moment-feature-annihilation"
+      ],
+      "verification": "Locally checked exact-source candidates; full module certification pending."
+    },
+    {
+      "id": "lem:gaussian-ball-power-parameter",
+      "kind": "lemma",
+      "title": "Gaussian integral from a centered ball law at arbitrary scale",
+      "statement_tex": "Let $\\mu$ be an s-finite Borel measure on a real normed space with $\\mu(\\overline B(0,r))=Cr^d$ for $r>0$, where $C\\geq0$ and $d>0$. For every $s>0$, the function $e^{-s\\lVert z\\rVert^2}$ is integrable and its integral is $C\\Gamma(d/2+1)s^{-d/2}$. The same conclusion holds with $\\lVert z-x\\rVert$ and centered ball law $\\mu(\\overline B(x,r))=Cr^d$ at any center $x$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-ball-power"
+      ],
+      "lean_names": [
+        "Preiss.integral_gaussian_parameter_of_closedBall_power",
+        "Preiss.integral_gaussian_center_parameter_of_closedBall_power"
+      ],
+      "file": "Preiss/Analysis/GaussianBallPowerParameter.lean",
+      "proof_sketch_tex": "Push the measure forward under multiplication by $\\sqrt{s}$. Its centered ball law has coefficient $Cs^{-d/2}$. Apply the unit-parameter formula and the change-of-variables formula for the Bochner integral.",
+      "verification": "Exact-source parameter lemma passed local Lean and #print axioms with standard axioms only. Full canonical module build pending.",
+      "used_by": [
+        "lem:moment-norm-bound"
+      ]
+    },
+    {
+      "id": "lem:closed-map-support",
+      "kind": "lemma",
+      "title": "Support under continuous closed maps",
+      "lean_names": [
+        "Preiss.measure_support_map_of_continuous_of_isClosedMap"
+      ],
+      "file": "Preiss/Analysis/ProperMeasureTransport.lean",
+      "statement_tex": "For a regular Borel measure $\\mu$ and a continuous closed map $f$, the support of $f_*\\mu$ is $f(\\operatorname{supp}\\mu)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:hyperplane-transport-map"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:closed-map-outer-regularity",
+      "kind": "lemma",
+      "title": "Outer regularity under continuous closed maps",
+      "lean_names": [
+        "Preiss.outerRegular_map_of_continuous_of_isClosedMap"
+      ],
+      "file": "Preiss/Analysis/ProperMeasureTransport.lean",
+      "statement_tex": "A continuous closed map pushes an outer regular Borel measure forward to an outer regular Borel measure.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:proper-map-regularity",
+      "kind": "lemma",
+      "title": "Regularity under proper maps",
+      "lean_names": [
+        "Preiss.regular_map_of_isProperMap"
+      ],
+      "file": "Preiss/Analysis/ProperMeasureTransport.lean",
+      "statement_tex": "A proper map into a Hausdorff Borel space pushes a regular measure forward to a regular measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:closed-map-outer-regularity"
+      ],
+      "used_by": [
+        "lem:hyperplane-transport-map"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:vague-cocompact-pushforward",
+      "kind": "lemma",
+      "title": "Vague convergence under cocompact and proper maps",
+      "lean_names": [
+        "Preiss.weaklyConverges_map_cocompact",
+        "Preiss.weaklyConverges_map_of_isProperMap"
+      ],
+      "file": "Preiss/Analysis/Vague/Map.lean",
+      "statement_tex": "Vague convergence is preserved by pushforward along a continuous cocompact map, and hence along a proper map. No regularity hypothesis is required for this test-function identity.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:vague"
+      ],
+      "used_by": [],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:flat-measure-regularity",
+      "kind": "lemma",
+      "title": "Flat-measure regularity and positive plane-ball mass",
+      "lean_names": [
+        "Preiss.regular_flatOn",
+        "Preiss.flatOn_ball_pos"
+      ],
+      "file": "Preiss/Geometry/PlaneRegularity.lean",
+      "statement_tex": "For every $m$-plane $V$, including $m=0$, $c\\mathcal H^m\\!\\restriction V$ is regular when $c<\\infty$. When $c>0$, every positive-radius ball centered in $V$ has positive measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [
+        "lem:flat-limit-tube",
+        "lem:flat-limit-moving-balls"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:vague-compact-null-mass",
+      "kind": "lemma",
+      "title": "Vanishing mass on compact null sets",
+      "lean_names": [
+        "Preiss.tendsto_mass_compact_null_of_vague"
+      ],
+      "file": "Preiss/Analysis/Vague/CompactMass.lean",
+      "statement_tex": "If regular Euclidean measures $\\nu_i$ converge vaguely to a regular $\\mu$ and $K$ is compact with $\\mu(K)=0$, then $\\nu_i(K)\\to0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "used_by": [
+        "lem:flat-limit-tube"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:vague-uniform-ball-lower",
+      "kind": "lemma",
+      "title": "Uniform lower ball mass on compact sets",
+      "lean_names": [
+        "Preiss.eventually_uniform_ball_mass_lower_bound_of_vague"
+      ],
+      "file": "Preiss/Analysis/Vague/CompactMass.lean",
+      "statement_tex": "Let regular Euclidean measures $\\nu_i$ converge vaguely to a regular $\\mu$. If $K$ is compact, $\\eta>0$, and $\\mu(B(z,\\eta/2))>0$ for every $z\\in K$, then there exists $a>0$ such that eventually $\\nu_i(B(z,\\eta))\\ge a$ simultaneously for every $z\\in K$.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:portmanteau"
+      ],
+      "used_by": [
+        "lem:flat-limit-moving-balls"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "def:two-sided-approximation",
+      "kind": "definition",
+      "title": "A common-plane two-sided approximation predicate",
+      "lean_names": [
+        "Preiss.TwoSidedApproximation"
+      ],
+      "file": "Preiss/Rectifiability/WeakApproximation/TwoSided.lean",
+      "statement_tex": "The set $F$ is nonempty. At each $a\\in G$ and scale $0<r<R$, a single $m$-plane gives tube containment of $F\\cap B(a,2r)$, distance less than $\\eta r$ from its points in $B(a,r)$ to $F$, and a $\\gamma(\\eta r)^m$ lower bound for the corresponding ball masses.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:cone"
+      ],
+      "used_by": [],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:compact-two-sided-general",
+      "kind": "lemma",
+      "title": "Compact two-sided approximation from uniform lower mass",
+      "lean_names": [
+        "Preiss.exists_compact_twoSided_approximation_of_uniform_lower_bound"
+      ],
+      "file": "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean",
+      "statement_tex": "For a finite regular measure and a positive-measure compact $F$ with uniform lower ball bounds, assume weak linear approximation for $\\mu\\restriction F$ almost everywhere and arbitrarily small local upper ball bounds for $\\mu\\restriction F^c$ almost everywhere on $F$. For every $0<\\eta<1$, there is a positive-measure compact $G\\subseteq F$ with common-plane two-sided approximation at uniform positive scales and constants.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:closed-weak-approximation-good-set",
+        "lem:weak-approximation-good-exhaustion",
+        "lem:closed-upper-ball-bound-sets",
+        "lem:compact-measurable-exhaustion",
+        "lem:tube-support-upgrade"
+      ],
+      "used_by": [
+        "lem:nested-compact-approximation"
+      ],
+      "verification": "Local exact-source checks recorded separately; canonical module certification is pending full Linux CI."
+    },
+    {
+      "id": "lem:gaussian-power-envelope",
+      "kind": "lemma",
+      "title": "A scalar Gaussian envelope for polynomial growth",
+      "lean_names": [
+        "Preiss.pow_mul_gaussian_half_le"
+      ],
+      "file": "Preiss/Analysis/GaussianBallPowerParameter.lean",
+      "statement_tex": "For $r\\geq0$, $s>0$ and integer $k>0$, $r^k e^{-sr^2/2}\\leq(k/s)^{k/2}$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:moment-norm-bound"
+      ],
+      "proof_sketch_tex": "Set $t=sr^2/k$ and use $te^{-t}\\leq1$, then raise to the positive exponent $k/2$.",
+      "verification": "Exact source checked locally with standard axioms; full canonical integration pending."
+    },
+    {
+      "id": "lem:integrated-gaussian-exponential-series",
+      "kind": "lemma",
+      "title": "Integrated exponential series under a Gaussian weight",
+      "lean_names": [
+        "Preiss.hasSum_integral_gaussian_exp_inner"
+      ],
+      "file": "Preiss/Analysis/GaussianWeight.lean",
+      "statement_tex": "For a Euclidean measure with polynomial ball growth, every $s>0$, $t\\in\\mathbb R$ and vector $w$, the series of Gaussian-weighted moments $(t^k/k!)\\int\\langle z,w\\rangle^k e^{-s\\lVert z\\rVert^2}\\,d\\mu$ converges absolutely to $\\int e^{t\\langle z,w\\rangle}e^{-s\\lVert z\\rVert^2}\\,d\\mu$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-weight-exponential"
+      ],
+      "used_by": [
+        "lem:gaussian-translation-series"
+      ],
+      "proof_sketch_tex": "Apply the dominated integral-of-series theorem using the integrable absolute exponential times the Gaussian weight.",
+      "verification": "Local exact-source Lean check passed with only standard foundations. Full canonical integration pending."
+    },
+    {
+      "id": "lem:rescaled-distance-selection",
+      "kind": "lemma",
+      "title": "Rescaled distances and approximate nearest-point selection",
+      "lean_names": [
+        "Preiss.dist_affine_rescale",
+        "Preiss.exists_points_rescaled_tendsto_of_infDist"
+      ],
+      "file": "Preiss/Geometry/RescaledDistance.lean",
+      "statement_tex": "In a real normed space, $\\operatorname{dist}(a+ry,z)=r\\operatorname{dist}(y,r^{-1}(z-a))$ for $r>0$. If $D$ is nonempty and $\\operatorname{dist}(a+r_i y,D)/r_i\\to0$ for positive $r_i$, one can choose $z_i\\in D$ with $r_i^{-1}(z_i-a)\\to y$. No closedness, compactness, or convergence of $r_i$ is required.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:hull-support-approximation"
+      ],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:sequential-uniform-scale",
+      "kind": "lemma",
+      "title": "Uniform small-scale bounds from subsequence properties",
+      "lean_names": [
+        "Preiss.exists_uniform_scale_of_subsequence_property"
+      ],
+      "file": "Preiss/Analysis/SequentialScale.lean",
+      "statement_tex": "Let $P(a,r)$ be monotone downward in its positive parameter $a$. If every positive sequence $r_i\\to0$ has a strictly increasing subsequence on which $P(a,r_i)$ eventually holds for some $a>0$, then there are $a,R>0$ such that $P(a,r)$ holds for every $0<r<R$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:flat-to-approximation"
+      ],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:plane-distance-homogeneous",
+      "kind": "lemma",
+      "title": "Homogeneity of distance to a linear plane",
+      "lean_names": [
+        "Preiss.infDist_smul_plane"
+      ],
+      "file": "Preiss/Geometry/PlaneDistance.lean",
+      "statement_tex": "For a linear plane $V$, $\\operatorname{dist}(cz,V)=|c|\\operatorname{dist}(z,V)$ for every real $c$, including zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:projection-distance"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-blowup-set-estimates",
+      "kind": "lemma",
+      "title": "Measure inequalities under dimensional normalization",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_apply_lt_iff",
+        "Preiss.le_dimensionalBlowup_apply_iff"
+      ],
+      "file": "Preiss/Tangent/ApproximationScaling.lean",
+      "statement_tex": "For every Borel set $S$, $r>0$ and $a\\geq0$, upper and lower comparisons of $D^m_{x,r}\\mu(S)$ with $a$ are equivalent to the corresponding comparisons of $\\mu(T_{x,r}^{-1}S)$ with $ar^m$. No regularity or local finiteness is needed.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-blowup"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:weak-approximation-scale-transfer",
+      "kind": "lemma",
+      "title": "Transfer of normalized plane approximation to a physical scale",
+      "lean_names": [
+        "Preiss.weakApproximation_scale_of_normalized_bounds"
+      ],
+      "file": "Preiss/Tangent/ApproximationScaling.lean",
+      "statement_tex": "At a positive scale $r$, suppose $D^m_{x,r}\\mu$ has mass less than $\\eta$ outside the $\\eta$-tube in the closed unit ball, and gives every $\\eta$-ball centered on $V$ in that ball mass at least $a\\geq0$. Then $\\mu$ has the required weak plane-approximation estimates at $x,r$, with bounds $\\eta r^m$ and $ar^m$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:plane-distance-homogeneous",
+        "lem:dimensional-blowup-set-estimates",
+        "gmt:blowup-balls"
+      ],
+      "used_by": [
+        "lem:flat-to-approximation"
+      ],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:countable-coordinate-second-countability",
+      "kind": "lemma",
+      "title": "Second countability of countable-coordinate metrics",
+      "lean_names": [
+        "Preiss.countableCoordinateMetric_secondCountable"
+      ],
+      "file": "Preiss/Analysis/CountableCoordinateTopology.lean",
+      "statement_tex": "The metric induced by countably many separating real coordinates is second countable, because its topology is induced from the countable product of real lines.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:countable-coordinate-metric"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:scalar-gaussian-series-remainder",
+      "kind": "lemma",
+      "title": "Summable coefficient majorants and a global Gaussian-series remainder",
+      "lean_names": [
+        "Preiss.summable_pow_mul_halfPower_div_factorial",
+        "Preiss.abs_power_series_tail_le",
+        "Preiss.abs_sum_positive_powers_le",
+        "Preiss.power_series_gaussian_taylor_remainder"
+      ],
+      "file": "Preiss/Analysis/PowerSeriesRemainder.lean",
+      "statement_tex": "For $a\\geq0$, the sequence $a^k k^{k/2}/k!$ is summable. Nonnegative summable coefficient majorants control power-series tails for $0\\leq r\\leq1$ and finite polynomials for $r\\geq1$. If $\\sum f_k=e^{r^2}$, $f_0=1$, and $|f_k|\\leq c_k r^k$, then the discrepancy between the positive-degree truncations of $f$ and the Gaussian exponential is at most $(\\sum c_k+e)r^{2q+1}$ for every $r\\geq0$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local compiler and transitive axiom checks passed with only standard foundations; full canonical module CI pending."
+    },
+    {
+      "id": "lem:vague-second-countable",
+      "kind": "lemma",
+      "title": "A second-countable metrization of vague convergence",
+      "lean_names": [
+        "Preiss.exists_secondCountable_vagueMetrization"
+      ],
+      "file": "Preiss/Analysis/Vague/SecondCountable.lean",
+      "statement_tex": "The regular measures on Euclidean space admit a second-countable metric whose sequential convergence is vague convergence.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:vague-metrization-from-tests",
+        "lem:countable-coordinate-second-countability"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-tangent-metric-separation",
+      "kind": "lemma",
+      "title": "Metric approximation and separation of dimensional tangents",
+      "lean_names": [
+        "Preiss.dimensionalTangent_of_metric_approximation",
+        "Preiss.exists_metric_separation_of_not_dimensionalTangent"
+      ],
+      "file": "Preiss/Tangent/MetricApproximation.lean",
+      "statement_tex": "A nonzero regular measure is a dimensional tangent if every metric neighborhood contains a dimensional blow-up at arbitrarily small positive scales. Consequently, a nontangent has a metric neighborhood separated from all sufficiently small blow-ups.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-tangent",
+        "def:vague-metrization",
+        "lem:dimensional-blowup-support"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-moving-centers",
+      "kind": "lemma",
+      "title": "Moving blow-up centers at the same dimensional scale",
+      "lean_names": [
+        "Preiss.vague_dimensionalBlowup_moving_center"
+      ],
+      "file": "Preiss/Tangent/MovingCenters.lean",
+      "statement_tex": "If $D^m_{a,r_i}\\mu\\to\\nu$ vaguely and $r_i^{-1}(a_i-a)\\to y$, then $D^m_{a_i,r_i}\\mu\\to D^m_{y,1}\\nu$. The original dimensional normalization is unchanged.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:vague-moving-blowups",
+        "lem:blowup-composition",
+        "lem:dimensional-blowup-support"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:recenter-nonzero",
+      "kind": "lemma",
+      "title": "Nonvanishing after recentering at a support point",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_one_ne_zero_of_mem_support"
+      ],
+      "file": "Preiss/Tangent/MovingCenters.lean",
+      "statement_tex": "For every $y\\in\\operatorname{supp}\\nu$, the unit-scale dimensional blow-up $D^m_{y,1}\\nu$ is nonzero.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:dimensional-blowup-support"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:recenter-separated-set-null",
+      "kind": "lemma",
+      "title": "Nullity of uniformly separated recentering witnesses",
+      "lean_names": [
+        "Preiss.measure_eq_zero_of_recenter_separation"
+      ],
+      "file": "Preiss/Tangent/Recentering.lean",
+      "statement_tex": "An arbitrary finite-outer-measure set of centers is null if each center has a recentered tangent witness within $\\rho$ of one fixed regular measure while all its sufficiently small dimensional blow-ups are at distance at least $4\\rho$ from that witness. No measurability of the center set is assumed.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:density-points",
+        "lem:hull-support-approximation",
+        "lem:rescaled-distance-selection",
+        "lem:dimensional-moving-centers"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:finite-dimensional-operator-bigO",
+      "kind": "lemma",
+      "title": "Operator bounds from pointwise bounds in finite dimensions",
+      "lean_names": [
+        "Preiss.isBigO_continuousLinearMap_iff_forall_apply",
+        "Preiss.isBigO_restrict_span_of_forall_mem"
+      ],
+      "file": "Preiss/Analysis/FiniteDimensionalBigO.lean",
+      "statement_tex": "For a family of continuous linear maps on a finite-dimensional real normed space, an operator-norm big-$O$ bound is equivalent to the bound at each vector. Bounds on a generating set give an operator-norm bound after restriction to its span.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:moment-feature-remainder"
+      ],
+      "verification": "Exact-source local compilation and standard-foundation axiom checks passed; canonical module CI pending."
+    },
+    {
+      "id": "lem:vague-uniform-norm-tails",
+      "kind": "lemma",
+      "title": "Extending vague convergence using uniform integral tails",
+      "lean_names": [
+        "Preiss.norm_integral_sub_cutoff_le",
+        "Preiss.vague_integral_of_uniform_norm_tails"
+      ],
+      "file": "Preiss/Analysis/Vague/UniformTails.lean",
+      "statement_tex": "For a continuous integrable real function $f$, vague convergence implies convergence of its integrals whenever the norm integrals outside suitable compact sets are uniformly small for the sequence and limit measure. A cutoff between zero and one, equal to one on $K$, changes the integral by at most $\\int_{K^c}|f|$.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:vague"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:polynomial-norm-growth",
+      "kind": "lemma",
+      "title": "Polynomial norm growth outside the unit ball",
+      "lean_names": [
+        "Preiss.exists_polynomial_norm_bound_outside_unit_ball"
+      ],
+      "file": "Preiss/Analysis/PolynomialNormBound.lean",
+      "statement_tex": "Every real polynomial on Euclidean space admits constants $C\\ge0$ and $d\\in\\mathbb N$ with $|P(z)|\\le C\\|z\\|^d$ whenever $\\|z\\|\\ge1$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:polynomial-gaussian-norm-tails",
+      "kind": "lemma",
+      "title": "Uniform tails for polynomial Gaussian tests",
+      "lean_names": [
+        "Preiss.polynomial_gaussian_uniform_norm_tail"
+      ],
+      "file": "Preiss/Analysis/GaussianVague.lean",
+      "statement_tex": "For fixed polynomial $P$ and $s>0$, the integral of $|P(z)e^{-s\\|z\\|^2}|$ outside large balls tends to zero uniformly over regular measures with a common polynomial ball-growth bound.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:polynomial-norm-growth",
+        "lem:gaussian-uniform-tails",
+        "lem:polynomial-gaussian-integrability"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:dimensional-tangent-origin-ball-law",
+      "kind": "lemma",
+      "title": "Centered ball laws from a positive radius-power density",
+      "lean_names": [
+        "Preiss.dimensionalBlowup_ball_mass_tendsto",
+        "Preiss.dimensionalTangent_ball_law_at_zero"
+      ],
+      "file": "Preiss/Tangent/DensityBallLaw.lean",
+      "statement_tex": "If $\\mu(\\overline B(x,r))/r^m\\to q>0$, every dimensional tangent $\\nu$ satisfies $\\nu(\\overline B(0,R))=qR^m$ for $R>0$ and has $0$ in its support. The ball-mass convergence for the blow-ups themselves also holds for $q=0$. Dimension zero is allowed.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:dimensional-tangent",
+        "gmt:blowup-balls",
+        "gmt:portmanteau"
+      ],
+      "used_by": [
+        "lem:dimensional-tangent-ball-constant"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:flat-positive-scalar",
+      "kind": "lemma",
+      "title": "Flatness under positive finite scalar multiplication",
+      "lean_names": [
+        "Preiss.IsFlat.smul",
+        "Preiss.isFlat_smul_iff"
+      ],
+      "file": "Preiss/Geometry/FlatScalar.lean",
+      "statement_tex": "For $0<c<\\infty$, the measure $c\\nu$ is $m$-flat if and only if $\\nu$ is $m$-flat.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:flat"
+      ],
+      "used_by": [
+        "lem:density-normalization"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:gaussian-bilinear-contraction",
+      "kind": "lemma",
+      "title": "A Gaussian fourth-moment contraction for bilinear forms",
+      "lean_names": [
+        "Preiss.integrable_gaussian_bilinear_diagonal",
+        "Preiss.integrable_gaussian_inner_sq_smul_bilinear",
+        "Preiss.gaussian_integral_inner_sq_mul_bilinear"
+      ],
+      "file": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "statement_tex": "For a continuous real bilinear form $A$ on a finite-dimensional real inner-product space and standard Gaussian $\\gamma$, $\\int\\langle y,v\\rangle^2 A(v,v)\\,d\\gamma=\\|y\\|^2\\operatorname{tr}A+2A(y,y)$. Symmetry of $A$ is unnecessary. The diagonal and weighted-diagonal integrability lemmas allow normed real vector-valued forms.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:gaussian-wick-fourth",
+        "lem:gaussian-quadratic-trace-bound"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:column-mass-contradiction",
+      "kind": "lemma",
+      "title": "A lower packing mass exceeding an upper bound is impossible",
+      "lean_names": [
+        "Preiss.false_of_column_mass_exceeds_upper_bound"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "statement_tex": "Disjoint columns of balls with cardinality at least $c_1/\\eta$, lower ball mass $\\delta(\\rho_i/8)^m$, and retained radius sum at least $c_2\\sigma^m$ contradict an upper mass bound $C\\sigma^m$ whenever $C<c_1c_2\\delta/(8^m\\eta)$.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [
+        "lem:packing-contradiction"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:weighted-grading-positive-complement",
+      "kind": "lemma",
+      "title": "Positivity and complementary subspaces for weighted gradings",
+      "lean_names": [
+        "Preiss.weightedGrading_inner_self",
+        "Preiss.weightedGrading_inner_pos",
+        "Preiss.weightedGrading_injective",
+        "Preiss.weightedGrading_inner_left_right",
+        "Preiss.isCompl_weightedComplement"
+      ],
+      "file": "Preiss/Analysis/GradedProjection.lean",
+      "statement_tex": "For an orthogonal grading $(P_i)$ and positive $s$, the weighted operator $A(s)=\\sum_i s^{i+1}P_i$ is self-adjoint and positive definite, with quadratic form $\\sum_i s^{i+1}\\|P_i x\\|^2$. It is injective, and every subspace $V$ is complementary to $A(s)^{-1}(V^\\perp)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "used_by": [
+        "lem:graded-analytic-projection"
+      ],
+      "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:plane-isometric-parametrization",
+      "kind": "lemma",
+      "title": "Isometric parametrization of a linear plane",
+      "lean_names": [
+        "Preiss.exists_linearIsometry_range_plane"
+      ],
+      "file": "Preiss/Geometry/PlaneEmbedding.lean",
+      "statement_tex": "Every $m$-dimensional plane in $\\mathbb R^n$ is the range of a linear isometric embedding of $\\mathbb R^m$, including $m=0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:plane"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:unit-flat-support-regularity",
+      "kind": "lemma",
+      "title": "Support and regularity of normalized flat measures",
+      "lean_names": [
+        "Preiss.flatOn_support",
+        "Preiss.regular_unitFlat",
+        "Preiss.unitFlat_support"
+      ],
+      "file": "Preiss/Geometry/UnitFlat.lean",
+      "statement_tex": "A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flat-measure-regularity",
+        "lem:measure-support-transport",
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:unit-flat-unit-uniform",
+      "kind": "lemma",
+      "title": "Normalized flat measures are unit uniform",
+      "lean_names": [
+        "Preiss.isUnitUniform_unitFlat"
+      ],
+      "file": "Preiss/Uniform/FlatMeasure.lean",
+      "statement_tex": "The normalized measure on every linear $m$-plane is unit $m$-uniform, with mass $r^m$ on every positive-radius closed ball centered in that plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:unit-flat-support-regularity",
+        "lem:plane-hausdorff",
+        "def:unit-uniform"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:two-sided-packing-core",
+      "kind": "lemma",
+      "title": "The packing contradiction from compact two-sided approximations",
+      "lean_names": [
+        "Preiss.false_of_compact_twoSided_approximation"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/PackingCore.lean",
+      "statement_tex": "A measure cannot simultaneously have a uniform lower $m$-power bound on $F$, arbitrarily small-aperture compact two-sided approximations inside $F$, base points with a common upper mass constant and arbitrarily small deleted mass, and null $m$-dimensional projections of $F$ onto every $m$-plane. The proof does not require the measure itself to be Hausdorff measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:projection-hole-cover",
+        "lem:discarded-cylinder-sum",
+        "lem:column-packing",
+        "lem:column-mass-contradiction"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:nested-orthogonal-layers",
+      "kind": "lemma",
+      "title": "Orthogonal layers of a descending subspace flag",
+      "lean_names": [
+        "Preiss.starProjection_comp_of_ge",
+        "Preiss.nestedProjectionLayer",
+        "Preiss.nestedProjectionLayer_symmetric",
+        "Preiss.nestedProjectionLayer_mem",
+        "Preiss.nestedProjectionLayer_eq_zero_of_mem",
+        "Preiss.sub_nestedProjectionLayer_mem",
+        "Preiss.nestedProjectionLayer_idempotent",
+        "Preiss.nestedProjectionLayer_comp_eq_zero",
+        "Preiss.sum_nestedProjectionLayer"
+      ],
+      "file": "Preiss/Analysis/NestedProjections.lean",
+      "statement_tex": "For a descending finite flag $(U_i)$ in a finite-dimensional inner-product space, differences of successive orthogonal projections are self-adjoint idempotents with pairwise orthogonal ranges. Their sum telescopes to the difference of the endpoint projections. Residual and annihilation identities describe each layer.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:kernel-grading-flag",
+      "kind": "lemma",
+      "title": "The kernel flag induced on a subspace by an orthogonal grading",
+      "lean_names": [
+        "Preiss.kernelGradingFlag",
+        "Preiss.mem_kernelGradingFlag",
+        "Preiss.kernelGradingFlag_antitone",
+        "Preiss.kernelGradingFlag_zero",
+        "Preiss.kernelGradingFlag_end"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "Given an orthogonal grading $(P_i)$ and subspace $V$, the subspaces $K_i=\\{v\\in V:P_jv=0\\text{ for }j<i\\}$ form a descending flag from $V$ to zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:kernel-flag-layer-grading",
+      "kind": "lemma",
+      "title": "Orthogonal grading by kernel-flag layers",
+      "lean_names": [
+        "Preiss.flagProjectionLayer",
+        "Preiss.flagProjectionLayer_isOrthogonalGrading"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "The differences of successive orthogonal projections onto the kernel flag form an orthogonal grading on $V$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:kernel-grading-flag",
+        "lem:nested-orthogonal-layers"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:divided-grading-constant-injective",
+      "kind": "lemma",
+      "title": "Injectivity of the constant divided grading operator",
+      "lean_names": [
+        "Preiss.compressedGradingPiece",
+        "Preiss.flagProjectionLayer_compressed_inner",
+        "Preiss.dividedGradingConstant",
+        "Preiss.flagProjectionLayer_dividedGradingConstant",
+        "Preiss.dividedGradingConstant_injective"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "Let $D_i$ be the kernel-flag layers and $R_i$ the compression of $P_i$ to $V$. The operator $\\sum_i D_iR_i$ is injective. The proof uses $\\langle D_iR_ix,x\\rangle=\\|P_ix\\|^2$ on $K_i$, layer orthogonality, and induction through the flag.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:kernel-flag-layer-grading",
+        "lem:kernel-grading-flag"
+      ],
+      "used_by": [
+        "lem:graded-analytic-projection"
+      ],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:uniform-full-dimension-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of full-dimensional uniform measures with fixed ball constant",
+      "lean_names": [
+        "Preiss.uniformWithConstant_eq_of_fullDimension"
+      ],
+      "file": "Preiss/Uniform/FullDimension.lean",
+      "statement_tex": "In positive dimension $m$, two $m$-uniform measures on $\\mathbb R^m$ with the same positive ball constant are equal. This reuses FormalizingGMT\\textquotesingle s full-dimensional classification and identifies the scalar by the unit-ball mass.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:uniform-full-dimension",
+        "lem:uniform-scaling"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
     }
   ],
   "definition_edge_additions": {

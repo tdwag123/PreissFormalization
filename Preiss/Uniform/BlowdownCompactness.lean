@@ -13,6 +13,13 @@ theorem exists_tangentAtInfinity (ν : Measure (Euclidean n)) (hν : IsUnitUnifo
     ∃ (φ : ℕ → ℕ) (ξ : Measure (Euclidean n)), StrictMono φ ∧ IsUnitUniform m ξ ∧
       Measure.WeaklyConverges (fun i ↦ dimensionalBlowup m ν 0 (r (φ i))) ξ ∧
       IsTangentAtInfinity m ν ξ := by
-  sorry
+  obtain ⟨φ, ξ, hφ, hξ, hlim⟩ := exists_vague_subsequence_unitUniform
+    (fun i => dimensionalBlowup m ν 0 (r i))
+    (fun i => isUnitUniform_dimensionalBlowup ν hν 0 hν.2.1 (hr i))
+  refine ⟨φ, ξ, hφ, hξ, hlim, hξ.1, ?_, r ∘ φ, fun i => hr (φ i),
+    hrinf.comp hφ.tendsto_atTop, hlim⟩
+  intro hzero
+  have hsupport := hξ.2.1
+  simpa [hzero] using hsupport
 
 end Preiss

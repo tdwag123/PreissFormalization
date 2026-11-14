@@ -52,7 +52,8 @@
       "title": "Evaluation of the feature moment on a feature",
       "statement_tex": "For a unit $m$-uniform measure with $m>0$, every natural $N$, $s>0$, and $x\\in\\mathbb R^n$, $L_s(\\Phi_N(x))=\\sum_{k=1}^N b_{k,s}(x,\\ldots,x)$.",
       "lean_names": [
-        "Preiss.featureMoment_apply_feature"
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_apply_feature_of_growth"
       ],
       "file": "Preiss/Uniform/MomentFeatures.lean",
       "deps": [

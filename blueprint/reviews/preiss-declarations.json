@@ -284,7 +284,8 @@
         "Preiss.IsUniformPseudotangent",
         "Preiss.uniformPseudotangent_isUnitUniform",
         "Preiss.uniformPseudotangent_trans",
-        "Preiss.uniformPseudotangent_map_linearIsometry"
+        "Preiss.uniformPseudotangent_map_linearIsometry",
+        "Preiss.uniformPseudotangent_trans_of_regular"
       ],
       "planned_lean_names": [
         "Preiss.IsUniformPseudotangent",
@@ -355,7 +356,8 @@
       "lean_names": [
         "Preiss.IsMeasureDensityOnePoint",
         "Preiss.dist_badSet_rescaled_tendsto_zero",
-        "Preiss.exists_badSet_points_rescaled_tendsto"
+        "Preiss.exists_badSet_points_rescaled_tendsto",
+        "Preiss.dist_set_rescaled_tendsto_zero_of_densityOne"
       ],
       "planned_lean_names": [
         "Preiss.IsMeasureDensityOnePoint",
@@ -370,7 +372,8 @@
     },
     "lem:recenter": {
       "lean_names": [
-        "Preiss.ae_recenter_dimensionalTangent"
+        "Preiss.ae_recenter_dimensionalTangent",
+        "Preiss.ae_recenter_dimensionalTangent_of_locallyFinite"
       ],
       "planned_lean_names": [
         "Preiss.ae_recenter_dimensionalTangent"
@@ -508,7 +511,8 @@
         "Preiss.integrable_gaussianMomentKernel",
         "Preiss.norm_gaussianMomentForm_le",
         "Preiss.IsUnitUniform.hasPolynomialGrowthBound",
-        "Preiss.integrable_gaussianMomentKernel_of_integrable_norm"
+        "Preiss.integrable_gaussianMomentKernel_of_integrable_norm",
+        "Preiss.gaussianMass_unitUniform"
       ],
       "planned_lean_names": [
         "Preiss.integrable_gaussianMomentKernel",
@@ -524,7 +528,9 @@
     },
     "lem:gaussian-translation-series": {
       "lean_names": [
-        "Preiss.hasSum_gaussianMoment_diagonal"
+        "Preiss.hasSum_gaussianMoment_diagonal",
+        "Preiss.integral_gaussian_center_unitUniform",
+        "Preiss.integral_gaussian_exp_inner_unitUniform"
       ],
       "planned_lean_names": [
         "Preiss.hasSum_gaussianMoment_diagonal"
@@ -584,12 +590,13 @@
     },
     "lem:moment-feature-annihilation": {
       "lean_names": [
-        "Preiss.featureMoment_apply_feature"
+        "Preiss.featureMoment_apply_feature",
+        "Preiss.featureMoment_apply_feature_of_growth"
       ],
       "planned_lean_names": [
         "Preiss.featureMoment_apply_feature"
       ],
-      "status": "Canonical statement compiled; evaluation proof remains unfinished.",
+      "status": "Proof candidates locally checked in exact-source scratch; integrated module certification pending.",
       "files": [
         "Preiss/Uniform/MomentFeatures.lean"
       ],
@@ -1477,9 +1484,10 @@
         "Preiss.polynomialFeatureProjection_apply",
         "Preiss.polynomialFeature_inner",
         "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeatureProjection_inner"
+        "Preiss.polynomialFeatureProjection_inner",
+        "Preiss.polynomialFeature_weighted_inner"
       ],
-      "status": "Exact source checked locally with only standard axioms; canonical integration awaits CI.",
+      "status": "Proof candidates locally checked in exact-source scratch; integrated module certification pending.",
       "files": [
         "Preiss/Analysis/PolynomialFeatures.lean"
       ],
@@ -1611,7 +1619,9 @@
     "lem:gaussian-weight-exponential": {
       "lean_names": [
         "Preiss.integrable_exp_inner_mul_gaussian",
-        "Preiss.integrable_exp_inner_withDensity_gaussian"
+        "Preiss.integrable_exp_inner_withDensity_gaussian",
+        "Preiss.integrable_exp_inner_mul_gaussian_parameter",
+        "Preiss.integrable_exp_abs_inner_mul_gaussian_parameter"
       ],
       "status": "additional concrete data or source interface",
       "files": [
@@ -2078,7 +2088,8 @@
     },
     "lem:compact-measurable-exhaustion": {
       "lean_names": [
-        "Preiss.exists_compact_subset_of_ae_mem_iUnion"
+        "Preiss.exists_compact_subset_of_ae_mem_iUnion",
+        "Preiss.exists_pos_compact_subset_of_ae_mem_iUnion"
       ],
       "planned_lean_names": [
         "Preiss.exists_compact_subset_of_ae_mem_iUnion"
@@ -2117,6 +2128,66 @@
       "planned_file": "Preiss/Rectifiability/WeakApproximation/Density.lean",
       "status": "proof_candidate",
       "verification": "Local exact-source Lean/kernel check passed with standard axioms; current integration status is blueprint/kernel-checkpoint.json."
+    },
+    "lem:quantitative-upper-density-bound": {
+      "lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "planned_lean_names": [
+        "Preiss.exists_closedBall_power_bound_of_upperDensity_lt"
+      ],
+      "files": [
+        "Preiss/Density/UpperBounds.lean"
+      ],
+      "planned_file": "Preiss/Density/UpperBounds.lean",
+      "status": "proof_candidate",
+      "verification": "Generic helper proof passed exact-source local Lean/kernel checking with standard axioms; full integration status remains blueprint/kernel-checkpoint.json."
+    },
+    "lem:closed-upper-ball-bound-sets": {
+      "lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.isClosed_ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono"
+      ],
+      "planned_lean_names": [
+        "Preiss.ballPowerUpperBoundSet",
+        "Preiss.isClosed_ballPowerUpperBoundSet",
+        "Preiss.ballPowerUpperBoundSet_mono"
+      ],
+      "files": [
+        "Preiss/Density/UpperBallSets.lean"
+      ],
+      "planned_file": "Preiss/Density/UpperBallSets.lean",
+      "status": "proof_candidate",
+      "verification": "Generic helper proof passed exact-source local Lean/kernel checking with standard axioms; full integration status remains blueprint/kernel-checkpoint.json."
+    },
+    "lem:projection-hole-cover": {
+      "lean_names": [
+        "Preiss.exists_holeFamily_of_compact",
+        "Preiss.holeFamily_mass_lower_bound",
+        "Preiss.HoleFamily.disjoint_cylinders",
+        "Preiss.mem_half_ball_of_tube_and_projected_distance",
+        "Preiss.exists_nearest_projected_witness_in_half_ball",
+        "Preiss.projected_distance_le_of_affine_plane_lower_mass"
+      ]
+    },
+    "lem:empty-cylinder-direction": {
+      "lean_names": [
+        "Preiss.exists_unit_small_projection_of_empty_inner_cylinder",
+        "Preiss.exists_unit_small_projection_swapped"
+      ]
+    },
+    "lem:discarded-cylinder-sum": {
+      "lean_names": [
+        "Preiss.HoleFamily.exists_disjoint_charging_balls",
+        "Preiss.tsum_sdiff_ge_of_small_discarded_sum"
+      ]
+    },
+    "lem:packing-contradiction": {
+      "lean_names": [
+        "Preiss.false_of_null_projections_and_uniform_weakApproximation"
+      ],
+      "planned_file": "Preiss/Rectifiability/MarstrandMattila/PackingContradiction.lean"
     }
   },
   "pending": [],

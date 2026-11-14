@@ -18,7 +18,7 @@ def parse_axioms(text):
     return result
 
 
-def check(metadata, axioms):
+def check(metadata, axioms, baseline=None):
     assert set(metadata) <= set(axioms), f"Missing kernel reports: {set(metadata) - set(axioms)}"
     records = {}
     failures = []
@@ -30,6 +30,12 @@ def check(metadata, axioms):
         unexpected = used - allowed
         if local and unexpected:
             failures.append(f"{name}: unexpected axioms {sorted(unexpected)}")
+        if local and baseline is not None and "sorryAx" in used:
+            previous = baseline.get(name)
+            if previous is None:
+                failures.append(f"{name}: new declaration depends on sorryAx")
+            elif "sorryAx" not in previous["axioms"]:
+                failures.append(f"{name}: previously certified declaration now depends on sorryAx")
         if "sorryAx" in used:
             status = ("unproved_statement" if item.get("source_status") == "unproved_statement"
                       else "depends_on_sorry")
@@ -47,7 +53,9 @@ def main():
     raw = Path(args.log).read_bytes()
     text = raw.decode("utf-16" if raw.startswith((b"\xff\xfe", b"\xfe\xff")) else "utf-8")
     metadata = json.loads((ROOT / "tmp/blueprint_checks.json").read_text(encoding="utf-8"))
-    records, failures = check(metadata, parse_axioms(text))
+    checkpoint = ROOT / "blueprint/kernel-checkpoint.json"
+    baseline = json.loads(checkpoint.read_text(encoding="utf-8"))["declarations"]
+    records, failures = check(metadata, parse_axioms(text), baseline=baseline)
     report = dict(
         toolchain=(ROOT / "lean-toolchain").read_text().strip(),
         source_revision=os.environ.get("GITHUB_SHA"),

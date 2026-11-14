@@ -174,7 +174,7 @@ The blow-up map on Euclidean space is $T_{a,r}(z)=r^{-1}(z-a)$. Geometric use as
 
 \begin{lemma}[GMT: measurable blow-ups and ball identities]
 \label{gmt:blowup-balls}
-\lean{measurable_blowUpMap,map_blowUp_apply_ball,map_blowUp_apply_closedBall}
+\lean{measurable_blowUpMap,map_blowUp_apply_ball,map_blowUp_apply_closedBall,blowUpMap_preimage_ball'}
 \leanok
 \uses{gmt:blowup}
 Blow-ups are measurable. For $r>0$, the pushforward mass of $B(0,\rho)$ or $\overline B(0,\rho)$ equals the original mass at centre $a$ and radius $r\rho$.
@@ -693,4 +693,17 @@ small set is at most the corresponding Hausdorff measure.
 \begin{proof}[Existing mathlib proof]
 \leanok
 Use the maximal outer measure defining the metric Hausdorff construction.
+\end{proof}
+
+\begin{lemma}[mathlib: compact tests determine regular measures]
+\label{mathlib:regular-measure-ext}
+\lean{MeasureTheory.Measure.ext_of_integral_eq_on_compactlySupported}
+\leanok
+On a locally compact Hausdorff space with its Borel measurable structure,
+two regular measures are equal if their integrals agree against every
+real-valued compactly supported continuous function.
+\end{lemma}
+\begin{proof}[Existing mathlib proof]
+\leanok
+Use regularity and continuous compactly supported approximations to compact sets.
 \end{proof}

@@ -38,6 +38,7 @@ jobs:
           python scripts/declaration_links.py --site
           python scripts/export_core_graph.py --site
           python scripts/check_module_plan.py --site
+          python scripts/export_proof_status.py --site
           python scripts/check_render.py
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

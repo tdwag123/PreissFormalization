@@ -1,7 +1,11 @@
 import Preiss.Tangent.Compactness
+import Preiss.Tangent.ApproximationScaling
+import Preiss.Analysis.SequentialScale
 import Preiss.Geometry.FlatMeasure
 import Preiss.Rectifiability.WeakApproximation.Defs
 import Preiss.Geometry.PlaneMeasure
+import Preiss.Geometry.PlaneRegularity
+import Preiss.Analysis.Vague.CompactMass
 import Preiss.Geometry.Cones
 
 open MeasureTheory Metric Set Filter Topology
@@ -17,7 +21,21 @@ theorem tendsto_mass_outside_tube_of_flat_limit
     (hlim : Measure.WeaklyConverges ν (flatOn V c)) {η R : ℝ}
     (hη : 0 < η) (hR : 0 < R) :
     Tendsto (fun i ↦ ν i (closedBall 0 R ∩
-      {z | η ≤ infDist z (V.1 : Set (Euclidean n))})) atTop (𝓝 0) := by sorry
+      {z | η ≤ infDist z (V.1 : Set (Euclidean n))})) atTop (𝓝 0) := by
+  let K : Set (Euclidean n) := closedBall 0 R ∩
+    {z | η ≤ infDist z (V.1 : Set (Euclidean n))}
+  have hK : IsCompact K := (isCompact_closedBall 0 R).inter_right
+    (isClosed_le continuous_const (continuous_infDist_pt _))
+  apply tendsto_mass_compact_null_of_vague ν (flatOn V c) hν
+    (regular_flatOn V hcfin.ne) hlim hK
+  have hempty : K ∩ (V.1 : Set (Euclidean n)) = ∅ := by
+    apply eq_empty_iff_forall_notMem.mpr
+    intro z hz
+    have hd : infDist z (V.1 : Set (Euclidean n)) = 0 := infDist_zero_of_mem hz.2
+    exact (not_le_of_gt hη) (hd ▸ hz.1.2)
+  rw [flatOn, Measure.smul_apply, smul_eq_mul, Measure.restrict_apply hK.measurableSet,
+    hempty, measure_empty, mul_zero]
+
 
 theorem eventually_ball_mass_lower_bound_of_flat_limit
     (ν : ℕ → Measure (Euclidean n)) (hν : ∀ i, (ν i).Regular)
@@ -25,12 +43,55 @@ theorem eventually_ball_mass_lower_bound_of_flat_limit
     (hlim : Measure.WeaklyConverges ν (flatOn V c)) {η R : ℝ}
     (hη : 0 < η) (hR : 0 < R) :
     ∃ a : ℝ, 0 < a ∧ ∀ᶠ i in atTop, ∀ z : Euclidean n,
-      z ∈ V.1 → z ∈ closedBall 0 R → ENNReal.ofReal a ≤ ν i (ball z η) := by sorry
+      z ∈ V.1 → z ∈ closedBall 0 R → ENNReal.ofReal a ≤ ν i (ball z η) := by
+  have hK : IsCompact (closedBall (0 : Euclidean n) R ∩ (V.1 : Set (Euclidean n))) :=
+    (isCompact_closedBall 0 R).inter_right V.1.closed_of_finiteDimensional
+  obtain ⟨a, ha, he⟩ := eventually_uniform_ball_mass_lower_bound_of_vague ν (flatOn V c)
+    hν (regular_flatOn V hcfin.ne) hlim hK hη
+    (fun z hz => flatOn_ball_pos V hc hz.2 (by linarith))
+  refine ⟨a, ha, ?_⟩
+  filter_upwards [he] with i hi z hzV hzB
+  exact hi z ⟨hzB, hzV⟩
+
 
 theorem weaklyLinearlyApproximableAt_of_all_tangents_flat
     (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)
     (hd : HasPositiveFiniteDensitiesAt m μ x)
     (ht : ∀ ν, IsTangentMeasure μ ν x → IsFlat m ν) :
-    MeasureWeaklyLinearlyApproximableAt m μ x := by sorry
+    MeasureWeaklyLinearlyApproximableAt m μ x := by
+  intro η hη
+  let P (a r : ℝ) : Prop := 0 < r → ∃ V : Plane m n,
+    μ (ball x r \ {z | infDist (z-x) (V.1 : Set (Euclidean n)) ≤ η*r}) <
+      ENNReal.ofReal (η*r^m) ∧
+    ∀ z : Euclidean n, z-x ∈ V.1 → z ∈ ball x r →
+      ENNReal.ofReal (a*r^m) ≤ μ (ball z (η*r))
+  have hmono : ∀ {a b r : ℝ}, 0 < a → a ≤ b → P b r → P a r := by
+    intro a b r ha hab hb hr
+    obtain ⟨V, hup, hlo⟩ := hb hr
+    refine ⟨V, hup, ?_⟩
+    intro z hzV hzB
+    exact (ENNReal.ofReal_le_ofReal
+      (mul_le_mul_of_nonneg_right hab (pow_nonneg hr.le m))).trans (hlo z hzV hzB)
+  have hseq : ∀ (r : ℕ → ℝ), (∀ i, 0 < r i) → Tendsto r atTop (𝓝 0) →
+      ∃ (φ : ℕ → ℕ), StrictMono φ ∧ ∃ a : ℝ, 0 < a ∧
+        ∀ᶠ i in atTop, P a (r (φ i)) := by
+    intro r hr hr0
+    obtain ⟨φ, hν, hφ, hreg, hne, hlim, htan⟩ :=
+      exists_dimensional_tangent_subseq_of_density_bounds μ x hd r hr hr0
+    obtain ⟨V, c, hc, hcfin, heq⟩ := ht hν htan
+    change hν = flatOn V c at heq
+    subst hν
+    have hregseq (i : ℕ) : (dimensionalBlowup m μ x (r (φ i))).Regular :=
+      regular_dimensionalBlowup μ inferInstance x (hr (φ i))
+    obtain ⟨a, ha, hlo⟩ := eventually_ball_mass_lower_bound_of_flat_limit _ hregseq V hc hcfin
+      hlim hη (show (0 : ℝ) < 1 by norm_num)
+    have hup := (tendsto_mass_outside_tube_of_flat_limit _ hregseq V hc hcfin hlim hη
+      (show (0 : ℝ) < 1 by norm_num)).eventually_lt_const (ENNReal.ofReal_pos.mpr hη)
+    refine ⟨φ, hφ, a, ha, ?_⟩
+    filter_upwards [hup, hlo] with i hiup hilow
+    intro hri
+    exact ⟨V, weakApproximation_scale_of_normalized_bounds μ x V hri hη ha.le hiup hilow⟩
+  obtain ⟨a, ha, R, hR, hP⟩ := exists_uniform_scale_of_subsequence_property P hmono hseq
+  exact ⟨a, ha, R, hR, fun r hr hrR => hP r hr hrR hr⟩
 
 end Preiss

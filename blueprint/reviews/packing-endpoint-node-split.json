@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {
+      "id": "lem:packing-contradiction",
+      "lean_names": [
+        "Preiss.false_of_null_projections_and_uniform_weakApproximation"
+      ],
+      "deps": [
+        "lem:column-mass-contradiction"
+      ]
+    }
+  ]
+}

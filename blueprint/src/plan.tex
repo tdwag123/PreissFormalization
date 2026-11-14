@@ -169,7 +169,7 @@ Split normalization, finiteness, and sphere-null corollaries; do not import tang
 
 \begin{lemma}[A plane avoiding an inner cylinder has a small projected direction]
 \label{lem:empty-cylinder-direction}
-\lean{Preiss.cylinder, Preiss.exists_unit_small_projection_of_avoids_cylinder}
+\lean{Preiss.cylinder, Preiss.exists_unit_small_projection_of_avoids_cylinder, Preiss.exists_unit_small_projection_of_empty_inner_cylinder, Preiss.exists_unit_small_projection_swapped}
 \uses{def:plane}
 
 
@@ -952,7 +952,7 @@ A nonzero regular measure $\nu$ is a tangent at infinity of $\mu$ if $D^m_{0,r_i
 \begin{lemma}[Flat limit excludes persistent mass away from its plane]
 \label{lem:flat-limit-tube}
 \lean{Preiss.tendsto_mass_outside_tube_of_flat_limit}
-\uses{gmt:portmanteau, lem:plane-hausdorff}
+\uses{gmt:portmanteau, lem:plane-hausdorff, lem:flat-measure-regularity, lem:vague-compact-null-mass}
 All measures are regular, \(V\) is an \(m\)-plane, \(0<c<\infty\), and \(\eta>0\). Use the compact closure of the region.
 If \(\nu_j\rightharpoonup c\mathcal H^m\!\restriction V\), then the mass of any fixed bounded set separated by a positive distance from \(V\) tends to zero. In particular this applies to the region outside an \(\eta\)-tube inside a fixed ball.
 \end{lemma}
@@ -961,7 +961,7 @@ If \(\nu_j\rightharpoonup c\mathcal H^m\!\restriction V\), then the mass of any 
 \begin{lemma}[Flat limit gives lower mass in moving plane balls]
 \label{lem:flat-limit-moving-balls}
 \lean{Preiss.eventually_ball_mass_lower_bound_of_flat_limit}
-\uses{gmt:portmanteau, lem:plane-hausdorff}
+\uses{gmt:portmanteau, lem:plane-hausdorff, lem:flat-measure-regularity, lem:vague-uniform-ball-lower}
 
 
 
@@ -1038,8 +1038,8 @@ dilation and preservation of flatness, regularity and uniform ball constants.
 
 \begin{lemma}[Support approximation from arbitrary positive outer measure sets]
 \label{lem:hull-support-approximation}
-\lean{Preiss.IsMeasureDensityOnePoint, Preiss.dist_badSet_rescaled_tendsto_zero, Preiss.exists_badSet_points_rescaled_tendsto}
-\uses{def:dimensional-tangent, gmt:density-points, gmt:portmanteau, lem:measurable-hull-holes}
+\lean{Preiss.IsMeasureDensityOnePoint, Preiss.dist_badSet_rescaled_tendsto_zero, Preiss.exists_badSet_points_rescaled_tendsto, Preiss.dist_set_rescaled_tendsto_zero_of_densityOne}
+\uses{def:dimensional-tangent, gmt:density-points, gmt:portmanteau, lem:measurable-hull-holes, lem:rescaled-distance-selection}
 
 
 
@@ -1114,7 +1114,7 @@ $D^m_{a_i,r_i}\mu_i\to D^m_{a,r}\mu$ is used repeatedly.
 \begin{lemma}[Closedness of arbitrary-scalar tangents]
 \label{lem:tangent-closed}
 \lean{Preiss.tangent_closed}
-\uses{def:tangent-api, lem:vague-diagonal}
+\uses{def:tangent-api, lem:vague-diagonal, gmt:blowup-regular}
 
 
 
@@ -1144,7 +1144,7 @@ implements closure without assuming a topology on all raw measures.
 \begin{lemma}[Closedness of dimensional tangents]
 \label{lem:dimensional-tangent-closed}
 \lean{Preiss.dimensionalTangent_closed}
-\uses{def:dimensional-tangent, lem:vague-diagonal}
+\uses{def:dimensional-tangent, lem:vague-diagonal, lem:dimensional-blowup-support}
 
 
 
@@ -1175,7 +1175,7 @@ implements closure without assuming a topology on all raw measures.
 \begin{lemma}[All flat tangents imply weak linear approximation]
 \label{lem:flat-to-approximation}
 \lean{Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat}
-\uses{def:weak-approximation, lem:dimensional-compactness, lem:flat-limit-moving-balls, lem:flat-limit-tube}
+\uses{def:weak-approximation, lem:dimensional-compactness, lem:flat-limit-moving-balls, lem:flat-limit-tube, lem:sequential-uniform-scale, lem:weak-approximation-scale-transfer}
 
 
 
@@ -1253,8 +1253,8 @@ implements closure without assuming a topology on all raw measures.
 
 \begin{lemma}[Transitivity of the support-centered scaling orbit closure]
 \label{lem:pseudotangent-transitive}
-\lean{Preiss.IsUniformPseudotangent, Preiss.uniformPseudotangent_isUnitUniform, Preiss.uniformPseudotangent_trans, Preiss.uniformPseudotangent_map_linearIsometry}
-\uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation, lem:uniform-vague-closed, lem:uniform-scaling}
+\lean{Preiss.IsUniformPseudotangent, Preiss.uniformPseudotangent_isUnitUniform, Preiss.uniformPseudotangent_trans, Preiss.uniformPseudotangent_map_linearIsometry, Preiss.uniformPseudotangent_trans_of_regular}
+\uses{def:dimensional-blowup, lem:blowup-composition, lem:vague-diagonal, lem:vague-moving-blowups, lem:vague-support-approximation, lem:uniform-vague-closed, lem:uniform-scaling, lem:closed-map-support, lem:proper-map-regularity, lem:vague-cocompact-pushforward, lem:dimensional-blowup-support}
 
 
 
@@ -1292,7 +1292,7 @@ closure membership into the sequence form in the current Lean statement.
 \begin{lemma}[Nonempty compact tangent family at a density point]
 \label{lem:dimensional-tangent-compactness}
 \lean{Preiss.dimensionalTangent_nonempty_compact}
-\uses{def:dimensional-tangent, def:positive-density, gmt:density-bounds, gmt:portmanteau, lem:dimensional-tangent-closed, thm:compactness}
+\uses{lem:dimensional-family-compact-ball-bounds, gmt:density-bounds}
 
 
 
@@ -1398,8 +1398,8 @@ implies that some plane has unit-ball energy at most $\varepsilon$.
 
 \begin{lemma}[One null exceptional set for all dimensional recenterings]
 \label{lem:recenter}
-\lean{Preiss.ae_recenter_dimensionalTangent}
-\uses{def:dimensional-tangent, def:positive-density, gmt:goodsets, lem:dimensional-tangent-ball-constant, lem:dimensional-tangent-closed, lem:dimensional-tangent-dilation, lem:hull-support-approximation, lem:uniform-adapter, lem:uniform-finite-metric-covers, lem:vague-moving-blowups}
+\lean{Preiss.ae_recenter_dimensionalTangent, Preiss.ae_recenter_dimensionalTangent_of_locallyFinite}
+\uses{lem:vague-second-countable, lem:dimensional-tangent-metric-separation, lem:recenter-separated-set-null, lem:recenter-nonzero, lem:dimensional-tangent-operations}
 
 
 
@@ -1674,7 +1674,7 @@ If \(E\) is weakly linearly approximable at \(\mathcal H^m\)-almost every point 
 \begin{lemma}[Base point with upper mass and small discarded mass]
 \label{lem:packing-base-point}
 \lean{Preiss.ae_upperPowerBoundAt_restrict_hausdorff, Preiss.exists_upper_mass_small_sdiff_point}
-\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, lem:vanishing-density-scaled-balls}
+\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, lem:vanishing-density-scaled-balls, lem:quantitative-upper-density-bound}
 
 
 
@@ -1719,8 +1719,8 @@ For each finite piece \(S_j\), the measure \(\nu_j=\mathcal H^m\!\restriction S_
 
 \begin{lemma}[Nested compact two-sided approximation]
 \label{lem:nested-compact-approximation}
-\lean{Preiss.TwoSidedApproximation, Preiss.exists_nested_compact_twoSided_approximation}
-\uses{gmt:density-points, lem:tube-support-upgrade, lem:uniform-compact-selection, lem:weak-approximation-restrict-ae}
+\lean{Preiss.exists_nested_compact_twoSided_approximation}
+\uses{gmt:density-points, lem:tube-support-upgrade, lem:uniform-compact-selection, lem:weak-approximation-restrict-ae, lem:closed-upper-ball-bound-sets, def:two-sided-approximation, lem:compact-two-sided-general, lem:compact-measurable-exhaustion}
 
 
 
@@ -1765,7 +1765,7 @@ For every fixed \(m\)-plane \(V\) and finite aperture \(\alpha\geq0\), at \(\mat
 
 \begin{lemma}[Disjoint projection-hole disks with large radius sum]
 \label{lem:projection-hole-cover}
-\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass}
+\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass, Preiss.exists_holeFamily_of_compact, Preiss.holeFamily_mass_lower_bound, Preiss.HoleFamily.disjoint_cylinders, Preiss.mem_half_ball_of_tube_and_projected_distance, Preiss.exists_nearest_projected_witness_in_half_ball, Preiss.projected_distance_le_of_affine_plane_lower_mass}
 \uses{lem:nested-compact-approximation, lem:packing-base-point, lem:plane-hausdorff, mathlib:vitali-enlargement}
 
 
@@ -1817,7 +1817,7 @@ Also reuse Besicovitch.exists\_disjoint\_closedBall\_covering\_ae and Lipschitz 
 
 \begin{lemma}[Cylinders meeting the compact core have small radius sum]
 \label{lem:discarded-cylinder-sum}
-\lean{Preiss.tsum_hole_radii_bad_indices_le}
+\lean{Preiss.tsum_hole_radii_bad_indices_le, Preiss.HoleFamily.exists_disjoint_charging_balls, Preiss.tsum_sdiff_ge_of_small_discarded_sum}
 \uses{lem:projection-hole-cover}
 
 
@@ -1864,8 +1864,8 @@ At the local scale \(r_i=\rho_i/(8\eta)\), each surviving cylinder contains at l
 
 \begin{lemma}[Null projections contradict weak approximation and finite upper density]
 \label{lem:packing-contradiction}
-\lean{Preiss.false_of_column_mass_exceeds_upper_bound, Preiss.false_of_null_projections_and_uniform_weakApproximation}
-\uses{lem:column-packing, lem:discarded-cylinder-sum, lem:packing-base-point}
+\lean{Preiss.false_of_null_projections_and_uniform_weakApproximation}
+\uses{lem:two-sided-packing-core, lem:nested-compact-approximation, lem:packing-base-point}
 
 
 
@@ -1960,7 +1960,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Analytic extension of weighted complementary projections]
 \label{lem:graded-analytic-projection}
-\uses{def:orthogonal-grading}
+\uses{def:orthogonal-grading, lem:weighted-grading-positive-complement, lem:divided-grading-constant-injective}
 \lean{Preiss.analyticAt_weightedProjection_zero}
 
 
@@ -2352,7 +2352,7 @@ The trace of a continuous bilinear form is the sum of its diagonal evaluations o
 \begin{lemma}[Vague convergence of Gaussian polynomial integrals]
 \label{lem:vague-gaussian-polynomials}
 \lean{Preiss.vague_integral_polynomial_mul_gaussian}
-\uses{def:polynomial-growth-bound, lem:gaussian-uniform-tails, lem:vague-moving-tests}
+\uses{def:polynomial-growth-bound, lem:gaussian-uniform-tails, lem:vague-moving-tests, lem:vague-uniform-norm-tails, lem:polynomial-gaussian-norm-tails}
 
 
 
@@ -2414,7 +2414,7 @@ inside the current single trace-rigidity node.
 \begin{lemma}[Operator norm remainder from finitely many support features]
 \label{lem:moment-feature-remainder}
 \lean{Preiss.featureMoment_operator_remainder}
-\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:moment-feature-annihilation, lem:polynomial-feature-identities, lem:taylor-one}
+\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:moment-feature-annihilation, lem:polynomial-feature-identities, lem:taylor-one, lem:finite-dimensional-operator-bigO}
 
 
 
@@ -2463,8 +2463,8 @@ For $s>0$, define the continuous symmetric $k$-linear form $b_{k,s}(u_1,\ldots,u
 
 \begin{lemma}[Feature moment functional and weighted annihilator]
 \label{lem:moment-feature-annihilation}
-\lean{Preiss.featureMoment_apply_feature}
-\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:polynomial-feature-identities, def:feature-moment, lem:gaussian-polynomial-integrable}
+\lean{Preiss.featureMoment_apply_feature, Preiss.featureMoment_apply_feature_of_growth}
+\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:polynomial-feature-identities, def:feature-moment, lem:gaussian-polynomial-integrable, lem:gaussian-feature-integrability}
 
 
 
@@ -2593,8 +2593,8 @@ coefficient assertions below start at $k=1$.
 
 \begin{lemma}[Uniform operator norm bounds for Gaussian moments]
 \label{lem:moment-norm-bound}
-\lean{Preiss.integrable_gaussianMomentKernel, Preiss.norm_gaussianMomentForm_le, Preiss.IsUnitUniform.hasPolynomialGrowthBound, Preiss.integrable_gaussianMomentKernel_of_integrable_norm}
-\uses{def:moments, def:unit-uniform, lem:moment-form-evaluation, lem:radial, lem:moment-kernel-calculus}
+\lean{Preiss.integrable_gaussianMomentKernel, Preiss.norm_gaussianMomentForm_le, Preiss.IsUnitUniform.hasPolynomialGrowthBound, Preiss.integrable_gaussianMomentKernel_of_integrable_norm, Preiss.gaussianMass_unitUniform}
+\uses{def:moments, def:unit-uniform, lem:moment-form-evaluation, lem:radial, lem:moment-kernel-calculus, lem:gaussian-ball-power-parameter, lem:gaussian-power-envelope}
 
 
 
@@ -2658,8 +2658,8 @@ nonnegative Fubini reduce the integral to Euler's Gamma formula.
 
 \begin{lemma}[Absolutely convergent Gaussian translation series]
 \label{lem:gaussian-translation-series}
-\lean{Preiss.hasSum_gaussianMoment_diagonal}
-\uses{def:moments, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:moment-form-evaluation, lem:moment-norm-bound, lem:radial}
+\lean{Preiss.hasSum_gaussianMoment_diagonal, Preiss.integral_gaussian_center_unitUniform, Preiss.integral_gaussian_exp_inner_unitUniform}
+\uses{def:moments, def:unit-uniform, lem:gaussian-polynomial-integrable, lem:moment-form-evaluation, lem:moment-norm-bound, lem:radial, lem:gaussian-ball-power-parameter, lem:integrated-gaussian-exponential-series}
 
 
 
@@ -2696,7 +2696,7 @@ the convergent exponential series with its remainder bound.
 \begin{lemma}[Quantitative finite moment remainder]
 \label{lem:taylor-one}
 \lean{Preiss.gaussianMoment_taylor_remainder}
-\uses{def:moments, def:unit-uniform, lem:gaussian-translation-series, lem:moment-norm-bound}
+\uses{def:moments, def:unit-uniform, lem:gaussian-translation-series, lem:moment-norm-bound, lem:scalar-gaussian-series-remainder}
 
 
 
@@ -2910,7 +2910,7 @@ Choose a nearest support point $y_i$ to the origin; closedness and properness gi
 
 \begin{lemma}[Hyperplane transport with an explicit isometry]
 \label{lem:hyperplane-transport-map}
-\uses{def:uniform-constant}
+\uses{def:uniform-constant, lem:closed-map-support, lem:proper-map-regularity}
 \lean{Preiss.uniform_hyperplane_transport, Preiss.uniformWithConstant_transport, Preiss.uniformWithConstant_map_linearIsometry, Preiss.isUnitUniform_map_linearIsometry}
 \uses{def:dimensional-blowup, def:plane, gmt:hyperplane-transport, lem:blowup-composition}
 
@@ -2986,7 +2986,7 @@ Extract a convergent subsequence of ball constants in $[c,C]$, normalize by thei
 
 \begin{lemma}[Existence of uniform blow-down limits]
 \label{lem:infinity-compactness}
-\uses{lem:uniform-scaling}
+\uses{lem:uniform-scaling, lem:uniform-compactness}
 \lean{Preiss.exists_tangentAtInfinity}
 \uses{def:tangent-at-infinity, def:unit-uniform, lem:blowup-composition, lem:uniform-compactness}
 
@@ -3013,7 +3013,7 @@ factor preserves the set of limits at infinity, so S02--S03 imply conicality.
 \begin{lemma}[Common tangent normalization at a density point]
 \label{lem:dimensional-tangent-ball-constant}
 \lean{Preiss.dimensionalTangent_ball_constant}
-\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, gmt:continuity-sets, gmt:normalized-tangent, lem:tangent-ray, thm:doubling}
+\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, gmt:continuity-sets, gmt:normalized-tangent, lem:tangent-ray, thm:doubling, lem:dimensional-tangent-origin-ball-law}
 
 
 
@@ -3041,7 +3041,7 @@ adapter before applying a universal flatness threshold.
 \begin{lemma}[Reduction to unit uniform dimensional tangents]
 \label{lem:density-normalization}
 \lean{Preiss.density_normalization_unitUniform}
-\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:dimensional-tangent-ball-constant}
+\uses{def:dimensional-tangent, def:positive-density, def:unit-uniform, lem:blowup-composition, lem:dimensional-tangent-ball-constant, lem:flat-positive-scalar, lem:dimensional-tangent-operations, lem:uniform-scaling}
 
 
 
@@ -3166,7 +3166,7 @@ dimension theorem, or classification of all uniform measures.
 \begin{lemma}[Classification of plane-supported uniform measures]
 \label{lem:plane-supported-uniform-flat}
 \lean{Preiss.unitUniform_eq_flat_of_support_subset_plane, Preiss.uniformWithConstant_eq_flat_of_support_subset_plane}
-\uses{def:flat, def:plane, def:unit-uniform, gmt:uniform-full-dimension, lem:hyperplane-transport-map, lem:plane-scaling}
+\uses{lem:plane-isometric-parametrization, lem:unit-flat-unit-uniform, lem:uniform-full-dimension-unique, lem:hyperplane-transport-map, lem:uniform-scaling}
 
 
 
@@ -4005,7 +4005,7 @@ retain the factor $R^{-m}$.
 \begin{theorem}[One flat tangent implies all tangents are flat]
 \label{thm:part-b}
 \lean{Preiss.all_tangents_flat_of_one}
-\uses{def:dimensional-tangent, def:flat, def:positive-density, lem:density-normalization, lem:first-crossing, lem:first-crossing-flat-infinity, lem:flatness-cutoff-exists, lem:flatness-gap-cutoff, lem:tangent-ray, thm:infinity-rigidity}
+\uses{def:dimensional-tangent, def:flat, def:positive-density, lem:density-normalization, lem:first-crossing, lem:first-crossing-flat-infinity, lem:flatness-cutoff-exists, lem:flatness-gap-cutoff, lem:tangent-ray, thm:infinity-rigidity, lem:radius-power-density}
 
 
 
@@ -4439,7 +4439,7 @@ Given the moment expansion, flat blow-down plane, and normal first-moment vector
 
 \begin{lemma}[Inner products and grading of polynomial features]
 \label{lem:polynomial-feature-identities}
-\lean{Preiss.polynomialFeatureProjection_apply, Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeatureProjection_inner}
+\lean{Preiss.polynomialFeatureProjection_apply, Preiss.polynomialFeature_inner, Preiss.polynomialFeatureProjection_isOrthogonalGrading, Preiss.polynomialFeatureProjection_inner, Preiss.polynomialFeature_weighted_inner}
 \uses{def:polynomial-feature, def:orthogonal-grading, lem:orthonormal-span-projection}
 The coordinate polynomial feature map recovers the weighted powers of $\langle x,y\rangle$ through inner products. Its homogeneous coordinate blocks form an orthogonal grading.
 \end{lemma}
@@ -4708,7 +4708,7 @@ If $\mu$ on $\mathbb R^n$ obeys $\operatorname{HasPolynomialGrowthBound}(\mu,C,p
 
 \begin{lemma}[Every projection has all exponential moments after Gaussian weighting]
 \label{lem:gaussian-weight-exponential}
-\lean{Preiss.integrable_exp_inner_mul_gaussian, Preiss.integrable_exp_inner_withDensity_gaussian}
+\lean{Preiss.integrable_exp_inner_mul_gaussian, Preiss.integrable_exp_inner_withDensity_gaussian, Preiss.integrable_exp_inner_mul_gaussian_parameter, Preiss.integrable_exp_abs_inner_mul_gaussian_parameter}
 \uses{def:polynomial-growth-bound, lem:gaussian-polynomial-integrable}
 
 If $\operatorname{HasPolynomialGrowthBound}(\mu,C,p)$, then for every $w\in\mathbb R^n$ and $t\in\mathbb R$, the function $e^{-\|z\|^2}e^{t\langle z,w\rangle}$ is $\mu$-integrable. Equivalently, $e^{t\langle z,w\rangle}$ is integrable for the Gaussian weighted measure.
@@ -4838,7 +4838,7 @@ For every sequence of $m$-planes $V_i\subseteq\mathbb R^n$, there exist an $m$-p
 
 \begin{lemma}[Compact approximation inside an increasing measurable exhaustion]
 \label{lem:compact-measurable-exhaustion}
-\lean{Preiss.exists_compact_subset_of_ae_mem_iUnion}
+\lean{Preiss.exists_compact_subset_of_ae_mem_iUnion, Preiss.exists_pos_compact_subset_of_ae_mem_iUnion}
 
 Let $\mu$ be a finite regular Borel measure on a Hausdorff space, let $E$ and $S_i$ be measurable, and assume $S_i\subseteq S_{i+1}$ and $\mu(E\setminus\bigcup_i S_i)=0$. For every $\varepsilon>0$ there exist $N$ and a compact set $C\subseteq E\cap S_N$ such that $\mu(E\setminus C)<\varepsilon$.
 \end{lemma}
@@ -4922,7 +4922,7 @@ Every locally compact, second-countable Hausdorff space admits DenseCompactTestF
 \begin{lemma}[Supplied compact tests determine vague convergence and measures]
 \label{lem:vague-determining-tests}
 \lean{Preiss.weaklyConverges_iff_denseCompactTests, Preiss.measure_eq_of_denseCompactTests}
-\uses{def:dense-compact-tests, gmt:vague}
+\uses{def:dense-compact-tests, gmt:vague, mathlib:regular-measure-ext}
 
 For a supplied DenseCompactTestFamily on $\mathbb R^n$ and regular measures $\mu_i,\nu$, vague convergence $\mu_i\rightharpoonup\nu$ is equivalent to convergence of the integrals of every enumerated test. Two regular measures with equal integrals on every enumerated test are equal.
 \end{lemma}
@@ -4961,7 +4961,7 @@ For every measure $\mu$ on $\mathbb R^n$, every natural $N$, every real $s$, and
 \begin{lemma}[Nonzero vague limits of scalar rescalings are proportional]
 \label{lem:vague-scalar-limits}
 \lean{Preiss.exists_pos_smul_of_vague_and_scaled_vague}
-\uses{gmt:vague}
+\uses{gmt:vague, mathlib:regular-measure-ext}
 
 On any locally compact Hausdorff space with its Borel measurable structure, suppose $\mu_i\rightharpoonup\nu$ and $c_i\mu_i\rightharpoonup\xi$, where $\nu,\xi$ are nonzero regular measures and $c_i\in[0,\infty]$. Then $\xi=a\nu$ for some positive finite $a$. No regularity assumption on the sequence is needed for the compact-test integral formulation.
 \end{lemma}
@@ -4988,4 +4988,370 @@ Let $\mu$ be locally finite and suppose $p r^m\leq\mu(\overline B(x,r))\leq q r^
 \uses{lem:dimensional-extraction-ball-bounds, lem:vague-scalar-limits, lem:general-tangent-scalar, gmt:density-bounds}
 
 For a locally finite measure with positive lower and finite upper $m$-density at $x$, $\nu\in\operatorname{Tan}(\mu,x)$ if and only if $\nu=c\xi$ for some $0<c<\infty$ and $\xi\in\operatorname{Tan}_m(\mu,x)$. A preceding version assumes only explicit two-sided local ball bounds. No existence of a density limit is used.
+\end{lemma}
+
+\begin{lemma}[Prescribed upper-density thresholds give quantitative ball bounds]
+\label{lem:quantitative-upper-density-bound}
+\lean{Preiss.exists_closedBall_power_bound_of_upperDensity_lt}
+\uses{def:density-api}
+
+For an outer measure $\nu$ on a pseudometric space, $m\in\mathbb N$ and $b>0$, if $\Theta^{*m}(\nu,x)<b$, then there is $R>0$ such that $\nu(\overline B_r(x))\le b\,2^m r^m$ for every $0<r<R$.
+\end{lemma}
+
+\begin{lemma}[Closed sets defined by uniform upper ball bounds]
+\label{lem:closed-upper-ball-bound-sets}
+\lean{Preiss.ballPowerUpperBoundSet, Preiss.isClosed_ballPowerUpperBoundSet, Preiss.ballPowerUpperBoundSet_mono}
+\uses{lem:moving-set-measure-bounds}
+
+For a measure $\mu$ on a pseudometric space, define $U_{m,b,R}=\{x: \mu(B_r(x))\le\operatorname{ofReal}(b r^m)\text{ for every }0<r<R\}$. This set is closed. If $b\le b^{\prime}$ and $R^{\prime}\le R$, then $U_{m,b,R}\subseteq U_{m,b^{\prime},R^{\prime}}$.
+\end{lemma}
+
+\begin{lemma}[Compactness of dimensional tangent families under ball bounds]
+\label{lem:dimensional-family-compact-ball-bounds}
+\lean{Preiss.dimensionalTangent_nonempty_compact_of_ball_bounds}
+\uses{lem:dimensional-extraction-ball-bounds, def:vague-metrization, lem:vague-countable-metric}
+
+Under positive two-sided local $m$-power closed-ball bounds at $x$, the family $\operatorname{Tan}_m(\mu,x)$ is nonempty and every sequence in it has a strictly increasing subsequence converging vaguely to another member. The source measure is locally finite; no density-limit existence is required.
+\end{lemma}
+
+\begin{lemma}[Radius-power limits from diameter-normalized densities]
+\label{lem:radius-power-density}
+\lean{Preiss.tendsto_radiusPowerRatio_of_densityRatio, Preiss.HasPositiveFiniteDensityAt.exists_radiusPowerDensity}
+\uses{def:positive-density, def:density-api, gmt:density-bounds}
+
+For outer measures on pseudometric spaces, convergence of the diameter-normalized $m$-density ratio to $\theta$ implies convergence of $\mu(\overline B(x,r))/r^m$ to $2^m\theta$. In particular, a positive finite density point of a measure on any metric space has a positive real radius-power limit $q$. No local-finiteness or Borel-space assumption is needed.
+\end{lemma}
+
+\begin{lemma}[Gaussian integrability of polynomial feature kernels]
+\label{lem:gaussian-feature-integrability}
+\lean{Preiss.integrable_gaussian_polynomialFeature, Preiss.integrable_featureMomentKernel_of_growth}
+\uses{def:polynomial-feature, lem:gaussian-polynomial-integrable}
+
+For a measure with a polynomial ball-growth bound, every finite polynomial feature vector and its weighted linear-functional kernel are integrable against $e^{-s\lVert z\rVert^2}$ for $s>0$. Uniformity and regularity are not needed.
+\end{lemma}
+
+\begin{lemma}[Gaussian integral from a centered ball law at arbitrary scale]
+\label{lem:gaussian-ball-power-parameter}
+\lean{Preiss.integral_gaussian_parameter_of_closedBall_power, Preiss.integral_gaussian_center_parameter_of_closedBall_power}
+\uses{lem:gaussian-ball-power}
+
+Let $\mu$ be an s-finite Borel measure on a real normed space with $\mu(\overline B(0,r))=Cr^d$ for $r>0$, where $C\geq0$ and $d>0$. For every $s>0$, the function $e^{-s\lVert z\rVert^2}$ is integrable and its integral is $C\Gamma(d/2+1)s^{-d/2}$.
+\end{lemma}
+
+\begin{lemma}[Support under continuous closed maps]
+\label{lem:closed-map-support}
+\lean{Preiss.measure_support_map_of_continuous_of_isClosedMap}
+
+For a regular Borel measure $\mu$ and a continuous closed map $f$, the support of $f_*\mu$ is $f(\operatorname{supp}\mu)$.
+\end{lemma}
+
+\begin{lemma}[Outer regularity under continuous closed maps]
+\label{lem:closed-map-outer-regularity}
+\lean{Preiss.outerRegular_map_of_continuous_of_isClosedMap}
+
+A continuous closed map pushes an outer regular Borel measure forward to an outer regular Borel measure.
+\end{lemma}
+
+\begin{lemma}[Regularity under proper maps]
+\label{lem:proper-map-regularity}
+\lean{Preiss.regular_map_of_isProperMap}
+\uses{lem:closed-map-outer-regularity}
+
+A proper map into a Hausdorff Borel space pushes a regular measure forward to a regular measure.
+\end{lemma}
+
+\begin{lemma}[Vague convergence under cocompact and proper maps]
+\label{lem:vague-cocompact-pushforward}
+\lean{Preiss.weaklyConverges_map_cocompact, Preiss.weaklyConverges_map_of_isProperMap}
+\uses{gmt:vague}
+
+Vague convergence is preserved by pushforward along a continuous cocompact map, and hence along a proper map. No regularity hypothesis is required for this test-function identity.
+\end{lemma}
+
+\begin{lemma}[Flat-measure regularity and positive plane-ball mass]
+\label{lem:flat-measure-regularity}
+\lean{Preiss.regular_flatOn, Preiss.flatOn_ball_pos}
+\uses{lem:plane-hausdorff}
+
+For every $m$-plane $V$, including $m=0$, $c\mathcal H^m\!\restriction V$ is regular when $c<\infty$. When $c>0$, every positive-radius ball centered in $V$ has positive measure.
+\end{lemma}
+
+\begin{lemma}[Vanishing mass on compact null sets]
+\label{lem:vague-compact-null-mass}
+\lean{Preiss.tendsto_mass_compact_null_of_vague}
+\uses{gmt:portmanteau}
+
+If regular Euclidean measures $\nu_i$ converge vaguely to a regular $\mu$ and $K$ is compact with $\mu(K)=0$, then $\nu_i(K)\to0$.
+\end{lemma}
+
+\begin{lemma}[Uniform lower ball mass on compact sets]
+\label{lem:vague-uniform-ball-lower}
+\lean{Preiss.eventually_uniform_ball_mass_lower_bound_of_vague}
+\uses{gmt:portmanteau}
+
+Let regular Euclidean measures $\nu_i$ converge vaguely to a regular $\mu$. If $K$ is compact, $\eta>0$, and $\mu(B(z,\eta/2))>0$ for every $z\in K$, then there exists $a>0$ such that eventually $\nu_i(B(z,\eta))\ge a$ simultaneously for every $z\in K$.
+\end{lemma}
+
+\begin{definition}[A common-plane two-sided approximation predicate]
+\label{def:two-sided-approximation}
+\lean{Preiss.TwoSidedApproximation}
+\uses{def:cone}
+
+The set $F$ is nonempty. At each $a\in G$ and scale $0<r<R$, a single $m$-plane gives tube containment of $F\cap B(a,2r)$, distance less than $\eta r$ from its points in $B(a,r)$ to $F$, and a $\gamma(\eta r)^m$ lower bound for the corresponding ball masses.
+\end{definition}
+
+\begin{lemma}[Compact two-sided approximation from uniform lower mass]
+\label{lem:compact-two-sided-general}
+\lean{Preiss.exists_compact_twoSided_approximation_of_uniform_lower_bound}
+\uses{def:two-sided-approximation, lem:closed-weak-approximation-good-set, lem:weak-approximation-good-exhaustion, lem:closed-upper-ball-bound-sets, lem:compact-measurable-exhaustion, lem:tube-support-upgrade}
+
+For a finite regular measure and a positive-measure compact $F$ with uniform lower ball bounds, assume weak linear approximation for $\mu\restriction F$ almost everywhere and arbitrarily small local upper ball bounds for $\mu\restriction F^c$ almost everywhere on $F$. For every $0<\eta<1$, there is a positive-measure compact $G\subseteq F$ with common-plane two-sided approximation at uniform positive scales and constants.
+\end{lemma}
+
+\begin{lemma}[A scalar Gaussian envelope for polynomial growth]
+\label{lem:gaussian-power-envelope}
+\lean{Preiss.pow_mul_gaussian_half_le}
+
+For $r\geq0$, $s>0$ and integer $k>0$, $r^k e^{-sr^2/2}\leq(k/s)^{k/2}$.
+\end{lemma}
+
+\begin{lemma}[Integrated exponential series under a Gaussian weight]
+\label{lem:integrated-gaussian-exponential-series}
+\lean{Preiss.hasSum_integral_gaussian_exp_inner}
+\uses{lem:gaussian-weight-exponential}
+
+For a Euclidean measure with polynomial ball growth, every $s>0$, $t\in\mathbb R$ and vector $w$, the series of Gaussian-weighted moments $(t^k/k!)\int\langle z,w\rangle^k e^{-s\lVert z\rVert^2}\,d\mu$ converges absolutely to $\int e^{t\langle z,w\rangle}e^{-s\lVert z\rVert^2}\,d\mu$.
+\end{lemma}
+
+\begin{lemma}[Rescaled distances and approximate nearest-point selection]
+\label{lem:rescaled-distance-selection}
+\lean{Preiss.dist_affine_rescale, Preiss.exists_points_rescaled_tendsto_of_infDist}
+
+In a real normed space, $\operatorname{dist}(a+ry,z)=r\operatorname{dist}(y,r^{-1}(z-a))$ for $r>0$. If $D$ is nonempty and $\operatorname{dist}(a+r_i y,D)/r_i\to0$ for positive $r_i$, one can choose $z_i\in D$ with $r_i^{-1}(z_i-a)\to y$. No closedness, compactness, or convergence of $r_i$ is required.
+\end{lemma}
+
+\begin{lemma}[Uniform small-scale bounds from subsequence properties]
+\label{lem:sequential-uniform-scale}
+\lean{Preiss.exists_uniform_scale_of_subsequence_property}
+
+Let $P(a,r)$ be monotone downward in its positive parameter $a$. If every positive sequence $r_i\to0$ has a strictly increasing subsequence on which $P(a,r_i)$ eventually holds for some $a>0$, then there are $a,R>0$ such that $P(a,r)$ holds for every $0<r<R$.
+\end{lemma}
+
+\begin{lemma}[Homogeneity of distance to a linear plane]
+\label{lem:plane-distance-homogeneous}
+\lean{Preiss.infDist_smul_plane}
+\uses{lem:projection-distance}
+
+For a linear plane $V$, $\operatorname{dist}(cz,V)=|c|\operatorname{dist}(z,V)$ for every real $c$, including zero.
+\end{lemma}
+
+\begin{lemma}[Measure inequalities under dimensional normalization]
+\label{lem:dimensional-blowup-set-estimates}
+\lean{Preiss.dimensionalBlowup_apply_lt_iff, Preiss.le_dimensionalBlowup_apply_iff}
+\uses{def:dimensional-blowup}
+
+For every Borel set $S$, $r>0$ and $a\geq0$, upper and lower comparisons of $D^m_{x,r}\mu(S)$ with $a$ are equivalent to the corresponding comparisons of $\mu(T_{x,r}^{-1}S)$ with $ar^m$. No regularity or local finiteness is needed.
+\end{lemma}
+
+\begin{lemma}[Transfer of normalized plane approximation to a physical scale]
+\label{lem:weak-approximation-scale-transfer}
+\lean{Preiss.weakApproximation_scale_of_normalized_bounds}
+\uses{lem:plane-distance-homogeneous, lem:dimensional-blowup-set-estimates, gmt:blowup-balls}
+
+At a positive scale $r$, suppose $D^m_{x,r}\mu$ has mass less than $\eta$ outside the $\eta$-tube in the closed unit ball, and gives every $\eta$-ball centered on $V$ in that ball mass at least $a\geq0$. Then $\mu$ has the required weak plane-approximation estimates at $x,r$, with bounds $\eta r^m$ and $ar^m$.
+\end{lemma}
+
+\begin{lemma}[Second countability of countable-coordinate metrics]
+\label{lem:countable-coordinate-second-countability}
+\lean{Preiss.countableCoordinateMetric_secondCountable}
+\uses{lem:countable-coordinate-metric}
+
+The metric induced by countably many separating real coordinates is second countable, because its topology is induced from the countable product of real lines.
+\end{lemma}
+
+\begin{lemma}[Summable coefficient majorants and a global Gaussian-series remainder]
+\label{lem:scalar-gaussian-series-remainder}
+\lean{Preiss.summable_pow_mul_halfPower_div_factorial, Preiss.abs_power_series_tail_le, Preiss.abs_sum_positive_powers_le, Preiss.power_series_gaussian_taylor_remainder}
+
+For $a\geq0$, the sequence $a^k k^{k/2}/k!$ is summable. Nonnegative summable coefficient majorants control power-series tails for $0\leq r\leq1$ and finite polynomials for $r\geq1$. If $\sum f_k=e^{r^2}$, $f_0=1$, and $|f_k|\leq c_k r^k$, then the discrepancy between the positive-degree truncations of $f$ and the Gaussian exponential is at most $(\sum c_k+e)r^{2q+1}$ for every $r\geq0$.
+\end{lemma}
+
+\begin{lemma}[A second-countable metrization of vague convergence]
+\label{lem:vague-second-countable}
+\lean{Preiss.exists_secondCountable_vagueMetrization}
+\uses{def:vague-metrization-from-tests, lem:countable-coordinate-second-countability}
+
+The regular measures on Euclidean space admit a second-countable metric whose sequential convergence is vague convergence.
+\end{lemma}
+
+\begin{lemma}[Metric approximation and separation of dimensional tangents]
+\label{lem:dimensional-tangent-metric-separation}
+\lean{Preiss.dimensionalTangent_of_metric_approximation, Preiss.exists_metric_separation_of_not_dimensionalTangent}
+\uses{def:dimensional-tangent, def:vague-metrization, lem:dimensional-blowup-support}
+
+A nonzero regular measure is a dimensional tangent if every metric neighborhood contains a dimensional blow-up at arbitrarily small positive scales. Consequently, a nontangent has a metric neighborhood separated from all sufficiently small blow-ups.
+\end{lemma}
+
+\begin{lemma}[Moving blow-up centers at the same dimensional scale]
+\label{lem:dimensional-moving-centers}
+\lean{Preiss.vague_dimensionalBlowup_moving_center}
+\uses{lem:vague-moving-blowups, lem:blowup-composition, lem:dimensional-blowup-support}
+
+If $D^m_{a,r_i}\mu\to\nu$ vaguely and $r_i^{-1}(a_i-a)\to y$, then $D^m_{a_i,r_i}\mu\to D^m_{y,1}\nu$. The original dimensional normalization is unchanged.
+\end{lemma}
+
+\begin{lemma}[Nonvanishing after recentering at a support point]
+\label{lem:recenter-nonzero}
+\lean{Preiss.dimensionalBlowup_one_ne_zero_of_mem_support}
+\uses{lem:dimensional-blowup-support}
+
+For every $y\in\operatorname{supp}\nu$, the unit-scale dimensional blow-up $D^m_{y,1}\nu$ is nonzero.
+\end{lemma}
+
+\begin{lemma}[Nullity of uniformly separated recentering witnesses]
+\label{lem:recenter-separated-set-null}
+\lean{Preiss.measure_eq_zero_of_recenter_separation}
+\uses{gmt:density-points, lem:hull-support-approximation, lem:rescaled-distance-selection, lem:dimensional-moving-centers}
+
+An arbitrary finite-outer-measure set of centers is null if each center has a recentered tangent witness within $\rho$ of one fixed regular measure while all its sufficiently small dimensional blow-ups are at distance at least $4\rho$ from that witness. No measurability of the center set is assumed.
+\end{lemma}
+
+\begin{lemma}[Operator bounds from pointwise bounds in finite dimensions]
+\label{lem:finite-dimensional-operator-bigO}
+\lean{Preiss.isBigO_continuousLinearMap_iff_forall_apply, Preiss.isBigO_restrict_span_of_forall_mem}
+
+For a family of continuous linear maps on a finite-dimensional real normed space, an operator-norm big-$O$ bound is equivalent to the bound at each vector. Bounds on a generating set give an operator-norm bound after restriction to its span.
+\end{lemma}
+
+\begin{lemma}[Extending vague convergence using uniform integral tails]
+\label{lem:vague-uniform-norm-tails}
+\lean{Preiss.norm_integral_sub_cutoff_le, Preiss.vague_integral_of_uniform_norm_tails}
+\uses{gmt:vague}
+
+For a continuous integrable real function $f$, vague convergence implies convergence of its integrals whenever the norm integrals outside suitable compact sets are uniformly small for the sequence and limit measure. A cutoff between zero and one, equal to one on $K$, changes the integral by at most $\int_{K^c}|f|$.
+\end{lemma}
+
+\begin{lemma}[Polynomial norm growth outside the unit ball]
+\label{lem:polynomial-norm-growth}
+\lean{Preiss.exists_polynomial_norm_bound_outside_unit_ball}
+
+Every real polynomial on Euclidean space admits constants $C\ge0$ and $d\in\mathbb N$ with $|P(z)|\le C\|z\|^d$ whenever $\|z\|\ge1$.
+\end{lemma}
+
+\begin{lemma}[Uniform tails for polynomial Gaussian tests]
+\label{lem:polynomial-gaussian-norm-tails}
+\lean{Preiss.polynomial_gaussian_uniform_norm_tail}
+\uses{lem:polynomial-norm-growth, lem:gaussian-uniform-tails, lem:polynomial-gaussian-integrability}
+
+For fixed polynomial $P$ and $s>0$, the integral of $|P(z)e^{-s\|z\|^2}|$ outside large balls tends to zero uniformly over regular measures with a common polynomial ball-growth bound.
+\end{lemma}
+
+\begin{lemma}[Centered ball laws from a positive radius-power density]
+\label{lem:dimensional-tangent-origin-ball-law}
+\lean{Preiss.dimensionalBlowup_ball_mass_tendsto, Preiss.dimensionalTangent_ball_law_at_zero}
+\uses{def:dimensional-tangent, gmt:blowup-balls, gmt:portmanteau}
+
+If $\mu(\overline B(x,r))/r^m\to q>0$, every dimensional tangent $\nu$ satisfies $\nu(\overline B(0,R))=qR^m$ for $R>0$ and has $0$ in its support. The ball-mass convergence for the blow-ups themselves also holds for $q=0$. Dimension zero is allowed.
+\end{lemma}
+
+\begin{lemma}[Flatness under positive finite scalar multiplication]
+\label{lem:flat-positive-scalar}
+\lean{Preiss.IsFlat.smul, Preiss.isFlat_smul_iff}
+\uses{def:flat}
+
+For $0<c<\infty$, the measure $c\nu$ is $m$-flat if and only if $\nu$ is $m$-flat.
+\end{lemma}
+
+\begin{lemma}[A Gaussian fourth-moment contraction for bilinear forms]
+\label{lem:gaussian-bilinear-contraction}
+\lean{Preiss.integrable_gaussian_bilinear_diagonal, Preiss.integrable_gaussian_inner_sq_smul_bilinear, Preiss.gaussian_integral_inner_sq_mul_bilinear}
+\uses{lem:gaussian-wick-fourth, lem:gaussian-quadratic-trace-bound}
+
+For a continuous real bilinear form $A$ on a finite-dimensional real inner-product space and standard Gaussian $\gamma$, $\int\langle y,v\rangle^2 A(v,v)\,d\gamma=\|y\|^2\operatorname{tr}A+2A(y,y)$. Symmetry of $A$ is unnecessary. The diagonal and weighted-diagonal integrability lemmas allow normed real vector-valued forms.
+\end{lemma}
+
+\begin{lemma}[A lower packing mass exceeding an upper bound is impossible]
+\label{lem:column-mass-contradiction}
+\lean{Preiss.false_of_column_mass_exceeds_upper_bound}
+
+If nonnegative retained radii have total $m$-power at least $b$, and a measure has mass at least $Ab$ but at most a strictly smaller finite bound, the two estimates contradict one another.
+\end{lemma}
+
+\begin{lemma}[Positivity and complementary subspaces for weighted gradings]
+\label{lem:weighted-grading-positive-complement}
+\lean{Preiss.weightedGrading_inner_self, Preiss.weightedGrading_inner_pos, Preiss.weightedGrading_injective, Preiss.weightedGrading_inner_left_right, Preiss.isCompl_weightedComplement}
+\uses{def:orthogonal-grading}
+
+For an orthogonal grading $(P_i)$ and positive $s$, the weighted operator $A(s)=\sum_i s^{i+1}P_i$ is self-adjoint and positive definite, with quadratic form $\sum_i s^{i+1}\|P_i x\|^2$. It is injective, and every subspace $V$ is complementary to $A(s)^{-1}(V^\perp)$.
+\end{lemma}
+
+\begin{lemma}[Isometric parametrization of a linear plane]
+\label{lem:plane-isometric-parametrization}
+\lean{Preiss.exists_linearIsometry_range_plane}
+\uses{def:plane}
+
+Every $m$-dimensional plane in $\mathbb R^n$ is the range of a linear isometric embedding of $\mathbb R^m$, including $m=0$.
+\end{lemma}
+
+\begin{lemma}[Support and regularity of normalized flat measures]
+\label{lem:unit-flat-support-regularity}
+\lean{Preiss.flatOn_support, Preiss.regular_unitFlat, Preiss.unitFlat_support}
+\uses{lem:flat-measure-regularity, lem:measure-support-transport, lem:plane-hausdorff}
+
+A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.
+\end{lemma}
+
+\begin{lemma}[Normalized flat measures are unit uniform]
+\label{lem:unit-flat-unit-uniform}
+\lean{Preiss.isUnitUniform_unitFlat}
+\uses{lem:unit-flat-support-regularity, lem:plane-hausdorff, def:unit-uniform}
+
+The normalized measure on every linear $m$-plane is unit $m$-uniform, with mass $r^m$ on every positive-radius closed ball centered in that plane.
+\end{lemma}
+
+\begin{lemma}[The packing contradiction from compact two-sided approximations]
+\label{lem:two-sided-packing-core}
+\lean{Preiss.false_of_compact_twoSided_approximation}
+\uses{def:two-sided-approximation, lem:projection-hole-cover, lem:discarded-cylinder-sum, lem:column-packing, lem:column-mass-contradiction}
+
+A measure cannot simultaneously have a uniform lower $m$-power bound on $F$, arbitrarily small-aperture compact two-sided approximations inside $F$, base points with a common upper mass constant and arbitrarily small deleted mass, and null $m$-dimensional projections of $F$ onto every $m$-plane. The proof does not require the measure itself to be Hausdorff measure.
+\end{lemma}
+
+\begin{lemma}[Orthogonal layers of a descending subspace flag]
+\label{lem:nested-orthogonal-layers}
+\lean{Preiss.starProjection_comp_of_ge, Preiss.nestedProjectionLayer, Preiss.nestedProjectionLayer_symmetric, Preiss.nestedProjectionLayer_mem, Preiss.nestedProjectionLayer_eq_zero_of_mem, Preiss.sub_nestedProjectionLayer_mem, Preiss.nestedProjectionLayer_idempotent, Preiss.nestedProjectionLayer_comp_eq_zero, Preiss.sum_nestedProjectionLayer}
+
+For a descending finite flag $(U_i)$ in a finite-dimensional inner-product space, differences of successive orthogonal projections are self-adjoint idempotents with pairwise orthogonal ranges. Their sum telescopes to the difference of the endpoint projections. Residual and annihilation identities describe each layer.
+\end{lemma}
+
+\begin{lemma}[The kernel flag induced on a subspace by an orthogonal grading]
+\label{lem:kernel-grading-flag}
+\lean{Preiss.kernelGradingFlag, Preiss.mem_kernelGradingFlag, Preiss.kernelGradingFlag_antitone, Preiss.kernelGradingFlag_zero, Preiss.kernelGradingFlag_end}
+\uses{def:orthogonal-grading}
+
+Given an orthogonal grading $(P_i)$ and subspace $V$, the subspaces $K_i=\{v\in V:P_jv=0\text{ for }j<i\}$ form a descending flag from $V$ to zero.
+\end{lemma}
+
+\begin{lemma}[Orthogonal grading by kernel-flag layers]
+\label{lem:kernel-flag-layer-grading}
+\lean{Preiss.flagProjectionLayer, Preiss.flagProjectionLayer_isOrthogonalGrading}
+\uses{lem:kernel-grading-flag, lem:nested-orthogonal-layers}
+
+The differences of successive orthogonal projections onto the kernel flag form an orthogonal grading on $V$.
+\end{lemma}
+
+\begin{lemma}[Injectivity of the constant divided grading operator]
+\label{lem:divided-grading-constant-injective}
+\lean{Preiss.compressedGradingPiece, Preiss.flagProjectionLayer_compressed_inner, Preiss.dividedGradingConstant, Preiss.flagProjectionLayer_dividedGradingConstant, Preiss.dividedGradingConstant_injective}
+\uses{lem:kernel-flag-layer-grading, lem:kernel-grading-flag}
+
+Let $D_i$ be the kernel-flag layers and $R_i$ the compression of $P_i$ to $V$. The operator $\sum_i D_iR_i$ is injective. The proof uses $\langle D_iR_ix,x\rangle=\|P_ix\|^2$ on $K_i$, layer orthogonality, and induction through the flag.
+\end{lemma}
+
+\begin{lemma}[Uniqueness of full-dimensional uniform measures with fixed ball constant]
+\label{lem:uniform-full-dimension-unique}
+\lean{Preiss.uniformWithConstant_eq_of_fullDimension}
+\uses{gmt:uniform-full-dimension, lem:uniform-scaling}
+
+In positive dimension $m$, two $m$-uniform measures on $\mathbb R^m$ with the same positive ball constant are equal. This reuses FormalizingGMT\textquotesingle s full-dimensional classification and identifies the scalar by the unit-ball mass.
 \end{lemma}

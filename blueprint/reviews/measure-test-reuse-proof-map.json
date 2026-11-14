@@ -1,0 +1,6 @@
+{
+  "existing_node_additional_deps": {
+    "lem:vague-scalar-limits": ["mathlib:regular-measure-ext"],
+    "lem:vague-determining-tests": ["mathlib:regular-measure-ext"]
+  }
+}

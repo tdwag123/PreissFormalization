@@ -26,7 +26,8 @@
         "Preiss.polynomialFeatureProjection_apply",
         "Preiss.polynomialFeature_inner",
         "Preiss.polynomialFeatureProjection_isOrthogonalGrading",
-        "Preiss.polynomialFeatureProjection_inner"
+        "Preiss.polynomialFeatureProjection_inner",
+        "Preiss.polynomialFeature_weighted_inner"
       ],
       "statement_tex": "The degree-$k$ projection keeps exactly the coordinates in block $k$ and annihilates the others. These projections form an orthogonal grading. Moreover $\\langle\\Phi(x),\\Phi(y)\\rangle=\\sum_{k=1}^N(2^k/k!)\\langle x,y\\rangle^k$ and $\\langle P_k\\Phi(x),\\Phi(y)\\rangle=(2^k/k!)\\langle x,y\\rangle^k$. All dimensions and truncation orders are natural numbers, including zero.",
       "deps": [

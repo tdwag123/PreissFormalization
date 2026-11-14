@@ -1,0 +1,16 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:packing-contradiction": [
+      "lem:two-sided-packing-core",
+      "lem:nested-compact-approximation",
+      "lem:packing-base-point"
+    ],
+    "lem:plane-supported-uniform-flat": [
+      "lem:plane-isometric-parametrization",
+      "lem:unit-flat-unit-uniform",
+      "lem:uniform-full-dimension-unique",
+      "lem:hyperplane-transport-map",
+      "lem:uniform-scaling"
+    ]
+  }
+}

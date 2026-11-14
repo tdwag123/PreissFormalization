@@ -3,6 +3,10 @@ import Preiss.Analysis.CountableCoordinateMetric
 import Preiss.Analysis.Vague.DeterminingTests
 import FormalizingGMT.WeakConvergence.Basic
 import Mathlib.Topology.MetricSpace.Pseudo.Basic
+import Mathlib.Topology.MetricSpace.Pseudo.Lemmas
+import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Tactic.Choose
+import Mathlib.Tactic.Positivity
 
 /-! # A reusable metric presentation of vague convergence
 
@@ -94,6 +98,29 @@ theorem vague_diagonal_selection {n : ℕ}
     (hP : ∀ i, ∀ᶠ j in atTop, P i j) :
     ∃ j : ℕ → ℕ, (∀ i, i ≤ j i ∧ P i (j i)) ∧
       Measure.WeaklyConverges (fun i => μ i (j i)) ξ := by
-  sorry
+  classical
+  obtain ⟨M⟩ := exists_vagueMetrization n
+  letI := M.metric
+  let η (i j : ℕ) : RegularEuclideanMeasure n := ⟨μ i j, hμ i j⟩
+  let ζ (i : ℕ) : RegularEuclideanMeasure n := ⟨ν i, hν i⟩
+  let ξ' : RegularEuclideanMeasure n := ⟨ξ, hξ⟩
+  have hrow (i : ℕ) : Tendsto (η i) atTop (𝓝 (ζ i)) :=
+    (M.tendsto_iff (η i) (ζ i)).mpr (hrows i)
+  have hseq : Tendsto ζ atTop (𝓝 ξ') := (M.tendsto_iff ζ ξ').mpr hlim
+  have hselect (i : ℕ) : ∃ j, i ≤ j ∧ P i j ∧
+      dist (ζ i) (η i j) < 1 / ((i : ℝ) + 1) := by
+    have hevent := Metric.tendsto_nhds.mp (hrow i) (1 / ((i : ℝ) + 1)) (by positivity)
+    have hboth : ∀ᶠ j in atTop, i ≤ j ∧ P i j ∧
+        dist (ζ i) (η i j) < 1 / ((i : ℝ) + 1) := by
+      filter_upwards [eventually_ge_atTop i, hP i, hevent] with j hj hPj hdj
+      exact ⟨hj, hPj, by rwa [dist_comm]⟩
+    exact hboth.exists
+  choose j hjge hjP hjdist using hselect
+  have hdist : Tendsto (fun i => dist (ζ i) (η i (j i))) atTop (𝓝 0) :=
+    squeeze_zero (fun _ => dist_nonneg) (fun i => (hjdist i).le)
+      tendsto_one_div_add_atTop_nhds_zero_nat
+  have hdiag := hseq.congr_dist hdist
+  exact ⟨j, fun i => ⟨hjge i, hjP i⟩,
+    (M.tendsto_iff (fun i => η i (j i)) ξ').mp hdiag⟩
 
 end Preiss

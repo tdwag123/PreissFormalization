@@ -1,6 +1,7 @@
 import Preiss.Rectifiability.Decomposition
 import Preiss.Rectifiability.MarstrandMattila.ProjectionNull
-import Preiss.Rectifiability.MarstrandMattila.Packing
+import Preiss.Rectifiability.MarstrandMattila.PackingContradiction
+import Preiss.Rectifiability.MarstrandMattila.CompactSelection
 import Preiss.Rectifiability.MarstrandMattila.HausdorffInputs
 
 open MeasureTheory Metric Set Filter Topology

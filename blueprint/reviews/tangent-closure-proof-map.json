@@ -1,0 +1,18 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:dimensional-tangent-compactness": [
+      "lem:dimensional-family-compact-ball-bounds",
+      "gmt:density-bounds"
+    ]
+  },
+  "existing_node_additional_deps": {
+    "lem:dimensional-tangent-closed": [
+      "lem:vague-diagonal",
+      "lem:dimensional-blowup-support"
+    ],
+    "lem:tangent-closed": [
+      "lem:vague-diagonal",
+      "gmt:blowup-regular"
+    ]
+  }
+}

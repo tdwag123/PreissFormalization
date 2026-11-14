@@ -1,0 +1,20 @@
+{
+  "existing_node_additional_deps": {
+    "lem:hull-support-approximation": [
+      "lem:rescaled-distance-selection",
+      "gmt:portmanteau"
+    ],
+    "lem:taylor-one": [
+      "lem:scalar-gaussian-series-remainder",
+      "lem:moment-norm-bound",
+      "lem:gaussian-translation-series"
+    ],
+    "lem:flat-to-approximation": [
+      "lem:sequential-uniform-scale",
+      "lem:weak-approximation-scale-transfer",
+      "lem:flat-limit-tube",
+      "lem:flat-limit-moving-balls",
+      "lem:dimensional-compactness"
+    ]
+  }
+}
