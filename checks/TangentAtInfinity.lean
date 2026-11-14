@@ -102,7 +102,7 @@ theorem tangent_at_infinity_conical_draft (hm : 0 < m) (hmn : m ≤ n)
   obtain ⟨hreg, _, r, hr, hrinf, hlim⟩ := hξ
   refine ⟨hscaled.1, IsUnitUniform.ne_zero _ hscaled, fun i => r i * s,
     fun i => mul_pos (hr i) hs, hrinf.atTop_mul_const hs, ?_⟩
-  have hconv := vague_dimensionalBlowup_moving
+  have hconv := vague_dimensionalBlowup_moving (m := m)
     (fun i => dimensionalBlowup m ν 0 (r i)) ξ
     (fun i => (isUnitUniform_dimensionalBlowup ν hν 0 hν.2.1 (hr i)).1)
     hreg hlim (fun _ => 0) 0 tendsto_const_nhds (fun _ => s) s

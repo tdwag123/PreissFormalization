@@ -5731,3 +5731,97 @@ Gaussian integrals of every finite product of linear functionals have a limit al
 
 Every positive-degree Gaussian multilinear moment at parameter one has a limit along the dimensional blowdowns of a positive-dimensional unit-uniform measure. The even limits come from leading Taylor coefficients; the odd limits vanish.
 \end{lemma}
+
+\begin{lemma}[Orthonormal sums are bounded by leading eigenvalues]
+\label{lem:orthonormal-spectral-sum-bound}
+\lean{Preiss.orthonormal_diagonal_sum_le_initial_sum}
+\uses{lem:ordered-trace-bounds}
+
+For an ordered real spectrum, the sum of its quadratic form over any orthonormal family of size $m$ is bounded by the sum of its first $m$ eigenvalues.
+\end{lemma}
+
+\begin{lemma}[Ordered spectrum of a positive symmetric bilinear form]
+\label{lem:ordered-bilinear-spectrum}
+\lean{Preiss.exists_ordered_spectral_representation}
+\uses{def:bilinear-trace}
+
+A positive symmetric bilinear form on a finite-dimensional real inner-product space admits an orthonormal eigenbasis, with nonnegative decreasing eigenvalues summing to its trace.
+\end{lemma}
+
+\begin{lemma}[Distance to a plane in orthonormal coordinates]
+\label{lem:orthonormal-plane-distance}
+\lean{Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis, Preiss.exists_plane_of_orthonormalBasis_finset}
+
+Squared distance to a subspace equals squared norm minus the sum of squared coordinates in an orthonormal basis. Selecting $m$ vectors of an ambient orthonormal basis constructs an $m$-plane with this distance formula.
+\end{lemma}
+
+\begin{lemma}[Explicit even moment limits of blowdowns]
+\label{lem:blowdown-even-moment-limit}
+\lean{Preiss.blowdown_gaussianMoment_even_limit}
+\uses{lem:scaled-moment-limits, lem:inverse-square-positive-limit, lem:moment-covariance}
+
+The degree $2j$ Gaussian moment of dimensional blowdowns converges to $B_{2j}^{j}/j!$ for every positive $j$.
+\end{lemma}
+
+\begin{lemma}[Gaussian moment continuity under vague convergence]
+\label{lem:vague-gaussian-moments}
+\lean{Preiss.vague_gaussianMomentForm_apply}
+\uses{lem:vague-gaussian-polynomials, lem:moment-norm-bound}
+
+Along vaguely convergent unit-uniform measures, every Gaussian multilinear moment evaluated on fixed vectors converges at every positive Gaussian parameter.
+\end{lemma}
+
+\begin{lemma}[Taylor coefficients of an exactly homogeneous moment]
+\label{lem:exact-homogeneous-moment-coefficients}
+\lean{Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity}
+\uses{lem:exact-monomial-coefficients}
+
+If a positive-degree Gaussian moment is exactly $s^d A$, its Taylor coefficient family has only one nonzero positive-order coefficient, equal to $d!A$ in degree $d$.
+\end{lemma}
+
+\begin{lemma}[Sparse moment coefficients of conical measures]
+\label{lem:conical-moment-coefficients}
+\lean{Preiss.gaussianMomentCoefficient_conical}
+\uses{lem:exact-homogeneous-moment-coefficients, lem:conical-moments}
+
+For a positive-dimensional conical unit-uniform measure, $B_k^j$ vanishes unless $k=2j$; in that degree it equals $j!$ times the moment at parameter one.
+\end{lemma}
+
+\begin{lemma}[Even Gaussian moments at support points]
+\label{lem:conical-even-support-moments}
+\lean{Preiss.conical_even_moment_on_support}
+\uses{lem:conical-moment-coefficients, lem:moment-support-polynomial, lem:taylor-two}
+
+For a positive-dimensional conical unit-uniform measure and $x$ in its support, the degree $2j$ diagonal moment at parameter one equals $\lVert x\rVert^{2j}/j!$ for every $j>0$.
+\end{lemma}
+
+\begin{lemma}[A symmetric multilinear form is determined by its diagonal]
+\label{lem:symmetric-multilinear-diagonal-injective}
+\lean{Preiss.symmetricMultilinear_eq_zero_of_diagonal}
+
+A continuous symmetric multilinear map over real normed spaces is zero if all its diagonal evaluations vanish. This includes degree zero and requires neither finite dimension nor completeness.
+\end{lemma}
+
+\begin{lemma}[Weighted plane energy in orthonormal coordinates]
+\label{lem:weighted-plane-energy-decomposition}
+\lean{Preiss.integral_weighted_planeEnergy_eq_sub_sum}
+\uses{lem:orthonormal-plane-distance}
+
+An integrable weighted squared distance to a subspace equals the weighted squared norm integral minus the sum of directional second moments.
+\end{lemma}
+
+\begin{lemma}[Leading covariance eigenspaces minimize plane energy]
+\label{lem:covariance-minimizing-plane}
+\lean{Preiss.exists_minimizing_plane_of_ordered_covariance}
+\uses{lem:weighted-plane-energy-decomposition, lem:orthonormal-spectral-sum-bound}
+
+Given an ordered spectral representation of the weighted covariance, the plane spanned by its first $m$ eigenvectors minimizes weighted squared distance among all $m$-planes.
+\end{lemma}
+
+\begin{lemma}[Gaussian bilinear covariance identities]
+\label{lem:gaussian-bilinear-covariance}
+\lean{Preiss.momentBilinear_diag, Preiss.momentBilinear_gaussianMomentForm_symmetric, Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel, Preiss.integral_gaussian_inner_sq_eq_momentBilinear}
+\uses{def:bilinear-trace, def:moments}
+
+The degree-two Gaussian moment defines a symmetric bilinear form. Its diagonal equals twice the Gaussian directional second moment divided by Gaussian mass, with directional integrability following from moment-kernel integrability.
+\end{lemma}

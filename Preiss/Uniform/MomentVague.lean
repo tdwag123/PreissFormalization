@@ -1,24 +1,13 @@
 import Preiss.Analysis.GaussianVague
 import Preiss.Uniform.MomentEstimates
-import Preiss.Uniform.BlowdownMoments
 import Mathlib.Tactic
+
+/-! Gaussian moment evaluations under vague convergence of unit-uniform measures. -/
 
 open MeasureTheory Filter
 open scoped Topology BigOperators
 namespace Preiss
 variable {n m : ℕ}
-
-theorem blowdown_gaussianMoment_even_limit
-    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
-    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B)
-    (j : ℕ) (hj : 0 < j) :
-    Tendsto (fun r : ℝ => gaussianMomentForm (dimensionalBlowup m μ 0 r) (2*j) 1)
-      atTop (𝓝 ((j.factorial : ℝ)⁻¹ • B (2*j) j)) := by
-  apply ((gaussianMoment_scaled_even_limit μ hm hμ B hB j hj).comp
-    tendsto_inv_sq_atTop_nhdsGT_zero).congr'
-  filter_upwards [eventually_gt_atTop (0 : ℝ)] with r hr
-  rw [gaussianMomentForm_dilate (m := m) μ (2*j) 1 r hr,one_div]
-  simp only [Function.comp_apply,inv_pow,inv_inv,pow_mul]
 
 theorem vague_gaussianMomentForm_apply (hm : 0 < m)
     (μ : ℕ → Measure (Euclidean n)) (ν : Measure (Euclidean n))

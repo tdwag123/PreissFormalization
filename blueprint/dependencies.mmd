@@ -410,6 +410,18 @@ flowchart LR
   lem_coordinate_product_representation["Coordinate monomials are finite products of linear inner products"]
   lem_blowdown_product_limits["Gaussian linear-product tests have blowdown limits"]
   lem_blowdown_form_limits["Every positive-degree Gaussian moment has a blowdown limit"]
+  lem_orthonormal_spectral_sum_bound["Orthonormal sums are bounded by leading eigenvalues"]
+  lem_ordered_bilinear_spectrum["Ordered spectrum of a positive symmetric bilinear form"]
+  lem_orthonormal_plane_distance["Distance to a plane in orthonormal coordinates"]
+  lem_blowdown_even_moment_limit["Explicit even moment limits of blowdowns"]
+  lem_vague_gaussian_moments["Gaussian moment continuity under vague convergence"]
+  lem_exact_homogeneous_moment_coefficients["Taylor coefficients of an exactly homogeneous moment"]
+  lem_conical_moment_coefficients["Sparse moment coefficients of conical measures"]
+  lem_conical_even_support_moments["Even Gaussian moments at support points"]
+  lem_symmetric_multilinear_diagonal_injective["A symmetric multilinear form is determined by its diagonal"]
+  lem_weighted_plane_energy_decomposition["Weighted plane energy in orthonormal coordinates"]
+  lem_covariance_minimizing_plane["Leading covariance eigenspaces minimize plane energy"]
+  lem_gaussian_bilinear_covariance["Gaussian bilinear covariance identities"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -1534,3 +1546,21 @@ flowchart LR
   lem_moment_covariance --> lem_blowdown_form_limits
   lem_scaled_moment_limits --> lem_blowdown_form_limits
   lem_taylor_two --> lem_blowdown_form_limits
+  lem_ordered_trace_bounds --> lem_orthonormal_spectral_sum_bound
+  def_bilinear_trace --> lem_ordered_bilinear_spectrum
+  lem_inverse_square_positive_limit --> lem_blowdown_even_moment_limit
+  lem_moment_covariance --> lem_blowdown_even_moment_limit
+  lem_scaled_moment_limits --> lem_blowdown_even_moment_limit
+  lem_moment_norm_bound --> lem_vague_gaussian_moments
+  lem_vague_gaussian_polynomials --> lem_vague_gaussian_moments
+  lem_exact_monomial_coefficients --> lem_exact_homogeneous_moment_coefficients
+  lem_conical_moments --> lem_conical_moment_coefficients
+  lem_exact_homogeneous_moment_coefficients --> lem_conical_moment_coefficients
+  lem_conical_moment_coefficients --> lem_conical_even_support_moments
+  lem_moment_support_polynomial --> lem_conical_even_support_moments
+  lem_taylor_two --> lem_conical_even_support_moments
+  lem_orthonormal_plane_distance --> lem_weighted_plane_energy_decomposition
+  lem_orthonormal_spectral_sum_bound --> lem_covariance_minimizing_plane
+  lem_weighted_plane_energy_decomposition --> lem_covariance_minimizing_plane
+  def_bilinear_trace --> lem_gaussian_bilinear_covariance
+  def_moments --> lem_gaussian_bilinear_covariance

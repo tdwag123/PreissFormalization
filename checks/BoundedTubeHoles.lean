@@ -24,8 +24,8 @@ theorem exists_plane_to_support_bound_of_bounded_normal_coordinates
   have hr (i : ℕ) : 0 < r i := by
     have h := hv i
     dsimp [r]
-    linarith [Nat.cast_nonneg (R := ℝ) i]
-  have hr∞ : Tendsto r atTop atTop := by
+    linarith [Nat.cast_nonneg (α := ℝ) i]
+  have hrTop : Tendsto r atTop atTop := by
     apply tendsto_atTop.mpr
     intro b
     obtain ⟨N, hN⟩ := exists_nat_gt b
@@ -73,9 +73,8 @@ theorem exists_plane_to_support_bound_of_bounded_normal_coordinates
       _ ≤ (r i)⁻¹ * dist (v i : Euclidean n) z := mul_le_mul_of_nonneg_left hfar (inv_nonneg.mpr (hr i).le)
       _ = dist (c i) ((r i)⁻¹ • (z - a i)) := by
         dsimp only [c]
-        rw [dist_eq_norm, ← smul_sub, norm_smul, Real.norm_of_pos (inv_pos.mpr (hr i)), dist_eq_norm]
-        congr 2
-        abel
+        simp only [dist_eq_norm, ← smul_sub, norm_smul, Real.norm_of_pos (inv_pos.mpr (hr i))]
+        congr 2 <;> abel
   obtain ⟨w, _, ψ, hψ, hcψ⟩ :=
     (isCompact_closedBall (0 : Euclidean n) 1).tendsto_subseq (x := c)
       (fun i => by simpa only [mem_closedBall, dist_zero_right, hc i])
@@ -86,7 +85,7 @@ theorem exists_plane_to_support_bound_of_bounded_normal_coordinates
   have hvlim : Tendsto (fun i => 2 * M / r (κ i)) atTop (𝓝 0) := by
     simpa only [div_eq_mul_inv, mul_zero] using
       ((tendsto_const_nhds : Tendsto (fun _ : ℕ => 2 * M) atTop (𝓝 (2 * M))).mul
-        (tendsto_inv_atTop_zero.comp (hr∞.comp hκ.tendsto_atTop)))
+        (tendsto_inv_atTop_zero.comp (hrTop.comp hκ.tendsto_atTop)))
   have hmem (y : ℕ → Euclidean n) (z : Euclidean n) (hy : Tendsto y atTop (𝓝 z))
       (hb : ∀ᶠ i in atTop, ‖Q (y i)‖ ≤ 2 * M / r (κ i)) : z ∈ V.1 := by
     have hzlim : Tendsto (fun i => ‖Q (y i)‖) atTop (𝓝 0) :=

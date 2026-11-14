@@ -3128,6 +3128,206 @@
       ],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; full canonical integration CI pending."
+    },
+    {
+      "id": "lem:orthonormal-spectral-sum-bound",
+      "kind": "lemma",
+      "title": "Orthonormal sums are bounded by leading eigenvalues",
+      "lean_names": [
+        "Preiss.orthonormal_diagonal_sum_le_initial_sum"
+      ],
+      "file": "Preiss/Analysis/OrderedSpectralBound.lean",
+      "statement_tex": "For an ordered real spectrum, the sum of its quadratic form over any orthonormal family of size $m$ is bounded by the sum of its first $m$ eigenvalues.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:ordered-bilinear-spectrum",
+      "kind": "lemma",
+      "title": "Ordered spectrum of a positive symmetric bilinear form",
+      "lean_names": [
+        "Preiss.exists_ordered_spectral_representation"
+      ],
+      "file": "Preiss/Analysis/BilinearSpectrum.lean",
+      "statement_tex": "A positive symmetric bilinear form on a finite-dimensional real inner-product space admits an orthonormal eigenbasis, with nonnegative decreasing eigenvalues summing to its trace.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:bilinear-trace"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:orthonormal-plane-distance",
+      "kind": "lemma",
+      "title": "Distance to a plane in orthonormal coordinates",
+      "lean_names": [
+        "Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis",
+        "Preiss.exists_plane_of_orthonormalBasis_finset"
+      ],
+      "file": "Preiss/Geometry/OrthonormalPlane.lean",
+      "statement_tex": "Squared distance to a subspace equals squared norm minus the sum of squared coordinates in an orthonormal basis. Selecting $m$ vectors of an ambient orthonormal basis constructs an $m$-plane with this distance formula.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:blowdown-even-moment-limit",
+      "kind": "lemma",
+      "title": "Explicit even moment limits of blowdowns",
+      "lean_names": [
+        "Preiss.blowdown_gaussianMoment_even_limit"
+      ],
+      "file": "Preiss/Uniform/BlowdownMoments.lean",
+      "statement_tex": "The degree $2j$ Gaussian moment of dimensional blowdowns converges to $B_{2j}^{j}/j!$ for every positive $j$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:scaled-moment-limits",
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:vague-gaussian-moments",
+      "kind": "lemma",
+      "title": "Gaussian moment continuity under vague convergence",
+      "lean_names": [
+        "Preiss.vague_gaussianMomentForm_apply"
+      ],
+      "file": "Preiss/Uniform/MomentVague.lean",
+      "statement_tex": "Along vaguely convergent unit-uniform measures, every Gaussian multilinear moment evaluated on fixed vectors converges at every positive Gaussian parameter.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:vague-gaussian-polynomials",
+        "lem:moment-norm-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:exact-homogeneous-moment-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exactly homogeneous moment",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity"
+      ],
+      "file": "Preiss/Uniform/ConicalCoefficients.lean",
+      "statement_tex": "If a positive-degree Gaussian moment is exactly $s^d A$, its Taylor coefficient family has only one nonzero positive-order coefficient, equal to $d!A$ in degree $d$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:exact-monomial-coefficients"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-moment-coefficients",
+      "kind": "lemma",
+      "title": "Sparse moment coefficients of conical measures",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_conical"
+      ],
+      "file": "Preiss/Uniform/ConicalCoefficients.lean",
+      "statement_tex": "For a positive-dimensional conical unit-uniform measure, $B_k^j$ vanishes unless $k=2j$; in that degree it equals $j!$ times the moment at parameter one.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:exact-homogeneous-moment-coefficients",
+        "lem:conical-moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:conical-even-support-moments",
+      "kind": "lemma",
+      "title": "Even Gaussian moments at support points",
+      "lean_names": [
+        "Preiss.conical_even_moment_on_support"
+      ],
+      "file": "Preiss/Uniform/ConicalCoefficients.lean",
+      "statement_tex": "For a positive-dimensional conical unit-uniform measure and $x$ in its support, the degree $2j$ diagonal moment at parameter one equals $\\lVert x\\rVert^{2j}/j!$ for every $j>0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:conical-moment-coefficients",
+        "lem:moment-support-polynomial",
+        "lem:taylor-two"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:symmetric-multilinear-diagonal-injective",
+      "kind": "lemma",
+      "title": "A symmetric multilinear form is determined by its diagonal",
+      "lean_names": [
+        "Preiss.symmetricMultilinear_eq_zero_of_diagonal"
+      ],
+      "file": "Preiss/Analysis/MultilinearDiagonal.lean",
+      "statement_tex": "A continuous symmetric multilinear map over real normed spaces is zero if all its diagonal evaluations vanish. This includes degree zero and requires neither finite dimension nor completeness.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:weighted-plane-energy-decomposition",
+      "kind": "lemma",
+      "title": "Weighted plane energy in orthonormal coordinates",
+      "lean_names": [
+        "Preiss.integral_weighted_planeEnergy_eq_sub_sum"
+      ],
+      "file": "Preiss/Geometry/SpectralPlaneEnergy.lean",
+      "statement_tex": "An integrable weighted squared distance to a subspace equals the weighted squared norm integral minus the sum of directional second moments.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:orthonormal-plane-distance"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:covariance-minimizing-plane",
+      "kind": "lemma",
+      "title": "Leading covariance eigenspaces minimize plane energy",
+      "lean_names": [
+        "Preiss.exists_minimizing_plane_of_ordered_covariance"
+      ],
+      "file": "Preiss/Geometry/SpectralPlaneEnergy.lean",
+      "statement_tex": "Given an ordered spectral representation of the weighted covariance, the plane spanned by its first $m$ eigenvectors minimizes weighted squared distance among all $m$-planes.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:weighted-plane-energy-decomposition",
+        "lem:orthonormal-spectral-sum-bound"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:gaussian-bilinear-covariance",
+      "kind": "lemma",
+      "title": "Gaussian bilinear covariance identities",
+      "lean_names": [
+        "Preiss.momentBilinear_diag",
+        "Preiss.momentBilinear_gaussianMomentForm_symmetric",
+        "Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel",
+        "Preiss.integral_gaussian_inner_sq_eq_momentBilinear"
+      ],
+      "file": "Preiss/Uniform/GaussianCovariance.lean",
+      "statement_tex": "The degree-two Gaussian moment defines a symmetric bilinear form. Its diagonal equals twice the Gaussian directional second moment divided by Gaussian mass, with directional integrability following from moment-kernel integrability.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

@@ -9052,6 +9052,218 @@
         "Preiss/Uniform/BlowdownMoments.lean"
       ],
       "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:orthonormal-spectral-sum-bound",
+      "kind": "lemma",
+      "title": "Orthonormal sums are bounded by leading eigenvalues",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.orthonormal_diagonal_sum_le_initial_sum"
+      ],
+      "deps": [
+        "lem:ordered-trace-bounds"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/OrderedSpectralBound.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/OrderedSpectralBound.lean"
+    },
+    {
+      "id": "lem:ordered-bilinear-spectrum",
+      "kind": "lemma",
+      "title": "Ordered spectrum of a positive symmetric bilinear form",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_ordered_spectral_representation"
+      ],
+      "deps": [
+        "def:bilinear-trace"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/BilinearSpectrum.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/BilinearSpectrum.lean"
+    },
+    {
+      "id": "lem:orthonormal-plane-distance",
+      "kind": "lemma",
+      "title": "Distance to a plane in orthonormal coordinates",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_plane_of_orthonormalBasis_finset",
+        "Preiss.infDist_sq_eq_norm_sq_sub_sum_orthonormalBasis"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Geometry/OrthonormalPlane.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/OrthonormalPlane.lean"
+    },
+    {
+      "id": "lem:blowdown-even-moment-limit",
+      "kind": "lemma",
+      "title": "Explicit even moment limits of blowdowns",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.blowdown_gaussianMoment_even_limit"
+      ],
+      "deps": [
+        "lem:inverse-square-positive-limit",
+        "lem:moment-covariance",
+        "lem:scaled-moment-limits"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/BlowdownMoments.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/BlowdownMoments.lean"
+    },
+    {
+      "id": "lem:vague-gaussian-moments",
+      "kind": "lemma",
+      "title": "Gaussian moment continuity under vague convergence",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vague_gaussianMomentForm_apply"
+      ],
+      "deps": [
+        "lem:moment-norm-bound",
+        "lem:vague-gaussian-polynomials"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/MomentVague.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentVague.lean"
+    },
+    {
+      "id": "lem:exact-homogeneous-moment-coefficients",
+      "kind": "lemma",
+      "title": "Taylor coefficients of an exactly homogeneous moment",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity"
+      ],
+      "deps": [
+        "lem:exact-monomial-coefficients"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/ConicalCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalCoefficients.lean"
+    },
+    {
+      "id": "lem:conical-moment-coefficients",
+      "kind": "lemma",
+      "title": "Sparse moment coefficients of conical measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMomentCoefficient_conical"
+      ],
+      "deps": [
+        "lem:conical-moments",
+        "lem:exact-homogeneous-moment-coefficients"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/ConicalCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalCoefficients.lean"
+    },
+    {
+      "id": "lem:conical-even-support-moments",
+      "kind": "lemma",
+      "title": "Even Gaussian moments at support points",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.conical_even_moment_on_support"
+      ],
+      "deps": [
+        "lem:conical-moment-coefficients",
+        "lem:moment-support-polynomial",
+        "lem:taylor-two"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/ConicalCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/ConicalCoefficients.lean"
+    },
+    {
+      "id": "lem:symmetric-multilinear-diagonal-injective",
+      "kind": "lemma",
+      "title": "A symmetric multilinear form is determined by its diagonal",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.symmetricMultilinear_eq_zero_of_diagonal"
+      ],
+      "deps": [],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/MultilinearDiagonal.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/MultilinearDiagonal.lean"
+    },
+    {
+      "id": "lem:weighted-plane-energy-decomposition",
+      "kind": "lemma",
+      "title": "Weighted plane energy in orthonormal coordinates",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_weighted_planeEnergy_eq_sub_sum"
+      ],
+      "deps": [
+        "lem:orthonormal-plane-distance"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Geometry/SpectralPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/SpectralPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:covariance-minimizing-plane",
+      "kind": "lemma",
+      "title": "Leading covariance eigenspaces minimize plane energy",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_minimizing_plane_of_ordered_covariance"
+      ],
+      "deps": [
+        "lem:orthonormal-spectral-sum-bound",
+        "lem:weighted-plane-energy-decomposition"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Geometry/SpectralPlaneEnergy.lean"
+      ],
+      "proposed_file": "Preiss/Geometry/SpectralPlaneEnergy.lean"
+    },
+    {
+      "id": "lem:gaussian-bilinear-covariance",
+      "kind": "lemma",
+      "title": "Gaussian bilinear covariance identities",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_gaussian_inner_sq_of_integrable_momentKernel",
+        "Preiss.integral_gaussian_inner_sq_eq_momentBilinear",
+        "Preiss.momentBilinear_diag",
+        "Preiss.momentBilinear_gaussianMomentForm_symmetric"
+      ],
+      "deps": [
+        "def:bilinear-trace",
+        "def:moments"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/GaussianCovariance.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/GaussianCovariance.lean"
     }
   ],
   "preiss_core": [

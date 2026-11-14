@@ -21,6 +21,18 @@ theorem tendsto_inv_sq_atTop_nhdsGT_zero :
   filter_upwards [eventually_gt_atTop (0 : ℝ)] with r hr
   exact inv_pos.mpr (sq_pos_of_pos hr)
 
+theorem blowdown_gaussianMoment_even_limit
+    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
+    (B : MomentCoefficientFamily n) (hB : IsMomentExpansion μ B)
+    (j : ℕ) (hj : 0 < j) :
+    Tendsto (fun r : ℝ => gaussianMomentForm (dimensionalBlowup m μ 0 r) (2*j) 1)
+      atTop (𝓝 ((j.factorial : ℝ)⁻¹ • B (2*j) j)) := by
+  apply ((gaussianMoment_scaled_even_limit μ hm hμ B hB j hj).comp
+    tendsto_inv_sq_atTop_nhdsGT_zero).congr'
+  filter_upwards [eventually_gt_atTop (0 : ℝ)] with r hr
+  rw [gaussianMomentForm_dilate (m := m) μ (2*j) 1 r hr,one_div]
+  simp only [Function.comp_apply,inv_pow,inv_inv,pow_mul]
+
 theorem exists_blowdown_gaussianMoment_limit
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
     (k : ℕ) (hk : 0 < k) :

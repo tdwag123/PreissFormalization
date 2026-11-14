@@ -1,5 +1,4 @@
 module
-public import Preiss.Analysis.MultilinearSymmetrization
 public import Mathlib.Analysis.Analytic.IteratedFDeriv
 public import Mathlib.Tactic
 

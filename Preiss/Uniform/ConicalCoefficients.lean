@@ -1,7 +1,11 @@
-import Preiss.Uniform.ConicalMoments
-import Preiss.Analysis.AsymptoticCoefficients
-import Mathlib.Tactic
+module
+public import Preiss.Uniform.ConicalMoments
+public import Preiss.Analysis.AsymptoticCoefficients
+public import Mathlib.Tactic
 
+/-! # Sparse Taylor coefficients and support moments of conical measures -/
+
+@[expose] public section
 open MeasureTheory Filter Set Asymptotics
 open scoped Topology BigOperators
 namespace Preiss
@@ -78,6 +82,3 @@ theorem conical_even_moment_on_support
   simpa only [mul_comm] using h
 
 end Preiss
-#print axioms Preiss.gaussianMomentCoefficient_eq_of_exact_homogeneity
-#print axioms Preiss.gaussianMomentCoefficient_conical
-#print axioms Preiss.conical_even_moment_on_support
