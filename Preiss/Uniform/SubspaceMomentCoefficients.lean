@@ -1,10 +1,12 @@
-import Preiss.Uniform.SubspaceMomentTrace
-import Preiss.Uniform.MomentCoefficients
-import Preiss.Uniform.MomentEstimates
-import Preiss.Analysis.TaylorShift
-import Mathlib.Analysis.Normed.Operator.Asymptotics
-import Mathlib.Tactic
+module
+public import Preiss.Uniform.SubspaceMomentTrace
+public import Preiss.Uniform.MomentCoefficients
+public import Preiss.Uniform.MomentEstimates
+public import Preiss.Analysis.TaylorShift
+public import Mathlib.Analysis.Normed.Operator.Asymptotics
+public import Mathlib.Tactic
 
+@[expose] public section
 open MeasureTheory Filter Set Asymptotics
 open scoped Topology BigOperators
 namespace Preiss
@@ -60,5 +62,3 @@ theorem subspaceTrace_secondCoefficient_of_cylinder
   simpa only [L, subspaceMomentTraceCLM_apply, show (2:ℝ)*2=4 by norm_num] using h.2
 
 end Preiss
-#print axioms Preiss.gaussianMoment_taylor_remainder_map
-#print axioms Preiss.subspaceTrace_secondCoefficient_of_cylinder

@@ -60,6 +60,8 @@ theorem gaussianMomentForm_apply_isBigO_of_product_bound
         (C * ∫ z, ‖z‖^d * Real.exp (-s*‖z‖^2) ∂μ) := by
     rw [gaussianMomentForm_apply μ k s (integrable_gaussianMomentKernel μ hm hμ k s hspos)]
     unfold gaussianMoment
+    change ‖((2*s)^k / (k.factorial : ℝ) * (gaussianMass μ s)⁻¹) *
+      (∫ z, (∏ i, inner ℝ z (u i)) * Real.exp (-s*‖z‖^2) ∂μ)‖ ≤ _
     rw [norm_mul, Real.norm_of_nonneg hcoef]
     exact mul_le_mul_of_nonneg_left hIntegral hcoef
   rw [Real.norm_of_nonneg (Real.rpow_nonneg hspos.le _)]

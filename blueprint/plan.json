@@ -4188,7 +4188,7 @@
         "Needed when blow-up centers are projections onto a plane rather than support points."
       ],
       "note": "",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": [
         "Preiss/Uniform/Compactness.lean"
       ]
@@ -4770,12 +4770,11 @@
       "hypotheses_tex": "",
       "proof_tex": "For $j\\geq1$, the restriction of $b_{2j-1}^{(j)}$ to $V$ is zero.\nFor a nonzero $v\\in V$, use the flat blow-down and S04 to find support points\n$x_i$ with $|x_i|\\to\\infty$ and $x_i/|x_i|\\to v/|v|$.\nThe support polynomial identity, R01 and the fact that all remaining terms have\nlower degree show $b_{2j-1}^{(j)}(v^{2j-1})\\geq0$.\nRepeat with $-v$ and use polarization to obtain the full multilinear restriction.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:dimensional-blowup-support",
         "lem:flat-infinity-moments",
+        "lem:leading-homogeneous-term",
         "lem:moment-support-polynomial",
+        "lem:symmetric-multilinear-diagonal-injective",
         "lem:vague-support-approximation"
       ],
       "lean_names": [
@@ -4801,13 +4800,9 @@
       "hypotheses_tex": "",
       "proof_tex": "Riesz representation and R02 give $b\\in V^\\perp$ with\n$b_1^{(1)}(x)=2\\langle b,x\\rangle$. The first support identity gives\n$|Qx|^2=2\\langle b,x\\rangle$ on the support, and hence $|Qx|\\leq2|b|$.\nAlso $|Qx-b|=|b|$ there. Keep these identities as named lemmas.",
       "deps": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial"
+        "lem:moment-support-polynomial",
+        "lem:normal-coordinate-identities"
       ],
       "lean_names": [
         "Preiss.support_normal_sq_eq_inner"
@@ -4897,14 +4892,9 @@
       "hypotheses_tex": "",
       "proof_tex": "There exists $R_0<\\infty$ with\n$\\operatorname{dist}(v,\\operatorname{supp}\\nu)<R_0$ for every $v\\in V$.\nIf not, choose $v_i$ with distances $r_i\\to\\infty$, a nearest support point,\nand its projection $z_i\\in V$. The measures $D^m_{z_i,r_i}\\nu$ have\nsupports approaching the origin and lie in shrinking tubes about $V$ by R03.\nS05 gives a unit uniform limit supported in $V$, hence $\\sigma_V$.\nThe original holes give a unit hole centred at a bounded point of $V$, a\ncontradiction. The centres $z_i$ need not lie in the support, which is why the\nnear-support variant of S05 is essential.",
       "deps": [
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:plane-supported-uniform-flat",
-        "lem:uniform-cylinder-identity",
-        "lem:uniform-near-support-compactness",
-        "lem:vague-support-approximation"
+        "lem:bounded-tube-plane-to-support",
+        "lem:rigidity-normal-vector-exists",
+        "lem:uniform-cylinder-identity"
       ],
       "lean_names": [
         "Preiss.exists_uniform_dist_plane_support_bound"
@@ -6041,7 +6031,7 @@
         "Preiss.exists_firstMomentNormalVector"
       ],
       "deps": [
-        "def:rigidity-normal-vector",
+        "lem:first-moment-normal-from-vanishing",
         "lem:odd-coefficients-plane-zero"
       ],
       "scope": "core",
@@ -8783,7 +8773,7 @@
         "Preiss.normal_coordinates_of_quadratic_identity"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Geometry/NormalCoordinates.lean"
       ],
@@ -8947,7 +8937,7 @@
         "def:rigidity-normal-vector",
         "lem:normal-coordinate-identities"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/FlatAtInfinity/Basic.lean"
       ],
@@ -9191,7 +9181,7 @@
         "Preiss.symmetricMultilinear_eq_zero_of_diagonal"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/MultilinearDiagonal.lean"
       ],
@@ -9374,7 +9364,7 @@
         "Preiss.tendsto_scaled_homogeneous_sum"
       ],
       "deps": [],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Analysis/LeadingHomogeneousTerm.lean"
       ],
@@ -9518,11 +9508,64 @@
         "lem:uniform-vague-closed",
         "lem:vague-support-approximation"
       ],
-      "role": "Companion result",
+      "role": "Preiss proof",
       "source_files": [
         "Preiss/Uniform/BoundedTube.lean"
       ],
       "proposed_file": "Preiss/Uniform/BoundedTube.lean"
+    },
+    {
+      "id": "lem:moment-taylor-linear-image",
+      "kind": "lemma",
+      "title": "Taylor remainders under scalar linear maps",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussianMoment_taylor_remainder_map"
+      ],
+      "deps": [
+        "def:moment-coefficients"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+    },
+    {
+      "id": "lem:cylinder-second-coefficient-trace",
+      "kind": "lemma",
+      "title": "Second coefficient trace from a cylinder identity",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.subspaceTrace_secondCoefficient_of_cylinder"
+      ],
+      "deps": [
+        "lem:moment-taylor-linear-image",
+        "lem:subspace-gaussian-trace-cylinder",
+        "lem:taylor-multiply-scale"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/SubspaceMomentCoefficients.lean"
+    },
+    {
+      "id": "lem:bilinear-trace-orthogonal-split",
+      "kind": "lemma",
+      "title": "Trace splits over orthogonal complementary subspaces",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.bilinearTrace_eq_restrict_add_orthogonal"
+      ],
+      "deps": [
+        "lem:bilinear-trace-basis"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Analysis/OrthogonalTraceSplit.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/OrthogonalTraceSplit.lean"
     }
   ],
   "preiss_core": [
@@ -9618,6 +9661,7 @@
     "lem:blowdown-moment-limits",
     "lem:blowdown-product-limits",
     "lem:blowup-composition",
+    "lem:bounded-tube-plane-to-support",
     "lem:carrier-calculus",
     "lem:carrier-closure",
     "lem:closed-map-outer-regularity",
@@ -9691,6 +9735,7 @@
     "lem:first-crossing",
     "lem:first-crossing-flat-infinity",
     "lem:first-crossing-ratio",
+    "lem:first-moment-normal-from-vanishing",
     "lem:fivefold-image-covering",
     "lem:fixed-lower-density-projection-null",
     "lem:flat-gaussian-even-moments",
@@ -9754,6 +9799,7 @@
     "lem:kernel-flag-divided-operators",
     "lem:kernel-flag-layer-grading",
     "lem:kernel-grading-flag",
+    "lem:leading-homogeneous-term",
     "lem:lower-ball-hausdorff-bound",
     "lem:lower-ball-open-comparison",
     "lem:lower-ball-restrict-comparison",
@@ -9780,6 +9826,7 @@
     "lem:nested-compact-approximation",
     "lem:nested-orthogonal-layers",
     "lem:nonnegative-integral-cover-bound",
+    "lem:normal-coordinate-identities",
     "lem:odd-coefficients-plane-zero",
     "lem:ordered-bilinear-spectrum",
     "lem:ordered-trace-bounds",
@@ -9836,6 +9883,7 @@
     "lem:sequential-uniform-scale",
     "lem:small-energy-no-holes",
     "lem:subsequence-limit-criterion",
+    "lem:symmetric-multilinear-diagonal-injective",
     "lem:tangent-blowdown",
     "lem:tangent-existence",
     "lem:tangent-ray",
@@ -9851,7 +9899,6 @@
     "lem:uniform-constant-one",
     "lem:uniform-cylinder-identity",
     "lem:uniform-full-dimension-unique",
-    "lem:uniform-near-support-compactness",
     "lem:uniform-reduction",
     "lem:uniform-scaling",
     "lem:uniform-tube-projection-cover",

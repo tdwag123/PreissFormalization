@@ -1,13 +1,11 @@
-module
-public import Preiss.Uniform.Compactness
-public import Preiss.Uniform.Classification
-public import Preiss.Analysis.Vague.Support
-public import Preiss.Geometry.Projections
-public import Mathlib.Tactic
+import Preiss.Uniform.Compactness
+import Preiss.Uniform.Classification
+import Preiss.Analysis.Vague.Support
+import Preiss.Geometry.Projections
+import Mathlib.Tactic
 
 /-! # Uniform measures supported in bounded tubes have bounded holes along the plane. -/
 
-@[expose] public section
 open MeasureTheory Metric Set Filter Topology
 open scoped ENNReal
 namespace Preiss

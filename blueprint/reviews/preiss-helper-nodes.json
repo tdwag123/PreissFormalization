@@ -3584,6 +3584,56 @@
       ],
       "used_by": [],
       "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:moment-taylor-linear-image",
+      "kind": "lemma",
+      "title": "Taylor remainders under scalar linear maps",
+      "lean_names": [
+        "Preiss.gaussianMoment_taylor_remainder_map"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentCoefficients.lean",
+      "statement_tex": "Applying a continuous real linear functional to a Gaussian moment preserves its Taylor remainder estimate and applies the same functional to every coefficient.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:moment-coefficients"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:cylinder-second-coefficient-trace",
+      "kind": "lemma",
+      "title": "Second coefficient trace from a cylinder identity",
+      "lean_names": [
+        "Preiss.subspaceTrace_secondCoefficient_of_cylinder"
+      ],
+      "file": "Preiss/Uniform/SubspaceMomentCoefficients.lean",
+      "statement_tex": "For a positive-dimensional unit-uniform measure satisfying the quadratic cylinder identity almost everywhere, the subspace trace of $B_2^2$ equals $4B_1^1(b)$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:moment-taylor-linear-image",
+        "lem:subspace-gaussian-trace-cylinder",
+        "lem:taylor-multiply-scale"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
+    },
+    {
+      "id": "lem:bilinear-trace-orthogonal-split",
+      "kind": "lemma",
+      "title": "Trace splits over orthogonal complementary subspaces",
+      "lean_names": [
+        "Preiss.bilinearTrace_eq_restrict_add_orthogonal"
+      ],
+      "file": "Preiss/Analysis/OrthogonalTraceSplit.lean",
+      "statement_tex": "The trace of any continuous real bilinear form on a finite-dimensional inner-product space equals the sum of its traces restricted to a subspace and its orthogonal complement.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:bilinear-trace-basis"
+      ],
+      "used_by": [],
+      "verification": "Independent kernel check passed with standard foundations; canonical integration CI pending."
     }
   ],
   "definition_edge_additions": {

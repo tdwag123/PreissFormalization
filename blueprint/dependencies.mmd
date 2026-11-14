@@ -437,6 +437,9 @@ flowchart LR
   lem_subspace_gaussian_trace_cylinder["Subspace Gaussian trace under a cylinder identity"]
   lem_taylor_multiply_scale["Taylor coefficients after multiplication by scale"]
   lem_bounded_tube_plane_to_support["Bounded holes in a plane near a uniform support"]
+  lem_moment_taylor_linear_image["Taylor remainders under scalar linear maps"]
+  lem_cylinder_second_coefficient_trace["Second coefficient trace from a cylinder identity"]
+  lem_bilinear_trace_orthogonal_split["Trace splits over orthogonal complementary subspaces"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -1009,20 +1012,15 @@ flowchart LR
   lem_blowdown_even_moment_limit --> lem_flat_infinity_moments
   lem_flat_gaussian_even_moments --> lem_flat_infinity_moments
   lem_vague_gaussian_moments --> lem_flat_infinity_moments
-  def_moment_coefficients --> lem_odd_coefficients_plane_zero
-  def_plane --> lem_odd_coefficients_plane_zero
-  def_tangent_at_infinity --> lem_odd_coefficients_plane_zero
-  def_unit_uniform --> lem_odd_coefficients_plane_zero
+  lem_dimensional_blowup_support --> lem_odd_coefficients_plane_zero
   lem_flat_infinity_moments --> lem_odd_coefficients_plane_zero
+  lem_leading_homogeneous_term --> lem_odd_coefficients_plane_zero
   lem_moment_support_polynomial --> lem_odd_coefficients_plane_zero
+  lem_symmetric_multilinear_diagonal_injective --> lem_odd_coefficients_plane_zero
   lem_vague_support_approximation --> lem_odd_coefficients_plane_zero
-  def_moment_coefficients --> lem_uniform_cylinder_identity
-  def_plane --> lem_uniform_cylinder_identity
-  def_rigidity_normal_vector --> lem_uniform_cylinder_identity
-  def_tangent_at_infinity --> lem_uniform_cylinder_identity
-  def_unit_uniform --> lem_uniform_cylinder_identity
   lem_flat_infinity_moments --> lem_uniform_cylinder_identity
   lem_moment_support_polynomial --> lem_uniform_cylinder_identity
+  lem_normal_coordinate_identities --> lem_uniform_cylinder_identity
   def_moment_coefficients --> lem_rigidity_mixed_gaussian_limit
   def_plane --> lem_rigidity_mixed_gaussian_limit
   def_rigidity_normal_vector --> lem_rigidity_mixed_gaussian_limit
@@ -1040,14 +1038,9 @@ flowchart LR
   lem_bilinear_trace_basis --> lem_moment_normal_trace
   lem_taylor_two --> lem_moment_normal_trace
   lem_uniform_cylinder_identity --> lem_moment_normal_trace
-  def_plane --> lem_flat_infinity_bounded_holes
-  def_rigidity_normal_vector --> lem_flat_infinity_bounded_holes
-  def_tangent_at_infinity --> lem_flat_infinity_bounded_holes
-  def_unit_uniform --> lem_flat_infinity_bounded_holes
-  lem_plane_supported_uniform_flat --> lem_flat_infinity_bounded_holes
+  lem_bounded_tube_plane_to_support --> lem_flat_infinity_bounded_holes
+  lem_rigidity_normal_vector_exists --> lem_flat_infinity_bounded_holes
   lem_uniform_cylinder_identity --> lem_flat_infinity_bounded_holes
-  lem_uniform_near_support_compactness --> lem_flat_infinity_bounded_holes
-  lem_vague_support_approximation --> lem_flat_infinity_bounded_holes
   def_moment_coefficients --> lem_rigidity_cubic_vanishing
   def_plane --> lem_rigidity_cubic_vanishing
   def_rigidity_normal_vector --> lem_rigidity_cubic_vanishing
@@ -1280,7 +1273,7 @@ flowchart LR
   def_dimensional_blowup --> def_first_crossing_data
   def_flatness --> def_first_crossing_data
   gmt_vague --> def_first_crossing_data
-  def_rigidity_normal_vector --> lem_rigidity_normal_vector_exists
+  lem_first_moment_normal_from_vanishing --> lem_rigidity_normal_vector_exists
   lem_odd_coefficients_plane_zero --> lem_rigidity_normal_vector_exists
   def_rigidity_adjusted_form --> lem_rigidity_forms_exist
   def_rigidity_omega --> lem_rigidity_forms_exist
@@ -1590,3 +1583,8 @@ flowchart LR
   lem_uniform_compactness --> lem_bounded_tube_plane_to_support
   lem_uniform_vague_closed --> lem_bounded_tube_plane_to_support
   lem_vague_support_approximation --> lem_bounded_tube_plane_to_support
+  def_moment_coefficients --> lem_moment_taylor_linear_image
+  lem_moment_taylor_linear_image --> lem_cylinder_second_coefficient_trace
+  lem_subspace_gaussian_trace_cylinder --> lem_cylinder_second_coefficient_trace
+  lem_taylor_multiply_scale --> lem_cylinder_second_coefficient_trace
+  lem_bilinear_trace_basis --> lem_bilinear_trace_orthogonal_split

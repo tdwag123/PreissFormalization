@@ -3385,7 +3385,7 @@ factorial from M08.
 \begin{lemma}[Odd top coefficients vanish on the flat limiting plane]
 \label{lem:odd-coefficients-plane-zero}
 \lean{Preiss.oddMomentCoefficient_restrict_plane_eq_zero}
-\uses{def:moment-coefficients, def:plane, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial, lem:vague-support-approximation}
+\uses{lem:flat-infinity-moments, lem:moment-support-polynomial, lem:vague-support-approximation, lem:dimensional-blowup-support, lem:leading-homogeneous-term, lem:symmetric-multilinear-diagonal-injective}
 
 
 
@@ -3416,7 +3416,7 @@ Repeat with $-v$ and use polarization to obtain the full multilinear restriction
 \begin{lemma}[Cylinder identity and bounded normal coordinates]
 \label{lem:uniform-cylinder-identity}
 \lean{Preiss.support_normal_sq_eq_inner}
-\uses{def:moment-coefficients, def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:flat-infinity-moments, lem:moment-support-polynomial}
+\uses{lem:moment-support-polynomial, lem:flat-infinity-moments, lem:normal-coordinate-identities}
 
 
 
@@ -3503,7 +3503,7 @@ These are separate, comparatively short lemmas.
 \begin{lemma}[Bounded distance from the limiting plane to the support]
 \label{lem:flat-infinity-bounded-holes}
 \lean{Preiss.exists_uniform_dist_plane_support_bound}
-\uses{def:plane, def:rigidity-normal-vector, def:tangent-at-infinity, def:unit-uniform, lem:plane-supported-uniform-flat, lem:uniform-cylinder-identity, lem:uniform-near-support-compactness, lem:vague-support-approximation}
+\uses{lem:rigidity-normal-vector-exists, lem:uniform-cylinder-identity, lem:bounded-tube-plane-to-support}
 
 
 
@@ -4426,7 +4426,7 @@ Crossing data record positive scales $\sigma_i\leq r_i\to0$, vague limits of the
 \begin{lemma}[Existence of the normal first-moment vector]
 \label{lem:rigidity-normal-vector-exists}
 \lean{Preiss.exists_firstMomentNormalVector}
-\uses{def:rigidity-normal-vector, lem:odd-coefficients-plane-zero}
+\uses{lem:odd-coefficients-plane-zero, lem:first-moment-normal-from-vanishing}
 For a unit uniform measure with a flat blow-down on $V$ and an explicit moment expansion, there exists $b\in V^\perp$ representing the first Taylor coefficient: $B_1^{(1)}(x)=2\langle b,x\rangle$.
 \end{lemma}
 
@@ -5941,4 +5941,28 @@ If $f(s)=sa+o(s)$, $g(s)=sb+s^2c/2+o(s^2)$, and $g(s)=dsf(s)$ near zero through 
 \uses{lem:uniform-compactness, lem:uniform-vague-closed, lem:vague-support-approximation}
 
 If the support of an $m$-dimensional unit-uniform measure lies in a bounded tube around an $m$-plane, every point of that plane lies within a uniform finite distance of the support.
+\end{lemma}
+
+\begin{lemma}[Taylor remainders under scalar linear maps]
+\label{lem:moment-taylor-linear-image}
+\lean{Preiss.gaussianMoment_taylor_remainder_map}
+\uses{def:moment-coefficients}
+
+Applying a continuous real linear functional to a Gaussian moment preserves its Taylor remainder estimate and applies the same functional to every coefficient.
+\end{lemma}
+
+\begin{lemma}[Second coefficient trace from a cylinder identity]
+\label{lem:cylinder-second-coefficient-trace}
+\lean{Preiss.subspaceTrace_secondCoefficient_of_cylinder}
+\uses{lem:moment-taylor-linear-image, lem:subspace-gaussian-trace-cylinder, lem:taylor-multiply-scale}
+
+For a positive-dimensional unit-uniform measure satisfying the quadratic cylinder identity almost everywhere, the subspace trace of $B_2^2$ equals $4B_1^1(b)$.
+\end{lemma}
+
+\begin{lemma}[Trace splits over orthogonal complementary subspaces]
+\label{lem:bilinear-trace-orthogonal-split}
+\lean{Preiss.bilinearTrace_eq_restrict_add_orthogonal}
+\uses{lem:bilinear-trace-basis}
+
+The trace of any continuous real bilinear form on a finite-dimensional inner-product space equals the sum of its traces restricted to a subspace and its orthogonal complement.
 \end{lemma}

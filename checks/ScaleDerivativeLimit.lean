@@ -17,7 +17,7 @@ theorem scale_derivative_limit_eq_zero
     apply HasDerivAt.lhopital_zero_nhdsGT (f' := fun s => f s + s * f' s)
       (g' := fun _ => (1 : ℝ)) ?_ ?_ ?_ hnum hid ?_
     · filter_upwards [hd] with s hs
-      simpa only [one_mul] using (hasDerivAt_id s).mul hs
+      convert! (hasDerivAt_id s).mul hs using 1 <;> simp
     · exact Eventually.of_forall fun s => hasDerivAt_id s
     · exact Eventually.of_forall fun _ => one_ne_zero
     · simpa only [div_one] using hf.add hL

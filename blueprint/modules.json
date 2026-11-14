@@ -1096,6 +1096,34 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.OrthogonalTraceSplit",
+      "file": "Preiss/Analysis/OrthogonalTraceSplit.lean",
+      "purpose": "Reusable Analysis.OrthogonalTraceSplit interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.ProdL2",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Tactic",
+        "Preiss.Analysis.BilinearTrace"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.ProdL2",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.BilinearTrace"
+      ],
+      "nodes": [
+        "lem:bilinear-trace-orthogonal-split"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.BilinearTrace"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.OrthonormalProjection",
       "file": "Preiss/Analysis/OrthonormalProjection.lean",
       "purpose": "Reusable Analysis.OrthonormalProjection interfaces.",
@@ -5049,29 +5077,38 @@
       "current_source_imports": [
         "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
         "Preiss.Analysis.BilinearTrace",
+        "Preiss.Analysis.LeadingHomogeneousTerm",
+        "Preiss.Analysis.MultilinearDiagonal",
+        "Preiss.Analysis.Vague.Support",
         "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Projections",
+        "Preiss.Geometry.UnitFlat",
         "Preiss.Tangent.Defs",
         "Preiss.Uniform.BlowdownMoments",
+        "Preiss.Uniform.BoundedTube",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.FlatMeasure",
         "Preiss.Uniform.FlatMoments",
         "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentExpansion",
         "Preiss.Uniform.MomentVague",
         "Preiss.Uniform.Scaling"
       ],
       "local_imports": [
         "Preiss.Analysis.BilinearTrace",
+        "Preiss.Analysis.LeadingHomogeneousTerm",
+        "Preiss.Analysis.MultilinearDiagonal",
         "Preiss.Analysis.Vague.Support",
         "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Geometry.Planes",
         "Preiss.Geometry.Projections",
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Tangent.BlowupSupport",
         "Preiss.Tangent.Defs",
         "Preiss.Uniform.BlowdownMoments",
-        "Preiss.Uniform.Classification",
-        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.BoundedTube",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.FlatMeasure",
         "Preiss.Uniform.FlatMoments",
@@ -5086,13 +5123,15 @@
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Analysis.BilinearTrace",
+        "Preiss.Analysis.LeadingHomogeneousTerm",
+        "Preiss.Analysis.MultilinearDiagonal",
         "Preiss.Analysis.Vague.Support",
         "Preiss.Geometry.NormalCoordinates",
         "Preiss.Geometry.Planes",
+        "Preiss.Tangent.BlowupSupport",
         "Preiss.Tangent.Defs",
         "Preiss.Uniform.BlowdownMoments",
-        "Preiss.Uniform.Classification",
-        "Preiss.Uniform.Compactness",
+        "Preiss.Uniform.BoundedTube",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.FlatMoments",
         "Preiss.Uniform.MomentCoefficients",
@@ -6269,6 +6308,41 @@
       "purpose": "Canonical Uniform.Scaling interfaces."
     },
     {
+      "module": "Preiss.Uniform.SubspaceMomentCoefficients",
+      "file": "Preiss/Uniform/SubspaceMomentCoefficients.lean",
+      "purpose": "Reusable Uniform.SubspaceMomentCoefficients interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.Normed.Operator.Asymptotics",
+        "Mathlib.Tactic",
+        "Preiss.Analysis.TaylorShift",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentEstimates",
+        "Preiss.Uniform.SubspaceMomentTrace"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.Normed.Operator.Asymptotics",
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.TaylorShift",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.SubspaceMomentTrace"
+      ],
+      "nodes": [
+        "lem:moment-taylor-linear-image",
+        "lem:cylinder-second-coefficient-trace"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.TaylorShift",
+        "Preiss.Uniform.MomentCoefficients",
+        "Preiss.Uniform.MomentEstimates",
+        "Preiss.Uniform.SubspaceMomentTrace"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.SubspaceMomentTrace",
       "file": "Preiss/Uniform/SubspaceMomentTrace.lean",
       "purpose": "Reusable Uniform.SubspaceMomentTrace interfaces.",
@@ -6585,6 +6659,7 @@
     "Preiss.Geometry.RescaledDistance",
     "Preiss.Analysis.TaylorShift",
     "Preiss.Analysis.BilinearSpectrum",
+    "Preiss.Analysis.OrthogonalTraceSplit",
     "Preiss.Analysis.CountableCoordinateTopology",
     "Preiss.Analysis.Vague.DeterminingTests",
     "Preiss.Analysis.GaussianBallPowerParameter",
@@ -6722,6 +6797,7 @@
     "Preiss.Uniform.MomentFeatures",
     "Preiss.Uniform.MomentTrace",
     "Preiss.Uniform.MomentVague",
+    "Preiss.Uniform.SubspaceMomentCoefficients",
     "Preiss.Uniform.BoundedTube",
     "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
@@ -6792,11 +6868,13 @@
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
     "Preiss.Analysis.HausdorffLowerBound",
+    "Preiss.Analysis.LeadingHomogeneousTerm",
     "Preiss.Analysis.LinearMapIntegral",
     "Preiss.Analysis.MeasureHull",
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.MomentDetermination",
     "Preiss.Analysis.MovingSets",
+    "Preiss.Analysis.MultilinearDiagonal",
     "Preiss.Analysis.MultilinearSymmetrization",
     "Preiss.Analysis.NestedProjections",
     "Preiss.Analysis.OrderedSpectralBound",
@@ -6913,6 +6991,7 @@
     "Preiss.Theorem.PartB",
     "Preiss.Uniform.BallBoundary",
     "Preiss.Uniform.BlowdownMoments",
+    "Preiss.Uniform.BoundedTube",
     "Preiss.Uniform.Classification",
     "Preiss.Uniform.Compactness",
     "Preiss.Uniform.ConicalCoefficients",

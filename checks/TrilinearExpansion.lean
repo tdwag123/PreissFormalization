@@ -29,12 +29,12 @@ theorem symmetricTrilinear_diagonal_add
   have swap₁ (a b c : E) : A ![b,a,c] = A ![a,b,c] := by
     have hperm : (![a,b,c] ∘ Equiv.swap (0 : Fin 3) 1) = ![b,a,c] := by
       ext i
-      fin_cases i <;> simp
+      fin_cases i <;> simp [Equiv.swap_apply_def]
     simpa only [hperm] using hsym (Equiv.swap (0 : Fin 3) 1) ![a,b,c]
   have swap₂ (a b c : E) : A ![a,c,b] = A ![a,b,c] := by
     have hperm : (![a,b,c] ∘ Equiv.swap (1 : Fin 3) 2) = ![a,c,b] := by
       ext i
-      fin_cases i <;> simp
+      fin_cases i <;> simp [Equiv.swap_apply_def]
     simpa only [hperm] using hsym (Equiv.swap (1 : Fin 3) 2) ![a,b,c]
   have h₁ := swap₂ p p q
   have h₂ := (swap₁ p q p).trans h₁

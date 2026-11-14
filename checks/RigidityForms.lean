@@ -76,15 +76,15 @@ theorem exists_rigidityOmega_and_adjustedForm_proved
   · intro u v w
     have h := hB.1 3 2 (Equiv.swap 0 1) ![u,v,w]
     have heq : ![u,v,w] ∘ Equiv.swap (0 : Fin 3) 1 = ![v,u,w] := by
-      ext i
-      fin_cases i <;> simp [Function.comp_def]
+      funext i
+      fin_cases i <;> simp [Function.comp_def, Equiv.swap_apply_def]
     rw [heq] at h
     exact h.symm
   · intro u v
     have h := hB.1 2 2 (Equiv.swap 0 1) ![u,v]
     have heq : ![u,v] ∘ Equiv.swap (0 : Fin 2) 1 = ![v,u] := by
-      ext i
-      fin_cases i <;> simp [Function.comp_def]
+      funext i
+      fin_cases i <;> simp [Function.comp_def, Equiv.swap_apply_def]
     rw [heq] at h
     exact h.symm
 

@@ -3067,27 +3067,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:uniform-near-support-compactness",
-      "title": "Uniform compactness with centers approaching the support",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:uniform-constant",
-        "lem:blowup-composition",
-        "lem:uniform-compactness",
-        "lem:uniform-constant-one",
-        "lem:uniform-scaling",
-        "lem:vague-moving-blowups"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 3997,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:hyperplane-transport-map",
       "title": "Hyperplane transport with an explicit isometry",
       "kind": "lemma",
@@ -3363,7 +3342,7 @@
       "id": "def:rigidity-normal-vector",
       "title": "Normal first-moment vector",
       "kind": "definition",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.IsFirstMomentNormalVector",
         "Preiss.exists_firstMomentNormalVector"
@@ -3395,9 +3374,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4424,
-      "unfinished_dependencies": [
-        "def:rigidity-normal-vector"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "def:rigidity-adjusted-form",
@@ -3419,7 +3396,6 @@
       "proof_dependencies": [],
       "expanded_line": 4440,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
         "def:rigidity-omega"
       ]
     },
@@ -3445,18 +3421,17 @@
       "id": "lem:odd-coefficients-plane-zero",
       "title": "Odd top coefficients vanish on the flat limiting plane",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.oddMomentCoefficient_restrict_plane_eq_zero"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
+        "lem:dimensional-blowup-support",
         "lem:flat-infinity-moments",
+        "lem:leading-homogeneous-term",
         "lem:moment-support-polynomial",
+        "lem:symmetric-multilinear-diagonal-injective",
         "lem:vague-support-approximation"
       ],
       "proof_dependencies": [],
@@ -3467,25 +3442,19 @@
       "id": "lem:uniform-cylinder-identity",
       "title": "Cylinder identity and bounded normal coordinates",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.support_normal_sq_eq_inner"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:moment-coefficients",
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
         "lem:flat-infinity-moments",
-        "lem:moment-support-polynomial"
+        "lem:moment-support-polynomial",
+        "lem:normal-coordinate-identities"
       ],
       "proof_dependencies": [],
       "expanded_line": 4512,
-      "unfinished_dependencies": [
-        "def:rigidity-normal-vector"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-mixed-gaussian-limit",
@@ -3509,7 +3478,6 @@
       "proof_dependencies": [],
       "expanded_line": 4537,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
         "def:rigidity-omega"
       ]
     },
@@ -3535,36 +3503,25 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4574,
-      "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
-        "lem:uniform-cylinder-identity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:flat-infinity-bounded-holes",
       "title": "Bounded distance from the limiting plane to the support",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_uniform_dist_plane_support_bound"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:plane",
-        "def:rigidity-normal-vector",
-        "def:tangent-at-infinity",
-        "def:unit-uniform",
-        "lem:plane-supported-uniform-flat",
-        "lem:uniform-cylinder-identity",
-        "lem:uniform-near-support-compactness",
-        "lem:vague-support-approximation"
+        "lem:bounded-tube-plane-to-support",
+        "lem:rigidity-normal-vector-exists",
+        "lem:uniform-cylinder-identity"
       ],
       "proof_dependencies": [],
       "expanded_line": 4599,
-      "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
-        "lem:uniform-cylinder-identity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-cubic-vanishing",
@@ -3588,11 +3545,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 4637,
-      "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
-        "lem:odd-coefficients-plane-zero",
-        "lem:uniform-cylinder-identity"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-contracted-limit-zero",
@@ -3618,10 +3571,8 @@
       "proof_dependencies": [],
       "expanded_line": 4666,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:rigidity-mixed-gaussian-limit",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-mixed-gaussian-limit"
       ]
     },
     {
@@ -3646,7 +3597,6 @@
       "proof_dependencies": [],
       "expanded_line": 4703,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
         "lem:rigidity-cubic-vanishing"
       ]
     },
@@ -3673,7 +3623,6 @@
       "proof_dependencies": [],
       "expanded_line": 4732,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
         "def:rigidity-omega",
         "lem:rigidity-contracted-limit-zero",
         "lem:rigidity-mixed-gaussian-limit"
@@ -3704,11 +3653,8 @@
       "expanded_line": 4757,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:flat-infinity-bounded-holes",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-fourth-support-identity"
       ]
     },
     {
@@ -3738,10 +3684,8 @@
       "expanded_line": 4796,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:rigidity-fourth-support-identity",
-        "lem:uniform-cylinder-identity"
+        "lem:rigidity-fourth-support-identity"
       ]
     },
     {
@@ -3769,7 +3713,6 @@
       "expanded_line": 4825,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
         "def:rigidity-omega",
         "lem:rigidity-omega-trace-zero"
       ]
@@ -3796,7 +3739,6 @@
       "proof_dependencies": [],
       "expanded_line": 4851,
       "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
         "def:rigidity-omega",
         "lem:rigidity-omega-trace-zero"
       ]
@@ -3828,7 +3770,6 @@
       "expanded_line": 4880,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
         "def:rigidity-omega",
         "lem:rigidity-mixed-gaussian-limit",
         "lem:rigidity-omega-reproducing",
@@ -3864,7 +3805,6 @@
       "expanded_line": 4917,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
-        "def:rigidity-normal-vector",
         "lem:moment-normal-trace",
         "lem:rigidity-gaussian-trace",
         "lem:rigidity-integral-quadratic-bound"
@@ -3895,9 +3835,7 @@
       "expanded_line": 4950,
       "unfinished_dependencies": [
         "lem:rigidity-forms-exist",
-        "lem:rigidity-normal-vector-exists",
-        "lem:trace-rigidity",
-        "lem:uniform-cylinder-identity"
+        "lem:trace-rigidity"
       ]
     },
     {
@@ -4206,21 +4144,18 @@
       "id": "lem:rigidity-normal-vector-exists",
       "title": "Existence of the normal first-moment vector",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_firstMomentNormalVector"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:rigidity-normal-vector",
+        "lem:first-moment-normal-from-vanishing",
         "lem:odd-coefficients-plane-zero"
       ],
       "proof_dependencies": [],
       "expanded_line": 5522,
-      "unfinished_dependencies": [
-        "def:rigidity-normal-vector",
-        "lem:odd-coefficients-plane-zero"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:rigidity-forms-exist",
@@ -4240,8 +4175,7 @@
       "expanded_line": 5529,
       "unfinished_dependencies": [
         "def:rigidity-adjusted-form",
-        "def:rigidity-omega",
-        "lem:rigidity-normal-vector-exists"
+        "def:rigidity-omega"
       ]
     },
     {
@@ -6665,6 +6599,21 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:normal-coordinate-identities",
+      "title": "Orthogonal representatives and normal-coordinate identities",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_orthogonal_representative",
+        "Preiss.normal_coordinates_of_quadratic_identity"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6715,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:even-moment-positivity",
       "title": "Even diagonal Gaussian moments are nonnegative",
       "kind": "lemma",
@@ -6800,6 +6749,23 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6777,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:first-moment-normal-from-vanishing",
+      "title": "A normal vector from first-moment plane vanishing",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_firstMomentNormalVector_of_restrict_eq_zero"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:rigidity-normal-vector",
+        "lem:normal-coordinate-identities"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6785,
       "unfinished_dependencies": []
     },
     {
@@ -7019,6 +6985,20 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:symmetric-multilinear-diagonal-injective",
+      "title": "A symmetric multilinear form is determined by its diagonal",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.symmetricMultilinear_eq_zero_of_diagonal"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6894,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:weighted-plane-energy-decomposition",
       "title": "Weighted plane energy in orthonormal coordinates",
       "kind": "lemma",
@@ -7177,6 +7157,21 @@
       "unfinished_dependencies": []
     },
     {
+      "id": "lem:leading-homogeneous-term",
+      "title": "Leading homogeneous terms along escaping sequences",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.leading_diagonal_nonneg_of_rescaled_points",
+        "Preiss.tendsto_scaled_homogeneous_sum"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6972,
+      "unfinished_dependencies": []
+    },
+    {
       "id": "lem:conical-gaussian-ball-energy",
       "title": "Conical Gaussian energy and unit-ball energy",
       "kind": "lemma",
@@ -7190,6 +7185,24 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6979,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:bounded-tube-plane-to-support",
+      "title": "Bounded holes in a plane near a uniform support",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_plane_to_support_bound_of_bounded_normal_coordinates"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:uniform-compactness",
+        "lem:uniform-vague-closed",
+        "lem:vague-support-approximation"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 7034,
       "unfinished_dependencies": []
     }
   ]
