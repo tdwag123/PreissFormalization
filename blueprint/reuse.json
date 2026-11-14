@@ -138,7 +138,8 @@
         "MeasureTheory.Measure.hausdorffMeasure",
         "LipschitzWith.hausdorffMeasure_image_le",
         "LipschitzOnWith.hausdorffMeasure_image_le",
-        "Isometry.map_hausdorffMeasure"
+        "Isometry.map_hausdorffMeasure",
+        "MeasureTheory.Measure.le_hausdorffMeasure"
       ],
       "status": "reuse",
       "notes": "Normalization uses diameters. Do not identify Euclidean Hausdorff measure with Euclidean volume using the sup-norm Pi theorem.",
@@ -260,17 +261,28 @@
       "status": "reuse",
       "notes": "Standard Gaussian measure on any finite-dimensional real inner product space, including a plane subtype.",
       "url": "https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Probability/Distributions/Gaussian/Multivariate.lean"
+    },
+    {
+      "project": "FormalizingGMT",
+      "path": "FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean",
+      "declarations": [
+        "goodBallSet",
+        "isClosed_goodBallSet"
+      ],
+      "status": "reuse",
+      "notes": "Reusable uniform upper-density localization and Hausdorff comparison inputs.",
+      "url": "https://github.com/uw-math-ai/FormalizingGMT/blob/c14a8d07b2df61798fc184fd53ff6f72d858ae48/FormalizingGMT/TangentMeasures/DensityIneqToTangentsLemmas2.lean"
     }
   ],
   "graph_inventory": {
-    "nodes": 248,
-    "edges": 812,
-    "gmt_nodes": 43,
-    "linked_declarations": 387,
+    "nodes": 253,
+    "edges": 818,
+    "gmt_nodes": 44,
+    "linked_declarations": 396,
     "declarations_by_project": {
-      "PreissFormalization": 304,
-      "FormalizingGMT": 72,
-      "mathlib": 11
+      "PreissFormalization": 310,
+      "FormalizingGMT": 74,
+      "mathlib": 12
     }
   }
 }

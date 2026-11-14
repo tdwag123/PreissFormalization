@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-11-14T10:06:27.386902+00:00",
+  "updated_at": "2026-11-14T10:30:07.776932+00:00",
   "stage": "Proof development after the complete canonical statement build passed.",
   "graph": {
-    "nodes": 248,
-    "edges": 812,
+    "nodes": 253,
+    "edges": 818,
     "acyclic": true,
     "status_counts": {
-      "formalized_upstream": 56,
+      "formalized_upstream": 58,
       "definition": 24,
-      "proof_candidate": 22,
-      "unproved_statement": 141,
+      "proof_candidate": 31,
+      "unproved_statement": 135,
       "depends_on_unproved": 5
     }
   },
@@ -28,7 +28,16 @@
       "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43580472228",
       "result": "All local modules compiled; kernel axiom audit passed. Definitions have no sorry dependencies; theorem obligations remain."
     },
-    "current_proof_changes": "Undergoing separate CI verification."
+    "current_proof_changes": "Undergoing separate CI verification.",
+    "proof_checkpoint": {
+      "commit": "ce7e39d",
+      "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43584073373",
+      "all_modules_compiled": true,
+      "kernel_axiom_audit": "passed",
+      "declarations_checked": 387,
+      "sorry_dependent": 174,
+      "report": "blueprint/kernel-checkpoint.json"
+    }
   },
   "render_validation": {
     "status": "pending_linux_ci",

@@ -668,3 +668,29 @@ There is no $s$-uniform measure on $\mathbb R^n$ when $n<s$.
 FormalizingGMT supplies the obstruction directly. Together with tangent existence
 and almost-everywhere uniformity, it proves the excessive-dimension endpoint.
 \end{proof}
+
+\begin{lemma}[GMT: closed sets controlling all balls through a point]
+\label{gmt:goodballs}
+\lean{goodBallSet, isClosed_goodBallSet}
+\leanok
+\uses{def:density-api}
+The set of points for which every sufficiently small closed ball containing
+the point satisfies a fixed upper power bound is closed.
+\end{lemma}
+\begin{proof}[Existing upstream proof]
+\leanok
+Enlarge a ball slightly, approximate the centre point by good points,
+and let the enlargement tend to zero.
+\end{proof}
+
+\begin{lemma}[mathlib: mass-distribution bound for Hausdorff measure]
+\label{mathlib:hausdorff-mass-bound}
+\lean{MeasureTheory.Measure.le_hausdorffMeasure}
+\leanok
+A measure bounded by the diameter to a real power on every sufficiently
+small set is at most the corresponding Hausdorff measure.
+\end{lemma}
+\begin{proof}[Existing mathlib proof]
+\leanok
+Use the maximal outer measure defining the metric Hausdorff construction.
+\end{proof}

@@ -46,7 +46,7 @@ A Lipschitz piece consists of an arbitrary subset $A\subset\R^m$ and a Lipschitz
 
 \begin{lemma}[Euclidean extension of Lipschitz parametrizations]
 \label{lem:domain-extension}
-\lean{Preiss.exists_lipschitz_extension_euclidean}
+\lean{Preiss.exists_lipschitz_extension_euclidean, Preiss.exists_lipschitz_extension_finiteDimensional}
 
 
 
@@ -742,15 +742,16 @@ Maximize mass among Borel canonical rectifiable subsets. Graph-only source defin
 
 
 
-The first predicate means $0<\Theta_*^m=\Theta^{*m}<\infty$ in the
-upstream convention. The second means only
+The predicate \texttt{HasPositiveFiniteDensityAt} means
+$0<\Theta_*^m=\Theta^{*m}<\infty$ in the upstream convention.
+The plural \texttt{HasPositiveFiniteDensitiesAt} means only
 $0<\Theta_*^m\leq\Theta^{*m}<\infty$.
 \end{definition}
 
 \begin{lemma}[Measure comparisons on density strata]
 \label{lem:density-measure-comparison}
 \lean{Preiss.UpperPowerBoundAt, Preiss.hausdorff_restrict_le_measure_of_ball_bounds, Preiss.measure_restrict_le_hausdorff_of_ball_bounds}
-\uses{def:density-api, gmt:vitali}
+\uses{mathlib:vitali-enlargement, lem:ball-upper-hausdorff-bound}
 
 
 
@@ -770,7 +771,15 @@ Uniform positive lower bounds give the reverse comparison, with a finite geometr
 \end{lemma}
 \begin{proof}[Planned proof obligations]
 
-Split upper and lower comparison declarations; constants may be nonoptimal but must be positive finite.
+The upper comparison follows from the generic metric-space diameter bound.
+For the lower comparison, fix an open superset of the set to be estimated.
+Choose arbitrarily small balls centred on that set, contained in the open
+superset, and satisfying the lower mass bound. The disjoint-family Vitali
+theorem supplies a countable cover by fivefold enlarged balls. Their diameter
+cost is bounded by $10^m/a$ times the total mass of the disjoint original balls.
+Let the covering diameters tend to zero and then use outer regularity to
+shrink the open superset. This argument only needs a separable metric space
+and an outer regular measure; the Euclidean statement is a specialization.
 \par Source: De Lellis Chapters 4--5; see the rectifiability audit.
 \end{proof}
 
@@ -861,7 +870,7 @@ change, but exact constants in uniform-measure lemmas must be transported.
 \begin{lemma}[Finite upper density implies Hausdorff absolute continuity]
 \label{lem:absolute-continuity}
 \lean{Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite}
-\uses{gmt:density-bounds, lem:density-measure-comparison}
+\uses{lem:upper-density-localization, lem:ball-upper-hausdorff-bound, gmt:goodballs}
 
 
 
@@ -4534,4 +4543,51 @@ at most the $k$th power of the vector norm. These assertions include degree zero
 \begin{proof}
 Use the continuous multilinear product of the inner-product functionals, together
 with their operator-norm bound.
+\end{proof}
+
+\section{Reusable upper Hausdorff comparison}
+
+\begin{lemma}[Hausdorff comparison from diameter bounds]
+\label{lem:diameter-hausdorff-bound}
+\lean{Preiss.measure_le_smul_hausdorff_of_diameter_bound}
+\uses{mathlib:hausdorff-mass-bound}
+On a metric space, suppose $0<c<\infty$, $\varepsilon>0$, and
+$\mu(T)\le c\,\operatorname{diam}(T)^m$ whenever the extended diameter
+is at most $\varepsilon$. Then $\mu\le c\mathcal H^m$.
+The dimension $m$ is natural, including zero.
+\end{lemma}
+\begin{proof}
+Apply the mass-distribution bound to $c^{-1}\mu$, then multiply by $c$.
+\end{proof}
+
+\begin{lemma}[Hausdorff comparison from upper ball bounds]
+\label{lem:ball-upper-hausdorff-bound}
+\lean{Preiss.measure_restrict_le_hausdorff_of_uniform_ball_upper_bound}
+\uses{lem:diameter-hausdorff-bound}
+Let $S$ be Borel in a metric space, and let $b,R>0$. If
+$\mu(B(x,r))\le b r^m$ for every $x\in S$ and $0<r<R$, then
+$\mu\restriction S\le b\mathcal H^m\restriction S$.
+Neither properness nor local finiteness is required.
+\end{lemma}
+\begin{proof}
+For a set of diameter below $R/2$ meeting $S$, choose a point in that
+intersection and enclose the set in balls whose radii decrease to its diameter.
+Continuity of the power bound gives the diameter estimate, including diameter
+zero. Restrict the resulting measure inequality to $S$.
+\end{proof}
+
+\begin{lemma}[Closed upper-density strata]
+\label{lem:upper-density-localization}
+\lean{Preiss.exists_closedBall_upper_bound_of_upperDensity_lt_top, Preiss.exists_goodBallSet_mem_of_closedBall_upper_bound, Preiss.exists_goodBallSet_mem_of_upperDensity_lt_top}
+\uses{def:density-api, gmt:goodballs}
+A point of finite upper $m$-density has a finite positive upper power bound
+on sufficiently small centred closed balls. Such a bound places the point
+in one of the upstream closed good-ball sets with natural constant and radius
+indices. No positive lower density is assumed.
+\end{lemma}
+\begin{proof}
+First bound the density ratio strictly above its limsup. A ball of radius $r$
+containing $x$ lies in the ball centred at $x$ of radius $2r$. Enlarge the
+power constant to a natural number and decrease the radius to $1/(k+1)$.
+These countably many closed strata cover all points of finite upper density.
 \end{proof}

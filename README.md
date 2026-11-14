@@ -17,6 +17,11 @@ with exact names and links to pinned source. [The reuse inventory](blueprint/reu
 also identifies mathlib tools. The [validation record](blueprint/validation.json)
 distinguishes source checks, statement compilation, and completed proofs.
 
+The [verified proof checkpoint](https://github.com/tdwag123/PreissFormalization/actions/runs/43584073373)
+at `ce7e39d` built every local module and audited 387 declarations. Its
+[kernel report](blueprint/kernel-checkpoint.json) records 174 declarations still
+depending on `sorryAx`; later working changes require their own verification.
+
 The proof route is:
 
 1. Reuse FormalizingGMT to show that almost every tangent is uniform.

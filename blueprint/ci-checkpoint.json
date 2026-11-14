@@ -124,5 +124,16 @@
       "Preiss.Tangent.Algebra"
     ],
     "note": "Other compiled modules include graph rectifiability, density adapters, tangent existence, excess-dimension endpoint, coefficient uniqueness, and scalar covariance. Repairs awaiting the next full build and axiom audit."
+  },
+  "latest_proof_checkpoint": {
+    "commit": "ce7e39d",
+    "run": "https://github.com/tdwag123/PreissFormalization/actions/runs/43584073373",
+    "status": "success",
+    "all_local_modules_compiled": true,
+    "kernel_axiom_audit": "passed",
+    "axiom_reports": 387,
+    "unfinished_declarations": 174,
+    "report": "blueprint/kernel-checkpoint.json",
+    "note": "Proof development is ongoing; Preiss.preiss still depends on sorryAx."
   }
 }

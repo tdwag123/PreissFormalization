@@ -83,6 +83,7 @@
       "module": "Preiss.Analysis.GaussianQuadraticForms",
       "file": "Preiss/Analysis/GaussianQuadraticForms.lean",
       "current_source_imports": [
+        "Mathlib.Algebra.Order.Chebyshev",
         "Mathlib.Probability.Distributions.Gaussian.Fernique",
         "Mathlib.Probability.Distributions.Gaussian.Multivariate",
         "Preiss.Analysis.BilinearTrace"
@@ -91,6 +92,7 @@
         "Preiss.Analysis.BilinearTrace"
       ],
       "mathlib_imports": [
+        "Mathlib.Algebra.Order.Chebyshev",
         "Mathlib.Probability.Distributions.Gaussian.Fernique",
         "Mathlib.Probability.Distributions.Gaussian.Multivariate"
       ],
@@ -175,6 +177,32 @@
       "purpose": "Canonical Analysis.GreatestCrossing interfaces."
     },
     {
+      "module": "Preiss.Analysis.HausdorffComparison",
+      "file": "Preiss/Analysis/HausdorffComparison.lean",
+      "purpose": "Reusable Analysis.HausdorffComparison interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.Tactic.FunProp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Hausdorff",
+        "Mathlib.Tactic.FunProp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:diameter-hausdorff-bound",
+        "lem:ball-upper-hausdorff-bound"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.MeasureHull",
       "file": "Preiss/Analysis/MeasureHull.lean",
       "current_source_imports": [
@@ -252,12 +280,15 @@
       "file": "Preiss/Analysis/Vague/CompactTests.lean",
       "current_source_imports": [
         "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.Topology.UrysohnsLemma",
         "Preiss.Geometry.Euclidean"
       ],
       "local_imports": [
         "Preiss.Geometry.Euclidean"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Topology.UrysohnsLemma"
+      ],
       "gmt_imports": [
         "FormalizingGMT.WeakConvergence.Basic"
       ],
@@ -469,16 +500,20 @@
       "file": "Preiss/Density/HausdorffComparison.lean",
       "current_source_imports": [
         "Preiss.Density.Defs",
-        "Preiss.Density.PowerComparison"
+        "Preiss.Density.PowerComparison",
+        "Preiss.Density.UpperBounds"
       ],
       "local_imports": [
+        "Preiss.Analysis.HausdorffComparison",
         "Preiss.Density.Defs",
-        "Preiss.Density.PowerComparison"
+        "Preiss.Density.PowerComparison",
+        "Preiss.Density.UpperBounds"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Density.PowerComparison"
+        "Preiss.Analysis.HausdorffComparison",
+        "Preiss.Density.UpperBounds"
       ],
       "nodes": [
         "lem:absolute-continuity"
@@ -513,9 +548,11 @@
         "Mathlib.MeasureTheory.Covering.Vitali",
         "Mathlib.MeasureTheory.Measure.Hausdorff",
         "Mathlib.MeasureTheory.Measure.Regular",
+        "Preiss.Analysis.HausdorffComparison",
         "Preiss.Geometry.Euclidean"
       ],
       "local_imports": [
+        "Preiss.Analysis.HausdorffComparison",
         "Preiss.Geometry.Euclidean"
       ],
       "mathlib_imports": [
@@ -524,13 +561,37 @@
         "Mathlib.MeasureTheory.Measure.Regular"
       ],
       "gmt_imports": [],
-      "proof_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.HausdorffComparison"
+      ],
       "nodes": [
         "lem:density-measure-comparison"
       ],
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Density.PowerComparison interfaces."
+    },
+    {
+      "module": "Preiss.Density.UpperBounds",
+      "file": "Preiss/Density/UpperBounds.lean",
+      "purpose": "Reusable Density.UpperBounds interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas2",
+        "Preiss.Density.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [
+        "FormalizingGMT.TangentMeasures.DensityIneqToTangentsLemmas2"
+      ],
+      "proof_imports": [],
+      "nodes": [
+        "lem:upper-density-localization"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Density.Defs"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Density.ZeroDimension",
@@ -1659,7 +1720,7 @@
       "module": "Preiss.Tangent.Blowdown",
       "file": "Preiss/Tangent/Blowdown.lean",
       "current_source_imports": [
-        "Preiss.Tangent.Defs"
+        "Preiss.Tangent.Compactness"
       ],
       "local_imports": [
         "Preiss.Tangent.Compactness",
@@ -1744,13 +1805,19 @@
       "file": "Preiss/Tangent/Continuity.lean",
       "current_source_imports": [
         "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.Topology.MetricSpace.Pseudo.Basic",
+        "Mathlib.Topology.UniformSpace.HeineCantor",
+        "Preiss.Analysis.Vague.CompactTests",
         "Preiss.Tangent.Blowup"
       ],
       "local_imports": [
         "Preiss.Analysis.Vague.CompactTests",
         "Preiss.Tangent.Blowup"
       ],
-      "mathlib_imports": [],
+      "mathlib_imports": [
+        "Mathlib.Topology.MetricSpace.Pseudo.Basic",
+        "Mathlib.Topology.UniformSpace.HeineCantor"
+      ],
       "gmt_imports": [
         "FormalizingGMT.WeakConvergence.Basic"
       ],
@@ -3393,6 +3460,7 @@
     "Preiss.Geometry.Euclidean",
     "Preiss.Analysis.GradedProjection",
     "Preiss.Analysis.GreatestCrossing",
+    "Preiss.Analysis.HausdorffComparison",
     "Preiss.Analysis.MeasureHull",
     "Preiss.Density.Limits",
     "Preiss.Density.Atoms",
@@ -3402,18 +3470,18 @@
     "Preiss.Analysis.Vague.Metrization",
     "Preiss.Analysis.Vague.Support",
     "Preiss.Density.Defs",
-    "Preiss.Density.PowerComparison",
     "Preiss.Geometry.LipschitzExtension",
     "Preiss.Geometry.Planes",
     "Preiss.Rectifiability.Defs",
     "Preiss.Tangent.Blowup",
     "Preiss.Uniform.Moments",
     "Preiss.Analysis.PolynomialFeatures",
+    "Preiss.Density.PowerComparison",
     "Preiss.Analysis.GaussianMomentDetermination",
     "Preiss.Analysis.GaussianVague",
     "Preiss.Density.Adapters",
+    "Preiss.Density.UpperBounds",
     "Preiss.Tangent.Existence",
-    "Preiss.Density.HausdorffComparison",
     "Preiss.Geometry.FlatMeasure",
     "Preiss.Geometry.PlaneMeasure",
     "Preiss.Geometry.Projections",
@@ -3428,7 +3496,7 @@
     "Preiss.Tangent.Defs",
     "Preiss.Uniform.Defs",
     "Preiss.Uniform.MomentForms",
-    "Preiss.Density.FinitePieces",
+    "Preiss.Density.HausdorffComparison",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Geometry.Cones",
     "Preiss.Geometry.Cylinders",
@@ -3448,6 +3516,7 @@
     "Preiss.Uniform.FlatMoments",
     "Preiss.Uniform.MomentCoefficients",
     "Preiss.Uniform.MomentCovariance",
+    "Preiss.Density.FinitePieces",
     "Preiss.Rectifiability.ProjectionEstimate",
     "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Rectifiability.WeakApproximation.Restriction",
@@ -3512,6 +3581,7 @@
     "Preiss.Analysis.GaussianVague",
     "Preiss.Analysis.GradedProjection",
     "Preiss.Analysis.GreatestCrossing",
+    "Preiss.Analysis.HausdorffComparison",
     "Preiss.Analysis.MeasureHull",
     "Preiss.Analysis.PolynomialFeatures",
     "Preiss.Analysis.SpectralOptimization",
@@ -3527,6 +3597,7 @@
     "Preiss.Density.HausdorffComparison",
     "Preiss.Density.Limits",
     "Preiss.Density.PowerComparison",
+    "Preiss.Density.UpperBounds",
     "Preiss.Density.ZeroDimension",
     "Preiss.Geometry.Cones",
     "Preiss.Geometry.Cylinders",

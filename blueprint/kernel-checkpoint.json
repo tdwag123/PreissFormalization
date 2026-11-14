@@ -1,0 +1,4656 @@
+{
+  "toolchain": "leanprover/lean4:v4.34.1",
+  "source_revision": "ce7e39daa16046beea7841c5d2793c012fbb63d4",
+  "meaning": "Kernel axiom dependencies of the compiled declarations, not just textual references",
+  "declarations": {
+    "Besicovitch.ae_tendsto_measure_inter_div": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "Besicovitch.ae_tendsto_measure_inter_div_of_measurableSet": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "Besicovitch.ae_tendsto_rnDeriv": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "Besicovitch.exists_disjoint_closedBall_covering_ae": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "BorelRegularOuterMeasure.restrict_isRadon": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "HasDensity": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "HausdorffRestrict.toRadonOuterMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "IsSUniform": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "IsTangentMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "MeasureTheory.Measure.WeaklyConverges": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "MeasureTheory.Measure.measure_toMeasurable_inter": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "MeasureTheory.Measure.weaklyConverges_iff_boundedContinuitySets": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "MeasureTheory.Measure.weaklyConverges_iff_compactOpenBounds": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "MeasureTheory.exists_vaguelyConvergent_subseq_of_compact_bounded": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "Preiss.CountablyCoveredByLipschitzPieces": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.CountablyLipschitzCovered": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.CountablyRectifiable": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.Euclidean": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/Euclidean.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.FirstCrossingData": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Theorem/FirstCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.HasPolynomialGrowthBound": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GaussianGrowth.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.HasPositiveFiniteDensitiesAt": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Density/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.HasPositiveFiniteDensityAt": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Density/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.HasPositiveFiniteDensityAt.densities": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.HasPositiveFiniteDensityAt.hasDensity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.HoleFamily": {
+      "project": "local",
+      "kind": "structure",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsConical": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsDimensionalTangent": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Tangent/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsFirstMomentNormalVector": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsFlat": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/FlatMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsFlatnessCutoff": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsFlatnessGap": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Theorem/FirstCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsLipschitzGraph": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/GraphDefs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsMeasureDensityOnePoint": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Tangent/SupportApproximation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsMomentExpansion": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsOrthogonalGrading": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsRectifiableMeasure": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsRigidityAdjustedForm": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsRigidityOmega": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsTangentAtInfinity": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Tangent/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsUniformPseudotangent": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Tangent/ScalingOrbit.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsUniformWithConstant": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/Scaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsUnitUniform": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.IsUnitUniform.hasPolynomialGrowthBound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.LipschitzPiece": {
+      "project": "local",
+      "kind": "structure",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.LipschitzPiece.range": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.MeasureWeaklyLinearlyApproximableAt": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/WeakApproximation/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.MomentCoefficientFamily": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.MomentForm": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.Plane": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/Planes.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.PolynomialFeatureIndex": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.PolynomialFeatureSpace": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.PurelyUnrectifiable": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.RegularEuclideanMeasure": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.RigidityAdjustedForm": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.RigidityOmega": {
+      "project": "local",
+      "kind": "abbrev",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.TwoSidedApproximation": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.UpperPowerBoundAt": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Density/PowerComparison.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.VagueMetrization": {
+      "project": "local",
+      "kind": "structure",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.WeaklyLinearlyApproximableAt": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/WeakApproximation/Defs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.absolutelyContinuous_hausdorffMeasure_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Countable.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Density/HausdorffComparison.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.adjustedForm_gaussian_error_tendsto_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.adjustedForm_sq_le_norm_omega_sq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_density_bounds_and_flat_tangents_restrict_hausdorff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_exists_flat_tangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Theorem/PartA.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_exists_outside_cone_of_purelyUnrectifiable": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_graph_hausdorff_blowup_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/GraphBlowup.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_recenter_dimensionalTangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Recentering.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_tangent_uniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GMTAdapters.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.ae_upperPowerBoundAt_restrict_hausdorff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.ae_weaklyLinearlyApproximableAt_subset": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.all_tangents_flat_of_one": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Theorem/PartB.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.analyticAt_weightedProjection_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GradedProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.bilinearTrace": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/BilinearTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.bilinearTrace_eq_sum_diagonal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/BilinearTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.blowdown_gaussian_polynomial_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/BlowdownMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.blowdown_sequence_converges": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TangentAtInfinity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.closedTube": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/Cones.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.cone": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/Cones.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.conical_covariance_eq_projection_of_near_eigenvector": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/ConicalGap.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.conical_covariance_trace_support": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/ConicalMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.conical_flatness_gap": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/ConicalGap.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.conical_gaussianMoment_homogeneous": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/ConicalMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.conical_gaussianMoment_odd": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/ConicalMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.continuousOn_flatness_dimensionalBlowup": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Flatness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.continuous_momentKernel": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.contracted_gaussian_limit_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.countablyCoveredByLipschitzPieces_of_countable": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Countable.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countablyRectifiable_iUnion": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countablyRectifiable_iff_lipschitzGraph_cover": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/GraphCover.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.countablyRectifiable_image": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countablyRectifiable_mono": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countablyRectifiable_of_ae_cone_approximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/ConeCriterion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.countablyRectifiable_of_ae_weaklyLinearlyApproximableAt": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/SetCriterion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.countablyRectifiable_of_countable": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Countable.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countablyRectifiable_of_sdiff_null": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countablyRectifiable_subset_graph": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Graphs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.cylinder": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/Cylinders.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.density_eq_lower_of_hasDensity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Limits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.density_eq_upper_of_hasDensity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Limits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.density_iff_openBall_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Density/Adapters.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.density_iff_upstream": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Adapters.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.density_normalization_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TangentNormalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.dimensionalBlowup": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Tangent/Blowup.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.dimensionalBlowup_comp": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Algebra.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.dimensionalBlowup_map_linearIsometry": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Algebra.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.dimensionalBlowup_smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Algebra.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.dimensionalTangent_ball_constant": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TangentNormalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.dimensionalTangent_closed": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.dimensionalTangent_dilate": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.dimensionalTangent_nonempty_compact": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.dimensionalTangent_of_tangentAtInfinity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Blowdown.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.dimensional_density_eq_of_tendsto": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Limits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.dist_badSet_rescaled_tendsto_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/SupportApproximation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.dist_support_lt_of_small_gaussian_plane_energy": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/SupportProximity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.eq_zero_of_isLittleO_pow_smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.evenMomentCoefficient_eq_projection_norm": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.eventually_ball_mass_lower_bound_of_flat_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/FlatApproximation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_badSet_points_rescaled_tendsto": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/SupportApproximation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_borel_sigmaFinite_carrier": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/EuclideanCarrier.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_column_disjoint_balls": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_compact_uniform_weakApproximation_subset": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_countable_graph_cover_fullRank_locus": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/GraphCover.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_dimensional_tangent_subseq_of_density_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_finite_hausdorff_pieces_of_density_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Density/FinitePieces.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_firstMomentNormalVector": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_first_crossing_sequences": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Theorem/FirstCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_flatnessCutoff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_flatnessGap": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Theorem/FirstCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_gaussianMoment_taylor_coefficients": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_greatest_crossing": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GreatestCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_halfSpace_dimensionalTangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/DimensionReduction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_hyperplane_eq_or_dimensionalTangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/DimensionReduction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/Cones.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_lipschitz_extension_euclidean": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/LipschitzExtension.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_nested_compact_twoSided_approximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_normPolynomial_feature_functionals": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_plane_ball_energy_le_of_flatness_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_projection_hole_disk_family": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_rectifiable_purelyUnrectifiable_partition": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/Decomposition.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_rigidityOmega_and_adjustedForm": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceData.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_support_sequence_of_vague": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/Vague/Support.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_tangentAtInfinity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/BlowdownCompactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_uniform_dist_plane_support_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_unit_small_projection_of_avoids_cylinder": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Geometry/Cylinders.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_upper_mass_small_sdiff_point": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_vagueMetrization": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_vague_subsequence_uniform_of_dist_support_tendsto_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_vague_subsequence_unitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.false_of_column_mass_exceeds_upper_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.false_of_null_projections_and_uniform_weakApproximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.featureMoment": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.featureMoment_apply_feature": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.featureMoment_operator_remainder": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.featureMoment_vanishes_weightedComplement": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.first_crossing_limit_flat_at_infinity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Theorem/FirstCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.first_crossing_ratio_tendsto_atTop": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Theorem/FirstCrossing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.flatOn": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.flat_gaussianMoment_diagonal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.flat_gaussianMoment_odd": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatMoments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.flat_of_flat_at_infinity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/Rigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.flatness": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/Flatness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.flatnessEnergy": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/Flatness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.flatness_continuous": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.flatness_eq_zero_of_isFlat": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.flatness_exists_minimizer": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.flatness_nonneg": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatnessContinuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.fourth_order_support_identity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussianMass": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.gaussianMoment": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/Moments.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.gaussianMomentCoefficient_eq_zero_of_two_mul_lt": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussianMomentCoefficient_unique": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentForm": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.gaussianMomentForm_apply": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentForm_dilate": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussianMomentForm_map_linearIsometry": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussianMomentForm_permute": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMomentForm_smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentCovariance.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussianMoment_scaled_even_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussianMoment_scaled_odd_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussianMoment_taylor_remainder": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussian_integral_bilinear_eq_trace": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.gaussian_integral_bilinear_sq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussian_integral_inner_pow_even": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussian_integral_inner_sq_mul_inner_sq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.gaussian_polynomial_uniform_tail": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianGrowth.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.graphMap": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/Graphs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.graphMap_lipschitz_antilipschitz": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Graphs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.hasDerivAt_integral_polynomial_mul_gaussian": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianGrowth.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.hasSum_gaussianMoment_diagonal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/GraphCover.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.hausdorffMeasure_image_rank_lt_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/GraphCover.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.hausdorffMeasure_projected_tube_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/ProjectionEstimate.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.hausdorff_restrict_le_measure_of_ball_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Density/PowerComparison.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.integrable_gaussianMomentKernel": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "depends_on_unproved",
+      "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "depends_on_sorry"
+    },
+    "Preiss.integrable_gaussianMomentKernel_of_integrable_norm": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianGrowth.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_adjustedForm_lower_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_adjustedForm_sq_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_gaussian_mul_homogeneous": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Radial.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_inner_sq_mul_omega": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.integral_rigidityOmega_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isClosed_and_measure_closedBall_lt_top": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Graphs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isClosed_weakApproximationGoodSet": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isCompact_rankProjectionSet": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneTopology.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isFlat_dimensionalBlowup": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/FlatScaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isFlat_map_linearIsometry": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/FlatScaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isFlat_of_dimensionalBlowup_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/FlatScaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isRectifiableMeasure_of_ae_density_bounds_and_flat_tangents": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isRectifiableMeasure_of_countable_restrict": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isUnitUniform_dimensionalBlowup": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Scaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isUnitUniform_iff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/GMTAdapters.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.isUnitUniform_iff_constant_one": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Scaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isUnitUniform_map_linearIsometry": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Transport.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.isUnitUniform_of_vague": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.linearJacobian": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/GraphArea.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.lowerDensity_zero_eq_singleton": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Atoms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.lower_density_pos_of_weakApproximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.lower_eq_upper_of_hasDensity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Limits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.lower_power_bound_of_weakApproximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/WeakApproximation/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.map_hausdorffMeasure_subtype_eq_restrict": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.map_jacobian_hausdorff_affine_injection": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/GraphArea.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.map_withDensity_jacobian_eq_graph_hausdorff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/GraphArea.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.measure_eq_of_gaussian_polynomial_moments_eq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianMomentDetermination.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.measure_restrict_le_hausdorff_of_ball_bounds": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Density/PowerComparison.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.measure_toMeasurable_inter_eq_zero_of_disjoint": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/MeasureHull.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.measure_zero_of_dimension_gt": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/ExcessDimension.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.mem_support_of_vague_lower_ball_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/Vague/Support.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.mixed_gaussian_limit_eq_omega": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.momentBilinear": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.momentBilinear_apply": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.momentKernel": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.momentKernel_apply": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.momentKernel_smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.momentTaylorPolynomial": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentCoefficients.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.negligibleDeletionAt": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.norm_gaussianMomentForm_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentEstimates.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.norm_momentKernel_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.oddMomentCoefficient_restrict_plane_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.planeMeasure_ball_and_sphere": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.planeProjection": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/Projections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.planeProjection_injective": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/Projections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.polynomialFeature": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.polynomialFeatureBlock": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.polynomialFeatureProjection": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.polynomialFeatureProjection_inner": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.polynomialFeatureProjection_isOrthogonalGrading": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.polynomialFeature_inner": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.preiss": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "depends_on_unproved",
+      "path": "Preiss/Main.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "depends_on_sorry"
+    },
+    "Preiss.preiss_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/ZeroDimension.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.proj": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/Projections.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.projected_distance_le_of_lower_mass": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.purelyUnrectifiable_measure_inter_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.purelyUnrectifiable_mono": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/PurelyUnrectifiable.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.range_planeProjection": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/PlaneTopology.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.rankProjectionSet": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/PlaneTopology.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.rectifiable_has_density_and_tangent_plane": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/TangentNecessity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.rectifiable_has_flat_blowup_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/TangentNecessity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.rectifiable_iff_density_bounds_and_flat_tangents": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "depends_on_unproved",
+      "path": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "depends_on_sorry"
+    },
+    "Preiss.rectifiable_iff_density_representation": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/DensityRepresentation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.rectifiable_pure_partition_unique": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Decomposition.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.restrictBilinear": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/BilinearTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.rigidityError": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.rigidityError_le_linear_growth": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.secondMomentCoefficient_trace_lower_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TraceRigidity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.subset_tube_of_lower_mass_and_small_outside_mass": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.sum_gaussianMomentCoefficient_eq_norm_pow": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentExpansion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.supportFeatureSpan": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Uniform/MomentFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.support_normal_sq_eq_inner": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.tangent_at_infinity_conical": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TangentAtInfinity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.tangent_closed": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.tangent_exists": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Existence.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.tangent_iff_dimensional_ray": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Normalization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.tendsto_densityRatio_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Atoms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.tendsto_integral_blowup_sub_density_mul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/DensityTransfer.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.tendsto_mass_outside_tube_of_flat_limit": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/FlatApproximation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.thirdMomentCoefficient_normal_vanishes": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/SupportIdentity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.trace_gaussianMomentForm_two": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.trace_orthogonalComplement_minimized_topEigenspace": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/SpectralOptimization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.trace_secondMomentCoefficient_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/MomentTrace.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.trace_secondMomentCoefficient_normal_eq": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.trace_tangent_eq_integral_adjustedForm": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatAtInfinity/TraceIdentities.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.tsum_hole_radii_bad_indices_le": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/MarstrandMattila/Packing.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformPseudotangent_isUnitUniform": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/ScalingOrbit.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformPseudotangent_map_linearIsometry": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/ScalingOrbit.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformPseudotangent_trans": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/ScalingOrbit.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformWithConstant_dimensionalBlowup": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Scaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Classification.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformWithConstant_map_linearIsometry": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Transport.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformWithConstant_smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Scaling.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniformWithConstant_transport": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Transport.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniform_dimension_reduction": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/DimensionReduction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniform_has_flat_pseudotangent": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/FlatPseudotangent.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniform_hyperplane_transport": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Transport.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.uniform_radial_pushforward": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Radial.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.unique_tangent_at_infinity": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/TangentAtInfinity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.unitFlat": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.unitFlat_closedBall": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Geometry/PlaneMeasure.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.unitUniform_eq_flat_of_support_subset_plane": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Classification.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.unitUniform_totallyBounded": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Uniform/Compactness.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.vagueMetric_finite_cover_of_compact": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.vagueMetric_separates": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.vagueMetric_tendsto_iff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.vagueTestDistance": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.vague_diagonal_selection": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/Vague/Metrization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.vague_dimensionalBlowup_moving": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Continuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.vague_integral_moving_compact_test": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/Vague/CompactTests.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.vague_integral_polynomial_mul_gaussian": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Analysis/GaussianVague.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.vague_smul_map_sub_div": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/Continuity.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.weakApproximationGoodSet": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.weakApproximation_restrict_of_negligible_sdiff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/WeakApproximation/Restriction.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.weaklyLinearlyApproximableAt_iff_goodSet_exhaustion": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.weaklyLinearlyApproximableAt_of_all_tangents_flat": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "unproved_statement",
+      "path": "Preiss/Tangent/FlatApproximation.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ],
+      "kernel_status": "unproved_statement"
+    },
+    "Preiss.weightedComplement": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.weightedGrading": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/GradedProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.zero_isRectifiableMeasure": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/Zero.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "ProbabilityTheory.stdGaussian": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "ProbabilityTheory.stdGaussian_eq_map_pi_orthonormalBasis": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "ProbabilityTheory.stdGaussian_map": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "RatioOfDensities": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.abs_inner_integral_le": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.ball_bounds_of_mem": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.exists_halfSpace": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.exists_hyperplane": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.exists_isSUniform_of_hyperplane": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.exists_isTangentMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.exists_lower_dim": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.isSUniform_of_isTangentMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.measure_closedBall_eq_of_mem_support": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.mem_positiveFiniteDensitySet": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.not_isSUniform_of_lt": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.setIntegral_comp_dist_eq": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.support_subset_of_integral_inner_eq_zero": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "SUniformAux.support_tangent_subset_of_estimate": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "Vitali.exists_disjoint_subfamily_covering_enlargement_ball": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "blowUpMap": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "density_exists_of_lower_eq_upper": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "dimensional_density_ratio": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "dimensional_density_ratio_closedBall": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "dimensional_lower_density": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "dimensional_upper_density": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "eventually_gt_of_lower_density_gt": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "eventually_lt_of_upper_density_lt": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "eventually_smul_measure_closedBall_le": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "exists_closed_cover_approximatesLinearOn_of_hasFDerivWithinAt": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "exists_goodSet_mem": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "exists_normalized_blowUp_weaklyConverges_of_isTangentMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "exists_null_of_not_density_point": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "exists_partition_approximatesLinearOn_of_hasFDerivWithinAt": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "exists_subseq_blowUp_weaklyConverges_tangentMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "goodSet": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffContent": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffContentInfty": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffContentInfty_le_hausdorffContent": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffContentInfty_upperDensity_ge_ae_mem": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffContent_eq_hausdorffContentInfty_of_ediam_le": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffContent_le_hausdorffMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffMeasure_upperDensity_eq_zero_ae_notMem": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffMeasure_upperDensity_ge_ae_mem": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "hausdorffMeasure_upperDensity_le_one_ae_mem": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "isClosed_goodSet": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "isTangentMeasure_iff_ae_of_density": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "isTangentMeasure_restrict_iff": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "limsup_ball_ratio_lt_top_of_ball_bounds_at": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "lower_le_upper_density": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "map_blowUp_apply_ball": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "map_blowUp_apply_closedBall": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "mattila_14_11": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "mattila_14_7_1": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "mattila_14_7_4": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "mattila_14_9": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "measurable_blowUpMap": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "mem_support_of_ball_lower_bound": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "norm_integral_cc_le": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "positiveFiniteDensityExistsSet": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "positiveFiniteDensitySet": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "regular_map_blowUp": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "regular_smul_map_blowUp": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "support_ne_univ_of_lower_growth": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "tangent_ball_bounds_of_density_point": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "tendsto_mul_measure_diff_zero": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "tendsto_nhdsGT_zero_of_pos": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "vitali_variant_classical": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "weaklyConverges_of_tendsto_integral_sub": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "zero_mem_support_of_isTangentMeasure": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    }
+  },
+  "failures": []
+}

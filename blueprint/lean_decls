@@ -81,6 +81,9 @@ ProbabilityTheory.stdGaussian
 ProbabilityTheory.stdGaussian_eq_map_pi_orthonormalBasis
 ProbabilityTheory.stdGaussian_map
 SUniformAux.not_isSUniform_of_lt
+goodBallSet
+isClosed_goodBallSet
+MeasureTheory.Measure.le_hausdorffMeasure
 Preiss.Euclidean
 Preiss.Plane
 Preiss.CountablyLipschitzCovered
@@ -88,6 +91,7 @@ Preiss.CountablyCoveredByLipschitzPieces
 Preiss.LipschitzPiece
 Preiss.LipschitzPiece.range
 Preiss.exists_lipschitz_extension_euclidean
+Preiss.exists_lipschitz_extension_finiteDimensional
 Preiss.IsUnitUniform
 Preiss.IsLipschitzGraph
 Preiss.isCompact_rankProjectionSet
@@ -385,3 +389,8 @@ Preiss.lower_eq_upper_of_hasDensity
 Preiss.continuous_momentKernel
 Preiss.momentKernel_smul
 Preiss.norm_momentKernel_le
+Preiss.measure_le_smul_hausdorff_of_diameter_bound
+Preiss.measure_restrict_le_hausdorff_of_uniform_ball_upper_bound
+Preiss.exists_closedBall_upper_bound_of_upperDensity_lt_top
+Preiss.exists_goodBallSet_mem_of_closedBall_upper_bound
+Preiss.exists_goodBallSet_mem_of_upperDensity_lt_top

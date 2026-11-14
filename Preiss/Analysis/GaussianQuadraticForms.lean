@@ -2,6 +2,7 @@ module
 public import Preiss.Analysis.BilinearTrace
 public import Mathlib.Probability.Distributions.Gaussian.Multivariate
 public import Mathlib.Probability.Distributions.Gaussian.Fernique
+public import Mathlib.Algebra.Order.Chebyshev
 
 @[expose] public section
 open MeasureTheory ProbabilityTheory
@@ -65,7 +66,31 @@ theorem gaussian_integral_bilinear_sq_ge_trace_sq
     (hdim : 0 < Module.finrank ℝ E) :
     (1 + 2 / (Module.finrank ℝ E : ℝ)) * (bilinearTrace A) ^ 2 ≤
       ∫ v, (A v v) ^ 2 ∂stdGaussian E := by
-  sorry
+  classical
+  let e := stdOrthonormalBasis ℝ E
+  let S : ℝ := ∑ i, ∑ j, (A (e i) (e j)) ^ 2
+  have hd : 0 < (Module.finrank ℝ E : ℝ) := by exact_mod_cast hdim
+  have hdiag : (∑ i, (A (e i) (e i)) ^ 2) ≤ S := by
+    apply Finset.sum_le_sum
+    intro i _
+    exact Finset.single_le_sum (fun j _ => sq_nonneg (A (e i) (e j))) (Finset.mem_univ i)
+  have htrace : (bilinearTrace A) ^ 2 ≤
+      (Module.finrank ℝ E : ℝ) * ∑ i, (A (e i) (e i)) ^ 2 := by
+    rw [bilinearTrace_eq_sum_diagonal A e]
+    simpa using sq_sum_le_card_mul_sum_sq
+      (s := Finset.univ) (f := fun i => A (e i) (e i))
+  have htraceS : (bilinearTrace A) ^ 2 ≤ (Module.finrank ℝ E : ℝ) * S :=
+    htrace.trans (mul_le_mul_of_nonneg_left hdiag hd.le)
+  calc
+    (1 + 2 / (Module.finrank ℝ E : ℝ)) * (bilinearTrace A) ^ 2 =
+        (bilinearTrace A) ^ 2 + 2 * (bilinearTrace A) ^ 2 /
+          (Module.finrank ℝ E : ℝ) := by ring
+    _ ≤ (bilinearTrace A) ^ 2 + 2 * S := by
+      apply add_le_add le_rfl
+      apply (div_le_iff₀ hd).mpr
+      nlinarith
+    _ = ∫ v, (A v v) ^ 2 ∂stdGaussian E :=
+      (gaussian_integral_bilinear_sq e A hA).symm
 
 
 end Preiss

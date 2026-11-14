@@ -269,11 +269,23 @@ Constants depend on the chosen Hausdorff normalization.
 \item \textbf{Distance-to-projection disk selection and radius sum.}
 For compact $G$ and fixed $W$, let the hole radius be distance to the compact
 projection of $G\cap\overline B_{2\sigma}(a)$.
-Its positivity on the complement, its upper bound $\eta\sigma$, and a
+Its positivity on the complement, its upper bound $2\eta\sigma$, and a
 fivefold covering give disjoint disks $D_{4\rho_i}$ whose $D_{20\rho_i}$
 cover almost all a fixed $W$ disk. Therefore $\sum_i\rho_i^m\geq c_m\sigma^m$.
 Use the closed ball in the compact projection; an intersection with an open
 ball need not be compact and nearest projected points need not exist.
+The compact replacement also requires a scale buffer: obtain the base tube
+bound at radius $2\sigma$, so it controls $F\cap B_{4\sigma}(a)$ and hence
+all of $G\cap\overline B_{2\sigma}(a)$. Write $\beta=2\eta$ for the
+working aperture. Then $\rho_i\leq\beta\sigma$, and a nearest projected
+witness $z$ satisfies
+$\|z-a\|\leq\sigma/4+2\beta\sigma<\sigma/2$ when $\beta<1/8$.
+Thus no boundary point is being subjected to an open-ball hypothesis.
+Use the local radius $r_i=\rho_i/(8\beta)=\rho_i/(16\eta)$;
+the original approximation error $\eta r_i=\rho_i/16$ is smaller than
+the $\rho_i/8$ tolerance needed for the column construction.
+All subsequent column estimates use the working aperture $\beta$;
+choose $\sigma$ sufficiently small that $2\sigma<R$.
 
 \item \textbf{Discarded cylinders have small radius sum.}
 Cylinders whose inner halves meet $F$ contain small balls based at $F$ and
@@ -294,7 +306,7 @@ $2\rho$ cylinder. This standalone lemma supplies the geometric step omitted
 as an ``easy computation'' in Section 5.2.
 
 \item \textbf{Disjoint column packing and mass contradiction.}
-At the local scale $r_i=\rho_i/(8\eta)$, the preceding segment contains at
+At the local scale $r_i=\rho_i/(8\beta)$ with $\beta=2\eta$, the preceding segment contains at
 least $c/\eta$ suitably separated centres. Approximate them by points of $F$
 to distance $\rho_i/8$ and use balls of radius $\rho_i/8$.
 Their masses are at least $c_m\delta\rho_i^m$, and their locations are in

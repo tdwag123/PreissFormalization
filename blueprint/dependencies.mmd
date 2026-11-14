@@ -55,6 +55,8 @@ flowchart LR
   mathlib_derivative_partitions["Derivative-controlled closed covers and measurable partitions"]
   mathlib_standard_gaussian["Intrinsic standard Gaussian measure"]
   gmt_uniform_dimension_bound["Uniform measures cannot exceed ambient dimension"]
+  gmt_goodballs["GMT: closed sets controlling all balls through a point"]
+  mathlib_hausdorff_mass_bound["mathlib: mass-distribution bound for Hausdorff measure"]
   def_plane["Linear planes"]
   def_coverage["Countable Lipschitz coverage"]
   def_parametrized_coverage["Lipschitz pieces and countable partial-domain coverage"]
@@ -247,6 +249,9 @@ flowchart LR
   lem_uniform_scaling["Scaling uniform measures and their ball constants"]
   lem_density_limit_values["Values of existing dimensional densities"]
   lem_moment_kernel_calculus["Continuity, homogeneity, and norm bounds for moment kernels"]
+  lem_diameter_hausdorff_bound["Hausdorff comparison from diameter bounds"]
+  lem_ball_upper_hausdorff_bound["Hausdorff comparison from upper ball bounds"]
+  lem_upper_density_localization["Closed upper-density strata"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -341,6 +346,7 @@ flowchart LR
   gmt_blowup_balls --> gmt_scaled_discarded_mass
   gmt_portmanteau --> gmt_scaled_discarded_mass
   def_uniform_api --> gmt_uniform_dimension_bound
+  def_density_api --> gmt_goodballs
   def_plane --> def_lipschitz_graph
   def_plane --> lem_grassmannian
   def_plane --> def_cone
@@ -421,8 +427,8 @@ flowchart LR
   lem_carrier_closure --> lem_decomposition
   lem_pure_basic --> lem_decomposition
   def_density_api --> def_positive_density
-  def_density_api --> lem_density_measure_comparison
-  gmt_vitali --> lem_density_measure_comparison
+  lem_ball_upper_hausdorff_bound --> lem_density_measure_comparison
+  mathlib_vitali_enlargement --> lem_density_measure_comparison
   def_positive_density --> lem_zero_dimension
   def_rectifiable --> lem_zero_dimension
   lem_countable_carrier --> lem_zero_dimension
@@ -436,8 +442,9 @@ flowchart LR
   gmt_density_exists_set --> lem_density_bridge
   gmt_density_limit --> lem_density_bridge
   lem_density_limit_values --> lem_density_bridge
-  gmt_density_bounds --> lem_absolute_continuity
-  lem_density_measure_comparison --> lem_absolute_continuity
+  gmt_goodballs --> lem_absolute_continuity
+  lem_ball_upper_hausdorff_bound --> lem_absolute_continuity
+  lem_upper_density_localization --> lem_absolute_continuity
   gmt_density_bounds --> lem_finite_pieces
   gmt_goodsets --> lem_finite_pieces
   lem_density_measure_comparison --> lem_finite_pieces
@@ -1059,3 +1066,7 @@ flowchart LR
   lem_uniform_constant_one --> lem_uniform_scaling
   def_density_api --> lem_density_limit_values
   def_moments --> lem_moment_kernel_calculus
+  mathlib_hausdorff_mass_bound --> lem_diameter_hausdorff_bound
+  lem_diameter_hausdorff_bound --> lem_ball_upper_hausdorff_bound
+  def_density_api --> lem_upper_density_localization
+  gmt_goodballs --> lem_upper_density_localization

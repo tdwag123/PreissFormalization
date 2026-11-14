@@ -69,7 +69,7 @@
       ],
       "deps": [],
       "branch": "Existing interfaces",
-      "role": "Preiss proof",
+      "role": "Companion result",
       "source_files": []
     },
     {
@@ -841,6 +841,33 @@
       "source_files": []
     },
     {
+      "id": "gmt:goodballs",
+      "kind": "lemma",
+      "title": "GMT: closed sets controlling all balls through a point",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "goodBallSet",
+        "isClosed_goodBallSet"
+      ],
+      "deps": [
+        "def:density-api"
+      ],
+      "role": "Companion result",
+      "source_files": []
+    },
+    {
+      "id": "mathlib:hausdorff-mass-bound",
+      "kind": "lemma",
+      "title": "mathlib: mass-distribution bound for Hausdorff measure",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "MeasureTheory.Measure.le_hausdorffMeasure"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": []
+    },
+    {
       "id": "def:plane",
       "kind": "definition",
       "title": "Linear planes",
@@ -903,7 +930,8 @@
       "proof_tex": "",
       "deps": [],
       "lean_names": [
-        "Preiss.exists_lipschitz_extension_euclidean"
+        "Preiss.exists_lipschitz_extension_euclidean",
+        "Preiss.exists_lipschitz_extension_finiteDimensional"
       ],
       "proposed_lean_name": "Preiss.exists_lipschitz_extension_euclidean",
       "proposed_file": "Preiss/Geometry/LipschitzExtension.lean",
@@ -1712,8 +1740,8 @@
       "hypotheses_tex": "At every centre of \\(S\\), the appropriate power bound holds for all radii below one common positive cutoff. The measure is locally finite; localize to bounded strata when claiming finiteness.",
       "proof_tex": "",
       "deps": [
-        "def:density-api",
-        "gmt:vitali"
+        "lem:ball-upper-hausdorff-bound",
+        "mathlib:vitali-enlargement"
       ],
       "lean_names": [
         "Preiss.UpperPowerBoundAt",
@@ -1835,8 +1863,9 @@
       "hypotheses_tex": "\\(\\mu\\) is a locally finite Borel measure on \\(\\mathbb R^n\\); \\(m\\) is a natural dimension.",
       "proof_tex": "",
       "deps": [
-        "gmt:density-bounds",
-        "lem:density-measure-comparison"
+        "gmt:goodballs",
+        "lem:ball-upper-hausdorff-bound",
+        "lem:upper-density-localization"
       ],
       "lean_names": [
         "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite"
@@ -6055,6 +6084,60 @@
         "Preiss/Uniform/MomentForms.lean"
       ],
       "proposed_file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "lem:diameter-hausdorff-bound",
+      "kind": "lemma",
+      "title": "Hausdorff comparison from diameter bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_le_smul_hausdorff_of_diameter_bound"
+      ],
+      "deps": [
+        "mathlib:hausdorff-mass-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/HausdorffComparison.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/HausdorffComparison.lean"
+    },
+    {
+      "id": "lem:ball-upper-hausdorff-bound",
+      "kind": "lemma",
+      "title": "Hausdorff comparison from upper ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_restrict_le_hausdorff_of_uniform_ball_upper_bound"
+      ],
+      "deps": [
+        "lem:diameter-hausdorff-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/HausdorffComparison.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/HausdorffComparison.lean"
+    },
+    {
+      "id": "lem:upper-density-localization",
+      "kind": "lemma",
+      "title": "Closed upper-density strata",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_closedBall_upper_bound_of_upperDensity_lt_top",
+        "Preiss.exists_goodBallSet_mem_of_closedBall_upper_bound",
+        "Preiss.exists_goodBallSet_mem_of_upperDensity_lt_top"
+      ],
+      "deps": [
+        "def:density-api",
+        "gmt:goodballs"
+      ],
+      "role": "Companion result",
+      "source_files": [
+        "Preiss/Density/UpperBounds.lean"
+      ],
+      "proposed_file": "Preiss/Density/UpperBounds.lean"
     }
   ],
   "preiss_core": [
@@ -6127,8 +6210,8 @@
     "gmt:uniform-radial",
     "gmt:uniform-tangents",
     "gmt:vague",
-    "gmt:vitali",
     "gmt:zero-barycenter-hyperplane",
+    "lem:ball-upper-hausdorff-bound",
     "lem:bilinear-trace-basis",
     "lem:blowdown-moment-limits",
     "lem:blowup-composition",
@@ -6146,6 +6229,7 @@
     "lem:density-limit-values",
     "lem:density-measure-comparison",
     "lem:density-normalization",
+    "lem:diameter-hausdorff-bound",
     "lem:dimensional-compactness",
     "lem:dimensional-tangent-ball-constant",
     "lem:dimensional-tangent-closed",
@@ -6266,6 +6350,7 @@
     "lem:zero-measure",
     "mathlib:besicovitch-cover",
     "mathlib:besicovitch-differentiation",
+    "mathlib:hausdorff-mass-bound",
     "mathlib:measurable-hull",
     "mathlib:standard-gaussian",
     "mathlib:vitali-enlargement",
@@ -6321,7 +6406,7 @@
     "gmt:restriction-tangents",
     "gmt:scaled-discarded-mass",
     "gmt:vague",
-    "gmt:vitali",
+    "lem:ball-upper-hausdorff-bound",
     "lem:blowup-composition",
     "lem:borel-carrier",
     "lem:carrier-calculus",
@@ -6333,6 +6418,7 @@
     "lem:density-bridge",
     "lem:density-limit-values",
     "lem:density-measure-comparison",
+    "lem:diameter-hausdorff-bound",
     "lem:dimensional-compactness",
     "lem:discarded-cylinder-sum",
     "lem:domain-extension",
@@ -6375,6 +6461,7 @@
     "mathlib:besicovitch-cover",
     "mathlib:besicovitch-differentiation",
     "mathlib:derivative-partitions",
+    "mathlib:hausdorff-mass-bound",
     "mathlib:vitali-enlargement",
     "thm:compactness",
     "thm:matching",
