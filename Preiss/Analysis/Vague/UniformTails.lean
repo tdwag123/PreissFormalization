@@ -69,4 +69,3 @@ theorem vague_integral_of_uniform_norm_tails {n : ℕ}
   linarith
 
 end Preiss
-

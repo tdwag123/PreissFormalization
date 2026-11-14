@@ -2,6 +2,7 @@
 from pathlib import Path
 import json
 import re
+from html import unescape
 from html.parser import HTMLParser
 from urllib.parse import unquote
 
@@ -55,6 +56,6 @@ print(f'All {len(expected)} Lean links resolve through the source viewer index.'
 checkpoint = json.loads((root / 'blueprint/kernel-checkpoint.json').read_text(encoding='utf-8'))
 proof_page = (web / 'proof-status.html').read_text(encoding='utf-8')
 assert checkpoint['source_revision'] in proof_page, 'Proof page has the wrong checkpoint'
-assert set(re.findall(r'data-name="([^"]+)"', proof_page)) == set(checkpoint['declarations']), (
+assert {unescape(name) for name in re.findall(r'data-name="([^"]+)"', proof_page)} == set(checkpoint['declarations']), (
     'Proof page does not contain every audited declaration')
 print(f"Verified proof list contains all {len(checkpoint['declarations'])} checkpoint declarations.")

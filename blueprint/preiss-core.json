@@ -1036,7 +1036,8 @@
       "lean": [
         "Preiss.cylinder",
         "Preiss.exists_unit_small_projection_of_avoids_cylinder",
-        "Preiss.exists_unit_small_projection_of_empty_inner_cylinder"
+        "Preiss.exists_unit_small_projection_of_empty_inner_cylinder",
+        "Preiss.exists_unit_small_projection_swapped"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -1258,9 +1259,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 1481,
-      "unfinished_dependencies": [
-        "lem:plane-supported-uniform-flat"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:conical-moments",
@@ -1848,29 +1847,6 @@
       "unfinished_dependencies": []
     },
     {
-      "id": "lem:plane-scaling",
-      "title": "Plane and scaling API",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.isFlat_dimensionalBlowup",
-        "Preiss.isFlat_map_linearIsometry",
-        "Preiss.isFlat_of_dimensionalBlowup_zero"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:dimensional-blowup",
-        "def:flat",
-        "lem:blowup-composition",
-        "lem:flat-plane-blowup",
-        "lem:measure-support-transport",
-        "lem:plane-hausdorff"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 2281,
-      "unfinished_dependencies": []
-    },
-    {
       "id": "lem:tangent-existence",
       "title": "Tangent existence under two-sided density bounds",
       "kind": "lemma",
@@ -2307,6 +2283,7 @@
         "Preiss.exists_projection_hole_disk_family",
         "Preiss.holeFamily_mass_lower_bound",
         "Preiss.mem_half_ball_of_tube_and_projected_distance",
+        "Preiss.projected_distance_le_of_affine_plane_lower_mass",
         "Preiss.projected_distance_le_of_lower_mass"
       ],
       "verification": "source_audit_only",
@@ -2382,16 +2359,15 @@
       "id": "lem:packing-contradiction",
       "title": "Null projections contradict weak approximation and finite upper density",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.false_of_null_projections_and_uniform_weakApproximation"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "lem:column-mass-contradiction",
-        "lem:column-packing",
-        "lem:discarded-cylinder-sum",
-        "lem:packing-base-point"
+        "lem:nested-compact-approximation",
+        "lem:packing-base-point",
+        "lem:two-sided-packing-core"
       ],
       "proof_dependencies": [],
       "expanded_line": 2948,
@@ -2415,7 +2391,6 @@
       "proof_dependencies": [],
       "expanded_line": 2974,
       "unfinished_dependencies": [
-        "lem:packing-contradiction",
         "lem:pure-wla-null-projection"
       ]
     },
@@ -2472,6 +2447,7 @@
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:orthogonal-grading",
+        "lem:divided-grading-constant-injective",
         "lem:weighted-grading-positive-complement"
       ],
       "proof_dependencies": [],
@@ -3365,19 +3341,18 @@
       "id": "lem:plane-supported-uniform-flat",
       "title": "Classification of plane-supported uniform measures",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.uniformWithConstant_eq_flat_of_support_subset_plane",
         "Preiss.unitUniform_eq_flat_of_support_subset_plane"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:flat",
-        "def:plane",
-        "def:unit-uniform",
-        "gmt:uniform-full-dimension",
         "lem:hyperplane-transport-map",
-        "lem:plane-scaling"
+        "lem:plane-isometric-parametrization",
+        "lem:uniform-full-dimension-unique",
+        "lem:uniform-scaling",
+        "lem:unit-flat-unit-uniform"
       ],
       "proof_dependencies": [],
       "expanded_line": 4249,
@@ -3402,7 +3377,6 @@
       "proof_dependencies": [],
       "expanded_line": 4273,
       "unfinished_dependencies": [
-        "lem:plane-supported-uniform-flat",
         "lem:uniform-reduction"
       ]
     },
@@ -3500,7 +3474,6 @@
       "expanded_line": 4365,
       "unfinished_dependencies": [
         "lem:conical-eigenvalue-rigidity",
-        "lem:plane-supported-uniform-flat",
         "lem:small-energy-no-holes",
         "lem:spectral-minimizing-plane"
       ]
@@ -3725,7 +3698,6 @@
       "expanded_line": 4586,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "lem:plane-supported-uniform-flat",
         "lem:uniform-cylinder-identity"
       ]
     },
@@ -4063,7 +4035,6 @@
       "expanded_line": 4937,
       "unfinished_dependencies": [
         "lem:moment-second-total-trace",
-        "lem:plane-supported-uniform-flat",
         "lem:rigidity-forms-exist",
         "lem:rigidity-normal-vector-exists",
         "lem:trace-rigidity",
@@ -4775,24 +4746,6 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 5722,
-      "unfinished_dependencies": []
-    },
-    {
-      "id": "lem:flat-plane-blowup",
-      "title": "Exact blow-up invariance of flat plane measures",
-      "kind": "lemma",
-      "status": "proof_candidate",
-      "lean": [
-        "Preiss.dimensionalBlowup_flatOn"
-      ],
-      "verification": "source_audit_only",
-      "statement_dependencies": [
-        "def:dimensional-blowup",
-        "lem:blowup-composition",
-        "lem:plane-hausdorff"
-      ],
-      "proof_dependencies": [],
-      "expanded_line": 5730,
       "unfinished_dependencies": []
     },
     {
@@ -6150,6 +6103,178 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 6363,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:plane-isometric-parametrization",
+      "title": "Isometric parametrization of a linear plane",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.exists_linearIsometry_range_plane"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:plane"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6371,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-flat-support-regularity",
+      "title": "Support and regularity of normalized flat measures",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flatOn_support",
+        "Preiss.regular_unitFlat",
+        "Preiss.unitFlat_support"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:flat-measure-regularity",
+        "lem:measure-support-transport",
+        "lem:plane-hausdorff"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6379,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:unit-flat-unit-uniform",
+      "title": "Normalized flat measures are unit uniform",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.isUnitUniform_unitFlat"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:unit-uniform",
+        "lem:plane-hausdorff",
+        "lem:unit-flat-support-regularity"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6387,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:two-sided-packing-core",
+      "title": "The packing contradiction from compact two-sided approximations",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.false_of_compact_twoSided_approximation"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:two-sided-approximation",
+        "lem:column-mass-contradiction",
+        "lem:column-packing",
+        "lem:discarded-cylinder-sum",
+        "lem:projection-hole-cover"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6395,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:nested-orthogonal-layers",
+      "title": "Orthogonal layers of a descending subspace flag",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.nestedProjectionLayer",
+        "Preiss.nestedProjectionLayer_comp_eq_zero",
+        "Preiss.nestedProjectionLayer_eq_zero_of_mem",
+        "Preiss.nestedProjectionLayer_idempotent",
+        "Preiss.nestedProjectionLayer_mem",
+        "Preiss.nestedProjectionLayer_symmetric",
+        "Preiss.starProjection_comp_of_ge",
+        "Preiss.sub_nestedProjectionLayer_mem",
+        "Preiss.sum_nestedProjectionLayer"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 6403,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:kernel-grading-flag",
+      "title": "The kernel flag induced on a subspace by an orthogonal grading",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.kernelGradingFlag",
+        "Preiss.kernelGradingFlag_antitone",
+        "Preiss.kernelGradingFlag_end",
+        "Preiss.kernelGradingFlag_zero",
+        "Preiss.mem_kernelGradingFlag"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "def:orthogonal-grading"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6410,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:kernel-flag-layer-grading",
+      "title": "Orthogonal grading by kernel-flag layers",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.flagProjectionLayer",
+        "Preiss.flagProjectionLayer_isOrthogonalGrading"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:kernel-grading-flag",
+        "lem:nested-orthogonal-layers"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6418,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:divided-grading-constant-injective",
+      "title": "Injectivity of the constant divided grading operator",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.compressedGradingPiece",
+        "Preiss.dividedGradingConstant",
+        "Preiss.dividedGradingConstant_injective",
+        "Preiss.flagProjectionLayer_compressed_inner",
+        "Preiss.flagProjectionLayer_dividedGradingConstant"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:kernel-flag-layer-grading",
+        "lem:kernel-grading-flag"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6426,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:uniform-full-dimension-unique",
+      "title": "Uniqueness of full-dimensional uniform measures with fixed ball constant",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.uniformWithConstant_eq_of_fullDimension"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "gmt:uniform-full-dimension",
+        "lem:uniform-scaling"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 6434,
       "unfinished_dependencies": []
     }
   ]

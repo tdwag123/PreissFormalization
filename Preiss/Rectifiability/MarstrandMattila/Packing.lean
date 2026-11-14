@@ -601,4 +601,28 @@ theorem tsum_sdiff_ge_of_small_discarded_sum {ι : Type*} (f : ι → ℝ≥0∞
       _ = (∑' i : J, f i) + ∑' i : ↥(I \ J), f i := hsplit.symm
       _ ≤ b + ∑' i : ↥(I \ J), f i := add_le_add hdiscarded le_rfl
   exact (add_le_add_iff_right_of_ne_top hb).mp hh
+
+theorem projected_distance_le_of_affine_plane_lower_mass
+    (μ : Measure (Euclidean n)) (V : Plane m n) (G : Set (Euclidean n))
+    (a p : Euclidean n) {σ β b : ℝ}
+    (hσ : 0 < σ) (hβ : 0 < β) (hβ1 : β < 1) (hpV : p ∈ V.1)
+    (hp : p ∈ ball (proj V a) σ)
+    (hlower : ∀ z : Euclidean n, z - a ∈ V.1 → z ∈ ball a σ →
+      ENNReal.ofReal b ≤ μ (ball z (β * σ)))
+    (herror : μ (ball a (2 * σ) \ G) < ENNReal.ofReal b) :
+    infDist p (proj V '' (G ∩ closedBall a (2 * σ))) ≤ β * σ := by
+  let z : Euclidean n := a + (p - proj V a)
+  have hzV : z - a ∈ V.1 := by
+    simpa only [z, proj, add_sub_cancel_left] using
+      V.1.sub_mem hpV (V.1.orthogonalProjectionOnto a).property
+  have hzball : z ∈ ball a σ := by
+    simpa only [z, mem_ball, dist_eq_norm, add_sub_cancel_left] using hp
+  have hproj : proj V z = p := by
+    change V.1.starProjection (a + (p - V.1.starProjection a)) = p
+    rw [map_add, map_sub, V.1.starProjection_eq_self_iff.mpr hpV,
+      V.1.starProjection_eq_self_iff.mpr (V.1.starProjection_apply_mem a)]
+    abel
+  have hh := projected_distance_le_of_lower_mass μ V G a z hσ hβ hβ1 hzV hzball
+    (hlower z hzV hzball) herror
+  simpa only [hproj] using hh
 end Preiss

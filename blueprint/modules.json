@@ -508,6 +508,7 @@
         "Preiss.Analysis.Grading"
       ],
       "local_imports": [
+        "Preiss.Analysis.GradedProjectionFlag",
         "Preiss.Analysis.Grading"
       ],
       "mathlib_imports": [
@@ -516,6 +517,7 @@
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.GradedProjectionFlag",
         "Preiss.Analysis.Grading"
       ],
       "nodes": [
@@ -525,6 +527,35 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Analysis.GradedProjection interfaces."
+    },
+    {
+      "module": "Preiss.Analysis.GradedProjectionFlag",
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "purpose": "Reusable Analysis.GradedProjectionFlag interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic",
+        "Preiss.Analysis.Grading",
+        "Preiss.Analysis.NestedProjections"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.Grading",
+        "Preiss.Analysis.NestedProjections"
+      ],
+      "nodes": [
+        "lem:kernel-grading-flag",
+        "lem:kernel-flag-layer-grading",
+        "lem:divided-grading-constant-injective"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.Grading",
+        "Preiss.Analysis.NestedProjections"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Analysis.Grading",
@@ -728,6 +759,27 @@
       "proof_imports": [],
       "nodes": [
         "lem:moving-set-measure-bounds"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Analysis.NestedProjections",
+      "file": "Preiss/Analysis/NestedProjections.lean",
+      "purpose": "Reusable Analysis.NestedProjections interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Tactic.Abel"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+        "Mathlib.Tactic.Abel"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:nested-orthogonal-layers"
       ],
       "source_exists": true,
       "local_imports": [],
@@ -1755,6 +1807,30 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Geometry.PlaneEmbedding",
+      "file": "Preiss/Geometry/PlaneEmbedding.lean",
+      "purpose": "Reusable Geometry.PlaneEmbedding interfaces.",
+      "current_source_imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Preiss.Geometry.Planes"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "nodes": [
+        "lem:plane-isometric-parametrization"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.Planes"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Geometry.PlaneMeasure",
       "file": "Preiss/Geometry/PlaneMeasure.lean",
       "current_source_imports": [
@@ -1926,6 +2002,32 @@
       ],
       "source_exists": true,
       "local_imports": [],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Geometry.UnitFlat",
+      "file": "Preiss/Geometry/UnitFlat.lean",
+      "purpose": "Reusable Geometry.UnitFlat interfaces.",
+      "current_source_imports": [
+        "Preiss.Analysis.MeasureSupport",
+        "Preiss.Geometry.PlaneRegularity"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.MeasureSupport",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneRegularity"
+      ],
+      "nodes": [
+        "lem:unit-flat-support-regularity"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.MeasureSupport",
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneRegularity"
+      ],
       "scope": "core"
     },
     {
@@ -2510,13 +2612,14 @@
       "purpose": "Reusable Rectifiability.MarstrandMattila.PackingContradiction interfaces.",
       "current_source_imports": [
         "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
-        "Preiss.Rectifiability.MarstrandMattila.Packing"
+        "Preiss.Rectifiability.MarstrandMattila.PackingCore"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
-        "Preiss.Rectifiability.MarstrandMattila.Packing"
+        "Preiss.Rectifiability.MarstrandMattila.PackingCore"
       ],
       "nodes": [
         "lem:packing-contradiction"
@@ -2525,7 +2628,30 @@
       "local_imports": [
         "Preiss.Rectifiability.MarstrandMattila.CompactSelection",
         "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
+        "Preiss.Rectifiability.MarstrandMattila.PackingCore"
+      ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Rectifiability.MarstrandMattila.PackingCore",
+      "file": "Preiss/Rectifiability/MarstrandMattila/PackingCore.lean",
+      "purpose": "Reusable Rectifiability.MarstrandMattila.PackingCore interfaces.",
+      "current_source_imports": [
         "Preiss.Rectifiability.MarstrandMattila.Packing"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided"
+      ],
+      "nodes": [
+        "lem:two-sided-packing-core"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Rectifiability.MarstrandMattila.Packing",
+        "Preiss.Rectifiability.WeakApproximation.TwoSided"
       ],
       "scope": "core"
     },
@@ -3919,27 +4045,25 @@
       "module": "Preiss.Uniform.Classification",
       "file": "Preiss/Uniform/Classification.lean",
       "current_source_imports": [
-        "FormalizingGMT.MarstrandTheorem",
-        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.PlaneEmbedding",
+        "Preiss.Uniform.FlatMeasure",
+        "Preiss.Uniform.FullDimension",
         "Preiss.Uniform.Transport"
       ],
       "local_imports": [
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Geometry.PlaneMeasure",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.FlatScaling",
-        "Preiss.Uniform.Defs",
+        "Preiss.Geometry.PlaneEmbedding",
+        "Preiss.Uniform.FlatMeasure",
+        "Preiss.Uniform.FullDimension",
+        "Preiss.Uniform.Scaling",
         "Preiss.Uniform.Transport"
       ],
       "mathlib_imports": [],
-      "gmt_imports": [
-        "FormalizingGMT.MarstrandTheorem"
-      ],
+      "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Geometry.Planes",
-        "Preiss.Tangent.FlatScaling",
-        "Preiss.Uniform.Defs",
+        "Preiss.Geometry.PlaneEmbedding",
+        "Preiss.Uniform.FlatMeasure",
+        "Preiss.Uniform.FullDimension",
+        "Preiss.Uniform.Scaling",
         "Preiss.Uniform.Transport"
       ],
       "nodes": [
@@ -4372,6 +4496,32 @@
       "purpose": "Canonical Uniform.FlatAtInfinity.TraceLimits interfaces."
     },
     {
+      "module": "Preiss.Uniform.FlatMeasure",
+      "file": "Preiss/Uniform/FlatMeasure.lean",
+      "purpose": "Reusable Uniform.FlatMeasure interfaces.",
+      "current_source_imports": [
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Uniform.Defs"
+      ],
+      "mathlib_imports": [],
+      "gmt_imports": [],
+      "proof_imports": [
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Uniform.Defs"
+      ],
+      "nodes": [
+        "lem:unit-flat-unit-uniform"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Geometry.PlaneMeasure",
+        "Preiss.Geometry.UnitFlat",
+        "Preiss.Uniform.Defs"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Uniform.FlatMoments",
       "file": "Preiss/Uniform/FlatMoments.lean",
       "current_source_imports": [
@@ -4598,6 +4748,35 @@
       "source_exists": true,
       "scope": "core",
       "purpose": "Canonical Uniform.FlatPseudotangent interfaces."
+    },
+    {
+      "module": "Preiss.Uniform.FullDimension",
+      "file": "Preiss/Uniform/FullDimension.lean",
+      "purpose": "Reusable Uniform.FullDimension interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.MarstrandTheorem",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+        "Mathlib.Tactic.NormNum",
+        "Preiss.Uniform.Scaling"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+        "Mathlib.Tactic.NormNum"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "proof_imports": [
+        "Preiss.Uniform.Scaling"
+      ],
+      "nodes": [
+        "lem:uniform-full-dimension-unique"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Uniform.Scaling"
+      ],
+      "scope": "core"
     },
     {
       "module": "Preiss.Uniform.GMTAdapters",
@@ -5230,6 +5409,7 @@
     "Preiss.Geometry.Euclidean",
     "Preiss.Analysis.MomentDetermination",
     "Preiss.Analysis.Grading",
+    "Preiss.Analysis.NestedProjections",
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
     "Preiss.Analysis.HausdorffLowerBound",
@@ -5265,7 +5445,7 @@
     "Preiss.Rectifiability.Defs",
     "Preiss.Tangent.Blowup",
     "Preiss.Uniform.Moments",
-    "Preiss.Analysis.GradedProjection",
+    "Preiss.Analysis.GradedProjectionFlag",
     "Preiss.Density.PowerComparison",
     "Preiss.Density.UpperBallSets",
     "Preiss.Analysis.PolynomialFeatures",
@@ -5279,6 +5459,7 @@
     "Preiss.Density.UpperBounds",
     "Preiss.Tangent.Existence",
     "Preiss.Geometry.FlatMeasure",
+    "Preiss.Geometry.PlaneEmbedding",
     "Preiss.Geometry.PlaneMeasure",
     "Preiss.Geometry.Projections",
     "Preiss.Rectifiability.GraphDefs",
@@ -5293,6 +5474,7 @@
     "Preiss.Tangent.Defs",
     "Preiss.Uniform.Defs",
     "Preiss.Uniform.MomentForms",
+    "Preiss.Analysis.GradedProjection",
     "Preiss.Analysis.GaussianFeatures",
     "Preiss.Analysis.Vague.SecondCountable",
     "Preiss.Analysis.GaussianMomentDetermination",
@@ -5325,6 +5507,7 @@
     "Preiss.Uniform.MomentCoefficients",
     "Preiss.Uniform.MomentCovariance",
     "Preiss.Density.FinitePieces",
+    "Preiss.Geometry.UnitFlat",
     "Preiss.Rectifiability.ProjectionEstimate",
     "Preiss.Rectifiability.WeakApproximation.TwoSided",
     "Preiss.Tangent.ApproximationScaling",
@@ -5339,7 +5522,9 @@
     "Preiss.Density.ExcessDimension",
     "Preiss.Uniform.Radial",
     "Preiss.Uniform.Compactness",
+    "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.Transport",
+    "Preiss.Uniform.FlatMeasure",
     "Preiss.Uniform.FlatnessVague",
     "Preiss.Rectifiability.WeakApproximation.Density",
     "Preiss.Rectifiability.ConeCriterion",
@@ -5381,14 +5566,15 @@
     "Preiss.Rectifiability.MarstrandMattila.Packing",
     "Preiss.Uniform.FlatAtInfinity.SupportIdentity",
     "Preiss.Uniform.FlatAtInfinity.TraceLimits",
-    "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
+    "Preiss.Rectifiability.MarstrandMattila.PackingCore",
     "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
-    "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+    "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
     "Preiss.Uniform.TraceRigidity",
-    "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
+    "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
     "Preiss.Uniform.FlatAtInfinity.Rigidity",
-    "Preiss.Rectifiability.TangentCharacterization",
+    "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
     "Preiss.Theorem.FirstCrossing",
+    "Preiss.Rectifiability.TangentCharacterization",
     "Preiss.Theorem.PartB",
     "Preiss.Main"
   ],
@@ -5412,6 +5598,7 @@
     "Preiss.Analysis.GaussianVague",
     "Preiss.Analysis.GaussianWeight",
     "Preiss.Analysis.GradedProjection",
+    "Preiss.Analysis.GradedProjectionFlag",
     "Preiss.Analysis.Grading",
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
@@ -5421,6 +5608,7 @@
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.MomentDetermination",
     "Preiss.Analysis.MovingSets",
+    "Preiss.Analysis.NestedProjections",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.PolynomialFeatures",
     "Preiss.Analysis.PolynomialNormBound",
@@ -5461,12 +5649,14 @@
     "Preiss.Geometry.FlatScalar",
     "Preiss.Geometry.LipschitzExtension",
     "Preiss.Geometry.PlaneDistance",
+    "Preiss.Geometry.PlaneEmbedding",
     "Preiss.Geometry.PlaneMeasure",
     "Preiss.Geometry.PlaneRegularity",
     "Preiss.Geometry.PlaneTopology",
     "Preiss.Geometry.Planes",
     "Preiss.Geometry.Projections",
     "Preiss.Geometry.RescaledDistance",
+    "Preiss.Geometry.UnitFlat",
     "Preiss.Main",
     "Preiss.Rectifiability.Basic",
     "Preiss.Rectifiability.Cones",
@@ -5481,6 +5671,7 @@
     "Preiss.Rectifiability.MarstrandMattila.MeasureCriterion",
     "Preiss.Rectifiability.MarstrandMattila.Packing",
     "Preiss.Rectifiability.MarstrandMattila.PackingContradiction",
+    "Preiss.Rectifiability.MarstrandMattila.PackingCore",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
     "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
     "Preiss.Rectifiability.ProjectionEstimate",
@@ -5507,7 +5698,6 @@
     "Preiss.Tangent.Existence",
     "Preiss.Tangent.Extraction",
     "Preiss.Tangent.FlatApproximation",
-    "Preiss.Tangent.FlatScaling",
     "Preiss.Tangent.Flatness",
     "Preiss.Tangent.MetricApproximation",
     "Preiss.Tangent.MovingCenters",
@@ -5534,6 +5724,7 @@
     "Preiss.Uniform.FlatAtInfinity.TraceData",
     "Preiss.Uniform.FlatAtInfinity.TraceIdentities",
     "Preiss.Uniform.FlatAtInfinity.TraceLimits",
+    "Preiss.Uniform.FlatMeasure",
     "Preiss.Uniform.FlatMoments",
     "Preiss.Uniform.FlatPseudotangent",
     "Preiss.Uniform.Flatness",
@@ -5541,6 +5732,7 @@
     "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Uniform.FlatnessMinimum",
     "Preiss.Uniform.FlatnessVague",
+    "Preiss.Uniform.FullDimension",
     "Preiss.Uniform.GMTAdapters",
     "Preiss.Uniform.Homogeneous",
     "Preiss.Uniform.MomentCoefficients",

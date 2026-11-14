@@ -2167,12 +2167,14 @@
         "Preiss.holeFamily_mass_lower_bound",
         "Preiss.HoleFamily.disjoint_cylinders",
         "Preiss.mem_half_ball_of_tube_and_projected_distance",
-        "Preiss.exists_nearest_projected_witness_in_half_ball"
+        "Preiss.exists_nearest_projected_witness_in_half_ball",
+        "Preiss.projected_distance_le_of_affine_plane_lower_mass"
       ]
     },
     "lem:empty-cylinder-direction": {
       "lean_names": [
-        "Preiss.exists_unit_small_projection_of_empty_inner_cylinder"
+        "Preiss.exists_unit_small_projection_of_empty_inner_cylinder",
+        "Preiss.exists_unit_small_projection_swapped"
       ]
     },
     "lem:discarded-cylinder-sum": {

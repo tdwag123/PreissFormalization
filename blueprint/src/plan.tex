@@ -169,7 +169,7 @@ Split normalization, finiteness, and sphere-null corollaries; do not import tang
 
 \begin{lemma}[A plane avoiding an inner cylinder has a small projected direction]
 \label{lem:empty-cylinder-direction}
-\lean{Preiss.cylinder, Preiss.exists_unit_small_projection_of_avoids_cylinder, Preiss.exists_unit_small_projection_of_empty_inner_cylinder}
+\lean{Preiss.cylinder, Preiss.exists_unit_small_projection_of_avoids_cylinder, Preiss.exists_unit_small_projection_of_empty_inner_cylinder, Preiss.exists_unit_small_projection_swapped}
 \uses{def:plane}
 
 
@@ -1765,7 +1765,7 @@ For every fixed \(m\)-plane \(V\) and finite aperture \(\alpha\geq0\), at \(\mat
 
 \begin{lemma}[Disjoint projection-hole disks with large radius sum]
 \label{lem:projection-hole-cover}
-\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass, Preiss.exists_holeFamily_of_compact, Preiss.holeFamily_mass_lower_bound, Preiss.HoleFamily.disjoint_cylinders, Preiss.mem_half_ball_of_tube_and_projected_distance, Preiss.exists_nearest_projected_witness_in_half_ball}
+\lean{Preiss.HoleFamily, Preiss.exists_projection_hole_disk_family, Preiss.projected_distance_le_of_lower_mass, Preiss.exists_holeFamily_of_compact, Preiss.holeFamily_mass_lower_bound, Preiss.HoleFamily.disjoint_cylinders, Preiss.mem_half_ball_of_tube_and_projected_distance, Preiss.exists_nearest_projected_witness_in_half_ball, Preiss.projected_distance_le_of_affine_plane_lower_mass}
 \uses{lem:nested-compact-approximation, lem:packing-base-point, lem:plane-hausdorff, mathlib:vitali-enlargement}
 
 
@@ -1865,7 +1865,7 @@ At the local scale \(r_i=\rho_i/(8\eta)\), each surviving cylinder contains at l
 \begin{lemma}[Null projections contradict weak approximation and finite upper density]
 \label{lem:packing-contradiction}
 \lean{Preiss.false_of_null_projections_and_uniform_weakApproximation}
-\uses{lem:column-packing, lem:discarded-cylinder-sum, lem:packing-base-point, lem:column-mass-contradiction}
+\uses{lem:two-sided-packing-core, lem:nested-compact-approximation, lem:packing-base-point}
 
 
 
@@ -1960,7 +1960,7 @@ It also justifies differentiation with respect to positive $s$ locally in $s$.
 
 \begin{lemma}[Analytic extension of weighted complementary projections]
 \label{lem:graded-analytic-projection}
-\uses{def:orthogonal-grading, lem:weighted-grading-positive-complement}
+\uses{def:orthogonal-grading, lem:weighted-grading-positive-complement, lem:divided-grading-constant-injective}
 \lean{Preiss.analyticAt_weightedProjection_zero}
 
 
@@ -3166,7 +3166,7 @@ dimension theorem, or classification of all uniform measures.
 \begin{lemma}[Classification of plane-supported uniform measures]
 \label{lem:plane-supported-uniform-flat}
 \lean{Preiss.unitUniform_eq_flat_of_support_subset_plane, Preiss.uniformWithConstant_eq_flat_of_support_subset_plane}
-\uses{def:flat, def:plane, def:unit-uniform, gmt:uniform-full-dimension, lem:hyperplane-transport-map, lem:plane-scaling}
+\uses{lem:plane-isometric-parametrization, lem:unit-flat-unit-uniform, lem:uniform-full-dimension-unique, lem:hyperplane-transport-map, lem:uniform-scaling}
 
 
 
@@ -5283,4 +5283,75 @@ If nonnegative retained radii have total $m$-power at least $b$, and a measure h
 \uses{def:orthogonal-grading}
 
 For an orthogonal grading $(P_i)$ and positive $s$, the weighted operator $A(s)=\sum_i s^{i+1}P_i$ is self-adjoint and positive definite, with quadratic form $\sum_i s^{i+1}\|P_i x\|^2$. It is injective, and every subspace $V$ is complementary to $A(s)^{-1}(V^\perp)$.
+\end{lemma}
+
+\begin{lemma}[Isometric parametrization of a linear plane]
+\label{lem:plane-isometric-parametrization}
+\lean{Preiss.exists_linearIsometry_range_plane}
+\uses{def:plane}
+
+Every $m$-dimensional plane in $\mathbb R^n$ is the range of a linear isometric embedding of $\mathbb R^m$, including $m=0$.
+\end{lemma}
+
+\begin{lemma}[Support and regularity of normalized flat measures]
+\label{lem:unit-flat-support-regularity}
+\lean{Preiss.flatOn_support, Preiss.regular_unitFlat, Preiss.unitFlat_support}
+\uses{lem:flat-measure-regularity, lem:measure-support-transport, lem:plane-hausdorff}
+
+A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.
+\end{lemma}
+
+\begin{lemma}[Normalized flat measures are unit uniform]
+\label{lem:unit-flat-unit-uniform}
+\lean{Preiss.isUnitUniform_unitFlat}
+\uses{lem:unit-flat-support-regularity, lem:plane-hausdorff, def:unit-uniform}
+
+The normalized measure on every linear $m$-plane is unit $m$-uniform, with mass $r^m$ on every positive-radius closed ball centered in that plane.
+\end{lemma}
+
+\begin{lemma}[The packing contradiction from compact two-sided approximations]
+\label{lem:two-sided-packing-core}
+\lean{Preiss.false_of_compact_twoSided_approximation}
+\uses{def:two-sided-approximation, lem:projection-hole-cover, lem:discarded-cylinder-sum, lem:column-packing, lem:column-mass-contradiction}
+
+A measure cannot simultaneously have a uniform lower $m$-power bound on $F$, arbitrarily small-aperture compact two-sided approximations inside $F$, base points with a common upper mass constant and arbitrarily small deleted mass, and null $m$-dimensional projections of $F$ onto every $m$-plane. The proof does not require the measure itself to be Hausdorff measure.
+\end{lemma}
+
+\begin{lemma}[Orthogonal layers of a descending subspace flag]
+\label{lem:nested-orthogonal-layers}
+\lean{Preiss.starProjection_comp_of_ge, Preiss.nestedProjectionLayer, Preiss.nestedProjectionLayer_symmetric, Preiss.nestedProjectionLayer_mem, Preiss.nestedProjectionLayer_eq_zero_of_mem, Preiss.sub_nestedProjectionLayer_mem, Preiss.nestedProjectionLayer_idempotent, Preiss.nestedProjectionLayer_comp_eq_zero, Preiss.sum_nestedProjectionLayer}
+
+For a descending finite flag $(U_i)$ in a finite-dimensional inner-product space, differences of successive orthogonal projections are self-adjoint idempotents with pairwise orthogonal ranges. Their sum telescopes to the difference of the endpoint projections. Residual and annihilation identities describe each layer.
+\end{lemma}
+
+\begin{lemma}[The kernel flag induced on a subspace by an orthogonal grading]
+\label{lem:kernel-grading-flag}
+\lean{Preiss.kernelGradingFlag, Preiss.mem_kernelGradingFlag, Preiss.kernelGradingFlag_antitone, Preiss.kernelGradingFlag_zero, Preiss.kernelGradingFlag_end}
+\uses{def:orthogonal-grading}
+
+Given an orthogonal grading $(P_i)$ and subspace $V$, the subspaces $K_i=\{v\in V:P_jv=0\text{ for }j<i\}$ form a descending flag from $V$ to zero.
+\end{lemma}
+
+\begin{lemma}[Orthogonal grading by kernel-flag layers]
+\label{lem:kernel-flag-layer-grading}
+\lean{Preiss.flagProjectionLayer, Preiss.flagProjectionLayer_isOrthogonalGrading}
+\uses{lem:kernel-grading-flag, lem:nested-orthogonal-layers}
+
+The differences of successive orthogonal projections onto the kernel flag form an orthogonal grading on $V$.
+\end{lemma}
+
+\begin{lemma}[Injectivity of the constant divided grading operator]
+\label{lem:divided-grading-constant-injective}
+\lean{Preiss.compressedGradingPiece, Preiss.flagProjectionLayer_compressed_inner, Preiss.dividedGradingConstant, Preiss.flagProjectionLayer_dividedGradingConstant, Preiss.dividedGradingConstant_injective}
+\uses{lem:kernel-flag-layer-grading, lem:kernel-grading-flag}
+
+Let $D_i$ be the kernel-flag layers and $R_i$ the compression of $P_i$ to $V$. The operator $\sum_i D_iR_i$ is injective. The proof uses $\langle D_iR_ix,x\rangle=\|P_ix\|^2$ on $K_i$, layer orthogonality, and induction through the flag.
+\end{lemma}
+
+\begin{lemma}[Uniqueness of full-dimensional uniform measures with fixed ball constant]
+\label{lem:uniform-full-dimension-unique}
+\lean{Preiss.uniformWithConstant_eq_of_fullDimension}
+\uses{gmt:uniform-full-dimension, lem:uniform-scaling}
+
+In positive dimension $m$, two $m$-uniform measures on $\mathbb R^m$ with the same positive ball constant are equal. This reuses FormalizingGMT\textquotesingle s full-dimensional classification and identifies the scalar by the unit-ball mass.
 \end{lemma}

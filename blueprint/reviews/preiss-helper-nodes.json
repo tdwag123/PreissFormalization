@@ -2113,6 +2113,180 @@
         "lem:graded-analytic-projection"
       ],
       "verification": "Exact-source local checks passed with only standard foundations; canonical module CI pending."
+    },
+    {
+      "id": "lem:plane-isometric-parametrization",
+      "kind": "lemma",
+      "title": "Isometric parametrization of a linear plane",
+      "lean_names": [
+        "Preiss.exists_linearIsometry_range_plane"
+      ],
+      "file": "Preiss/Geometry/PlaneEmbedding.lean",
+      "statement_tex": "Every $m$-dimensional plane in $\\mathbb R^n$ is the range of a linear isometric embedding of $\\mathbb R^m$, including $m=0$.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:plane"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:unit-flat-support-regularity",
+      "kind": "lemma",
+      "title": "Support and regularity of normalized flat measures",
+      "lean_names": [
+        "Preiss.flatOn_support",
+        "Preiss.regular_unitFlat",
+        "Preiss.unitFlat_support"
+      ],
+      "file": "Preiss/Geometry/UnitFlat.lean",
+      "statement_tex": "A positive multiple of plane Hausdorff measure has support exactly that plane. The normalized plane measure is regular and has the same support, in every dimension.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:flat-measure-regularity",
+        "lem:measure-support-transport",
+        "lem:plane-hausdorff"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:unit-flat-unit-uniform",
+      "kind": "lemma",
+      "title": "Normalized flat measures are unit uniform",
+      "lean_names": [
+        "Preiss.isUnitUniform_unitFlat"
+      ],
+      "file": "Preiss/Uniform/FlatMeasure.lean",
+      "statement_tex": "The normalized measure on every linear $m$-plane is unit $m$-uniform, with mass $r^m$ on every positive-radius closed ball centered in that plane.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:unit-flat-support-regularity",
+        "lem:plane-hausdorff",
+        "def:unit-uniform"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:two-sided-packing-core",
+      "kind": "lemma",
+      "title": "The packing contradiction from compact two-sided approximations",
+      "lean_names": [
+        "Preiss.false_of_compact_twoSided_approximation"
+      ],
+      "file": "Preiss/Rectifiability/MarstrandMattila/PackingCore.lean",
+      "statement_tex": "A measure cannot simultaneously have a uniform lower $m$-power bound on $F$, arbitrarily small-aperture compact two-sided approximations inside $F$, base points with a common upper mass constant and arbitrarily small deleted mass, and null $m$-dimensional projections of $F$ onto every $m$-plane. The proof does not require the measure itself to be Hausdorff measure.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:two-sided-approximation",
+        "lem:projection-hole-cover",
+        "lem:discarded-cylinder-sum",
+        "lem:column-packing",
+        "lem:column-mass-contradiction"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:nested-orthogonal-layers",
+      "kind": "lemma",
+      "title": "Orthogonal layers of a descending subspace flag",
+      "lean_names": [
+        "Preiss.starProjection_comp_of_ge",
+        "Preiss.nestedProjectionLayer",
+        "Preiss.nestedProjectionLayer_symmetric",
+        "Preiss.nestedProjectionLayer_mem",
+        "Preiss.nestedProjectionLayer_eq_zero_of_mem",
+        "Preiss.sub_nestedProjectionLayer_mem",
+        "Preiss.nestedProjectionLayer_idempotent",
+        "Preiss.nestedProjectionLayer_comp_eq_zero",
+        "Preiss.sum_nestedProjectionLayer"
+      ],
+      "file": "Preiss/Analysis/NestedProjections.lean",
+      "statement_tex": "For a descending finite flag $(U_i)$ in a finite-dimensional inner-product space, differences of successive orthogonal projections are self-adjoint idempotents with pairwise orthogonal ranges. Their sum telescopes to the difference of the endpoint projections. Residual and annihilation identities describe each layer.",
+      "definition_dependencies": [],
+      "deps": [],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:kernel-grading-flag",
+      "kind": "lemma",
+      "title": "The kernel flag induced on a subspace by an orthogonal grading",
+      "lean_names": [
+        "Preiss.kernelGradingFlag",
+        "Preiss.mem_kernelGradingFlag",
+        "Preiss.kernelGradingFlag_antitone",
+        "Preiss.kernelGradingFlag_zero",
+        "Preiss.kernelGradingFlag_end"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "Given an orthogonal grading $(P_i)$ and subspace $V$, the subspaces $K_i=\\{v\\in V:P_jv=0\\text{ for }j<i\\}$ form a descending flag from $V$ to zero.",
+      "definition_dependencies": [],
+      "deps": [
+        "def:orthogonal-grading"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:kernel-flag-layer-grading",
+      "kind": "lemma",
+      "title": "Orthogonal grading by kernel-flag layers",
+      "lean_names": [
+        "Preiss.flagProjectionLayer",
+        "Preiss.flagProjectionLayer_isOrthogonalGrading"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "The differences of successive orthogonal projections onto the kernel flag form an orthogonal grading on $V$.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:kernel-grading-flag",
+        "lem:nested-orthogonal-layers"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:divided-grading-constant-injective",
+      "kind": "lemma",
+      "title": "Injectivity of the constant divided grading operator",
+      "lean_names": [
+        "Preiss.compressedGradingPiece",
+        "Preiss.flagProjectionLayer_compressed_inner",
+        "Preiss.dividedGradingConstant",
+        "Preiss.flagProjectionLayer_dividedGradingConstant",
+        "Preiss.dividedGradingConstant_injective"
+      ],
+      "file": "Preiss/Analysis/GradedProjectionFlag.lean",
+      "statement_tex": "Let $D_i$ be the kernel-flag layers and $R_i$ the compression of $P_i$ to $V$. The operator $\\sum_i D_iR_i$ is injective. The proof uses $\\langle D_iR_ix,x\\rangle=\\|P_ix\\|^2$ on $K_i$, layer orthogonality, and induction through the flag.",
+      "definition_dependencies": [],
+      "deps": [
+        "lem:kernel-flag-layer-grading",
+        "lem:kernel-grading-flag"
+      ],
+      "used_by": [
+        "lem:graded-analytic-projection"
+      ],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
+    },
+    {
+      "id": "lem:uniform-full-dimension-unique",
+      "kind": "lemma",
+      "title": "Uniqueness of full-dimensional uniform measures with fixed ball constant",
+      "lean_names": [
+        "Preiss.uniformWithConstant_eq_of_fullDimension"
+      ],
+      "file": "Preiss/Uniform/FullDimension.lean",
+      "statement_tex": "In positive dimension $m$, two $m$-uniform measures on $\\mathbb R^m$ with the same positive ball constant are equal. This reuses FormalizingGMT\\textquotesingle s full-dimensional classification and identifies the scalar by the unit-ball mass.",
+      "definition_dependencies": [],
+      "deps": [
+        "gmt:uniform-full-dimension",
+        "lem:uniform-scaling"
+      ],
+      "used_by": [],
+      "verification": "Exact-source local proof and axiom checks passed; canonical imports await Linux CI."
     }
   ],
   "definition_edge_additions": {

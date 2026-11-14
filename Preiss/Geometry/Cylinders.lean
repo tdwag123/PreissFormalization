@@ -123,4 +123,60 @@ theorem exists_unit_small_projection_of_empty_inner_cylinder (hm : 0 < m)
   refine ⟨w, hw, hnorm, ?_⟩
   have heq : 4 * ρ / (ρ / (8 * β)) = 32 * β := by field_simp [hρ.ne', hβ.ne']; ring
   simpa only [heq] using hproj
+
+theorem exists_unit_small_projection_swapped (V W : Plane m n)
+    (w : Euclidean n) {ε : ℝ} (hε : 0 ≤ ε) (hw : w ∈ W.1)
+    (hnorm : ‖w‖ = 1) (hproj : ‖proj V w‖ ≤ ε) :
+    ∃ v : Euclidean n, v ∈ V.1 ∧ ‖v‖ = 1 ∧ ‖proj W v‖ ≤ ε := by
+  classical
+  let S : V.1 →ₗ[ℝ] W.1 := W.1.orthogonalProjectionOnto.toLinearMap.comp V.1.subtype
+  have hnormalize (v : V.1) :
+      ‖proj W (‖v‖⁻¹ • (v : Euclidean n))‖ = ‖S v‖ / ‖v‖ := by
+    have heq : proj W (‖v‖⁻¹ • (v : Euclidean n)) = ‖v‖⁻¹ • (S v : Euclidean n) := by
+      change W.1.starProjection (_ • _) = _
+      rw [map_smul]
+      rfl
+    rw [heq, norm_smul, Real.norm_eq_abs, abs_inv, abs_of_nonneg (norm_nonneg v),
+      Submodule.norm_coe, div_eq_mul_inv, mul_comm]
+  by_cases hS : Function.Injective S
+  · have hsurj : Function.Surjective S :=
+      (LinearMap.injective_iff_surjective_of_finrank_eq_finrank
+        (V.property.trans W.property.symm)).mp hS
+    obtain ⟨v, hv⟩ := hsurj ⟨w, hw⟩
+    have hSv : proj W (v : Euclidean n) = w := congrArg Subtype.val hv
+    have hnormS : ‖S v‖ = 1 := by rw [hv]; exact hnorm
+    have hvne : v ≠ 0 := by
+      intro hv0
+      rw [hv0, map_zero, norm_zero] at hnormS
+      norm_num at hnormS
+    have hvcoe : (v : Euclidean n) ≠ 0 := fun hh ↦ hvne (Subtype.ext hh)
+    have hinner : inner ℝ (v : Euclidean n) w = 1 := by
+      have hh := W.1.starProjection_inner_eq_zero (v : Euclidean n) w hw
+      change inner ℝ ((v : Euclidean n) - proj W (v : Euclidean n)) w = 0 at hh
+      rw [inner_sub_left, hSv, real_inner_self_eq_norm_sq, hnorm] at hh
+      norm_num at hh
+      linarith
+    have hinner' : inner ℝ (v : Euclidean n) (proj V w) = 1 := by
+      have hh := V.1.inner_starProjection_left_eq_right (v : Euclidean n) w
+      rw [V.1.starProjection_eq_self_iff.mpr v.property] at hh
+      change inner ℝ (v : Euclidean n) w = inner ℝ (v : Euclidean n) (proj V w) at hh
+      rw [← hh]
+      exact hinner
+    have hbound : 1 ≤ ‖v‖ * ε := by
+      calc
+        1 = inner ℝ (v : Euclidean n) (proj V w) := hinner'.symm
+        _ ≤ ‖(v : Euclidean n)‖ * ‖proj V w‖ := real_inner_le_norm _ _
+        _ ≤ ‖v‖ * ε := by
+          rw [Submodule.norm_coe]
+          exact mul_le_mul_of_nonneg_left hproj (norm_nonneg v)
+    refine ⟨‖v‖⁻¹ • (v : Euclidean n), V.1.smul_mem _ v.property, norm_smul_inv_norm hvcoe, ?_⟩
+    rw [hnormalize, hnormS]
+    apply (div_le_iff₀ (norm_pos_iff.mpr hvne)).mpr
+    simpa only [mul_comm] using hbound
+  · have hker : S.ker ≠ ⊥ := fun hh ↦ hS (LinearMap.ker_eq_bot.mp hh)
+    obtain ⟨v, hvker, hvne⟩ := Submodule.exists_mem_ne_zero_of_ne_bot hker
+    have hvcoe : (v : Euclidean n) ≠ 0 := fun hh ↦ hvne (Subtype.ext hh)
+    refine ⟨‖v‖⁻¹ • (v : Euclidean n), V.1.smul_mem _ v.property, norm_smul_inv_norm hvcoe, ?_⟩
+    rw [hnormalize, show S v = 0 from hvker, norm_zero, zero_div]
+    exact hε
 end Preiss
