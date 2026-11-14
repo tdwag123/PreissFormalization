@@ -1166,6 +1166,261 @@
       "used_by": [
         "lem:weak-approximation-restrict-ae"
       ]
+    },
+    {
+      "id": "def:dense-compact-tests",
+      "kind": "definition",
+      "title": "Dense compact tests with common supports and cutoffs",
+      "statement_tex": "For a topological space $X$, DenseCompactTestFamily consists of a sequence $f_j\\in C_c(X,\\mathbb R)$ containing nonnegative cutoffs majorizing $1$ on every compact set. For every $f\\in C_c(X,\\mathbb R)$ there is one compact $K$ containing its support such that, for every $\\varepsilon>0$, some $f_j$ is supported in $K$ and satisfies $|f_j-f|<\\varepsilon$ everywhere. The compact set is fixed before choosing the accuracy.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.DenseCompactTestFamily"
+      ],
+      "file": "Preiss/Analysis/DenseCompactTests.lean",
+      "verification": "Build agent exact-source VagueMetrizationCheck passed all seven new declarations with standard axioms only; canonical import integration awaits CI.",
+      "statements_lean": [
+        "structure DenseCompactTestFamily (X : Type*) [TopologicalSpace X] where\n  tests : ℕ → C_c(X, ℝ)\n  cutoffs : ∀ K : Set X, IsCompact K → ∃ j,\n    (∀ x, 0 ≤ tests j x) ∧ ∀ x ∈ K, 1 ≤ tests j x\n  approximation : ∀ f : C_c(X, ℝ), ∃ K : Set X, IsCompact K ∧ tsupport f ⊆ K ∧\n    ∀ ε : ℝ, 0 < ε → ∃ j, tsupport (tests j) ⊆ K ∧\n      ∀ x, |tests j x - f x| < ε\n"
+      ]
+    },
+    {
+      "id": "lem:dense-continuous-approximation",
+      "kind": "lemma",
+      "title": "Dense continuous maps approximate uniformly on compact sets",
+      "statement_tex": "For an arbitrary topological space $X$, a sequence with dense range in $C(X,\\mathbb R)$ approximates each continuous function to every positive accuracy uniformly on every fixed compact set.",
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.dense_continuousMap_uniform_approximation"
+      ],
+      "file": "Preiss/Analysis/DenseCompactTests.lean",
+      "used_by": [
+        "lem:dense-compact-tests-exist"
+      ],
+      "verification": "Build agent exact-source VagueMetrizationCheck passed all seven new declarations with standard axioms only; canonical import integration awaits CI.",
+      "statements_lean": [
+        "theorem dense_continuousMap_uniform_approximation\n    (g : ℕ → C(X, ℝ)) (hg : DenseRange g) (f : C(X, ℝ))\n    (K : Set X) (hK : IsCompact K) (ε : ℝ) (hε : 0 < ε) :\n    ∃ j, ∀ x ∈ K, |g j x - f x| < ε"
+      ]
+    },
+    {
+      "id": "lem:dense-compact-tests-exist",
+      "kind": "lemma",
+      "title": "Existence of a dense compact-test family",
+      "statement_tex": "Every locally compact, second-countable Hausdorff space admits DenseCompactTestFamily data.",
+      "hypotheses": [
+        "TopologicalSpace X, T2Space X, LocallyCompactSpace X, SecondCountableTopology X."
+      ],
+      "definition_dependencies": [
+        "def:dense-compact-tests"
+      ],
+      "deps": [
+        "lem:dense-continuous-approximation"
+      ],
+      "lean_names": [
+        "Preiss.exists_denseCompactTestFamily"
+      ],
+      "file": "Preiss/Analysis/DenseCompactTests.lean",
+      "proof_sketch_tex": "Choose a countable dense family of continuous functions and a compact exhaustion with nested interiors. Construct nonnegative compact cutoffs and enumerate each cutoff together with all products of that cutoff and the dense continuous family. Multiplying by a cutoff yields uniform approximation with one fixed compact support.",
+      "used_by": [
+        "lem:vague-countable-metric"
+      ],
+      "verification": "Build agent exact-source VagueMetrizationCheck passed all seven new declarations with standard axioms only; canonical import integration awaits CI.",
+      "statements_lean": [
+        "theorem exists_denseCompactTestFamily [T2Space X] [LocallyCompactSpace X]\n    [SecondCountableTopology X] : Nonempty (DenseCompactTestFamily X)"
+      ]
+    },
+    {
+      "id": "lem:vague-determining-tests",
+      "kind": "lemma",
+      "title": "Supplied compact tests determine vague convergence and measures",
+      "statement_tex": "For a supplied DenseCompactTestFamily on $\\mathbb R^n$ and regular measures $\\mu_i,\\nu$, vague convergence $\\mu_i\\rightharpoonup\\nu$ is equivalent to convergence of the integrals of every enumerated test. Two regular measures with equal integrals on every enumerated test are equal.",
+      "definition_dependencies": [
+        "def:dense-compact-tests",
+        "gmt:vague"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.weaklyConverges_iff_denseCompactTests",
+        "Preiss.measure_eq_of_denseCompactTests"
+      ],
+      "file": "Preiss/Analysis/Vague/DeterminingTests.lean",
+      "proof_sketch_tex": "The cutoff test on the common compact support bounds all relevant masses eventually. Uniform approximation bounds the two outer integral errors; convergence on one selected test controls the middle error. A three-term estimate proves convergence for every compact test. Equality follows by applying this to a constant sequence and the Riesz measure uniqueness theorem.",
+      "used_by": [
+        "def:vague-metrization-from-tests"
+      ],
+      "verification": "Build agent exact-source VagueMetrizationCheck passed all seven new declarations with standard axioms only; canonical import integration awaits CI.",
+      "statements_lean": [
+        "theorem weaklyConverges_iff_denseCompactTests\n    (F : DenseCompactTestFamily (Euclidean n))\n    (μ : ℕ → Measure (Euclidean n)) (ν : Measure (Euclidean n))\n    (hμ : ∀ i, (μ i).Regular) (hν : ν.Regular) :\n    Measure.WeaklyConverges μ ν ↔ ∀ j,\n      Tendsto (fun i => ∫ x, F.tests j x ∂μ i) atTop (𝓝 (∫ x, F.tests j x ∂ν))",
+        "theorem measure_eq_of_denseCompactTests\n    (F : DenseCompactTestFamily (Euclidean n))\n    (μ ν : Measure (Euclidean n)) (hμ : μ.Regular) (hν : ν.Regular)\n    (h : ∀ j, (∫ x, F.tests j x ∂μ) = ∫ x, F.tests j x ∂ν) : μ = ν"
+      ]
+    },
+    {
+      "id": "def:vague-metrization-from-tests",
+      "kind": "definition",
+      "title": "Constructing a vague metric from supplied compact tests",
+      "statement_tex": "A supplied DenseCompactTestFamily on $\\mathbb R^n$ produces explicit VagueMetrization data by applying the countable-coordinate metric to test integrals of regular measures. Point separation and the exact convergence specification follow from the supplied-test determination theorem.",
+      "definition_dependencies": [
+        "def:dense-compact-tests",
+        "def:vague-metrization"
+      ],
+      "deps": [
+        "lem:vague-determining-tests",
+        "lem:countable-coordinate-metric"
+      ],
+      "lean_names": [
+        "Preiss.vagueMetrizationOfDenseCompactTests"
+      ],
+      "file": "Preiss/Analysis/Vague/Metrization.lean",
+      "used_by": [
+        "lem:vague-countable-metric"
+      ],
+      "verification": "Build agent exact-source VagueMetrizationCheck passed all seven new declarations with standard axioms only; canonical import integration awaits CI.",
+      "statements_lean": [
+        "noncomputable def vagueMetrizationOfDenseCompactTests {n : ℕ}\n    (F : DenseCompactTestFamily (Euclidean n)) : VagueMetrization n"
+      ]
+    },
+    {
+      "id": "lem:integral-operator-annihilation",
+      "kind": "lemma",
+      "title": "An operator-valued integral preserves a common kernel vector",
+      "statement_tex": "Let $A:\\Omega\\to\\mathcal L(H,F)$ for arbitrary real normed spaces $H,F$ and a measure $\\mu$. If $A(z)u=0$ for almost every $z$, then $(\\int A\\,d\\mu)u=0$. No integrability, completeness, or measurability assumption on $A$ is required beyond the almost-everywhere assertion.",
+      "hypotheses": [
+        "Omega is any measurable space and mu any measure.",
+        "H and F are normed additive commutative groups with real normed-space structures.",
+        "A(z)u=0 mu-almost everywhere."
+      ],
+      "definition_dependencies": [],
+      "deps": [],
+      "lean_names": [
+        "Preiss.integral_apply_eq_zero_of_ae"
+      ],
+      "file": "Preiss/Analysis/LinearMapIntegral.lean",
+      "proof_sketch_tex": "For an integrable operator-valued function, commute evaluation with the integral and integrate the zero scalar/vector function. Otherwise the total Bochner integral is zero.",
+      "used_by": [
+        "lem:feature-moment-vanishing"
+      ],
+      "statements_lean": [
+        "theorem integral_apply_eq_zero_of_ae {Ω H F : Type*} [MeasurableSpace Ω]\n    [NormedAddCommGroup H] [NormedSpace ℝ H] [NormedAddCommGroup F] [NormedSpace ℝ F]\n    (μ : Measure Ω) (A : Ω → H →L[ℝ] F) (u : H)\n    (hz : ∀ᵐ z ∂μ, A z u = 0) : (∫ z, A z ∂μ) u = 0"
+      ],
+      "verification": "Exact generic/strong proof bodies passed FeatureMomentVanishingCheck with standard axioms only; original wrapper is the direct specialization, integration awaits CI."
+    },
+    {
+      "id": "def:feature-moment",
+      "kind": "definition",
+      "title": "The support feature span and weighted feature moment",
+      "statement_tex": "For any measure $\\mu$, let $V=\\operatorname{span}(\\Phi_N(\\operatorname{supp}\\mu))$. Define the continuous linear form $L_s=I(s)^{-1}\\int e^{-s\\|z\\|^2}\\langle\\Phi_N(z),A(s)(\\cdot)\\rangle\\,d\\mu(z)$ by the total operator-valued Bochner integral.",
+      "definition_dependencies": [
+        "def:polynomial-feature",
+        "def:orthogonal-grading",
+        "def:moments"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.supportFeatureSpan",
+        "Preiss.featureMoment"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "status_note": "Concrete definitions contain no placeholder or choice from an unfinished existence assertion.",
+      "statements_lean": [
+        "noncomputable def supportFeatureSpan (μ : Measure (Euclidean n)) (N : ℕ) :\n    Submodule ℝ (PolynomialFeatureSpace n N)",
+        "theorem featureMoment_apply_feature (μ : Measure (Euclidean n))\n    (hm : 0 < m) (hμ : IsUnitUniform m μ) (N : ℕ)\n    (s : ℝ) (hs : 0 < s) (x : Euclidean n) :\n    featureMoment μ N s (polynomialFeature N x) =\n      ∑ k ∈ Finset.range N, gaussianMomentForm μ (k + 1) s (fun _ => x)"
+      ],
+      "verification": "Exact generic/strong proof bodies passed FeatureMomentVanishingCheck with standard axioms only; original wrapper is the direct specialization, integration awaits CI."
+    },
+    {
+      "id": "lem:feature-moment-vanishing",
+      "kind": "lemma",
+      "title": "Weighted feature moments vanish on the weighted complement",
+      "statement_tex": "For every measure $\\mu$ on $\\mathbb R^n$, every natural $N$, every real $s$, and every $u$ such that $A(s)u\\in\\operatorname{span}(\\Phi_N(\\operatorname{supp}\\mu))^\\perp$, the feature moment satisfies $L_s(u)=0$. The original unit-uniform, positive-parameter statement is retained as a wrapper.",
+      "hypotheses": [
+        "No uniformity, regularity, growth, or positive-parameter hypothesis is needed for the stronger assertion."
+      ],
+      "definition_dependencies": [
+        "def:feature-moment",
+        "def:orthogonal-grading"
+      ],
+      "deps": [
+        "lem:integral-operator-annihilation"
+      ],
+      "lean_names": [
+        "Preiss.featureMoment_eq_zero_of_mem_weightedComplement",
+        "Preiss.featureMoment_vanishes_weightedComplement"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "proof_sketch_tex": "The support of every Euclidean measure is conull. At a support point its feature belongs to the support feature span, so orthogonality makes the evaluated operator kernel vanish. Apply the generic integral-kernel lemma and scalar normalization.",
+      "used_by": [
+        "lem:taylor-two"
+      ],
+      "status_note": "Exact strong proof passed local kernel check with standard axioms; canonical integration awaits CI.",
+      "statements_lean": [
+        "theorem featureMoment_eq_zero_of_mem_weightedComplement {n : ℕ}\n    (μ : Measure (Euclidean n)) (N : ℕ) (s : ℝ)\n    (u : PolynomialFeatureSpace n N)\n    (hu : u ∈ weightedComplement polynomialFeatureProjection (supportFeatureSpan μ N) s) :\n    featureMoment μ N s u = 0",
+        "theorem featureMoment_vanishes_weightedComplement\n    (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)\n    (N : ℕ) (s : ℝ) (hs : 0 < s) (u : PolynomialFeatureSpace n N)\n    (hu : u ∈ weightedComplement polynomialFeatureProjection (supportFeatureSpan μ N) s) :\n    featureMoment μ N s u = 0"
+      ],
+      "verification": "Exact generic/strong proof bodies passed FeatureMomentVanishingCheck with standard axioms only; original wrapper is the direct specialization, integration awaits CI."
+    },
+    {
+      "id": "lem:vague-scalar-limits",
+      "title": "Nonzero vague limits of scalar rescalings are proportional",
+      "lean_names": [
+        "Preiss.exists_pos_smul_of_vague_and_scaled_vague"
+      ],
+      "file": "Preiss/Analysis/Vague/ScalarLimits.lean",
+      "statement_tex": "On any locally compact Hausdorff space with its Borel measurable structure, suppose $\\mu_i\\rightharpoonup\\nu$ and $c_i\\mu_i\\rightharpoonup\\xi$, where $\\nu,\\xi$ are nonzero regular measures and $c_i\\in[0,\\infty]$. Then $\\xi=a\\nu$ for some positive finite $a$. No regularity assumption on the sequence is needed for the compact-test integral formulation.",
+      "deps": [
+        "gmt:vague"
+      ],
+      "kind": "lemma",
+      "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
+    },
+    {
+      "id": "lem:general-tangent-scalar",
+      "title": "Positive finite scalar multiples preserve general tangents",
+      "lean_names": [
+        "Preiss.isTangentMeasure_smul"
+      ],
+      "file": "Preiss/Tangent/Basic.lean",
+      "statement_tex": "If $\\nu\\in\\operatorname{Tan}(\\mu,x)$ and $0<a<\\infty$, then $a\\nu\\in\\operatorname{Tan}(\\mu,x)$. No local-finiteness assumption on the source measure is required.",
+      "deps": [
+        "def:tangent-api"
+      ],
+      "kind": "lemma",
+      "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
+    },
+    {
+      "id": "lem:dimensional-extraction-ball-bounds",
+      "title": "Dimensional subsequence extraction from two-sided ball bounds",
+      "lean_names": [
+        "Preiss.exists_dimensional_tangent_subseq_of_ball_bounds"
+      ],
+      "file": "Preiss/Tangent/Extraction.lean",
+      "statement_tex": "Let $\\mu$ be locally finite and suppose $p r^m\\leq\\mu(\\overline B(x,r))\\leq q r^m$ for all $0<r<R_0$, where $p,q,R_0>0$. Every positive sequence $r_i\\to0$ admits a strictly increasing subsequence for which the dimensionally normalized blow-ups converge vaguely to a nonzero regular measure, which is also a general tangent. All natural dimensions, including zero, are allowed.",
+      "deps": [
+        "def:dimensional-tangent",
+        "lem:dimensional-tangent-operations",
+        "gmt:blowup-balls",
+        "gmt:portmanteau",
+        "thm:compactness"
+      ],
+      "kind": "lemma",
+      "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
+    },
+    {
+      "id": "lem:tangent-ray-density-bounds",
+      "title": "Tangent-ray correspondence under density bounds",
+      "lean_names": [
+        "Preiss.tangent_iff_dimensional_ray_of_ball_bounds",
+        "Preiss.tangent_iff_dimensional_ray_of_density_bounds"
+      ],
+      "file": "Preiss/Tangent/Normalization.lean",
+      "statement_tex": "For a locally finite measure with positive lower and finite upper $m$-density at $x$, $\\nu\\in\\operatorname{Tan}(\\mu,x)$ if and only if $\\nu=c\\xi$ for some $0<c<\\infty$ and $\\xi\\in\\operatorname{Tan}_m(\\mu,x)$. A preceding version assumes only explicit two-sided local ball bounds. No existence of a density limit is used.",
+      "deps": [
+        "lem:dimensional-extraction-ball-bounds",
+        "lem:vague-scalar-limits",
+        "lem:general-tangent-scalar",
+        "gmt:density-bounds"
+      ],
+      "kind": "lemma",
+      "status_note": "Core proof checked locally with standard axioms; density wrappers use exact GMT ball-bounds API and await full CI."
     }
   ],
   "definition_edge_additions": {

@@ -2057,17 +2057,14 @@
       "hypotheses_tex": "\\(\\mu\\) is locally finite and \\(0<\\Theta_*^m(\\mu,x)\\leq\\Theta^{*m}(\\mu,x)<\\infty\\) at the fixed point \\(x\\).",
       "proof_tex": "",
       "deps": [
-        "gmt:blowup-balls",
-        "gmt:blowup-regular",
         "gmt:density-bounds",
-        "gmt:portmanteau",
-        "thm:compactness"
+        "lem:dimensional-extraction-ball-bounds"
       ],
       "lean_names": [
         "Preiss.exists_dimensional_tangent_subseq_of_density_bounds"
       ],
       "proposed_lean_name": "Preiss.exists_dimensional_tangent_subseq_of_density_bounds",
-      "proposed_file": "Preiss/Tangent/Compactness.lean",
+      "proposed_file": "Preiss/Tangent/Extraction.lean",
       "scope": "core",
       "branch": "Rectifiability",
       "source": "De Lellis Chapters 4--5; see the rectifiability audit.",
@@ -2075,7 +2072,7 @@
       "note": "",
       "role": "Preiss proof",
       "source_files": [
-        "Preiss/Tangent/Compactness.lean"
+        "Preiss/Tangent/Extraction.lean"
       ]
     },
     {
@@ -2397,14 +2394,8 @@
         "Preiss.tangent_iff_dimensional_ray"
       ],
       "deps": [
-        "def:dimensional-tangent",
-        "def:flat",
         "def:positive-density",
-        "gmt:continuity-sets",
-        "gmt:normalized-tangent",
-        "lem:density-bridge",
-        "lem:plane-scaling",
-        "thm:compactness"
+        "lem:tangent-ray-density-bounds"
       ],
       "branch": "Existing interfaces",
       "role": "Preiss proof",
@@ -3331,7 +3322,9 @@
       "proof_tex": "Construct or reuse a metric on regular positive locally finite Euclidean\nmeasures which detects vague convergence on families with common compact mass\nbounds. Include enough cutoff tests to control masses. The necessary outputs are\nsequential convergence equivalence, separation, a diagonal selection lemma,\nand finite covers of a compact family by metric balls. This can live in a\ngeneral vague-convergence module rather than the Preiss theorem file.",
       "deps": [
         "def:vague-metrization",
-        "lem:countable-coordinate-metric"
+        "def:vague-metrization-from-tests",
+        "lem:countable-coordinate-metric",
+        "lem:dense-compact-tests-exist"
       ],
       "lean_names": [
         "Preiss.exists_vagueMetrization"
@@ -3694,16 +3687,15 @@
       "hypotheses_tex": "",
       "proof_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
       "deps": [
+        "def:feature-moment",
         "def:moments",
         "def:polynomial-feature",
         "def:unit-uniform",
+        "lem:gaussian-polynomial-integrable",
         "lem:polynomial-feature-identities"
       ],
       "lean_names": [
-        "Preiss.featureMoment",
-        "Preiss.featureMoment_apply_feature",
-        "Preiss.featureMoment_vanishes_weightedComplement",
-        "Preiss.supportFeatureSpan"
+        "Preiss.featureMoment_apply_feature"
       ],
       "proposed_lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
       "proposed_file": "Preiss/Uniform/MomentFeatures.lean",
@@ -3954,6 +3946,7 @@
         "def:moment-coefficients",
         "def:moments",
         "def:unit-uniform",
+        "lem:feature-moment-vanishing",
         "lem:feature-norm-functionals",
         "lem:graded-analytic-projection",
         "lem:moment-feature-remainder",
@@ -7039,6 +7032,224 @@
         "Preiss/Rectifiability/WeakApproximation/Density.lean"
       ],
       "proposed_file": "Preiss/Rectifiability/WeakApproximation/Density.lean"
+    },
+    {
+      "id": "def:dense-compact-tests",
+      "kind": "definition",
+      "title": "Dense compact tests with common supports and cutoffs",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.DenseCompactTestFamily"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/DenseCompactTests.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/DenseCompactTests.lean"
+    },
+    {
+      "id": "lem:dense-continuous-approximation",
+      "kind": "lemma",
+      "title": "Dense continuous maps approximate uniformly on compact sets",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.dense_continuousMap_uniform_approximation"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/DenseCompactTests.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/DenseCompactTests.lean"
+    },
+    {
+      "id": "lem:dense-compact-tests-exist",
+      "kind": "lemma",
+      "title": "Existence of a dense compact-test family",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_denseCompactTestFamily"
+      ],
+      "deps": [
+        "def:dense-compact-tests",
+        "lem:dense-continuous-approximation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/DenseCompactTests.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/DenseCompactTests.lean"
+    },
+    {
+      "id": "lem:vague-determining-tests",
+      "kind": "lemma",
+      "title": "Supplied compact tests determine vague convergence and measures",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.measure_eq_of_denseCompactTests",
+        "Preiss.weaklyConverges_iff_denseCompactTests"
+      ],
+      "deps": [
+        "def:dense-compact-tests",
+        "gmt:vague"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/DeterminingTests.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/DeterminingTests.lean"
+    },
+    {
+      "id": "def:vague-metrization-from-tests",
+      "kind": "definition",
+      "title": "Constructing a vague metric from supplied compact tests",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.vagueMetrizationOfDenseCompactTests"
+      ],
+      "deps": [
+        "def:dense-compact-tests",
+        "def:vague-metrization",
+        "lem:countable-coordinate-metric",
+        "lem:vague-determining-tests"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/Metrization.lean"
+    },
+    {
+      "id": "lem:integral-operator-annihilation",
+      "kind": "lemma",
+      "title": "An operator-valued integral preserves a common kernel vector",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_apply_eq_zero_of_ae"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/LinearMapIntegral.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/LinearMapIntegral.lean"
+    },
+    {
+      "id": "def:feature-moment",
+      "kind": "definition",
+      "title": "The support feature span and weighted feature moment",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.featureMoment",
+        "Preiss.supportFeatureSpan"
+      ],
+      "deps": [
+        "def:moments",
+        "def:orthogonal-grading",
+        "def:polynomial-feature"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentFeatures.lean"
+    },
+    {
+      "id": "lem:feature-moment-vanishing",
+      "kind": "lemma",
+      "title": "Weighted feature moments vanish on the weighted complement",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.featureMoment_eq_zero_of_mem_weightedComplement",
+        "Preiss.featureMoment_vanishes_weightedComplement"
+      ],
+      "deps": [
+        "def:feature-moment",
+        "def:orthogonal-grading",
+        "lem:integral-operator-annihilation"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "proposed_file": "Preiss/Uniform/MomentFeatures.lean"
+    },
+    {
+      "id": "lem:vague-scalar-limits",
+      "kind": "lemma",
+      "title": "Nonzero vague limits of scalar rescalings are proportional",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_pos_smul_of_vague_and_scaled_vague"
+      ],
+      "deps": [
+        "gmt:vague"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/Vague/ScalarLimits.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/Vague/ScalarLimits.lean"
+    },
+    {
+      "id": "lem:general-tangent-scalar",
+      "kind": "lemma",
+      "title": "Positive finite scalar multiples preserve general tangents",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.isTangentMeasure_smul"
+      ],
+      "deps": [
+        "def:tangent-api"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Basic.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Basic.lean"
+    },
+    {
+      "id": "lem:dimensional-extraction-ball-bounds",
+      "kind": "lemma",
+      "title": "Dimensional subsequence extraction from two-sided ball bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.exists_dimensional_tangent_subseq_of_ball_bounds"
+      ],
+      "deps": [
+        "def:dimensional-tangent",
+        "gmt:blowup-balls",
+        "gmt:portmanteau",
+        "lem:dimensional-tangent-operations",
+        "thm:compactness"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Extraction.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Extraction.lean"
+    },
+    {
+      "id": "lem:tangent-ray-density-bounds",
+      "kind": "lemma",
+      "title": "Tangent-ray correspondence under density bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.tangent_iff_dimensional_ray_of_ball_bounds",
+        "Preiss.tangent_iff_dimensional_ray_of_density_bounds"
+      ],
+      "deps": [
+        "gmt:density-bounds",
+        "lem:dimensional-extraction-ball-bounds",
+        "lem:general-tangent-scalar",
+        "lem:vague-scalar-limits"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Tangent/Normalization.lean"
+      ],
+      "proposed_file": "Preiss/Tangent/Normalization.lean"
     }
   ],
   "preiss_core": [
@@ -7047,9 +7258,11 @@
     "def:cone",
     "def:conical",
     "def:coverage",
+    "def:dense-compact-tests",
     "def:density-api",
     "def:dimensional-blowup",
     "def:dimensional-tangent",
+    "def:feature-moment",
     "def:first-crossing-data",
     "def:flat",
     "def:flatness",
@@ -7075,6 +7288,7 @@
     "def:uniform-constant",
     "def:unit-uniform",
     "def:vague-metrization",
+    "def:vague-metrization-from-tests",
     "def:weak-approximation",
     "def:weak-approximation-good-set",
     "gmt:barycenter-quadratic-bound",
@@ -7133,6 +7347,8 @@
     "lem:countable-carrier",
     "lem:countable-coordinate-metric",
     "lem:decomposition",
+    "lem:dense-compact-tests-exist",
+    "lem:dense-continuous-approximation",
     "lem:density-bounds-good-set",
     "lem:density-bridge",
     "lem:density-limit-values",
@@ -7141,6 +7357,7 @@
     "lem:diameter-hausdorff-bound",
     "lem:dimensional-blowup-support",
     "lem:dimensional-compactness",
+    "lem:dimensional-extraction-ball-bounds",
     "lem:dimensional-tangent-ball-constant",
     "lem:dimensional-tangent-closed",
     "lem:dimensional-tangent-compactness",
@@ -7151,6 +7368,7 @@
     "lem:empty-cylinder-direction",
     "lem:excess-dimension",
     "lem:exponential-tail-integral",
+    "lem:feature-moment-vanishing",
     "lem:feature-norm-functionals",
     "lem:finite-piece-transfer",
     "lem:finite-pieces",
@@ -7187,6 +7405,7 @@
     "lem:gaussian-weight-exponential",
     "lem:gaussian-weight-finite",
     "lem:gaussian-wick-fourth",
+    "lem:general-tangent-scalar",
     "lem:graded-analytic-projection",
     "lem:graph-parametrization",
     "lem:graph-rectifiable",
@@ -7199,6 +7418,7 @@
     "lem:hyperplane-tangent-lineage",
     "lem:hyperplane-transport-map",
     "lem:infinity-compactness",
+    "lem:integral-operator-annihilation",
     "lem:iterated-derivative-id-product",
     "lem:lower-ball-hausdorff-bound",
     "lem:lower-ball-open-comparison",
@@ -7263,6 +7483,7 @@
     "lem:tangent-blowdown",
     "lem:tangent-existence",
     "lem:tangent-ray",
+    "lem:tangent-ray-density-bounds",
     "lem:taylor-one",
     "lem:taylor-two",
     "lem:trace-rigidity",
@@ -7280,11 +7501,13 @@
     "lem:uniform-vague-closed",
     "lem:unit-uniform-adapter",
     "lem:vague-countable-metric",
+    "lem:vague-determining-tests",
     "lem:vague-diagonal",
     "lem:vague-gaussian-polynomials",
     "lem:vague-moving-blowups",
     "lem:vague-moving-tests",
     "lem:vague-projection-energy",
+    "lem:vague-scalar-limits",
     "lem:vague-support-approximation",
     "lem:vague-support-limit",
     "lem:vanishing-density-negligible-deletion",
@@ -7324,7 +7547,6 @@
     "def:density-api",
     "def:dimensional-blowup",
     "def:dimensional-tangent",
-    "def:flat",
     "def:lipschitz-graph",
     "def:parametrized-coverage",
     "def:plane",
@@ -7340,8 +7562,6 @@
     "gmt:compact-test-perturbation",
     "gmt:continuity-sets",
     "gmt:density-bounds",
-    "gmt:density-exists-set",
-    "gmt:density-limit",
     "gmt:density-points",
     "gmt:finite-restriction",
     "gmt:goodsets",
@@ -7349,8 +7569,6 @@
     "gmt:hausdorff-density-outside",
     "gmt:hausdorff-density-upper",
     "gmt:hausdorff-regular",
-    "gmt:normalized-tangent",
-    "gmt:origin-support",
     "gmt:portmanteau",
     "gmt:restriction-tangents",
     "gmt:scaled-discarded-mass",
@@ -7366,11 +7584,12 @@
     "lem:cone-graph",
     "lem:decomposition",
     "lem:density-bounds-good-set",
-    "lem:density-bridge",
-    "lem:density-limit-values",
     "lem:density-measure-comparison",
     "lem:diameter-hausdorff-bound",
+    "lem:dimensional-blowup-support",
     "lem:dimensional-compactness",
+    "lem:dimensional-extraction-ball-bounds",
+    "lem:dimensional-tangent-operations",
     "lem:discarded-cylinder-sum",
     "lem:domain-extension",
     "lem:empty-cylinder-direction",
@@ -7378,9 +7597,9 @@
     "lem:finite-pieces",
     "lem:flat-limit-moving-balls",
     "lem:flat-limit-tube",
-    "lem:flat-plane-blowup",
     "lem:flat-to-approximation",
     "lem:full-rank-graph-pieces",
+    "lem:general-tangent-scalar",
     "lem:graph-affine-area",
     "lem:graph-area",
     "lem:graph-blowup",
@@ -7403,7 +7622,6 @@
     "lem:packing-contradiction",
     "lem:plane-hausdorff",
     "lem:plane-projection-subsequence",
-    "lem:plane-scaling",
     "lem:projected-tube-slab-bound",
     "lem:projection-distance",
     "lem:projection-hole-cover",
@@ -7413,8 +7631,12 @@
     "lem:rank-deficient-image-null",
     "lem:representation",
     "lem:tangent-ray",
+    "lem:tangent-ray-density-bounds",
     "lem:tube-support-upgrade",
     "lem:uniform-compact-selection",
+    "lem:vague-moving-blowups",
+    "lem:vague-moving-tests",
+    "lem:vague-scalar-limits",
     "lem:vanishing-density-negligible-deletion",
     "lem:vanishing-density-scaled-balls",
     "lem:weak-approximation-deletion",

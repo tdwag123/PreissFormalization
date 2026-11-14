@@ -118,7 +118,7 @@
       "planned_lean_names": [
         "Preiss.exists_vagueMetrization"
       ],
-      "status": "Canonical proof currently unfinished. Keep this obligation separate from statements quantified over a supplied metrization.",
+      "status": "Canonical proof now complete and exact-source kernel checked with only standard axioms. Separate-module integration pending CI. Keeping existence separate remains useful for reusable conditional results.",
       "files": [
         "Preiss/Analysis/Vague/Metrization.lean"
       ],
@@ -584,18 +584,12 @@
     },
     "lem:moment-feature-annihilation": {
       "lean_names": [
-        "Preiss.supportFeatureSpan",
-        "Preiss.featureMoment",
-        "Preiss.featureMoment_apply_feature",
-        "Preiss.featureMoment_vanishes_weightedComplement"
+        "Preiss.featureMoment_apply_feature"
       ],
       "planned_lean_names": [
-        "Preiss.supportFeatureSpan",
-        "Preiss.featureMoment",
-        "Preiss.featureMoment_apply_feature",
-        "Preiss.featureMoment_vanishes_weightedComplement"
+        "Preiss.featureMoment_apply_feature"
       ],
-      "status": "source interface written",
+      "status": "Canonical statement compiled; evaluation proof remains unfinished.",
       "files": [
         "Preiss/Uniform/MomentFeatures.lean"
       ],
@@ -1350,6 +1344,89 @@
       "status": "existing upstream",
       "files": [
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      ]
+    },
+    "lem:feature-moment-vanishing": {
+      "lean_names": [
+        "Preiss.featureMoment_eq_zero_of_mem_weightedComplement",
+        "Preiss.featureMoment_vanishes_weightedComplement"
+      ],
+      "status": "Exact strong proof passed local kernel check with standard axioms; canonical integration awaits CI.",
+      "files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "planned_lean_names": [
+        "Preiss.featureMoment_eq_zero_of_mem_weightedComplement",
+        "Preiss.featureMoment_vanishes_weightedComplement"
+      ]
+    },
+    "def:feature-moment": {
+      "lean_names": [
+        "Preiss.supportFeatureSpan",
+        "Preiss.featureMoment"
+      ],
+      "status": "Concrete definitions contain no placeholder or choice from an unfinished existence assertion.",
+      "files": [
+        "Preiss/Uniform/MomentFeatures.lean"
+      ],
+      "planned_lean_names": [
+        "Preiss.supportFeatureSpan",
+        "Preiss.featureMoment"
+      ]
+    },
+    "lem:integral-operator-annihilation": {
+      "lean_names": [
+        "Preiss.integral_apply_eq_zero_of_ae"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/LinearMapIntegral.lean"
+      ]
+    },
+    "def:vague-metrization-from-tests": {
+      "lean_names": [
+        "Preiss.vagueMetrizationOfDenseCompactTests"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/Vague/Metrization.lean"
+      ]
+    },
+    "lem:vague-determining-tests": {
+      "lean_names": [
+        "Preiss.weaklyConverges_iff_denseCompactTests",
+        "Preiss.measure_eq_of_denseCompactTests"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/Vague/DeterminingTests.lean"
+      ]
+    },
+    "lem:dense-compact-tests-exist": {
+      "lean_names": [
+        "Preiss.exists_denseCompactTestFamily"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/DenseCompactTests.lean"
+      ]
+    },
+    "lem:dense-continuous-approximation": {
+      "lean_names": [
+        "Preiss.dense_continuousMap_uniform_approximation"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/DenseCompactTests.lean"
+      ]
+    },
+    "def:dense-compact-tests": {
+      "lean_names": [
+        "Preiss.DenseCompactTestFamily"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/DenseCompactTests.lean"
       ]
     },
     "lem:feature-norm-functionals": {

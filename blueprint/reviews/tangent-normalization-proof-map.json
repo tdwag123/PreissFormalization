@@ -1,0 +1,15 @@
+{
+  "existing_node_replacement_deps": {
+    "lem:dimensional-compactness": [
+      "lem:dimensional-extraction-ball-bounds",
+      "gmt:density-bounds"
+    ],
+    "lem:tangent-ray": [
+      "lem:tangent-ray-density-bounds",
+      "def:positive-density"
+    ]
+  },
+  "module_relocations": {
+    "Preiss.exists_dimensional_tangent_subseq_of_density_bounds": "Preiss/Tangent/Extraction.lean"
+  }
+}

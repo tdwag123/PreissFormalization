@@ -31,9 +31,11 @@
       ],
       "statement_lean": "theorem exists_vagueMetrization (n : ℕ) : Nonempty (VagueMetrization n)",
       "deps": [
-        "def:vague-metrization"
+        "def:vague-metrization",
+        "lem:dense-compact-tests-exist",
+        "def:vague-metrization-from-tests"
       ],
-      "status_note": "Canonical proof currently unfinished. Keep this obligation separate from statements quantified over a supplied metrization."
+      "status_note": "Canonical proof now complete and exact-source kernel checked with only standard axioms. Separate-module integration pending CI. Keeping existence separate remains useful for reusable conditional results."
     },
     {
       "id": "lem:vague-metric-properties",

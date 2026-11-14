@@ -1,5 +1,6 @@
 module
 public import Preiss.Analysis.PolynomialFeatures
+public import Preiss.Analysis.LinearMapIntegral
 public import Preiss.Uniform.MomentForms
 public import Preiss.Uniform.Defs
 public import Mathlib.Analysis.Asymptotics.Defs
@@ -28,12 +29,32 @@ theorem featureMoment_apply_feature (μ : Measure (Euclidean n))
       ∑ k ∈ Finset.range N, gaussianMomentForm μ (k + 1) s (fun _ => x) := by
   sorry
 
+theorem featureMoment_eq_zero_of_mem_weightedComplement {n : ℕ}
+    (μ : Measure (Euclidean n)) (N : ℕ) (s : ℝ)
+    (u : PolynomialFeatureSpace n N)
+    (hu : u ∈ weightedComplement polynomialFeatureProjection (supportFeatureSpan μ N) s) :
+    featureMoment μ N s u = 0 := by
+  let F := fun z : Euclidean n => Real.exp (-s * ‖z‖ ^ 2) •
+    (innerSL ℝ (polynomialFeature N z)).comp (weightedGrading polynomialFeatureProjection s)
+  have hz : (∫ z, F z ∂μ) u = 0 := by
+    apply integral_apply_eq_zero_of_ae
+    filter_upwards [μ.support_mem_ae] with z hz
+    have hmem : polynomialFeature N z ∈ supportFeatureSpan μ N :=
+      Submodule.subset_span ⟨z,hz,rfl⟩
+    have horth : weightedGrading polynomialFeatureProjection s u ∈
+        (supportFeatureSpan μ N)ᗮ := hu
+    have hinner := Submodule.inner_right_of_mem_orthogonal hmem horth
+    simp only [F, ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
+      innerSL_apply_apply, hinner, smul_zero]
+  change ((gaussianMass μ s)⁻¹ • ∫ z, F z ∂μ) u = 0
+  rw [ContinuousLinearMap.smul_apply, hz, smul_zero]
+
 theorem featureMoment_vanishes_weightedComplement
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)
     (N : ℕ) (s : ℝ) (hs : 0 < s) (u : PolynomialFeatureSpace n N)
     (hu : u ∈ weightedComplement polynomialFeatureProjection (supportFeatureSpan μ N) s) :
     featureMoment μ N s u = 0 := by
-  sorry
+  exact featureMoment_eq_zero_of_mem_weightedComplement μ N s u hu
 
 theorem featureMoment_operator_remainder
     (μ : Measure (Euclidean n)) (hm : 0 < m) (hμ : IsUnitUniform m μ)

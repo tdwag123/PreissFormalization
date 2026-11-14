@@ -301,6 +301,18 @@ flowchart LR
   lem_dimensional_tangent_operations["General tangents, scalar multiplication and dilation"]
   lem_vanishing_density_scaled_balls["Vanishing upper density at a fixed positive ball scale"]
   lem_vanishing_density_negligible_deletion["Vanishing density of a deleted restriction gives negligible deletion"]
+  def_dense_compact_tests["Dense compact tests with common supports and cutoffs"]
+  lem_dense_continuous_approximation["Dense continuous maps approximate uniformly on compact sets"]
+  lem_dense_compact_tests_exist["Existence of a dense compact-test family"]
+  lem_vague_determining_tests["Supplied compact tests determine vague convergence and measures"]
+  def_vague_metrization_from_tests["Constructing a vague metric from supplied compact tests"]
+  lem_integral_operator_annihilation["An operator-valued integral preserves a common kernel vector"]
+  def_feature_moment["The support feature span and weighted feature moment"]
+  lem_feature_moment_vanishing["Weighted feature moments vanish on the weighted complement"]
+  lem_vague_scalar_limits["Nonzero vague limits of scalar rescalings are proportional"]
+  lem_general_tangent_scalar["Positive finite scalar multiples preserve general tangents"]
+  lem_dimensional_extraction_ball_bounds["Dimensional subsequence extraction from two-sided ball bounds"]
+  lem_tangent_ray_density_bounds["Tangent-ray correspondence under density bounds"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -518,11 +530,8 @@ flowchart LR
   lem_plane_hausdorff --> lem_flat_limit_tube
   gmt_portmanteau --> lem_flat_limit_moving_balls
   lem_plane_hausdorff --> lem_flat_limit_moving_balls
-  gmt_blowup_balls --> lem_dimensional_compactness
-  gmt_blowup_regular --> lem_dimensional_compactness
   gmt_density_bounds --> lem_dimensional_compactness
-  gmt_portmanteau --> lem_dimensional_compactness
-  thm_compactness --> lem_dimensional_compactness
+  lem_dimensional_extraction_ball_bounds --> lem_dimensional_compactness
   def_dimensional_blowup --> lem_blowup_composition
   gmt_blowup --> lem_blowup_composition
   gmt_blowup_regular --> lem_blowup_composition
@@ -569,14 +578,8 @@ flowchart LR
   gmt_portmanteau --> lem_dimensional_tangent_compactness
   lem_dimensional_tangent_closed --> lem_dimensional_tangent_compactness
   thm_compactness --> lem_dimensional_tangent_compactness
-  def_dimensional_tangent --> lem_tangent_ray
-  def_flat --> lem_tangent_ray
   def_positive_density --> lem_tangent_ray
-  gmt_continuity_sets --> lem_tangent_ray
-  gmt_normalized_tangent --> lem_tangent_ray
-  lem_density_bridge --> lem_tangent_ray
-  lem_plane_scaling --> lem_tangent_ray
-  thm_compactness --> lem_tangent_ray
+  lem_tangent_ray_density_bounds --> lem_tangent_ray
   def_dimensional_tangent --> lem_tangent_blowdown
   def_tangent_at_infinity --> lem_tangent_blowdown
   lem_dimensional_tangent_closed --> lem_tangent_blowdown
@@ -679,7 +682,9 @@ flowchart LR
   lem_polynomial_gaussian_integrability --> lem_gaussian_parameter_derivative
   gmt_vague --> def_vague_metrization
   def_vague_metrization --> lem_vague_countable_metric
+  def_vague_metrization_from_tests --> lem_vague_countable_metric
   lem_countable_coordinate_metric --> lem_vague_countable_metric
+  lem_dense_compact_tests_exist --> lem_vague_countable_metric
   def_vague_metrization --> lem_vague_metric_properties
   mathlib_measurable_hull --> lem_measurable_hull_holes
   lem_gaussian_projection_integrability --> lem_gaussian_wick_fourth
@@ -706,9 +711,11 @@ flowchart LR
   lem_moment_feature_annihilation --> lem_moment_feature_remainder
   lem_polynomial_feature_identities --> lem_moment_feature_remainder
   lem_taylor_one --> lem_moment_feature_remainder
+  def_feature_moment --> lem_moment_feature_annihilation
   def_moments --> lem_moment_feature_annihilation
   def_polynomial_feature --> lem_moment_feature_annihilation
   def_unit_uniform --> lem_moment_feature_annihilation
+  lem_gaussian_polynomial_integrable --> lem_moment_feature_annihilation
   lem_polynomial_feature_identities --> lem_moment_feature_annihilation
   def_moments --> def_moment_coefficients
   def_moments --> lem_moment_form_evaluation
@@ -744,6 +751,7 @@ flowchart LR
   def_moment_coefficients --> lem_taylor_two
   def_moments --> lem_taylor_two
   def_unit_uniform --> lem_taylor_two
+  lem_feature_moment_vanishing --> lem_taylor_two
   lem_feature_norm_functionals --> lem_taylor_two
   lem_graded_analytic_projection --> lem_taylor_two
   lem_moment_feature_remainder --> lem_taylor_two
@@ -1229,3 +1237,28 @@ flowchart LR
   def_density_api --> lem_vanishing_density_negligible_deletion
   def_weak_approximation --> lem_vanishing_density_negligible_deletion
   lem_vanishing_density_scaled_balls --> lem_vanishing_density_negligible_deletion
+  def_dense_compact_tests --> lem_dense_compact_tests_exist
+  lem_dense_continuous_approximation --> lem_dense_compact_tests_exist
+  def_dense_compact_tests --> lem_vague_determining_tests
+  gmt_vague --> lem_vague_determining_tests
+  def_dense_compact_tests --> def_vague_metrization_from_tests
+  def_vague_metrization --> def_vague_metrization_from_tests
+  lem_countable_coordinate_metric --> def_vague_metrization_from_tests
+  lem_vague_determining_tests --> def_vague_metrization_from_tests
+  def_moments --> def_feature_moment
+  def_orthogonal_grading --> def_feature_moment
+  def_polynomial_feature --> def_feature_moment
+  def_feature_moment --> lem_feature_moment_vanishing
+  def_orthogonal_grading --> lem_feature_moment_vanishing
+  lem_integral_operator_annihilation --> lem_feature_moment_vanishing
+  gmt_vague --> lem_vague_scalar_limits
+  def_tangent_api --> lem_general_tangent_scalar
+  def_dimensional_tangent --> lem_dimensional_extraction_ball_bounds
+  gmt_blowup_balls --> lem_dimensional_extraction_ball_bounds
+  gmt_portmanteau --> lem_dimensional_extraction_ball_bounds
+  lem_dimensional_tangent_operations --> lem_dimensional_extraction_ball_bounds
+  thm_compactness --> lem_dimensional_extraction_ball_bounds
+  gmt_density_bounds --> lem_tangent_ray_density_bounds
+  lem_dimensional_extraction_ball_bounds --> lem_tangent_ray_density_bounds
+  lem_general_tangent_scalar --> lem_tangent_ray_density_bounds
+  lem_vague_scalar_limits --> lem_tangent_ray_density_bounds

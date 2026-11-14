@@ -1,6 +1,6 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "bc8bc3238e0c02795cbfbbf1d3394f9baea98c61",
+  "source_revision": "46d70a3de716f5d1deea32b05468617de2009b87",
   "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
@@ -309,6 +309,42 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.IsDimensionalTangent.dilate": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.IsDimensionalTangent.isTangentMeasure": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.IsDimensionalTangent.smul": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Tangent/Basic.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.IsFirstMomentNormalVector": {
       "project": "local",
       "kind": "def",
@@ -397,7 +433,7 @@
       "project": "local",
       "kind": "def",
       "source_status": "definition",
-      "path": "Preiss/Analysis/GradedProjection.lean",
+      "path": "Preiss/Analysis/Grading.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -818,28 +854,26 @@
     "Preiss.ae_upperPowerBoundAt_restrict_hausdorff": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.ae_weaklyLinearlyApproximableAt_subset": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/MarstrandMattila/HausdorffInputs.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.all_tangents_flat_of_one": {
       "project": "local",
@@ -1078,6 +1112,66 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.countableCoordinateMap": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/CountableCoordinateMetric.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.countableCoordinateMap_injective": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/CountableCoordinateMetric.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countableCoordinateMetric": {
+      "project": "local",
+      "kind": "def",
+      "source_status": "definition",
+      "path": "Preiss/Analysis/CountableCoordinateMetric.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "definition_checked"
+    },
+    "Preiss.countableCoordinateMetric_dist": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/CountableCoordinateMetric.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.countableCoordinateMetric_tendsto_iff": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/CountableCoordinateMetric.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.countablyCoveredByLipschitzPieces_of_countable": {
       "project": "local",
@@ -1389,15 +1483,14 @@
     "Preiss.dimensionalTangent_dilate": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Tangent/Compactness.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.dimensionalTangent_nonempty_compact": {
       "project": "local",
@@ -1551,18 +1644,29 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.exists_compact_subset_of_ae_mem_iUnion": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/CompactExhaustion.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_compact_uniform_weakApproximation_subset": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_countable_graph_cover_fullRank_locus": {
       "project": "local",
@@ -1792,15 +1896,14 @@
     "Preiss.exists_normPolynomial_feature_functionals": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/PolynomialFeatures.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_plane_ball_energy_le_of_flatness_le": {
       "project": "local",
@@ -3613,6 +3716,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.negligibleDeletionAt_of_upperDensity_restrict_compl_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/WeakApproximation/Density.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.nonempty_plane_of_le": {
       "project": "local",
       "kind": "theorem",
@@ -3655,6 +3770,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Uniform/MomentForms.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.norm_pow_eq_sum_coordinate_monomials": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -3747,31 +3874,41 @@
       ],
       "kernel_status": "definition_checked"
     },
-    "Preiss.polynomialFeatureProjection_inner": {
+    "Preiss.polynomialFeatureProjection_apply": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/PolynomialFeatures.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.polynomialFeatureProjection_inner": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/PolynomialFeatures.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.polynomialFeatureProjection_isOrthogonalGrading": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/PolynomialFeatures.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.polynomialFeature_inner": {
       "project": "local",
@@ -4021,6 +4158,30 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.starProjection_span_orthonormal": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/OrthonormalProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.starProjection_span_orthonormal_apply": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/OrthonormalProjection.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.subset_tube_of_lower_mass_and_small_outside_mass": {
       "project": "local",
       "kind": "theorem",
@@ -4177,6 +4338,18 @@
       "kind": "theorem",
       "source_status": "proof_candidate",
       "path": "Preiss/Analysis/SequentialLimits.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.tendsto_scaled_ball_mass_div_pow_zero_of_upperDensity_eq_zero": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/Vanishing.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4635,6 +4808,18 @@
       ],
       "kernel_status": "definition_checked"
     },
+    "Preiss.weakApproximationGoodSet_mono": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.weakApproximation_restrict_of_negligible_sdiff": {
       "project": "local",
       "kind": "theorem",
@@ -4676,7 +4861,7 @@
       "project": "local",
       "kind": "def",
       "source_status": "definition",
-      "path": "Preiss/Analysis/GradedProjection.lean",
+      "path": "Preiss/Analysis/Grading.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
@@ -4688,7 +4873,7 @@
       "project": "local",
       "kind": "def",
       "source_status": "definition",
-      "path": "Preiss/Analysis/GradedProjection.lean",
+      "path": "Preiss/Analysis/Grading.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",

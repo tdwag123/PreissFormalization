@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "purpose": "Separate concrete feature-moment data, proved complement vanishing, and the still-pending evaluation identity.",
+  "nodes": [
+    {
+      "id": "def:feature-moment",
+      "kind": "definition",
+      "title": "The support feature span and weighted feature moment",
+      "statement_tex": "For any measure $\\mu$, let $V=\\operatorname{span}(\\Phi_N(\\operatorname{supp}\\mu))$. Define the continuous linear form $L_s=I(s)^{-1}\\int e^{-s\\|z\\|^2}\\langle\\Phi_N(z),A(s)(\\cdot)\\rangle\\,d\\mu(z)$ by the total operator-valued Bochner integral.",
+      "definition_dependencies": [
+        "def:polynomial-feature",
+        "def:orthogonal-grading",
+        "def:moments"
+      ],
+      "deps": [],
+      "lean_names": [
+        "Preiss.supportFeatureSpan",
+        "Preiss.featureMoment"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "status_note": "Concrete definitions contain no placeholder or choice from an unfinished existence assertion."
+    },
+    {
+      "id": "lem:feature-moment-vanishing",
+      "kind": "lemma",
+      "title": "Weighted feature moments vanish on the weighted complement",
+      "statement_tex": "For every measure $\\mu$ on $\\mathbb R^n$, every natural $N$, every real $s$, and every $u$ such that $A(s)u\\in\\operatorname{span}(\\Phi_N(\\operatorname{supp}\\mu))^\\perp$, the feature moment satisfies $L_s(u)=0$. The original unit-uniform, positive-parameter statement is retained as a wrapper.",
+      "hypotheses": [
+        "No uniformity, regularity, growth, or positive-parameter hypothesis is needed for the stronger assertion."
+      ],
+      "definition_dependencies": [
+        "def:feature-moment",
+        "def:orthogonal-grading"
+      ],
+      "deps": [
+        "lem:integral-operator-annihilation"
+      ],
+      "lean_names": [
+        "Preiss.featureMoment_eq_zero_of_mem_weightedComplement",
+        "Preiss.featureMoment_vanishes_weightedComplement"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "proof_sketch_tex": "The support of every Euclidean measure is conull. At a support point its feature belongs to the support feature span, so orthogonality makes the evaluated operator kernel vanish. Apply the generic integral-kernel lemma and scalar normalization.",
+      "used_by": [
+        "lem:taylor-two"
+      ],
+      "status_note": "Exact strong proof passed local kernel check with standard axioms; canonical integration awaits CI."
+    },
+    {
+      "id": "lem:moment-feature-annihilation",
+      "kind": "lemma",
+      "title": "Evaluation of the feature moment on a feature",
+      "statement_tex": "For a unit $m$-uniform measure with $m>0$, every natural $N$, $s>0$, and $x\\in\\mathbb R^n$, $L_s(\\Phi_N(x))=\\sum_{k=1}^N b_{k,s}(x,\\ldots,x)$.",
+      "lean_names": [
+        "Preiss.featureMoment_apply_feature"
+      ],
+      "file": "Preiss/Uniform/MomentFeatures.lean",
+      "deps": [
+        "def:feature-moment",
+        "lem:polynomial-feature-identities",
+        "lem:gaussian-polynomial-integrable"
+      ],
+      "status_note": "Canonical statement compiled; evaluation proof remains unfinished."
+    }
+  ],
+  "dependency_replacements": {
+    "lem:taylor-two": {
+      "add": [
+        "lem:feature-moment-vanishing"
+      ]
+    },
+    "lem:moment-feature-remainder": {
+      "retain": [
+        "lem:moment-feature-annihilation"
+      ],
+      "reason": "The supplied-L remainder uses evaluation; complement vanishing enters the later reconstruction through the analytic projection."
+    }
+  }
+}

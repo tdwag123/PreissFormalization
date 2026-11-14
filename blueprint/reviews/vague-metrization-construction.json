@@ -1,5 +1,5 @@
 {
-  "status": "Source/API investigation plus uncompiled pure metric scratch; no existence proof claimed.",
+  "status": "Full exact-source VagueMetrizationCheck passed Lean4.34.1, session52873 exit0, all seven declarations with only propext/Classical.choice/Quot.sound. Promoted canonical files; separate-module integration CI pending.",
   "exact_target": "Preiss.exists_vagueMetrization (n : Nat) : Nonempty (Preiss.VagueMetrization n)",
   "stages": [
     {
@@ -61,5 +61,12 @@
     "PiCountable distance uses min(weight,coordinate-distance), not weight*min(1,coordinate-distance); the shifted scaled embedding resolves this exactly without changing the required metric definition.",
     "No completeness assertion about the entire regular-measure space is needed.",
     "Keep pure metric and compact-test construction modules modern; GMT vague-convergence adapters remain legacy imports."
+  ],
+  "verification_scratch": "tmp/lean-audit/VagueMetrizationCheck.lean",
+  "canonical_files": [
+    "Preiss/Analysis/CountableCoordinateMetric.lean",
+    "Preiss/Analysis/DenseCompactTests.lean",
+    "Preiss/Analysis/Vague/DeterminingTests.lean",
+    "Preiss/Analysis/Vague/Metrization.lean"
   ]
 }

@@ -1,4 +1,4 @@
-import Preiss.Tangent.Basic
+import Preiss.Tangent.Extraction
 import Preiss.Density.Defs
 import FormalizingGMT.TangentMeasures.Basic
 
@@ -15,14 +15,6 @@ open scoped NNReal ENNReal
 noncomputable section
 namespace Preiss
 variable {m n : ℕ}
-
-theorem exists_dimensional_tangent_subseq_of_density_bounds
-    (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)
-    (h : HasPositiveFiniteDensitiesAt m μ x) (r : ℕ → ℝ)
-    (hr : ∀ i, 0 < r i) (hr0 : Tendsto r atTop (𝓝 0)) :
-    ∃ (φ : ℕ → ℕ) (ν : Measure (Euclidean n)), StrictMono φ ∧ ν.Regular ∧ ν ≠ 0 ∧
-      Measure.WeaklyConverges (fun i ↦ dimensionalBlowup m μ x (r (φ i))) ν ∧
-      IsTangentMeasure μ ν x := by sorry
 
 theorem dimensionalTangent_closed
     (μ : Measure (Euclidean n)) [IsLocallyFiniteMeasure μ] (x : Euclidean n)

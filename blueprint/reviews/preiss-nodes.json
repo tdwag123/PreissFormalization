@@ -253,16 +253,17 @@
       ],
       "deps": [
         "def:vague-metrization",
-        "lem:countable-coordinate-metric"
+        "lem:dense-compact-tests-exist",
+        "def:vague-metrization-from-tests"
       ],
       "lean_name": "Preiss.exists_vagueMetrization",
       "file": "Preiss/Analysis/Vague/Metrization.lean",
       "core_vs_companion": "core",
       "status": "new",
       "source": "De Lellis Chapters 3 and 6; general supporting analysis.",
-      "proof_sketch_tex": "Construct a countable determining compact-test family containing nonnegative ball cutoffs; use the weighted test distance and prove its metric and sequential convergence specifications.",
+      "proof_sketch_tex": "Obtain a dense compact-test family from the generic locally compact second-countable Hausdorff construction, then apply the explicit metric constructor on regular measures.",
       "repair": [],
-      "interface_status": "Source interface compiled; existence proof unfinished."
+      "interface_status": "Existence proof exact-source locally kernel-checked; actual module CI pending."
     },
     {
       "id": "lem:vague-diagonal",
@@ -1041,24 +1042,24 @@
     {
       "id": "lem:moment-feature-annihilation",
       "audit_code": "M06b",
-      "title": "Feature moment functional and weighted annihilator",
-      "statement_tex": "Let $V=\\operatorname{span}\\Phi(\\operatorname{supp}\\nu)$ and $A(s)=\\sum_{k=1}^{2q}s^kP_k$. The functional $L_s(u)=I(s)^{-1}\\int\\langle A(s)u,\\Phi(z)\\rangle e^{-s|z|^2}\\,d\\nu$ is continuous linear, has $L_s(\\Phi(x))=\\sum_{k=1}^{2q}b_{k,s}(x^k)$, and vanishes on $A(s)^{-1}(V^\\perp)$.",
+      "title": "Evaluation of the feature moment on a feature",
+      "statement_tex": "For a unit $m$-uniform measure with $m>0$, every natural $N$, $s>0$, and $x\\in\\mathbb R^n$, $L_s(\\Phi_N(x))=\\sum_{k=1}^N b_{k,s}(x,\\ldots,x)$.",
       "hypotheses": [
         "E is a finite-dimensional real Euclidean space; measures are positive, Borel, regular and finite on compact sets.",
         "1 <= m <= dim E; nu has 0 in its support and nu(B(y,r)) = r^m for every support center y and every r > 0.",
         "All additional local inequalities and universal/existential quantifiers are part of statement_tex."
       ],
       "deps": [
-        "def:polynomial-feature",
-        "def:moments",
-        "lem:polynomial-feature-identities"
+        "def:feature-moment",
+        "lem:polynomial-feature-identities",
+        "lem:gaussian-polynomial-integrable"
       ],
       "lean_name": "Preiss.featureMoment_vanishes_weightedComplement",
-      "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",
+      "file": "Preiss/Uniform/MomentFeatures.lean",
       "core_vs_companion": "core",
       "status": "new",
       "source": "De Lellis Lemma 7.2, Definition 7.4, Lemma 7.6, Proposition 7.7, pp.70-84.",
-      "proof_sketch_tex": "For fixed $q$, take the finite sum of symmetric tensor degrees $1$ through\n$2q$, with the weighted inner product from Section 7.3, and let $V$ be spanned\nby the vectors $(x,x^{\\otimes2},\\ldots,x^{\\otimes2q})$ for support points $x$.\nThe moment functional $b_s$ vanishes on $F_s$ and M04 determines\n$b_s|V$ to order $q$. Choose a finite basis from these spanning support vectors:\nits finitely many remainder estimates give an operator-norm\n$O(s^{q+1/2})$ bound on $V$. Composing with the bounded $Q_s$ and using M05\ngives the Taylor expansion of $b_s$.\nDo not implement the source's claim that the unrescaled symmetrized coordinate\nmonomials are orthonormal: for example\n$|e_1\\odot e_2|^2=1/2$ for orthogonal unit vectors under its displayed inner\nproduct. Use the inherited tensor inner product or insert multinomial weights.\nA finite polynomial-coordinate model is also possible, provided its pairing\nrealizes $\\langle u^{\\otimes k},v^{\\otimes k}\\rangle=\\langle u,v\\rangle^k$.",
+      "proof_sketch_tex": "Use integrability of the Gaussian-weighted feature kernel to evaluate its integral. Expand the weighted feature pairing degreewise and identify each term with the scalar evaluation of the Gaussian moment tensor.",
       "repair": [],
       "interface_status": "proposed; not claimed Lean-compiled"
     },
@@ -1103,7 +1104,8 @@
         "lem:graded-analytic-projection",
         "lem:moment-feature-remainder",
         "lem:moment-norm-bound",
-        "lem:feature-norm-functionals"
+        "lem:feature-norm-functionals",
+        "lem:feature-moment-vanishing"
       ],
       "lean_name": "Preiss.exists_gaussianMoment_taylor_coefficients",
       "file": "Preiss/MeasureTheory/Uniform/MomentExpansion.lean",

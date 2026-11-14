@@ -60,4 +60,21 @@ theorem IsDimensionalTangent.dilate
     simpa only [dimensionalBlowup_comp _ _ _ _ _ (hr _) hs, smul_zero, add_zero]
       using hconv
 
+theorem isTangentMeasure_smul
+    {μ ν : Measure (Euclidean n)} {x : Euclidean n} (h : IsTangentMeasure μ ν x)
+    {a : ℝ≥0∞} (ha : 0 < a) (hatop : a < ∞) : IsTangentMeasure μ (a • ν) x := by
+  obtain ⟨hreg, hne, r, c, hr, hc, hctop, hr0, hlim⟩ := h
+  haveI : ν.Regular := hreg
+  refine ⟨Measure.Regular.smul hatop.ne, ?_, r, fun i => a * c i,
+    hr, fun i => pos_iff_ne_zero.mpr (mul_ne_zero ha.ne' (hc i).ne'),
+    fun i => ENNReal.mul_ne_top hatop.ne (hctop i), hr0, ?_⟩
+  · intro hzero
+    apply hne
+    have heq := congrArg (fun ξ : Measure (Euclidean n) => a⁻¹ • ξ) hzero
+    simpa [smul_smul, ENNReal.inv_mul_cancel ha.ne' hatop.ne] using heq
+  · intro f
+    have hh := (tendsto_const_nhds : Tendsto (fun _ : ℕ => a.toReal) atTop
+      (𝓝 a.toReal)).mul (hlim f)
+    simpa only [← smul_smul, integral_smul_measure, smul_eq_mul] using hh
+
 end Preiss

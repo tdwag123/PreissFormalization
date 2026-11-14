@@ -1,0 +1,19 @@
+{
+  "new_nodes": [
+    "def:dense-compact-tests",
+    "lem:dense-continuous-approximation",
+    "lem:dense-compact-tests-exist",
+    "lem:vague-determining-tests",
+    "def:vague-metrization-from-tests"
+  ],
+  "existence_dependencies": [
+    "lem:dense-compact-tests-exist",
+    "def:vague-metrization-from-tests"
+  ],
+  "supplied_data_note": "Determining tests and the metric constructor depend on supplied dense-family data, not on its existence. Supplied-M consequences continue to depend only on VagueMetrization data.",
+  "local_check": "VagueMetrizationCheck seven printed declarations standard axioms, reported by build agent.",
+  "new_modules": [
+    "Preiss/Analysis/DenseCompactTests.lean",
+    "Preiss/Analysis/Vague/DeterminingTests.lean"
+  ]
+}

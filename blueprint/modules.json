@@ -123,6 +123,39 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.DenseCompactTests",
+      "file": "Preiss/Analysis/DenseCompactTests.lean",
+      "purpose": "Reusable Analysis.DenseCompactTests interfaces.",
+      "current_source_imports": [
+        "Mathlib.Tactic.Choose",
+        "Mathlib.Topology.Compactness.SigmaCompact",
+        "Mathlib.Topology.ContinuousMap.CompactlySupported",
+        "Mathlib.Topology.ContinuousMap.SecondCountableSpace",
+        "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+        "Mathlib.Topology.UniformSpace.CompactConvergence",
+        "Mathlib.Topology.UrysohnsLemma"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic.Choose",
+        "Mathlib.Topology.Compactness.SigmaCompact",
+        "Mathlib.Topology.ContinuousMap.CompactlySupported",
+        "Mathlib.Topology.ContinuousMap.SecondCountableSpace",
+        "Mathlib.Topology.MetricSpace.Pseudo.Defs",
+        "Mathlib.Topology.UniformSpace.CompactConvergence",
+        "Mathlib.Topology.UrysohnsLemma"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "def:dense-compact-tests",
+        "lem:dense-continuous-approximation",
+        "lem:dense-compact-tests-exist"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.GaussianBallPower",
       "file": "Preiss/Analysis/GaussianBallPower.lean",
       "purpose": "Reusable Analysis.GaussianBallPower interfaces.",
@@ -486,6 +519,25 @@
       "scope": "core"
     },
     {
+      "module": "Preiss.Analysis.LinearMapIntegral",
+      "file": "Preiss/Analysis/LinearMapIntegral.lean",
+      "purpose": "Reusable Analysis.LinearMapIntegral interfaces.",
+      "current_source_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:integral-operator-annihilation"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.MeasureHull",
       "file": "Preiss/Analysis/MeasureHull.lean",
       "current_source_imports": [
@@ -697,15 +749,56 @@
       "purpose": "Canonical Analysis.Vague.CompactTests interfaces."
     },
     {
+      "module": "Preiss.Analysis.Vague.DeterminingTests",
+      "file": "Preiss/Analysis/Vague/DeterminingTests.lean",
+      "purpose": "Reusable Analysis.Vague.DeterminingTests interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring",
+        "Preiss.Analysis.DenseCompactTests",
+        "Preiss.Geometry.Euclidean"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_imports": [
+        "Preiss.Analysis.DenseCompactTests"
+      ],
+      "nodes": [
+        "lem:vague-determining-tests"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Analysis.DenseCompactTests",
+        "Preiss.Geometry.Euclidean"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.Vague.Metrization",
       "file": "Preiss/Analysis/Vague/Metrization.lean",
       "current_source_imports": [
         "FormalizingGMT.WeakConvergence.Basic",
         "Mathlib.Topology.MetricSpace.Pseudo.Basic",
+        "Preiss.Analysis.CountableCoordinateMetric",
+        "Preiss.Analysis.Vague.DeterminingTests",
         "Preiss.Geometry.Euclidean"
       ],
       "local_imports": [
         "Preiss.Analysis.CountableCoordinateMetric",
+        "Preiss.Analysis.DenseCompactTests",
+        "Preiss.Analysis.Vague.DeterminingTests",
         "Preiss.Geometry.Euclidean"
       ],
       "mathlib_imports": [
@@ -715,13 +808,16 @@
         "FormalizingGMT.WeakConvergence.Basic"
       ],
       "proof_imports": [
-        "Preiss.Analysis.CountableCoordinateMetric"
+        "Preiss.Analysis.CountableCoordinateMetric",
+        "Preiss.Analysis.DenseCompactTests",
+        "Preiss.Analysis.Vague.DeterminingTests"
       ],
       "nodes": [
         "def:vague-metrization",
         "lem:vague-countable-metric",
         "lem:vague-metric-properties",
-        "lem:vague-diagonal"
+        "lem:vague-diagonal",
+        "def:vague-metrization-from-tests"
       ],
       "source_exists": true,
       "scope": "core",
@@ -749,6 +845,30 @@
       "local_imports": [
         "Preiss.Analysis.Vague.CompactTests"
       ],
+      "scope": "core"
+    },
+    {
+      "module": "Preiss.Analysis.Vague.ScalarLimits",
+      "file": "Preiss/Analysis/Vague/ScalarLimits.lean",
+      "purpose": "Reusable Analysis.Vague.ScalarLimits interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.WeakConvergence.Basic",
+        "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real",
+        "Mathlib.Tactic.Push"
+      ],
+      "mathlib_imports": [
+        "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real",
+        "Mathlib.Tactic.Push"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.WeakConvergence.Basic"
+      ],
+      "proof_imports": [],
+      "nodes": [
+        "lem:vague-scalar-limits"
+      ],
+      "source_exists": true,
+      "local_imports": [],
       "scope": "core"
     },
     {
@@ -2290,7 +2410,8 @@
         "Preiss.Tangent.Defs"
       ],
       "nodes": [
-        "lem:dimensional-tangent-operations"
+        "lem:dimensional-tangent-operations",
+        "lem:general-tangent-scalar"
       ],
       "source_exists": true,
       "local_imports": [
@@ -2379,7 +2500,7 @@
       "current_source_imports": [
         "FormalizingGMT.TangentMeasures.Basic",
         "Preiss.Density.Defs",
-        "Preiss.Tangent.Basic"
+        "Preiss.Tangent.Extraction"
       ],
       "local_imports": [
         "Preiss.Analysis.Vague.Metrization",
@@ -2388,7 +2509,8 @@
         "Preiss.Tangent.Basic",
         "Preiss.Tangent.Blowup",
         "Preiss.Tangent.Continuity",
-        "Preiss.Tangent.Defs"
+        "Preiss.Tangent.Defs",
+        "Preiss.Tangent.Extraction"
       ],
       "mathlib_imports": [],
       "gmt_imports": [
@@ -2404,7 +2526,6 @@
         "Preiss.Tangent.Defs"
       ],
       "nodes": [
-        "lem:dimensional-compactness",
         "lem:tangent-closed",
         "lem:dimensional-tangent-closed",
         "lem:dimensional-tangent-dilation",
@@ -2522,6 +2643,42 @@
       "purpose": "Canonical Tangent.Existence interfaces."
     },
     {
+      "module": "Preiss.Tangent.Extraction",
+      "file": "Preiss/Tangent/Extraction.lean",
+      "purpose": "Reusable Tangent.Extraction interfaces.",
+      "current_source_imports": [
+        "FormalizingGMT.MarstrandTheorem",
+        "Mathlib.Tactic.GCongr",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring",
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Basic"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Tactic.GCongr",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "gmt_imports": [
+        "FormalizingGMT.MarstrandTheorem"
+      ],
+      "proof_imports": [
+        "Preiss.Tangent.Basic",
+        "Preiss.Tangent.Defs"
+      ],
+      "nodes": [
+        "lem:dimensional-compactness",
+        "lem:dimensional-extraction-ball-bounds"
+      ],
+      "source_exists": true,
+      "local_imports": [
+        "Preiss.Density.Defs",
+        "Preiss.Tangent.Basic",
+        "Preiss.Tangent.Defs"
+      ],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Tangent.FlatApproximation",
       "file": "Preiss/Tangent/FlatApproximation.lean",
       "current_source_imports": [
@@ -2536,14 +2693,15 @@
         "Preiss.Geometry.FlatMeasure",
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Rectifiability.WeakApproximation.Defs",
-        "Preiss.Tangent.Compactness"
+        "Preiss.Tangent.Compactness",
+        "Preiss.Tangent.Extraction"
       ],
       "mathlib_imports": [],
       "gmt_imports": [],
       "proof_imports": [
         "Preiss.Geometry.PlaneMeasure",
         "Preiss.Rectifiability.WeakApproximation.Defs",
-        "Preiss.Tangent.Compactness"
+        "Preiss.Tangent.Extraction"
       ],
       "nodes": [
         "lem:flat-limit-tube",
@@ -2628,30 +2786,26 @@
       "module": "Preiss.Tangent.Normalization",
       "file": "Preiss/Tangent/Normalization.lean",
       "current_source_imports": [
-        "FormalizingGMT.TangentMeasures.Basic",
-        "Preiss.Density.Defs",
-        "Preiss.Tangent.Defs"
+        "Preiss.Analysis.Vague.ScalarLimits",
+        "Preiss.Tangent.Extraction"
       ],
       "local_imports": [
-        "Preiss.Density.Adapters",
+        "Preiss.Analysis.Vague.ScalarLimits",
         "Preiss.Density.Defs",
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Defs",
-        "Preiss.Tangent.FlatScaling"
+        "Preiss.Tangent.Basic",
+        "Preiss.Tangent.Extraction"
       ],
       "mathlib_imports": [],
-      "gmt_imports": [
-        "FormalizingGMT.TangentMeasures.Basic"
-      ],
+      "gmt_imports": [],
       "proof_imports": [
-        "Preiss.Density.Adapters",
+        "Preiss.Analysis.Vague.ScalarLimits",
         "Preiss.Density.Defs",
-        "Preiss.Geometry.FlatMeasure",
-        "Preiss.Tangent.Defs",
-        "Preiss.Tangent.FlatScaling"
+        "Preiss.Tangent.Basic",
+        "Preiss.Tangent.Extraction"
       ],
       "nodes": [
-        "lem:tangent-ray"
+        "lem:tangent-ray",
+        "lem:tangent-ray-density-bounds"
       ],
       "source_exists": true,
       "scope": "core",
@@ -3889,11 +4043,15 @@
       "file": "Preiss/Uniform/MomentFeatures.lean",
       "current_source_imports": [
         "Mathlib.Analysis.Asymptotics.Defs",
+        "Preiss.Analysis.LinearMapIntegral",
         "Preiss.Analysis.PolynomialFeatures",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentForms"
       ],
       "local_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.Grading",
+        "Preiss.Analysis.LinearMapIntegral",
         "Preiss.Analysis.PolynomialFeatures",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentEstimates",
@@ -3904,6 +4062,9 @@
       ],
       "gmt_imports": [],
       "proof_imports": [
+        "Preiss.Analysis.GaussianGrowth",
+        "Preiss.Analysis.Grading",
+        "Preiss.Analysis.LinearMapIntegral",
         "Preiss.Analysis.PolynomialFeatures",
         "Preiss.Uniform.Defs",
         "Preiss.Uniform.MomentEstimates",
@@ -3911,7 +4072,9 @@
       ],
       "nodes": [
         "lem:moment-feature-remainder",
-        "lem:moment-feature-annihilation"
+        "lem:moment-feature-annihilation",
+        "def:feature-moment",
+        "lem:feature-moment-vanishing"
       ],
       "source_exists": true,
       "scope": "core",
@@ -4285,6 +4448,7 @@
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Analysis.CompactExhaustion",
     "Preiss.Analysis.CountableCoordinateMetric",
+    "Preiss.Analysis.DenseCompactTests",
     "Preiss.Analysis.GaussianBallPower",
     "Preiss.Analysis.GaussianDerivatives",
     "Preiss.Geometry.Euclidean",
@@ -4293,11 +4457,13 @@
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
     "Preiss.Analysis.HausdorffLowerBound",
+    "Preiss.Analysis.LinearMapIntegral",
     "Preiss.Analysis.MeasureHull",
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.MovingSets",
     "Preiss.Analysis.OrthonormalProjection",
     "Preiss.Analysis.SequentialLimits",
+    "Preiss.Analysis.Vague.ScalarLimits",
     "Preiss.Density.Limits",
     "Preiss.Density.Atoms",
     "Preiss.Density.LowerBounds",
@@ -4305,7 +4471,7 @@
     "Preiss.Analysis.GaussianMoments",
     "Preiss.Analysis.GaussianGrowth",
     "Preiss.Analysis.Vague.CompactTests",
-    "Preiss.Analysis.Vague.Metrization",
+    "Preiss.Analysis.Vague.DeterminingTests",
     "Preiss.Analysis.Vague.Support",
     "Preiss.Density.Defs",
     "Preiss.Geometry.LipschitzExtension",
@@ -4320,6 +4486,7 @@
     "Preiss.Analysis.GaussianWeight",
     "Preiss.Analysis.GaussianVague",
     "Preiss.Analysis.Vague.ProjectionEnergy",
+    "Preiss.Analysis.Vague.Metrization",
     "Preiss.Density.Adapters",
     "Preiss.Density.UpperBounds",
     "Preiss.Tangent.Existence",
@@ -4368,8 +4535,7 @@
     "Preiss.Rectifiability.DensityRepresentation",
     "Preiss.Rectifiability.Cones",
     "Preiss.Rectifiability.PurelyUnrectifiable",
-    "Preiss.Tangent.Normalization",
-    "Preiss.Tangent.Compactness",
+    "Preiss.Tangent.Extraction",
     "Preiss.Tangent.DensityTransfer",
     "Preiss.Density.ExcessDimension",
     "Preiss.Uniform.Radial",
@@ -4380,9 +4546,8 @@
     "Preiss.Rectifiability.ConeCriterion",
     "Preiss.Rectifiability.GraphCover",
     "Preiss.Rectifiability.Decomposition",
-    "Preiss.Uniform.TangentNormalization",
-    "Preiss.Tangent.Blowdown",
-    "Preiss.Tangent.FlatApproximation",
+    "Preiss.Tangent.Compactness",
+    "Preiss.Tangent.Normalization",
     "Preiss.Density.Dimension",
     "Preiss.Uniform.MomentEstimates",
     "Preiss.Tangent.ScalingOrbit",
@@ -4391,24 +4556,27 @@
     "Preiss.Uniform.FlatnessContinuity",
     "Preiss.Rectifiability.MarstrandMattila.HausdorffInputs",
     "Preiss.Rectifiability.GraphArea",
-    "Preiss.Tangent.Recentering",
+    "Preiss.Tangent.Blowdown",
+    "Preiss.Tangent.FlatApproximation",
+    "Preiss.Uniform.TangentNormalization",
     "Preiss.Uniform.MomentFeatures",
-    "Preiss.Uniform.DimensionReduction",
     "Preiss.Uniform.SupportProximity",
     "Preiss.Tangent.Flatness",
     "Preiss.Rectifiability.WeakApproximation.Uniformization",
     "Preiss.Rectifiability.GraphBlowup",
+    "Preiss.Tangent.Recentering",
+    "Preiss.Uniform.DimensionReduction",
     "Preiss.Uniform.MomentExpansion",
-    "Preiss.Uniform.FlatPseudotangent",
     "Preiss.Rectifiability.MarstrandMattila.Packing",
     "Preiss.Rectifiability.MarstrandMattila.ProjectionNull",
     "Preiss.Rectifiability.TangentNecessity",
+    "Preiss.Uniform.FlatPseudotangent",
     "Preiss.Uniform.BlowdownMoments",
     "Preiss.Uniform.ConicalMoments",
     "Preiss.Uniform.FlatAtInfinity.Basic",
     "Preiss.Uniform.MomentTrace",
-    "Preiss.Theorem.PartA",
     "Preiss.Rectifiability.MarstrandMattila.SetCriterion",
+    "Preiss.Theorem.PartA",
     "Preiss.Uniform.TangentAtInfinity",
     "Preiss.Uniform.ConicalGap",
     "Preiss.Uniform.FlatAtInfinity.TraceData",
@@ -4429,6 +4597,7 @@
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Analysis.CompactExhaustion",
     "Preiss.Analysis.CountableCoordinateMetric",
+    "Preiss.Analysis.DenseCompactTests",
     "Preiss.Analysis.GaussianBallPower",
     "Preiss.Analysis.GaussianDerivatives",
     "Preiss.Analysis.GaussianGrowth",
@@ -4442,6 +4611,7 @@
     "Preiss.Analysis.GreatestCrossing",
     "Preiss.Analysis.HausdorffComparison",
     "Preiss.Analysis.HausdorffLowerBound",
+    "Preiss.Analysis.LinearMapIntegral",
     "Preiss.Analysis.MeasureHull",
     "Preiss.Analysis.MeasureSupport",
     "Preiss.Analysis.MomentDetermination",
@@ -4451,8 +4621,10 @@
     "Preiss.Analysis.SequentialLimits",
     "Preiss.Analysis.SpectralOptimization",
     "Preiss.Analysis.Vague.CompactTests",
+    "Preiss.Analysis.Vague.DeterminingTests",
     "Preiss.Analysis.Vague.Metrization",
     "Preiss.Analysis.Vague.ProjectionEnergy",
+    "Preiss.Analysis.Vague.ScalarLimits",
     "Preiss.Analysis.Vague.Support",
     "Preiss.Density.Adapters",
     "Preiss.Density.Atoms",
@@ -4508,6 +4680,7 @@
     "Preiss.Tangent.Defs",
     "Preiss.Tangent.DensityTransfer",
     "Preiss.Tangent.Existence",
+    "Preiss.Tangent.Extraction",
     "Preiss.Tangent.FlatApproximation",
     "Preiss.Tangent.FlatScaling",
     "Preiss.Tangent.Flatness",

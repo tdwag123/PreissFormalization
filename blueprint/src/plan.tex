@@ -986,7 +986,7 @@ If \(\nu_j\rightharpoonup c\mathcal H^m\!\restriction V\), then for each \(R,\et
 \begin{lemma}[Fixed-normalization compactness at density-bound points]
 \label{lem:dimensional-compactness}
 \lean{Preiss.exists_dimensional_tangent_subseq_of_density_bounds}
-\uses{gmt:blowup-balls, gmt:blowup-regular, gmt:density-bounds, gmt:portmanteau, thm:compactness}
+\uses{lem:dimensional-extraction-ball-bounds, gmt:density-bounds}
 
 
 
@@ -1320,7 +1320,7 @@ implements closure without assuming a topology on all raw measures.
 \begin{lemma}[Comparison of tangent conventions]
 \label{lem:tangent-ray}
 \lean{Preiss.tangent_iff_dimensional_ray}
-\uses{def:dimensional-tangent, def:flat, def:positive-density, gmt:continuity-sets, gmt:normalized-tangent, lem:density-bridge, lem:plane-scaling, thm:compactness}
+\uses{lem:tangent-ray-density-bounds, def:positive-density}
 
 
 
@@ -1338,9 +1338,10 @@ tangent. These two sets of tangents are not equal.
 \end{lemma}
 \begin{proof}[Planned proof]
 
-Control the scalar factors by masses of continuity balls, extract their
-positive finite limit, and pass scaling through compactly supported tests.
-Establish uniform local bounds before passing to the limit.
+Extract a nonzero dimensional limit using two-sided local ball bounds.
+A compactly supported test with nonzero integral detects the relative scalar
+limit; equality against all compact tests identifies the two limits up to
+a positive finite scalar. This argument only needs density bounds.
 \end{proof}
 
 \begin{lemma}[Blow-downs of tangents remain tangents]
@@ -2148,7 +2149,7 @@ A regular Euclidean measure is a positive Borel measure equipped with regularity
 \begin{lemma}[Existence of a countable-test vague metric]
 \label{lem:vague-countable-metric}
 \lean{Preiss.exists_vagueMetrization}
-\uses{def:vague-metrization, lem:countable-coordinate-metric}
+\uses{def:vague-metrization, lem:countable-coordinate-metric, lem:dense-compact-tests-exist, def:vague-metrization-from-tests}
 For every natural ambient dimension $n$, there exists a countable-test vague metrization with the preceding specification.
 \end{lemma}
 \begin{proof}[Planned construction]
@@ -2462,8 +2463,8 @@ For $s>0$, define the continuous symmetric $k$-linear form $b_{k,s}(u_1,\ldots,u
 
 \begin{lemma}[Feature moment functional and weighted annihilator]
 \label{lem:moment-feature-annihilation}
-\lean{Preiss.supportFeatureSpan, Preiss.featureMoment, Preiss.featureMoment_apply_feature, Preiss.featureMoment_vanishes_weightedComplement}
-\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:polynomial-feature-identities}
+\lean{Preiss.featureMoment_apply_feature}
+\uses{def:moments, def:polynomial-feature, def:unit-uniform, lem:polynomial-feature-identities, def:feature-moment, lem:gaussian-polynomial-integrable}
 
 
 
@@ -2731,7 +2732,7 @@ the convergent exponential series with its remainder bound.
 \begin{lemma}[Coherent operator-norm moment Taylor coefficients]
 \label{lem:taylor-two}
 \lean{Preiss.exists_gaussianMoment_taylor_coefficients, Preiss.gaussianMomentCoefficient_unique, Preiss.eq_zero_of_isLittleO_pow_smul}
-\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound, lem:feature-norm-functionals}
+\uses{def:moment-coefficients, def:moments, def:unit-uniform, lem:graded-analytic-projection, lem:moment-feature-remainder, lem:moment-norm-bound, lem:feature-norm-functionals, lem:feature-moment-vanishing}
 
 
 
@@ -4894,4 +4895,97 @@ Let $\nu$ be an outer measure on a pseudometric space and $m\in\mathbb N$. If $\
 \uses{def:density-api, def:weak-approximation, lem:vanishing-density-scaled-balls}
 
 For a measure $\mu$ on $\mathbb R^n$ and a measurable set $F$, if $\Theta^{*m}(\mu|_{F^c},x)=0$, then $\mu(B_{2r}(x)\setminus F)/r^m\to0$ as $r\downarrow0$.
+\end{lemma}
+
+\begin{definition}[Dense compact tests with common supports and cutoffs]
+\label{def:dense-compact-tests}
+\lean{Preiss.DenseCompactTestFamily}
+
+For a topological space $X$, DenseCompactTestFamily consists of a sequence $f_j\in C_c(X,\mathbb R)$ containing nonnegative cutoffs majorizing $1$ on every compact set. For every $f\in C_c(X,\mathbb R)$ there is one compact $K$ containing its support such that, for every $\varepsilon>0$, some $f_j$ is supported in $K$ and satisfies $|f_j-f|<\varepsilon$ everywhere. The compact set is fixed before choosing the accuracy.
+\end{definition}
+
+\begin{lemma}[Dense continuous maps approximate uniformly on compact sets]
+\label{lem:dense-continuous-approximation}
+\lean{Preiss.dense_continuousMap_uniform_approximation}
+
+For an arbitrary topological space $X$, a sequence with dense range in $C(X,\mathbb R)$ approximates each continuous function to every positive accuracy uniformly on every fixed compact set.
+\end{lemma}
+
+\begin{lemma}[Existence of a dense compact-test family]
+\label{lem:dense-compact-tests-exist}
+\lean{Preiss.exists_denseCompactTestFamily}
+\uses{def:dense-compact-tests, lem:dense-continuous-approximation}
+
+Every locally compact, second-countable Hausdorff space admits DenseCompactTestFamily data.
+\end{lemma}
+
+\begin{lemma}[Supplied compact tests determine vague convergence and measures]
+\label{lem:vague-determining-tests}
+\lean{Preiss.weaklyConverges_iff_denseCompactTests, Preiss.measure_eq_of_denseCompactTests}
+\uses{def:dense-compact-tests, gmt:vague}
+
+For a supplied DenseCompactTestFamily on $\mathbb R^n$ and regular measures $\mu_i,\nu$, vague convergence $\mu_i\rightharpoonup\nu$ is equivalent to convergence of the integrals of every enumerated test. Two regular measures with equal integrals on every enumerated test are equal.
+\end{lemma}
+
+\begin{definition}[Constructing a vague metric from supplied compact tests]
+\label{def:vague-metrization-from-tests}
+\lean{Preiss.vagueMetrizationOfDenseCompactTests}
+\uses{def:dense-compact-tests, def:vague-metrization, lem:vague-determining-tests, lem:countable-coordinate-metric}
+
+A supplied DenseCompactTestFamily on $\mathbb R^n$ produces explicit VagueMetrization data by applying the countable-coordinate metric to test integrals of regular measures. Point separation and the exact convergence specification follow from the supplied-test determination theorem.
+\end{definition}
+
+\begin{lemma}[An operator-valued integral preserves a common kernel vector]
+\label{lem:integral-operator-annihilation}
+\lean{Preiss.integral_apply_eq_zero_of_ae}
+
+Let $A:\Omega\to\mathcal L(H,F)$ for arbitrary real normed spaces $H,F$ and a measure $\mu$. If $A(z)u=0$ for almost every $z$, then $(\int A\,d\mu)u=0$. No integrability, completeness, or measurability assumption on $A$ is required beyond the almost-everywhere assertion.
+\end{lemma}
+
+\begin{definition}[The support feature span and weighted feature moment]
+\label{def:feature-moment}
+\lean{Preiss.supportFeatureSpan, Preiss.featureMoment}
+\uses{def:polynomial-feature, def:orthogonal-grading, def:moments}
+
+For any measure $\mu$, let $V=\operatorname{span}(\Phi_N(\operatorname{supp}\mu))$. Define the continuous linear form $L_s=I(s)^{-1}\int e^{-s\|z\|^2}\langle\Phi_N(z),A(s)(\cdot)\rangle\,d\mu(z)$ by the total operator-valued Bochner integral.
+\end{definition}
+
+\begin{lemma}[Weighted feature moments vanish on the weighted complement]
+\label{lem:feature-moment-vanishing}
+\lean{Preiss.featureMoment_eq_zero_of_mem_weightedComplement, Preiss.featureMoment_vanishes_weightedComplement}
+\uses{def:feature-moment, def:orthogonal-grading, lem:integral-operator-annihilation}
+
+For every measure $\mu$ on $\mathbb R^n$, every natural $N$, every real $s$, and every $u$ such that $A(s)u\in\operatorname{span}(\Phi_N(\operatorname{supp}\mu))^\perp$, the feature moment satisfies $L_s(u)=0$. The original unit-uniform, positive-parameter statement is retained as a wrapper.
+\end{lemma}
+
+\begin{lemma}[Nonzero vague limits of scalar rescalings are proportional]
+\label{lem:vague-scalar-limits}
+\lean{Preiss.exists_pos_smul_of_vague_and_scaled_vague}
+\uses{gmt:vague}
+
+On any locally compact Hausdorff space with its Borel measurable structure, suppose $\mu_i\rightharpoonup\nu$ and $c_i\mu_i\rightharpoonup\xi$, where $\nu,\xi$ are nonzero regular measures and $c_i\in[0,\infty]$. Then $\xi=a\nu$ for some positive finite $a$. No regularity assumption on the sequence is needed for the compact-test integral formulation.
+\end{lemma}
+
+\begin{lemma}[Positive finite scalar multiples preserve general tangents]
+\label{lem:general-tangent-scalar}
+\lean{Preiss.isTangentMeasure_smul}
+\uses{def:tangent-api}
+
+If $\nu\in\operatorname{Tan}(\mu,x)$ and $0<a<\infty$, then $a\nu\in\operatorname{Tan}(\mu,x)$. No local-finiteness assumption on the source measure is required.
+\end{lemma}
+
+\begin{lemma}[Dimensional subsequence extraction from two-sided ball bounds]
+\label{lem:dimensional-extraction-ball-bounds}
+\lean{Preiss.exists_dimensional_tangent_subseq_of_ball_bounds}
+\uses{def:dimensional-tangent, lem:dimensional-tangent-operations, gmt:blowup-balls, gmt:portmanteau, thm:compactness}
+
+Let $\mu$ be locally finite and suppose $p r^m\leq\mu(\overline B(x,r))\leq q r^m$ for all $0<r<R_0$, where $p,q,R_0>0$. Every positive sequence $r_i\to0$ admits a strictly increasing subsequence for which the dimensionally normalized blow-ups converge vaguely to a nonzero regular measure, which is also a general tangent. All natural dimensions, including zero, are allowed.
+\end{lemma}
+
+\begin{lemma}[Tangent-ray correspondence under density bounds]
+\label{lem:tangent-ray-density-bounds}
+\lean{Preiss.tangent_iff_dimensional_ray_of_ball_bounds, Preiss.tangent_iff_dimensional_ray_of_density_bounds}
+\uses{lem:dimensional-extraction-ball-bounds, lem:vague-scalar-limits, lem:general-tangent-scalar, gmt:density-bounds}
+
+For a locally finite measure with positive lower and finite upper $m$-density at $x$, $\nu\in\operatorname{Tan}(\mu,x)$ if and only if $\nu=c\xi$ for some $0<c<\infty$ and $\xi\in\operatorname{Tan}_m(\mu,x)$. A preceding version assumes only explicit two-sided local ball bounds. No existence of a density limit is used.
 \end{lemma}

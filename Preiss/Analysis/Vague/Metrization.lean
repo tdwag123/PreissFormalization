@@ -1,10 +1,12 @@
 import Preiss.Geometry.Euclidean
+import Preiss.Analysis.CountableCoordinateMetric
+import Preiss.Analysis.Vague.DeterminingTests
 import FormalizingGMT.WeakConvergence.Basic
 import Mathlib.Topology.MetricSpace.Pseudo.Basic
 
 /-! # A reusable metric presentation of vague convergence
 
-The metric is supplied as data with a specification. Its existence is a theorem obligation;
+The metric is supplied as data with a specification. Its existence is established below;
 no definition chooses data from an unfinished theorem.
 -/
 
@@ -35,8 +37,26 @@ structure VagueMetrization (n : ℕ) where
     letI := metric
     Tendsto μ atTop (𝓝 ν) ↔ Measure.WeaklyConverges (fun i => (μ i).val) ν.val
 
+noncomputable def vagueMetrizationOfDenseCompactTests {n : ℕ}
+    (F : DenseCompactTestFamily (Euclidean n)) : VagueMetrization n := by
+  let coordinates (j : ℕ) (μ : RegularEuclideanMeasure n) := ∫ x, F.tests j x ∂μ.val
+  have hsep (μ ν : RegularEuclideanMeasure n)
+      (h : ∀ j, coordinates j μ = coordinates j ν) : μ = ν := by
+    apply Subtype.ext
+    exact measure_eq_of_denseCompactTests F μ.val ν.val μ.property ν.property h
+  refine ⟨F.tests, countableCoordinateMetric coordinates hsep, ?_, ?_, ?_⟩
+  · intro μ ν
+    exact countableCoordinateMetric_dist coordinates hsep μ ν
+  · intro R hR
+    exact F.cutoffs (closedBall (0 : Euclidean n) R) (isCompact_closedBall _ _)
+  · intro μ ν
+    exact (countableCoordinateMetric_tendsto_iff coordinates hsep μ atTop ν).trans
+      (weaklyConverges_iff_denseCompactTests F (fun i => (μ i).val) ν.val
+        (fun i => (μ i).property) ν.property).symm
+
 theorem exists_vagueMetrization (n : ℕ) : Nonempty (VagueMetrization n) := by
-  sorry
+  obtain ⟨F⟩ := exists_denseCompactTestFamily (X := Euclidean n)
+  exact ⟨vagueMetrizationOfDenseCompactTests F⟩
 
 theorem vagueMetric_tendsto_iff {n : ℕ} (M : VagueMetrization n)
     (μ : ℕ → RegularEuclideanMeasure n) (ν : RegularEuclideanMeasure n) :
