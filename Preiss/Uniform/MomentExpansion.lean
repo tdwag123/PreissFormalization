@@ -14,7 +14,7 @@ The analytic weighted-projection and finite-feature arguments supply their proof
 -/
 
 @[expose] public section
-open MeasureTheory Filter Set
+open MeasureTheory Filter Set Asymptotics
 open scoped BigOperators Topology
 
 namespace Preiss
