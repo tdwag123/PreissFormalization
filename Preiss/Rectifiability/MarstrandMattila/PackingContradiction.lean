@@ -34,7 +34,7 @@ theorem false_of_null_projections_and_uniform_weakApproximation
     rw [Measure.restrict_apply (isOpen_ball.measurableSet.diff hG.isClosed.measurableSet)]
     have heq : (ball a (2 * r) \ G) ∩ E = (E \ G) ∩ ball a (2 * r) := by
       ext x
-      simp only [mem_inter_iff, mem_sdiff]
+      simp only [mem_inter_iff, Set.mem_sdiff]
       tauto
     rw [heq]
     exact (hbound r hr hrR').2
