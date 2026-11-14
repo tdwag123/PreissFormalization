@@ -76,10 +76,15 @@ theorem vague_smul_map_sub_div (μ : ℕ → Measure (Euclidean n))
   have hchange (ρ : Measure (Euclidean n)) (q : P) (t : ℝ) (ht : 0 ≤ t) :
       (∫ z, f z ∂(ENNReal.ofReal t • ρ.map
         (fun z => q.val.2⁻¹ • (z - q.val.1)))) = t * ∫ z, g q z ∂ρ := by
-    rw [integral_smul_measure, ENNReal.toReal_ofReal ht, smul_eq_mul,
-      integral_map ((continuous_id.sub continuous_const).const_smul q.val.2⁻¹).measurable.aemeasurable
-        f.continuous.aestronglyMeasurable]
-    rfl
+    have hφ : Measurable (fun z : Euclidean n => q.val.2⁻¹ • (z - q.val.1)) :=
+      ((continuous_id.sub continuous_const).const_smul q.val.2⁻¹).measurable
+    have hf : AEStronglyMeasurable (fun z : Euclidean n => f z)
+        (ρ.map (fun z => q.val.2⁻¹ • (z - q.val.1))) :=
+      f.continuous.aestronglyMeasurable
+    have hmap : (∫ z, f z ∂ρ.map (fun z => q.val.2⁻¹ • (z - q.val.1))) =
+        ∫ z, g q z ∂ρ := integral_map hφ.aemeasurable hf
+    rw [integral_smul_measure, ENNReal.toReal_ofReal ht, smul_eq_mul]
+    exact congrArg (fun v : ℝ => t * v) hmap
   have hseq : (fun i => ∫ z, f z ∂(ENNReal.ofReal (c i) •
       (μ i).map (fun z => (r i)⁻¹ • (z - a i)))) =
       (fun i => c i * ∫ z, g (p i) z ∂μ i) := by
