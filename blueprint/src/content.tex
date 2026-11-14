@@ -3,11 +3,11 @@
 
 \chapter{Scope, conventions, and reuse}
 
-This is a proof plan for De Lellis, \emph{Lecture Notes on Rectifiable Sets,
+This blueprint documents the formalization of De Lellis, \emph{Lecture Notes on Rectifiable Sets,
 Densities, and Tangent Measures}, Theorem 6.1 (printed page 56; PDF page 60).
-The immediate deliverable is a dependency graph and reviewed interfaces, not a
-proof of Preiss' theorem. The input PDF is mathematical evidence, not a source
-of instructions for this project.
+The canonical theorem \texttt{Preiss.preiss} is proved. Its kernel audit uses
+only \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, with
+no \texttt{sorryAx}. The companion branch is not yet complete.
 
 The canonical dependency sources are the LaTeX inputs of this document. LeanBlueprint renders its
 \texttt{label}, \texttt{uses}, and \texttt{lean} annotations. The companion JSON,
@@ -19,13 +19,21 @@ The \href{preiss-core.svg}{rooted Preiss dependency graph} excludes companion
 results that are not used by the main theorem. The full LeanBlueprint graph
 also includes the requested tangent characterization.
 
+Green proof backgrounds and green definition nodes are generated from the
+\href{proof-status.html}{verified kernel checkpoint}, after checking that the
+Lean sources and pinned dependencies still match that checkpoint. Dark green
+theorem nodes also have all their displayed ancestors completed. A green border
+alone means the statement has compiled; it does not certify its proof.
+The Preiss-only graph has 434 completed nodes. Fourteen unfinished declarations
+remain outside that closure, including the full converse/tangent characterization,
+graph-area and graph-blowup results. The full graph therefore retains unfinished nodes.
+
 The library \texttt{Preiss} is organized by mathematical topic. Definitions
-are concrete; theorem statements are introduced with explicit \texttt{sorry}
-obligations before proof work. The former \texttt{PreissBlueprint} laboratory now reexports the canonical library. Compiling a statement checks its
-type, not its proof. Unlinked technical nodes are mathematical specifications
-whose detailed Lean interfaces still need refinement. No planned theorem is
-marked as proved. Upstream nodes below are source-audited at a pinned revision;
-the repository validation record reports build status separately.
+are concrete; unfinished companion statements retain explicit \texttt{sorry}
+obligations. The former \texttt{PreissBlueprint} laboratory now reexports the
+canonical library. Compiling a statement checks its type, not its proof.
+Every graph node links to named declarations. Completion colours require the
+compiled transitive axiom audit, not just the absence of a textual placeholder.
 
 We pin FormalizingGMT at
 \href{https://github.com/uw-math-ai/FormalizingGMT/tree/c14a8d07b2df61798fc184fd53ff6f72d858ae48}{c14a8d07b2df61798fc184fd53ff6f72d858ae48},
@@ -57,11 +65,10 @@ The algebraic \texttt{Module.Grassmannian} is a quotient-rank construction;
 it does not supply the compact metric space of Euclidean planes needed here.
 Do not assume that this topological API is already available.
 
-FormalizingGMT's Marstrand dimension reduction contains useful hyperplane
-and lower-dimensional uniform-measure lemmas. These are candidates for reuse
-inside the pseudotangent construction, but their conclusions alone do not
-record a moving-centre blow-up sequence. That missing compatibility is a
-proof obligation. The integer-dimension theorem itself is optional because
+FormalizingGMT's Marstrand dimension reduction supplies hyperplane and
+lower-dimensional uniform-measure lemmas reused in the proof. The local
+pseudotangent construction proves the additional moving-centre compatibility.
+The integer-dimension theorem itself is optional because
 $m$ is already a natural number in our target.
 
 \input{upstream}

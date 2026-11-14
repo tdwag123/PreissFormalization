@@ -3,6 +3,7 @@ from pathlib import Path
 import argparse
 import json
 import subprocess
+from blueprint_kernel_status import load_status
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -24,17 +25,21 @@ def main():
 
     visit("thm:preiss")
     selected = [n for n in data["nodes"] if n["id"] in closure]
-    core = {"root": "thm:preiss", "meaning": data["meaning"], "nodes": selected}
+    kernel = load_status()
+    core = {"root": "thm:preiss", "meaning": data["meaning"], "nodes": selected,
+            "kernel_checkpoint": kernel["source_revision"],
+            "sources_match_checkpoint": kernel["sources_match_checkpoint"]}
     destination = ROOT / "blueprint"
     (destination / "preiss-core.json").write_text(json.dumps(core, indent=2) + "\n", encoding="utf8")
-    colors = {"formalized_upstream": "#d9efdb", "definition": "#d9eaf7",
-              "draft_statement": "#fff0bf", "mathematical_plan": "#eeeeee"}
     lines = ['digraph PreissCore {', 'rankdir=LR;',
              'node [shape=box, style=filled, fontname="Arial"];']
     for n in selected:
+        verified = kernel["nodes"][n["id"]]["proof_checked"]
         attrs = {"label": n["title"] or n["id"],
-                 "fillcolor": colors.get(n["status"], "#fff0bf"),
-                 "tooltip": n["id"] + ": " + n["status"]}
+                 "fillcolor": "#1CAC78" if verified else "#fff0bf",
+                 "tooltip": n["id"] + ": " + (
+                     "kernel verified at " + kernel["source_revision"][:7]
+                     if verified else "unfinished or not verified at this source revision")}
         lines.append(json.dumps(n["id"]) + " [" + ", ".join(
             k + "=" + json.dumps(v) for k, v in attrs.items()) + "];")
         for dep in sorted(set(n["statement_dependencies"] + n["proof_dependencies"])):
