@@ -167,7 +167,8 @@
         "Preiss.countablyRectifiable_iUnion",
         "Preiss.countablyRectifiable_mono",
         "Preiss.countablyRectifiable_image",
-        "Preiss.countablyRectifiable_of_sdiff_null"
+        "Preiss.countablyRectifiable_of_sdiff_null",
+        "Preiss.countablyRectifiable_union"
       ],
       "declarations": [
         {
@@ -197,6 +198,12 @@
           "module": "Preiss.Rectifiability.Basic",
           "status": "proof_candidate",
           "elaboration": "Compiler accepted the statement and produced only its expected sorry warning before the subsequent trailing-doc syntax error; that syntax error is fixed."
+        },
+        {
+          "lean_name": "Preiss.countablyRectifiable_union",
+          "file": "Preiss/Rectifiability/Basic.lean",
+          "module": "Preiss.Rectifiability.Basic",
+          "status": "proof_candidate"
         }
       ],
       "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
@@ -205,7 +212,7 @@
       "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
       "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
       "module": "Preiss.Rectifiability.EuclideanCarrier",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.exists_borel_sigmaFinite_carrier"
       ],
@@ -214,7 +221,7 @@
           "lean_name": "Preiss.exists_borel_sigmaFinite_carrier",
           "file": "Preiss/Rectifiability/EuclideanCarrier.lean",
           "module": "Preiss.Rectifiability.EuclideanCarrier",
-          "status": "unproved_statement"
+          "status": "proof_candidate"
         }
       ],
       "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
@@ -303,7 +310,7 @@
       "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
       "file": "Preiss/Rectifiability/Decomposition.lean",
       "module": "Preiss.Rectifiability.Decomposition",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
         "Preiss.rectifiable_pure_partition_unique"
@@ -313,7 +320,7 @@
           "lean_name": "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
           "file": "Preiss/Rectifiability/Decomposition.lean",
           "module": "Preiss.Rectifiability.Decomposition",
-          "status": "unproved_statement"
+          "status": "proof_candidate"
         },
         {
           "lean_name": "Preiss.rectifiable_pure_partition_unique",
@@ -396,7 +403,7 @@
       "lean_name": "Preiss.rectifiable_iff_density_representation",
       "file": "Preiss/Rectifiability/DensityRepresentation.lean",
       "module": "Preiss.Rectifiability.DensityRepresentation",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.rectifiable_iff_density_representation"
       ],
@@ -405,7 +412,7 @@
           "lean_name": "Preiss.rectifiable_iff_density_representation",
           "file": "Preiss/Rectifiability/DensityRepresentation.lean",
           "module": "Preiss.Rectifiability.DensityRepresentation",
-          "status": "unproved_statement"
+          "status": "proof_candidate"
         }
       ],
       "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."
@@ -920,7 +927,7 @@
       "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
       "file": "Preiss/Rectifiability/GraphCover.lean",
       "module": "Preiss.Rectifiability.GraphCover",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean_names": [
         "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null"
       ],
@@ -929,7 +936,7 @@
           "lean_name": "Preiss.hausdorffMeasure_image_eq_zero_of_lipschitz_null",
           "file": "Preiss/Rectifiability/GraphCover.lean",
           "module": "Preiss.Rectifiability.GraphCover",
-          "status": "unproved_statement"
+          "status": "proof_candidate"
         }
       ],
       "verification": "Current-source classification; ce7e39d is the last full-project checked snapshot. Later edits require separate verification."

@@ -1363,7 +1363,8 @@
         "Preiss.countablyRectifiable_iUnion",
         "Preiss.countablyRectifiable_image",
         "Preiss.countablyRectifiable_mono",
-        "Preiss.countablyRectifiable_of_sdiff_null"
+        "Preiss.countablyRectifiable_of_sdiff_null",
+        "Preiss.countablyRectifiable_union"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
@@ -1445,7 +1446,7 @@
       "id": "lem:decomposition",
       "title": "Rectifiable/pure decomposition",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
         "Preiss.exists_rectifiable_purelyUnrectifiable_partition",
         "Preiss.rectifiable_pure_partition_unique"
@@ -2430,7 +2431,6 @@
       "proof_dependencies": [],
       "expanded_line": 2969,
       "unfinished_dependencies": [
-        "lem:decomposition",
         "lem:packing-contradiction",
         "lem:pure-wla-null-projection",
         "lem:weak-approximation-restrict-ae"
@@ -2463,13 +2463,16 @@
       "id": "lem:gaussian-polynomial-integrable",
       "title": "Gaussian polynomial integrability under polynomial growth",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
+        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound",
         "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
-        "def:polynomial-growth-bound"
+        "def:polynomial-growth-bound",
+        "lem:annulus-integrability",
+        "lem:gaussian-annulus-majorant"
       ],
       "proof_dependencies": [],
       "expanded_line": 3017,
@@ -2557,28 +2560,26 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 3146,
-      "unfinished_dependencies": [
-        "lem:gaussian-polynomial-integrable"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:gaussian-uniform-tails",
       "title": "Uniform Gaussian polynomial tails",
       "kind": "lemma",
-      "status": "unproved_statement",
+      "status": "proof_candidate",
       "lean": [
+        "Preiss.exists_uniform_gaussian_tail_radius",
         "Preiss.gaussian_polynomial_uniform_tail"
       ],
       "verification": "source_audit_only",
       "statement_dependencies": [
         "def:polynomial-growth-bound",
-        "lem:gaussian-polynomial-integrable"
+        "lem:gaussian-polynomial-integrable",
+        "lem:gaussian-tail-series-bound"
       ],
       "proof_dependencies": [],
       "expanded_line": 3188,
-      "unfinished_dependencies": [
-        "lem:gaussian-polynomial-integrable"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:gaussian-parameter-derivative",
@@ -2595,9 +2596,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 3216,
-      "unfinished_dependencies": [
-        "lem:gaussian-polynomial-integrable"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:vague-countable-metric",
@@ -2770,9 +2769,7 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 3455,
-      "unfinished_dependencies": [
-        "lem:gaussian-uniform-tails"
-      ]
+      "unfinished_dependencies": []
     },
     {
       "id": "lem:gaussian-quadratic-trace-bound",
@@ -3008,7 +3005,6 @@
       "proof_dependencies": [],
       "expanded_line": 3760,
       "unfinished_dependencies": [
-        "lem:gaussian-polynomial-integrable",
         "lem:moment-norm-bound",
         "lem:radial"
       ]
@@ -3812,7 +3808,6 @@
       "expanded_line": 4668,
       "unfinished_dependencies": [
         "def:rigidity-normal-vector",
-        "lem:gaussian-polynomial-integrable",
         "lem:odd-coefficients-plane-zero",
         "lem:taylor-two",
         "lem:uniform-cylinder-identity"
@@ -3845,7 +3840,6 @@
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
         "lem:gaussian-parameter-derivative",
-        "lem:gaussian-polynomial-integrable",
         "lem:rigidity-mixed-gaussian-limit",
         "lem:uniform-cylinder-identity"
       ]
@@ -3969,7 +3963,6 @@
         "def:rigidity-adjusted-form",
         "def:rigidity-normal-vector",
         "def:rigidity-omega",
-        "lem:gaussian-polynomial-integrable",
         "lem:rigidity-fourth-support-identity",
         "lem:uniform-cylinder-identity"
       ]
@@ -4629,6 +4622,81 @@
       ],
       "proof_dependencies": [],
       "expanded_line": 5623,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:annulus-integrability",
+      "title": "Integrability from summable annulus bounds",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integrable_of_summable_annulus_bounds"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5657,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:nonnegative-integral-cover-bound",
+      "title": "Integral bound from a countable measurable cover",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.integral_iUnion_le_tsum_bounds"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5666,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-annulus-majorant",
+      "title": "A summable common Gaussian annulus majorant",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.summable_gaussian_annulus_majorant"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5675,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-annulus-integral",
+      "title": "Gaussian integrals on unit annuli",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_annulus_integral_bound"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "expanded_line": 5681,
+      "unfinished_dependencies": []
+    },
+    {
+      "id": "lem:gaussian-tail-series-bound",
+      "title": "A common series controls every Gaussian tail",
+      "kind": "lemma",
+      "status": "proof_candidate",
+      "lean": [
+        "Preiss.gaussian_tail_le_annulus_sum"
+      ],
+      "verification": "source_audit_only",
+      "statement_dependencies": [
+        "lem:gaussian-annulus-integral",
+        "lem:gaussian-annulus-majorant",
+        "lem:gaussian-polynomial-integrable",
+        "lem:nonnegative-integral-cover-bound"
+      ],
+      "proof_dependencies": [],
+      "expanded_line": 5687,
       "unfinished_dependencies": []
     }
   ]

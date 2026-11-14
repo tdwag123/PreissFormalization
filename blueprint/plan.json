@@ -1526,7 +1526,8 @@
         "Preiss.countablyRectifiable_iUnion",
         "Preiss.countablyRectifiable_image",
         "Preiss.countablyRectifiable_mono",
-        "Preiss.countablyRectifiable_of_sdiff_null"
+        "Preiss.countablyRectifiable_of_sdiff_null",
+        "Preiss.countablyRectifiable_union"
       ],
       "proposed_lean_name": "CountablyRectifiable.iUnion",
       "proposed_file": "Preiss/Rectifiability/Basic.lean",
@@ -3061,9 +3062,12 @@
       "hypotheses_tex": "",
       "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
       "deps": [
-        "def:polynomial-growth-bound"
+        "def:polynomial-growth-bound",
+        "lem:annulus-integrability",
+        "lem:gaussian-annulus-majorant"
       ],
       "lean_names": [
+        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound",
         "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
       ],
       "proposed_lean_name": "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
@@ -3224,9 +3228,11 @@
       "proof_tex": "For every $d\\in\\mathbb N$ and $s>0$,\n$\\int |z|^d e^{-s|z|^2}\\,d\\nu<\\infty$ and $0<I_\\nu(s)<\\infty$.\nFor fixed $s,d$, the tails outside $B(0,R)$ tend to zero uniformly over\n$\\mathcal U_m$. State the more reusable version for a family satisfying one\ncommon polynomial bound $\\mu(B(0,R))\\leq C(1+R)^p$.\nUse this to extend vague convergence to polynomial-times-Gaussian tests.\nIt also justifies differentiation with respect to positive $s$ locally in $s$.",
       "deps": [
         "def:polynomial-growth-bound",
-        "lem:gaussian-polynomial-integrable"
+        "lem:gaussian-polynomial-integrable",
+        "lem:gaussian-tail-series-bound"
       ],
       "lean_names": [
+        "Preiss.exists_uniform_gaussian_tail_radius",
         "Preiss.gaussian_polynomial_uniform_tail"
       ],
       "proposed_lean_name": "Preiss.gaussian_polynomial_uniform_tail",
@@ -6138,6 +6144,86 @@
         "Preiss/Density/UpperBounds.lean"
       ],
       "proposed_file": "Preiss/Density/UpperBounds.lean"
+    },
+    {
+      "id": "lem:annulus-integrability",
+      "kind": "lemma",
+      "title": "Integrability from summable annulus bounds",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integrable_of_summable_annulus_bounds"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AnnulusIntegrability.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AnnulusIntegrability.lean"
+    },
+    {
+      "id": "lem:nonnegative-integral-cover-bound",
+      "kind": "lemma",
+      "title": "Integral bound from a countable measurable cover",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.integral_iUnion_le_tsum_bounds"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/AnnulusIntegrability.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/AnnulusIntegrability.lean"
+    },
+    {
+      "id": "lem:gaussian-annulus-majorant",
+      "kind": "lemma",
+      "title": "A summable common Gaussian annulus majorant",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.summable_gaussian_annulus_majorant"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    {
+      "id": "lem:gaussian-annulus-integral",
+      "kind": "lemma",
+      "title": "Gaussian integrals on unit annuli",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_annulus_integral_bound"
+      ],
+      "deps": [],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    {
+      "id": "lem:gaussian-tail-series-bound",
+      "kind": "lemma",
+      "title": "A common series controls every Gaussian tail",
+      "branch": "Reusable proof infrastructure",
+      "lean_names": [
+        "Preiss.gaussian_tail_le_annulus_sum"
+      ],
+      "deps": [
+        "lem:gaussian-annulus-integral",
+        "lem:gaussian-annulus-majorant",
+        "lem:gaussian-polynomial-integrable",
+        "lem:nonnegative-integral-cover-bound"
+      ],
+      "role": "Preiss proof",
+      "source_files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ],
+      "proposed_file": "Preiss/Analysis/GaussianGrowth.lean"
     }
   ],
   "preiss_core": [
@@ -6211,6 +6297,7 @@
     "gmt:uniform-tangents",
     "gmt:vague",
     "gmt:zero-barycenter-hyperplane",
+    "lem:annulus-integrability",
     "lem:ball-upper-hausdorff-bound",
     "lem:bilinear-trace-basis",
     "lem:blowdown-moment-limits",
@@ -6255,9 +6342,12 @@
     "lem:flatness-gap-cutoff",
     "lem:flatness-minimum",
     "lem:flatness-radius-continuous",
+    "lem:gaussian-annulus-integral",
+    "lem:gaussian-annulus-majorant",
     "lem:gaussian-parameter-derivative",
     "lem:gaussian-polynomial-integrable",
     "lem:gaussian-quadratic-trace-bound",
+    "lem:gaussian-tail-series-bound",
     "lem:gaussian-translation-series",
     "lem:gaussian-uniform-tails",
     "lem:gaussian-wick-fourth",
@@ -6285,6 +6375,7 @@
     "lem:moment-second-total-trace",
     "lem:moment-support-polynomial",
     "lem:nested-compact-approximation",
+    "lem:nonnegative-integral-cover-bound",
     "lem:odd-coefficients-plane-zero",
     "lem:packing-base-point",
     "lem:packing-contradiction",

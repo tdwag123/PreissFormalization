@@ -1,0 +1,28 @@
+{
+  "local_check": "tmp/AnnulusIntegrability.lean exited 0; foundational integrability and uniform tail radius printed only propext, Classical.choice, Quot.sound. Canonical wrapper elaboration awaits full CI.",
+  "new_nodes": [
+    "lem:annulus-integrability",
+    "lem:nonnegative-integral-cover-bound",
+    "lem:gaussian-annulus-majorant",
+    "lem:gaussian-annulus-integral",
+    "lem:gaussian-tail-series-bound"
+  ],
+  "existing_node_additional_deps": {
+    "lem:gaussian-polynomial-integrable": [
+      "lem:annulus-integrability",
+      "lem:gaussian-annulus-majorant"
+    ],
+    "lem:gaussian-uniform-tails": [
+      "lem:gaussian-tail-series-bound"
+    ]
+  },
+  "new_imports": {
+    "Preiss.Analysis.GaussianGrowth": [
+      "Preiss.Analysis.AnnulusIntegrability"
+    ]
+  },
+  "primary_lean_names": {
+    "lem:gaussian-polynomial-integrable": "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
+    "lem:gaussian-uniform-tails": "Preiss.gaussian_polynomial_uniform_tail"
+  }
+}

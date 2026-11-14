@@ -252,6 +252,11 @@ flowchart LR
   lem_diameter_hausdorff_bound["Hausdorff comparison from diameter bounds"]
   lem_ball_upper_hausdorff_bound["Hausdorff comparison from upper ball bounds"]
   lem_upper_density_localization["Closed upper-density strata"]
+  lem_annulus_integrability["Integrability from summable annulus bounds"]
+  lem_nonnegative_integral_cover_bound["Integral bound from a countable measurable cover"]
+  lem_gaussian_annulus_majorant["A summable common Gaussian annulus majorant"]
+  lem_gaussian_annulus_integral["Gaussian integrals on unit annuli"]
+  lem_gaussian_tail_series_bound["A common series controls every Gaussian tail"]
   def_density_api --> gmt_density_order
   def_density_api --> gmt_density_limit
   def_density_api --> gmt_density_bounds
@@ -589,10 +594,13 @@ flowchart LR
   lem_flat_to_approximation --> thm_mm_measure
   thm_mm_set --> thm_mm_measure
   def_polynomial_growth_bound --> lem_gaussian_polynomial_integrable
+  lem_annulus_integrability --> lem_gaussian_polynomial_integrable
+  lem_gaussian_annulus_majorant --> lem_gaussian_polynomial_integrable
   def_plane --> lem_spectral_minimizing_plane
   lem_gaussian_polynomial_integrable --> lem_moment_determination
   def_polynomial_growth_bound --> lem_gaussian_uniform_tails
   lem_gaussian_polynomial_integrable --> lem_gaussian_uniform_tails
+  lem_gaussian_tail_series_bound --> lem_gaussian_uniform_tails
   def_polynomial_growth_bound --> lem_gaussian_parameter_derivative
   lem_gaussian_polynomial_integrable --> lem_gaussian_parameter_derivative
   gmt_vague --> lem_vague_countable_metric
@@ -1070,3 +1078,7 @@ flowchart LR
   lem_diameter_hausdorff_bound --> lem_ball_upper_hausdorff_bound
   def_density_api --> lem_upper_density_localization
   gmt_goodballs --> lem_upper_density_localization
+  lem_gaussian_annulus_integral --> lem_gaussian_tail_series_bound
+  lem_gaussian_annulus_majorant --> lem_gaussian_tail_series_bound
+  lem_gaussian_polynomial_integrable --> lem_gaussian_tail_series_bound
+  lem_nonnegative_integral_cover_bound --> lem_gaussian_tail_series_bound

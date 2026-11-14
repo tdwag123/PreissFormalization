@@ -2,6 +2,34 @@
   "status": "Every listed module exists; current source plus intended proof imports are acyclic.",
   "modules": [
     {
+      "module": "Preiss.Analysis.AnnulusIntegrability",
+      "file": "Preiss/Analysis/AnnulusIntegrability.lean",
+      "purpose": "Reusable Analysis.AnnulusIntegrability interfaces.",
+      "current_source_imports": [
+        "Mathlib.Algebra.Order.Floor.Ring",
+        "Mathlib.Analysis.Normed.Group.Basic",
+        "Mathlib.MeasureTheory.Function.LocallyIntegrable",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Topology.MetricSpace.ProperSpace"
+      ],
+      "mathlib_imports": [
+        "Mathlib.Algebra.Order.Floor.Ring",
+        "Mathlib.Analysis.Normed.Group.Basic",
+        "Mathlib.MeasureTheory.Function.LocallyIntegrable",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Topology.MetricSpace.ProperSpace"
+      ],
+      "gmt_imports": [],
+      "proof_imports": [],
+      "nodes": [
+        "lem:annulus-integrability",
+        "lem:nonnegative-integral-cover-bound"
+      ],
+      "source_exists": true,
+      "local_imports": [],
+      "scope": "core"
+    },
+    {
       "module": "Preiss.Analysis.BilinearTrace",
       "file": "Preiss/Analysis/BilinearTrace.lean",
       "current_source_imports": [
@@ -33,26 +61,37 @@
       "current_source_imports": [
         "Mathlib.Algebra.MvPolynomial.Eval",
         "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecificLimits.Normed",
         "Mathlib.MeasureTheory.Integral.DominatedConvergence",
         "Mathlib.MeasureTheory.Measure.Regular",
+        "Preiss.Analysis.AnnulusIntegrability",
         "Preiss.Geometry.Euclidean"
       ],
       "local_imports": [
+        "Preiss.Analysis.AnnulusIntegrability",
         "Preiss.Geometry.Euclidean"
       ],
       "mathlib_imports": [
         "Mathlib.Algebra.MvPolynomial.Eval",
         "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecificLimits.Normed",
         "Mathlib.MeasureTheory.Integral.DominatedConvergence",
         "Mathlib.MeasureTheory.Measure.Regular"
       ],
       "gmt_imports": [],
-      "proof_imports": [],
+      "proof_imports": [
+        "Preiss.Analysis.AnnulusIntegrability"
+      ],
       "nodes": [
         "lem:gaussian-polynomial-integrable",
         "lem:gaussian-uniform-tails",
         "lem:gaussian-parameter-derivative",
-        "def:polynomial-growth-bound"
+        "def:polynomial-growth-bound",
+        "lem:gaussian-annulus-majorant",
+        "lem:gaussian-annulus-integral",
+        "lem:gaussian-tail-series-bound"
       ],
       "source_exists": true,
       "scope": "core",
@@ -1009,6 +1048,7 @@
       "file": "Preiss/Rectifiability/Decomposition.lean",
       "current_source_imports": [
         "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Order.IsLUB",
         "Preiss.Rectifiability.EuclideanCarrier",
         "Preiss.Rectifiability.PurelyUnrectifiable"
       ],
@@ -1018,7 +1058,8 @@
         "Preiss.Rectifiability.PurelyUnrectifiable"
       ],
       "mathlib_imports": [
-        "Mathlib.MeasureTheory.Measure.Regular"
+        "Mathlib.MeasureTheory.Measure.Regular",
+        "Mathlib.Topology.Order.IsLUB"
       ],
       "gmt_imports": [],
       "proof_imports": [
@@ -1178,6 +1219,7 @@
         "Mathlib.Analysis.Calculus.Rademacher",
         "Mathlib.MeasureTheory.Covering.Vitali",
         "Mathlib.MeasureTheory.Function.Jacobian",
+        "Mathlib.MeasureTheory.Measure.Haar.Unique",
         "Preiss.Rectifiability.Cones",
         "Preiss.Rectifiability.EuclideanCarrier"
       ],
@@ -1191,7 +1233,8 @@
       "mathlib_imports": [
         "Mathlib.Analysis.Calculus.Rademacher",
         "Mathlib.MeasureTheory.Covering.Vitali",
-        "Mathlib.MeasureTheory.Function.Jacobian"
+        "Mathlib.MeasureTheory.Function.Jacobian",
+        "Mathlib.MeasureTheory.Measure.Haar.Unique"
       ],
       "gmt_imports": [],
       "proof_imports": [
@@ -3456,6 +3499,7 @@
     }
   ],
   "topological_order": [
+    "Preiss.Analysis.AnnulusIntegrability",
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Geometry.Euclidean",
     "Preiss.Analysis.GradedProjection",
@@ -3574,6 +3618,7 @@
     "Preiss.Main"
   ],
   "preiss_import_closure": [
+    "Preiss.Analysis.AnnulusIntegrability",
     "Preiss.Analysis.BilinearTrace",
     "Preiss.Analysis.GaussianGrowth",
     "Preiss.Analysis.GaussianMomentDetermination",

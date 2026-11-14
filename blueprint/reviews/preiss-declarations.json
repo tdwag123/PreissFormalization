@@ -421,10 +421,12 @@
     },
     "lem:gaussian-polynomial-integrable": {
       "lean_names": [
-        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
+        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
+        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound"
       ],
       "planned_lean_names": [
-        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth"
+        "Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth",
+        "Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound"
       ],
       "status": "source interface written",
       "files": [
@@ -434,10 +436,12 @@
     },
     "lem:gaussian-uniform-tails": {
       "lean_names": [
-        "Preiss.gaussian_polynomial_uniform_tail"
+        "Preiss.gaussian_polynomial_uniform_tail",
+        "Preiss.exists_uniform_gaussian_tail_radius"
       ],
       "planned_lean_names": [
-        "Preiss.gaussian_polynomial_uniform_tail"
+        "Preiss.gaussian_polynomial_uniform_tail",
+        "Preiss.exists_uniform_gaussian_tail_radius"
       ],
       "status": "source interface written",
       "files": [
@@ -1367,6 +1371,51 @@
       "status": "existing upstream",
       "files": [
         ".lake/packages/FormalizingGMT/FormalizingGMT/MarstrandTheorem.lean"
+      ]
+    },
+    "lem:annulus-integrability": {
+      "lean_names": [
+        "Preiss.integrable_of_summable_annulus_bounds"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/AnnulusIntegrability.lean"
+      ]
+    },
+    "lem:nonnegative-integral-cover-bound": {
+      "lean_names": [
+        "Preiss.integral_iUnion_le_tsum_bounds"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/AnnulusIntegrability.lean"
+      ]
+    },
+    "lem:gaussian-annulus-majorant": {
+      "lean_names": [
+        "Preiss.summable_gaussian_annulus_majorant"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ]
+    },
+    "lem:gaussian-annulus-integral": {
+      "lean_names": [
+        "Preiss.gaussian_annulus_integral_bound"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
+      ]
+    },
+    "lem:gaussian-tail-series-bound": {
+      "lean_names": [
+        "Preiss.gaussian_tail_le_annulus_sum"
+      ],
+      "status": "additional concrete data or source interface",
+      "files": [
+        "Preiss/Analysis/GaussianGrowth.lean"
       ]
     },
     "def:moment-coefficients": {

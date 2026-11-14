@@ -551,7 +551,7 @@ If \(y\in C(x,V,\alpha)\) for every \(x,y\in F\), then there is a Lipschitz \(f:
 
 \begin{lemma}[Rectifiability closure operations]
 \label{lem:carrier-closure}
-\lean{Preiss.countablyRectifiable_iUnion, Preiss.countablyRectifiable_image, Preiss.countablyRectifiable_mono, Preiss.countablyRectifiable_of_sdiff_null}
+\lean{Preiss.countablyRectifiable_iUnion, Preiss.countablyRectifiable_image, Preiss.countablyRectifiable_mono, Preiss.countablyRectifiable_of_sdiff_null, Preiss.countablyRectifiable_union}
 \uses{def:coverage, def:rectifiable}
 
 
@@ -1956,8 +1956,8 @@ and every tangent measure is \(m\)-flat, then \(\mu\) is \(m\)-rectifiable.
 
 \begin{lemma}[Gaussian polynomial integrability under polynomial growth]
 \label{lem:gaussian-polynomial-integrable}
-\lean{Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth}
-\uses{def:polynomial-growth-bound}
+\lean{Preiss.integrable_norm_pow_mul_gaussian_of_ball_bound, Preiss.integrable_norm_pow_mul_gaussian_of_polynomial_growth}
+\uses{def:polynomial-growth-bound, lem:annulus-integrability, lem:gaussian-annulus-majorant}
 
 
 
@@ -2127,8 +2127,8 @@ or a separate uniqueness theorem with checked exponential-moment hypotheses.
 
 \begin{lemma}[Uniform Gaussian polynomial tails]
 \label{lem:gaussian-uniform-tails}
-\lean{Preiss.gaussian_polynomial_uniform_tail}
-\uses{def:polynomial-growth-bound, lem:gaussian-polynomial-integrable}
+\lean{Preiss.exists_uniform_gaussian_tail_radius, Preiss.gaussian_polynomial_uniform_tail}
+\uses{def:polynomial-growth-bound, lem:gaussian-polynomial-integrable, lem:gaussian-tail-series-bound}
 
 
 
@@ -4591,3 +4591,42 @@ containing $x$ lies in the ball centred at $x$ of radius $2r$. Enlarge the
 power constant to a natural number and decrease the radius to $1/(k+1)$.
 These countably many closed strata cover all points of finite upper density.
 \end{proof}
+
+\section{Annular estimates for Gaussian integrals}
+
+\begin{lemma}[Integrability from summable annulus bounds]
+\label{lem:annulus-integrability}
+\lean{Preiss.integrable_of_summable_annulus_bounds}
+Let $E$ be a proper normed additive group with its Borel structure, and let $\mu$ be finite on every positive-radius closed ball centred at zero. Let $f:E\to F$ be continuous, where $F$ is a normed additive group. If $M_j\ge0$, $\|f(x)\|\le M_j$ on $j\le\|x\|\le j+1$, and $\sum_j M_j\mu(\overline B(0,j+1))$ is summable as a real series, then $f$ is Bochner integrable.
+\end{lemma}
+\begin{proof}
+Integrate on compact unit annuli, use the finite ball masses, and apply summability of the integral bounds to their countable cover.
+\end{proof}
+
+\begin{lemma}[Integral bound from a countable measurable cover]
+\label{lem:nonnegative-integral-cover-bound}
+\lean{Preiss.integral_iUnion_le_tsum_bounds}
+For any measure on a measurable space, let $f$ be a nonnegative integrable real function and let $S_j$ be measurable sets. If a summable real sequence $B_j$ bounds $\int_{S_j}f$, then $\int_{\bigcup_j S_j}f\le\sum_j B_j$. The sets may overlap.
+\end{lemma}
+\begin{proof}
+Disjointify the measurable cover and use nonnegativity before summing.
+\end{proof}
+
+\begin{lemma}[A summable common Gaussian annulus majorant]
+\label{lem:gaussian-annulus-majorant}
+\lean{Preiss.summable_gaussian_annulus_majorant}
+For $C\ge0$, $p\in\R$, $d\in\mathbb N$, and $s>0$, the sequence $B_j=(j+1)^d e^{-s j^2}C(j+2)^p$ is summable. Bound the polynomial factor by a natural power and use $j^2\ge j$ to compare with a polynomial times the geometric sequence $(e^{-s})^j$.
+\end{lemma}
+
+\begin{lemma}[Gaussian integrals on unit annuli]
+\label{lem:gaussian-annulus-integral}
+\lean{Preiss.gaussian_annulus_integral_bound}
+Suppose $C\ge0$ and $\mu(\overline B(0,R))\le C(1+R)^p$ for all $R>0$. For $j,d\in\mathbb N$ and $s>0$, the integral of $\|z\|^d e^{-s\|z\|^2}$ over $j\le\|z\|\le j+1$ is at most $B_j=(j+1)^d e^{-s j^2}C(j+2)^p$. No regularity hypothesis is needed.
+\end{lemma}
+
+\begin{lemma}[A common series controls every Gaussian tail]
+\label{lem:gaussian-tail-series-bound}
+\lean{Preiss.gaussian_tail_le_annulus_sum}
+\uses{lem:gaussian-polynomial-integrable, lem:nonnegative-integral-cover-bound, lem:gaussian-annulus-majorant, lem:gaussian-annulus-integral}
+Under the polynomial ball bound above, for $N\in\mathbb N$ and $R\ge N$, the integral of $\|z\|^d e^{-s\|z\|^2}$ outside $\overline B(0,R)$ is at most $\sum_{j\ge0}B_{j+N}$. The bound is independent of the measure.
+\end{lemma}

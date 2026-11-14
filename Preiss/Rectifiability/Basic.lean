@@ -31,6 +31,18 @@ theorem countablyRectifiable_iUnion (s : ℕ → Set X)
     obtain ⟨i, hi⟩ := mem_iUnion.mp hx
     exact mem_iUnion.mpr ⟨i, hi, fun h ↦ hxt (mem_iUnion.mpr ⟨i, h⟩)⟩
 
+theorem countablyRectifiable_union {s t : Set X}
+    (hs : CountablyRectifiable m s) (ht : CountablyRectifiable m t) :
+    CountablyRectifiable m (s ∪ t) := by
+  let A : ℕ → Set X := fun i ↦ if i = 0 then s else t
+  have hA (i : ℕ) : CountablyRectifiable m (A i) := by
+    by_cases hi : i = 0 <;> simp only [A, hi, ite_true, ite_false] <;> assumption
+  apply countablyRectifiable_mono (countablyRectifiable_iUnion A hA)
+  intro x hx
+  rcases hx with hx | hx
+  · exact mem_iUnion.mpr ⟨0, by simpa [A] using hx⟩
+  · exact mem_iUnion.mpr ⟨1, by simpa [A] using hx⟩
+
 theorem countablyRectifiable_image {s : Set X} (hs : CountablyRectifiable m s)
     {f : X → Y} {K : ℝ≥0} (hf : LipschitzWith K f) :
     CountablyRectifiable m (f '' s) := by

@@ -1,8 +1,10 @@
 digraph Modules {
 rankdir=LR;
 node [shape=box, style=filled, fontname="Arial"];
+"Preiss.Analysis.AnnulusIntegrability" [label="Analysis.AnnulusIntegrability", fillcolor="#eeeeee"];
 "Preiss.Analysis.BilinearTrace" [label="Analysis.BilinearTrace", fillcolor="#eeeeee"];
 "Preiss.Analysis.GaussianGrowth" [label="Analysis.GaussianGrowth", fillcolor="#eeeeee"];
+"Preiss.Analysis.AnnulusIntegrability" -> "Preiss.Analysis.GaussianGrowth";
 "Preiss.Geometry.Euclidean" -> "Preiss.Analysis.GaussianGrowth";
 "Preiss.Analysis.GaussianMomentDetermination" [label="Analysis.GaussianMomentDetermination", fillcolor="#eeeeee"];
 "Preiss.Analysis.GaussianGrowth" -> "Preiss.Analysis.GaussianMomentDetermination";

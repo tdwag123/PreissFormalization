@@ -1,7 +1,7 @@
 {
   "toolchain": "leanprover/lean4:v4.34.1",
-  "source_revision": "ce7e39daa16046beea7841c5d2793c012fbb63d4",
-  "meaning": "Kernel axiom dependencies of the compiled declarations, not just textual references",
+  "source_revision": "ec5770a37ff6698ba22ef14af2ade984644fdf4e",
+  "meaning": "Kernel axiom dependencies of compiled declarations at the recorded source revision.",
   "declarations": {
     "Besicovitch.ae_tendsto_measure_inter_div": {
       "project": "upstream",
@@ -94,6 +94,16 @@
       "kernel_status": "upstream_checked"
     },
     "MeasureTheory.Measure.WeaklyConverges": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "MeasureTheory.Measure.le_hausdorffMeasure": {
       "project": "upstream",
       "kind": "upstream",
       "axioms": [
@@ -694,15 +704,14 @@
     "Preiss.absolutelyContinuous_hausdorff_of_upper_density_finite": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Density/HausdorffComparison.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.adjustedForm_gaussian_error_tendsto_zero": {
       "project": "local",
@@ -1336,7 +1345,7 @@
     "Preiss.dimensionalTangent_of_tangentAtInfinity": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "depends_on_unproved",
       "path": "Preiss/Tangent/Blowdown.lean",
       "axioms": [
         "Classical.choice",
@@ -1344,7 +1353,7 @@
         "propext",
         "sorryAx"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "depends_on_sorry"
     },
     "Preiss.dimensional_density_eq_of_tendsto": {
       "project": "local",
@@ -1447,6 +1456,18 @@
         "sorryAx"
       ],
       "kernel_status": "unproved_statement"
+    },
+    "Preiss.exists_closedBall_upper_bound_of_upperDensity_lt_top": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/UpperBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.exists_column_disjoint_balls": {
       "project": "local",
@@ -1578,6 +1599,30 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.exists_goodBallSet_mem_of_closedBall_upper_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/UpperBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_goodBallSet_mem_of_upperDensity_lt_top": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Density/UpperBounds.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.exists_greatest_crossing": {
       "project": "local",
       "kind": "theorem",
@@ -1620,17 +1665,28 @@
     "Preiss.exists_lipschitzGraph_of_pairwise_mem_cone": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Rectifiability/Cones.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.exists_lipschitz_extension_euclidean": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Geometry/LipschitzExtension.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
+    "Preiss.exists_lipschitz_extension_finiteDimensional": {
       "project": "local",
       "kind": "theorem",
       "source_status": "proof_candidate",
@@ -2257,7 +2313,7 @@
     "Preiss.gaussian_integral_bilinear_sq_ge_trace_sq": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "depends_on_unproved",
       "path": "Preiss/Analysis/GaussianQuadraticForms.lean",
       "axioms": [
         "Classical.choice",
@@ -2265,7 +2321,7 @@
         "propext",
         "sorryAx"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "depends_on_sorry"
     },
     "Preiss.gaussian_integral_inner_pow_even": {
       "project": "local",
@@ -2789,6 +2845,18 @@
       ],
       "kernel_status": "unproved_statement"
     },
+    "Preiss.measure_le_smul_hausdorff_of_diameter_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/HausdorffComparison.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
+    },
     "Preiss.measure_projection_eq_zero_of_purelyUnrectifiable_weakApproximation": {
       "project": "local",
       "kind": "theorem",
@@ -2805,15 +2873,26 @@
     "Preiss.measure_restrict_le_hausdorff_of_ball_bounds": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Density/PowerComparison.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
+    },
+    "Preiss.measure_restrict_le_hausdorff_of_uniform_ball_upper_bound": {
+      "project": "local",
+      "kind": "theorem",
+      "source_status": "proof_candidate",
+      "path": "Preiss/Analysis/HausdorffComparison.lean",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "proved"
     },
     "Preiss.measure_toMeasurable_inter_eq_zero_of_disjoint": {
       "project": "local",
@@ -2990,15 +3069,14 @@
     "Preiss.planeMeasure_ball_and_sphere": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Geometry/PlaneMeasure.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.planeProjection": {
       "project": "local",
@@ -3725,15 +3803,14 @@
     "Preiss.unitFlat_closedBall": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Geometry/PlaneMeasure.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.unitUniform_eq_flat_of_support_subset_plane": {
       "project": "local",
@@ -3825,28 +3902,26 @@
     "Preiss.vague_dimensionalBlowup_moving": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Tangent/Continuity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.vague_integral_moving_compact_test": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Analysis/Vague/CompactTests.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.vague_integral_polynomial_mul_gaussian": {
       "project": "local",
@@ -3864,15 +3939,14 @@
     "Preiss.vague_smul_map_sub_div": {
       "project": "local",
       "kind": "theorem",
-      "source_status": "unproved_statement",
+      "source_status": "proof_candidate",
       "path": "Preiss/Tangent/Continuity.lean",
       "axioms": [
         "Classical.choice",
         "Quot.sound",
-        "propext",
-        "sorryAx"
+        "propext"
       ],
-      "kernel_status": "unproved_statement"
+      "kernel_status": "proved"
     },
     "Preiss.weakApproximationGoodSet": {
       "project": "local",
@@ -4301,6 +4375,16 @@
       ],
       "kernel_status": "upstream_checked"
     },
+    "goodBallSet": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
     "goodSet": {
       "project": "upstream",
       "kind": "upstream",
@@ -4392,6 +4476,16 @@
       "kernel_status": "upstream_checked"
     },
     "hausdorffMeasure_upperDensity_le_one_ae_mem": {
+      "project": "upstream",
+      "kind": "upstream",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "kernel_status": "upstream_checked"
+    },
+    "isClosed_goodBallSet": {
       "project": "upstream",
       "kind": "upstream",
       "axioms": [

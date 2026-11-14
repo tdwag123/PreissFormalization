@@ -1,5 +1,5 @@
 {
-  "status": "Concrete data and genuine helper assertions exposed while implementing the audited nodes. Proofs remain pending; these are not additional assumptions replacing the original obligations.",
+  "status": "Concrete reusable data and helper assertions. Proof status is recorded by the kernel dependency audit; later proof edits require current CI verification.",
   "nodes": [
     {
       "id": "def:moment-coefficients",
@@ -189,6 +189,71 @@
         "Preiss.norm_momentKernel_le"
       ],
       "file": "Preiss/Uniform/MomentForms.lean"
+    },
+    {
+      "id": "lem:annulus-integrability",
+      "title": "Integrability from summable annulus bounds",
+      "kind": "lemma",
+      "statement_tex": "Let mu be a Borel measure on an arbitrary proper normed additive group E with finite mass on every positive-radius closed ball centered at zero. Let f be continuous and normed-additive-group valued. For nonnegative constants M_j, suppose norm(f(x))<=M_j whenever j<=norm(x)<=j+1. If sum_j M_j mu(closedBall(0,j+1)) is summable, then f is Bochner integrable.",
+      "deps": [],
+      "definition_dependencies": [],
+      "lean_names": [
+        "Preiss.integrable_of_summable_annulus_bounds"
+      ],
+      "file": "Preiss/Analysis/AnnulusIntegrability.lean"
+    },
+    {
+      "id": "lem:nonnegative-integral-cover-bound",
+      "title": "Integral bound from a countable measurable cover",
+      "kind": "lemma",
+      "statement_tex": "For any measure on any measurable space, a nonnegative integrable real function f, measurable sets S_j, and a summable real sequence B_j bounding integral_(S_j) f, the integral of f on the union of the S_j is at most sum_j B_j. Disjointification removes any overlap of the cover.",
+      "deps": [],
+      "definition_dependencies": [],
+      "lean_names": [
+        "Preiss.integral_iUnion_le_tsum_bounds"
+      ],
+      "file": "Preiss/Analysis/AnnulusIntegrability.lean"
+    },
+    {
+      "id": "lem:gaussian-annulus-majorant",
+      "title": "A summable common Gaussian annulus majorant",
+      "kind": "lemma",
+      "statement_tex": "For C>=0, arbitrary real p, a natural degree d, and s>0, the sequence B_j=(j+1)^d exp(-s j^2) C(j+2)^p is summable. Bound the polynomial factor using ceil(p), use j^2>=j for natural j, and compare with a polynomial times the geometric series exp(-s)^j.",
+      "deps": [],
+      "definition_dependencies": [],
+      "lean_names": [
+        "Preiss.summable_gaussian_annulus_majorant"
+      ],
+      "file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    {
+      "id": "lem:gaussian-annulus-integral",
+      "title": "Gaussian integrals on unit annuli",
+      "kind": "lemma",
+      "statement_tex": "If C>=0 and mu(closedBall(0,R))<=ofReal(C(1+R)^p) for all R>0, then for every natural j,d and s>0, the integral of norm(z)^d exp(-s norm(z)^2) over j<=norm(z)<=j+1 is at most (j+1)^d exp(-s j^2) C(j+2)^p. No regularity assumption is needed.",
+      "deps": [],
+      "definition_dependencies": [],
+      "lean_names": [
+        "Preiss.gaussian_annulus_integral_bound"
+      ],
+      "file": "Preiss/Analysis/GaussianGrowth.lean"
+    },
+    {
+      "id": "lem:gaussian-tail-series-bound",
+      "title": "A common series controls every Gaussian tail",
+      "kind": "lemma",
+      "statement_tex": "Under the same polynomial ball bound with C>=0, for every natural N and real R>=N, the Gaussian-polynomial integral outside closedBall(0,R) is at most sum_(j>=0) B_(j+N), where B_l=(l+1)^d exp(-s l^2) C(l+2)^p. The majorant is independent of the measure.",
+      "deps": [
+        "lem:gaussian-polynomial-integrable",
+        "lem:nonnegative-integral-cover-bound",
+        "lem:gaussian-annulus-majorant",
+        "lem:gaussian-annulus-integral"
+      ],
+      "definition_dependencies": [],
+      "lean_names": [
+        "Preiss.gaussian_tail_le_annulus_sum"
+      ],
+      "file": "Preiss/Analysis/GaussianGrowth.lean"
     }
   ],
   "definition_edge_additions": {
