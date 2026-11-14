@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -29,10 +31,11 @@ jobs:
       - name: Validate dependencies and declaration links
         run: |
           python scripts/test_source_checks.py
+          python scripts/test_blueprint_colors.py
           python scripts/check_blueprint.py
           python scripts/declaration_links.py
       - name: Render LeanBlueprint
-        run: leanblueprint web
+        run: python scripts/render_blueprint.py
       - name: Add declaration viewer and verify HTML
         run: |
           python scripts/declaration_links.py --site

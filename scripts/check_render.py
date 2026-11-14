@@ -59,3 +59,18 @@ assert checkpoint['source_revision'] in proof_page, 'Proof page has the wrong ch
 assert {unescape(name) for name in re.findall(r'data-name="([^"]+)"', proof_page)} == set(checkpoint['declarations']), (
     'Proof page does not contain every audited declaration')
 print(f"Verified proof list contains all {len(checkpoint['declarations'])} checkpoint declarations.")
+
+# Check the actual interactive graph colours, not just a separate status page.
+colors = json.loads((web / 'kernel-colors.json').read_text(encoding='utf8'))
+assert colors['source_revision'] == checkpoint['source_revision']
+dot_match = re.search(r'\.renderDot\(`([\s\S]*?)`\)', graph)
+assert dot_match, 'Missing rendered DOT data'
+dot = dot_match[1]
+green = {'#1CAC78', '#9CEC8B', '#B0ECA3'}
+for label, status in colors['nodes'].items():
+    node = re.search(r'(?:^|;)\s*"' + re.escape(label) + r'"\s*\[([^\]]*)\]', dot)
+    assert node, f'Missing rendered node attributes: {label}'
+    fill = re.search(r'\bfillcolor\s*=\s*"?([^",\s\]]+)', node[1])
+    is_green = bool(fill and fill[1] in green)
+    assert is_green == status['proof_checked'], f'Incorrect proof colour: {label}'
+print(f"Interactive graph colours match the kernel audit for all {len(colors['nodes'])} nodes.")

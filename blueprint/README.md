@@ -11,7 +11,7 @@ Install Graphviz and `pip install -r blueprint/requirements.txt`. From the repos
 python scripts/test_source_checks.py
 python scripts/check_blueprint.py
 python scripts/declaration_links.py
-leanblueprint web
+python scripts/render_blueprint.py
 python scripts/declaration_links.py --site
 python scripts/export_core_graph.py --site
 python scripts/check_module_plan.py --site
@@ -19,7 +19,11 @@ python scripts/check_render.py
 leanblueprint serve
 ```
 
-Alternatively, run `plastex -c plastex.cfg web.tex` from `blueprint/src`.
+The wrapper runs the standard LeanBlueprint/plasTeX renderer on temporary TeX
+copies. It adds completion markers only from the kernel checkpoint, after
+comparing all Lean sources and dependency pins with the audited revision.
+The checkout must contain that revision (`git fetch --unshallow` for a shallow clone).
+Running `leanblueprint web` directly skips this status synchronization.
 The configuration loads the actual LeanBlueprint and dependency-graph plugins.
 The generated HTML is `blueprint/web/index.html`. All TeX inputs are adjacent to
 `web.tex` so the fallback input resolver also works without a full TeX distribution.
