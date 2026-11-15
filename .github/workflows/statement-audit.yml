@@ -1,0 +1,42 @@
+name: Audit Preiss statement and dependencies
+
+on:
+  pull_request:
+    paths:
+      - 'audits/**'
+      - 'scripts/check_dependency_audit.py'
+      - '.github/workflows/statement-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: true
+          build-args: Preiss.Main
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: true
+      - name: Inspect compiled declarations and compare the blueprint
+        shell: bash
+        run: |
+          set -o pipefail
+          lake env lean audits/PreissDependencies.lean | tee tmp/preiss-dependency-audit.log
+          python scripts/check_dependency_audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preiss-dependency-audit
+          path: |
+            tmp/preiss-kernel-dependencies.json
+            tmp/preiss-dependency-audit.log
+            tmp/preiss-dependency-comparison.json
