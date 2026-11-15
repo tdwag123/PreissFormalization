@@ -1,0 +1,72 @@
+name: Replay merged Preiss proofs in the kernel
+
+on:
+  push:
+    branches: ['audit-post-merge-*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      # Deliberately inspect the exact merged revision, independently of edits
+      # made to this audit branch after the merge.
+      - uses: actions/checkout@v6
+        with:
+          ref: ae979466a1b3dd318e110eddf5addeee47248af4
+          fetch-depth: 0
+      - name: Record the audited revision and enumerate every library
+        id: targets
+        run: |
+          test "$(git rev-parse HEAD)" = ae979466a1b3dd318e110eddf5addeee47248af4
+          mkdir -p tmp
+          git rev-parse HEAD > tmp/audited-revision.txt
+          python scripts/check_blueprint.py
+          python scripts/lean_targets.py --github-output >> "$GITHUB_OUTPUT"
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: true
+          build-args: ${{ steps.targets.outputs.modules }}
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: true
+      - name: Replay Main and all its imports into an empty kernel environment
+        shell: bash
+        run: |
+          set -o pipefail
+          lake env leanchecker --fresh --verbose Preiss.Main 2>&1 | tee tmp/fresh-kernel-replay.log
+          echo 'FRESH_KERNEL_REPLAY_PASSED' | tee -a tmp/fresh-kernel-replay.log
+      - name: Replay every project library, including companion modules
+        shell: bash
+        run: |
+          set -o pipefail
+          lake env leanchecker --verbose Preiss PreissBlueprint 2>&1 | tee tmp/project-kernel-replay.log
+          echo 'PROJECT_KERNEL_REPLAY_PASSED' | tee -a tmp/project-kernel-replay.log
+      - name: Check expanded statement and forbidden axiom dependencies
+        shell: bash
+        env:
+          GITHUB_SHA: ae979466a1b3dd318e110eddf5addeee47248af4
+        run: |
+          set -o pipefail
+          python scripts/remote_proof_check.py checks/PreissExpandedStatement.lean
+          lake env lean tmp/blueprint_checks.lean | tee tmp/blueprint-kernel.log
+          python scripts/check_kernel_axioms.py tmp/blueprint-kernel.log
+          lake env lean audits/PreissDependencies.lean | tee tmp/preiss-dependency-audit.log
+          python scripts/check_dependency_audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post-merge-kernel-replay
+          path: |
+            tmp/audited-revision.txt
+            tmp/*kernel*.log
+            tmp/kernel-status.json
+            tmp/preiss-*.json
+            tmp/preiss-dependency-audit.log
+            tmp/remote-proof-checks/
