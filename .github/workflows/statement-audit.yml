@@ -30,6 +30,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
+          mkdir -p tmp
           lake env lean audits/PreissDependencies.lean | tee tmp/preiss-dependency-audit.log
           python scripts/check_dependency_audit.py
       - uses: actions/upload-artifact@v4

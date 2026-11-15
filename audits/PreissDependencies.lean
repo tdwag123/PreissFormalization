@@ -1,4 +1,4 @@
-import all Preiss.Main
+import Preiss.Main
 import Lean
 
 /-! Read-only inspection of the compiled declaration environment. This file
