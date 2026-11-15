@@ -1,0 +1,351 @@
+{
+  "audited_revision": "ae979466a1b3dd318e110eddf5addeee47248af4",
+  "merged_pull_request": "https://github.com/tdwag123/PreissFormalization/pull/4",
+  "audit_date_local": "2026-11-14",
+  "timezone": "America/Los_Angeles",
+  "scope": [
+    "All project libraries compiled and 781 named declarations inspected for transitive axioms.",
+    "Every constant reachable from the type and proof of Preiss.preiss traversed, with all theorem/definition/opaque bodies available.",
+    "Targeted adversarial semantic review of the statement, foundational predicates, density endpoints, tangent geometry, uniform rigidity, and sufficient Marstrand-Mattila criterion.",
+    "Independent workers reread three disjoint mathematical areas; this does not constitute an independent re-proof of every imported theorem.",
+    "Published blueprint graph, status colours and audit chapter checked over HTTP."
+  ],
+  "conclusion": {
+    "canonical_formulation": "Closed-ball diameter-normalized positive finite existing density implies standard Lipschitz-image rectifiability.",
+    "new_semantic_defects_found": [],
+    "entire_blueprint_finished": false,
+    "literal_paper_convention_transport_complete": false,
+    "new_axioms_added": false,
+    "canonical_proof_changed_during_audit": false
+  },
+  "compiled_dependency_closure": {
+    "root": "Preiss.preiss",
+    "declarations": 62920,
+    "named_local_declarations_in_checkpoint": 621,
+    "formalizingGMT_declarations_including_generated": 248,
+    "unavailable_constants": [],
+    "unavailable_bodies": [],
+    "named_local_dependencies_outside_core": [],
+    "unfinished_reachable": [],
+    "raw_and_cached_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "kernel_replay": {
+    "status": "success",
+    "commands": [
+      "lake env leanchecker --fresh --verbose Preiss.Main",
+      "lake env leanchecker --verbose Preiss PreissBlueprint"
+    ],
+    "implementation": "Lean 4.34.1 LeanChecker.lean and Lean/Replay.lean",
+    "meaning": "Replays safe logical declarations through Lean kernel addDeclCore, including constructor/recursor consistency checks. The fresh pass reconstructs the Main import environment from empty.",
+    "limits": [
+      "Uses the same Lean kernel, not a separately implemented verifier.",
+      "Lean replay skips unsafe and partial executable declarations.",
+      "Replay accepts declared axioms: the separate dependency audit enforces the permitted axioms for Preiss.preiss.",
+      "Successful replay of companion modules does not remove their tracked sorryAx dependencies."
+    ],
+    "fresh_main_status": "success",
+    "project_modules_status": "success",
+    "project_modules_replayed": 250,
+    "artifact_url": "https://github.com/tdwag123/PreissFormalization/actions/runs/43659113830/artifacts/14139967644",
+    "artifact_zip_sha256": "620ca9af0cf7732a239e18783954e456fea48ffa8b357a78b9d631a43f50ad5a"
+  },
+  "semantic_reviews": [
+    {
+      "area": "Statement and definitions",
+      "result": "No new defect found",
+      "checks": [
+        "Finite Lipschitz constants and inherited subtype metric; countability and Hausdorff absolute continuity prevent empty-domain/singular-measure loopholes.",
+        "Borel sigma-finite carrier is constructed; ambient Hausdorff sigma-finiteness is not assumed.",
+        "Dimension zero requires countable atomic concentration; full-measure carrier differs correctly from topological support.",
+        "Positive-dimensional Dirac and diffuse zero-dimensional examples fail the appropriate hypotheses/conclusions.",
+        "m > n forces zero measure; m = n and n = 0 retained. No hidden finite-total-mass or probability assumption."
+      ],
+      "sources": [
+        "Preiss/Main.lean",
+        "Preiss/Rectifiability/Defs.lean",
+        "Preiss/Rectifiability/EuclideanCarrier.lean",
+        "Preiss/Rectifiability/DensityRepresentation.lean",
+        "Preiss/Geometry/LipschitzExtension.lean",
+        "Preiss/Density/Atoms.lean",
+        "Preiss/Density/ExcessDimension.lean"
+      ]
+    },
+    {
+      "area": "Tangents, dimension reduction, first crossing, rigidity",
+      "result": "No new defect found",
+      "checks": [
+        "Nonzero tangent extraction and a common positive normalization constant before tangent choice.",
+        "Recentering removes one exceptional set before universal tangent/center/scale quantifiers, using measurable hulls for arbitrary bad sets.",
+        "Ambient-dimension induction retains measure dimension and actual scaling-orbit relations.",
+        "First crossing includes an interval energy bound and first dilates a nonflat tangent above the gap.",
+        "Conical energy bridges open/closed balls through sphere-nullity.",
+        "Rigidity constructs actual moment data and proves the contraction mean/error premises."
+      ],
+      "sources": [
+        "Preiss/Uniform/TangentNormalization.lean",
+        "Preiss/Tangent/Recentering.lean",
+        "Preiss/Uniform/DimensionReduction.lean",
+        "Preiss/Uniform/FlatPseudotangent.lean",
+        "Preiss/Theorem/FirstCrossing.lean",
+        "Preiss/Uniform/ConicalPlaneEnergy.lean",
+        "Preiss/Uniform/FlatAtInfinity/Rigidity.lean",
+        "Preiss/Uniform/TraceRigidity.lean"
+      ]
+    },
+    {
+      "area": "Sufficient Marstrand-Mattila criterion",
+      "result": "No new defect found",
+      "checks": [
+        "Restriction transfer uses the correct directions of two-sided measure comparison.",
+        "Actual nonzero tangent extraction prevents vacuous universal flatness.",
+        "Weak approximation retains a common plane; smaller aperture handles strict inequalities and open balls.",
+        "Projection-nullness uses measurable domain covers and outer-measure bounds for arbitrary images.",
+        "Two-sided approximation explicitly requires nonempty sets; packing respects both approximation and mass-control scales.",
+        "Maximal rectifiable part is constructed; finite-measure cancellation and null remainder are justified."
+      ],
+      "sources": [
+        "Preiss/Rectifiability/MarstrandMattila/MeasureCriterion.lean",
+        "Preiss/Density/FinitePieces.lean",
+        "Preiss/Rectifiability/WeakApproximation/Uniformization.lean",
+        "Preiss/Rectifiability/WeakApproximation/CompactGeometry.lean",
+        "Preiss/Rectifiability/MarstrandMattila/ProjectionNull.lean",
+        "Preiss/Rectifiability/MarstrandMattila/PackingCore.lean",
+        "Preiss/Rectifiability/Decomposition.lean"
+      ]
+    }
+  ],
+  "known_formal_correspondence_gaps": [
+    {
+      "item": "Density convention",
+      "paper": "Open balls divided by omega_m * r^m (Definition 2.14).",
+      "canonical": "Closed balls divided by (2*r)^m.",
+      "unfinished_bridge": "Preiss.density_iff_openBall_limit",
+      "source": "Preiss/Density/Adapters.lean:32"
+    },
+    {
+      "item": "Carrier convention",
+      "paper": "Countable Lipschitz graphs (Definition 4.1).",
+      "canonical": "Countable Lipschitz images modulo Hausdorff-null sets.",
+      "unfinished_bridge": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+      "source": "Preiss/Rectifiability/GraphCover.lean:52"
+    },
+    {
+      "item": "Numerical Hausdorff normalization",
+      "paper": "Diameter measure multiplied by omega_m / 2^m (Definition 2.11).",
+      "canonical": "Raw mathlib diameter Hausdorff measure.",
+      "remaining_work": "Explicit scalar and density-representation transport for a literal paper-facing theorem; positive scaling preserves null sets, absolute continuity and flat-measure rays."
+    },
+    {
+      "item": "Full converse",
+      "remaining_work": "Rectifiability implies an existing density and one common tangent plane; separate from the proved sufficient direction."
+    }
+  ],
+  "unfinished_declarations": [
+    {
+      "name": "Preiss.ae_graph_hausdorff_blowup_limit",
+      "path": "Preiss/Rectifiability/GraphBlowup.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+      "path": "Preiss/Rectifiability/GraphCover.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.countablyRectifiable_of_ae_cone_approximation",
+      "path": "Preiss/Rectifiability/ConeCriterion.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.density_iff_openBall_limit",
+      "path": "Preiss/Density/Adapters.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.exists_countable_graph_cover_fullRank_locus",
+      "path": "Preiss/Rectifiability/GraphCover.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
+      "path": "Preiss/Rectifiability/GraphCover.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.map_jacobian_hausdorff_affine_injection",
+      "path": "Preiss/Rectifiability/GraphArea.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
+      "path": "Preiss/Rectifiability/GraphArea.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.rectifiable_has_density_and_tangent_plane",
+      "path": "Preiss/Rectifiability/TangentNecessity.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.rectifiable_has_flat_blowup_limit",
+      "path": "Preiss/Rectifiability/TangentNecessity.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.rectifiable_iff_density_and_tangent_plane",
+      "path": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "status": "depends_on_sorry"
+    },
+    {
+      "name": "Preiss.rectifiable_iff_density_bounds_and_flat_tangents",
+      "path": "Preiss/Rectifiability/TangentCharacterization.lean",
+      "status": "depends_on_sorry"
+    },
+    {
+      "name": "Preiss.tendsto_integral_blowup_sub_density_mul",
+      "path": "Preiss/Tangent/DensityTransfer.lean",
+      "status": "unproved_statement"
+    },
+    {
+      "name": "Preiss.trace_orthogonalComplement_minimized_topEigenspace",
+      "path": "Preiss/Analysis/SpectralOptimization.lean",
+      "status": "unproved_statement"
+    }
+  ],
+  "source_inventory": {
+    "local": {
+      "files": 250,
+      "trust_sensitive_tokens": [],
+      "direct_unfinished_declarations": [
+        {
+          "name": "Preiss.trace_orthogonalComplement_minimized_topEigenspace",
+          "path": "Preiss/Analysis/SpectralOptimization.lean",
+          "line": 10
+        },
+        {
+          "name": "Preiss.density_iff_openBall_limit",
+          "path": "Preiss/Density/Adapters.lean",
+          "line": 32
+        },
+        {
+          "name": "Preiss.countablyRectifiable_of_ae_cone_approximation",
+          "path": "Preiss/Rectifiability/ConeCriterion.lean",
+          "line": 16
+        },
+        {
+          "name": "Preiss.map_jacobian_hausdorff_affine_injection",
+          "path": "Preiss/Rectifiability/GraphArea.lean",
+          "line": 21
+        },
+        {
+          "name": "Preiss.map_withDensity_jacobian_eq_graph_hausdorff",
+          "path": "Preiss/Rectifiability/GraphArea.lean",
+          "line": 26
+        },
+        {
+          "name": "Preiss.ae_graph_hausdorff_blowup_limit",
+          "path": "Preiss/Rectifiability/GraphBlowup.lean",
+          "line": 11
+        },
+        {
+          "name": "Preiss.hausdorffMeasure_image_rank_lt_eq_zero",
+          "path": "Preiss/Rectifiability/GraphCover.lean",
+          "line": 35
+        },
+        {
+          "name": "Preiss.exists_countable_graph_cover_fullRank_locus",
+          "path": "Preiss/Rectifiability/GraphCover.lean",
+          "line": 43
+        },
+        {
+          "name": "Preiss.countablyRectifiable_iff_lipschitzGraph_cover",
+          "path": "Preiss/Rectifiability/GraphCover.lean",
+          "line": 52
+        },
+        {
+          "name": "Preiss.rectifiable_has_flat_blowup_limit",
+          "path": "Preiss/Rectifiability/TangentNecessity.lean",
+          "line": 16
+        },
+        {
+          "name": "Preiss.rectifiable_has_density_and_tangent_plane",
+          "path": "Preiss/Rectifiability/TangentNecessity.lean",
+          "line": 24
+        },
+        {
+          "name": "Preiss.tendsto_integral_blowup_sub_density_mul",
+          "path": "Preiss/Tangent/DensityTransfer.lean",
+          "line": 15
+        }
+      ]
+    },
+    "upstream_GMT": {
+      "files": 21,
+      "trust_sensitive_tokens": [],
+      "direct_unfinished_declarations": []
+    },
+    "canonical_source_sha256": "159cc6a986d3eccb9c09e36b4afd585eae81f473702e7e925e1487cb419eed8c",
+    "scope": "Conservative source scan after masking comments/strings; actual proof certification comes from compilation, kernel replay, and axiom extraction."
+  },
+  "regression_tests": {
+    "command": "python -m unittest discover -s scripts -p 'test_*.py'",
+    "passed": 27
+  },
+  "blueprint_checks": {
+    "nodes": 485,
+    "edges": 1100,
+    "acyclic": true,
+    "core_nodes": 444,
+    "core_nodes_verified": 444,
+    "source_links": 781
+  },
+  "published_site": {
+    "core_nodes_green": 444,
+    "full_graph_verified": 472,
+    "audit_chapter_live": true,
+    "checkpoint": "f84dbbb86b225ca76747162532c6c767d91ad4ee",
+    "url": "https://tdwag123.github.io/PreissFormalization/chapter-statement-audit.html"
+  },
+  "workflow_evidence": {
+    "all_local_modules_and_axioms": {
+      "run_id": 43658860043,
+      "url": "https://github.com/tdwag123/PreissFormalization/actions/runs/43658860043",
+      "status": "success"
+    },
+    "dependency_closure": {
+      "run_id": 43658945221,
+      "url": "https://github.com/tdwag123/PreissFormalization/actions/runs/43658945221",
+      "status": "success"
+    },
+    "canonical_and_expanded_certificates": {
+      "run_id": 43658946966,
+      "url": "https://github.com/tdwag123/PreissFormalization/actions/runs/43658946966",
+      "status": "success"
+    },
+    "blueprint_build_and_deployment": {
+      "run_id": 43658860094,
+      "url": "https://github.com/tdwag123/PreissFormalization/actions/runs/43658860094",
+      "status": "success"
+    },
+    "fresh_kernel_replay": {
+      "run_id": 43659113830,
+      "url": "https://github.com/tdwag123/PreissFormalization/actions/runs/43659113830",
+      "status": "success",
+      "workflow_revision": "6fb29d20acf33eef2d0d0dc39bbd1d95a0e7e25f",
+      "checked_out_revision": "ae979466a1b3dd318e110eddf5addeee47248af4"
+    }
+  },
+  "audit_metadata_findings": [
+    {
+      "severity": "low",
+      "finding": "GitHub retained its workflow GITHUB_SHA despite the attempted step-level environment override; the replay artifact JSON source_revision records the harness commit 6fb29d2.",
+      "evidence": "The pinned checkout and audited-revision.txt independently record ae979466a1b3dd318e110eddf5addeee47248af4. The separate main-branch dependency run also records ae97946 correctly.",
+      "correction": "The replay workflow now passes the checked-out git revision directly in each Python subprocess environment. This report identifies the actual checkout explicitly.",
+      "mathematical_impact": "None: the proofs were built and replayed at the pinned merged checkout."
+    }
+  ]
+}

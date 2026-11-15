@@ -50,15 +50,13 @@ jobs:
           echo 'PROJECT_KERNEL_REPLAY_PASSED' | tee -a tmp/project-kernel-replay.log
       - name: Check expanded statement and forbidden axiom dependencies
         shell: bash
-        env:
-          GITHUB_SHA: ae979466a1b3dd318e110eddf5addeee47248af4
         run: |
           set -o pipefail
           python scripts/remote_proof_check.py checks/PreissExpandedStatement.lean
           lake env lean tmp/blueprint_checks.lean | tee tmp/blueprint-kernel.log
-          python scripts/check_kernel_axioms.py tmp/blueprint-kernel.log
+          env GITHUB_SHA="$(git rev-parse HEAD)" python scripts/check_kernel_axioms.py tmp/blueprint-kernel.log
           lake env lean audits/PreissDependencies.lean | tee tmp/preiss-dependency-audit.log
-          python scripts/check_dependency_audit.py
+          env GITHUB_SHA="$(git rev-parse HEAD)" python scripts/check_dependency_audit.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
