@@ -4,6 +4,13 @@ on:
   pull_request:
     paths:
       - 'audits/**'
+      - 'Preiss/**'
+      - 'blueprint/src/**'
+      - 'blueprint/dependencies.json'
+      - 'blueprint/preiss-core.json'
+      - 'blueprint/kernel-checkpoint.json'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
       - 'scripts/check_dependency_audit.py'
       - '.github/workflows/statement-audit.yml'
   workflow_dispatch:

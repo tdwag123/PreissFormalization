@@ -658,6 +658,7 @@ digraph Preiss {
   "def:purely-unrectifiable" -> "lem:pure-basic";
   "lem:graph-rectifiable" -> "lem:pure-basic";
   "lem:carrier-closure" -> "lem:carrier-calculus";
+  "lem:borel-carrier" -> "lem:decomposition";
   "lem:carrier-closure" -> "lem:decomposition";
   "lem:pure-basic" -> "lem:decomposition";
   "def:density-api" -> "def:positive-density";
@@ -800,6 +801,7 @@ digraph Preiss {
   "gmt:hausdorff-density-outside" -> "lem:packing-base-point";
   "gmt:hausdorff-density-upper" -> "lem:packing-base-point";
   "lem:quantitative-upper-density-bound" -> "lem:packing-base-point";
+  "lem:upper-density-localization" -> "lem:packing-base-point";
   "lem:vanishing-density-scaled-balls" -> "lem:packing-base-point";
   "lem:absolute-continuity-density-bounds" -> "lem:finite-piece-transfer";
   "lem:absolute-continuity-tangent-cones" -> "lem:finite-piece-transfer";
@@ -1083,6 +1085,7 @@ digraph Preiss {
   "lem:flat-infinity-moments" -> "lem:rigidity-fourth-support-identity";
   "lem:moment-support-polynomial" -> "lem:rigidity-fourth-support-identity";
   "lem:odd-coefficients-plane-zero" -> "lem:rigidity-fourth-support-identity";
+  "lem:rigidity-cubic-vanishing" -> "lem:rigidity-fourth-support-identity";
   "lem:symmetric-cubic-binomial" -> "lem:rigidity-fourth-support-identity";
   "lem:uniform-cylinder-identity" -> "lem:rigidity-fourth-support-identity";
   "lem:flat-infinity-moments" -> "lem:rigidity-omega-trace-zero";
@@ -1490,6 +1493,7 @@ digraph Preiss {
   "lem:unit-uniform-infinity-existence" -> "lem:unit-uniform-infinity-unique";
   "lem:vague-gaussian-polynomials" -> "lem:unit-uniform-infinity-unique";
   "lem:homogeneous-energy-radial" -> "lem:conical-gaussian-ball-energy";
+  "lem:uniform-ball-boundary" -> "lem:conical-gaussian-ball-energy";
   "lem:gaussian-norm-half-mass" -> "lem:uniform-normalized-gaussian-norm";
   "lem:moment-norm-bound" -> "lem:uniform-normalized-gaussian-norm";
   "lem:asymptotic-taylor-vanishing" -> "lem:moment-coefficient-growth-images";
@@ -1573,9 +1577,13 @@ digraph Preiss {
   "lem:flatness-continuous" -> "lem:nonflat-uniform-large-flatness";
   "lem:unit-uniform-infinity-existence" -> "lem:nonflat-uniform-large-flatness";
   "thm:infinity-rigidity" -> "lem:nonflat-uniform-large-flatness";
+  "def:first-crossing-data" -> "lem:all-dimensional-tangents-flat";
+  "def:flatness-gap" -> "lem:all-dimensional-tangents-flat";
+  "def:tangent-at-infinity" -> "lem:all-dimensional-tangents-flat";
   "lem:first-crossing" -> "lem:all-dimensional-tangents-flat";
   "lem:first-crossing-flat-infinity" -> "lem:all-dimensional-tangents-flat";
   "lem:first-crossing-ratio" -> "lem:all-dimensional-tangents-flat";
+  "lem:flatness-cutoff-exists" -> "lem:all-dimensional-tangents-flat";
   "lem:flatness-gap-cutoff" -> "lem:all-dimensional-tangents-flat";
   "thm:infinity-rigidity" -> "lem:all-dimensional-tangents-flat";
 }

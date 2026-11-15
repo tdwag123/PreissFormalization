@@ -656,6 +656,7 @@ flowchart LR
   def_purely_unrectifiable --> lem_pure_basic
   lem_graph_rectifiable --> lem_pure_basic
   lem_carrier_closure --> lem_carrier_calculus
+  lem_borel_carrier --> lem_decomposition
   lem_carrier_closure --> lem_decomposition
   lem_pure_basic --> lem_decomposition
   def_density_api --> def_positive_density
@@ -798,6 +799,7 @@ flowchart LR
   gmt_hausdorff_density_outside --> lem_packing_base_point
   gmt_hausdorff_density_upper --> lem_packing_base_point
   lem_quantitative_upper_density_bound --> lem_packing_base_point
+  lem_upper_density_localization --> lem_packing_base_point
   lem_vanishing_density_scaled_balls --> lem_packing_base_point
   lem_absolute_continuity_density_bounds --> lem_finite_piece_transfer
   lem_absolute_continuity_tangent_cones --> lem_finite_piece_transfer
@@ -1081,6 +1083,7 @@ flowchart LR
   lem_flat_infinity_moments --> lem_rigidity_fourth_support_identity
   lem_moment_support_polynomial --> lem_rigidity_fourth_support_identity
   lem_odd_coefficients_plane_zero --> lem_rigidity_fourth_support_identity
+  lem_rigidity_cubic_vanishing --> lem_rigidity_fourth_support_identity
   lem_symmetric_cubic_binomial --> lem_rigidity_fourth_support_identity
   lem_uniform_cylinder_identity --> lem_rigidity_fourth_support_identity
   lem_flat_infinity_moments --> lem_rigidity_omega_trace_zero
@@ -1488,6 +1491,7 @@ flowchart LR
   lem_unit_uniform_infinity_existence --> lem_unit_uniform_infinity_unique
   lem_vague_gaussian_polynomials --> lem_unit_uniform_infinity_unique
   lem_homogeneous_energy_radial --> lem_conical_gaussian_ball_energy
+  lem_uniform_ball_boundary --> lem_conical_gaussian_ball_energy
   lem_gaussian_norm_half_mass --> lem_uniform_normalized_gaussian_norm
   lem_moment_norm_bound --> lem_uniform_normalized_gaussian_norm
   lem_asymptotic_taylor_vanishing --> lem_moment_coefficient_growth_images
@@ -1571,8 +1575,12 @@ flowchart LR
   lem_flatness_continuous --> lem_nonflat_uniform_large_flatness
   lem_unit_uniform_infinity_existence --> lem_nonflat_uniform_large_flatness
   thm_infinity_rigidity --> lem_nonflat_uniform_large_flatness
+  def_first_crossing_data --> lem_all_dimensional_tangents_flat
+  def_flatness_gap --> lem_all_dimensional_tangents_flat
+  def_tangent_at_infinity --> lem_all_dimensional_tangents_flat
   lem_first_crossing --> lem_all_dimensional_tangents_flat
   lem_first_crossing_flat_infinity --> lem_all_dimensional_tangents_flat
   lem_first_crossing_ratio --> lem_all_dimensional_tangents_flat
+  lem_flatness_cutoff_exists --> lem_all_dimensional_tangents_flat
   lem_flatness_gap_cutoff --> lem_all_dimensional_tangents_flat
   thm_infinity_rigidity --> lem_all_dimensional_tangents_flat

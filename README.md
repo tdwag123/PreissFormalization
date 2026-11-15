@@ -5,6 +5,14 @@ following De Lellis's *Lecture Notes on Rectifiable Sets, Densities, and Tangent
 **`Preiss.preiss` is proved. Its transitive axiom dependencies are only**
 **`propext`, `Classical.choice`, and `Quot.sound`; it does not depend on `sorryAx`.**
 
+The [statement and dependency audit](blueprint/src/statement-audit.tex) verifies
+the closed-ball, Lipschitz-image formulation. Formal bridges to the paper's
+open-ball density and Lipschitz-graph conventions remain unfinished; the claim
+of completion does not include those translations or the tangent converse.
+The compiled traversal reaches 62,920 declarations with no unavailable bodies
+and no unfinished dependencies. The corrected 444-node core graph covers all
+621 named local declarations reached by that traversal.
+
 - [Read the shared LeanBlueprint](https://tdwag123.github.io/PreissFormalization/).
 - [Explore the complete dependency graph](https://tdwag123.github.io/PreissFormalization/dep_graph_document.html).
 - [View the dependencies of Preiss alone](https://tdwag123.github.io/PreissFormalization/preiss-core.svg).

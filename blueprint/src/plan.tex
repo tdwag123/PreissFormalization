@@ -702,7 +702,7 @@ Refines existing bundled node; declaration names for the individual elementary f
 \begin{lemma}[Rectifiable/pure decomposition]
 \label{lem:decomposition}
 \lean{Preiss.exists_rectifiable_purelyUnrectifiable_partition, Preiss.rectifiable_pure_partition_unique}
-\uses{lem:carrier-closure, lem:pure-basic}
+\uses{lem:carrier-closure, lem:pure-basic, lem:borel-carrier}
 
 
 
@@ -1656,7 +1656,7 @@ If \(E\) is weakly linearly approximable at \(\mathcal H^m\)-almost every point 
 \begin{lemma}[Base point with upper mass and small discarded mass]
 \label{lem:packing-base-point}
 \lean{Preiss.ae_upperPowerBoundAt_restrict_hausdorff, Preiss.exists_upper_mass_small_sdiff_point}
-\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, lem:vanishing-density-scaled-balls, lem:quantitative-upper-density-bound}
+\uses{gmt:hausdorff-density-outside, gmt:hausdorff-density-upper, lem:vanishing-density-scaled-balls, lem:quantitative-upper-density-bound, lem:upper-density-localization}
 
 
 
@@ -3589,7 +3589,7 @@ Record differentiability and domination hypotheses before using l'Hopital.
 \begin{lemma}[Fourth degree support identity]
 \label{lem:rigidity-fourth-support-identity}
 \lean{Preiss.fourth_order_support_identity}
-\uses{lem:bounded-tube-cubic-vanishing, lem:uniform-cylinder-identity, lem:odd-coefficients-plane-zero, lem:flat-infinity-moments, lem:symmetric-cubic-binomial, lem:moment-support-polynomial}
+\uses{lem:bounded-tube-cubic-vanishing, lem:uniform-cylinder-identity, lem:odd-coefficients-plane-zero, lem:flat-infinity-moments, lem:symmetric-cubic-binomial, lem:moment-support-polynomial, lem:rigidity-cubic-vanishing}
 
 
 
@@ -5865,7 +5865,7 @@ For a finite sum of continuous multilinear homogeneous polynomials, dividing its
 \begin{lemma}[Conical Gaussian energy and unit-ball energy]
 \label{lem:conical-gaussian-ball-energy}
 \lean{Preiss.conical_gaussian_planeEnergy_eq_ball}
-\uses{lem:homogeneous-energy-radial}
+\uses{lem:homogeneous-energy-radial, lem:uniform-ball-boundary}
 
 For a conical unit-uniform measure, Gaussian squared-distance energy equals unit-ball squared-distance energy times the corresponding Gamma factor.
 \end{lemma}
@@ -6283,7 +6283,7 @@ A nonflat unit-uniform measure has a dilation whose flatness exceeds the conical
 \begin{lemma}[One flat dimensional tangent forces all dimensional tangents to be flat]
 \label{lem:all-dimensional-tangents-flat}
 \lean{Preiss.all_dimensionalTangents_flat_of_one}
-\uses{lem:first-crossing, lem:first-crossing-ratio, lem:first-crossing-flat-infinity, thm:infinity-rigidity, lem:flatness-gap-cutoff}
+\uses{lem:first-crossing, lem:first-crossing-ratio, lem:first-crossing-flat-infinity, thm:infinity-rigidity, lem:flatness-gap-cutoff, def:first-crossing-data, def:flatness-gap, def:tangent-at-infinity, lem:flatness-cutoff-exists}
 
 Under positive finite existing density and unit uniformity of every dimensional tangent, the existence of one flat dimensional tangent forces every dimensional tangent to be flat.
 \end{lemma}
