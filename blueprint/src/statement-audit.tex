@@ -1,0 +1,116 @@
+\chapter{Statement and dependency audit}
+\label{chapter:statement-audit}
+
+The November 14, 2026 audit separates three questions: whether Lean checks the
+proof, what the checked statement means, and whether the paper's precise
+conventions have been connected to it by proved Lean lemmas.
+The canonical closed-ball, Lipschitz-image formulation is proved with only
+the standard foundations. The literal translation to every convention of
+De Lellis is not yet fully formalized.
+
+\section{Compiled evidence}
+The \href{https://github.com/tdwag123/PreissFormalization/actions/runs/43657459266}{compiled dependency audit}
+at branch commit \texttt{93cd2b6} inspected the environment built for test merge
+\texttt{365a3b5}. Canonical Lean sources and dependency pins agree with the
+previously certified checkpoint \texttt{f84dbbb}.
+Starting at \texttt{Preiss.preiss}, the audit recursively inspected constant
+types and proof/definition values. It reached 62,920 declarations, with zero
+unavailable constants and zero unavailable theorem, definition, or opaque bodies.
+Both the recursive traversal and Lean's axiom collector returned exactly
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+None of the fourteen tracked unfinished declarations was reachable.
+
+The closure contains 621 named local declarations listed in the checkpoint
+and 248 declarations from FormalizingGMT, including generated declarations.
+These counts are declarations, not independent mathematical theorems.
+Nine named local dependencies were absent from the original curated core
+graph. Their annotations have been added; the corrected graph contains
+444 nodes and covers every named local dependency in the compiled closure.
+The annotations remain a mathematical summary: they do not reproduce every
+kernel edge or every foundational mathlib declaration.
+
+The reusable audit is \texttt{audits/PreissDependencies.lean}, followed by
+\texttt{scripts/check\_dependency\_audit.py}. CI now rejects unavailable
+constants or bodies, disagreement between the two axiom checks, nonstandard
+axioms, reachable unfinished declarations, and named local dependencies
+missing from the core graph. Its downloadable artifact preserves the full
+declaration-level adjacency list and the comparison with the blueprint.
+
+\section{An expanded statement certificate}
+\href{https://github.com/tdwag123/PreissFormalization/actions/runs/43657201334}{The independent statement check}
+compiled \texttt{checks/PreissExpandedStatement.lean} and verified only the
+three permitted axioms. Its theorem states the density hypothesis and
+conclusion without the project's custom density or rectifiability predicates.
+For a locally finite Borel measure on Euclidean $\mathbb R^n$, it assumes
+almost everywhere
+\[
+ 0 < \liminf_{r\downarrow0}\frac{\mu(\overline B(x,r))}{(2r)^m}
+   = \limsup_{r\downarrow0}\frac{\mu(\overline B(x,r))}{(2r)^m}<\infty.
+\]
+It concludes $\mu\ll\mathcal H^m$ and the existence of a countable family
+of globally Lipschitz maps $\mathbb R^m\to\mathbb R^n$ whose ranges cover
+$\mu$-almost every point. Here $\mathcal H^m$ is mathlib's raw
+diameter-based Hausdorff measure.
+This is a checked corollary of the canonical theorem, not an independent
+proof of Preiss's analytic argument.
+
+\section{Semantic checks of the principal interfaces}
+The source review checked the following potential failure points.
+\begin{itemize}
+\item The ambient space is \texttt{EuclideanSpace R (Fin n)}, with the
+Euclidean norm and Borel measurable structure. Local finiteness implies
+regularity through mathlib; no global finiteness hypothesis is added.
+\item The density hypothesis uses genuine liminf and limsup on the nontrivial
+positive-radius filter. Named density values are used only with existence
+guards. The denominator is positive and finite at positive radii.
+\item Rectifiability uses countably many actual Lipschitz images modulo
+Hausdorff-null sets, absolute continuity, and a full-measure carrier.
+A Borel sigma-finite carrier and Radon--Nikodym representation are proved;
+ambient Hausdorff sigma-finiteness is not assumed.
+\item Tangents are nonzero regular measures with positive finite scaling
+coefficients and radii tending to zero. Compactness/extraction constructs
+nonzero tangents, so universal flatness is not used vacuously.
+\item Fixed-dimensional tangents and arbitrary-scalar tangents have proved
+positive-scalar adapters. All fixed-dimensional tangents use one shared
+density constant; the source measure is normalized once.
+\item Recentering has a single almost-everywhere exceptional set before the
+universal tangent, center, and scale quantifiers. Rigidity constructs its
+moment data rather than assuming its conclusion through an auxiliary class.
+\item Flatness minimization has dimension and cutoff nondegeneracy guards.
+The zero-dimensional case proves countable atomic concentration; dimensions
+larger than the ambient dimension force the zero measure.
+\end{itemize}
+No hidden assumption or vacuous definition was found in these reviewed
+interfaces. This is a targeted semantic review, not an independent re-proof
+or exhaustive mathematical review of all 62,920 declarations.
+
+\section{Unfinished correspondence with the paper}
+De Lellis Definition 2.14 (printed page 11, PDF page 15) uses open balls and
+denominator $\omega_m r^m$. The checked theorem uses closed balls and
+$(2r)^m$. A radius squeeze and a positive constant conversion give the
+usual mathematical equivalence, but
+\texttt{density\_iff\_openBall\_limit} in
+\texttt{Preiss/Density/Adapters.lean} is unfinished. The proved
+\texttt{Preiss/Density/RadiusPower.lean} only converts the normalization of
+closed-ball limits. An explicit paper-normalized corollary is still needed.
+
+De Lellis Definition 4.1 (printed page 27, PDF page 31) uses countably many
+Lipschitz graphs. The checked conclusion uses Lipschitz images.
+\texttt{countablyRectifiable\_iff\_lipschitzGraph\_cover} in
+\texttt{Preiss/Rectifiability/GraphCover.lean} remains unfinished.
+This is a standard mathematical equivalence, but it cannot yet be used
+as a proved Lean translation of the conclusion.
+
+De Lellis Definition 2.11 additionally normalizes Hausdorff measure by
+$\omega_m/2^m$ relative to the diameter construction. Positive finite
+scaling preserves null sets, absolute continuity, and positive flat-measure
+rays; numerical measure values differ. A literal paper-facing wrapper must
+track that scaling and its Radon--Nikodym density convention explicitly.
+The existing representation uses a measurable extended-nonnegative-valued
+density. No claim is made here that all of those representation conventions
+have already been formally transported.
+
+The broader converse and common-tangent-plane characterization also remain
+unfinished. Their status is separate from the proved sufficient direction.
+Green nodes certify the Lean declarations they link to; they do not certify
+unproved equivalences between different conventions.
