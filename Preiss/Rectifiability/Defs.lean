@@ -14,6 +14,13 @@ open MeasureTheory Set
 open scoped NNReal ENNReal
 namespace Preiss
 
+/-- De Lellis's normalized `m`-dimensional Hausdorff measure on `Euclidean n`.
+His Definition 2.11 multiplies diameter-based Hausdorff measure by
+`ω_m / 2^m`, where `ω_m` is the volume of the unit ball in `Euclidean m`. -/
+noncomputable def bookHausdorffMeasure (m n : ℕ) : Measure (Euclidean n) :=
+  (volume (Metric.ball (0 : Euclidean m) 1) / (2 : ℝ≥0∞) ^ m) •
+    Measure.hausdorffMeasure (m : ℝ)
+
 /-- A Lipschitz parametrization whose domain is an arbitrary subset of Euclidean space.
 The domain can be empty. No measurability assumption is built into this geometric object. -/
 structure LipschitzPiece (m : ℕ) (X : Type*) [MetricSpace X] where

@@ -91,13 +91,19 @@ theorem countablyRectifiable_iff_lipschitzGraph_cover (s : Set (Euclidean n)) :
   · rintro ⟨G, hGc, hG, hnull⟩
     exact countablyRectifiable_of_lipschitzGraph_cover s G hGc hG hnull
 
+/-- Null sets for the book-normalized and raw Hausdorff measures agree.
+The positive finite value of `ω_m / 2^m` still needs to be connected here. -/
+theorem bookHausdorffMeasure_eq_zero_iff (s : Set (Euclidean n)) :
+    bookHausdorffMeasure m n s = 0 ↔
+      (Measure.hausdorffMeasure (m : ℝ)) s = 0 := by sorry
+
 /-- For Borel sets, the book's definition is equivalent to `CountablyRectifiable`.
 The forward implication of `countablyRectifiable_iff_lipschitzGraph_cover` still
 depends on the rank-decomposition results above. -/
 theorem isBookRectifiable_iff_countablyRectifiable (s : Set (Euclidean n))
     (hs : MeasurableSet s) :
     IsBookRectifiable m s ↔ CountablyRectifiable m s := by
-  simp only [IsBookRectifiable, hs, true_and]
-  exact (countablyRectifiable_iff_lipschitzGraph_cover s).symm
+  simpa only [IsBookRectifiable, hs, true_and, bookHausdorffMeasure_eq_zero_iff]
+    using (countablyRectifiable_iff_lipschitzGraph_cover s).symm
 
 end Preiss

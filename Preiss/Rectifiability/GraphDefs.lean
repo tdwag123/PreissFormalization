@@ -23,12 +23,12 @@ def IsLipschitzGraph {n : ℕ} (m : ℕ) (s : Set (Euclidean n)) : Prop :=
 /-- The book's graph-cover definition for a Borel set. A graph is taken over an
 `m`-dimensional linear plane; its Lipschitz function takes values in the orthogonal
 complement. The function may have a nonzero value at the origin, so affine graphs
-are included. The countable family may be empty. -/
+are included. The countable family may be empty. The null-set condition uses
+the Hausdorff normalization from Definition 2.11. -/
 def IsBookRectifiable {n : ℕ} (m : ℕ) (s : Set (Euclidean n)) : Prop :=
   MeasurableSet s ∧
     ∃ G : Set (Set (Euclidean n)), G.Countable ∧
       (∀ Γ ∈ G, IsLipschitzGraph m Γ) ∧
-        (MeasureTheory.Measure.hausdorffMeasure (m : ℝ))
-          (s \ ⋃ Γ ∈ G, Γ) = 0
+        bookHausdorffMeasure m n (s \ ⋃ Γ ∈ G, Γ) = 0
 
 end Preiss
