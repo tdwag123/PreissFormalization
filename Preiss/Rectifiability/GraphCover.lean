@@ -49,8 +49,55 @@ theorem exists_countable_graph_cover_fullRank_locus
     ∃ G : Set (Set (Euclidean n)), G.Countable ∧
       (∀ Γ ∈ G, IsLipschitzGraph m Γ) ∧ f '' s ⊆ ⋃ Γ ∈ G, Γ := by sorry
 
+/-- A countable cover by Lipschitz graphs gives rectifiability in the sense of
+`Defs.lean`. This direction does not use the rank-decomposition lemmas below. -/
+theorem countablyRectifiable_of_lipschitzGraph_cover (s : Set (Euclidean n))
+    (G : Set (Set (Euclidean n))) (hGc : G.Countable)
+    (hG : ∀ Γ ∈ G, IsLipschitzGraph m Γ)
+    (hnull : (Measure.hausdorffMeasure (m : ℝ)) (s \ ⋃ Γ ∈ G, Γ) = 0) :
+    CountablyRectifiable m s := by
+  classical
+  by_cases hnon : G.Nonempty
+  · obtain ⟨g, hg⟩ := hGc.exists_eq_range hnon
+    have hrect (i : ℕ) : CountablyRectifiable m (g i) :=
+      countablyRectifiable_subset_graph (hG (g i) (by rw [hg]; exact Set.mem_range_self i))
+        Set.Subset.rfl
+    have hcover : (⋃ Γ ∈ G, Γ) = ⋃ i, g i := by
+      ext x
+      constructor
+      · intro hx
+        obtain ⟨Γ, hΓ, hxΓ⟩ := Set.mem_iUnion₂.mp hx
+        rw [hg] at hΓ
+        obtain ⟨i, rfl⟩ := hΓ
+        exact Set.mem_iUnion.mpr ⟨i, hxΓ⟩
+      · intro hx
+        obtain ⟨i, hi⟩ := Set.mem_iUnion.mp hx
+        exact Set.mem_iUnion₂.mpr ⟨g i, by rw [hg]; exact Set.mem_range_self i, hi⟩
+    exact countablyRectifiable_of_sdiff_null
+      (countablyRectifiable_iUnion g hrect) (by simpa only [hcover] using hnull)
+  · have hGempty : G = ∅ := by
+      apply Set.eq_empty_iff_forall_not_mem.mpr
+      intro Γ hΓ
+      exact hnon ⟨Γ, hΓ⟩
+    have hnull' : (Measure.hausdorffMeasure (m : ℝ)) s = 0 := by
+      simpa [hGempty] using hnull
+    exact ⟨∅, ⟨∅, Set.countable_empty, by simp⟩, by simpa using hnull'⟩
+
 theorem countablyRectifiable_iff_lipschitzGraph_cover (s : Set (Euclidean n)) :
     CountablyRectifiable m s ↔ ∃ G : Set (Set (Euclidean n)), G.Countable ∧
-      (∀ Γ ∈ G, IsLipschitzGraph m Γ) ∧ (Measure.hausdorffMeasure (m : ℝ)) (s \ ⋃ Γ ∈ G, Γ) = 0 := by sorry
+      (∀ Γ ∈ G, IsLipschitzGraph m Γ) ∧ (Measure.hausdorffMeasure (m : ℝ)) (s \ ⋃ Γ ∈ G, Γ) = 0 := by
+  constructor
+  · sorry
+  · rintro ⟨G, hGc, hG, hnull⟩
+    exact countablyRectifiable_of_lipschitzGraph_cover s G hGc hG hnull
+
+/-- For Borel sets, the book's definition is equivalent to `CountablyRectifiable`.
+The forward implication of `countablyRectifiable_iff_lipschitzGraph_cover` still
+depends on the rank-decomposition results above. -/
+theorem isBookRectifiable_iff_countablyRectifiable (s : Set (Euclidean n))
+    (hs : MeasurableSet s) :
+    IsBookRectifiable m s ↔ CountablyRectifiable m s := by
+  simp only [IsBookRectifiable, hs, true_and]
+  exact (countablyRectifiable_iff_lipschitzGraph_cover s).symm
 
 end Preiss

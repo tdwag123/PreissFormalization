@@ -1,6 +1,7 @@
 module
 
 public import Preiss.Rectifiability.EuclideanCarrier
+public import Preiss.Rectifiability.GraphCover
 public import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
 
 @[expose] public section
@@ -45,5 +46,30 @@ theorem rectifiable_iff_density_representation (μ : Measure (Euclidean n))
       S, hSrect, ?_⟩
     apply withDensity_absolutelyContinuous
     rw [Measure.restrict_apply' hSmeas, compl_inter_self, measure_empty]
+
+/-- The book's measure definition, with an extended nonnegative Borel density.
+The set is Borel and satisfies the book's graph-cover definition. -/
+def IsBookRectifiableMeasure (m : ℕ) (μ : Measure (Euclidean n)) : Prop :=
+  ∃ (S : Set (Euclidean n)) (f : Euclidean n → ℝ≥0∞),
+    IsBookRectifiable m S ∧ Measurable f ∧
+      μ = ((Measure.hausdorffMeasure (m : ℝ)).restrict S).withDensity f
+
+/-- The book's measure formulation agrees with `IsRectifiableMeasure` for locally
+finite measures. This uses the graph-cover equivalence in `GraphCover.lean`. -/
+theorem isBookRectifiableMeasure_iff (μ : Measure (Euclidean n))
+    [IsLocallyFiniteMeasure μ] :
+    IsBookRectifiableMeasure m μ ↔ IsRectifiableMeasure m μ := by
+  constructor
+  · rintro ⟨S, f, hS, _, rfl⟩
+    have hSmeas : MeasurableSet S := hS.1
+    refine ⟨(withDensity_absolutelyContinuous _ _).trans Measure.absolutelyContinuous_restrict,
+      S, (isBookRectifiable_iff_countablyRectifiable S hSmeas).mp hS, ?_⟩
+    apply withDensity_absolutelyContinuous
+    rw [Measure.restrict_apply' hSmeas, compl_inter_self, measure_empty]
+  · intro hμ
+    obtain ⟨S, f, hSmeas, hSrect, _, hf, hEq⟩ :=
+      (rectifiable_iff_density_representation μ).mp hμ
+    exact ⟨S, f, (isBookRectifiable_iff_countablyRectifiable S hSmeas).mpr hSrect,
+      hf, hEq⟩
 
 end Preiss
